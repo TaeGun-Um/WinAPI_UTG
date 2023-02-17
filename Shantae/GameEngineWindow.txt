@@ -1,0 +1,180 @@
+
+
+- MessageFunction : https://learn.microsoft.com/ko-kr/windows/win32/api/winuser/nc-winuser-wndproc
+  
+  LRESULT CALLBACK MessageFunction(HWND _hWnd, UINT _message, WPARAM _wParam, LPARAM _lParam) / 
+  LRESULT(CALLBACK* WNDPROC)(HWND, UINT, WPARAM, LPARAM)
+  : GetMessage, PeekMessage에서 전달된 매크로를 처리하는 함수
+    
+    1. CALLBACK                                          == __stdcall
+    2. LRESULT                                           == __int64
+    3. case WM_MOUSEMOVE                                 == 윈도우(창) 내에서 마우스 커서가 움직인 경우
+    4. case WM_ACTIVATE                                  == 해당 프로그램으로 생성된 윈도우(창)을 선택한 경우
+    5. case WM_KILLFOCUS                                 == 해당 프로그램으로 생성된 윈도우(창) 외 다른 것을 선택한 경우
+    6. case WM_DESTROY                                   == 윈도우(창)의 X버튼(닫기)를 눌렀을 경우
+    7. PostQuitMessage(0);                               == GetMessage, PeekMessage가 0을 리턴하게 만드는 함수
+    8. DefWindowProc(_hWnd, _message, _wParam, _lParam); == 3~7번 이외에는 윈도우 디폴트를 따른다는 뜻
+
+
+- 윈도우(창) 생성은 Windows OS를 통해 실시하는 것이다.
+  Windows OS는 프로그램 생성 요청 시, 핸들 방식을 이용한다.
+  윈도우(창)에 대한 모든 설정(조작)은 OS로부터 전달받은 핸들을 통해 허가를 받아야한다.
+
+- WNDCLASSEX : https://learn.microsoft.com/ko-kr/windows/win32/api/winuser/ns-winuser-wndclassexw
+  
+  WNDCLASSEX wcex;                                       // 기본은 WNDCLASSEXW, W == 유니코드(wchat_t*)
+
+  wcex.cbSize        = sizeof(WNDCLASSEX);               // wcex 구조체의 사이즈 저장
+  wcex.style         = CS_HREDRAW | CS_VREDRAW;          // 디폴트 윈도우 스타일
+  wcex.lpfnWndProc   = MessageFunction;                  // 함수 포인터, 윈도우(창)에 특별한 일 발생 시 해당 함수(MessageFunction)로 이동하도록 정의
+  wcex.cbClsExtra    = 0;                                // 창 클래스 구조에 따라 할당할 추가 바이트 수, 시스템에서 바이트를 0으로 초기화
+  wcex.cbWndExtra    = 0;                                // 창 인스턴스 다음에 할당할 추가 바이트 수, 시스템에서 바이트를 0으로 초기화
+  wcex.hInstance     = _hInstance;                       // 윈도우(창)을 생성하는 해당 프로그램의 핸들 값
+  wcex.hIcon         = nullptr;                          // 디폴트 윈도우 아이콘, 클래스 아이콘에 대한 핸들. 원형 : LoadIcon(_hInstance, MAKEINTRESOURCE(IDI_WINDOWSPROJECT1));
+  wcex.hCursor       = LoadCursor(nullptr, IDC_ARROW);   // 디폴트 윈도우 마우스 커서 스타일, 클래스 커서에 대한 핸들.
+  wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);       // 디폴트 윈도우 색상(흰색), 클래스 배경 브러시에 대한 핸들. 색상은 정수 형태로 재정의된 상태이다(ex. 흰색 0, 빨강 1, ...)
+  wcex.lpszMenuName  = nullptr;                          // 메뉴툴바, NULL은 생성 안함, 원형 : MAKEINTRESOURCEW(IDC_WINDOWSPROJECT1);]
+  wcex.lpszClassName = "GameEngineWindowDefault";        // 해당 구조체(클래스)를 OS에 GameEngineWindowDefault라는 이름으로 등록
+  wcex.hIconSm       = nullptr;                          // 창 클래스와 연결된 작은 아이콘에 대한 핸들. 원형 : LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
+                                                         
+
+- RegisterClassEx : https://learn.microsoft.com/ko-kr/windows/win32/api/winuser/nf-winuser-registerclassexa
+  
+  RegisterClassEx에 등록한 구조체를 전달한다.
+  0 또는 1을 char 자료형으로 전달해준다.
+  1 == 성공
+  0 == 실패
+
+  if (0 == RegisterClassEx(&wcex))                  
+  {
+      MsgAssert("윈도우 클래스 등록에 실패했습니다.");
+      return;
+  }
+
+
+- CreateWindow("GameEngineWindowDefault", _TitleName.data(), WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, _hInstance, nullptr);
+    
+  CreateWindow가 리턴해주는 핸들값(hInstance)을 hWnd(static;전역)에 저장한다.
+
+  1. 프로그램이 특정 숫자(위의 핸들값)를 통해 윈도우(창)를 띄워달라고 Windows에 요청
+  2. Windows는 다시 특정 숫자(여기 핸들값)이라는 윈도우(창)가 만들어졌다고 알려줌
+  3. 특정 숫자(여기 핸들값)로 인식되는 우리의 윈도우(창)에서 설정(ex. 크기변경, 떠라, 종료되라)
+
+  1번인자              = 위에서 정의한 클래스 이름
+  2번인자              = sting_view에 입력한 윈도우(창) 이름, data()는 string 객체 내부의 데이터를 그대로 리턴
+  WS_OVERLAPPEDWINDOW = 윈도우 스타일
+                        (WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX)
+                        (래핑          | 타이틀      | 메뉴바      | 창 프레임     | 최소화 단축키   | 최대화 단축키)
+  CW_USEDEFAULT       = 윈도우(창)의 크기와 위치를 정하는 부분, 0을 할당한 이유는 이후 함수 호출을 통해 사이즈와 위치를 결정하기 때문
+  hWndParent          = 윈도우(창)을 여러 개 생성 가능한지 결정하는 부분, 하나만 생성하기 때문에 NULL
+  hMenu               = 윈도우(창) 메뉴바, 쓰지 않기 때문에 NULL                                   
+
+
+- GetDC()
+  DrawHdc = GetDC(HWnd);
+  내 윈도우(창)의 핸들을 통해 그림을 그릴 수 있는 권한(핸들)을 얻는다.
+   
+
+- ShowWindow   : https://learn.microsoft.com/ko-kr/windows/win32/api/winuser/nf-winuser-showwindow
+  
+  ShowWindow(HWnd, SW_SHOW);
+  핸들 전달  
+  
+- UpdateWindow : https://learn.microsoft.com/ko-kr/windows/win32/api/winuser/nf-winuser-updatewindow 
+  
+  UpdateWindow(HWnd);
+  핸들 전달
+
+
+- int GameEngineWindow::WindowLoop(void(*_Start)(), void(*_Loop)(), void(*_End)())
+   
+  윈도우 프로젝트는 하위 레벨의 프로젝트가 무엇을 하려는지 알 필요가 없다.
+  윈도우 프로젝트 내부에 본인의 하위 레벨 프로젝트 함수(기능)들을 구현해버리면
+  그 프로젝트와 결합도가 높아지기 때문에 해당 프로젝트(윈도우 프로젝트)의 재활용이 어려워지거나 불가능해진다.
+
+  따라서 이러한 부분들을 방지하기 위해 함수 포인터를 이용한다.
+  프로그래머가 필요한 부분을 함수 포인터를 통해 인자로 전달하기만 해도 윈도우 프로젝트가 윈도우(창)에서 기능을 수행할 수 있다.
+  이러한 설계 방식을 "콜백 설계 방식" 이라고 한다.
+
+  
+- LoadAccelerators : https://learn.microsoft.com/ko-kr/windows/win32/api/winuser/nf-winuser-loadacceleratorsa
+   
+  HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_WINDOWSPROJECT1));
+  단축키에 대한 함수인데, 우리의 프로그램은 안써도 문제 없다.
+  주석처리함
+
+
+- TranslateAccelerator : https://learn.microsoft.com/ko-kr/windows/win32/api/winuser/nf-winuser-translateacceleratora
+  
+  기본 메시지 루프, TranslateAccelerator는 단축키를 쓰지 않을 예정이기 때문에 주석 처리
+
+  if (!TranslateAccelerator(msg.hwnd, nullptr, &msg))
+  {
+  }
+
+
+- GetMessage  : https://learn.microsoft.com/ko-kr/windows/win32/api/winuser/nf-winuser-getmessage
+  PeekMessage : https://learn.microsoft.com/ko-kr/windows/win32/api/winuser/nf-winuser-peekmessagea
+
+  GetMessage는 내가 생성한 윈도우(창)에 무슨 일이 발생했는지 체크하는 동기 함수이다.
+  Windows OS의 윈도우(창)에서 특별한 일이 발생할 경우 함수 포인터(MessageFunction)로 정의한 함수로 이동해여 메세지 매크로를 처리한다.
+  게임은 실시간으로 계속 동작하는 프로그램이기 때문에 GetMessage을 사용하면 표현이 어렵다(메세지가 없으면 프로그램이 멈춘다).
+
+  우리의 프로그램은 GetMessage 대신 PeekMessage를 사용할 것이다(마찬가지로 동기함수).
+  모든 입력은 OS가 잃어버릴 일이 없고 무조건 쌓인다(getch만 봐도 확인할 수 있다).
+  이러한 입력을 PeekMessage는 처리할 수 있는 상황에서만 처리를 실시하고 메세지가 입력되지 않으면 그냥 지나친다.
+
+  PM_REMOVE   : 쌓여있는 메세지를 삭제하라는 뜻, 키를 100번 눌렀다고 한다면 가장 먼저 입력된 키를 처리한 뒤 나머지는 지워버린다.
+                보통 게임은 60프레임을 기준으로 실행되지만, PM_REMOVE는 프레임 제한도 풀어버리기 때문에 컴퓨터 성능이 좋을 수록 초당 반복이 증가한다.
+                일단 사용.
+        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) 
+        {                                                
+            TranslateMessage(&msg); // TranslateMessage : https://learn.microsoft.com/ko-kr/windows/win32/api/winuser/nf-winuser-translatemessage
+            DispatchMessage(&msg);  // DispatchMessage  : https://learn.microsoft.com/ko-kr/windows/win32/api/winuser/nf-winuser-dispatchmessage
+        }
+
+
+- PeekMessage는 아무 메세지도 없으면 0을 리턴한다(if문에서 FALSE).
+  이렇게 넘어가는 순간을 데드타임이라고 하며, 우리의 프레임워크(프로그램)은 데드타임에도, 메세지가 전달되는 상황에서도 게임이 실행되도록 구현한다.
+
+
+- RECT Rc = { 0, 0, _Size.ix(), _Size.iy() };
+
+  typedef struct tagRECT
+  {
+      LONG    left;
+      LONG    top;
+      LONG    right;
+      LONG    bottom;
+  } RECT, * PRECT, NEAR* NPRECT, FAR* LPRECT;
+
+
+- AdjustWindowRect(&Rc, WS_OVERLAPPEDWINDOW, FALSE);
+
+  [생성 크기를 1280x720로 결정한 경우]
+  1. AdjustWindowRect 비활용 == 모든 요소(타이틀바, 메뉴바, 프레임)를 포함해서 1280x720로 생성
+  2. AdjustWindowRect 활용   == 창만 1280x720로 생성 (타이틀바, 메뉴바, 프레임을 크기에서 제외)
+  
+  1번인자 = RECT Rc 값
+  2번인자 = "WS_OVERLAPPEDWINDOW 스타일로 윈도우를 생성했다" 를 전달
+  3번인자 = 메뉴, 쓰지 않기 때문에 FALSE 전달
+    
+  [AdjustWindowRect 호출 시]
+  기존 == Rc = { LT(0, 0)    RB(1280, 720) [1280 x 720] }
+  변경 == Rc = { LT(-8, -31) RB(1288, 728) [1296 x 759] }
+
+
+- WindowSize = { static_cast<float>(Rc.right - Rc.left), static_cast<float>(Rc.bottom - Rc.top) };
+  
+  AdjustWindowRect를 쓸 때 Rc의 0, 0 을 기준으로 생성하면 창이 0, 0에 생성된다.
+  타이틀, 메뉴, 프레임은 마이너스 값이 된다.
+  그것도 고려해서 pos 값을 설정해줘야 한다.
+
+
+- SetWindowPos(HWnd, nullptr, WindowPos.ix(), WindowPos.iy(), WindowSize.ix(), WindowSize.iy(), SWP_NOZORDER);
+  
+  1번 인자   = 핸들
+  2번 인자   = ?
+  3, 4번인자 = 위치
+  5, 6번인자 = 크기
+  7번 인자   = 플래그, SWP_NOZORDER는 윈도우 위치(어떤 창이 먼저인가)를 고려하지 않는다는 뜻이다.

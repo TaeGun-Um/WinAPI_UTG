@@ -1,0 +1,69 @@
+
+- 시간 측정 함수
+
+  시간을 재는 기능은 기본적으로 CPU에 별개로 들어가 있다.
+  이러한 하드웨어의 정보를 OS가 받아와서 우리에게 알려주는데, 시간 측정에 관련된 함수를 사용하면 된다.
+
+  시스템이 시작된 후 지난 시간을 밀리세컨드(millisecond) 단위로 알려준다. 
+  보다 정밀한 타이머를 원한다면 고성능 타이머(high-resolution timer)를 사용하면 된다.
+
+  고성능 타이머(high-resolution timer)
+  - QueryPerformanceCounter()
+  - QueryPerformanceFrequency()
+
+
+- QueryPerformanceCounter(__out LARGE_INTEGER *lpPerformanceCount)
+
+  일정 지점 안에서 몇 번 진동했는지를 나타내는 함수(정수). lpPerformanceCount에는 함수가 호출된 시점의 타이머 값이 설정된다.
+  해당 함수가 호출됐을 때를 기준으로 본다.
+
+  시작점과 끝지점에서 QueryPerformanceCounter 함수를 호출하면 수행시간동안 발생한 진동수를 얻을 수 있음
+  그러나 이 값은 시간 단위가 아니기 때문에 QueryPerformanceFrequency로 얻은 값을 나누어 시간 단위로 변경해야 한다.
+
+
+- QueryPerformanceFrequency(__out LARGE_INTEGER *lpFrequency)
+  
+  CPU가 1초당 몇 번 진동하는지를 정수값으로 반환. lpFrequency에는 해당 타이머의 주기가 설정된다.
+  컴퓨터마다 CPU 모델이 다르기 때문에, 반환되는 정수값(진동 횟수)이 다르다.
+
+
+- LARGE_INTEGER
+  
+  고성능 타이머로 측정된 값은 LARGE_INTEGER에 복사한다.
+  LARGE_INTEGER는 union이며, 정의는 다음과 같이 선언되어 있다.
+  
+  typedef union _LARGE_INTEGER 
+  {
+      struct 
+      {
+          DWORD LowPart;
+          LONG HighPart;
+      } DUMMYSTRUCTNAME;
+      struct 
+      {
+          DWORD LowPart;
+          LONG HighPart;
+      } u;
+      LONGLONG QuadPart;
+  } LARGE_INTEGER;
+
+
+- TimeCheck() 함수에서 double을 float으로 변환한 뒤 리턴하는 이유
+
+  double은 8바이트 실수형 자료형이며, float에 비해 정밀한 소수점 계산이 가능하다.
+  하지만 double을 Deltatime으로 활용하여 연산하는 경우, 해당 연산이 느려지게 된다.
+  따라서 double에 비해 연산시 속도가 빠른 float으로 변환한 뒤 리턴해준다.
+
+
+- Deltatime
+
+  프레임(현 프로젝트에서 Loop 1회)당 소요된 시간
+  1픽셀당 이동거리를 델타타임으로 정하면, 성능이 다른 PC에서도 모두 같은 1프레임당 이동이 가능해진다.
+
+
+- 렉
+  
+  Deltatime을 사용하기 때문에 나타나는 현상이다.
+  연산과정에서 이동거리는 델타타임x이동거리로 정해져있지만, 1 Loop(1프레임)을 처리하는데까지의 연산이 컴퓨터 성능에 비해 오버될 경우,
+  렉이 발생한다.
+  이동은 되지만, 끊겨서 이동하게 된다.

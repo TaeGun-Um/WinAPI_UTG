@@ -1,0 +1,105 @@
+
+- 선형보간(Lerp)는 정확한 지점으로 이동하기 위해 활용된다.
+  실수의 연산(델타타임 연산)은 언제나 부정확하기 때문에 정확한 위치로 이동하기 위해 활용되는 것이다.
+
+- 선형보간은 보통 시작과 끝을 정해준다.
+  공식은 다음과 같다
+
+  static float4 Lerp(const float4& Start, const float4& End, float Ratio)
+  {
+      return Start * (1.0f - Ratio) + (End * Ratio);
+  }
+
+  static float4 LerpClamp(const float4& Start, const float4& End, float Ratio)
+  {
+      if (0 >= Ratio)
+      {
+	      Ratio = 0.0f;
+	  }
+	  if (1.0f <= Ratio)
+	  {
+	      Ratio = 1.0f;
+	  }
+	  return Lerp(Start, End, Ratio);
+  }
+
+
+- 선형보간을 활용하지 않을 경우에는 다음과 같이 특정 지점에 도달했을 때 위치를 고정해버린다.
+
+	if (true == Start)
+	{
+		DownPosTitle += float4::Down * 100.0f * _DeltaTime;
+
+		SetCameraMove(float4::Down * 100.0f * _DeltaTime);
+
+		if (GameEngineWindow::GetScreenSize().half().y <= DownPosTitle.y)
+		{
+			DownPosTitle.y = GameEngineWindow::GetScreenSize().half().y;
+			SetCameraPos(DownPosTitle);
+			Start = false;
+		}
+	}
+
+- 선형보간 활용 시 다음과 같이 ~초동안 움직이도록 활용할 수 있다.
+  움직일 때에는 추가로 동작하지 못하도록 작성하면 좋다.
+	if (false == ScrollStart)
+	{
+		if (true == GameEngineInput::IsDown("TitleScrollLeft"))
+		{
+			End = Start + float4(-GameEngineWindow::GetScreenSize().half().x, 0.0f);
+			ScrollStart = true;
+		}
+		else if (true == GameEngineInput::IsDown("TitleScrollRight"))
+		{
+			End = Start + float4(GameEngineWindow::GetScreenSize().half().x, 0.0f);
+			ScrollStart = true;
+		}
+		else if (true == GameEngineInput::IsDown("TitleScrollUp"))
+		{
+			End = Start + float4(0.0f, GameEngineWindow::GetScreenSize().half().y);
+			ScrollStart = true;
+		}
+		else if (true == GameEngineInput::IsDown("TitleScrollDown"))
+		{
+			End = Start + float4(0.0f, -GameEngineWindow::GetScreenSize().half().y);
+			ScrollStart = true;
+		}
+	}
+
+ - 위와같이 작성한 뒤, 움직일 경우
+
+	if (true == ScrollStart)
+	{
+		// 시작에서 끝까지 이동하는데 1초가 걸리는 함수
+		Time += _DeltaTime * 0.5f;
+		float4 Pos = float4::LerpClamp(Start, End, Time);
+		SetCameraPos(Pos);
+
+		if (Time >= 1.0f)
+		{
+			ScrollStart = false;
+			Time = 0.0f;
+			Start = Pos;
+		}
+	}
+
+
+ - 정규화(Normalization)
+ - sqrtf()
+   제곱근을 구하는 함수로, math, cmath 헤더 참조 후 활용
+
+	float Size() const
+	{
+		return sqrtf(x * x + y * y);
+	}
+
+ - 제곱근을 구한 뒤, 제곱근으로 나눠준다. 비례하기 때문에 삼각형이 유지된다
+
+	void Normalize() 
+	{
+		float SizeValue = Size();
+		x /= SizeValue;
+		y /= SizeValue;
+		z /= SizeValue;
+		
+	}

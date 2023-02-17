@@ -1,0 +1,23 @@
+
+- if (Levels.end() != Levels.find(_Name.data()))
+
+  find를 하면 iterator가 리턴되고, 이것은 어떤 노드를 참조형으로 가리키고 있는 것
+  FindIterator == end(nullptr) : 존재하지 않는 데이터
+  FindIterator != end(nullptr) : 존재하는 데이터
+		
+
+- GameEngineLevel* Level = new LevelType();
+
+  업캐스팅, Level에 해당하는 자료형 만큼(Template)의 동적할당
+		
+
+- std::map<std::string, GameEngineLevel*> Levels;
+  
+  맵으로 Level을 관리하는 이유는 사용성과 직관성이 뛰어나기 때문이다.
+  추가로, std::string을 key로 설정한다면 이름으로 관리가 가능해진다.
+  
+
+- map의 key를 string_view로 설정할 경우 문제가 발생할 수 있다.
+  string_view는 다른 메모리의 주소값을 가리키는 것(참조)이기 때문에, 스스로의 메모리 공간이 없다.
+  이때, 만약 지역변수로 만들어진 string을 참조할 경우 리턴되면서 지역변수가 사라질 시 string_view는 댕글링 포인터가 되버린다.
+  그래서 key는 string으로 설정한다.

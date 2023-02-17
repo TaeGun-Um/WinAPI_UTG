@@ -1,0 +1,51 @@
+
+## 근본에 가까울 수록 Level이 낮다
+
+1. GameEngineBase
+   - 플랫폼(Windows)의 범위에 포함되지 않는 기본적인 코드들
+     ex) 수학, 릭체크, 문자열
+
+2. GameEnginePlatform
+   - Platform은 Windows, Mac, Linux 등이 존재하지만, 게임은 Windows 창에 의존적이다.
+     플랫폼에 영향을 많이 받는 기능들을 여기에 적는다.
+   
+3. GameEngineCore <= 엔진프로그래머의 영역
+   - 게임을 구성하는데 필요한 기본중의 기본
+     장르를 불문하고 모든걸 만들수 있는 기본구조에 대한 걸 여기에 만든다.
+
+   - Level == 게임 내 화면, 게임 타이틀 화면, 플레이 화면, 엔딩 화면, 멥에디터 화면 등
+   - Actor == 타이틀 화면의 버튼, 게임 내 이미지 등
+
+4. GameEngineContent <= 컨텐츠 프로그래머의 영역
+   - 게임 내 말단 객체들 == 몬스터, 플레이어, 무기, 스킬 등
+
+5. Shantae
+   - 실행파일(exe)을 만들기 위한 용도
+
+
+## 게임 프레임워크
+
+1. Object 구조 
+   - 게임세계에 있는 것을 어떻게 표현할것이냐에 대한 구조
+   
+   Level => 장면
+   Actor => 장면의 요소
+
+2. Release 구조
+   - 가장 핵심 오브젝트들이 어떻게 만들어져서 어떻게 지워지나?
+
+   GameEngineCore
+   GameEngineLevel
+   GameEngineActor
+   GameEngineRender
+   GameEngineCollision
+   Image Resource
+
+3. Rendering 구조
+
+   - 게임내 자원을 관리하는 구조를 짜볼겁니다.
+     리소스 구조를 보통 포함합니다.
+     화면에 어떻게 어떤 순서로 그려질거냐. 구조를 짜야 합니다.
+
+4. 상호작용구조 (Collision)
+   - 각 오브젝트들은 서로간에 어떻게 관계를 가지게 될것이냐

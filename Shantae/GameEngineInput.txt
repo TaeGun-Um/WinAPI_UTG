@@ -1,0 +1,16 @@
+
+- GetAsyncKeyState
+
+  해당 프레임에 키가 눌렸는지 안눌렸는지 체크하는 함수
+
+  if (0 != GetAsyncKeyState('A'))
+  {
+      SetMove(float4::Left * 100.0f * _DeltaTime);
+  }
+
+
+- VK_ 매크로
+
+  VK_를 입력하면 키보드와 마우스의 모든 입력이 정수값 VK_ 로 defined 되어있는 것을 확인할 수 있다.
+  방향키, 마우스 클릭, ESC, Enter, Space 등 특수문자도 정수값으로 정의된 상태  
+  이들은 모두 Windows가 지원해주는 값들이다.

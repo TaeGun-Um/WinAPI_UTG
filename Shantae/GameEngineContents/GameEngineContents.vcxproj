@@ -1,0 +1,1334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{4500d371-663f-46e0-9802-690d291da142}</ProjectGuid>
+    <RootNamespace>GameEngineContents</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\;</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\;</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\;</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);..\;</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\;</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);..\;</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="AmmoBaron.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="AnimationBox.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Bat.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BeforeBoss.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BeforeBoss_Background.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BeforeBoss_ColMap.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BeforeBoss_Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BoomBridge.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BoomBridge_Background.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BoomBridge_Bridge1.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BoomBridge_Bridge2.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BoomBridge_Bridge3.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BoomBridge_ColMap.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BoomBridge_Sky.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Boss_ColMap.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Boss_ETCBackground.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Boss_Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Boss_Mob.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Boss_Sky.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Bridge_Boom.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Building0.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="GemWindow.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Health.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="HouseFront_ColMap.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="KeyLoad.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Machinegun_Background.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Machinegun_Bulletmarks.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Machinegun_ColMap.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Machinegun_Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Machinegun_Plat.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Machinegun_Sky.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="CharacterLoad.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Mermaid.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Misillie.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MonsterSpawner.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Move0_ColMap.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Move0_ETCBackground.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ContentsEnum.h" />
+    <ClInclude Include="House.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="HouseFront.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="HouseFront_Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="HouseFront_Building.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="HouseFront_Bush.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="HouseFront_Island.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="HouseFront_LightHouse.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="HouseFront_PalmTree.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="HouseFront_Sea.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="HouseFront_WindVane.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="House_Hut.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="House_Interior.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Move0_Buliding.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Move0_Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Move0_Sea.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Move0_Sky.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Move1_Buliding.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Move1_ColMap.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Move1_ETCBackground.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Move1_Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Move1_Sea.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Move1_Sky.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ObjectLoad.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Opening.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Machinegun.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Move0.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Move1.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Opening_Background.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PlayLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Public_Boom.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SaveRoom.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SaveRoom_Background.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SaveRoom_ColMap.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SaveRoom_Front.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SaveRoom_Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SaveRoom_Sea.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SaveRoom_Sky.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Scarecrow.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Scarecrow_Black.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Scuttle.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Scuttle_Background.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Scuttle_ColMap.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Scuttle_Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Scuttle_Sea.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Scuttle_Sky.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SelectMenu_Background.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SelectMenu_Button_End.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SelectMenu_Button_Start.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SelectMenu_Button_Test.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SelectMenu_Icon.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SelectMeun.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ShantaeCore.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Shantae_Pajamas.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Shop.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Shop_Background.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Shop_ColMap.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Shop_Front.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Shop_Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Shop_Sea.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Shop_Sky.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SkyRoom.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SkyRoom_Background.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SkyRoom_ColMap.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SkyRoom_Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SkyRoom_Sky.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Smith.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Smith_Background.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Smith_ColMap.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Smith_Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Smith_Sea.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Smith_Sky.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Soldier_Aim.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Soldier_Black.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Soldier_Blue.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Soldier_Bomberman.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Soldier_Boom.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Soldier_Bullet.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Soldier_Machinegun.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Soldier_Red.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Soldier_Spider.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SoundLoad.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Spa.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Spa_Background.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Spa_ColMap.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Spa_Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Spa_Sea.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Spa_Sky.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Spider.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Stair.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Stair_Bush1.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Stair_Bush2.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Stair_ColMap.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Stair_Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Stair_Sky.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Stair_Stair.h" />
+    <ClInclude Include="Stair_Tower.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TestLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TestMap.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TimerCollision.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="UILoad.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="UncleRoom.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="UncleRoom_Background.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="UncleRoom_ColMap.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="UncleRoom_Front.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="UncleRoom_Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="UncleRoom_Sea.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="UncleRoom_Sky.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AmmoBaron.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="AnimationBox.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Bat.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BeforeBoss.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BeforeBoss_Background.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BeforeBoss_ColMap.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BeforeBoss_Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BoomBridge.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BoomBridge_Background.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BoomBridge_Bridge1.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BoomBridge_Bridge2.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BoomBridge_Bridge3.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BoomBridge_ColMap.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BoomBridge_Sky.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Boss_ColMap.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Boss_ETCBackground.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Boss_Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Boss_Mob.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Boss_Sky.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Bridge_Boom.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Building0.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="GemWindow.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Health.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="HouseFront_ColMap.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="KeyLoad.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Machinegun_Background.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Machinegun_Bulletmarks.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Machinegun_ColMap.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Machinegun_Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Machinegun_Plat.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Machinegun_Sky.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="CharacterLoad.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Mermaid.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Misillie.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="MonsterSpawner.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Move0_ColMap.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Move0_ETCBackground.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="House.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="HouseFront.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="HouseFront_Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="HouseFront_Building.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="HouseFront_Bush.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="HouseFront_Island.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="HouseFront_LightHouse.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="HouseFront_PalmTree.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="HouseFront_Sea.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="HouseFront_WindVane.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="House_Hut.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="House_Interior.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Move0_Buliding.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Move0_Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Move0_Sea.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Move0_Sky.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Move1_Buliding.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Move1_ColMap.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Move1_ETCBackground.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Move1_Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Move1_Sea.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Move1_Sky.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ObjectLoad.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Opening.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Machinegun.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Move0.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Move1.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Opening_Background.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Player_State.cpp" />
+    <ClCompile Include="PlayLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Public_Boom.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SaveRoom.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SaveRoom_Background.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SaveRoom_ColMap.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SaveRoom_Front.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SaveRoom_Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SaveRoom_Sea.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SaveRoom_Sky.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Scarecrow.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Scarecrow_Black.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Scuttle.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Scuttle_Background.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Scuttle_ColMap.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Scuttle_Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Scuttle_Sea.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Scuttle_Sky.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SelectMenu_Background.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SelectMenu_Button_End.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SelectMenu_Button_Start.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SelectMenu_Button_Test.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SelectMenu_Icon.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SelectMeun.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ShantaeCore.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Shantae_Pajamas.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Shop.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Shop_Background.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Shop_ColMap.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Shop_Front.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Shop_Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Shop_Sea.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Shop_Sky.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SkyRoom.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SkyRoom_Background.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SkyRoom_ColMap.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SkyRoom_Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SkyRoom_Sky.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Smith.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Smith_Background.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Smith_ColMap.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Smith_Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Smith_Sea.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Smith_Sky.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Soldier_Aim.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Soldier_Black.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Soldier_Black_State.cpp" />
+    <ClCompile Include="Soldier_Blue.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Soldier_Blue_State.cpp" />
+    <ClCompile Include="Soldier_Bomberman.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Soldier_Bomberman_State.cpp" />
+    <ClCompile Include="Soldier_Boom.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Soldier_Bullet.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Soldier_Machinegun.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Soldier_Machinegun_State.cpp" />
+    <ClCompile Include="Soldier_Red.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Soldier_Red_State.cpp" />
+    <ClCompile Include="Soldier_Spider.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Soldier_Spider_State.cpp" />
+    <ClCompile Include="SoundLoad.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Spa.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Spa_Background.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Spa_ColMap.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Spa_Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Spa_Sea.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Spa_Sky.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Spider.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Stair.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Stair_Bush1.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Stair_Bush2.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Stair_ColMap.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Stair_Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Stair_Sky.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Stair_Stair.cpp" />
+    <ClCompile Include="Stair_Tower.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TestLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TestMap.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TimerCollision.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="UILoad.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="UncleRoom.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="UncleRoom_Background.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="UncleRoom_ColMap.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="UncleRoom_Front.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="UncleRoom_Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="UncleRoom_Sea.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="UncleRoom_Sky.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

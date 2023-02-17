@@ -1,0 +1,31 @@
+#pragma once
+
+enum class RenderOrder
+{
+	BackGround, // 0
+	Object,     // 1
+	Monster,    // 2
+	Player,     // 3
+	Map,        // 4
+	Effect,     // 5
+	UI,         // 6
+};
+
+// Collision 그룹화를 위한 Enum 추가
+enum class CollisionOrder
+{
+	Player,         // 0
+	PlayerAttack,   // 1
+	Monster,        // 2
+	MonsterAttack,  // 3
+	Spawner,        // 4
+	Ground,         // 5
+	Effect,         // 6
+	Trigger,
+};
+
+// Enum class
+// Enum의 자료형을 무조건 지켜야하는 Enum
+// 일반적인 Enum은 사용하려고할 때, 자연스럽게 casting이 지원되지만,
+// Enum class는 casting을 지원하지 않는다.
+// casting을 명시하며 사용해야 한다.

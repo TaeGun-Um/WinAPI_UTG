@@ -1,0 +1,29 @@
+<TitleLevel>  게임 시작 화면
+Title_0  Loading
+Title_1  SelectMeun
+
+<EndLevel>    엔딩 화면
+End_0    Ending
+
+<FieldLevel>  게임 플레이 화면(인트로)
+Field_0  House
+Field_1  HouseFront
+Field_2  Move0
+Field_3  Move1
+Field_4  Stair
+Field_5  Machinegun
+Field_6  BoomBridge
+Field_7  Move2
+Field_8  BeforeBoss
+Field_9  Boss
+
+<TownLevel>   마을
+Town_0   Scuttle
+Town_1   ScuttleLeft
+Town_2   ScuttleLeft_Left
+Town_3   UncleRoom
+Town_4   Shop
+Town_5   Spa
+Town_6   Smith
+Town_7   Sky
+Town_8   SaveRoom

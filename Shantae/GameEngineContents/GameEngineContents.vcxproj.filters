@@ -1,0 +1,1107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="ShantaeCore.h" />
+    <ClInclude Include="ContentsEnum.h" />
+    <ClInclude Include="TestLevel.h">
+      <Filter>PlayLevel\TestLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="HouseFront.h">
+      <Filter>PlayLevel\FieldLevel\2. HouseFront</Filter>
+    </ClInclude>
+    <ClInclude Include="House.h">
+      <Filter>PlayLevel\FieldLevel\1. House</Filter>
+    </ClInclude>
+    <ClInclude Include="Move0.h">
+      <Filter>PlayLevel\FieldLevel\3. Move0</Filter>
+    </ClInclude>
+    <ClInclude Include="Move1.h">
+      <Filter>PlayLevel\FieldLevel\4. Move1</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>PlayLevel\FieldLevel\9. Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="BeforeBoss.h">
+      <Filter>PlayLevel\FieldLevel\8. BeforeBoss</Filter>
+    </ClInclude>
+    <ClInclude Include="Machinegun.h">
+      <Filter>PlayLevel\FieldLevel\6. Machinegun</Filter>
+    </ClInclude>
+    <ClInclude Include="BoomBridge.h">
+      <Filter>PlayLevel\FieldLevel\7. BoomBridge</Filter>
+    </ClInclude>
+    <ClInclude Include="Stair.h">
+      <Filter>PlayLevel\FieldLevel\5. Stair</Filter>
+    </ClInclude>
+    <ClInclude Include="Opening.h">
+      <Filter>PlayLevel\TitleLevel\1. Opening</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectMeun.h">
+      <Filter>PlayLevel\TitleLevel\2. SelectMenu</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectMenu_Icon.h">
+      <Filter>PlayLevel\TitleLevel\2. SelectMenu\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectMenu_Background.h">
+      <Filter>PlayLevel\TitleLevel\2. SelectMenu\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectMenu_Button_End.h">
+      <Filter>PlayLevel\TitleLevel\2. SelectMenu\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectMenu_Button_Start.h">
+      <Filter>PlayLevel\TitleLevel\2. SelectMenu\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectMenu_Button_Test.h">
+      <Filter>PlayLevel\TitleLevel\2. SelectMenu\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Opening_Background.h">
+      <Filter>PlayLevel\TitleLevel\1. Opening\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="House_Hut.h">
+      <Filter>PlayLevel\FieldLevel\1. House\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="House_Interior.h">
+      <Filter>PlayLevel\FieldLevel\1. House\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="HouseFront_Map.h">
+      <Filter>PlayLevel\FieldLevel\2. HouseFront\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="HouseFront_LightHouse.h">
+      <Filter>PlayLevel\FieldLevel\2. HouseFront\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="HouseFront_Bush.h">
+      <Filter>PlayLevel\FieldLevel\2. HouseFront\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="HouseFront_PalmTree.h">
+      <Filter>PlayLevel\FieldLevel\2. HouseFront\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="HouseFront_Island.h">
+      <Filter>PlayLevel\FieldLevel\2. HouseFront\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="HouseFront_Building.h">
+      <Filter>PlayLevel\FieldLevel\2. HouseFront\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="HouseFront_Sea.h">
+      <Filter>PlayLevel\FieldLevel\2. HouseFront\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="HouseFront_WindVane.h">
+      <Filter>PlayLevel\FieldLevel\2. HouseFront\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Shantae_Pajamas.h">
+      <Filter>PlayLevel\FieldLevel\1. House\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Move0_Buliding.h">
+      <Filter>PlayLevel\FieldLevel\3. Move0\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Move0_Map.h">
+      <Filter>PlayLevel\FieldLevel\3. Move0\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Move0_Sea.h">
+      <Filter>PlayLevel\FieldLevel\3. Move0\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Move0_Sky.h">
+      <Filter>PlayLevel\FieldLevel\3. Move0\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Move0_ETCBackground.h">
+      <Filter>PlayLevel\FieldLevel\3. Move0\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Move1_Map.h">
+      <Filter>PlayLevel\FieldLevel\4. Move1\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Move1_Buliding.h">
+      <Filter>PlayLevel\FieldLevel\4. Move1\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Move1_Sky.h">
+      <Filter>PlayLevel\FieldLevel\4. Move1\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Move1_Sea.h">
+      <Filter>PlayLevel\FieldLevel\4. Move1\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Move1_ETCBackground.h">
+      <Filter>PlayLevel\FieldLevel\4. Move1\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Stair_Map.h">
+      <Filter>PlayLevel\FieldLevel\5. Stair\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Stair_Tower.h">
+      <Filter>PlayLevel\FieldLevel\5. Stair\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Stair_Stair.h">
+      <Filter>PlayLevel\FieldLevel\5. Stair\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Stair_Bush1.h">
+      <Filter>PlayLevel\FieldLevel\5. Stair\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Stair_Bush2.h">
+      <Filter>PlayLevel\FieldLevel\5. Stair\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Stair_Sky.h">
+      <Filter>PlayLevel\FieldLevel\5. Stair\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="BeforeBoss_Background.h">
+      <Filter>PlayLevel\FieldLevel\8. BeforeBoss\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="BeforeBoss_Map.h">
+      <Filter>PlayLevel\FieldLevel\8. BeforeBoss\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss_Map.h">
+      <Filter>PlayLevel\FieldLevel\9. Boss\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss_Sky.h">
+      <Filter>PlayLevel\FieldLevel\9. Boss\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss_ETCBackground.h">
+      <Filter>PlayLevel\FieldLevel\9. Boss\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Machinegun_Background.h">
+      <Filter>PlayLevel\FieldLevel\6. Machinegun\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Machinegun_Map.h">
+      <Filter>PlayLevel\FieldLevel\6. Machinegun\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Machinegun_Sky.h">
+      <Filter>PlayLevel\FieldLevel\6. Machinegun\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="BoomBridge_Background.h">
+      <Filter>PlayLevel\FieldLevel\7. BoomBridge\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="BoomBridge_Sky.h">
+      <Filter>PlayLevel\FieldLevel\7. BoomBridge\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Scuttle.h">
+      <Filter>PlayLevel\TownLevel\1. Scuttle</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationBox.h">
+      <Filter>PlayLevel\TestLevel\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Scuttle_Background.h">
+      <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Scuttle_Map.h">
+      <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Scuttle_Sky.h">
+      <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Scuttle_Sea.h">
+      <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="UncleRoom.h">
+      <Filter>PlayLevel\TownLevel\2. UncleRoom</Filter>
+    </ClInclude>
+    <ClInclude Include="Shop.h">
+      <Filter>PlayLevel\TownLevel\3. Shop</Filter>
+    </ClInclude>
+    <ClInclude Include="Spa.h">
+      <Filter>PlayLevel\TownLevel\4. Spa</Filter>
+    </ClInclude>
+    <ClInclude Include="Smith.h">
+      <Filter>PlayLevel\TownLevel\5. Smith</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyRoom.h">
+      <Filter>PlayLevel\TownLevel\6. SkyRoom</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveRoom.h">
+      <Filter>PlayLevel\TownLevel\7. SaveRoom</Filter>
+    </ClInclude>
+    <ClInclude Include="UncleRoom_Sky.h">
+      <Filter>PlayLevel\TownLevel\2. UncleRoom\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="UncleRoom_Sea.h">
+      <Filter>PlayLevel\TownLevel\2. UncleRoom\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Shop_Sky.h">
+      <Filter>PlayLevel\TownLevel\3. Shop\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Shop_Sea.h">
+      <Filter>PlayLevel\TownLevel\3. Shop\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Spa_Sky.h">
+      <Filter>PlayLevel\TownLevel\4. Spa\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Spa_Sea.h">
+      <Filter>PlayLevel\TownLevel\4. Spa\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Smith_Sky.h">
+      <Filter>PlayLevel\TownLevel\5. Smith\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Smith_Sea.h">
+      <Filter>PlayLevel\TownLevel\5. Smith\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyRoom_Sky.h">
+      <Filter>PlayLevel\TownLevel\6. SkyRoom\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveRoom_Sky.h">
+      <Filter>PlayLevel\TownLevel\7. SaveRoom\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveRoom_Sea.h">
+      <Filter>PlayLevel\TownLevel\7. SaveRoom\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Shop_Background.h">
+      <Filter>PlayLevel\TownLevel\3. Shop\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Shop_Map.h">
+      <Filter>PlayLevel\TownLevel\3. Shop\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Spa_Background.h">
+      <Filter>PlayLevel\TownLevel\4. Spa\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Spa_Map.h">
+      <Filter>PlayLevel\TownLevel\4. Spa\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Smith_Background.h">
+      <Filter>PlayLevel\TownLevel\5. Smith\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Smith_Map.h">
+      <Filter>PlayLevel\TownLevel\5. Smith\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyRoom_Background.h">
+      <Filter>PlayLevel\TownLevel\6. SkyRoom\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyRoom_Map.h">
+      <Filter>PlayLevel\TownLevel\6. SkyRoom\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveRoom_Background.h">
+      <Filter>PlayLevel\TownLevel\7. SaveRoom\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveRoom_Map.h">
+      <Filter>PlayLevel\TownLevel\7. SaveRoom\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="UncleRoom_Background.h">
+      <Filter>PlayLevel\TownLevel\2. UncleRoom\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="UncleRoom_Map.h">
+      <Filter>PlayLevel\TownLevel\2. UncleRoom\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="UncleRoom_Front.h">
+      <Filter>PlayLevel\TownLevel\2. UncleRoom\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Shop_Front.h">
+      <Filter>PlayLevel\TownLevel\3. Shop\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveRoom_Front.h">
+      <Filter>PlayLevel\TownLevel\7. SaveRoom\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="TestMap.h">
+      <Filter>PlayLevel\TestLevel\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="HouseFront_ColMap.h">
+      <Filter>PlayLevel\FieldLevel\2. HouseFront\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Move0_ColMap.h">
+      <Filter>PlayLevel\FieldLevel\3. Move0\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Move1_ColMap.h">
+      <Filter>PlayLevel\FieldLevel\4. Move1\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Stair_ColMap.h">
+      <Filter>PlayLevel\FieldLevel\5. Stair\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Machinegun_ColMap.h">
+      <Filter>PlayLevel\FieldLevel\6. Machinegun\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="BoomBridge_ColMap.h">
+      <Filter>PlayLevel\FieldLevel\7. BoomBridge\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="BeforeBoss_ColMap.h">
+      <Filter>PlayLevel\FieldLevel\8. BeforeBoss\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss_ColMap.h">
+      <Filter>PlayLevel\FieldLevel\9. Boss\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Scuttle_ColMap.h">
+      <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="UncleRoom_ColMap.h">
+      <Filter>PlayLevel\TownLevel\2. UncleRoom\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Shop_ColMap.h">
+      <Filter>PlayLevel\TownLevel\3. Shop\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Spa_ColMap.h">
+      <Filter>PlayLevel\TownLevel\4. Spa\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Smith_ColMap.h">
+      <Filter>PlayLevel\TownLevel\5. Smith\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyRoom_ColMap.h">
+      <Filter>PlayLevel\TownLevel\6. SkyRoom\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="SaveRoom_ColMap.h">
+      <Filter>PlayLevel\TownLevel\7. SaveRoom\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="GemWindow.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Health.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Soldier_Black.h">
+      <Filter>Character\Monster\Soldier</Filter>
+    </ClInclude>
+    <ClInclude Include="Soldier_Blue.h">
+      <Filter>Character\Monster\Soldier</Filter>
+    </ClInclude>
+    <ClInclude Include="Soldier_Machinegun.h">
+      <Filter>Character\Monster\Soldier</Filter>
+    </ClInclude>
+    <ClInclude Include="Soldier_Red.h">
+      <Filter>Character\Monster\Soldier</Filter>
+    </ClInclude>
+    <ClInclude Include="Soldier_Spider.h">
+      <Filter>Character\Monster\Soldier</Filter>
+    </ClInclude>
+    <ClInclude Include="Scarecrow.h">
+      <Filter>Character\Monster\Scarecrow</Filter>
+    </ClInclude>
+    <ClInclude Include="Scarecrow_Black.h">
+      <Filter>Character\Monster\Scarecrow</Filter>
+    </ClInclude>
+    <ClInclude Include="Mermaid.h">
+      <Filter>Character\Monster\Mermaid</Filter>
+    </ClInclude>
+    <ClInclude Include="Bat.h">
+      <Filter>Character\Monster\Bat</Filter>
+    </ClInclude>
+    <ClInclude Include="Spider.h">
+      <Filter>Character\Monster\Spider</Filter>
+    </ClInclude>
+    <ClInclude Include="AmmoBaron.h">
+      <Filter>Character\Monster\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss_Mob.h">
+      <Filter>Character\Monster\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="Soldier_Bomberman.h">
+      <Filter>Character\Monster\Soldier</Filter>
+    </ClInclude>
+    <ClInclude Include="Soldier_Boom.h">
+      <Filter>Character\Monster\Soldier\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Bridge_Boom.h">
+      <Filter>Character\Monster\Soldier\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Misillie.h">
+      <Filter>Character\Monster\Soldier\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Public_Boom.h">
+      <Filter>Character\Monster\Soldier\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Soldier_Bullet.h">
+      <Filter>Character\Monster\Soldier\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Character\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterSpawner.h">
+      <Filter>Collision\Assistant\MonsterSpawner</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterLoad.h">
+      <Filter>ImageLoader\CharacterLoad</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyLoad.h">
+      <Filter>ImageLoader\KeyLoad</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundLoad.h">
+      <Filter>ImageLoader\SoundLoad</Filter>
+    </ClInclude>
+    <ClInclude Include="UILoad.h">
+      <Filter>ImageLoader\UILoad</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectLoad.h">
+      <Filter>ImageLoader\ObjectLoad</Filter>
+    </ClInclude>
+    <ClInclude Include="Building0.h">
+      <Filter>PlayLevel\FieldLevel\2. HouseFront\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayLevel.h">
+      <Filter>PlayLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="Soldier_Aim.h">
+      <Filter>Character\Monster\Soldier\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Machinegun_Bulletmarks.h">
+      <Filter>Character\Monster\Soldier\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Machinegun_Plat.h">
+      <Filter>Collision\Map\Machinegun</Filter>
+    </ClInclude>
+    <ClInclude Include="BoomBridge_Bridge1.h">
+      <Filter>Collision\Map\BoomBridge</Filter>
+    </ClInclude>
+    <ClInclude Include="BoomBridge_Bridge2.h">
+      <Filter>Collision\Map\BoomBridge</Filter>
+    </ClInclude>
+    <ClInclude Include="BoomBridge_Bridge3.h">
+      <Filter>Collision\Map\BoomBridge</Filter>
+    </ClInclude>
+    <ClInclude Include="TimerCollision.h">
+      <Filter>Collision\Assistant\Timer</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ShantaeCore.cpp" />
+    <ClCompile Include="TestLevel.cpp">
+      <Filter>PlayLevel\TestLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="HouseFront.cpp">
+      <Filter>PlayLevel\FieldLevel\2. HouseFront</Filter>
+    </ClCompile>
+    <ClCompile Include="House.cpp">
+      <Filter>PlayLevel\FieldLevel\1. House</Filter>
+    </ClCompile>
+    <ClCompile Include="Move0.cpp">
+      <Filter>PlayLevel\FieldLevel\3. Move0</Filter>
+    </ClCompile>
+    <ClCompile Include="Move1.cpp">
+      <Filter>PlayLevel\FieldLevel\4. Move1</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>PlayLevel\FieldLevel\9. Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="BeforeBoss.cpp">
+      <Filter>PlayLevel\FieldLevel\8. BeforeBoss</Filter>
+    </ClCompile>
+    <ClCompile Include="BoomBridge.cpp">
+      <Filter>PlayLevel\FieldLevel\7. BoomBridge</Filter>
+    </ClCompile>
+    <ClCompile Include="Machinegun.cpp">
+      <Filter>PlayLevel\FieldLevel\6. Machinegun</Filter>
+    </ClCompile>
+    <ClCompile Include="Stair.cpp">
+      <Filter>PlayLevel\FieldLevel\5. Stair</Filter>
+    </ClCompile>
+    <ClCompile Include="Opening.cpp">
+      <Filter>PlayLevel\TitleLevel\1. Opening</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectMeun.cpp">
+      <Filter>PlayLevel\TitleLevel\2. SelectMenu</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectMenu_Background.cpp">
+      <Filter>PlayLevel\TitleLevel\2. SelectMenu\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectMenu_Button_End.cpp">
+      <Filter>PlayLevel\TitleLevel\2. SelectMenu\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectMenu_Button_Start.cpp">
+      <Filter>PlayLevel\TitleLevel\2. SelectMenu\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectMenu_Button_Test.cpp">
+      <Filter>PlayLevel\TitleLevel\2. SelectMenu\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectMenu_Icon.cpp">
+      <Filter>PlayLevel\TitleLevel\2. SelectMenu\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Opening_Background.cpp">
+      <Filter>PlayLevel\TitleLevel\1. Opening\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="House_Hut.cpp">
+      <Filter>PlayLevel\FieldLevel\1. House\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="House_Interior.cpp">
+      <Filter>PlayLevel\FieldLevel\1. House\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="HouseFront_Map.cpp">
+      <Filter>PlayLevel\FieldLevel\2. HouseFront\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="HouseFront_LightHouse.cpp">
+      <Filter>PlayLevel\FieldLevel\2. HouseFront\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="HouseFront_Bush.cpp">
+      <Filter>PlayLevel\FieldLevel\2. HouseFront\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="HouseFront_PalmTree.cpp">
+      <Filter>PlayLevel\FieldLevel\2. HouseFront\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="HouseFront_Island.cpp">
+      <Filter>PlayLevel\FieldLevel\2. HouseFront\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="HouseFront_Building.cpp">
+      <Filter>PlayLevel\FieldLevel\2. HouseFront\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="HouseFront_Sea.cpp">
+      <Filter>PlayLevel\FieldLevel\2. HouseFront\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="HouseFront_WindVane.cpp">
+      <Filter>PlayLevel\FieldLevel\2. HouseFront\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Shantae_Pajamas.cpp">
+      <Filter>PlayLevel\FieldLevel\1. House\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Move0_Buliding.cpp">
+      <Filter>PlayLevel\FieldLevel\3. Move0\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Move0_Map.cpp">
+      <Filter>PlayLevel\FieldLevel\3. Move0\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Move0_Sea.cpp">
+      <Filter>PlayLevel\FieldLevel\3. Move0\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Move0_Sky.cpp">
+      <Filter>PlayLevel\FieldLevel\3. Move0\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Move0_ETCBackground.cpp">
+      <Filter>PlayLevel\FieldLevel\3. Move0\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Move1_Map.cpp">
+      <Filter>PlayLevel\FieldLevel\4. Move1\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Move1_Buliding.cpp">
+      <Filter>PlayLevel\FieldLevel\4. Move1\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Move1_Sky.cpp">
+      <Filter>PlayLevel\FieldLevel\4. Move1\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Move1_Sea.cpp">
+      <Filter>PlayLevel\FieldLevel\4. Move1\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Move1_ETCBackground.cpp">
+      <Filter>PlayLevel\FieldLevel\4. Move1\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Stair_Map.cpp">
+      <Filter>PlayLevel\FieldLevel\5. Stair\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Stair_Tower.cpp">
+      <Filter>PlayLevel\FieldLevel\5. Stair\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Stair_Stair.cpp">
+      <Filter>PlayLevel\FieldLevel\5. Stair\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Stair_Bush1.cpp">
+      <Filter>PlayLevel\FieldLevel\5. Stair\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Stair_Bush2.cpp">
+      <Filter>PlayLevel\FieldLevel\5. Stair\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Stair_Sky.cpp">
+      <Filter>PlayLevel\FieldLevel\5. Stair\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="BeforeBoss_Background.cpp">
+      <Filter>PlayLevel\FieldLevel\8. BeforeBoss\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="BeforeBoss_Map.cpp">
+      <Filter>PlayLevel\FieldLevel\8. BeforeBoss\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_Map.cpp">
+      <Filter>PlayLevel\FieldLevel\9. Boss\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_Sky.cpp">
+      <Filter>PlayLevel\FieldLevel\9. Boss\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_ETCBackground.cpp">
+      <Filter>PlayLevel\FieldLevel\9. Boss\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Machinegun_Background.cpp">
+      <Filter>PlayLevel\FieldLevel\6. Machinegun\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Machinegun_Map.cpp">
+      <Filter>PlayLevel\FieldLevel\6. Machinegun\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Machinegun_Sky.cpp">
+      <Filter>PlayLevel\FieldLevel\6. Machinegun\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="BoomBridge_Background.cpp">
+      <Filter>PlayLevel\FieldLevel\7. BoomBridge\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="BoomBridge_Sky.cpp">
+      <Filter>PlayLevel\FieldLevel\7. BoomBridge\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Scuttle.cpp">
+      <Filter>PlayLevel\TownLevel\1. Scuttle</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationBox.cpp">
+      <Filter>PlayLevel\TestLevel\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Scuttle_Background.cpp">
+      <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Scuttle_Map.cpp">
+      <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Scuttle_Sky.cpp">
+      <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Scuttle_Sea.cpp">
+      <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="UncleRoom.cpp">
+      <Filter>PlayLevel\TownLevel\2. UncleRoom</Filter>
+    </ClCompile>
+    <ClCompile Include="Shop.cpp">
+      <Filter>PlayLevel\TownLevel\3. Shop</Filter>
+    </ClCompile>
+    <ClCompile Include="Spa.cpp">
+      <Filter>PlayLevel\TownLevel\4. Spa</Filter>
+    </ClCompile>
+    <ClCompile Include="Smith.cpp">
+      <Filter>PlayLevel\TownLevel\5. Smith</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyRoom.cpp">
+      <Filter>PlayLevel\TownLevel\6. SkyRoom</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveRoom.cpp">
+      <Filter>PlayLevel\TownLevel\7. SaveRoom</Filter>
+    </ClCompile>
+    <ClCompile Include="UncleRoom_Sky.cpp">
+      <Filter>PlayLevel\TownLevel\2. UncleRoom\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="UncleRoom_Sea.cpp">
+      <Filter>PlayLevel\TownLevel\2. UncleRoom\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Shop_Sky.cpp">
+      <Filter>PlayLevel\TownLevel\3. Shop\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Shop_Sea.cpp">
+      <Filter>PlayLevel\TownLevel\3. Shop\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Spa_Sky.cpp">
+      <Filter>PlayLevel\TownLevel\4. Spa\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Spa_Sea.cpp">
+      <Filter>PlayLevel\TownLevel\4. Spa\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Smith_Sky.cpp">
+      <Filter>PlayLevel\TownLevel\5. Smith\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Smith_Sea.cpp">
+      <Filter>PlayLevel\TownLevel\5. Smith\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyRoom_Sky.cpp">
+      <Filter>PlayLevel\TownLevel\6. SkyRoom\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveRoom_Sky.cpp">
+      <Filter>PlayLevel\TownLevel\7. SaveRoom\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveRoom_Sea.cpp">
+      <Filter>PlayLevel\TownLevel\7. SaveRoom\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Shop_Background.cpp">
+      <Filter>PlayLevel\TownLevel\3. Shop\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Shop_Map.cpp">
+      <Filter>PlayLevel\TownLevel\3. Shop\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Spa_Background.cpp">
+      <Filter>PlayLevel\TownLevel\4. Spa\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Spa_Map.cpp">
+      <Filter>PlayLevel\TownLevel\4. Spa\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Smith_Background.cpp">
+      <Filter>PlayLevel\TownLevel\5. Smith\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Smith_Map.cpp">
+      <Filter>PlayLevel\TownLevel\5. Smith\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyRoom_Background.cpp">
+      <Filter>PlayLevel\TownLevel\6. SkyRoom\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyRoom_Map.cpp">
+      <Filter>PlayLevel\TownLevel\6. SkyRoom\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveRoom_Background.cpp">
+      <Filter>PlayLevel\TownLevel\7. SaveRoom\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveRoom_Map.cpp">
+      <Filter>PlayLevel\TownLevel\7. SaveRoom\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="UncleRoom_Background.cpp">
+      <Filter>PlayLevel\TownLevel\2. UncleRoom\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="UncleRoom_Map.cpp">
+      <Filter>PlayLevel\TownLevel\2. UncleRoom\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="UncleRoom_Front.cpp">
+      <Filter>PlayLevel\TownLevel\2. UncleRoom\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Shop_Front.cpp">
+      <Filter>PlayLevel\TownLevel\3. Shop\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveRoom_Front.cpp">
+      <Filter>PlayLevel\TownLevel\7. SaveRoom\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="TestMap.cpp">
+      <Filter>PlayLevel\TestLevel\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="HouseFront_ColMap.cpp">
+      <Filter>PlayLevel\FieldLevel\2. HouseFront\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Move0_ColMap.cpp">
+      <Filter>PlayLevel\FieldLevel\3. Move0\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Move1_ColMap.cpp">
+      <Filter>PlayLevel\FieldLevel\4. Move1\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Stair_ColMap.cpp">
+      <Filter>PlayLevel\FieldLevel\5. Stair\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Machinegun_ColMap.cpp">
+      <Filter>PlayLevel\FieldLevel\6. Machinegun\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="BoomBridge_ColMap.cpp">
+      <Filter>PlayLevel\FieldLevel\7. BoomBridge\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="BeforeBoss_ColMap.cpp">
+      <Filter>PlayLevel\FieldLevel\8. BeforeBoss\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_ColMap.cpp">
+      <Filter>PlayLevel\FieldLevel\9. Boss\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Scuttle_ColMap.cpp">
+      <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="UncleRoom_ColMap.cpp">
+      <Filter>PlayLevel\TownLevel\2. UncleRoom\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Shop_ColMap.cpp">
+      <Filter>PlayLevel\TownLevel\3. Shop\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Spa_ColMap.cpp">
+      <Filter>PlayLevel\TownLevel\4. Spa\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Smith_ColMap.cpp">
+      <Filter>PlayLevel\TownLevel\5. Smith\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyRoom_ColMap.cpp">
+      <Filter>PlayLevel\TownLevel\6. SkyRoom\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="SaveRoom_ColMap.cpp">
+      <Filter>PlayLevel\TownLevel\7. SaveRoom\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="GemWindow.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Health.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Soldier_Black.cpp">
+      <Filter>Character\Monster\Soldier</Filter>
+    </ClCompile>
+    <ClCompile Include="Soldier_Blue.cpp">
+      <Filter>Character\Monster\Soldier</Filter>
+    </ClCompile>
+    <ClCompile Include="Soldier_Machinegun.cpp">
+      <Filter>Character\Monster\Soldier</Filter>
+    </ClCompile>
+    <ClCompile Include="Soldier_Red.cpp">
+      <Filter>Character\Monster\Soldier</Filter>
+    </ClCompile>
+    <ClCompile Include="Soldier_Spider.cpp">
+      <Filter>Character\Monster\Soldier</Filter>
+    </ClCompile>
+    <ClCompile Include="Scarecrow.cpp">
+      <Filter>Character\Monster\Scarecrow</Filter>
+    </ClCompile>
+    <ClCompile Include="Scarecrow_Black.cpp">
+      <Filter>Character\Monster\Scarecrow</Filter>
+    </ClCompile>
+    <ClCompile Include="Mermaid.cpp">
+      <Filter>Character\Monster\Mermaid</Filter>
+    </ClCompile>
+    <ClCompile Include="Bat.cpp">
+      <Filter>Character\Monster\Bat</Filter>
+    </ClCompile>
+    <ClCompile Include="Spider.cpp">
+      <Filter>Character\Monster\Spider</Filter>
+    </ClCompile>
+    <ClCompile Include="AmmoBaron.cpp">
+      <Filter>Character\Monster\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_Mob.cpp">
+      <Filter>Character\Monster\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="Soldier_Blue_State.cpp">
+      <Filter>Character\Monster\Soldier</Filter>
+    </ClCompile>
+    <ClCompile Include="Soldier_Red_State.cpp">
+      <Filter>Character\Monster\Soldier</Filter>
+    </ClCompile>
+    <ClCompile Include="Soldier_Black_State.cpp">
+      <Filter>Character\Monster\Soldier</Filter>
+    </ClCompile>
+    <ClCompile Include="Soldier_Bomberman.cpp">
+      <Filter>Character\Monster\Soldier</Filter>
+    </ClCompile>
+    <ClCompile Include="Soldier_Bomberman_State.cpp">
+      <Filter>Character\Monster\Soldier</Filter>
+    </ClCompile>
+    <ClCompile Include="Soldier_Boom.cpp">
+      <Filter>Character\Monster\Soldier\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Bridge_Boom.cpp">
+      <Filter>Character\Monster\Soldier\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Misillie.cpp">
+      <Filter>Character\Monster\Soldier\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Public_Boom.cpp">
+      <Filter>Character\Monster\Soldier\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Soldier_Bullet.cpp">
+      <Filter>Character\Monster\Soldier\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Character\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Player_State.cpp">
+      <Filter>Character\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterSpawner.cpp">
+      <Filter>Collision\Assistant\MonsterSpawner</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterLoad.cpp">
+      <Filter>ImageLoader\CharacterLoad</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyLoad.cpp">
+      <Filter>ImageLoader\KeyLoad</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundLoad.cpp">
+      <Filter>ImageLoader\SoundLoad</Filter>
+    </ClCompile>
+    <ClCompile Include="UILoad.cpp">
+      <Filter>ImageLoader\UILoad</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectLoad.cpp">
+      <Filter>ImageLoader\ObjectLoad</Filter>
+    </ClCompile>
+    <ClCompile Include="Building0.cpp">
+      <Filter>PlayLevel\FieldLevel\2. HouseFront\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayLevel.cpp">
+      <Filter>PlayLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="Soldier_Aim.cpp">
+      <Filter>Character\Monster\Soldier\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Machinegun_Bulletmarks.cpp">
+      <Filter>Character\Monster\Soldier\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Machinegun_Plat.cpp">
+      <Filter>Collision\Map\Machinegun</Filter>
+    </ClCompile>
+    <ClCompile Include="BoomBridge_Bridge1.cpp">
+      <Filter>Collision\Map\BoomBridge</Filter>
+    </ClCompile>
+    <ClCompile Include="BoomBridge_Bridge2.cpp">
+      <Filter>Collision\Map\BoomBridge</Filter>
+    </ClCompile>
+    <ClCompile Include="BoomBridge_Bridge3.cpp">
+      <Filter>Collision\Map\BoomBridge</Filter>
+    </ClCompile>
+    <ClCompile Include="Soldier_Spider_State.cpp">
+      <Filter>Character\Monster\Soldier</Filter>
+    </ClCompile>
+    <ClCompile Include="Soldier_Machinegun_State.cpp">
+      <Filter>Character\Monster\Soldier</Filter>
+    </ClCompile>
+    <ClCompile Include="TimerCollision.cpp">
+      <Filter>Collision\Assistant\Timer</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Character">
+      <UniqueIdentifier>{e2574156-335a-4e77-bc76-21cf12eedf43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character\Monster">
+      <UniqueIdentifier>{6a5b56b0-22a3-4715-a5a6-d96fbee879a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character\NPC">
+      <UniqueIdentifier>{fc8383ea-0ce1-4c5b-8d83-0fd1546db62a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character\Monster\Soldier">
+      <UniqueIdentifier>{78d21142-3e18-4440-904d-9f0339841c2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character\Monster\Scarecrow">
+      <UniqueIdentifier>{45e60511-836b-472f-abc6-27d9f901e413}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character\Monster\Mermaid">
+      <UniqueIdentifier>{d2a379c4-4415-4b3b-b709-69df4b33191d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character\Monster\Bat">
+      <UniqueIdentifier>{4d30f2bf-56f3-48c4-93b2-92696c0b1134}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character\Monster\Spider">
+      <UniqueIdentifier>{4c422c2a-fb3e-41ef-9512-9b2797f851ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character\Monster\Boss">
+      <UniqueIdentifier>{835e2f93-b470-480a-bcb6-016a62938529}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character\Monster\Soldier\Effect">
+      <UniqueIdentifier>{0f0b3f7a-2cef-41d7-9bd3-deeac59f252a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel">
+      <UniqueIdentifier>{cc02dce8-d4d9-4b06-9786-7b3030490a85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\TitleLevel">
+      <UniqueIdentifier>{d6b344f9-e5a7-4f6b-90ae-0875c7c1b780}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\TitleLevel\1. Opening">
+      <UniqueIdentifier>{39f42ccc-8368-4795-a8b0-ed9fc5864a26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\TitleLevel\1. Opening\Actor">
+      <UniqueIdentifier>{dbeb8603-e19d-4d2e-a542-0ba2e9b7b612}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\TitleLevel\2. SelectMenu">
+      <UniqueIdentifier>{d0a438c3-7912-47e5-a8a4-c62533204d84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\TitleLevel\2. SelectMenu\Actor">
+      <UniqueIdentifier>{17daac8c-7a55-449d-a83e-e19e4af95f59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\FieldLevel">
+      <UniqueIdentifier>{1d6c55f3-96e1-44e2-9aeb-7a58b1a43a85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\FieldLevel\3. Move0">
+      <UniqueIdentifier>{02378924-a441-4925-9acb-880ae969d8a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\FieldLevel\3. Move0\Actor">
+      <UniqueIdentifier>{b5719b03-85c2-4e28-b491-19608e90e2fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\FieldLevel\2. HouseFront">
+      <UniqueIdentifier>{9a3701cb-0723-4bce-86cd-ca68c6929129}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\FieldLevel\2. HouseFront\Actor">
+      <UniqueIdentifier>{764aeddd-157b-438e-98ef-520bf588bdcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\FieldLevel\1. House">
+      <UniqueIdentifier>{cd54d973-db4d-4435-9e55-c4f39c680312}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\FieldLevel\1. House\Actor">
+      <UniqueIdentifier>{640766b8-3fdb-4be6-8f08-1171633373c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\FieldLevel\4. Move1">
+      <UniqueIdentifier>{f489218f-edd4-4d39-80d6-5575b3d12ede}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\FieldLevel\4. Move1\Actor">
+      <UniqueIdentifier>{ac5c0a85-4304-4881-9e05-14a67fe87d97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\FieldLevel\6. Machinegun">
+      <UniqueIdentifier>{ffa4819a-e3bb-42ff-820c-c85def92d14e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\FieldLevel\6. Machinegun\Actor">
+      <UniqueIdentifier>{5a41a127-6775-4c56-b0be-303ddfaf3065}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\FieldLevel\7. BoomBridge">
+      <UniqueIdentifier>{c27d469c-9735-41b9-b9d4-75a490cb95d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\FieldLevel\7. BoomBridge\Actor">
+      <UniqueIdentifier>{2da5b6d9-30cf-47bf-b89c-a549a64e16eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\FieldLevel\5. Stair">
+      <UniqueIdentifier>{8288e5a6-9320-410e-83d9-994489f8e802}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\FieldLevel\5. Stair\Actor">
+      <UniqueIdentifier>{826ad50a-b4a4-4ee3-8b53-1a5dfe2520cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\TestLevel">
+      <UniqueIdentifier>{dc5e6037-fade-4abe-969e-548fbbc1d23f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\TestLevel\Object">
+      <UniqueIdentifier>{cc585eac-e98c-4b97-a298-ee514d285f42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\TownLevel">
+      <UniqueIdentifier>{9c9b8de5-85d1-468a-ac7d-243d00f19f42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\TownLevel\1. Scuttle">
+      <UniqueIdentifier>{d9c2de90-8f36-4ff5-bbc9-20baa5f477b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\TownLevel\1. Scuttle\Object">
+      <UniqueIdentifier>{2f6504e2-10cd-4bbf-b30c-a6125f491fc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character\Player">
+      <UniqueIdentifier>{6ffada37-bd9d-4efa-9431-adaee1bc2d22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImageLoader">
+      <UniqueIdentifier>{d0474782-1626-4cf8-b78a-23cfcbefa928}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImageLoader\CharacterLoad">
+      <UniqueIdentifier>{a906cf5d-ccc6-4fc6-8cd5-95ab799806c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImageLoader\KeyLoad">
+      <UniqueIdentifier>{b1e622d3-b253-463c-9890-e2e54577e908}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImageLoader\SoundLoad">
+      <UniqueIdentifier>{bb951c7e-4710-4fc3-b261-a4d44569ed52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImageLoader\UILoad">
+      <UniqueIdentifier>{a1b3ea1a-8725-483e-9b3a-fbe7d2359702}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ImageLoader\ObjectLoad">
+      <UniqueIdentifier>{9035dd2c-dd5e-401f-95a7-adb5899c6dc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{3f2526df-17d9-4f62-921b-1e8dedea7008}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collision">
+      <UniqueIdentifier>{9a521f75-00bf-464c-ba23-e763bfb2a734}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collision\Map">
+      <UniqueIdentifier>{8093ac98-ce76-44c9-8fee-544536438a2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collision\Map\Move2">
+      <UniqueIdentifier>{0456f377-2a15-4a04-b596-ca8b6ee4b781}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collision\Map\Machinegun">
+      <UniqueIdentifier>{d4cd76ba-efda-4688-80c8-e55859dbf9e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collision\Map\BoomBridge">
+      <UniqueIdentifier>{a5e77c8e-3dab-4f16-af75-c1fbeab87b2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collision\Assistant">
+      <UniqueIdentifier>{ca977b54-c810-41ac-ab68-8b10210c764b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collision\Assistant\MonsterSpawner">
+      <UniqueIdentifier>{296ebf79-2f8f-4e72-a6d6-651fea6530aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Collision\Assistant\Timer">
+      <UniqueIdentifier>{9b85a7b5-f593-4ef8-a9e8-10fbca6cee37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\FieldLevel\8. BeforeBoss">
+      <UniqueIdentifier>{e5fbb1e4-bad8-401a-a6cd-3cace26bbd08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\FieldLevel\8. BeforeBoss\Actor">
+      <UniqueIdentifier>{fa44d436-77a4-46c0-95b2-55bd05422974}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\FieldLevel\9. Boss">
+      <UniqueIdentifier>{0575c812-037b-48f1-a02f-67b9358e7b7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\FieldLevel\9. Boss\Actor">
+      <UniqueIdentifier>{4d0bfa2f-e8f9-47ca-9f32-cea96f7e98fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\TownLevel\2. UncleRoom">
+      <UniqueIdentifier>{5b4162f5-599c-4da7-8ab6-180d4ff36a7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\TownLevel\2. UncleRoom\Object">
+      <UniqueIdentifier>{8391e984-ee5a-42b9-82f9-c675fde1f8b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\TownLevel\3. Shop">
+      <UniqueIdentifier>{df0f8784-a240-480b-871d-4bfeee8bd9eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\TownLevel\3. Shop\Object">
+      <UniqueIdentifier>{6e0c83aa-f6ec-41fc-b6cb-4c698e7f9f3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\TownLevel\4. Spa">
+      <UniqueIdentifier>{d0b74435-801d-4a1f-885c-ac43047fc21e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\TownLevel\4. Spa\Object">
+      <UniqueIdentifier>{1d967720-a1fc-4756-bd79-4ee22ec097bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\TownLevel\5. Smith">
+      <UniqueIdentifier>{bdd7ae2c-65a1-454b-8d5c-d587bbbe06b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\TownLevel\5. Smith\Object">
+      <UniqueIdentifier>{5862f9ed-02a6-4107-9fc5-84c1c97815e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\TownLevel\6. SkyRoom">
+      <UniqueIdentifier>{869c971a-eb7d-4c71-971a-078afce81f96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\TownLevel\6. SkyRoom\Object">
+      <UniqueIdentifier>{b56c4cd7-aa8d-4c9a-b949-e196c9fe4a65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\TownLevel\7. SaveRoom">
+      <UniqueIdentifier>{6cf357ca-7154-4317-8665-6147ca3543ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\TownLevel\7. SaveRoom\Object">
+      <UniqueIdentifier>{cd9bf859-7bbf-454f-93f3-f0927a6ace0d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

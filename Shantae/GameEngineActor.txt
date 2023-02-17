@@ -1,0 +1,6 @@
+
+	- 나무같은 경우에는 Update를 안할 수도 있다(Start로 위치가 정해져도 딱히 움직이지 않는다)
+
+	virtual void Start() {}  == 시작하기 전 준비하는 것을 Start()에서 실시(위치 결정 등)
+	virtual void Update() {} == 입력을 받거나 인공지능이 움직이거나 점수를 계산하거나 하는 것을 Update()에서 실시
+	virtual void Render() {} == 화면에 그려지는 기능(랜더링)들을 여기서 실시
