@@ -4,6 +4,7 @@
 #include <GameEngineCore/GameEngineCollision.h>
 #include <GameEngineCore/GameEngineRender.h>
 
+#include "Soldier_Aim.h"
 #include "ContentsEnum.h"
 
 // Player State 변경
@@ -122,6 +123,22 @@ void Soldier_Machinegun::IdleUpdate(float _Time)
 {
 	AccTime += _Time;
 
+	if (0.5f <= AccTime && 3 == AimCount)
+	{
+		AimCount = 2;
+		CreateAim(0);
+	}
+	if (1.0f <= AccTime && 2 == AimCount)
+	{
+		AimCount = 1;
+		CreateAim(1);
+	}
+	if (1.5f <= AccTime && 1 == AimCount)
+	{
+		AimCount = 0;
+		CreateAim(2);
+	}
+
 	if (2.0f <= AccTime)
 	{
 		AccTime = 0.0f;
@@ -131,6 +148,8 @@ void Soldier_Machinegun::IdleUpdate(float _Time)
 }
 void Soldier_Machinegun::IdleEnd()
 {
+	AccTime = 0.0f;
+	AimCount = 3;
 }
 
 ///////////////////////////////////////////////////////  Lob  ///////////////////////////////////////////////////////
@@ -160,7 +179,16 @@ void Soldier_Machinegun::FireLStart()
 }
 void Soldier_Machinegun::FireLUpdate(float _Time)
 {
-	if (true == AnimationRender->IsAnimationEnd())
+	if (1 == FireCount)
+	{
+		FireCount = 0;
+		AimKill(0);
+		Fire(0);
+	}
+	
+	AccTime += _Time;
+
+	if (0.5f <= AccTime)
 	{
 		ChangeState(Soldier_MachinegunState::TURN_LB);
 		return;
@@ -168,7 +196,8 @@ void Soldier_Machinegun::FireLUpdate(float _Time)
 }
 void Soldier_Machinegun::FireLEnd()
 {
-
+	FireCount = 1;
+	AccTime = 0.0f;
 }
 
 // 왼쪽에서 돌아온다
@@ -196,7 +225,16 @@ void Soldier_Machinegun::FireMStart()
 }
 void Soldier_Machinegun::FireMUpdate(float _Time)
 {
-	if (true == AnimationRender->IsAnimationEnd())
+	if (1 == FireCount)
+	{
+		FireCount = 0;
+		AimKill(1);
+		Fire(1);
+	}
+	
+	AccTime += _Time;
+
+	if (0.5f <= AccTime)
 	{
 		ChangeState(Soldier_MachinegunState::TURN_R);
 		return;
@@ -204,7 +242,8 @@ void Soldier_Machinegun::FireMUpdate(float _Time)
 }
 void Soldier_Machinegun::FireMEnd()
 {
-
+	FireCount = 1;
+	AccTime = 0.0f;
 }
 
 // 오른쪽으로 돈다
@@ -232,7 +271,16 @@ void Soldier_Machinegun::FireRStart()
 }
 void Soldier_Machinegun::FireRUpdate(float _Time)
 {
-	if (true == AnimationRender->IsAnimationEnd())
+	if (1 == FireCount)
+	{
+		FireCount = 0;
+		AimKill(2);
+		Fire(2);
+	}
+	
+	AccTime += _Time;
+
+	if (0.5f <= AccTime)
 	{
 		ChangeState(Soldier_MachinegunState::TURN_RB);
 		return;
@@ -240,7 +288,8 @@ void Soldier_Machinegun::FireRUpdate(float _Time)
 }
 void Soldier_Machinegun::FireREnd()
 {
-
+	FireCount = 1;
+	AccTime = 0.0f;
 }
 
 // 오른쪽에서 돌아온다.

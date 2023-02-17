@@ -23,6 +23,11 @@ protected:
 	void Render(float _DeltaTime) override;
 
 private:
+	GameEngineRender* AnimationRender = nullptr;
+	GameEngineCollision* BodyCollision = nullptr;
+
+	float ExPlusTime = 0.0f;
+	int Plus = 0;
 
 };
 

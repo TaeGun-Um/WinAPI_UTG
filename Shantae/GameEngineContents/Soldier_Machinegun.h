@@ -3,6 +3,7 @@
 #include <GameEngineCore/GameEngineActor.h>
 
 class GameEngineImage;
+class Soldier_Aim;
 
 enum class Soldier_MachinegunState
 {
@@ -37,15 +38,22 @@ protected:
 
 private:
 	GameEngineRender* AnimationRender = nullptr;
+	Soldier_Aim* Aim_L = nullptr;
+	Soldier_Aim* Aim_M = nullptr;
+	Soldier_Aim* Aim_R = nullptr;
 
 	float AccTime = 0.0f;
-
-	Soldier_MachinegunState StateValue = Soldier_MachinegunState::IDLE;
-
-	void Fire();
+	int FireCount = 1;
+	int AimCount = 3;
 
 	void RenderSet();
 
+	// 0 = Left, 1 = Middle, 2 = Right
+	void Fire(const int _Value); 
+	void CreateAim(const int _Value);
+	void AimKill(const int _Value);
+
+	Soldier_MachinegunState StateValue = Soldier_MachinegunState::IDLE;
 	void ChangeState(Soldier_MachinegunState _State);
 	void UpdateState(float _Time);
 

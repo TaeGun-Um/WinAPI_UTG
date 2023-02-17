@@ -89,8 +89,8 @@ void Machinegun::Loading()
 	Soldier_Machinegun* Ma1 = CreateActor<Soldier_Machinegun>();
 	Ma1->SetPos({ 790, 362 });
 
-	//Soldier_Machinegun* Ma2 = CreateActor<Soldier_Machinegun>();
-	//Ma2->SetPos({ 3748, 362 });
+	Soldier_Machinegun* Ma2 = CreateActor<Soldier_Machinegun>();
+	Ma2->SetPos({ 3748, 362 });
 
 	//Soldier_Machinegun* Ma3 = CreateActor<Soldier_Machinegun>();
 	//Ma3->SetPos({ 7467, 362 });
@@ -107,8 +107,8 @@ void Machinegun::Loading()
 	SHA = dynamic_cast<Player*>(Shantae);
 
 	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 300, 562 });
-	Shantae->GetLevel()->SetCameraPos({ 55, 120 });
+	SHA->SetPos({ 3506, 562 }); // 300, 562
+	Shantae->GetLevel()->SetCameraPos({ 2923, 120 }); // 55, 120
 }
 
 void Machinegun::Update(float _DeltaTime)
