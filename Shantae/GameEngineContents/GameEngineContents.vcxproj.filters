@@ -438,6 +438,9 @@
     <ClInclude Include="TimerCollision.h">
       <Filter>Collision\Assistant\Timer</Filter>
     </ClInclude>
+    <ClInclude Include="Soldier_Pile.h">
+      <Filter>Character\Monster\Soldier\Effect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShantaeCore.cpp" />
@@ -896,6 +899,9 @@
     </ClCompile>
     <ClCompile Include="TimerCollision.cpp">
       <Filter>Collision\Assistant\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="Soldier_Pile.cpp">
+      <Filter>Character\Monster\Soldier\Effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

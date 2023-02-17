@@ -16,9 +16,7 @@
 #include "TimerCollision.h"
 
 #include "Soldier_Spider.h"
-
 #include "Player.h"
-
 #include "GemWindow.h"
 #include "Health.h"
 #include "ObjectLoad.h"
@@ -43,6 +41,7 @@ void BoomBridge::Loading()
 	CreateActor<BoomBridge_ColMap>();
 
 	// Monster
+
 	Set_One();
 	Set_Two();
 	Set_Three();
@@ -57,8 +56,8 @@ void BoomBridge::Loading()
 	SHA = dynamic_cast<Player*>(Shantae);
 
 	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 500, 646 });
-	Shantae->GetLevel()->SetCameraPos({ 430, 220 });
+	SHA->SetPos({ 1090, 6514 }); // 500, 646
+	Shantae->GetLevel()->SetCameraPos({ 430, 5960 }); // 430, 220
 	SHA->CameraMoveSwitch();
 }
 

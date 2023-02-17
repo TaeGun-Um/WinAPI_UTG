@@ -58,6 +58,8 @@ void CharacterLoad::Loading()
 	Image15->Cut(12, 1);
 	GameEngineImage* Image16 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Soldier\\Soldier_Aim.BMP"));
 	Image16->Cut(2, 1);
+	GameEngineImage* Image1666 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Soldier\\Soldier_Pile.BMP"));
+	Image1666->Cut(2, 12);
 
 	// Boos
 	GameEngineImage* Image17 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Boss\\AmmoBaron_L.BMP"));
