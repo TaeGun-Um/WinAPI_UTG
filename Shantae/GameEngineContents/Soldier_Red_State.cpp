@@ -1,6 +1,5 @@
 #include "Soldier_Red.h"
 
-#include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineCollision.h>
 
 #include "Player.h"

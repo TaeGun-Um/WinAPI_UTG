@@ -10,8 +10,10 @@
 #include "Machinegun_ColMap.h"
 #include "Machinegun_Map.h"
 #include "Machinegun_Sky.h"
+
 #include "Player.h"
 #include "Machinegun_Plat.h"
+#include "Soldier_Machinegun.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -83,6 +85,18 @@ void Machinegun::Loading()
 	// Monster
 	// ½ºÆ÷³Ê»ç¿ë¹ý   ½ºÆ÷³Ê À§Ä¡    ¸÷ÀÌ¸§    ÄÝ¸Ê    ¸÷ Á¨ À§Ä¡   ¸®Á¨½Ã°£
 	// CreateSpawner({ 250, 300 }, "blue", ColMap, { 350, 590 }, 5);
+
+	Soldier_Machinegun* Ma1 = CreateActor<Soldier_Machinegun>();
+	Ma1->SetPos({ 790, 362 });
+
+	//Soldier_Machinegun* Ma2 = CreateActor<Soldier_Machinegun>();
+	//Ma2->SetPos({ 3748, 362 });
+
+	//Soldier_Machinegun* Ma3 = CreateActor<Soldier_Machinegun>();
+	//Ma3->SetPos({ 7467, 362 });
+
+	//Soldier_Machinegun* Ma4 = CreateActor<Soldier_Machinegun>();
+	//Ma4->SetPos({ 8471, 364 });
 
 	// UI
 	CreateActor<GemWindow>();

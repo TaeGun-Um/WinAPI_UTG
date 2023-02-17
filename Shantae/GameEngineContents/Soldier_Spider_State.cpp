@@ -1,6 +1,5 @@
 #include "Soldier_Spider.h"
 
-#include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineCollision.h>
 
 #include "ContentsEnum.h"
