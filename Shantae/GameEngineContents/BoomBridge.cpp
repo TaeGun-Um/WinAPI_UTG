@@ -59,8 +59,8 @@ void BoomBridge::Loading()
 	SHA = dynamic_cast<Player*>(Shantae);
 
 	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 1090, 6514 }); // 500, 646
-	Shantae->GetLevel()->SetCameraPos({ 430, 5960 }); // 430, 220
+	SHA->SetPos({ 500, 646 });
+	Shantae->GetLevel()->SetCameraPos({ 430, 220 });
 	SHA->CameraMoveSwitch();
 }
 
