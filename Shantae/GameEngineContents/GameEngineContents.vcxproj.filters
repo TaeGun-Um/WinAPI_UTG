@@ -441,6 +441,9 @@
     <ClInclude Include="Soldier_Pile.h">
       <Filter>Character\Monster\Soldier\Effect</Filter>
     </ClInclude>
+    <ClInclude Include="BoomBridge_Map.h">
+      <Filter>PlayLevel\FieldLevel\7. BoomBridge\Actor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShantaeCore.cpp" />
@@ -902,6 +905,9 @@
     </ClCompile>
     <ClCompile Include="Soldier_Pile.cpp">
       <Filter>Character\Monster\Soldier\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="BoomBridge_Map.cpp">
+      <Filter>PlayLevel\FieldLevel\7. BoomBridge\Actor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

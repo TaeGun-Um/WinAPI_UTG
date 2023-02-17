@@ -89,6 +89,7 @@ void ObjectLoad::Loading()
 
 	// BoomBridge
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\BoomBridge\\BoomBridge_Background.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\BoomBridge\\BoomBridge_Map.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\BoomBridge\\BoomBridge_Bridge1.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\BoomBridge\\BoomBridge_Bridge2.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\BoomBridge\\BoomBridge_Bridge3.bmp"));

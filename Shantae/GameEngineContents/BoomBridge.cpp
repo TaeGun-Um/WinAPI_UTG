@@ -7,6 +7,7 @@
 #include <GameEngineCore/GameEngineCore.h>
 
 #include "BoomBridge_Background.h"
+#include "BoomBridge_Map.h"
 #include "BoomBridge_ColMap.h"
 #include "BoomBridge_Sky.h"
 #include "BoomBridge_Bridge1.h"
@@ -16,6 +17,7 @@
 #include "TimerCollision.h"
 
 #include "Soldier_Spider.h"
+#include "Soldier_Pile.h"
 #include "Player.h"
 #include "GemWindow.h"
 #include "Health.h"
@@ -38,10 +40,11 @@ void BoomBridge::Loading()
 	CreateActor<BoomBridge_Background>();
 
 	// Map
+	CreateActor<BoomBridge_Map>();
 	CreateActor<BoomBridge_ColMap>();
 
 	// Monster
-
+	CreateActor<Soldier_Pile>();
 	Set_One();
 	Set_Two();
 	Set_Three();
