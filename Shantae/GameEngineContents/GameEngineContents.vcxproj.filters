@@ -1037,9 +1037,6 @@
     <Filter Include="Collision\Map">
       <UniqueIdentifier>{8093ac98-ce76-44c9-8fee-544536438a2d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Collision\Map\Move2">
-      <UniqueIdentifier>{0456f377-2a15-4a04-b596-ca8b6ee4b781}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Collision\Map\Machinegun">
       <UniqueIdentifier>{d4cd76ba-efda-4688-80c8-e55859dbf9e2}</UniqueIdentifier>
     </Filter>
