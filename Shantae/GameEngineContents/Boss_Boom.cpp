@@ -20,19 +20,18 @@ Boss_Boom::~Boss_Boom()
 void Boss_Boom::Start()
 {
 	// Animation
-	AnimationRender = CreateRender("Boss_Boom.Bmp", RenderOrder::Monster);
-	AnimationRender->SetScale({ 70, 70 });
+	AnimationRender = CreateRender("Boom_Black.Bmp", RenderOrder::Effect);
+	AnimationRender->SetScale({ 100, 100 });
 
 	// Collision
 	BodyCollision = CreateCollision(CollisionOrder::MonsterAttack);
 	BodyCollision->SetDebugRenderType(CT_Rect);
 	BodyCollision->SetScale({ 50, 50 });
-	//BodyCollision->SetPosition({ 500, 500 });
 }
 
 void Boss_Boom::Update(float _DeltaTime)
 {
-	//DirectCheckForKill();
+	DirectCheckForKill();
 	CollisionCheck();
 	MoveCalculation(_DeltaTime);
 }
@@ -41,21 +40,14 @@ void Boss_Boom::Render(float _DeltaTime)
 
 }
 
-std::string Boss_Boom::DirCheck(const std::string_view& _AnimationName)
-{
-	AnimationRender->ChangeAnimation(_AnimationName.data() + DirString);
-
-	return DirString;
-}
-
 // 중력, 점프, 맵타일
 void Boss_Boom::MoveCalculation(float _DeltaTime)
 {
 	///////////////////////////////////////////////////  이동  ///////////////////////////////////////////////////
 
-	MoveDir += float4::Down * 3000.0f * _DeltaTime;
+	MoveDir += float4::Down * 1500.0f * _DeltaTime;
 
-	SetMove(float4::Left * 450.0f * _DeltaTime);
+	SetMove(float4::Left * 1450.0f * _DeltaTime);
 
 	/////////////////////////////////////////////////// 맵타일 ///////////////////////////////////////////////////
 
@@ -116,7 +108,7 @@ void Boss_Boom::Kill()
 
 void Boss_Boom::DirectCheckForKill()
 {
-	float4 Pos = OwnerPos + (float4::Left * 500);
+	float4 Pos = OwnerPos + (float4::Left * 1500);
 
 	if (GetPos().x <= Pos.x)
 	{

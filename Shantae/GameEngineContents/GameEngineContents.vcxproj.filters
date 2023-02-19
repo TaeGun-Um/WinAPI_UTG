@@ -447,7 +447,7 @@
     <ClInclude Include="Boss_Boom.h">
       <Filter>Character\Monster\Boss\Effect</Filter>
     </ClInclude>
-    <ClInclude Include="SmallPoof.h">
+    <ClInclude Include="Boss_Boom_Red.h">
       <Filter>Character\Monster\Boss\Effect</Filter>
     </ClInclude>
   </ItemGroup>
@@ -921,7 +921,7 @@
     <ClCompile Include="Boss_Boom.cpp">
       <Filter>Character\Monster\Boss\Effect</Filter>
     </ClCompile>
-    <ClCompile Include="SmallPoof.cpp">
+    <ClCompile Include="Boss_Boom_Red.cpp">
       <Filter>Character\Monster\Boss\Effect</Filter>
     </ClCompile>
   </ItemGroup>

@@ -101,6 +101,7 @@ void Boss_Tank::IdleUpdate(float _DeltaTime)
 {
 	if (true == HitAction)
 	{
+		FireCount = 3;
 		ChangeState(Boss_TankState::HIT);
 		return;
 	}
@@ -109,25 +110,22 @@ void Boss_Tank::IdleUpdate(float _DeltaTime)
 
 	if (2.0f <= AccTime && 3 == FireCount)
 	{
-		// FireCount = 2;
-		// 
+		FireCount = 2;
 		ChangeState(Boss_TankState::FIRE);
 		return;
 	}
-	//if (2.0f <= AccTime && 2 == FireCount)
-	//{
-	//	FireCount = 1;
-	//	//
-	//	ChangeState(Boss_TankState::FIRE);
-	//	return;
-	//}
-	//if (2.0f <= AccTime && 1 == FireCount)
-	//{
-	//	FireCount = 0;
-	//	//
-	//	ChangeState(Boss_TankState::FIRE);
-	//	return;
-	//}
+	else if (2.0f <= AccTime && 2 == FireCount)
+	{
+		FireCount = 1;
+		ChangeState(Boss_TankState::FIRE);
+		return;
+	}
+	else if (2.0f <= AccTime && 1 == FireCount)
+	{
+		FireCount = 0;
+		ChangeState(Boss_TankState::FIRE);
+		return;
+	}
 
 }
 void Boss_Tank::IdleEnd()
@@ -180,17 +178,38 @@ void Boss_Tank::FireStart()
 }
 void Boss_Tank::FireUpdate(float _DeltaTime)
 {
+	if (21 == AnimationRender->GetFrame())
+	{
+		if (1 == CreateCount && 2 == FireCount)
+		{
+			CreateCount = 0;
+			CreateExplosion();
+			Fire();
+		}
+		else if (1 == CreateCount && 1 == FireCount)
+		{
+			CreateCount = 0;
+			CreateExplosion();
+			Fire();
+		}
+		else if (1 == CreateCount && 0 == FireCount)
+		{
+			CreateCount = 0;
+			FireCount = 3;
+			CreateExplosion();
+			Fire_Red();
+		}
+	}
+
 	if (true == AnimationRender->IsAnimationEnd())
 	{
-		Fire();
-		CreatePoof();
 		ChangeState(Boss_TankState::IDLE);
 		return;
 	}
 }
 void Boss_Tank::FireEnd()
 {
-
+	CreateCount = 1;
 }
 
 void Boss_Tank::HitStart()

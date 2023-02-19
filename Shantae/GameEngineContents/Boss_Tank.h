@@ -49,6 +49,7 @@ private:
 	float HitActionTime = 0.0f;
 
 	int FireCount = 3;
+	int CreateCount = 1;
 
 	bool HitAction = false;
 
@@ -56,8 +57,8 @@ private:
 	void CollisionSet();
 	void CollisionCheck();
 	void Fire();
+	void Fire_Red();
 	void CreateExplosion();
-	void CreatePoof();
 	void Charge();
 
 	Boss_TankState StateValue = Boss_TankState::IDLE;

@@ -51,8 +51,5 @@ private:
 	void DirectCheckForKill();
 	void Explosion();
 
-	std::string DirCheck(const std::string_view& _AnimationName);
-	std::string DirString = "_L";
-
 };
 

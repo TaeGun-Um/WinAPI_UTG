@@ -223,6 +223,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Boss_Boom_Red.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Boss_ColMap.h">
       <SubType>
       </SubType>
@@ -580,10 +584,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="SmallPoof.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="Smith.h">
       <SubType>
       </SubType>
@@ -820,6 +820,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Boss_Boom.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Boss_Boom_Red.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -1178,10 +1182,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="SkyRoom_Sky.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="SmallPoof.cpp">
       <SubType>
       </SubType>
     </ClCompile>

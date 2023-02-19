@@ -9,8 +9,8 @@
 #include "ContentsEnum.h"
 
 #include "Public_Boom.h"
-#include "SmallPoof.h"
 #include "Boss_Boom.h"
+#include "Boss_Boom_Red.h"
 
 Boss_Tank::Boss_Tank()
 {
@@ -49,7 +49,7 @@ void Boss_Tank::CollisionCheck()
 {
 	if (nullptr != BodyCollision)
 	{
-		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PlayerAttack), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Trigger), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
 			HitAction = true;
 		}
@@ -80,38 +80,40 @@ void Boss_Tank::CollisionSet()
 	// Collision
 	BodyCollision = CreateCollision(CollisionOrder::Monster);
 	BodyCollision->SetDebugRenderType(CT_Rect);
-	BodyCollision->SetScale({ 300, 300 });
-	BodyCollision->SetPosition({ 0, -150 });
+	BodyCollision->SetScale({ 300, 500 });
+	BodyCollision->SetPosition({ 0, -200 });
 }
 
 void Boss_Tank::CreateExplosion()
 {
 	Public_Boom* Ex = nullptr;
 	float4 ExPos = float4::Zero;
-	ExPos = GetPos() + (float4::Left * 200) + (float4::Up * 300);
+	ExPos = GetPos() + (float4::Left * 220) + (float4::Up * 330);
 
 	Ex = GetLevel()->CreateActor<Public_Boom>();
 	Ex->SetPos(ExPos);
-	Ex->SetExPlus(1);
-}
-
-void Boss_Tank::CreatePoof()
-{
-	SmallPoof* Small = nullptr;
-	float4 SmallPos = float4::Zero;
-	SmallPos = GetPos() + (float4::Left * 200) + (float4::Up * 300);
-
-	Small = GetLevel()->CreateActor<SmallPoof>();
-	Small->SetPos(SmallPos);
+	Ex->SetExPlus(0);
 }
 
 void Boss_Tank::Fire()
 {
 	Boss_Boom* NewBoom = nullptr;
 	float4 BoomPos = float4::Zero;
-	BoomPos = GetPos() + (float4::Left * 200) + (float4::Up * 300);
+	BoomPos = GetPos() + (float4::Left * 220) + (float4::Up * 330);
 
 	NewBoom = GetLevel()->CreateActor<Boss_Boom>();
+	NewBoom->SetColMap(ColMap);
+	NewBoom->SetPos(BoomPos);
+	NewBoom->SetOwnerPos(GetPos());
+}
+
+void Boss_Tank::Fire_Red()
+{
+	Boss_Boom_Red* NewBoom = nullptr;
+	float4 BoomPos = float4::Zero;
+	BoomPos = GetPos() + (float4::Left * 220) + (float4::Up * 300);
+
+	NewBoom = GetLevel()->CreateActor<Boss_Boom_Red>();
 	NewBoom->SetColMap(ColMap);
 	NewBoom->SetPos(BoomPos);
 	NewBoom->SetOwnerPos(GetPos());
