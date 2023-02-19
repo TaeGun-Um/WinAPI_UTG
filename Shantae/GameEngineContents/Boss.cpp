@@ -10,7 +10,9 @@
 #include "Boss_ETCBackground.h"
 #include "Boss_Map.h"
 #include "Boss_Sky.h"
+
 #include "Player.h"
+#include "Boss_Tank.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -37,6 +39,7 @@ void Boss::Loading()
 	CreateActor<Boss_ColMap>();
 
 	// Monster
+	CreateActor<Boss_Tank>();
 
 	// UI
 	CreateActor<GemWindow>();
@@ -85,15 +88,15 @@ void Boss::Update(float _DeltaTime)
 		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
 	}
 
-	if (SHA->GetPos().x >= 960.0f)
+	if (SHA->GetPos().x >= 1000.0f)
 	{
 		SHA->CameraMoveFalse();
 	}
-	else if (SHA->GetPos().x >= 640.0f)
+	else if (SHA->GetPos().x >= 860.0f)
 	{
 		SHA->CameraMoveTrue();
 	}
-	else if (SHA->GetPos().x <= 640.0f)
+	else if (SHA->GetPos().x <= 860.0f)
 	{
 		SHA->CameraMoveFalse();
 		Shantae->GetLevel()->SetCameraPos({ 125, 130 });
@@ -108,7 +111,7 @@ void Boss::Update(float _DeltaTime)
 void Boss::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Boss_Battle.mp3");
-	BGMPlayer.Volume(0.1f);
+	BGMPlayer.Volume(0.0f); // º¼·ý ²¨³ùÀ½
 	BGMPlayer.LoopCount(100);
 }
 

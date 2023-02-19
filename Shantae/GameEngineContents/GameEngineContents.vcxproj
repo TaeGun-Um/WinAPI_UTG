@@ -219,6 +219,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Boss_Boom.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Boss_ColMap.h">
       <SubType>
       </SubType>
@@ -231,7 +235,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Boss_Mob.h">
+    <ClInclude Include="Boss_Tank.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -811,6 +815,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Boss_Boom.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Boss_ColMap.cpp">
       <SubType>
       </SubType>
@@ -823,7 +831,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Boss_Mob.cpp">
+    <ClCompile Include="Boss_Tank.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -831,6 +839,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Boss_Tank_State.cpp" />
     <ClCompile Include="Bridge_Boom.cpp">
       <SubType>
       </SubType>

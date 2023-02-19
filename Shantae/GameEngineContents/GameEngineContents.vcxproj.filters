@@ -369,7 +369,7 @@
     <ClInclude Include="AmmoBaron.h">
       <Filter>Character\Monster\Boss</Filter>
     </ClInclude>
-    <ClInclude Include="Boss_Mob.h">
+    <ClInclude Include="Boss_Tank.h">
       <Filter>Character\Monster\Boss</Filter>
     </ClInclude>
     <ClInclude Include="Soldier_Bomberman.h">
@@ -443,6 +443,9 @@
     </ClInclude>
     <ClInclude Include="BoomBridge_Map.h">
       <Filter>PlayLevel\FieldLevel\7. BoomBridge\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss_Boom.h">
+      <Filter>Character\Monster\Boss\Effect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -813,7 +816,7 @@
     <ClCompile Include="AmmoBaron.cpp">
       <Filter>Character\Monster\Boss</Filter>
     </ClCompile>
-    <ClCompile Include="Boss_Mob.cpp">
+    <ClCompile Include="Boss_Tank.cpp">
       <Filter>Character\Monster\Boss</Filter>
     </ClCompile>
     <ClCompile Include="Soldier_Blue_State.cpp">
@@ -908,6 +911,12 @@
     </ClCompile>
     <ClCompile Include="BoomBridge_Map.cpp">
       <Filter>PlayLevel\FieldLevel\7. BoomBridge\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_Tank_State.cpp">
+      <Filter>Character\Monster\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss_Boom.cpp">
+      <Filter>Character\Monster\Boss\Effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1111,6 +1120,9 @@
     </Filter>
     <Filter Include="PlayLevel\TownLevel\7. SaveRoom\Object">
       <UniqueIdentifier>{cd9bf859-7bbf-454f-93f3-f0927a6ace0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character\Monster\Boss\Effect">
+      <UniqueIdentifier>{f609c152-90a6-4187-b3ef-37de1e2e3903}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
