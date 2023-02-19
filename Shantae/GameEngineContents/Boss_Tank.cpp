@@ -4,8 +4,13 @@
 #include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineCollision.h>
 #include <GameEngineCore/GameEngineRender.h>
+#include <GameEngineCore/GameEngineLevel.h>
 
 #include "ContentsEnum.h"
+
+#include "Public_Boom.h"
+#include "SmallPoof.h"
+#include "Boss_Boom.h"
 
 Boss_Tank::Boss_Tank()
 {
@@ -28,23 +33,27 @@ void Boss_Tank::Start()
 
 void Boss_Tank::Update(float _DeltaTime)
 {
-	if (GameEngineInput::IsDown("MonsterTest"))
+	if (GameEngineInput::IsPress("MonsterTest"))
 	{
-		if (0 == Test)
-		{
-			Test = 1;
-			Fire(_DeltaTime);
-		}
-		else if (1 == Test)
-		{
-			Test = 0;
-			Charge(_DeltaTime);
-		}
+		SetMove(float4::Left * 100.0f * _DeltaTime);
 	}
+	UpdateState(_DeltaTime);
+	CollisionCheck();
 }
 void Boss_Tank::Render(float _DeltaTime)
 {
 
+}
+
+void Boss_Tank::CollisionCheck()
+{
+	if (nullptr != BodyCollision)
+	{
+		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PlayerAttack), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+		{
+			HitAction = true;
+		}
+	}
 }
 
 // Animation
@@ -53,7 +62,6 @@ void Boss_Tank::RenderSet()
 	// Animation
 	AnimationRender = CreateRender(RenderOrder::Monster);
 	AnimationRender->SetScale({ 1500, 1500 });
-	AnimationRender->SetPosition({ 1200, 750 });
 	
 	BossPos = { 1200, 750 };
 
@@ -72,16 +80,44 @@ void Boss_Tank::CollisionSet()
 	// Collision
 	BodyCollision = CreateCollision(CollisionOrder::Monster);
 	BodyCollision->SetDebugRenderType(CT_Rect);
-	BodyCollision->SetScale({ 750, 750 });
-	BodyCollision->SetPosition({ 0, 0 });
+	BodyCollision->SetScale({ 300, 300 });
+	BodyCollision->SetPosition({ 0, -150 });
 }
 
-void Boss_Tank::Fire(float _DeltaTime)
+void Boss_Tank::CreateExplosion()
 {
-	//
+	Public_Boom* Ex = nullptr;
+	float4 ExPos = float4::Zero;
+	ExPos = GetPos() + (float4::Left * 200) + (float4::Up * 300);
+
+	Ex = GetLevel()->CreateActor<Public_Boom>();
+	Ex->SetPos(ExPos);
+	Ex->SetExPlus(1);
 }
 
-void Boss_Tank::Charge(float _DeltaTime)
+void Boss_Tank::CreatePoof()
+{
+	SmallPoof* Small = nullptr;
+	float4 SmallPos = float4::Zero;
+	SmallPos = GetPos() + (float4::Left * 200) + (float4::Up * 300);
+
+	Small = GetLevel()->CreateActor<SmallPoof>();
+	Small->SetPos(SmallPos);
+}
+
+void Boss_Tank::Fire()
+{
+	Boss_Boom* NewBoom = nullptr;
+	float4 BoomPos = float4::Zero;
+	BoomPos = GetPos() + (float4::Left * 200) + (float4::Up * 300);
+
+	NewBoom = GetLevel()->CreateActor<Boss_Boom>();
+	NewBoom->SetColMap(ColMap);
+	NewBoom->SetPos(BoomPos);
+	NewBoom->SetOwnerPos(GetPos());
+}
+
+void Boss_Tank::Charge()
 {
 	//
 }

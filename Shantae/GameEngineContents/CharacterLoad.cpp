@@ -68,6 +68,9 @@ void CharacterLoad::Loading()
 	Image18->Cut(5, 15);
 	GameEngineImage* Image19 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Boss\\Boss_Tank.BMP"));
 	Image19->Cut(5, 8);
+	GameEngineImage* Image199 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Boss\\SmallPoof.BMP"));
+	Image199->Cut(6, 1);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Boss\\Boss_Boom.BMP"));
 
 	// Scarecrow
 	GameEngineImage* Image20 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Scarecrow\\Scarecrow_L.BMP"));

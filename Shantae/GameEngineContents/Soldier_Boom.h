@@ -1,7 +1,8 @@
 #pragma once
 
 #include <GameEngineCore/GameEngineActor.h>
-#include <GameEngineCore/NumberRenderObject.h>
+
+class GameEngineImage;
 
 // Ό³Έν : Player Chracter
 class Soldier_Boom : public GameEngineActor
@@ -36,8 +37,6 @@ private:
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
 	GameEngineImage* ColMap = nullptr;
-
-	NumberRenderObject TestNumber;
 
 	float MoveSpeed = 100.0f;
 

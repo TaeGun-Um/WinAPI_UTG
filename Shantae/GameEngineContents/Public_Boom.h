@@ -1,7 +1,6 @@
 #pragma once
 
 #include <GameEngineCore/GameEngineActor.h>
-#include <GameEngineCore/NumberRenderObject.h>
 
 // Ό³Έν : Player Chracter
 class Public_Boom : public GameEngineActor

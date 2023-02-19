@@ -39,7 +39,10 @@ void Boss::Loading()
 	CreateActor<Boss_ColMap>();
 
 	// Monster
-	CreateActor<Boss_Tank>();
+	Tank = CreateActor<Boss_Tank>();
+	BOS = dynamic_cast<Boss_Tank*>(Tank);
+	Tank->SetPos({ 1200, 750 });
+	BOS->SetColMap(ColMap);
 
 	// UI
 	CreateActor<GemWindow>();

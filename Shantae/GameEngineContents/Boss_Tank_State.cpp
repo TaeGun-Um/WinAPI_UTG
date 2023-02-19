@@ -33,9 +33,6 @@ void Boss_Tank::ChangeState(Boss_TankState _State)
 	case Boss_TankState::HIT:
 		HitStart();
 		break;
-	case Boss_TankState::EMPTY:
-		EmptyStart();
-		break;
 	default:
 		break;
 	}
@@ -59,9 +56,6 @@ void Boss_Tank::ChangeState(Boss_TankState _State)
 		break;
 	case Boss_TankState::HIT:
 		HitEnd();
-		break;
-	case Boss_TankState::EMPTY:
-		EmptyEnd();
 		break;
 	default:
 		break;
@@ -90,9 +84,6 @@ void Boss_Tank::UpdateState(float _Time)
 	case Boss_TankState::HIT:
 		HitUpdate(_Time);
 		break;
-	case Boss_TankState::EMPTY:
-		EmptyUpdate(_Time);
-		break;
 	default:
 		break;
 	}
@@ -108,16 +99,45 @@ void Boss_Tank::IdleStart()
 }
 void Boss_Tank::IdleUpdate(float _DeltaTime)
 {
+	if (true == HitAction)
+	{
+		ChangeState(Boss_TankState::HIT);
+		return;
+	}
+
+	AccTime += _DeltaTime;
+
+	if (2.0f <= AccTime && 3 == FireCount)
+	{
+		// FireCount = 2;
+		// 
+		ChangeState(Boss_TankState::FIRE);
+		return;
+	}
+	//if (2.0f <= AccTime && 2 == FireCount)
+	//{
+	//	FireCount = 1;
+	//	//
+	//	ChangeState(Boss_TankState::FIRE);
+	//	return;
+	//}
+	//if (2.0f <= AccTime && 1 == FireCount)
+	//{
+	//	FireCount = 0;
+	//	//
+	//	ChangeState(Boss_TankState::FIRE);
+	//	return;
+	//}
 
 }
 void Boss_Tank::IdleEnd()
 {
-
+	AccTime = 0.0f;
 }
 
 void Boss_Tank::MoveStart()
 {
-	AnimationRender->ChangeAnimation("Idle");
+	AnimationRender->ChangeAnimation("Move");
 }
 void Boss_Tank::MoveUpdate(float _DeltaTime)
 {
@@ -160,7 +180,13 @@ void Boss_Tank::FireStart()
 }
 void Boss_Tank::FireUpdate(float _DeltaTime)
 {
-
+	if (true == AnimationRender->IsAnimationEnd())
+	{
+		Fire();
+		CreatePoof();
+		ChangeState(Boss_TankState::IDLE);
+		return;
+	}
 }
 void Boss_Tank::FireEnd()
 {
@@ -169,26 +195,23 @@ void Boss_Tank::FireEnd()
 
 void Boss_Tank::HitStart()
 {
-	AnimationRender->ChangeAnimation("Hit");
+	AnimationRender->ChangeAnimation("Empty");
+	BodyCollision->Off();
 }
 void Boss_Tank::HitUpdate(float _DeltaTime)
 {
+	HitActionTime += _DeltaTime;
+
+	if (5.0f <= HitActionTime)
+	{
+		HitAction = false;
+		BodyCollision->On();
+		ChangeState(Boss_TankState::IDLE);
+		return;
+	}
 
 }
 void Boss_Tank::HitEnd()
 {
-
-}
-
-void Boss_Tank::EmptyStart()
-{
-	AnimationRender->ChangeAnimation("Empty");
-}
-void Boss_Tank::EmptyUpdate(float _DeltaTime)
-{
-
-}
-void Boss_Tank::EmptyEnd()
-{
-
+	HitActionTime = 0.0f;
 }

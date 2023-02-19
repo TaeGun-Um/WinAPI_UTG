@@ -12,7 +12,6 @@ enum class Boss_TankState
 	BACKUP,
 	FIRE,
 	HIT,
-	EMPTY
 };
 
 // Ό³Έν : Player Chracter
@@ -29,6 +28,11 @@ public:
 	Boss_Tank& operator=(const Boss_Tank& _Other) = delete;
 	Boss_Tank& operator=(Boss_Tank&& _Other) noexcept = delete;
 
+	void SetColMap(GameEngineImage* _NextColMap)
+	{
+		ColMap = _NextColMap;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -37,16 +41,24 @@ protected:
 private:
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
+	GameEngineImage* ColMap = nullptr;
 
 	float4 BossPos = float4::Zero;
 
-	int Test = 0;
+	float AccTime = 0.0f;
+	float HitActionTime = 0.0f;
+
+	int FireCount = 3;
+
+	bool HitAction = false;
 
 	void RenderSet();
 	void CollisionSet();
-
-	void Fire(float _DeltaTime);
-	void Charge(float _DeltaTime);
+	void CollisionCheck();
+	void Fire();
+	void CreateExplosion();
+	void CreatePoof();
+	void Charge();
 
 	Boss_TankState StateValue = Boss_TankState::IDLE;
 	void ChangeState(Boss_TankState _State);
@@ -75,10 +87,6 @@ private:
 	void HitStart();
 	void HitUpdate(float _DeltaTime);
 	void HitEnd();
-
-	void EmptyStart();
-	void EmptyUpdate(float _DeltaTime);
-	void EmptyEnd();
 
 };
 

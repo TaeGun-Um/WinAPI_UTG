@@ -4,6 +4,7 @@
 #include "PlayLevel.h"
 
 class Player;
+class Boss_Tank;
 
 // Ό³Έν : FieldLevel_10
 class Boss : public PlayLevel
@@ -28,9 +29,15 @@ protected:
 
 private:
 	GameEngineSoundPlayer BGMPlayer;
+
 	GameEngineActor* Shantae = nullptr;
-	GameEngineImage* ColMap = nullptr;
 	Player* SHA = nullptr;
+
+	GameEngineActor* Tank = nullptr;
+	Boss_Tank* BOS = nullptr;
+
+	GameEngineImage* ColMap = nullptr;
+	
 	float OverlapTime = 0.0f;
 
 };
