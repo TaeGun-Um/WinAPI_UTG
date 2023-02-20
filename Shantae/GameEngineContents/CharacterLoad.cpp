@@ -25,6 +25,12 @@ void CharacterLoad::Loading()
 	Image0->Cut(5, 87);
 	GameEngineImage* Image1 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Shantae\\Shantae_L.bmp"));
 	Image1->Cut(5, 87);
+	GameEngineImage* Image1010 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Shantae\\Splash.bmp"));
+	Image1010->Cut(9, 1);
+	GameEngineImage* Image0101 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Shantae\\Impact.bmp"));
+	Image1010->Cut(6, 1);
+	GameEngineImage* Image1111 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Shantae\\Pistol_Bullet.bmp"));
+	Image1111->Cut(6, 1);
 
 	//////////////////////////////// Monster ////////////////////////////////
 	// Soldier

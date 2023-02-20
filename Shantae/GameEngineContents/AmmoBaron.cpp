@@ -98,7 +98,7 @@ void AmmoBaron::RenderSet()
 
 void AmmoBaron::CollisionSet()
 {
-	BodyCollision = CreateCollision(CollisionOrder::Monster);
+	BodyCollision = CreateCollision(CollisionOrder::Trigger);
 	BodyCollision->SetDebugRenderType(CT_Rect);
 	BodyCollision->SetScale({ 50, 40 });
 	BodyCollision->SetPosition({ 0, -10 });

@@ -142,6 +142,31 @@ void ObjectLoad::Loading()
 
 	AnmationObjectLoad();
 	ColMapLoad();
+
+	GameEngineDirectory Dir1;
+	Dir1.MoveParentToDirectory("Shantae_Resource");
+	Dir1.Move("Shantae_Resource");
+	Dir1.Move("Image");
+	Dir1.Move("Object");
+
+	GameEngineImage* I1 = GameEngineResources::GetInst().ImageLoad(Dir1.GetPlusFileName("Gem.bmp"));
+	I1->Cut(10, 5);
+	GameEngineImage* I2 = GameEngineResources::GetInst().ImageLoad(Dir1.GetPlusFileName("Heart_Octopus.bmp"));
+	I2->Cut(5, 1);
+	GameEngineImage* I3 = GameEngineResources::GetInst().ImageLoad(Dir1.GetPlusFileName("Heart1.bmp"));
+	I3->Cut(4, 1);
+	GameEngineImage* I4 = GameEngineResources::GetInst().ImageLoad(Dir1.GetPlusFileName("Heart2.bmp"));
+	I4->Cut(8, 1);
+	GameEngineImage* I5 = GameEngineResources::GetInst().ImageLoad(Dir1.GetPlusFileName("ItemBox.bmp"));
+	I5->Cut(5, 1);
+	GameEngineImage* I6 = GameEngineResources::GetInst().ImageLoad(Dir1.GetPlusFileName("Items.bmp"));
+	I6->Cut(1, 11);
+	GameEngineImage* I7 = GameEngineResources::GetInst().ImageLoad(Dir1.GetPlusFileName("Jar.bmp"));
+	I7->Cut(4, 1);
+	GameEngineImage* I8 = GameEngineResources::GetInst().ImageLoad(Dir1.GetPlusFileName("Jar_Piece.bmp"));
+	I8->Cut(8, 5);
+	GameEngineImage* I9 = GameEngineResources::GetInst().ImageLoad(Dir1.GetPlusFileName("Wave.bmp"));
+	I9->Cut(1, 8);
 }
 
 void ObjectLoad::AnmationObjectLoad()
