@@ -1,9 +1,9 @@
 #include "Boss_Tank.h"
 
 #include <GameEngineCore/GameEngineCollision.h>
+#include <GameEngineCore/GameEngineRender.h>
 
 #include "ContentsEnum.h"
-#include "Player.h"
 
 // Player State º¯°æ
 void Boss_Tank::ChangeState(Boss_TankState _State)
@@ -318,15 +318,15 @@ void Boss_Tank::HitStart()
 }
 void Boss_Tank::HitUpdate(float _DeltaTime)
 {
-	HitActionTime += _DeltaTime;
+	//HitActionTime += _DeltaTime;
 
-	if (5.0f <= HitActionTime)
-	{
-		HitAction = false;
-		BodyCollision->On();
-		ChangeState(Boss_TankState::IDLE);
-		return;
-	}
+	//if (5.0f <= HitActionTime)
+	//{
+	//	HitAction = false;
+	//	BodyCollision->On();
+	//	ChangeState(Boss_TankState::IDLE);
+	//	return;
+	//}
 
 }
 void Boss_Tank::HitEnd()

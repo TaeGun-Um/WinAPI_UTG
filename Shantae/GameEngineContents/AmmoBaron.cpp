@@ -16,45 +16,51 @@ AmmoBaron::~AmmoBaron()
 
 void AmmoBaron::Start()
 {
-	SetPos({ 477, 615 });
+	RenderSet();
+	CollisionSet();
 
-	// 숫자
-	// TestNumber.SetOwner(this);
-	// TestNumber.SetImage("Numbers.Bmp", { 26, 35 }, 10, RGB(255, 0, 255), "GemWindow.bmp");
-	// TestNumber.SetValue(Value);
-	// TestNumber.SetAlign(Align::Right);
-	// TestNumber.SetRenderPos({300, -600});
-	// TestNumber.SetCameraEffect(true);
-
-	// Animation
-	AnimationRender = CreateRender(RenderOrder::Monster);
-	AnimationRender->SetScale({ 400, 400 });
-
-	// Right
-	AnimationRender->CreateAnimation({ .AnimationName = "ALL",  .ImageName = "AmmoBaron_R.bmp", .Start = 0, .End = 71, .InterTime = 0.1f });
-	AnimationRender->CreateAnimation({ .AnimationName = "Idle_R",  .ImageName = "AmmoBaron_R.bmp", .Start = 0, .End = 6, .InterTime = 0.1f });
-
-	// Left
-	AnimationRender->CreateAnimation({ .AnimationName = "Idle_L",  .ImageName = "AmmoBaron_L.bmp", .Start = 0, .End = 6, .InterTime = 0.1f });
-
-	// Collision
-	BodyCollision = CreateCollision(CollisionOrder::Monster);
-	BodyCollision->SetScale({ 50, 50 });
-
-	// Text(예시; 0206 추가)
-	//GameEngineRender* Render = CreateRender(RenderOrder::Monster);
-	//Render->SetText("1234");
-
-	// state
-	// ChangeState(MonsterState::IDLE);
-	AnimationRender->ChangeAnimation("ALL");
+	AnimationRender->ChangeAnimation("Struggle");
 }
 
 void AmmoBaron::Update(float _DeltaTime)
 {
-
+	CollisionCheck();
 }
 void AmmoBaron::Render(float _DeltaTime)
 {
 
+}
+
+void AmmoBaron::MoveCalculation(float _DeltaTime)
+{
+
+}
+
+void AmmoBaron::CollisionCheck()
+{
+
+}
+
+void AmmoBaron::RenderSet()
+{
+	AnimationRender = CreateRender(RenderOrder::Monster);
+	AnimationRender->SetScale({ 400, 400 });
+
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle",  .ImageName = "AmmoBaron_R.bmp", .Start = 0, .End = 9, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Run",  .ImageName = "AmmoBaron_R.bmp", .Start = 10, .End = 13, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Move",  .ImageName = "AmmoBaron_R.bmp", .Start = 14, .End = 21, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Jump",  .ImageName = "AmmoBaron_R.bmp", .Start = 22, .End = 23, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Fly",  .ImageName = "AmmoBaron_R.bmp", .Start = 24, .End = 29, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Down",  .ImageName = "AmmoBaron_R.bmp", .Start = 30, .End = 36, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Standup",  .ImageName = "AmmoBaron_R.bmp", .Start = 37, .End = 43, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Struggle",  .ImageName = "AmmoBaron_R.bmp", .Start = 44, .End = 51, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Dustoff",  .ImageName = "AmmoBaron_R.bmp", .Start = 59, .End = 71, .InterTime = 0.1f });
+}
+
+void AmmoBaron::CollisionSet()
+{
+	BodyCollision = CreateCollision(CollisionOrder::Monster);
+	BodyCollision->SetDebugRenderType(CT_Rect);
+	BodyCollision->SetScale({ 50, 55 });
+	BodyCollision->SetPosition({ 0, -27.5f });
 }

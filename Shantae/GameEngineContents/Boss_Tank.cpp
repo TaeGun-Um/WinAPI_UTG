@@ -32,7 +32,8 @@ void Boss_Tank::Start()
 	// Collision
 	CollisionSet();
 
-	ChangeState(Boss_TankState::IDLE);
+	// ChangeState(Boss_TankState::IDLE);
+	ChangeState(Boss_TankState::HIT);
 }
 
 void Boss_Tank::Update(float _DeltaTime)

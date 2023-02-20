@@ -324,11 +324,15 @@ void Player::CollisionCheck(float _DeltaTime)
 	{
 		BodyCollision->SetScale({ 50, 55 });
 		BodyCollision->SetPosition({ 0, -27.5f });
+		StandingCollision->SetScale({ 50, 55 });
+		StandingCollision->SetPosition({ 0, -27.5f });
 	}
 	else // Normal
 	{
 		BodyCollision->SetScale({ 50, 90 });
 		BodyCollision->SetPosition({ 0, -50 });
+		StandingCollision->SetScale({ 50, 90 });
+		StandingCollision->SetPosition({ 0, -45 });
 	}
 
 	// AttackCollision

@@ -13,6 +13,7 @@
 
 #include "Player.h"
 #include "Boss_Tank.h"
+#include "AmmoBaron.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -43,6 +44,9 @@ void Boss::Loading()
 	BOS = dynamic_cast<Boss_Tank*>(Tank);
 	Tank->SetPos({ 1200, 750 });
 	BOS->SetColMap(ColMap);
+
+	GameEngineActor* a = CreateActor<AmmoBaron>();
+	a->SetPos({ 400, 700 });
 
 	// UI
 	CreateActor<GemWindow>();

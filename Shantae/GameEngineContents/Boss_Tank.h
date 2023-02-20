@@ -66,6 +66,7 @@ private:
 	void RenderSet();
 	void CollisionSet();
 	void CollisionCheck();
+
 	void Fire();
 	void Fire_Red();
 	void CreateExplosion();

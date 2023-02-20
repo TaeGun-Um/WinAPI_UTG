@@ -7,8 +7,11 @@ class GameEngineImage;
 
 enum class AmmoBaronState
 {
-	MOVE,
-	HIT,
+	FLY,
+	DOWN,
+	UP,
+	RUN,
+	JUMP,
 };
 
 // Ό³Έν : Player Chracter
@@ -34,7 +37,34 @@ private:
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
 
-	NumberRenderObject TestNumber;
+	void RenderSet();
+	void CollisionSet();
+	void CollisionCheck();
+	void MoveCalculation(float _DeltaTime);
+
+	AmmoBaronState StateValue = AmmoBaronState::FLY;
+	void ChangeState(AmmoBaronState _State);
+	void UpdateState(float _Time);
+
+	void FlyStart();
+	void FlyUpdate(float _DeltaTime);
+	void FlyEnd();
+
+	void DownStart();
+	void DownUpdate(float _DeltaTime);
+	void DownEnd();
+
+	void UpStart();
+	void UpUpdate(float _DeltaTime);
+	void UpEnd();
+
+	void RunStart();
+	void RunUpdate(float _DeltaTime);
+	void RunEnd();
+
+	void JumpStart();
+	void JumpUpdate(float _DeltaTime);
+	void JumpEnd();
 
 };
 

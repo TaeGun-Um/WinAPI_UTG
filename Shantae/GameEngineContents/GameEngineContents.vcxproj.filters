@@ -930,6 +930,9 @@
     <ClCompile Include="SmallPoof.cpp">
       <Filter>Character\Monster\Boss\Effect</Filter>
     </ClCompile>
+    <ClCompile Include="AmmoBaron_State.cpp">
+      <Filter>Character\Monster\Boss</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Character">
