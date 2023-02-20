@@ -48,7 +48,7 @@ void Boss_Boom::MoveCalculation(float _DeltaTime)
 
 	MoveDir += float4::Down * 1500.0f * _DeltaTime;
 
-	SetMove(float4::Left * 1450.0f * _DeltaTime);
+	SetMove(float4::Left * MoveSpeed * _DeltaTime);
 
 	/////////////////////////////////////////////////// ∏ ≈∏¿œ ///////////////////////////////////////////////////
 
@@ -93,8 +93,8 @@ void Boss_Boom::CollisionCheck()
 
 void Boss_Boom::Bounce()
 {
-	MoveSpeed = 1200.0f;
-	MoveDir.y += -1000.0f;
+	MoveSpeed = 900.0f;
+	MoveDir.y += -700.0f;
 	CreatePoof();
 }
 

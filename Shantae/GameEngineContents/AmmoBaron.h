@@ -9,9 +9,13 @@ enum class AmmoBaronState
 {
 	FLY,
 	DOWN,
-	UP,
+	STRUGGLE,
+	STANDUP,
+	DUSTOFF,
 	RUN,
 	JUMP,
+	IDLE,
+	MOVE,
 };
 
 // Ό³Έν : Player Chracter
@@ -28,21 +32,37 @@ public:
 	AmmoBaron& operator=(const AmmoBaron& _Other) = delete;
 	AmmoBaron& operator=(AmmoBaron&& _Other) noexcept = delete;
 
+	void SetColMap(GameEngineImage* _NextColMap)
+	{
+		ColMap = _NextColMap;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void Render(float _DeltaTime) override;
 
 private:
-	GameEngineRender* AnimationRender = nullptr;
-	GameEngineCollision* BodyCollision = nullptr;
-
 	void RenderSet();
 	void CollisionSet();
 	void CollisionCheck();
 	void MoveCalculation(float _DeltaTime);
 
-	AmmoBaronState StateValue = AmmoBaronState::FLY;
+	GameEngineRender* AnimationRender = nullptr;
+	GameEngineCollision* BodyCollision = nullptr;
+	GameEngineImage* ColMap = nullptr;
+
+	float4 MoveDir = float4::Zero;
+	float4 NextPos = float4::Zero;
+
+	float MoveSpeed = 0.0f;
+	float DowningTime = 0.0f;
+	float StruggleTime = 0.0f;
+
+	bool IsStart = false;
+	bool IsTurn = false;
+
+	AmmoBaronState StateValue = AmmoBaronState::IDLE;
 	void ChangeState(AmmoBaronState _State);
 	void UpdateState(float _Time);
 
@@ -54,9 +74,17 @@ private:
 	void DownUpdate(float _DeltaTime);
 	void DownEnd();
 
-	void UpStart();
-	void UpUpdate(float _DeltaTime);
-	void UpEnd();
+	void StruggleStart();
+	void StruggleUpdate(float _DeltaTime);
+	void StruggleEnd();
+
+	void StandupStart();
+	void StandupUpdate(float _DeltaTime);
+	void StandupEnd();
+
+	void DustoffStart();
+	void DustoffUpdate(float _DeltaTime);
+	void DustoffEnd();
 
 	void RunStart();
 	void RunUpdate(float _DeltaTime);
@@ -65,6 +93,14 @@ private:
 	void JumpStart();
 	void JumpUpdate(float _DeltaTime);
 	void JumpEnd();
+
+	void IdleStart();
+	void IdleUpdate(float _DeltaTime);
+	void IdleEnd();
+
+	void MoveStart();
+	void MoveUpdate(float _DeltaTime);
+	void MoveEnd();
 
 };
 

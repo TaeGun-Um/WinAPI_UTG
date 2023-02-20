@@ -40,6 +40,17 @@ protected:
 	void Render(float _DeltaTime) override;
 
 private:
+	void RenderSet();
+	void CollisionSet();
+	void CollisionCheck();
+
+	void Fire();
+	void Fire_Red();
+	void CreateExplosion();
+	void CreatePoof();
+	void Charge();
+	int RandomNumberGeneration();
+
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
 	GameEngineImage* ColMap = nullptr;
@@ -62,17 +73,6 @@ private:
 	bool HitAction = false;
 	bool IsCharge = false;
 	bool IsBackUp = false;
-
-	void RenderSet();
-	void CollisionSet();
-	void CollisionCheck();
-
-	void Fire();
-	void Fire_Red();
-	void CreateExplosion();
-	void CreatePoof();
-	void Charge();
-	int RandomNumberGeneration();
 
 	Boss_TankState StateValue = Boss_TankState::IDLE;
 	void ChangeState(Boss_TankState _State);

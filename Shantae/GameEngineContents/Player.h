@@ -141,6 +141,13 @@ protected:
 	void Render(float _DeltaTime) override;
 
 private:
+	std::string DirCheck(const std::string_view& _AnimationName);
+	void CollisionCheck(float _DeltaTime);
+	void MoveCalculation(float _DeltaTime);
+	void Shoot();
+	void Kill();
+	void WallCheck(float _Speed);
+
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineImage* ColMap = nullptr;
 
@@ -206,15 +213,6 @@ private:
 	// FSM == 한가지 상태에선 한가지 일만 한다.
 	std::string DirString = "_R";
 	PlayerState StateValue = PlayerState::IDLE;
-
-	// bool GravityPlus();
-
-	std::string DirCheck(const std::string_view& _AnimationName);
-	void CollisionCheck(float _DeltaTime);
-	void MoveCalculation(float _DeltaTime);
-	void Shoot();
-	void Kill();
-	void WallCheck(float _Speed);
 
 	void RenderSet();
 	void CollisionSet();

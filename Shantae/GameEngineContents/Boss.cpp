@@ -45,9 +45,11 @@ void Boss::Loading()
 	Tank->SetPos({ 1200, 750 });
 	BOS->SetColMap(ColMap);
 
-	GameEngineActor* a = CreateActor<AmmoBaron>();
-	a->SetPos({ 400, 700 });
-
+	GameEngineActor* amo = CreateActor<AmmoBaron>();
+	AmmoBaron* AM = dynamic_cast<AmmoBaron*>(amo);
+	amo->SetPos({ 1200, 400 });
+	AM->SetColMap(ColMap);
+	
 	// UI
 	CreateActor<GemWindow>();
 	CreateActor<Health>();

@@ -34,6 +34,14 @@ protected:
 	void Render(float _DeltaTime) override;
 
 private:
+	void MoveCalculation(float _DeltaTime);
+	void CollisionCheck();
+	void Bounce();
+	void Kill();
+	void DirectCheckForKill();
+	void Explosion();
+	void CreatePoof();
+
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
 	GameEngineImage* ColMap = nullptr;
@@ -43,14 +51,6 @@ private:
 	float4 MoveDir = float4::Zero;
 	float4 NextPos = float4::Zero;
 	float4 OwnerPos = float4::Zero;
-
-	void MoveCalculation(float _DeltaTime);
-	void CollisionCheck();
-	void Bounce();
-	void Kill();
-	void DirectCheckForKill();
-	void Explosion();
-	void CreatePoof();
 
 };
 

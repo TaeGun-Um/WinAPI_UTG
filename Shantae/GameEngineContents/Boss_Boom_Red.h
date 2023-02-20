@@ -34,6 +34,15 @@ protected:
 	void Render(float _DeltaTime) override;
 
 private:
+	void MoveCalculation(float _DeltaTime);
+	void CollisionCheck();
+	void Change(float _DeltaTime);
+	void Bounce();
+	void Kill();
+	void DirectCheckForKill();
+	void Explosion();
+	void CreatePoof();
+
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
 	GameEngineCollision* AttackCollision = nullptr;
@@ -46,15 +55,6 @@ private:
 	float4 OwnerPos = float4::Zero;
 
 	bool ChangeDir = false;
-
-	void MoveCalculation(float _DeltaTime);
-	void CollisionCheck();
-	void Change(float _DeltaTime);
-	void Bounce();
-	void Kill();
-	void DirectCheckForKill();
-	void Explosion();
-	void CreatePoof();
 
 };
 

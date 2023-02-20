@@ -32,16 +32,12 @@ void Boss_Tank::Start()
 	// Collision
 	CollisionSet();
 
-	// ChangeState(Boss_TankState::IDLE);
+	//ChangeState(Boss_TankState::IDLE);
 	ChangeState(Boss_TankState::HIT);
 }
 
 void Boss_Tank::Update(float _DeltaTime)
 {
-	if (GameEngineInput::IsPress("MonsterTest"))
-	{
-		SetMove(float4::Left * 100.0f * _DeltaTime);
-	}
 	UpdateState(_DeltaTime);
 	CollisionCheck();
 }
