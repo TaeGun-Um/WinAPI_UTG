@@ -198,7 +198,7 @@ void AmmoBaron::DownEnd()
 void AmmoBaron::StruggleStart()
 {
 	AnimationRender->ChangeAnimation("Struggle");
-	BodyCollision->On();
+	IsStruggle = true;
 }
 void AmmoBaron::StruggleUpdate(float _DeltaTime)
 {
@@ -206,6 +206,8 @@ void AmmoBaron::StruggleUpdate(float _DeltaTime)
 	
 	if (3.0f <= StruggleTime)
 	{
+		IsStruggle = false;
+		BodyCollision->Off();
 		ChangeState(AmmoBaronState::STANDUP);
 		return;
 	}
@@ -217,7 +219,6 @@ void AmmoBaron::StruggleEnd()
 
 void AmmoBaron::StandupStart()
 {
-	BodyCollision->Off();
 	AnimationRender->ChangeAnimation("Standup");
 }
 void AmmoBaron::StandupUpdate(float _DeltaTime)

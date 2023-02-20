@@ -44,6 +44,9 @@ void Boss_Tank::Update(float _DeltaTime)
 		BaronCreate = 0;
 		CreateAmmoBaron();
 	}
+
+	int a = Baron->GetBaronHP();
+
 	UpdateState(_DeltaTime);
 	CollisionCheck();
 }

@@ -66,7 +66,6 @@ private:
 	float AccTime = 0.0f;
 	float RevTime = 0.0f;
 	float ChargeTime = 0.0f;
-	float HitActionTime = 0.0f;
 	float PushoutTime = 0.0f;
 	
 	int BaronCreate = 1;

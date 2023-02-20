@@ -37,9 +37,9 @@ public:
 		ColMap = _NextColMap;
 	}
 
-	void SetBaronAction()
+	void SetBaronAction(bool _Is)
 	{
-		IsAction = true;
+		IsAction = _Is;
 	}
 
 	bool GetBaronAction()
@@ -60,7 +60,7 @@ protected:
 private:
 	void RenderSet();
 	void CollisionSet();
-	void CollisionCheck();
+	void CollisionCheck(float _DeltaTime);
 	void MoveCalculation(float _DeltaTime);
 
 	GameEngineRender* AnimationRender = nullptr;
@@ -73,12 +73,15 @@ private:
 	float MoveSpeed = 0.0f;
 	float DowningTime = 0.0f;
 	float StruggleTime = 0.0f;
+	float HitTime = 0.0f;
 
 	int BaronHP = 50;
 
 	bool IsAction = false;
 	bool IsStart = false;
 	bool IsTurn = false;
+	bool Hitonoff = true;
+	bool IsStruggle = false;
 
 	AmmoBaronState StateValue = AmmoBaronState::IDLE;
 	void ChangeState(AmmoBaronState _State);

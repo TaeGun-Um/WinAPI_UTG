@@ -25,7 +25,7 @@ void AmmoBaron::Start()
 
 void AmmoBaron::Update(float _DeltaTime)
 {
-	CollisionCheck();
+	CollisionCheck(_DeltaTime);
 	MoveCalculation(_DeltaTime);
 }
 void AmmoBaron::Render(float _DeltaTime)
@@ -51,15 +51,29 @@ void AmmoBaron::MoveCalculation(float _DeltaTime)
 	SetMove(MoveDir * _DeltaTime);
 }
 
-void AmmoBaron::CollisionCheck()
+void AmmoBaron::CollisionCheck(float _DeltaTime)
 {
+	HitTime += _DeltaTime;
+
+	if (0.2f <= HitTime && true == IsStruggle)
+	{
+		Hitonoff = true;
+		BodyCollision->On();
+	}
+
 	if (nullptr != BodyCollision)
 	{
-		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PlayerAttack), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+		if (true == Hitonoff)
 		{
-			// ÄÝ¸®Àü ²°´ÙÄ×´Ù °°Àº ±â¹Í ÇÊ¿ä
-			BaronHP -= 5;
+			if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PlayerAttack), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+			{
+				Hitonoff = false;
+				HitTime = 0.0f;
+				BodyCollision->Off();
+				BaronHP -= 5;
+			}
 		}
+
 	}
 }
 

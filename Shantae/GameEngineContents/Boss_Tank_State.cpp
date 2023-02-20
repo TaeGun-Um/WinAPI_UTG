@@ -124,7 +124,8 @@ void Boss_Tank::IdleUpdate(float _DeltaTime)
 	
 	AccTime += _DeltaTime;
 	
-	if (0 <= Rand && Rand <= 4)
+	/*if (0 <= Rand && Rand <= 4)*/
+	if (0 == Rand % 2)
 	{
 		if (2.0f <= AccTime && 3 == FireCount)
 		{
@@ -146,7 +147,8 @@ void Boss_Tank::IdleUpdate(float _DeltaTime)
 		}
 	}
 
-	if (5 <= Rand && Rand <= 9)
+	/*if (5 <= Rand && Rand <= 9)*/
+	if (0 != Rand % 2)
 	{
 		if (2.0f <= AccTime)
 		{
@@ -201,7 +203,7 @@ void Boss_Tank::IdleRevUpdate(float _DeltaTime)
 {
 	RevTime += _DeltaTime;
 
-	if (2.0f < RevTime)
+	if (1.0f < RevTime)
 	{
 		ChangeState(Boss_TankState::BACKUP);
 		return;
@@ -320,25 +322,13 @@ void Boss_Tank::HitStart()
 	if (1 == BaronStart)
 	{
 		BaronStart = 0;
-		Baron->SetBaronAction();
+		Baron->SetBaronAction(true);
 	}
 }
 void Boss_Tank::HitUpdate(float _DeltaTime)
 {
-	HitActionTime += _DeltaTime;
-
-	//if (5.0f <= HitActionTime)
-	//{
-	//	HitAction = false;
-	//	BodyCollision->On();
-	//	ChangeState(Boss_TankState::IDLE);
-	//	return;
-	//}
-
 	if (false == Baron->GetBaronAction())
 	{
-		BodyCollision->On();
-		HitAction = false;
 		ChangeState(Boss_TankState::IDLE);
 		return;
 	}
@@ -346,5 +336,7 @@ void Boss_Tank::HitUpdate(float _DeltaTime)
 }
 void Boss_Tank::HitEnd()
 {
-	HitActionTime = 0.0f;
+	BodyCollision->On();
+	HitAction = false;
+	BaronStart = 1;
 }
