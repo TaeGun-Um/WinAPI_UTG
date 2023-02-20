@@ -69,13 +69,16 @@ void Boss_Tank::RenderSet()
 	
 	BossPos = { 1200, 750 };
 	ChargePos = { 550, 750 };
+	PushoutPos = { 1300, 750 };
 
 	// ÁÂ¿ì ±¸ºÐ x
 	AnimationRender->CreateAnimation({ .AnimationName = "Idle",  .ImageName = "Boss_Tank.bmp", .Start = 0, .End = 3, .InterTime = 0.08f });
 	AnimationRender->CreateAnimation({ .AnimationName = "IdleRev",  .ImageName = "Boss_Tank.bmp", .Start = 4, .End = 7, .InterTime = 0.08f });
 	AnimationRender->CreateAnimation({ .AnimationName = "Move",  .ImageName = "Boss_Tank.bmp", .Start = 8, .End = 11, .InterTime = 0.08f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Charge",  .ImageName = "Boss_Tank.bmp", .Start = 8, .End = 11, .InterTime = 0.05f });
 	AnimationRender->CreateAnimation({ .AnimationName = "BackUp",  .ImageName = "Boss_Tank.bmp", .Start = 12, .End = 15, .InterTime = 0.08f });
 	AnimationRender->CreateAnimation({ .AnimationName = "Fire",  .ImageName = "Boss_Tank.bmp", .Start = 16, .End = 22, .InterTime = 0.08f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Pushout",  .ImageName = "Boss_Tank.bmp", .Start = 22, .End = 22, .InterTime = 0.08f, .Loop = false });
 	AnimationRender->CreateAnimation({ .AnimationName = "Dead_Idle",  .ImageName = "Boss_Tank.bmp", .Start = 31, .End = 31, .InterTime = 0.1f, .Loop = false });
 	AnimationRender->CreateAnimation({ .AnimationName = "Empty",  .ImageName = "Boss_Tank.bmp", .Start = 32, .End = 32, .InterTime = 0.1f, .Loop = false });
 }

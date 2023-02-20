@@ -8,7 +8,7 @@ enum class Boss_TankState
 {
 	IDLE,
 	IDLEREV,
-	MOVE,
+	PUSHOUT,
 	CHARGE,
 	BACKUP,
 	FIRE,
@@ -46,11 +46,13 @@ private:
 
 	float4 BossPos = float4::Zero;
 	float4 ChargePos = float4::Zero;
+	float4 PushoutPos = float4::Zero;
 
 	float AccTime = 0.0f;
 	float RevTime = 0.0f;
 	float ChargeTime = 0.0f;
 	float HitActionTime = 0.0f;
+	float PushoutTime = 0.0f;
 	
 	int FireCount = 3;
 	int CreateCount = 1;
@@ -83,9 +85,9 @@ private:
 	void IdleRevUpdate(float _DeltaTime);
 	void IdleRevEnd();
 
-	void MoveStart();
-	void MoveUpdate(float _DeltaTime);
-	void MoveEnd();
+	void PushoutStart();
+	void PushoutUpdate(float _DeltaTime);
+	void PushoutEnd();
 
 	void ChargeStart();
 	void ChargeUpdate(float _DeltaTime);
