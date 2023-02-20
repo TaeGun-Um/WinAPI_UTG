@@ -38,7 +38,7 @@ private:
 	GameEngineCollision* BodyCollision = nullptr;
 	GameEngineImage* ColMap = nullptr;
 
-	float MoveSpeed = 100.0f;
+	float MoveSpeed = 1450.0f;
 
 	float4 MoveDir = float4::Zero;
 	float4 NextPos = float4::Zero;
@@ -50,6 +50,7 @@ private:
 	void Kill();
 	void DirectCheckForKill();
 	void Explosion();
+	void CreatePoof();
 
 };
 

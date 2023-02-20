@@ -6,8 +6,9 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineRender.h>
 
-#include "Public_Boom.h"
 #include "ContentsEnum.h"
+#include "Public_Boom.h"
+#include "SmallPoof.h"
 
 Boss_Boom::Boss_Boom() 
 {
@@ -92,7 +93,9 @@ void Boss_Boom::CollisionCheck()
 
 void Boss_Boom::Bounce()
 {
+	MoveSpeed = 1200.0f;
 	MoveDir.y += -1000.0f;
+	CreatePoof();
 }
 
 void Boss_Boom::Kill()
@@ -123,5 +126,15 @@ void Boss_Boom::Explosion()
 	ExPos = GetPos();
 
 	Ex = GetLevel()->CreateActor<Public_Boom>();
+	Ex->SetPos(ExPos);
+}
+
+void Boss_Boom::CreatePoof()
+{
+	SmallPoof* Ex = nullptr;
+	float4 ExPos = float4::Zero;
+	ExPos = GetPos() + (float4::Up * 20);
+
+	Ex = GetLevel()->CreateActor<SmallPoof>();
 	Ex->SetPos(ExPos);
 }

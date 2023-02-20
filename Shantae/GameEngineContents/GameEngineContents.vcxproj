@@ -584,6 +584,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="SmallPoof.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Smith.h">
       <SubType>
       </SubType>
@@ -1182,6 +1186,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="SkyRoom_Sky.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SmallPoof.cpp">
       <SubType>
       </SubType>
     </ClCompile>

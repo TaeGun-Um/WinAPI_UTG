@@ -450,6 +450,9 @@
     <ClInclude Include="Boss_Boom_Red.h">
       <Filter>Character\Monster\Boss\Effect</Filter>
     </ClInclude>
+    <ClInclude Include="SmallPoof.h">
+      <Filter>Character\Monster\Boss\Effect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShantaeCore.cpp" />
@@ -922,6 +925,9 @@
       <Filter>Character\Monster\Boss\Effect</Filter>
     </ClCompile>
     <ClCompile Include="Boss_Boom_Red.cpp">
+      <Filter>Character\Monster\Boss\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="SmallPoof.cpp">
       <Filter>Character\Monster\Boss\Effect</Filter>
     </ClCompile>
   </ItemGroup>

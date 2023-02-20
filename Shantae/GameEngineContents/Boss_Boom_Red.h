@@ -54,6 +54,7 @@ private:
 	void Kill();
 	void DirectCheckForKill();
 	void Explosion();
+	void CreatePoof();
 
 };
 

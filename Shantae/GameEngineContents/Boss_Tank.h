@@ -59,6 +59,7 @@ private:
 	void Fire();
 	void Fire_Red();
 	void CreateExplosion();
+	void CreatePoof();
 	void Charge();
 
 	Boss_TankState StateValue = Boss_TankState::IDLE;

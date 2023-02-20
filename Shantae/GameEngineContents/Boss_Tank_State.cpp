@@ -196,7 +196,8 @@ void Boss_Tank::FireUpdate(float _DeltaTime)
 		{
 			CreateCount = 0;
 			FireCount = 3;
-			CreateExplosion();
+			//CreateExplosion();
+			CreatePoof();
 			Fire_Red();
 		}
 	}

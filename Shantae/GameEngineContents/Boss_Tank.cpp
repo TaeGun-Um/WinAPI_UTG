@@ -11,6 +11,7 @@
 #include "Public_Boom.h"
 #include "Boss_Boom.h"
 #include "Boss_Boom_Red.h"
+#include "SmallPoof.h"
 
 Boss_Tank::Boss_Tank()
 {
@@ -93,6 +94,16 @@ void Boss_Tank::CreateExplosion()
 	Ex = GetLevel()->CreateActor<Public_Boom>();
 	Ex->SetPos(ExPos);
 	Ex->SetExPlus(0);
+}
+
+void Boss_Tank::CreatePoof()
+{
+	SmallPoof* Ex = nullptr;
+	float4 ExPos = float4::Zero;
+	ExPos = GetPos() + (float4::Left * 220) + (float4::Up * 330);
+
+	Ex = GetLevel()->CreateActor<SmallPoof>();
+	Ex->SetPos(ExPos);
 }
 
 void Boss_Tank::Fire()
