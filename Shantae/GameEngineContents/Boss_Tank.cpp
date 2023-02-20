@@ -1,5 +1,8 @@
 #include "Boss_Tank.h"
 
+#include <cstdlib>
+#include <ctime>
+
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineCollision.h>
@@ -65,9 +68,11 @@ void Boss_Tank::RenderSet()
 	AnimationRender->SetScale({ 1500, 1500 });
 	
 	BossPos = { 1200, 750 };
+	ChargePos = { 550, 750 };
 
 	// ÁÂ¿ì ±¸ºÐ x
 	AnimationRender->CreateAnimation({ .AnimationName = "Idle",  .ImageName = "Boss_Tank.bmp", .Start = 0, .End = 3, .InterTime = 0.08f });
+	AnimationRender->CreateAnimation({ .AnimationName = "IdleRev",  .ImageName = "Boss_Tank.bmp", .Start = 4, .End = 7, .InterTime = 0.08f });
 	AnimationRender->CreateAnimation({ .AnimationName = "Move",  .ImageName = "Boss_Tank.bmp", .Start = 8, .End = 11, .InterTime = 0.08f });
 	AnimationRender->CreateAnimation({ .AnimationName = "BackUp",  .ImageName = "Boss_Tank.bmp", .Start = 12, .End = 15, .InterTime = 0.08f });
 	AnimationRender->CreateAnimation({ .AnimationName = "Fire",  .ImageName = "Boss_Tank.bmp", .Start = 16, .End = 22, .InterTime = 0.08f });
@@ -133,4 +138,14 @@ void Boss_Tank::Fire_Red()
 void Boss_Tank::Charge()
 {
 	//
+}
+
+int Boss_Tank::RandomNumberGeneration()
+{
+	srand((unsigned int)time(nullptr));
+
+	int Return = 0;
+	int RandomNumber = rand();
+
+	return Return = RandomNumber % 10;
 }

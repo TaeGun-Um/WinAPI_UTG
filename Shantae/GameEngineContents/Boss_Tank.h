@@ -7,6 +7,7 @@ class GameEngineImage;
 enum class Boss_TankState
 {
 	IDLE,
+	IDLEREV,
 	MOVE,
 	CHARGE,
 	BACKUP,
@@ -44,14 +45,21 @@ private:
 	GameEngineImage* ColMap = nullptr;
 
 	float4 BossPos = float4::Zero;
+	float4 ChargePos = float4::Zero;
 
 	float AccTime = 0.0f;
+	float RevTime = 0.0f;
+	float ChargeTime = 0.0f;
 	float HitActionTime = 0.0f;
-
+	
 	int FireCount = 3;
 	int CreateCount = 1;
+	int RandCreate = 1;
+	int Rand = 0;
 
 	bool HitAction = false;
+	bool IsCharge = false;
+	bool IsBackUp = false;
 
 	void RenderSet();
 	void CollisionSet();
@@ -61,6 +69,7 @@ private:
 	void CreateExplosion();
 	void CreatePoof();
 	void Charge();
+	int RandomNumberGeneration();
 
 	Boss_TankState StateValue = Boss_TankState::IDLE;
 	void ChangeState(Boss_TankState _State);
@@ -69,6 +78,10 @@ private:
 	void IdleStart();
 	void IdleUpdate(float _DeltaTime);
 	void IdleEnd();
+
+	void IdleRevStart();
+	void IdleRevUpdate(float _DeltaTime);
+	void IdleRevEnd();
 
 	void MoveStart();
 	void MoveUpdate(float _DeltaTime);

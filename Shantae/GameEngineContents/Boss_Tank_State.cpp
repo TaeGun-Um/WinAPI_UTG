@@ -18,6 +18,9 @@ void Boss_Tank::ChangeState(Boss_TankState _State)
 	case Boss_TankState::IDLE:
 		IdleStart();
 		break;
+	case Boss_TankState::IDLEREV:
+		IdleRevStart();
+		break;
 	case Boss_TankState::MOVE:
 		MoveStart();
 		break;
@@ -41,6 +44,9 @@ void Boss_Tank::ChangeState(Boss_TankState _State)
 	{
 	case Boss_TankState::IDLE:
 		IdleEnd();
+		break;
+	case Boss_TankState::IDLEREV:
+		IdleRevEnd();
 		break;
 	case Boss_TankState::MOVE:
 		MoveEnd();
@@ -68,6 +74,9 @@ void Boss_Tank::UpdateState(float _Time)
 	{
 	case Boss_TankState::IDLE:
 		IdleUpdate(_Time);
+		break;
+	case Boss_TankState::IDLEREV:
+		IdleRevUpdate(_Time);
 		break;
 	case Boss_TankState::MOVE:
 		MoveUpdate(_Time);
@@ -106,31 +115,102 @@ void Boss_Tank::IdleUpdate(float _DeltaTime)
 		return;
 	}
 
+	if (1 == RandCreate)
+	{
+		RandCreate = 0;
+		Rand = RandomNumberGeneration();
+	}
+	
 	AccTime += _DeltaTime;
+	
+	if (0 <= Rand && Rand <= 4)
+	{
+		if (2.0f <= AccTime && 3 == FireCount)
+		{
+			FireCount = 2;
+			ChangeState(Boss_TankState::FIRE);
+			return;
+		}
+		else if (2.0f <= AccTime && 2 == FireCount)
+		{
+			FireCount = 1;
+			ChangeState(Boss_TankState::FIRE);
+			return;
+		}
+		else if (2.0f <= AccTime && 1 == FireCount)
+		{
+			FireCount = 0;
+			ChangeState(Boss_TankState::FIRE);
+			return;
+		}
+	}
 
-	if (2.0f <= AccTime && 3 == FireCount)
+	if (5 <= Rand && Rand <= 9)
 	{
-		FireCount = 2;
-		ChangeState(Boss_TankState::FIRE);
-		return;
+		if (2.0f <= AccTime)
+		{
+			ChangeState(Boss_TankState::CHARGE);
+			return;
+		}
 	}
-	else if (2.0f <= AccTime && 2 == FireCount)
-	{
-		FireCount = 1;
-		ChangeState(Boss_TankState::FIRE);
-		return;
-	}
-	else if (2.0f <= AccTime && 1 == FireCount)
-	{
-		FireCount = 0;
-		ChangeState(Boss_TankState::FIRE);
-		return;
-	}
+
 
 }
 void Boss_Tank::IdleEnd()
 {
 	AccTime = 0.0f;
+}
+
+void Boss_Tank::IdleRevStart()
+{
+	AnimationRender->ChangeAnimation("IdleRev");
+}
+void Boss_Tank::IdleRevUpdate(float _DeltaTime)
+{
+	RevTime += _DeltaTime;
+
+	if (2.0f < RevTime)
+	{
+		ChangeState(Boss_TankState::BACKUP);
+		return;
+	}
+}
+void Boss_Tank::IdleRevEnd()
+{
+	RevTime = 0.0f;
+}
+
+void Boss_Tank::ChargeStart()
+{
+	AnimationRender->ChangeAnimation("Move");
+}
+void Boss_Tank::ChargeUpdate(float _DeltaTime)
+{
+	ChargeTime += _DeltaTime;
+
+	if (2.0f < ChargeTime && false == IsCharge)
+	{
+		if (ChargePos.x <= GetPos().x)
+		{
+			SetMove(float4::Left * 1000.0f * _DeltaTime);
+		}
+		else if ((ChargePos.x + 5.0f) >= GetPos().x)
+		{
+			IsCharge = true;
+			SetPos(ChargePos);
+		}
+	}
+
+	if (true == IsCharge)
+	{
+		IsCharge = false;
+		ChangeState(Boss_TankState::IDLEREV);
+		return;
+	}
+}
+void Boss_Tank::ChargeEnd()
+{
+	ChargeTime = 0.0f;
 }
 
 void Boss_Tank::MoveStart()
@@ -146,30 +226,26 @@ void Boss_Tank::MoveEnd()
 
 }
 
-void Boss_Tank::ChargeStart()
-{
-	AnimationRender->ChangeAnimation("Move");
-}
-void Boss_Tank::ChargeUpdate(float _DeltaTime)
-{
-
-}
-void Boss_Tank::ChargeEnd()
-{
-
-}
-
 void Boss_Tank::BackUpStart()
 {
 	AnimationRender->ChangeAnimation("BackUp");
 }
 void Boss_Tank::BackUpUpdate(float _DeltaTime)
 {
-
+	if (GetPos().x <= BossPos.x)
+	{
+		SetMove(float4::Right * 1500.0f * _DeltaTime);
+	}
+	else if (GetPos().x >= BossPos.x)
+	{
+		SetPos(BossPos);
+		RandCreate = 1;
+		ChangeState(Boss_TankState::IDLE);
+		return;
+	}
 }
 void Boss_Tank::BackUpEnd()
 {
-
 }
 
 void Boss_Tank::FireStart()
@@ -196,7 +272,7 @@ void Boss_Tank::FireUpdate(float _DeltaTime)
 		{
 			CreateCount = 0;
 			FireCount = 3;
-			//CreateExplosion();
+			RandCreate = 1;
 			CreatePoof();
 			Fire_Red();
 		}
