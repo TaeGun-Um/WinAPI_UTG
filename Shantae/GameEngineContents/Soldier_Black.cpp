@@ -151,15 +151,15 @@ void Soldier_Black::CollisionCheck(float _DeltaTime)
 		{
 			if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PlayerAttack), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 			{
-				if (0 >= HP)
-				{
-					HitAction = true;
-				}
-
 				Hitonoff = false;
 				HitTime2 = 0.0f;
 				BodyCollision->Off();
 				HP -= 5;
+
+				if (0 >= HP)
+				{
+					HitAction = true;
+				}
 			}
 		}
 

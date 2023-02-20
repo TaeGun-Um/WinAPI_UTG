@@ -49,9 +49,10 @@ private:
 	void Fire();
 	void Fire_Red();
 	void CreateExplosion();
-	void CreatePoof();
-	void Charge();
 	void CreateAmmoBaron();
+	void Explosions(float4 _Value);
+	void RandomCreateExplosion(float _DeltaTime);
+	void CreatePoof();
 	int RandomNumberGeneration();
 
 	GameEngineRender* AnimationRender = nullptr;
@@ -69,6 +70,7 @@ private:
 	float ChargeTime = 0.0f;
 	float PushoutTime = 0.0f;
 	float ExplosionTime = 0.0f;
+	float RandomExplosionTime = 0.0f;
 	
 	int BaronCreate = 1;
 	int BaronStart = 1;

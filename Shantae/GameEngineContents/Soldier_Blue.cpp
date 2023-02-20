@@ -235,17 +235,23 @@ void Soldier_Blue::MoveCalculation(float _DeltaTime)
 
 void Soldier_Blue::CollisionCheck()
 {
+	if (true == MoveDirect)
+	{
+		BodyCollision->SetScale({ 130, 150 });
+		BodyCollision->SetPosition({ 30, -75 });
+	}
+	else
+	{
+		BodyCollision->SetScale({ 130, 150 });
+		BodyCollision->SetPosition({ -15, -75 });
+	}
+
 	if (nullptr != BodyCollision)
 	{
 		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PlayerAttack), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
 			HitAction = true;
 		}
-
-		//if (true == IsDeath)
-		//{
-		//	Kill();
-		//}
 	}
 }
 

@@ -108,6 +108,68 @@ void Boss_Tank::CreateExplosion()
 	Ex->SetExPlus(0);
 }
 
+void Boss_Tank::Explosions(float4 _Value)
+{
+	Public_Boom* Ex = nullptr;
+
+	Ex = GetLevel()->CreateActor<Public_Boom>();
+	Ex->SetPos(_Value);
+	Ex->SetExPlus(0);
+}
+
+void Boss_Tank::RandomCreateExplosion(float _DeltaTime)
+{
+	int Return = 0;
+	int RandomNumber = rand();
+
+	Return = RandomNumber % 10;
+
+	if (0 == Return)
+	{
+		Explosions({ 1050, 400 });
+	}
+	else if (1 == Return)
+	{
+		Explosions({ 1090, 700 });
+	}
+	else if (2 == Return)
+	{
+		Explosions({ 1130, 550 });
+	}
+	else if (3 == Return)
+	{
+		Explosions({ 1170, 600 });
+	}
+	else if (4 == Return)
+	{
+		Explosions({ 1210, 450 });
+	}
+	else if (5 == Return)
+	{
+		Explosions({ 1250, 700 });
+	}
+	else if (6 == Return)
+	{
+		Explosions({ 1290, 450 });
+	}
+	else if (7 == Return)
+	{
+		Explosions({ 1330, 600 });
+	}
+	else if (8 == Return)
+	{
+		Explosions({ 1200, 500 });
+	}
+	else if (9 == Return)
+	{
+		Explosions({ 1360, 730 });
+	}
+	else
+	{
+		Explosions({ 0, 0 });
+	}
+}
+
 void Boss_Tank::CreatePoof()
 {
 	SmallPoof* Ex = nullptr;
@@ -140,11 +202,6 @@ void Boss_Tank::Fire_Red()
 	NewBoom->SetColMap(ColMap);
 	NewBoom->SetPos(BoomPos);
 	NewBoom->SetOwnerPos(GetPos());
-}
-
-void Boss_Tank::Charge()
-{
-	//
 }
 
 int Boss_Tank::RandomNumberGeneration()

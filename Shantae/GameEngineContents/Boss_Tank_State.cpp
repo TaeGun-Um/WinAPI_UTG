@@ -389,8 +389,16 @@ void Boss_Tank::EmptyStart()
 void Boss_Tank::EmptyUpdate(float _DeltaTime)
 {
 	ExplosionTime += _DeltaTime;
+	RandomExplosionTime += _DeltaTime;
 
-	if (2.0f <= ExplosionTime)
+	if (0.1f <= RandomExplosionTime 
+		&& 4.0f >= ExplosionTime)
+	{
+		RandomCreateExplosion(_DeltaTime);
+		RandomExplosionTime = 0.0f;
+	}
+
+	if (4.0f <= ExplosionTime)
 	{
 		if (1 == BaronStart)
 		{

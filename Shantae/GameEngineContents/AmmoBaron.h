@@ -80,7 +80,7 @@ private:
 	float StruggleTime = 0.0f;
 	float HitTime = 0.0f;
 
-	int BaronHP = 50;
+	int BaronHP = 10;
 
 	bool IsAction = false;
 	bool IsStart = false;
