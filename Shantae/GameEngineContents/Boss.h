@@ -29,16 +29,14 @@ protected:
 
 private:
 	GameEngineSoundPlayer BGMPlayer;
-
-	GameEngineActor* Shantae = nullptr;
-	Player* SHA = nullptr;
-
-	GameEngineActor* Tank = nullptr;
-	Boss_Tank* BOS = nullptr;
-
 	GameEngineImage* ColMap = nullptr;
+	GameEngineActor* Shantae = nullptr;
+	GameEngineActor* Tank = nullptr;
+	Player* SHA = nullptr;
+	Boss_Tank* BOS = nullptr;
 	
 	float OverlapTime = 0.0f;
+	int Set = 1;
 
 };
 

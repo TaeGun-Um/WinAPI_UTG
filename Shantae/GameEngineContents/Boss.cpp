@@ -60,6 +60,16 @@ void Boss::Loading()
 
 void Boss::Update(float _DeltaTime)
 {
+	if (1 == Set)
+	{
+		Set = 0;
+
+		Player::MainPlayer = SHA;
+		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
+		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
+		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
+	}
+
 	OverlapTime += _DeltaTime;
 
 	if (GameEngineInput::IsDown("ColMapSwitch"))
@@ -116,6 +126,10 @@ void Boss::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Boss_Battle.mp3");
 	BGMPlayer.Volume(0.0f); // º¼·ý ²¨³ùÀ½
 	BGMPlayer.LoopCount(100);
+
+	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());
+	SetPlayLevelMaxHP(Player::MainPlayer->GetPlayerMaxHP());
+	SetPlayLevelGem(Player::MainPlayer->GetPlayerGem());
 }
 
 void Boss::LevelChangeEnd(GameEngineLevel* _NextLevel)
