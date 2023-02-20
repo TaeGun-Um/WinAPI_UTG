@@ -58,6 +58,7 @@ void Boss::Loading()
 	Shantae->GetLevel()->SetCameraPos({ 125, 130 });
 	SHA->CameraMoveSwitch();
 	SHA->SetAnimationStart(false);
+	SHA->SetStartAnimationStart(false);
 }
 
 void Boss::Update(float _DeltaTime)
@@ -143,7 +144,7 @@ void Boss::Update(float _DeltaTime)
 void Boss::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Boss_Battle.mp3");
-	BGMPlayer.Volume(0.0f); // º¼·ý ²¨³ùÀ½
+	BGMPlayer.Volume(0.1f);
 	BGMPlayer.LoopCount(100);
 
 	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());

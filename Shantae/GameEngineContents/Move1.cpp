@@ -73,6 +73,7 @@ void Move1::Loading()
 	SHA->SetPos({ 106, 653 });
 	Shantae->GetLevel()->SetCameraPos({ 100, 50 });
 	SHA->SetAnimationStart(false);
+	SHA->SetStartAnimationStart(false);
 }
 
 void Move1::Update(float _DeltaTime)

@@ -63,6 +63,7 @@ void BoomBridge::Loading()
 	Shantae->GetLevel()->SetCameraPos({ 430, 220 });
 	SHA->CameraMoveSwitch();
 	SHA->SetAnimationStart(false);
+	SHA->SetStartAnimationStart(false);
 }
 
 bool ch = true;

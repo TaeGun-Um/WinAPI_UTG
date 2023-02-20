@@ -66,6 +66,7 @@ void Stair::Loading()
 	Shantae->GetLevel()->SetCameraPos({ 200, 3000 });
 	SHA->CameraMoveSwitch();
 	SHA->SetAnimationStart(false);
+	SHA->SetStartAnimationStart(false);
 }
 
 void Stair::Update(float _DeltaTime)

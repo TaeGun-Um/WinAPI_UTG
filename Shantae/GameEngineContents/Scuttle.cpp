@@ -52,6 +52,7 @@ void Scuttle::Loading()
 	SHA->SetPos({ 0, 1316 });
 	Shantae->GetLevel()->SetCameraPos({ 0, 680 });
 	SHA->SetAnimationStart(false);
+	SHA->SetStartAnimationStart(false);
 }
 
 void Scuttle::Update(float _DeltaTime)

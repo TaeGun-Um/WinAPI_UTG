@@ -110,6 +110,7 @@ void Machinegun::Loading()
 	SHA->SetPos({ 45, 563 });
 	Shantae->GetLevel()->SetCameraPos({ 55, 120 });
 	SHA->SetAnimationStart(false);
+	SHA->SetStartAnimationStart(false);
 }
 
 void Machinegun::Update(float _DeltaTime)

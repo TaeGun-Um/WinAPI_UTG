@@ -398,26 +398,29 @@ void Player::MoveUpdate(float _Time)
 	}
 
 	// Move 이동 계산
-	if (true == GameEngineInput::IsPress("LeftMove"))
+	if (false == IsStartAnimationStart)
 	{
-		if (true == ShantaeMove)
+		if (true == GameEngineInput::IsPress("LeftMove"))
 		{
-			SetMove(float4::Left * MoveSpeed * _Time);
+			if (true == ShantaeMove)
+			{
+				SetMove(float4::Left * MoveSpeed * _Time);
+			}
+			if (true == CameraMove)
+			{
+				GetLevel()->SetCameraMove(float4::Left * MoveSpeed * _Time);
+			}
 		}
-		if (true == CameraMove)
+		else if (true == GameEngineInput::IsPress("RightMove"))
 		{
-			GetLevel()->SetCameraMove(float4::Left * MoveSpeed * _Time);
-		}
-	}
-	else if (true == GameEngineInput::IsPress("RightMove"))
-	{
-		if (true == ShantaeMove)
-		{
-			SetMove(float4::Right * MoveSpeed * _Time);
-		}
-		if (true == CameraMove)
-		{
-			GetLevel()->SetCameraMove(float4::Right * MoveSpeed * _Time);
+			if (true == ShantaeMove)
+			{
+				SetMove(float4::Right * MoveSpeed * _Time);
+			}
+			if (true == CameraMove)
+			{
+				GetLevel()->SetCameraMove(float4::Right * MoveSpeed * _Time);
+			}
 		}
 	}
 

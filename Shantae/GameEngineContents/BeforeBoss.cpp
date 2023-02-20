@@ -52,6 +52,7 @@ void BeforeBoss::Loading()
 	Shantae->GetLevel()->SetCameraPos({ 0, 50 });
 	SHA->CameraMoveSwitch();
 	SHA->SetAnimationStart(false);
+	SHA->SetStartAnimationStart(false);
 }
 
 void BeforeBoss::Update(float _DeltaTime)

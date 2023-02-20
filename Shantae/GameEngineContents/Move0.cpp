@@ -72,6 +72,7 @@ void Move0::Loading()
 	SHA->SetPos({ 49, 641 });
 	Shantae->GetLevel()->SetCameraPos({ 50, 50 });
 	SHA->SetAnimationStart(false);
+	SHA->SetStartAnimationStart(false);
 }
 
 void Move0::Update(float _DeltaTime)
@@ -152,13 +153,12 @@ void Move0::Update(float _DeltaTime)
 			GameEngineCore::GetInst()->ChangeLevel("Move1");
 		}
 	}
-
 }
 
 void Move0::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 	FieldBGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("We_Love_Burning_Town.mp3");
-	FieldBGMPlayer.Volume(0.0f); // º¼·ý ²¨³ù´ÙÀ×
+	FieldBGMPlayer.Volume(0.1f);
 	FieldBGMPlayer.LoopCount(100);
 
 	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());

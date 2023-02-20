@@ -68,6 +68,7 @@ void HouseFront::Loading()
 	SHA->SetPos({5, 590});
 	SHA->CameraMoveSwitch();
 	SHA->SetAnimationStart(false);
+	SHA->SetStartAnimationStart(false);
 }
 
 void HouseFront::Update(float _DeltaTime)
@@ -131,7 +132,6 @@ void HouseFront::Update(float _DeltaTime)
 	{
 		SHA->SetAnimationStart(true);
 		SHA->SetMoveSpeed(100.0f);
-		SHA->SetAnimationEndTime(2.0f);
 		if (true == SHA->LevelChangeAnimation(_DeltaTime))
 		{
 			GameEngineCore::GetInst()->ChangeLevel("Move0");

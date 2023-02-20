@@ -99,7 +99,7 @@ bool Player::LevelChangeAnimation(float _DeltaTime)
 
 	SetMove(float4::Right * MoveSpeed * _DeltaTime);
 
-	if (AnimationEndTime <= AnimationTime)
+	if (2.0f <= AnimationTime)
 	{
 		AnimationTime = 0.0f;
 		return true;

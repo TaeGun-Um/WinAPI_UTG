@@ -141,11 +141,6 @@ public:
 	{
 		IsStartAnimationStart = _Is;
 	}
-
-	void SetAnimationEndTime(float _Time)
-	{
-		AnimationEndTime = _Time;
-	}
 	
 	PlayerState GetShantaeState()
 	{
@@ -195,7 +190,6 @@ private:
 	float CrouchSpeed = 200.0f;
 	float GravitySpeed = 3500.0f;
 	float AnimationTime = 0.0f;
-	float AnimationEndTime = 0.0f;
 	float OverlapTime = 0.0f;
 	float MoveTime = 0.0f;
 	float JumpTime = 0.0f;
