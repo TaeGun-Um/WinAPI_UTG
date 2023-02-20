@@ -337,6 +337,8 @@ void Boss_Tank::HitUpdate(float _DeltaTime)
 
 	if (false == Baron->GetBaronAction())
 	{
+		BodyCollision->On();
+		HitAction = false;
 		ChangeState(Boss_TankState::IDLE);
 		return;
 	}
