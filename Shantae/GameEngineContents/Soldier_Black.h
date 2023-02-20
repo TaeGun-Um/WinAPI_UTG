@@ -55,9 +55,9 @@ private:
 	float4 NextPos = float4::Zero;
 
 	float HitTime = 0.0f;
+	float HitTime2 = 0.0f;
 	float ShootStartTime = 0.0f;
 	float ShootTime = 0.0f;
-	float ReColDelay = 0.0f;
 
 	// true = left, false = right
 	bool MoveDirect = true;
@@ -66,6 +66,7 @@ private:
 	bool HitAction = false;
 	bool IsDeath = false;
 	bool trace = true;
+	bool Hitonoff = true;
 
 	int ShootCount = 3;
 	int HP = 15;

@@ -121,7 +121,11 @@ void AmmoBaron::UpdateState(float _Time)
 void AmmoBaron::IdleStart()
 {
 	AnimationRender->ChangeAnimation("Idle");
-	AnimationRender->Off();
+
+	if (false == IsEnd)
+	{
+		AnimationRender->Off();
+	}
 }
 void AmmoBaron::IdleUpdate(float _DeltaTime)
 {
@@ -198,18 +202,38 @@ void AmmoBaron::DownEnd()
 void AmmoBaron::StruggleStart()
 {
 	AnimationRender->ChangeAnimation("Struggle");
-	IsStruggle = true;
+
+	if (false == IsEnd)
+	{
+		IsStruggle = true;
+	}
 }
 void AmmoBaron::StruggleUpdate(float _DeltaTime)
 {
-	StruggleTime += _DeltaTime;
-	
-	if (3.0f <= StruggleTime)
+	if (false == IsEnd)
 	{
-		IsStruggle = false;
-		BodyCollision->Off();
-		ChangeState(AmmoBaronState::STANDUP);
-		return;
+		StruggleTime += _DeltaTime;
+
+		if (3.0f <= StruggleTime)
+		{
+			IsStruggle = false;
+			BodyCollision->Off();
+			ChangeState(AmmoBaronState::STANDUP);
+			return;
+		}
+	}
+	else if (IsEnd == true)
+	{
+		StruggleTime += _DeltaTime;
+
+		if (3.0f <= StruggleTime)
+		{
+			IsTurn = false;
+			IsStart = false;
+			IsAction = false;
+			ChangeState(AmmoBaronState::STANDUP);
+			return;
+		}
 	}
 }
 void AmmoBaron::StruggleEnd()
@@ -223,6 +247,13 @@ void AmmoBaron::StandupStart()
 }
 void AmmoBaron::StandupUpdate(float _DeltaTime)
 {
+	if (true == AnimationRender->IsAnimationEnd()
+		&& true == IsEnd)
+	{
+		ChangeState(AmmoBaronState::IDLE);
+		return;
+	}
+
 	if (true == AnimationRender->IsAnimationEnd())
 	{
 		ChangeState(AmmoBaronState::DUSTOFF);

@@ -37,6 +37,9 @@ void Boss_Tank::ChangeState(Boss_TankState _State)
 	case Boss_TankState::HIT:
 		HitStart();
 		break;
+	case Boss_TankState::EMPTY:
+		EmptyStart();
+		break;
 	default:
 		break;
 	}
@@ -63,6 +66,9 @@ void Boss_Tank::ChangeState(Boss_TankState _State)
 		break;
 	case Boss_TankState::HIT:
 		HitEnd();
+		break;
+	case Boss_TankState::EMPTY:
+		EmptyEnd();
 		break;
 	default:
 		break;
@@ -94,6 +100,9 @@ void Boss_Tank::UpdateState(float _Time)
 	case Boss_TankState::HIT:
 		HitUpdate(_Time);
 		break;
+	case Boss_TankState::EMPTY:
+		EmptyUpdate(_Time);
+		break;
 	default:
 		break;
 	}
@@ -109,23 +118,9 @@ void Boss_Tank::IdleStart()
 }
 void Boss_Tank::IdleUpdate(float _DeltaTime)
 {
-	if (true == HitAction)
-	{
-		FireCount = 3;
-		ChangeState(Boss_TankState::HIT);
-		return;
-	}
-
-	if (1 == RandCreate)
-	{
-		RandCreate = 0;
-		Rand = RandomNumberGeneration();
-	}
-	
 	AccTime += _DeltaTime;
-	
-	/*if (0 <= Rand && Rand <= 4)*/
-	if (0 == Rand % 2)
+
+	if (0 >= Baron->GetBaronHP())
 	{
 		if (2.0f <= AccTime && 3 == FireCount)
 		{
@@ -147,13 +142,58 @@ void Boss_Tank::IdleUpdate(float _DeltaTime)
 		}
 	}
 
-	/*if (5 <= Rand && Rand <= 9)*/
-	if (0 != Rand % 2)
+	if (true == HitAction && 0 >= Baron->GetBaronHP())
 	{
-		if (2.0f <= AccTime)
+		ChangeState(Boss_TankState::EMPTY);
+		return;
+	}
+
+	if (0 <= Baron->GetBaronHP())
+	{
+		if (true == HitAction)
 		{
-			ChangeState(Boss_TankState::CHARGE);
+			FireCount = 3;
+			ChangeState(Boss_TankState::HIT);
 			return;
+		}
+
+		if (1 == RandCreate)
+		{
+			RandCreate = 0;
+			Rand = RandomNumberGeneration();
+		}
+
+		/*if (0 <= Rand && Rand <= 4)*/
+		if (0 == Rand % 2)
+		{
+			if (2.0f <= AccTime && 3 == FireCount)
+			{
+				FireCount = 2;
+				ChangeState(Boss_TankState::FIRE);
+				return;
+			}
+			else if (2.0f <= AccTime && 2 == FireCount)
+			{
+				FireCount = 1;
+				ChangeState(Boss_TankState::FIRE);
+				return;
+			}
+			else if (2.0f <= AccTime && 1 == FireCount)
+			{
+				FireCount = 0;
+				ChangeState(Boss_TankState::FIRE);
+				return;
+			}
+		}
+
+		/*if (5 <= Rand && Rand <= 9)*/
+		if (0 != Rand % 2)
+		{
+			if (2.0f <= AccTime)
+			{
+				ChangeState(Boss_TankState::CHARGE);
+				return;
+			}
 		}
 	}
 }
@@ -339,4 +379,29 @@ void Boss_Tank::HitEnd()
 	BodyCollision->On();
 	HitAction = false;
 	BaronStart = 1;
+}
+
+void Boss_Tank::EmptyStart()
+{
+	AnimationRender->ChangeAnimation("IdleRev");
+	BodyCollision->Off();
+}
+void Boss_Tank::EmptyUpdate(float _DeltaTime)
+{
+	ExplosionTime += _DeltaTime;
+
+	if (2.0f <= ExplosionTime)
+	{
+		if (1 == BaronStart)
+		{
+			BaronStart = 0;
+			Baron->SetBaronAction(true);
+			Baron->SetEnd();
+		}
+		AnimationRender->ChangeAnimation("Dead_Idle");
+	}
+}
+void Boss_Tank::EmptyEnd()
+{
+	ExplosionTime = 0.0f;
 }

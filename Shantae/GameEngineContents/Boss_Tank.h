@@ -14,6 +14,7 @@ enum class Boss_TankState
 	BACKUP,
 	FIRE,
 	HIT,
+	EMPTY,
 };
 
 // Ό³Έν : Player Chracter
@@ -67,6 +68,7 @@ private:
 	float RevTime = 0.0f;
 	float ChargeTime = 0.0f;
 	float PushoutTime = 0.0f;
+	float ExplosionTime = 0.0f;
 	
 	int BaronCreate = 1;
 	int BaronStart = 1;
@@ -110,6 +112,10 @@ private:
 	void HitStart();
 	void HitUpdate(float _DeltaTime);
 	void HitEnd();
+
+	void EmptyStart();
+	void EmptyUpdate(float _DeltaTime);
+	void EmptyEnd();
 
 };
 

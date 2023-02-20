@@ -137,36 +137,37 @@ void Soldier_Black::MoveCalculation(float _DeltaTime)
 
 void Soldier_Black::CollisionCheck(float _DeltaTime)
 {
+	HitTime2 += _DeltaTime;
+
+	if (0.2f <= HitTime2 && false == HitAction)
+	{
+		Hitonoff = true;
+		BodyCollision->On();
+	}
+
 	if (nullptr != BodyCollision)
 	{
-		ReColDelay += _DeltaTime;
-
-		if (0.3f <= ReColDelay)
+		if (true == Hitonoff)
 		{
-			ReColDelay = 0.0f;
-			HitSet = 1;
-			BodyCollision->On();
-		}
-
-		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PlayerAttack), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
-		{
-			if (1 == HitSet)
+			if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PlayerAttack), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 			{
-				HP -= 5;
-				HitSet = 0;
+				if (0 >= HP)
+				{
+					HitAction = true;
+				}
+
+				Hitonoff = false;
+				HitTime2 = 0.0f;
 				BodyCollision->Off();
-			}
-
-			if (0 == HP)
-			{
-				HitAction = true;
+				HP -= 5;
 			}
 		}
 
-		if (true == IsDeath)
-		{
-			Kill();
-		}
+	}
+
+	if (true == IsDeath)
+	{
+		Kill();
 	}
 }
 

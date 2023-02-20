@@ -47,6 +47,11 @@ public:
 		return IsAction;
 	}
 
+	void SetEnd()
+	{
+		IsEnd = true;
+	}
+
 	int GetBaronHP()
 	{
 		return BaronHP;
@@ -82,6 +87,7 @@ private:
 	bool IsTurn = false;
 	bool Hitonoff = true;
 	bool IsStruggle = false;
+	bool IsEnd = false;
 
 	AmmoBaronState StateValue = AmmoBaronState::IDLE;
 	void ChangeState(AmmoBaronState _State);
