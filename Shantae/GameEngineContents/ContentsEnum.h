@@ -14,14 +14,15 @@ enum class RenderOrder
 // Collision 그룹화를 위한 Enum 추가
 enum class CollisionOrder
 {
-	Player,         // 0
-	PlayerAttack,   // 1
-	Monster,        // 2
-	MonsterAttack,  // 3
-	Spawner,        // 4
-	Ground,         // 5
-	Effect,         // 6
-	Trigger,
+	Player,              // 0
+	PlayerAttack,        // 1
+	PlayerPistolAttack,  // 2
+	Monster,             // 3
+	MonsterAttack,       // 4
+	Spawner,             // 5
+	Ground,              // 6
+	Effect,              // 7
+	Trigger,			 // 8
 };
 
 // Enum class

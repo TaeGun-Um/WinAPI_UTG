@@ -436,6 +436,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Pistol_Bullet.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Player.h">
       <SubType>
       </SubType>
@@ -1046,6 +1050,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Opening_Background.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Pistol_Bullet.cpp">
       <SubType>
       </SubType>
     </ClCompile>

@@ -3,18 +3,18 @@
 #include <GameEngineCore/GameEngineActor.h>
 
 // Ό³Έν :
-class Soldier_Bullet : public GameEngineActor
+class Pistol_Bullet : public GameEngineActor
 {
 public:
 	// constrcuter destructer
-	Soldier_Bullet();
-	~Soldier_Bullet();
+	Pistol_Bullet();
+	~Pistol_Bullet();
 
 	// delete Function
-	Soldier_Bullet(const Soldier_Bullet& _Other) = delete;
-	Soldier_Bullet(Soldier_Bullet&& _Other) noexcept = delete;
-	Soldier_Bullet& operator=(const Soldier_Bullet& _Other) = delete;
-	Soldier_Bullet& operator=(Soldier_Bullet&& _Other) noexcept = delete;
+	Pistol_Bullet(const Pistol_Bullet& _Other) = delete;
+	Pistol_Bullet(Pistol_Bullet&& _Other) noexcept = delete;
+	Pistol_Bullet& operator=(const Pistol_Bullet& _Other) = delete;
+	Pistol_Bullet& operator=(Pistol_Bullet&& _Other) noexcept = delete;
 
 	void SetColMap(GameEngineImage* _NextColMap)
 	{

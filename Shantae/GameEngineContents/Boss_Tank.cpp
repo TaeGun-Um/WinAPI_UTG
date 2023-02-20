@@ -206,7 +206,7 @@ void Boss_Tank::Fire_Red()
 
 int Boss_Tank::RandomNumberGeneration()
 {
-	srand((unsigned int)time(nullptr));
+	srand(static_cast<unsigned int>(time(nullptr)));
 
 	int Return = 0;
 	int RandomNumber = rand();

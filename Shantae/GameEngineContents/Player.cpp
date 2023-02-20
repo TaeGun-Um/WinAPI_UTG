@@ -9,7 +9,7 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineCollision.h>
 
-#include "Soldier_Bullet.h"
+#include "Pistol_Bullet.h"
 #include "ContentsEnum.h"
 
 Player* Player::MainPlayer = nullptr;
@@ -378,10 +378,6 @@ void Player::CollisionCheck(float _DeltaTime)
 		AttackCollision->Off();
 	}
 
-	// 0202 : 그룹 중 하나라도 충돌했다면 동작
-	// GameEngineActor* ColActor = Collision[i]->GetActor();     == 콜리전의 소유 액터를 받아와서 뭔가를 할 수 있음
-	// Soldier* FindMonster = Collision[i]->GetOwner<Soldier>(); == 아니면 콜리전의 그룹들을 받아와서 뭔가를 할 수 있음
-
 	// Contact with Monster
 	if (nullptr != BodyCollision)
 	{
@@ -430,11 +426,11 @@ void Player::CollisionCheck(float _DeltaTime)
 
 void Player::Shoot()
 {
-	Soldier_Bullet* NewBullet = nullptr;
+	Pistol_Bullet* NewBullet = nullptr;
 	float4 BulletPos = float4::Zero;
 	BulletPos = GetPos() + (float4::Up * 50);
 
-	NewBullet = GetLevel()->CreateActor<Soldier_Bullet>();
+	NewBullet = GetLevel()->CreateActor<Pistol_Bullet>();
 	NewBullet->SetColMap(ColMap);
 	NewBullet->SetPos(BulletPos);
 	NewBullet->SetOwnerPos(GetPos());

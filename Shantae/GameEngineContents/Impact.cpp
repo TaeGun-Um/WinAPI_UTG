@@ -20,8 +20,8 @@ void Impact::Start()
 	// Animation
 	AnimationRender = CreateRender(RenderOrder::Effect);
 	AnimationRender->SetScale({ 400, 400 });
-	AnimationRender->CreateAnimation({ .AnimationName = "Poof",  .ImageName = "SmallPoof.bmp", .Start = 0, .End = 5, .InterTime = 0.08f });
-	AnimationRender->ChangeAnimation("Poof");
+	AnimationRender->CreateAnimation({ .AnimationName = "Impact",  .ImageName = "Impact.bmp", .Start = 0, .End = 5, .InterTime = 0.08f });
+	AnimationRender->ChangeAnimation("Impact");
 }
 
 void Impact::Update(float _DeltaTime)

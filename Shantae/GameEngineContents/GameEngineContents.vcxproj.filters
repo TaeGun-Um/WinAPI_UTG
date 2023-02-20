@@ -459,6 +459,9 @@
     <ClInclude Include="Impact.h">
       <Filter>Character\Player\Effect</Filter>
     </ClInclude>
+    <ClInclude Include="Pistol_Bullet.h">
+      <Filter>Character\Player\Effect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShantaeCore.cpp" />
@@ -943,6 +946,9 @@
       <Filter>Character\Player\Effect</Filter>
     </ClCompile>
     <ClCompile Include="Impact.cpp">
+      <Filter>Character\Player\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Pistol_Bullet.cpp">
       <Filter>Character\Player\Effect</Filter>
     </ClCompile>
   </ItemGroup>

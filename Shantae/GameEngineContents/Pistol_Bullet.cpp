@@ -1,4 +1,4 @@
-#include "Soldier_Bullet.h"
+#include "Pistol_Bullet.h"
 
 #include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineCollision.h>
@@ -7,39 +7,40 @@
 
 #include "ContentsEnum.h"
 
-Soldier_Bullet::Soldier_Bullet() 
+Pistol_Bullet::Pistol_Bullet() 
 {
 }
 
-Soldier_Bullet::~Soldier_Bullet() 
+Pistol_Bullet::~Pistol_Bullet() 
 {
 }
 
-void Soldier_Bullet::Start()
+void Pistol_Bullet::Start()
 {
-	AnimationRender = CreateRender(RenderOrder::Monster);
+	AnimationRender = CreateRender(RenderOrder::Player);
 	AnimationRender->SetScale({ 400, 400 });
-	AnimationRender->CreateAnimation({ .AnimationName = "Bullet",  .ImageName = "Soldier_Bullet.bmp", .Start = 0, .End = 1, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Bullet",  .ImageName = "Pistol_Bullet.bmp", .Start = 0, .End = 2, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Bulletmark",  .ImageName = "Pistol_Bullet.bmp", .Start = 3, .End = 5, .InterTime = 0.1f });
 
-	BodyCollision = CreateCollision(CollisionOrder::MonsterAttack);
+	BodyCollision = CreateCollision(CollisionOrder::PlayerPistolAttack);
 	BodyCollision->SetDebugRenderType(CT_Rect);
 	BodyCollision->SetScale({ 20, 20 });
 	BodyCollision->SetPosition({ 1.5f, -2 });
 }
 
-void Soldier_Bullet::Update(float _DeltaTime)
+void Pistol_Bullet::Update(float _DeltaTime)
 {
 	AnimationRender->ChangeAnimation("Bullet");
 	KillBullet();
 	CollisionCheck();
 	MoveCalculation(_DeltaTime);
 }
-void Soldier_Bullet::Render(float _DeltaTime)
+void Pistol_Bullet::Render(float _DeltaTime)
 {
 
 }
 
-std::string Soldier_Bullet::DirCheck(const std::string_view& _AnimationName)
+std::string Pistol_Bullet::DirCheck(const std::string_view& _AnimationName)
 {
 	AnimationRender->ChangeAnimation(_AnimationName.data() + DirString);
 
@@ -47,7 +48,7 @@ std::string Soldier_Bullet::DirCheck(const std::string_view& _AnimationName)
 }
 
 // 중력, 점프, 맵타일
-void Soldier_Bullet::MoveCalculation(float _DeltaTime)
+void Pistol_Bullet::MoveCalculation(float _DeltaTime)
 {
 	if ("_L" == DirString)
 	{
@@ -85,16 +86,14 @@ void Soldier_Bullet::MoveCalculation(float _DeltaTime)
 	SetMove(MoveDir * _DeltaTime);
 }
 
-void Soldier_Bullet::CollisionCheck()
+void Pistol_Bullet::CollisionCheck()
 {
-	// 0202 : 그룹 중 하나라도 충돌했다면 동작
-	// GameEngineActor* ColActor = Collision[i]->GetActor();     == 콜리전의 소유 액터를 받아와서 뭔가를 할 수 있음
-	// Soldier* FindMonster = Collision[i]->GetOwner<Soldier>(); == 아니면 콜리전의 그룹들을 받아와서 뭔가를 할 수 있음
 	if (nullptr != BodyCollision)
 	{
-		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Monster), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
-			// IsDeath = true;
+			AnimationRender->ChangeAnimation("Bulletmark");
+			IsDeath = true;
 		}
 
 		if (true == IsDeath)
@@ -102,18 +101,16 @@ void Soldier_Bullet::CollisionCheck()
 			GameEngineActor* ColActor = BodyCollision->GetActor();
 			ColActor->Off();
 
-			// Explosion();
-
 			ColActor->Death();
 		}
 	}
 }
 
-void Soldier_Bullet::KillBullet()
+void Pistol_Bullet::KillBullet()
 {
 	float4 RPos = OwnerPos + (float4::Right * 1000);
 	float4 LPos = OwnerPos + (float4::Left * 1000);
-	
+
 	if ("_L" == DirString)
 	{
 		if (GetPos().x <= LPos.x)
