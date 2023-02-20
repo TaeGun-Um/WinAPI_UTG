@@ -59,9 +59,10 @@ void BoomBridge::Loading()
 	SHA = dynamic_cast<Player*>(Shantae);
 
 	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 500, 646 });
+	SHA->SetPos({ 426, 647 });
 	Shantae->GetLevel()->SetCameraPos({ 430, 220 });
 	SHA->CameraMoveSwitch();
+	SHA->SetAnimationStart(false);
 }
 
 bool ch = true;
@@ -88,7 +89,6 @@ void BoomBridge::Update(float _DeltaTime)
 		SetTimerRenewal_Four(TimerCol4->GetAccTime());
 	}
 
-
 	if (1 == Set)
 	{
 		Set = 0;
@@ -97,6 +97,17 @@ void BoomBridge::Update(float _DeltaTime)
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
 		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
+	}
+
+	if (1 == AnimationSet)
+	{
+		SHA->SetStartAnimationStart(true);
+		if (495 <= SHA->GetPos().x)
+		{
+			SHA->SetStartAnimationStart(false);
+			SHA->ChangeState(PlayerState::IDLE);
+			AnimationSet = 0;
+		}
 	}
 
 	if (6345 <= SHA->GetPos().y)
@@ -150,9 +161,15 @@ void BoomBridge::Update(float _DeltaTime)
 		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
 	}
 
-	if (SHA->GetPos().x >= 1710.0f)
+	if (SHA->GetPos().x >= 1660.0f
+		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{
-		GameEngineCore::GetInst()->ChangeLevel("BeforeBoss");
+		SHA->SetAnimationStart(true);
+		SHA->SetMoveSpeed(100.0f);
+		if (true == SHA->LevelChangeAnimation(_DeltaTime))
+		{
+			GameEngineCore::GetInst()->ChangeLevel("BeforeBoss");
+		}
 	}
 }
 

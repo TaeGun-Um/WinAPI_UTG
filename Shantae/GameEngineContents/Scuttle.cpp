@@ -49,8 +49,9 @@ void Scuttle::Loading()
 	SHA = dynamic_cast<Player*>(Shantae);
 
 	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 350, 1300 });
+	SHA->SetPos({ 0, 1316 });
 	Shantae->GetLevel()->SetCameraPos({ 0, 680 });
+	SHA->SetAnimationStart(false);
 }
 
 void Scuttle::Update(float _DeltaTime)
@@ -63,6 +64,17 @@ void Scuttle::Update(float _DeltaTime)
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
 		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
+	}
+
+	if (1 == AnimationSet)
+	{
+		SHA->SetStartAnimationStart(true);
+		if (220 <= SHA->GetPos().x)
+		{
+			SHA->SetStartAnimationStart(false);
+			SHA->ChangeState(PlayerState::IDLE);
+			AnimationSet = 0;
+		}
 	}
 
 	OverlapTime += _DeltaTime;

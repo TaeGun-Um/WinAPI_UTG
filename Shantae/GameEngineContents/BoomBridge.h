@@ -47,6 +47,7 @@ private:
 
 	bool YCamera = false;
 	int Set = 1;
+	int AnimationSet = 1;
 
 	// 1
 	void Set_One();

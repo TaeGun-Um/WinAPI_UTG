@@ -54,9 +54,10 @@ void Boss::Loading()
 	SHA = dynamic_cast<Player*>(Shantae);
 
 	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 200, 700 });
+	SHA->SetPos({ 131, 734 });
 	Shantae->GetLevel()->SetCameraPos({ 125, 130 });
 	SHA->CameraMoveSwitch();
+	SHA->SetAnimationStart(false);
 }
 
 void Boss::Update(float _DeltaTime)
@@ -69,6 +70,17 @@ void Boss::Update(float _DeltaTime)
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
 		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
+	}
+
+	if (1 == AnimationSet)
+	{
+		SHA->SetStartAnimationStart(true);
+		if (255 <= SHA->GetPos().x)
+		{
+			SHA->SetStartAnimationStart(false);
+			SHA->ChangeState(PlayerState::IDLE);
+			AnimationSet = 0;
+		}
 	}
 
 	OverlapTime += _DeltaTime;
@@ -116,9 +128,15 @@ void Boss::Update(float _DeltaTime)
 		Shantae->GetLevel()->SetCameraPos({ 125, 130 });
 	}
 
-	if (SHA->GetPos().x >= 1600.0f)
+	if (SHA->GetPos().x >= 1600.0f
+		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{
-		GameEngineCore::GetInst()->ChangeLevel("Scuttle");
+		SHA->SetAnimationStart(true);
+		SHA->SetMoveSpeed(100.0f);
+		if (true == SHA->LevelChangeAnimation(_DeltaTime))
+		{
+			GameEngineCore::GetInst()->ChangeLevel("Scuttle");
+		}
 	}
 }
 

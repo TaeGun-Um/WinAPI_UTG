@@ -48,6 +48,17 @@ void Player::Update(float _DeltaTime)
 {
 	OverlapTime += _DeltaTime;
 
+	if (true == IsAnimationStart)
+	{
+		LevelChangeAnimation(_DeltaTime);
+		return;
+	}
+
+	if (true == IsStartAnimationStart)
+	{
+		LevelStartAnimation(_DeltaTime);
+	}
+
 	if (true == FreeMoveState(_DeltaTime))
 	{
 		return;
@@ -80,6 +91,30 @@ void Player::Render(float _DeltaTime)
 	{
 		PositionText();
 	}
+}
+
+bool Player::LevelChangeAnimation(float _DeltaTime)
+{
+	AnimationTime += _DeltaTime;
+
+	SetMove(float4::Right * MoveSpeed * _DeltaTime);
+
+	if (AnimationEndTime <= AnimationTime)
+	{
+		AnimationTime = 0.0f;
+		return true;
+	}
+
+	return false;
+}
+
+void Player::LevelStartAnimation(float _DeltaTime)
+{
+	AnimationRender->ChangeAnimation("Run_R");
+
+	AnimationTime += _DeltaTime;
+
+	SetMove(float4::Right * MoveSpeed * _DeltaTime);
 }
 
 void Player::PositionText()
@@ -457,7 +492,7 @@ void Player::WallCheck(float _Speed)
 	CrouchUpPos_R = GetPos() + (float4::Up * 100) + (float4::Right * 29);
 	CrouchUpPos_L = GetPos() + (float4::Up * 100) + (float4::Left * 29);
 
-	if (RGB(0, 248, 0) == ColMap->GetPixelColor(ForwardPosR_Low, RGB(0, 248, 0)))
+	if (RGB(0, 248, 0) == ColMap->GetPixelColor(ForwardPosR_Low, RGB(0, 0, 0)))
 	{
 		MoveSpeed = 0.0f;
 		CrouchSpeed = 0.0f;
@@ -468,7 +503,7 @@ void Player::WallCheck(float _Speed)
 			CrouchSpeed = 200.0f;
 		}
 	}
-	else if (RGB(0, 248, 0) == ColMap->GetPixelColor(ForwardPosR_High, RGB(0, 248, 0)) && false == IsCrouch)
+	else if (RGB(0, 248, 0) == ColMap->GetPixelColor(ForwardPosR_High, RGB(0, 0, 0)) && false == IsCrouch)
 	{
 		MoveSpeed = 0.0f;
 
@@ -477,7 +512,7 @@ void Player::WallCheck(float _Speed)
 			MoveSpeed = _Speed;
 		}
 	}
-	else if (RGB(0, 248, 0) == ColMap->GetPixelColor(ForwardPosL_Low, RGB(0, 248, 0)))
+	else if (RGB(0, 248, 0) == ColMap->GetPixelColor(ForwardPosL_Low, RGB(0, 0, 0)))
 	{
 		MoveSpeed = 0.0f;
 		CrouchSpeed = 0.0f;
@@ -488,7 +523,7 @@ void Player::WallCheck(float _Speed)
 			CrouchSpeed = 200.0f;
 		}
 	}
-	else if (RGB(0, 248, 0) == ColMap->GetPixelColor(ForwardPosL_High, RGB(0, 248, 0)) && false == IsCrouch)
+	else if (RGB(0, 248, 0) == ColMap->GetPixelColor(ForwardPosL_High, RGB(0, 0, 0)) && false == IsCrouch)
 	{
 		MoveSpeed = 0.0f;
 

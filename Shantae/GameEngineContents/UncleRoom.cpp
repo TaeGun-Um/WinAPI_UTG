@@ -51,9 +51,10 @@ void UncleRoom::Loading()
 	SHA = dynamic_cast<Player*>(Shantae);
 
 	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 350, 300 });
+	SHA->SetPos({ 90, 781 });
 	Shantae->GetLevel()->SetCameraPos({ 50, 100 });
 	SHA->CameraMoveSwitch();
+	SHA->SetAnimationStart(false);
 }
 
 void UncleRoom::Update(float _DeltaTime)
@@ -66,6 +67,17 @@ void UncleRoom::Update(float _DeltaTime)
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
 		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
+	}
+
+	if (1 == AnimationSet)
+	{
+		SHA->SetStartAnimationStart(true);
+		if (200 <= SHA->GetPos().x)
+		{
+			SHA->SetStartAnimationStart(false);
+			SHA->ChangeState(PlayerState::IDLE);
+			AnimationSet = 0;
+		}
 	}
 
 	OverlapTime += _DeltaTime;

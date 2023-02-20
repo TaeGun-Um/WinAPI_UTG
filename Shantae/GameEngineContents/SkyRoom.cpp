@@ -47,9 +47,10 @@ void SkyRoom::Loading()
 	SHA = dynamic_cast<Player*>(Shantae);
 
 	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 350, 300 });
+	SHA->SetPos({ 192, 829 });
 	Shantae->GetLevel()->SetCameraPos({ 200, 150 });
 	SHA->CameraMoveSwitch();
+	SHA->SetAnimationStart(false);
 }
 
 void SkyRoom::Update(float _DeltaTime)
@@ -62,6 +63,17 @@ void SkyRoom::Update(float _DeltaTime)
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
 		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
+	}
+
+	if (1 == AnimationSet)
+	{
+		SHA->SetStartAnimationStart(true);
+		if (360 <= SHA->GetPos().x)
+		{
+			SHA->SetStartAnimationStart(false);
+			SHA->ChangeState(PlayerState::IDLE);
+			AnimationSet = 0;
+		}
 	}
 
 	OverlapTime += _DeltaTime;

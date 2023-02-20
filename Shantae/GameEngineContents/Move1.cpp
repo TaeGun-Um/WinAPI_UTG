@@ -70,8 +70,9 @@ void Move1::Loading()
 	SHA = dynamic_cast<Player*>(Shantae);
 
 	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 400, 600 });
+	SHA->SetPos({ 106, 653 });
 	Shantae->GetLevel()->SetCameraPos({ 100, 50 });
+	SHA->SetAnimationStart(false);
 }
 
 void Move1::Update(float _DeltaTime)
@@ -84,6 +85,17 @@ void Move1::Update(float _DeltaTime)
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
 		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
+	}
+
+	if (1 == AnimationSet)
+	{
+		SHA->SetStartAnimationStart(true);
+		if (575 <= SHA->GetPos().x)
+		{
+			SHA->SetStartAnimationStart(false);
+			SHA->ChangeState(PlayerState::IDLE);
+			AnimationSet = 0;
+		}
 	}
 
 	OverlapTime += _DeltaTime;
@@ -131,9 +143,15 @@ void Move1::Update(float _DeltaTime)
 		Shantae->GetLevel()->SetCameraPos({ 100, 50 });
 	}
 
-	if (SHA->GetPos().x >= 11680.0f)
+	if (SHA->GetPos().x >= 11720.0f
+		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{
-		GameEngineCore::GetInst()->ChangeLevel("Stair");
+		SHA->SetAnimationStart(true);
+		SHA->SetMoveSpeed(100.0f);
+		if (true == SHA->LevelChangeAnimation(_DeltaTime))
+		{
+			GameEngineCore::GetInst()->ChangeLevel("Stair");
+		}
 	}
 }
 

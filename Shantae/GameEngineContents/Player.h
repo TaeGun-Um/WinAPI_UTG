@@ -132,8 +132,31 @@ public:
 		PlayerGem += _PlusGem;
 	}
 
+	void SetAnimationStart(bool _Is)
+	{
+		IsAnimationStart = _Is;
+	}
+
+	void SetStartAnimationStart(bool _Is)
+	{
+		IsStartAnimationStart = _Is;
+	}
+
+	void SetAnimationEndTime(float _Time)
+	{
+		AnimationEndTime = _Time;
+	}
+	
+	PlayerState GetShantaeState()
+	{
+		return StateValue;
+	}
+
+	bool LevelChangeAnimation(float _DeltaTime);
+	void LevelStartAnimation(float _DeltaTime);
 	bool FreeMoveState(float _DeltaTime);
 	void PositionText();
+	void ChangeState(PlayerState _State);
 
 protected:
 	void Start() override;
@@ -142,6 +165,8 @@ protected:
 
 private:
 	std::string DirCheck(const std::string_view& _AnimationName);
+	void RenderSet();
+	void CollisionSet();
 	void CollisionCheck(float _DeltaTime);
 	void MoveCalculation(float _DeltaTime);
 	void Shoot();
@@ -169,6 +194,8 @@ private:
 	float MoveSpeed = 600.0f;
 	float CrouchSpeed = 200.0f;
 	float GravitySpeed = 3500.0f;
+	float AnimationTime = 0.0f;
+	float AnimationEndTime = 0.0f;
 	float OverlapTime = 0.0f;
 	float MoveTime = 0.0f;
 	float JumpTime = 0.0f;
@@ -206,6 +233,8 @@ private:
 	bool IsAirAttack = false;
 	bool IsCrouchAttack = false;
 	bool IsAttack = false;
+	bool IsAnimationStart = false;
+	bool IsStartAnimationStart = false;
 
 	float AccTime = 0.0f;
 	int StartFrame = 0;             // cut을 위한 인덱스 번호
@@ -214,11 +243,8 @@ private:
 	std::string DirString = "_R";
 	PlayerState StateValue = PlayerState::IDLE;
 
-	void RenderSet();
-	void CollisionSet();
-
 	// State
-	void ChangeState(PlayerState _State);
+	
 	void UpdateState(float _Time);
 
 	void IdleStart();

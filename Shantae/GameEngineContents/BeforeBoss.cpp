@@ -48,9 +48,10 @@ void BeforeBoss::Loading()
 	SHA = dynamic_cast<Player*>(Shantae);
 
 	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 200, 550 });
+	SHA->SetPos({ 5, 603 });
 	Shantae->GetLevel()->SetCameraPos({ 0, 50 });
 	SHA->CameraMoveSwitch();
+	SHA->SetAnimationStart(false);
 }
 
 void BeforeBoss::Update(float _DeltaTime)
@@ -63,6 +64,17 @@ void BeforeBoss::Update(float _DeltaTime)
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
 		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
+	}
+
+	if (1 == AnimationSet)
+	{
+		SHA->SetStartAnimationStart(true);
+		if (130 <= SHA->GetPos().x)
+		{
+			SHA->SetStartAnimationStart(false);
+			SHA->ChangeState(PlayerState::IDLE);
+			AnimationSet = 0;
+		}
 	}
 
 	OverlapTime += _DeltaTime;
@@ -96,9 +108,15 @@ void BeforeBoss::Update(float _DeltaTime)
 		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
 	}
 
-	if (SHA->GetPos().x >= 1200.0f)
+	if (SHA->GetPos().x >= 1250.0f
+		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{
-		GameEngineCore::GetInst()->ChangeLevel("Boss");
+		SHA->SetAnimationStart(true);
+		SHA->SetMoveSpeed(100.0f);
+		if (true == SHA->LevelChangeAnimation(_DeltaTime))
+		{
+			GameEngineCore::GetInst()->ChangeLevel("Boss");
+		}
 	}
 }
 

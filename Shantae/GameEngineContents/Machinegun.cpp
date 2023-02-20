@@ -107,8 +107,9 @@ void Machinegun::Loading()
 	SHA = dynamic_cast<Player*>(Shantae);
 
 	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 300, 562 });
+	SHA->SetPos({ 45, 563 });
 	Shantae->GetLevel()->SetCameraPos({ 55, 120 });
+	SHA->SetAnimationStart(false);
 }
 
 void Machinegun::Update(float _DeltaTime)
@@ -121,6 +122,17 @@ void Machinegun::Update(float _DeltaTime)
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
 		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
+	}
+
+	if (1 == AnimationSet)
+	{
+		SHA->SetStartAnimationStart(true);
+		if (200 <= SHA->GetPos().x)
+		{
+			SHA->SetStartAnimationStart(false);
+			SHA->ChangeState(PlayerState::IDLE);
+			AnimationSet = 0;
+		}
 	}
 
 	OverlapTime += _DeltaTime;
@@ -168,9 +180,15 @@ void Machinegun::Update(float _DeltaTime)
 		Shantae->GetLevel()->SetCameraPos({ 55, 120 });
 	}
 
-	if (SHA->GetPos().x >= 11965.0f)
+	if (SHA->GetPos().x >= 11985.0f
+		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{
-		GameEngineCore::GetInst()->ChangeLevel("BoomBridge");
+		SHA->SetAnimationStart(true);
+		SHA->SetMoveSpeed(100.0f);
+		if (true == SHA->LevelChangeAnimation(_DeltaTime))
+		{
+			GameEngineCore::GetInst()->ChangeLevel("BoomBridge");
+		}
 	}
 }
 

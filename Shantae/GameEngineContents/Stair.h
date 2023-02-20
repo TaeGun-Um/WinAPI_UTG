@@ -35,6 +35,7 @@ private:
 
 	bool YCamera = false;
 	int Set = 1;
+	int AnimationSet = 1;
 
 };
 

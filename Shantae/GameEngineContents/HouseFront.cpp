@@ -65,8 +65,9 @@ void HouseFront::Loading()
 	SHA = dynamic_cast<Player*>(Shantae);
 
 	SHA->SetColMap(ColMap);
-	SHA->SetPos({150, 590});
+	SHA->SetPos({5, 590});
 	SHA->CameraMoveSwitch();
+	SHA->SetAnimationStart(false);
 }
 
 void HouseFront::Update(float _DeltaTime)
@@ -79,6 +80,17 @@ void HouseFront::Update(float _DeltaTime)
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
 		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
+	}
+
+	if (1 == AnimationSet)
+	{
+		SHA->SetStartAnimationStart(true);
+		if (640 <= SHA->GetPos().x)
+		{
+			SHA->SetStartAnimationStart(false);
+			SHA->ChangeState(PlayerState::IDLE);
+			AnimationSet = 0;
+		}
 	}
 
 	OverlapTime += _DeltaTime;
@@ -112,9 +124,18 @@ void HouseFront::Update(float _DeltaTime)
 		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
 	}
 
-	if (SHA->GetPos().x >= 1200.0f)
+	PlayerState Animation = PlayerState::REST;
+
+	if (SHA->GetPos().x >= 1250.0f
+		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{
-		GameEngineCore::GetInst()->ChangeLevel("Move0");
+		SHA->SetAnimationStart(true);
+		SHA->SetMoveSpeed(100.0f);
+		SHA->SetAnimationEndTime(2.0f);
+		if (true == SHA->LevelChangeAnimation(_DeltaTime))
+		{
+			GameEngineCore::GetInst()->ChangeLevel("Move0");
+		}
 	}
 }
 

@@ -2,6 +2,8 @@
 
 #include <GameEngineCore/GameEngineActor.h>
 
+class GameEngineImage;
+
 // Ό³Έν :
 class Pistol_Bullet : public GameEngineActor
 {
