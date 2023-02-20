@@ -3,6 +3,7 @@
 #include <GameEngineCore/GameEngineActor.h>
 
 class GameEngineImage;
+class AmmoBaron;
 
 enum class Boss_TankState
 {
@@ -49,11 +50,14 @@ private:
 	void CreateExplosion();
 	void CreatePoof();
 	void Charge();
+	void CreateAmmoBaron();
 	int RandomNumberGeneration();
 
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
 	GameEngineImage* ColMap = nullptr;
+	GameEngineActor* Ammo = nullptr;
+	AmmoBaron* Baron = nullptr;
 
 	float4 BossPos = float4::Zero;
 	float4 ChargePos = float4::Zero;
@@ -65,6 +69,8 @@ private:
 	float HitActionTime = 0.0f;
 	float PushoutTime = 0.0f;
 	
+	int BaronCreate = 1;
+	int BaronStart = 1;
 	int FireCount = 3;
 	int CreateCount = 1;
 	int RandCreate = 1;

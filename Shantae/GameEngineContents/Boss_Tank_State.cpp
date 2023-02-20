@@ -4,6 +4,7 @@
 #include <GameEngineCore/GameEngineRender.h>
 
 #include "ContentsEnum.h"
+#include "AmmoBaron.h"
 
 // Player State º¯°æ
 void Boss_Tank::ChangeState(Boss_TankState _State)
@@ -315,10 +316,16 @@ void Boss_Tank::HitStart()
 {
 	AnimationRender->ChangeAnimation("Empty");
 	BodyCollision->Off();
+	
+	if (1 == BaronStart)
+	{
+		BaronStart = 0;
+		Baron->SetBaronAction();
+	}
 }
 void Boss_Tank::HitUpdate(float _DeltaTime)
 {
-	//HitActionTime += _DeltaTime;
+	HitActionTime += _DeltaTime;
 
 	//if (5.0f <= HitActionTime)
 	//{
@@ -327,6 +334,12 @@ void Boss_Tank::HitUpdate(float _DeltaTime)
 	//	ChangeState(Boss_TankState::IDLE);
 	//	return;
 	//}
+
+	if (false == Baron->GetBaronAction())
+	{
+		ChangeState(Boss_TankState::IDLE);
+		return;
+	}
 
 }
 void Boss_Tank::HitEnd()

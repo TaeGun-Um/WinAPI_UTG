@@ -125,7 +125,7 @@ void AmmoBaron::IdleStart()
 }
 void AmmoBaron::IdleUpdate(float _DeltaTime)
 {
-	if (GameEngineInput::IsDown("MonsterTest"))
+	if (true == IsAction)
 	{
 		IsStart = true;
 		ChangeState(AmmoBaronState::FLY);
@@ -307,4 +307,5 @@ void AmmoBaron::JumpEnd()
 {
 	IsTurn = false;
 	IsStart = false;
+	IsAction = false;
 }

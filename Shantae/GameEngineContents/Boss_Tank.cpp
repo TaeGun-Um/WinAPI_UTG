@@ -15,6 +15,7 @@
 #include "Boss_Boom.h"
 #include "Boss_Boom_Red.h"
 #include "SmallPoof.h"
+#include "AmmoBaron.h"
 
 Boss_Tank::Boss_Tank()
 {
@@ -32,12 +33,17 @@ void Boss_Tank::Start()
 	// Collision
 	CollisionSet();
 
-	//ChangeState(Boss_TankState::IDLE);
-	ChangeState(Boss_TankState::HIT);
+	ChangeState(Boss_TankState::IDLE);
+	// ChangeState(Boss_TankState::HIT);
 }
 
 void Boss_Tank::Update(float _DeltaTime)
 {
+	if (1 == BaronCreate)
+	{
+		BaronCreate = 0;
+		CreateAmmoBaron();
+	}
 	UpdateState(_DeltaTime);
 	CollisionCheck();
 }
@@ -148,4 +154,12 @@ int Boss_Tank::RandomNumberGeneration()
 	int RandomNumber = rand();
 
 	return Return = RandomNumber % 10;
+}
+
+void Boss_Tank::CreateAmmoBaron()
+{
+	Ammo = GetLevel()->CreateActor<AmmoBaron>();
+	Baron = dynamic_cast<AmmoBaron*>(Ammo);
+	Baron->SetPos({ 1200, 400 });
+	Baron->SetColMap(ColMap);
 }

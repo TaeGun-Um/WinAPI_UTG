@@ -37,6 +37,21 @@ public:
 		ColMap = _NextColMap;
 	}
 
+	void SetBaronAction()
+	{
+		IsAction = true;
+	}
+
+	bool GetBaronAction()
+	{
+		return IsAction;
+	}
+
+	int GetBaronHP()
+	{
+		return BaronHP;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -59,6 +74,9 @@ private:
 	float DowningTime = 0.0f;
 	float StruggleTime = 0.0f;
 
+	int BaronHP = 50;
+
+	bool IsAction = false;
 	bool IsStart = false;
 	bool IsTurn = false;
 

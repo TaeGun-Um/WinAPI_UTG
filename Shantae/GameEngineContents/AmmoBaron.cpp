@@ -57,7 +57,8 @@ void AmmoBaron::CollisionCheck()
 	{
 		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PlayerAttack), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
-			int a = 0;
+			// ÄÝ¸®Àü ²°´ÙÄ×´Ù °°Àº ±â¹Í ÇÊ¿ä
+			BaronHP -= 5;
 		}
 	}
 }
