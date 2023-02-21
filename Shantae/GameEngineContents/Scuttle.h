@@ -9,6 +9,8 @@ class Player;
 class Scuttle : public PlayLevel
 {
 public:
+	static GameEngineSoundPlayer ScuttleBGMPlayer;
+
 	// constrcuter destructer
 	Scuttle();
 	~Scuttle();
@@ -39,6 +41,8 @@ private:
 	float OverlapTime = 0.0f;
 	
 	bool YCamera = false;
+	bool ScuttlePalyer = false;
+
 	int Set = 1;
 	int AnimationSet = 1;
 };

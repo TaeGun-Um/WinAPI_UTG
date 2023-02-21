@@ -16,6 +16,7 @@ void SoundLoad::Loading()
 	Dir.MoveParentToDirectory("Shantae_Resource");
 	Dir.Move("Shantae_Resource");
 	Dir.Move("Sound");
+	Dir.Move("Map");
 
 	// Title
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Title\\File_Select.mp3"));
@@ -31,11 +32,24 @@ void SoundLoad::Loading()
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Town\\Customer.mp3"));
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Town\\Scuttle_Town.mp3"));
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Town\\Sky.mp3"));
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Town\\Uncle_Room.mp3"));
 
 	// Ending
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Ending\\Ending.mp3"));
 
 	// Test
+
+	GameEngineDirectory Dir1;
+	Dir1.MoveParentToDirectory("Shantae_Resource");
+	Dir1.Move("Shantae_Resource");
+	Dir1.Move("Sound");
+	Dir1.Move("Character");
+
+	// Shatae
+
+	// Soldier
+
+	// 
 }
 
 void SoundLoad::Update(float _DeltaTime)

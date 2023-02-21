@@ -73,6 +73,10 @@ void UncleRoom::Update(float _DeltaTime)
 
 void UncleRoom::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Uncle_Room.mp3");
+	BGMPlayer.Volume(0.1f);
+	BGMPlayer.LoopCount(100);
+
 	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());
 	SetPlayLevelMaxHP(Player::MainPlayer->GetPlayerMaxHP());
 	SetPlayLevelGem(Player::MainPlayer->GetPlayerGem());
@@ -80,6 +84,7 @@ void UncleRoom::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 void UncleRoom::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
+	BGMPlayer.Stop();
 }
 
 void UncleRoom::LevelSet()

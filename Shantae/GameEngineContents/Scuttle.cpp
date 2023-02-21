@@ -17,6 +17,8 @@
 #include "Health.h"
 #include "ObjectLoad.h"
 
+GameEngineSoundPlayer Scuttle::ScuttleBGMPlayer = 0;
+
 Scuttle::Scuttle()
 {
 }
@@ -74,9 +76,12 @@ void Scuttle::Update(float _DeltaTime)
 
 void Scuttle::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
-	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Scuttle_Town.mp3");
-	BGMPlayer.Volume(0.1f);
-	BGMPlayer.LoopCount(100);
+	if (false == ScuttlePalyer)
+	{
+		ScuttleBGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Scuttle_Town.mp3");
+		ScuttleBGMPlayer.Volume(0.1f);
+		ScuttleBGMPlayer.LoopCount(100);
+	}
 
 	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());
 	SetPlayLevelMaxHP(Player::MainPlayer->GetPlayerMaxHP());
@@ -85,7 +90,7 @@ void Scuttle::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 void Scuttle::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
-	BGMPlayer.Stop();
+	
 }
 
 void Scuttle::LevelSet()
@@ -186,31 +191,41 @@ void Scuttle::Portal()
 		{
 			GameEngineCore::GetInst()->ChangeLevel("UncleRoom");
 			OverlapTime = 0.0f;
+			ScuttleBGMPlayer.Stop();
+			ScuttlePalyer = false;
 		}
 		if (4705.0f <= SHA->GetPos().x && SHA->GetPos().x <= 4795.0f && SHA->GetPos().y >= 1175.0f)
 		{
 			GameEngineCore::GetInst()->ChangeLevel("Smith");
 			OverlapTime = 0.0f;
+			ScuttleBGMPlayer.Stop();
+			ScuttlePalyer = false;
 		}
 		if (5330.0f <= SHA->GetPos().x && SHA->GetPos().x <= 5495.0f && SHA->GetPos().y >= 1175.0f)
 		{
 			GameEngineCore::GetInst()->ChangeLevel("Shop");
 			OverlapTime = 0.0f;
+			ScuttleBGMPlayer.Stop();
+			ScuttlePalyer = false;
 		}
 		if (6160.0f <= SHA->GetPos().x && SHA->GetPos().x <= 6280.0f && SHA->GetPos().y >= 1175.0f)
 		{
 			GameEngineCore::GetInst()->ChangeLevel("SaveRoom");
 			OverlapTime = 0.0f;
+			ScuttlePalyer = true;
 		}
 		if (4840.0f <= SHA->GetPos().x && SHA->GetPos().x <= 4960.0f && SHA->GetPos().y <= 1175.0f)
 		{
 			GameEngineCore::GetInst()->ChangeLevel("Spa");
 			OverlapTime = 0.0f;
+			ScuttlePalyer = true;
 		}
 		if (5330.0f <= SHA->GetPos().x && SHA->GetPos().x <= 5495.0f && SHA->GetPos().y <= 1175.0f)
 		{
 			GameEngineCore::GetInst()->ChangeLevel("SkyRoom");
 			OverlapTime = 0.0f;
+			ScuttleBGMPlayer.Stop();
+			ScuttlePalyer = false;
 		}
 	}
 }

@@ -71,6 +71,10 @@ void Smith::Update(float _DeltaTime)
 
 void Smith::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Customer.mp3");
+	BGMPlayer.Volume(0.1f);
+	BGMPlayer.LoopCount(100);
+
 	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());
 	SetPlayLevelMaxHP(Player::MainPlayer->GetPlayerMaxHP());
 	SetPlayLevelGem(Player::MainPlayer->GetPlayerGem());
@@ -78,6 +82,7 @@ void Smith::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 void Smith::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
+	BGMPlayer.Stop();
 }
 
 void Smith::LevelSet()
