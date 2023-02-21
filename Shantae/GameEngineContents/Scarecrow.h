@@ -38,16 +38,21 @@ private:
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
 	GameEngineImage* ColMap = nullptr;
+	GameEngineRender* DamageText = nullptr;
 
 	float4 MoveDir = float4::Zero;
 	float4 NextPos = float4::Zero;
 
+	float4 TextPos = float4::Zero;
+
 	bool Hitonoff = false;
+	bool CreateT = false;
 
 	float HitTime = 0.0f;
 
 	void CollisionCheck(float _DeltaTime);
 	void MoveCalculation(float _DeltaTime);
 	void Kill();
+	void CreateText();
 };
 

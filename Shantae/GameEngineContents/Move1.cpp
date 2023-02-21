@@ -78,57 +78,10 @@ void Move1::Loading()
 
 void Move1::Update(float _DeltaTime)
 {
-	if (1 == Set)
-	{
-		Set = 0;
-
-		Player::MainPlayer = SHA;
-		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
-		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
-		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
-	}
-
-	if (1 == AnimationSet)
-	{
-		SHA->SetStartAnimationStart(true);
-		if (575 <= SHA->GetPos().x)
-		{
-			SHA->SetStartAnimationStart(false);
-			SHA->ChangeState(PlayerState::IDLE);
-			AnimationSet = 0;
-		}
-	}
+	LevelSet();
+	Debugging();
 
 	OverlapTime += _DeltaTime;
-
-	if (GameEngineInput::IsDown("ColMapSwitch"))
-	{
-		if (OverlapTime > 0.5f)
-		{
-			Move1_ColMap::ColMap->OnOffSwtich();
-			OverlapTime = 0.0f;
-		}
-	}
-	if (GameEngineInput::IsPress("BeforeLevel"))
-	{
-		if (OverlapTime > 0.5f)
-		{
-			GameEngineCore::GetInst()->ChangeLevel("Move0");
-			OverlapTime = 0.0f;
-		}
-	}
-	if (GameEngineInput::IsPress("NextLevel"))
-	{
-		if (OverlapTime > 0.5f)
-		{
-			GameEngineCore::GetInst()->ChangeLevel("Stair");
-			OverlapTime = 0.0f;
-		}
-	}
-	if (GameEngineInput::IsDown("Back"))
-	{
-		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
-	}
 
 	if (SHA->GetPos().x >= 11040.0f)
 	{
@@ -165,4 +118,60 @@ void Move1::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 void Move1::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
+}
+
+void Move1::LevelSet()
+{
+	if (1 == Set)
+	{
+		Set = 0;
+
+		Player::MainPlayer = SHA;
+		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
+		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
+		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
+	}
+
+	if (1 == AnimationSet)
+	{
+		SHA->SetStartAnimationStart(true);
+		if (575 <= SHA->GetPos().x)
+		{
+			SHA->SetStartAnimationStart(false);
+			SHA->ChangeState(PlayerState::IDLE);
+			AnimationSet = 0;
+		}
+	}
+}
+
+void Move1::Debugging()
+{
+	if (GameEngineInput::IsDown("ColMapSwitch"))
+	{
+		if (OverlapTime > 0.5f)
+		{
+			Move1_ColMap::ColMap->OnOffSwtich();
+			OverlapTime = 0.0f;
+		}
+	}
+	if (GameEngineInput::IsPress("BeforeLevel"))
+	{
+		if (OverlapTime > 0.5f)
+		{
+			GameEngineCore::GetInst()->ChangeLevel("Move0");
+			OverlapTime = 0.0f;
+		}
+	}
+	if (GameEngineInput::IsPress("NextLevel"))
+	{
+		if (OverlapTime > 0.5f)
+		{
+			GameEngineCore::GetInst()->ChangeLevel("Stair");
+			OverlapTime = 0.0f;
+		}
+	}
+	if (GameEngineInput::IsDown("Back"))
+	{
+		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
+	}
 }

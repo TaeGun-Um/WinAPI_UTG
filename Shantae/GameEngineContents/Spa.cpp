@@ -57,6 +57,30 @@ void Spa::Loading()
 
 void Spa::Update(float _DeltaTime)
 {
+	LevelSet();
+	Debugging();
+
+	OverlapTime += _DeltaTime;
+
+	if (SHA->GetPos().x <= 40.0f)
+	{
+		GameEngineCore::GetInst()->ChangeLevel("Scuttle");
+	}
+}
+
+void Spa::LevelChangeStart(GameEngineLevel* _PrevLevel)
+{
+	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());
+	SetPlayLevelMaxHP(Player::MainPlayer->GetPlayerMaxHP());
+	SetPlayLevelGem(Player::MainPlayer->GetPlayerGem());
+}
+
+void Spa::LevelChangeEnd(GameEngineLevel* _NextLevel)
+{
+}
+
+void Spa::LevelSet()
+{
 	if (1 == Set)
 	{
 		Set = 0;
@@ -66,7 +90,6 @@ void Spa::Update(float _DeltaTime)
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
 		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
 	}
-
 	if (1 == AnimationSet)
 	{
 		SHA->SetStartAnimationStart(true);
@@ -77,9 +100,10 @@ void Spa::Update(float _DeltaTime)
 			AnimationSet = 0;
 		}
 	}
+}
 
-	OverlapTime += _DeltaTime;
-
+void Spa::Debugging()
+{
 	if (GameEngineInput::IsDown("ColMapSwitch"))
 	{
 		if (OverlapTime > 0.5f)
@@ -108,20 +132,4 @@ void Spa::Update(float _DeltaTime)
 	{
 		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
 	}
-
-	if (SHA->GetPos().x <= 40.0f)
-	{
-		GameEngineCore::GetInst()->ChangeLevel("Scuttle");
-	}
-}
-
-void Spa::LevelChangeStart(GameEngineLevel* _PrevLevel)
-{
-	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());
-	SetPlayLevelMaxHP(Player::MainPlayer->GetPlayerMaxHP());
-	SetPlayLevelGem(Player::MainPlayer->GetPlayerGem());
-}
-
-void Spa::LevelChangeEnd(GameEngineLevel* _NextLevel)
-{
 }

@@ -33,6 +33,9 @@ protected:
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 
 private:
+	void LevelSet();
+	void Debugging();
+
 	GameEngineSoundPlayer BGMPlayer;
 	GameEngineActor* Shantae = nullptr;
 	GameEngineImage* ColMap = nullptr;

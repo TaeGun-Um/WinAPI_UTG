@@ -57,57 +57,10 @@ void Scuttle::Loading()
 
 void Scuttle::Update(float _DeltaTime)
 {
-	if (1 == Set)
-	{
-		Set = 0;
-
-		Player::MainPlayer = SHA;
-		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
-		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
-		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
-	}
-
-	if (1 == AnimationSet)
-	{
-		SHA->SetStartAnimationStart(true);
-		if (220 <= SHA->GetPos().x)
-		{
-			SHA->SetStartAnimationStart(false);
-			SHA->ChangeState(PlayerState::IDLE);
-			AnimationSet = 0;
-		}
-	}
+	LevelSet();
+	Debugging();
 
 	OverlapTime += _DeltaTime;
-
-	if (GameEngineInput::IsDown("ColMapSwitch"))
-	{
-		if (OverlapTime > 0.5f)
-		{
-			Scuttle_ColMap::ColMap->OnOffSwtich();
-			OverlapTime = 0.0f;
-		}
-	}
-	if (GameEngineInput::IsPress("BeforeLevel"))
-	{
-		if (OverlapTime > 0.5f)
-		{
-			GameEngineCore::GetInst()->ChangeLevel("Boss");
-			OverlapTime = 0.0f;
-		}
-	}
-	if (GameEngineInput::IsPress("NextLevel"))
-	{
-		if (OverlapTime > 0.5f)
-		{
-			GameEngineCore::GetInst()->ChangeLevel("UncleRoom");
-			OverlapTime = 0.0f;
-		}
-	}
-	if (GameEngineInput::IsDown("Back"))
-	{
-		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
-	}
 
 	if (GameEngineInput::IsPress("UpMove"))
 	{
@@ -195,4 +148,60 @@ void Scuttle::LevelChangeStart(GameEngineLevel* _PrevLevel)
 void Scuttle::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	BGMPlayer.Stop();
+}
+
+void Scuttle::LevelSet()
+{
+	if (1 == Set)
+	{
+		Set = 0;
+
+		Player::MainPlayer = SHA;
+		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
+		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
+		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
+	}
+
+	if (1 == AnimationSet)
+	{
+		SHA->SetStartAnimationStart(true);
+		if (220 <= SHA->GetPos().x)
+		{
+			SHA->SetStartAnimationStart(false);
+			SHA->ChangeState(PlayerState::IDLE);
+			AnimationSet = 0;
+		}
+	}
+}
+
+void Scuttle::Debugging()
+{
+	if (GameEngineInput::IsDown("ColMapSwitch"))
+	{
+		if (OverlapTime > 0.5f)
+		{
+			Scuttle_ColMap::ColMap->OnOffSwtich();
+			OverlapTime = 0.0f;
+		}
+	}
+	if (GameEngineInput::IsPress("BeforeLevel"))
+	{
+		if (OverlapTime > 0.5f)
+		{
+			GameEngineCore::GetInst()->ChangeLevel("Boss");
+			OverlapTime = 0.0f;
+		}
+	}
+	if (GameEngineInput::IsPress("NextLevel"))
+	{
+		if (OverlapTime > 0.5f)
+		{
+			GameEngineCore::GetInst()->ChangeLevel("UncleRoom");
+			OverlapTime = 0.0f;
+		}
+	}
+	if (GameEngineInput::IsDown("Back"))
+	{
+		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
+	}
 }

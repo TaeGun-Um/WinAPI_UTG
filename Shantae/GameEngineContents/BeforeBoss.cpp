@@ -57,6 +57,37 @@ void BeforeBoss::Loading()
 
 void BeforeBoss::Update(float _DeltaTime)
 {
+	LevelSet();
+	Debugging();
+
+	OverlapTime += _DeltaTime;
+
+	if (SHA->GetPos().x >= 1250.0f
+		&& PlayerState::MOVE == SHA->GetShantaeState())
+	{
+		SHA->SetAnimationStart(true);
+		SHA->SetMoveSpeed(100.0f);
+		if (true == SHA->LevelChangeAnimation(_DeltaTime))
+		{
+			GameEngineCore::GetInst()->ChangeLevel("Boss");
+		}
+	}
+}
+
+void BeforeBoss::LevelChangeStart(GameEngineLevel* _PrevLevel)
+{
+	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());
+	SetPlayLevelMaxHP(Player::MainPlayer->GetPlayerMaxHP());
+	SetPlayLevelGem(Player::MainPlayer->GetPlayerGem());
+}
+
+void BeforeBoss::LevelChangeEnd(GameEngineLevel* _NextLevel)
+{
+	Move0::FieldBGMPlayer.Stop();
+}
+
+void BeforeBoss::LevelSet()
+{
 	if (1 == Set)
 	{
 		Set = 0;
@@ -77,9 +108,10 @@ void BeforeBoss::Update(float _DeltaTime)
 			AnimationSet = 0;
 		}
 	}
+}
 
-	OverlapTime += _DeltaTime;
-
+void BeforeBoss::Debugging()
+{
 	if (GameEngineInput::IsDown("ColMapSwitch"))
 	{
 		if (OverlapTime > 0.5f)
@@ -108,27 +140,4 @@ void BeforeBoss::Update(float _DeltaTime)
 	{
 		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
 	}
-
-	if (SHA->GetPos().x >= 1250.0f
-		&& PlayerState::MOVE == SHA->GetShantaeState())
-	{
-		SHA->SetAnimationStart(true);
-		SHA->SetMoveSpeed(100.0f);
-		if (true == SHA->LevelChangeAnimation(_DeltaTime))
-		{
-			GameEngineCore::GetInst()->ChangeLevel("Boss");
-		}
-	}
-}
-
-void BeforeBoss::LevelChangeStart(GameEngineLevel* _PrevLevel)
-{
-	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());
-	SetPlayLevelMaxHP(Player::MainPlayer->GetPlayerMaxHP());
-	SetPlayLevelGem(Player::MainPlayer->GetPlayerGem());
-}
-
-void BeforeBoss::LevelChangeEnd(GameEngineLevel* _NextLevel)
-{
-	Move0::FieldBGMPlayer.Stop();
 }

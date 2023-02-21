@@ -27,10 +27,6 @@ void Scarecrow::Start()
 	BodyCollision->SetScale({ 50, 90 });
 	BodyCollision->SetPosition({ 0, -50 });
 
-	// Text(예시; 0206 추가)
-	//GameEngineRender* Render = CreateRender(RenderOrder::Monster);
-	//Render->SetText("1234");
-
 	AnimationRender->ChangeAnimation("Idle_L");
 }
 
@@ -38,6 +34,11 @@ void Scarecrow::Update(float _DeltaTime)
 {
 	CollisionCheck(_DeltaTime);
 	MoveCalculation(_DeltaTime);
+
+	if (true == CreateT)
+	{
+		TextPos = DamageText->GetPosition();
+	}
 }
 void Scarecrow::Render(float _DeltaTime)
 {
@@ -93,6 +94,7 @@ void Scarecrow::CollisionCheck(float _DeltaTime)
 				Hitonoff = false;
 				HitTime = 0.0f;
 				BodyCollision->Off();
+				CreateText();
 			}
 		}
 	}
@@ -103,4 +105,12 @@ void Scarecrow::Kill()
 	GameEngineActor* ColActor = BodyCollision->GetActor();
 	ColActor->Off();
 	ColActor->Death();
+}
+
+void Scarecrow::CreateText()
+{
+	CreateT = true;
+	DamageText = CreateRender(RenderOrder::UI);
+	DamageText->SetText("-5");
+	DamageText->SetPosition(GetPos());
 }

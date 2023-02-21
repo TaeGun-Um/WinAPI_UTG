@@ -1,4 +1,5 @@
 #include "GameEngineRender.h"
+#include "GameEngineCore.h"
 #include <GameEngineBase/GameEngineString.h>
 #include <GameEngineCore/GameEngineResources.h>
 #include "GameEngineActor.h"
@@ -73,6 +74,19 @@ bool GameEngineRender::FrameAnimation::IsEnd()
 	return CurrentIndex == Value;
 }
 
+// 기존의 Render에서 나눠서 추가한 것이기 때문에, 이 부분에서 어떤 Render를 진행할 것인지 처리
+void GameEngineRender::Render(float _DeltaTime)
+{
+	if (RenderText != "")
+	{
+		TextRender(_DeltaTime);
+	}
+	else
+	{
+		ImageRender(_DeltaTime);
+	}
+}
+
 void GameEngineRender::FrameAnimation::Render(float _DeltaTime)
 {
 	CurrentTime -= _DeltaTime;
@@ -95,73 +109,6 @@ void GameEngineRender::FrameAnimation::Render(float _DeltaTime)
 
 		CurrentTime += FrameTime[CurrentIndex];
 	}
-}
-
-// 인자로 전달받은 string_view&를 RenderText로 설정
-void GameEngineRender::SetText(const std::string_view& _Text, const int _TextHeight, const std::string_view& _TextType, const TextAlign _TextAlign, const COLORREF _TextColor)
-{
-	RenderText = _Text;
-	TextHeight = _TextHeight;
-	TextType = _TextType;
-	Align = _TextAlign;
-	TextColor = _TextColor;
-}
-
-// 기존의 Render에서 나눠서 추가한 것이기 때문에, 이 부분에서 어떤 Render를 진행할 것인지 처리
-void GameEngineRender::Render(float _DeltaTime)
-{
-	if (RenderText != "")
-	{
-		TextRender(_DeltaTime);
-	}
-	else
-	{
-		ImageRender(_DeltaTime);
-	}
-}
-
-// RenderText에 저장된 Text를 특정 위치에 출력
-void GameEngineRender::TextRender(float _DeltaTime)
-{
-	float4 CameraPos = float4::Zero;
-
-	if (true == IsEffectCamera)
-	{
-		CameraPos = GetActor()->GetLevel()->GetCameraPos();
-	}
-
-	float4 RenderPos = GetActorPlusPos() - CameraPos;
-
-	HDC hdc = GameEngineWindow::GetDoubleBufferImage()->GetImageDC();
-	HFONT hFont, OldFont;
-	LOGFONTA lf;
-	lf.lfHeight = TextHeight;
-	lf.lfWidth = 0;
-	lf.lfEscapement = 0;
-	lf.lfOrientation = 0;
-	lf.lfWeight = 0;
-	lf.lfItalic = 0;
-	lf.lfUnderline = 0;
-	lf.lfStrikeOut = 0;
-	lf.lfCharSet = HANGEUL_CHARSET;
-	lf.lfOutPrecision = 0;
-	lf.lfClipPrecision = 0;
-	lf.lfQuality = 0;
-	lf.lfPitchAndFamily = VARIABLE_PITCH | FF_ROMAN;
-	lstrcpy(lf.lfFaceName, TEXT(TextType.c_str()));
-	hFont = CreateFontIndirect(&lf);
-	OldFont = static_cast<HFONT>(SelectObject(hdc, hFont));
-
-	SetTextAlign(hdc, static_cast<UINT>(Align));
-	SetTextColor(hdc, TextColor);
-	SetBkMode(hdc, TRANSPARENT);
-
-	TextOutA(GameEngineWindow::GetDoubleBufferImage()->GetImageDC(), RenderPos.ix(), RenderPos.iy(), RenderText.c_str(), static_cast<int>(RenderText.size()));
-
-	SelectObject(hdc, OldFont);
-	DeleteObject(hFont);
-
-	return;
 }
 
 // Render할 Image의 Pos, Scale를 빈버퍼에 transcopy
@@ -306,4 +253,83 @@ void GameEngineRender::ChangeAnimation(const std::string_view& _AnimationName, b
 
 	// 애니메이션 시간 변경
 	CurrentAnimation->CurrentTime = CurrentAnimation->FrameTime[CurrentAnimation->CurrentIndex];
+}
+
+/////////////////////////////////// Text ///////////////////////////////////
+
+// 인자로 전달받은 string_view&를 RenderText로 설정
+void GameEngineRender::SetText(const std::string_view& _Text, const int _TextHeight, const std::string_view& _TextType, const TextAlign _TextAlign, const COLORREF _TextColor)
+{
+	RenderText = _Text;
+	TextHeight = _TextHeight;
+	TextType = _TextType;
+	Align = _TextAlign;
+	TextColor = _TextColor;
+}
+
+// RenderText에 저장된 Text를 특정 위치에 출력
+void GameEngineRender::TextRender(float _DeltaTime)
+{
+	float4 CameraPos = float4::Zero;
+
+	if (true == IsEffectCamera)
+	{
+		CameraPos = GetActor()->GetLevel()->GetCameraPos();
+	}
+
+	float4 RenderPos = GetActorPlusPos() - CameraPos;
+
+	HDC hdc = GameEngineWindow::GetDoubleBufferImage()->GetImageDC();
+	HFONT hFont, OldFont;
+	LOGFONTA lf;
+	lf.lfHeight = TextHeight;
+	lf.lfWidth = 0;
+	lf.lfEscapement = 0;
+	lf.lfOrientation = 0;
+	lf.lfWeight = 0;
+	lf.lfItalic = 0;
+	lf.lfUnderline = 0;
+	lf.lfStrikeOut = 0;
+	lf.lfCharSet = HANGEUL_CHARSET;
+	lf.lfOutPrecision = 0;
+	lf.lfClipPrecision = 0;
+	lf.lfQuality = 0;
+	lf.lfPitchAndFamily = VARIABLE_PITCH | FF_ROMAN;
+	lstrcpy(lf.lfFaceName, TEXT(TextType.c_str()));
+	hFont = CreateFontIndirect(&lf);
+	OldFont = static_cast<HFONT>(SelectObject(hdc, hFont));
+
+	SetTextAlign(hdc, static_cast<UINT>(Align));
+	SetTextColor(hdc, TextColor);
+	SetBkMode(hdc, TRANSPARENT);
+
+	RECT Rect;
+	Rect.left = RenderPos.ix();
+	Rect.top = RenderPos.iy();
+	Rect.right = RenderPos.ix() + TextBoxScale.ix();
+	Rect.bottom = RenderPos.iy() + TextBoxScale.iy();
+
+	if (GameEngineCore::GetInst()->IsDebug())
+	{
+		HDC DoubleDC = GameEngineWindow::GetDoubleBufferImage()->GetImageDC();
+		HBRUSH myBrush = static_cast<HBRUSH>(GetStockObject(NULL_BRUSH));
+		HBRUSH oldBrush = static_cast<HBRUSH>(SelectObject(DoubleDC, myBrush));
+		HPEN myPen = CreatePen(PS_DASH, 0, RGB(0, 0, 0));
+		HPEN oldPen = static_cast<HPEN>(SelectObject(DoubleDC, myPen));
+		Rectangle(GameEngineWindow::GetDoubleBufferImage()->GetImageDC(), Rect.left, Rect.top, Rect.right, Rect.bottom);
+
+		SelectObject(DoubleDC, oldBrush);
+		DeleteObject(myBrush);
+		SelectObject(DoubleDC, oldPen);
+		DeleteObject(myPen);
+	}
+
+	DrawTextA(GameEngineWindow::GetDoubleBufferImage()->GetImageDC(), RenderText.c_str(), static_cast<int>(RenderText.size()), &Rect, static_cast<UINT>(Align));
+
+	// TextOutA(GameEngineWindow::GetDoubleBufferImage()->GetImageDC(), RenderPos.ix(), RenderPos.iy(), RenderText.c_str(), static_cast<int>(RenderText.size()));
+
+	SelectObject(hdc, OldFont);
+	DeleteObject(hFont);
+
+	return;
 }

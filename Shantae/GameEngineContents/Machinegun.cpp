@@ -115,57 +115,10 @@ void Machinegun::Loading()
 
 void Machinegun::Update(float _DeltaTime)
 {
-	if (1 == Set)
-	{
-		Set = 0;
-
-		Player::MainPlayer = SHA;
-		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
-		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
-		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
-	}
-
-	if (1 == AnimationSet)
-	{
-		SHA->SetStartAnimationStart(true);
-		if (200 <= SHA->GetPos().x)
-		{
-			SHA->SetStartAnimationStart(false);
-			SHA->ChangeState(PlayerState::IDLE);
-			AnimationSet = 0;
-		}
-	}
+	LevelSet();
+	Debugging();
 
 	OverlapTime += _DeltaTime;
-
-	if (GameEngineInput::IsDown("ColMapSwitch"))
-	{
-		if (OverlapTime > 0.5f)
-		{
-			Machinegun_ColMap::ColMap->OnOffSwtich();
-			OverlapTime = 0.0f;
-		}
-	}
-	if (GameEngineInput::IsPress("BeforeLevel"))
-	{
-		if (OverlapTime > 0.5f)
-		{
-			GameEngineCore::GetInst()->ChangeLevel("Stair");
-			OverlapTime = 0.0f;
-		}
-	}
-	if (GameEngineInput::IsPress("NextLevel"))
-	{
-		if (OverlapTime > 0.5f)
-		{
-			GameEngineCore::GetInst()->ChangeLevel("BoomBridge");
-			OverlapTime = 0.0f;
-		}
-	}
-	if (GameEngineInput::IsDown("Back"))
-	{
-		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
-	}
 
 	if (SHA->GetPos().x >= 11250.0f)
 	{
@@ -202,4 +155,60 @@ void Machinegun::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 void Machinegun::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
+}
+
+void Machinegun::LevelSet()
+{
+	if (1 == Set)
+	{
+		Set = 0;
+
+		Player::MainPlayer = SHA;
+		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
+		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
+		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
+	}
+
+	if (1 == AnimationSet)
+	{
+		SHA->SetStartAnimationStart(true);
+		if (200 <= SHA->GetPos().x)
+		{
+			SHA->SetStartAnimationStart(false);
+			SHA->ChangeState(PlayerState::IDLE);
+			AnimationSet = 0;
+		}
+	}
+}
+
+void Machinegun::Debugging()
+{
+	if (GameEngineInput::IsDown("ColMapSwitch"))
+	{
+		if (OverlapTime > 0.5f)
+		{
+			Machinegun_ColMap::ColMap->OnOffSwtich();
+			OverlapTime = 0.0f;
+		}
+	}
+	if (GameEngineInput::IsPress("BeforeLevel"))
+	{
+		if (OverlapTime > 0.5f)
+		{
+			GameEngineCore::GetInst()->ChangeLevel("Stair");
+			OverlapTime = 0.0f;
+		}
+	}
+	if (GameEngineInput::IsPress("NextLevel"))
+	{
+		if (OverlapTime > 0.5f)
+		{
+			GameEngineCore::GetInst()->ChangeLevel("BoomBridge");
+			OverlapTime = 0.0f;
+		}
+	}
+	if (GameEngineInput::IsDown("Back"))
+	{
+		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
+	}
 }

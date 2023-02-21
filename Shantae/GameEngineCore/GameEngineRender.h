@@ -7,9 +7,9 @@
 
 enum class TextAlign
 {
-	Left = TA_LEFT,
-	Right = TA_RIGHT,
-	Center = TA_CENTER
+	Left = DT_LEFT,
+	Right = DT_RIGHT,
+	Center = DT_CENTER
 };
 
 // 최신문법 FrameAnimation의 인자들
@@ -106,11 +106,6 @@ public:
 
 	void SetOrder(int _Order) override;
 
-	inline int GetTextHeight()
-	{
-		return TextHeight;
-	}
-
 	// 알파블랜더
 	void SetAlpha(int _Alpha)
 	{
@@ -119,6 +114,11 @@ public:
 
 	// 인자로 전달받은 string_view&를 RenderText로 설정
 	void SetText(const std::string_view& _Text, const int _TextHeight = 20, const std::string_view& _TextType = "굴림", const TextAlign _TextAlign = TextAlign::Center, const COLORREF _TextColor = RGB(0, 0, 0));
+
+	inline int GetTextHeight()
+	{
+		return TextHeight;
+	}
 
 protected:
 
@@ -134,7 +134,6 @@ private:
 
 	// Render할 Image의 Pos, Scale를 빈버퍼에 transcopy
 	void Render(float _DeltaTime);       // 조건에 따라 TextRender, ImageRender 중 하나 선택
-	void TextRender(float _DeltaTime);   // Text를 특정 위치에 출력
 	void ImageRender(float _DeltaTime);  // Image를 transcopy
 
 	class FrameAnimation
@@ -165,11 +164,14 @@ private:
 	/// <summary>
 	/// TextRender
 	/// </summary>
+	void TextRender(float _DeltaTime);   // Text를 특정 위치에 출력
+
 	std::string RenderText = std::string();
 	int TextHeight = 0;
 	std::string TextType = std::string();
 	TextAlign Align = TextAlign::Left;
 	COLORREF TextColor = RGB(0, 0, 0);
+	float4 TextBoxScale;
 
 };
 

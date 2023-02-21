@@ -40,10 +40,10 @@ void Boss::Loading()
 	CreateActor<Boss_ColMap>();
 
 	// Monster
-	//Tank = CreateActor<Boss_Tank>();
-	//BOS = dynamic_cast<Boss_Tank*>(Tank);
-	//Tank->SetPos({ 1200, 750 });
-	//BOS->SetColMap(ColMap);
+	Tank = CreateActor<Boss_Tank>();
+	BOS = dynamic_cast<Boss_Tank*>(Tank);
+	Tank->SetPos({ 1200, 750 });
+	BOS->SetColMap(ColMap);
 
 	// UI
 	CreateActor<GemWindow>();
@@ -63,57 +63,10 @@ void Boss::Loading()
 
 void Boss::Update(float _DeltaTime)
 {
-	if (1 == Set)
-	{
-		Set = 0;
-
-		Player::MainPlayer = SHA;
-		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
-		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
-		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
-	}
-
-	if (1 == AnimationSet)
-	{
-		SHA->SetStartAnimationStart(true);
-		if (255 <= SHA->GetPos().x)
-		{
-			SHA->SetStartAnimationStart(false);
-			SHA->ChangeState(PlayerState::IDLE);
-			AnimationSet = 0;
-		}
-	}
+	LevelSet();
+	Debugging();
 
 	OverlapTime += _DeltaTime;
-
-	if (GameEngineInput::IsDown("ColMapSwitch"))
-	{
-		if (OverlapTime > 0.5f)
-		{
-			Boss_ColMap::ColMap->OnOffSwtich();
-			OverlapTime = 0.0f;
-		}
-	}
-	if (GameEngineInput::IsPress("BeforeLevel"))
-	{
-		if (OverlapTime > 0.5f)
-		{
-			GameEngineCore::GetInst()->ChangeLevel("BeforeBoss");
-			OverlapTime = 0.0f;
-		}
-	}
-	if (GameEngineInput::IsPress("NextLevel"))
-	{
-		if (OverlapTime > 0.5f)
-		{
-			GameEngineCore::GetInst()->ChangeLevel("Scuttle");
-			OverlapTime = 0.0f;
-		}
-	}
-	if (GameEngineInput::IsDown("Back"))
-	{
-		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
-	}
 
 	if (SHA->GetPos().x >= 1000.0f)
 	{
@@ -155,4 +108,60 @@ void Boss::LevelChangeStart(GameEngineLevel* _PrevLevel)
 void Boss::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	BGMPlayer.Stop();
+}
+
+void Boss::LevelSet()
+{
+	if (1 == Set)
+	{
+		Set = 0;
+
+		Player::MainPlayer = SHA;
+		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
+		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
+		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
+	}
+
+	if (1 == AnimationSet)
+	{
+		SHA->SetStartAnimationStart(true);
+		if (255 <= SHA->GetPos().x)
+		{
+			SHA->SetStartAnimationStart(false);
+			SHA->ChangeState(PlayerState::IDLE);
+			AnimationSet = 0;
+		}
+	}
+}
+
+void Boss::Debugging()
+{
+	if (GameEngineInput::IsDown("ColMapSwitch"))
+	{
+		if (OverlapTime > 0.5f)
+		{
+			Boss_ColMap::ColMap->OnOffSwtich();
+			OverlapTime = 0.0f;
+		}
+	}
+	if (GameEngineInput::IsPress("BeforeLevel"))
+	{
+		if (OverlapTime > 0.5f)
+		{
+			GameEngineCore::GetInst()->ChangeLevel("BeforeBoss");
+			OverlapTime = 0.0f;
+		}
+	}
+	if (GameEngineInput::IsPress("NextLevel"))
+	{
+		if (OverlapTime > 0.5f)
+		{
+			GameEngineCore::GetInst()->ChangeLevel("Scuttle");
+			OverlapTime = 0.0f;
+		}
+	}
+	if (GameEngineInput::IsDown("Back"))
+	{
+		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
+	}
 }

@@ -73,59 +73,10 @@ void HouseFront::Loading()
 
 void HouseFront::Update(float _DeltaTime)
 {
-	if (1 == Set)
-	{
-		Set = 0;
-
-		Player::MainPlayer = SHA;
-		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
-		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
-		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
-	}
-
-	if (1 == AnimationSet)
-	{
-		SHA->SetStartAnimationStart(true);
-		if (640 <= SHA->GetPos().x)
-		{
-			SHA->SetStartAnimationStart(false);
-			SHA->ChangeState(PlayerState::IDLE);
-			AnimationSet = 0;
-		}
-	}
+	LevelSet();
+	Debugging();
 
 	OverlapTime += _DeltaTime;
-
-	if (GameEngineInput::IsDown("ColMapSwitch"))
-	{
-		if (OverlapTime > 0.5f)
-		{
-			HouseFront_ColMap::ColMap->OnOffSwtich();
-			OverlapTime = 0.0f;
-		}
-	}
-	if (GameEngineInput::IsPress("BeforeLevel"))
-	{
-		if (OverlapTime > 0.5f)
-		{
-			GameEngineCore::GetInst()->ChangeLevel("House");
-			OverlapTime = 0.0f;
-		}
-	}
-	if (GameEngineInput::IsPress("NextLevel"))
-	{
-		if (OverlapTime > 0.5f)
-		{
-			GameEngineCore::GetInst()->ChangeLevel("Move0");
-			OverlapTime = 0.0f;
-		}
-	}
-	if (GameEngineInput::IsDown("Back"))
-	{
-		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
-	}
-
-	PlayerState Animation = PlayerState::REST;
 
 	if (SHA->GetPos().x >= 1250.0f
 		&& PlayerState::MOVE == SHA->GetShantaeState())
@@ -149,4 +100,60 @@ void HouseFront::LevelChangeStart(GameEngineLevel* _PrevLevel)
 void HouseFront::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	
+}
+
+void HouseFront::LevelSet()
+{
+	if (1 == Set)
+	{
+		Set = 0;
+
+		Player::MainPlayer = SHA;
+		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
+		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
+		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
+	}
+
+	if (1 == AnimationSet)
+	{
+		SHA->SetStartAnimationStart(true);
+		if (640 <= SHA->GetPos().x)
+		{
+			SHA->SetStartAnimationStart(false);
+			SHA->ChangeState(PlayerState::IDLE);
+			AnimationSet = 0;
+		}
+	}
+}
+
+void HouseFront::Debugging()
+{
+	if (GameEngineInput::IsDown("ColMapSwitch"))
+	{
+		if (OverlapTime > 0.5f)
+		{
+			HouseFront_ColMap::ColMap->OnOffSwtich();
+			OverlapTime = 0.0f;
+		}
+	}
+	if (GameEngineInput::IsDown("BeforeLevel"))
+	{
+		if (OverlapTime > 0.5f)
+		{
+			GameEngineCore::GetInst()->ChangeLevel("House");
+			OverlapTime = 0.0f;
+		}
+	}
+	if (GameEngineInput::IsDown("NextLevel"))
+	{
+		if (OverlapTime > 0.5f)
+		{
+			GameEngineCore::GetInst()->ChangeLevel("Move0");
+			OverlapTime = 0.0f;
+		}
+	}
+	if (GameEngineInput::IsDown("Back"))
+	{
+		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
+	}
 }

@@ -53,7 +53,7 @@ void TestLevel::Loading()
 	SHA = dynamic_cast<Player*>(Shantae);
 	SHA->SetColMap(ColMap);
 	SHA->SetPos({ 300, 850 });
-	Shantae->GetLevel()->SetCameraPos({ 0, 200 });
+	Shantae->GetLevel()->SetCameraPos({ -300, 200 });
 
 	// 罚待备开 soldier 积己
 	//srand(static_cast<unsigned int>(time(nullptr)));
@@ -67,23 +67,23 @@ void TestLevel::Loading()
 
 void TestLevel::Update(float _DeltaTime)
 {
-	if (SHA->GetPos().x >= 4900.0f)
-	{
-		SHA->CameraMoveFalse();
-	}
-	else if (SHA->GetPos().x >= 640.0f)
-	{
-		SHA->CameraMoveTrue();
-	}
-	else if (SHA->GetPos().x <= 640.0f)
-	{
-		SHA->CameraMoveFalse();
-		Shantae->GetLevel()->SetCameraPos({ 0, 200 });
-	}
-	if (GameEngineInput::IsDown("Back"))
-	{
-		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
-	}
+	LevelSet();
+	Debugging();
+
+	//if (SHA->GetPos().x >= 4900.0f)
+	//{
+	//	SHA->CameraMoveFalse();
+	//}
+	//else if (SHA->GetPos().x >= 640.0f)
+	//{
+	//	SHA->CameraMoveTrue();
+	//}
+	//else if (SHA->GetPos().x <= 640.0f)
+	//{
+	//	SHA->CameraMoveFalse();
+	//	Shantae->GetLevel()->SetCameraPos({ 0, 200 });
+	//}
+
 }
 
 void TestLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
@@ -96,4 +96,16 @@ void TestLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 void TestLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	//BGMPlayer.Stop();
+}
+
+void TestLevel::LevelSet()
+{
+}
+
+void TestLevel::Debugging()
+{
+	if (GameEngineInput::IsDown("Back"))
+	{
+		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
+	}
 }

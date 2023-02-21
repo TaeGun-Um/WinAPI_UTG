@@ -71,6 +71,55 @@ void Stair::Loading()
 
 void Stair::Update(float _DeltaTime)
 {
+	LevelSet();
+	Debugging();
+
+	if (3450 > SHA->GetPos().y)
+	{
+		YCamera = true;
+	}
+	if (3450 <= SHA->GetPos().y)
+	{
+		YCamera = false;
+	}
+	if (900 >= SHA->GetPos().y)
+	{
+		YCamera = false;
+	}
+	
+	if (true == YCamera)
+	{
+		float y = SHA->GetPos().y - 460;
+		SHA->GetLevel()->SetCameraPos({ 200, y });
+	}
+
+	OverlapTime += _DeltaTime;
+
+	if (SHA->GetPos().x >= 1435.0f
+		&& PlayerState::MOVE == SHA->GetShantaeState())
+	{
+		SHA->SetAnimationStart(true);
+		SHA->SetMoveSpeed(100.0f);
+		if (true == SHA->LevelChangeAnimation(_DeltaTime))
+		{
+			GameEngineCore::GetInst()->ChangeLevel("Machinegun");
+		}
+	}
+}
+
+void Stair::LevelChangeStart(GameEngineLevel* _PrevLevel)
+{
+	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());
+	SetPlayLevelMaxHP(Player::MainPlayer->GetPlayerMaxHP());
+	SetPlayLevelGem(Player::MainPlayer->GetPlayerGem());
+}
+
+void Stair::LevelChangeEnd(GameEngineLevel* _NextLevel)
+{
+}
+
+void Stair::LevelSet()
+{
 	if (1 == Set)
 	{
 		Set = 0;
@@ -91,29 +140,10 @@ void Stair::Update(float _DeltaTime)
 			AnimationSet = 0;
 		}
 	}
+}
 
-	if (3450 > SHA->GetPos().y)
-	{
-		YCamera = true;
-	}
-	if (3450 <= SHA->GetPos().y)
-	{
-		YCamera = false;
-	}
-	if (900 >= SHA->GetPos().y)
-	{
-		YCamera = false;
-	}
-	
-	if (true == YCamera)
-	{
-		// SHA Pos 200 3550
-		float y = SHA->GetPos().y - 460;
-		SHA->GetLevel()->SetCameraPos({ 200, y });
-	}
-
-	OverlapTime += _DeltaTime;
-
+void Stair::Debugging()
+{
 	if (GameEngineInput::IsDown("ColMapSwitch"))
 	{
 		if (OverlapTime > 0.5f)
@@ -142,26 +172,4 @@ void Stair::Update(float _DeltaTime)
 	{
 		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
 	}
-
-	if (SHA->GetPos().x >= 1435.0f
-		&& PlayerState::MOVE == SHA->GetShantaeState())
-	{
-		SHA->SetAnimationStart(true);
-		SHA->SetMoveSpeed(100.0f);
-		if (true == SHA->LevelChangeAnimation(_DeltaTime))
-		{
-			GameEngineCore::GetInst()->ChangeLevel("Machinegun");
-		}
-	}
-}
-
-void Stair::LevelChangeStart(GameEngineLevel* _PrevLevel)
-{
-	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());
-	SetPlayLevelMaxHP(Player::MainPlayer->GetPlayerMaxHP());
-	SetPlayLevelGem(Player::MainPlayer->GetPlayerGem());
-}
-
-void Stair::LevelChangeEnd(GameEngineLevel* _NextLevel)
-{
 }

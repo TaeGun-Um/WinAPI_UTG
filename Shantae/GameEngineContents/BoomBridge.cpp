@@ -70,45 +70,24 @@ bool ch = true;
 
 void BoomBridge::Update(float _DeltaTime)
 {
+	LevelSet();
+	Debugging();
+
 	if (0 == TimerCol1->GetTimerSet())
 	{
 		SetTimerRenewal_One(TimerCol1->GetAccTime());
 	}
-
 	if (0 == TimerCol2->GetTimerSet())
 	{
 		SetTimerRenewal_Two(TimerCol2->GetAccTime());
 	}
-	
 	if (0 == TimerCol3->GetTimerSet())
 	{
 		SetTimerRenewal_Three(TimerCol3->GetAccTime());
 	}
-
 	if (0 == TimerCol4->GetTimerSet())
 	{
 		SetTimerRenewal_Four(TimerCol4->GetAccTime());
-	}
-
-	if (1 == Set)
-	{
-		Set = 0;
-
-		Player::MainPlayer = SHA;
-		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
-		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
-		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
-	}
-
-	if (1 == AnimationSet)
-	{
-		SHA->SetStartAnimationStart(true);
-		if (495 <= SHA->GetPos().x)
-		{
-			SHA->SetStartAnimationStart(false);
-			SHA->ChangeState(PlayerState::IDLE);
-			AnimationSet = 0;
-		}
 	}
 
 	if (6345 <= SHA->GetPos().y)
@@ -133,6 +112,55 @@ void BoomBridge::Update(float _DeltaTime)
 
 	OverlapTime += _DeltaTime;
 
+	if (SHA->GetPos().x >= 1660.0f
+		&& PlayerState::MOVE == SHA->GetShantaeState())
+	{
+		SHA->SetAnimationStart(true);
+		SHA->SetMoveSpeed(100.0f);
+		if (true == SHA->LevelChangeAnimation(_DeltaTime))
+		{
+			GameEngineCore::GetInst()->ChangeLevel("BeforeBoss");
+		}
+	}
+}
+
+void BoomBridge::LevelChangeStart(GameEngineLevel* _PrevLevel)
+{
+	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());
+	SetPlayLevelMaxHP(Player::MainPlayer->GetPlayerMaxHP());
+	SetPlayLevelGem(Player::MainPlayer->GetPlayerGem());
+}
+
+void BoomBridge::LevelChangeEnd(GameEngineLevel* _NextLevel)
+{
+}
+
+void BoomBridge::LevelSet()
+{
+	if (1 == Set)
+	{
+		Set = 0;
+
+		Player::MainPlayer = SHA;
+		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
+		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
+		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
+	}
+
+	if (1 == AnimationSet)
+	{
+		SHA->SetStartAnimationStart(true);
+		if (495 <= SHA->GetPos().x)
+		{
+			SHA->SetStartAnimationStart(false);
+			SHA->ChangeState(PlayerState::IDLE);
+			AnimationSet = 0;
+		}
+	}
+}
+
+void BoomBridge::Debugging()
+{
 	if (GameEngineInput::IsDown("ColMapSwitch"))
 	{
 		if (OverlapTime > 0.5f)
@@ -161,28 +189,6 @@ void BoomBridge::Update(float _DeltaTime)
 	{
 		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
 	}
-
-	if (SHA->GetPos().x >= 1660.0f
-		&& PlayerState::MOVE == SHA->GetShantaeState())
-	{
-		SHA->SetAnimationStart(true);
-		SHA->SetMoveSpeed(100.0f);
-		if (true == SHA->LevelChangeAnimation(_DeltaTime))
-		{
-			GameEngineCore::GetInst()->ChangeLevel("BeforeBoss");
-		}
-	}
-}
-
-void BoomBridge::LevelChangeStart(GameEngineLevel* _PrevLevel)
-{
-	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());
-	SetPlayLevelMaxHP(Player::MainPlayer->GetPlayerMaxHP());
-	SetPlayLevelGem(Player::MainPlayer->GetPlayerGem());
-}
-
-void BoomBridge::LevelChangeEnd(GameEngineLevel* _NextLevel)
-{
 }
 
 void BoomBridge::Set_One()

@@ -59,6 +59,35 @@ void Shop::Loading()
 
 void Shop::Update(float _DeltaTime)
 {
+	LevelSet();
+	Debugging();
+
+	OverlapTime += _DeltaTime;
+
+	if (SHA->GetPos().x <= 50.0f)
+	{
+		GameEngineCore::GetInst()->ChangeLevel("Scuttle");
+	}
+}
+
+void Shop::LevelChangeStart(GameEngineLevel* _PrevLevel)
+{
+	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Customer.mp3");
+	BGMPlayer.Volume(0.1f);
+	BGMPlayer.LoopCount(100);
+
+	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());
+	SetPlayLevelMaxHP(Player::MainPlayer->GetPlayerMaxHP());
+	SetPlayLevelGem(Player::MainPlayer->GetPlayerGem());
+}
+
+void Shop::LevelChangeEnd(GameEngineLevel* _NextLevel)
+{
+	BGMPlayer.Stop();
+}
+
+void Shop::LevelSet()
+{
 	if (1 == Set)
 	{
 		Set = 0;
@@ -68,7 +97,6 @@ void Shop::Update(float _DeltaTime)
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
 		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
 	}
-
 	if (1 == AnimationSet)
 	{
 		SHA->SetStartAnimationStart(true);
@@ -79,9 +107,10 @@ void Shop::Update(float _DeltaTime)
 			AnimationSet = 0;
 		}
 	}
+}
 
-	OverlapTime += _DeltaTime;
-
+void Shop::Debugging()
+{
 	if (GameEngineInput::IsDown("ColMapSwitch"))
 	{
 		if (OverlapTime > 0.5f)
@@ -110,25 +139,4 @@ void Shop::Update(float _DeltaTime)
 	{
 		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
 	}
-
-	if (SHA->GetPos().x <= 50.0f)
-	{
-		GameEngineCore::GetInst()->ChangeLevel("Scuttle");
-	}
-}
-
-void Shop::LevelChangeStart(GameEngineLevel* _PrevLevel)
-{
-	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Customer.mp3");
-	BGMPlayer.Volume(0.1f);
-	BGMPlayer.LoopCount(100);
-
-	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());
-	SetPlayLevelMaxHP(Player::MainPlayer->GetPlayerMaxHP());
-	SetPlayLevelGem(Player::MainPlayer->GetPlayerGem());
-}
-
-void Shop::LevelChangeEnd(GameEngineLevel* _NextLevel)
-{
-	BGMPlayer.Stop();
 }
