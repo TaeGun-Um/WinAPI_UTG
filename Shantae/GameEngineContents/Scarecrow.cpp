@@ -35,6 +35,11 @@ void Scarecrow::Update(float _DeltaTime)
 	CollisionCheck(_DeltaTime);
 	MoveCalculation(_DeltaTime);
 
+	if (true == Blinker)
+	{
+		AlphaBlinker(_DeltaTime);
+	}
+
 	if (true == CreateT)
 	{
 		TextPos = DamageText->GetPosition();
@@ -94,6 +99,7 @@ void Scarecrow::CollisionCheck(float _DeltaTime)
 				Hitonoff = false;
 				HitTime = 0.0f;
 				BodyCollision->Off();
+				Blinker = true;
 				CreateText();
 			}
 		}
@@ -113,4 +119,31 @@ void Scarecrow::CreateText()
 	DamageText = CreateRender(RenderOrder::UI);
 	DamageText->SetText("-5");
 	DamageText->SetPosition(GetPos());
+}
+
+void Scarecrow::AlphaBlinker(float _DeltaTime)
+{
+	BlinkTime += _DeltaTime;
+
+	if (true == Blinker)
+	{
+		if (0.15f <= BlinkTime)
+		{
+			BlinkTime = 0.0f;
+			Blinker = false;
+			AnimationRender->SetAlpha(255);
+		}
+		if (0.10f <= BlinkTime && true == Blinker)
+		{
+			AnimationRender->SetAlpha(120);
+		}
+		else if (0.05f <= BlinkTime && true == Blinker)
+		{
+			AnimationRender->SetAlpha(180);
+		}
+		else if (0.05f >= BlinkTime && true == Blinker)
+		{
+			AnimationRender->SetAlpha(240);
+		}
+	}
 }

@@ -47,12 +47,15 @@ private:
 
 	bool Hitonoff = false;
 	bool CreateT = false;
+	bool Blinker = false;
 
 	float HitTime = 0.0f;
+	float BlinkTime = 0.0f;
 
 	void CollisionCheck(float _DeltaTime);
 	void MoveCalculation(float _DeltaTime);
 	void Kill();
 	void CreateText();
+	void AlphaBlinker(float _DeltaTime);
 };
 
