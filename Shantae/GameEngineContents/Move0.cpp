@@ -46,19 +46,19 @@ void Move0::Loading()
 	// ½ºÆ÷³Ê»ç¿ë¹ý   ½ºÆ÷³Ê À§Ä¡    ¸÷ÀÌ¸§    ÄÝ¸Ê    ¸÷ Á¨ À§Ä¡   ¸®Á¨½Ã°£
 	// CreateSpawner({ 250, 300 }, "blue", ColMap, { 350, 590 }, 5);
 
-	CreateSpawner({ 1860, 0 }, "blue", ColMap, { 3251, 345 }, 5);
-	CreateSpawner({ 3852, 0 }, "blue", ColMap, { 4821, 294 }, 5);
-	CreateSpawner({ 4423, 0 }, "blue", ColMap, { 5400, 640 }, 5);
+	CreateSpawner({ 1860, 0 }, "blue", ColMap, { 3251, 342 }, 5);
+	CreateSpawner({ 3852, 0 }, "blue", ColMap, { 4821, 291 }, 5);
+	CreateSpawner({ 4423, 0 }, "blue", ColMap, { 5400, 637 }, 5);
 	MonsterSpawner* s1 = CreateSpawner({ 6986, 0 }, "Red", ColMap, { 7357, 900 }, 5); // am
 	s1->SetAmbushTrue();
 	CreateSpawner({ 7350, 0 }, "blue", ColMap, { 8400, 544 }, 5);
 	MonsterSpawner* s2 = CreateSpawner({ 8340, 0 }, "red", ColMap, { 8590, 900 }, 5); // am
 	s2->SetAmbushTrue();
-	CreateSpawner({ 8590, 0 }, "blue", ColMap, { 9580, 640 }, 5);
-	CreateSpawner({ 8640, 0 }, "blue", ColMap, { 9720, 640 }, 5);
-	CreateSpawner({ 8690, 0 }, "blue", ColMap, { 9930, 640 }, 5);
-	CreateSpawner({ 8740, 0 }, "blue", ColMap, { 10040, 640 }, 5);
-	CreateSpawner({ 10110, 0 }, "blue", ColMap, { 11225, 595 }, 5);
+	CreateSpawner({ 8590, 0 }, "blue", ColMap, { 9580, 637 }, 5);
+	CreateSpawner({ 8640, 0 }, "blue", ColMap, { 9720, 637 }, 5);
+	CreateSpawner({ 8690, 0 }, "blue", ColMap, { 9930, 637 }, 5);
+	CreateSpawner({ 8740, 0 }, "blue", ColMap, { 10040, 637 }, 5);
+	CreateSpawner({ 10110, 0 }, "blue", ColMap, { 11225, 592 }, 5);
 
 	// UI
 	CreateActor<GemWindow>();

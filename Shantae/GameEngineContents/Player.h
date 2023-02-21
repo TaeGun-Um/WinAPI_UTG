@@ -165,6 +165,7 @@ private:
 	void CollisionCheck(float _DeltaTime);
 	void Shoot();
 	void Kill();
+	void CameraShake(float _DeltaTime);
 	void AlphaBlinker(float _DeltaTime);
 	void CreateDummy();
 	void CreateImpact();
@@ -202,11 +203,13 @@ private:
 	float IdleTime = 0.0f;
 	float HitTime = 0.0f;
 	float BlinkTime = 0.0f;
+	float ShakingTime = 0.0f;
 
 	int Pass = 1;
 	int MaxHP = 8;
 	int HP = 8;
 	int PlayerGem = 0;
+	int ShakingCount = 0;
 
 	bool FreeMove = false;
 	bool ShantaeMove = true;
@@ -226,6 +229,7 @@ private:
 	bool HitTimeCheck = false;
 	bool IsJumpHit = false;
 	bool Blinker = false;
+	bool CameraShaking = false;
 
 	bool CollisionGround = false;
 

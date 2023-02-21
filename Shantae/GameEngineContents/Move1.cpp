@@ -52,14 +52,14 @@ void Move1::Loading()
 	sss->SetPos({ 1767, 288 });
 	sss->SetColMap(ColMap);
 
-	CreateSpawner({ 2300, 0 }, "black", ColMap, { 3145, 654 }, 6);
-	CreateSpawner({ 2300, 0 }, "Bomberman", ColMap, { 3277, 348 }, 5);
-	CreateSpawner({ 3600, 0 }, "black", ColMap, { 4575, 653 }, 5);
-	CreateSpawner({ 5850, 0 }, "Bomberman", ColMap, { 6755, 450 }, 5);
-	CreateSpawner({ 7845, 0 }, "Bomberman", ColMap, { 8718, 384 }, 5);
-	CreateSpawner({ 7845, 0 }, "Bomberman", ColMap, { 9278, 548 }, 5);
-	CreateSpawner({ 7845, 0 }, "Bomberman", ColMap, { 9932, 285 }, 5);
-	CreateSpawner({ 9465, 0 }, "Bomberman", ColMap, { 10545, 449 }, 5);
+	CreateSpawner({ 2300, 0 }, "black", ColMap, { 3145, 651 }, 6);
+	CreateSpawner({ 2300, 0 }, "Bomberman", ColMap, { 3277, 345 }, 5);
+	CreateSpawner({ 3600, 0 }, "black", ColMap, { 4575, 650 }, 5);
+	CreateSpawner({ 5850, 0 }, "Bomberman", ColMap, { 6755, 447 }, 5);
+	CreateSpawner({ 7845, 0 }, "Bomberman", ColMap, { 8718, 381 }, 5);
+	CreateSpawner({ 7845, 0 }, "Bomberman", ColMap, { 9278, 545 }, 5);
+	CreateSpawner({ 7845, 0 }, "Bomberman", ColMap, { 9932, 282 }, 5);
+	CreateSpawner({ 9465, 0 }, "Bomberman", ColMap, { 10545, 446 }, 5);
 
 	// UI
 	CreateActor<GemWindow>();

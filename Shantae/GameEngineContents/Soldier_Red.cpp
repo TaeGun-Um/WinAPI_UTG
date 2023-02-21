@@ -116,26 +116,14 @@ void Soldier_Red::MoveCalculation(float _DeltaTime)
 
 		//////// RGB(0, 248, 0) ////////
 		// аб©Л Turn
-		ForwardPosR_Low = GetPos() + (float4::Up * 5) + (float4::Right * 35);
 		ForwardPosL_Low = GetPos() + (float4::Up * 5) + (float4::Left * 35);
-		ForwardPosR_High = GetPos() + (float4::Up * 100) + (float4::Right * 35);
-		ForwardPosL_High = GetPos() + (float4::Up * 100) + (float4::Left * 35);
+		ForwardPosL_High = GetPos() + (float4::Up * 50) + (float4::Left * 35);
+		ForwardPosR_Low = GetPos() + (float4::Up * 5) + (float4::Right * 35);
+		ForwardPosR_High = GetPos() + (float4::Up * 50) + (float4::Right * 35);
 
 		if (false == IsJump)
 		{
-			if (RGB(0, 248, 0) == ColMap->GetPixelColor(ForwardPosR_Low, RGB(0, 248, 0)) && false == MoveDirect)
-			{
-				MoveSpeed = 0.0f;
-				MoveDirect = true;
-				IsTurn = true;
-			}
-			else if (RGB(0, 248, 0) == ColMap->GetPixelColor(ForwardPosR_High, RGB(0, 248, 0)) && false == MoveDirect)
-			{
-				MoveSpeed = 0.0f;
-				MoveDirect = true;
-				IsTurn = true;
-			}
-			else if (RGB(0, 248, 0) == ColMap->GetPixelColor(ForwardPosL_Low, RGB(0, 248, 0)) && true == MoveDirect)
+			if (RGB(0, 248, 0) == ColMap->GetPixelColor(ForwardPosL_High, RGB(0, 248, 0)) && true == MoveDirect)
 			{
 				MoveSpeed = 0.0f;
 				MoveDirect = false;
@@ -144,7 +132,7 @@ void Soldier_Red::MoveCalculation(float _DeltaTime)
 			else if (RGB(0, 248, 0) == ColMap->GetPixelColor(ForwardPosR_High, RGB(0, 248, 0)) && false == MoveDirect)
 			{
 				MoveSpeed = 0.0f;
-				MoveDirect = false;
+				MoveDirect = true;
 				IsTurn = true;
 			}
 			else

@@ -85,13 +85,14 @@ void Player::Update(float _DeltaTime)
 		LevelChangeAnimation(_DeltaTime);
 		return;
 	}
-	// 레벨 끝, 이동 애니메이션
+	// 레벨 끝 애니메이션
 	if (true == IsStartAnimationStart)
 	{
 		LevelStartAnimation(_DeltaTime);
 	}
 	// 포탈 이동 애니메이션
 	// 추가 필요
+	
 	//////////////////  콜리전 체크  //////////////////
 	
 	CollisionCheck(_DeltaTime);
@@ -102,9 +103,17 @@ void Player::Update(float _DeltaTime)
 	}
 	
 	//////////////////  이동 계산 및 애니메이션  //////////////////
-	
+	// 이동계산
 	MoveCalculation(_DeltaTime);
-	
+	// 카메라흔들림
+	if (GameEngineInput::IsDown("MonsterTest"))
+	{
+		CameraShaking = true;
+	}
+	if (true == CameraShaking)
+	{
+		CameraShake(_DeltaTime);
+	}
 }
 
 void Player::Render(float _DeltaTime)
@@ -623,29 +632,65 @@ bool Player::LevelChangeAnimation(float _DeltaTime)
 
 // 플레이어블 캐릭터의 추가 조작 (총알 발사, 캐릭터 사망 등)의 함수들 입니다.
 
+void Player::CameraShake(float _DeltaTime)
+{
+	float4 Cam = GetLevel()->GetCameraPos();
+
+	ShakingTime += _DeltaTime;
+
+	if (1.0f <= ShakingTime)
+	{
+		ShakingTime = 0.0f;
+		CameraShaking = false;
+		GetLevel()->SetCameraPos(Cam);
+	}
+
+	// GetLevel()->SetCameraMove(float4::Left * MoveSpeed * _DeltaTime);
+
+	if (1.0f >= ShakingTime && true == CameraShaking)
+	{
+		if (0 == ShakingCount && 0.3f >= ShakingTime)
+		{
+			float4 Up = Cam + float4::Up * 10;
+			GetLevel()->SetCameraPos(Up);
+			ShakingCount++;
+		}
+		else if (1 == ShakingCount && 0.6f >= ShakingTime)
+		{
+			float4 Down = Cam + float4::Down * 10;
+			GetLevel()->SetCameraPos(Down);
+			ShakingCount++;
+		}
+		else if (2 == ShakingCount && 0.9f >= ShakingTime)
+		{
+			// float4 Up = Cam + float4::Up * 10;
+			GetLevel()->SetCameraPos(Cam);
+			ShakingCount = 0;
+		}
+	}
+
+}
+
 void Player::AlphaBlinker(float _DeltaTime)
 {
 	BlinkTime += _DeltaTime;
 
-	if (true == Blinker)
+	if (0.15f <= BlinkTime)
 	{
-		if (0.15f <= BlinkTime)
-		{
-			BlinkTime = 0.0f;
-		}
+		BlinkTime = 0.0f;
+	}
 
-		if (0.10f <= BlinkTime)
-		{
-			AnimationRender->SetAlpha(120);
-		}
-		else if (0.05f <= BlinkTime)
-		{
-			AnimationRender->SetAlpha(180);
-		}
-		else if (0.05f >= BlinkTime)
-		{
-			AnimationRender->SetAlpha(240);
-		}
+	if (0.10f <= BlinkTime)
+	{
+		AnimationRender->SetAlpha(120);
+	}
+	else if (0.05f <= BlinkTime)
+	{
+		AnimationRender->SetAlpha(180);
+	}
+	else if (0.05f >= BlinkTime)
+	{
+		AnimationRender->SetAlpha(240);
 	}
 }
 

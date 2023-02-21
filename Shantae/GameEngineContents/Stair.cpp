@@ -15,6 +15,7 @@
 #include "Stair_Tower.h"
 
 #include "Soldier_Black.h"
+#include "Soldier_Blue.h"
 
 #include "Player.h"
 
@@ -47,7 +48,7 @@ void Stair::Loading()
 
 	// Monster
 	// ½ºÆ÷³Ê»ç¿ë¹ý   ½ºÆ÷³Ê À§Ä¡   ¸÷ÀÌ¸§   ÄÝ¸Ê    ¸÷ Á¨ À§Ä¡   ¸®Á¨½Ã°£
-	CreateSpawner({ 800, 2700 }, "blue", ColMap, { 372, 2018 }, 2);
+	CreateSpawner({ 800, 2700 }, "blue", ColMap, { 372, 2015 }, 2);
 
 	Soldier_Black* Spawn3 = CreateActor<Soldier_Black>();
 	Spawn3->SetPos({ 1185, 895 });
