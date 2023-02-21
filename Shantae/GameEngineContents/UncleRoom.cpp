@@ -59,10 +59,10 @@ void UncleRoom::Loading()
 
 void UncleRoom::Update(float _DeltaTime)
 {
+	OverlapTime += _DeltaTime;
+
 	LevelSet();
 	Debugging();
-
-	OverlapTime += _DeltaTime;
 
 	if (SHA->GetPos().x <= 50.0f)
 	{

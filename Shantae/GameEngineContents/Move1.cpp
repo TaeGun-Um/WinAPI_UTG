@@ -78,24 +78,12 @@ void Move1::Loading()
 
 void Move1::Update(float _DeltaTime)
 {
+	OverlapTime += _DeltaTime;
+	
 	LevelSet();
 	Debugging();
 
-	OverlapTime += _DeltaTime;
-
-	if (SHA->GetPos().x >= 11040.0f)
-	{
-		SHA->CameraMoveFalse();
-	}
-	else if (SHA->GetPos().x >= 640.0f)
-	{
-		SHA->CameraMoveTrue();
-	}
-	else if (SHA->GetPos().x <= 640.0f)
-	{
-		SHA->CameraMoveFalse();
-		Shantae->GetLevel()->SetCameraPos({ 100, 50 });
-	}
+	CameraAction();
 
 	if (SHA->GetPos().x >= 11720.0f
 		&& PlayerState::MOVE == SHA->GetShantaeState())
@@ -141,6 +129,23 @@ void Move1::LevelSet()
 			SHA->ChangeState(PlayerState::IDLE);
 			AnimationSet = 0;
 		}
+	}
+}
+
+void Move1::CameraAction()
+{
+	if (SHA->GetPos().x >= 11040.0f)
+	{
+		SHA->CameraMoveFalse();
+	}
+	else if (SHA->GetPos().x >= 640.0f)
+	{
+		SHA->CameraMoveTrue();
+	}
+	else if (SHA->GetPos().x <= 640.0f)
+	{
+		SHA->CameraMoveFalse();
+		Shantae->GetLevel()->SetCameraPos({ 100, 50 });
 	}
 }
 

@@ -70,8 +70,12 @@ bool ch = true;
 
 void BoomBridge::Update(float _DeltaTime)
 {
+	OverlapTime += _DeltaTime;
+
 	LevelSet();
 	Debugging();
+
+	CameraAction();
 
 	if (0 == TimerCol1->GetTimerSet())
 	{
@@ -89,28 +93,6 @@ void BoomBridge::Update(float _DeltaTime)
 	{
 		SetTimerRenewal_Four(TimerCol4->GetAccTime());
 	}
-
-	if (6345 <= SHA->GetPos().y)
-	{
-		YCamera = false;
-		ch = false;
-	}
-	if (650 <= SHA->GetPos().y && true == ch )
-	{
-		YCamera = true;
-	}
-	else
-	{
-		YCamera = false;
-	}
-
-	if (true == YCamera)
-	{
-		float y = SHA->GetPos().y - 430;
-		SHA->GetLevel()->SetCameraPos({ 430, y });
-	}
-
-	OverlapTime += _DeltaTime;
 
 	if (SHA->GetPos().x >= 1660.0f
 		&& PlayerState::MOVE == SHA->GetShantaeState())
@@ -146,7 +128,6 @@ void BoomBridge::LevelSet()
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
 		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
 	}
-
 	if (1 == AnimationSet)
 	{
 		SHA->SetStartAnimationStart(true);
@@ -156,6 +137,29 @@ void BoomBridge::LevelSet()
 			SHA->ChangeState(PlayerState::IDLE);
 			AnimationSet = 0;
 		}
+	}
+}
+
+void BoomBridge::CameraAction()
+{
+	if (6345 <= SHA->GetPos().y)
+	{
+		YCamera = false;
+		ch = false;
+	}
+	if (650 <= SHA->GetPos().y && true == ch)
+	{
+		YCamera = true;
+	}
+	else
+	{
+		YCamera = false;
+	}
+
+	if (true == YCamera)
+	{
+		float y = SHA->GetPos().y - 430;
+		SHA->GetLevel()->SetCameraPos({ 430, y });
 	}
 }
 

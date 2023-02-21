@@ -57,10 +57,10 @@ void Spa::Loading()
 
 void Spa::Update(float _DeltaTime)
 {
+	OverlapTime += _DeltaTime;
+
 	LevelSet();
 	Debugging();
-
-	OverlapTime += _DeltaTime;
 
 	if (SHA->GetPos().x <= 40.0f)
 	{

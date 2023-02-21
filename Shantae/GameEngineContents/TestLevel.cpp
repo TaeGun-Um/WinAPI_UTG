@@ -70,19 +70,7 @@ void TestLevel::Update(float _DeltaTime)
 	LevelSet();
 	Debugging();
 
-	//if (SHA->GetPos().x >= 4900.0f)
-	//{
-	//	SHA->CameraMoveFalse();
-	//}
-	//else if (SHA->GetPos().x >= 640.0f)
-	//{
-	//	SHA->CameraMoveTrue();
-	//}
-	//else if (SHA->GetPos().x <= 640.0f)
-	//{
-	//	SHA->CameraMoveFalse();
-	//	Shantae->GetLevel()->SetCameraPos({ 0, 200 });
-	//}
+	// CameraAction();
 
 }
 
@@ -100,6 +88,23 @@ void TestLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 
 void TestLevel::LevelSet()
 {
+}
+
+void TestLevel::CameraAction()
+{
+	if (SHA->GetPos().x >= 4900.0f)
+	{
+		SHA->CameraMoveFalse();
+	}
+	else if (SHA->GetPos().x >= 640.0f)
+	{
+		SHA->CameraMoveTrue();
+	}
+	else if (SHA->GetPos().x <= 640.0f)
+	{
+		SHA->CameraMoveFalse();
+		Shantae->GetLevel()->SetCameraPos({ 0, 200 });
+	}
 }
 
 void TestLevel::Debugging()

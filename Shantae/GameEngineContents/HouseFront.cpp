@@ -73,11 +73,12 @@ void HouseFront::Loading()
 
 void HouseFront::Update(float _DeltaTime)
 {
+	OverlapTime += _DeltaTime;
+
 	LevelSet();
 	Debugging();
 
-	OverlapTime += _DeltaTime;
-
+	// 레벨 이동
 	if (SHA->GetPos().x >= 1250.0f
 		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{
@@ -113,7 +114,6 @@ void HouseFront::LevelSet()
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
 		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
 	}
-
 	if (1 == AnimationSet)
 	{
 		SHA->SetStartAnimationStart(true);

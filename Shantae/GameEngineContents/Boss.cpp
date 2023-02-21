@@ -63,24 +63,12 @@ void Boss::Loading()
 
 void Boss::Update(float _DeltaTime)
 {
+	OverlapTime += _DeltaTime;
+
 	LevelSet();
 	Debugging();
 
-	OverlapTime += _DeltaTime;
-
-	if (SHA->GetPos().x >= 1000.0f)
-	{
-		SHA->CameraMoveFalse();
-	}
-	else if (SHA->GetPos().x >= 860.0f)
-	{
-		SHA->CameraMoveTrue();
-	}
-	else if (SHA->GetPos().x <= 860.0f)
-	{
-		SHA->CameraMoveFalse();
-		Shantae->GetLevel()->SetCameraPos({ 125, 130 });
-	}
+	CameraAction();
 
 	if (SHA->GetPos().x >= 1530.0f
 		&& PlayerState::MOVE == SHA->GetShantaeState())
@@ -121,7 +109,6 @@ void Boss::LevelSet()
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
 		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
 	}
-
 	if (1 == AnimationSet)
 	{
 		SHA->SetStartAnimationStart(true);
@@ -131,6 +118,23 @@ void Boss::LevelSet()
 			SHA->ChangeState(PlayerState::IDLE);
 			AnimationSet = 0;
 		}
+	}
+}
+
+void Boss::CameraAction()
+{
+	if (SHA->GetPos().x >= 1000.0f)
+	{
+		SHA->CameraMoveFalse();
+	}
+	else if (SHA->GetPos().x >= 860.0f)
+	{
+		SHA->CameraMoveTrue();
+	}
+	else if (SHA->GetPos().x <= 860.0f)
+	{
+		SHA->CameraMoveFalse();
+		Shantae->GetLevel()->SetCameraPos({ 125, 130 });
 	}
 }
 

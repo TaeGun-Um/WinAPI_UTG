@@ -71,29 +71,12 @@ void Stair::Loading()
 
 void Stair::Update(float _DeltaTime)
 {
+	OverlapTime += _DeltaTime;
+
 	LevelSet();
 	Debugging();
 
-	if (3450 > SHA->GetPos().y)
-	{
-		YCamera = true;
-	}
-	if (3450 <= SHA->GetPos().y)
-	{
-		YCamera = false;
-	}
-	if (900 >= SHA->GetPos().y)
-	{
-		YCamera = false;
-	}
-	
-	if (true == YCamera)
-	{
-		float y = SHA->GetPos().y - 460;
-		SHA->GetLevel()->SetCameraPos({ 200, y });
-	}
-
-	OverlapTime += _DeltaTime;
+	CameraAction();
 
 	if (SHA->GetPos().x >= 1435.0f
 		&& PlayerState::MOVE == SHA->GetShantaeState())
@@ -139,6 +122,28 @@ void Stair::LevelSet()
 			SHA->ChangeState(PlayerState::IDLE);
 			AnimationSet = 0;
 		}
+	}
+}
+
+void Stair::CameraAction()
+{
+	if (3450 > SHA->GetPos().y)
+	{
+		YCamera = true;
+	}
+	if (3450 <= SHA->GetPos().y)
+	{
+		YCamera = false;
+	}
+	if (900 >= SHA->GetPos().y)
+	{
+		YCamera = false;
+	}
+
+	if (true == YCamera)
+	{
+		float y = SHA->GetPos().y - 460;
+		SHA->GetLevel()->SetCameraPos({ 200, y });
 	}
 }
 

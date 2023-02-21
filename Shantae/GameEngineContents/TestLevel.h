@@ -33,6 +33,7 @@ protected:
 private:
 	void LevelSet();
 	void Debugging();
+	void CameraAction();
 
 	GameEngineActor* Shantae = nullptr;
 	GameEngineImage* ColMap = nullptr;

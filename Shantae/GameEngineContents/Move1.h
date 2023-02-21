@@ -29,6 +29,7 @@ protected:
 private:
 	void LevelSet();
 	void Debugging();
+	void CameraAction();
 
 	GameEngineSoundPlayer BGMPlayer;
 	GameEngineActor* Shantae = nullptr;

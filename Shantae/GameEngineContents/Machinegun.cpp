@@ -115,24 +115,12 @@ void Machinegun::Loading()
 
 void Machinegun::Update(float _DeltaTime)
 {
+	OverlapTime += _DeltaTime;
+	
 	LevelSet();
 	Debugging();
 
-	OverlapTime += _DeltaTime;
-
-	if (SHA->GetPos().x >= 11250.0f)
-	{
-		SHA->CameraMoveFalse();
-	}
-	else if (SHA->GetPos().x >= 640.0f)
-	{
-		SHA->CameraMoveTrue();
-	}
-	else if (SHA->GetPos().x <= 640.0f)
-	{
-		SHA->CameraMoveFalse();
-		Shantae->GetLevel()->SetCameraPos({ 55, 120 });
-	}
+	CameraAction();
 
 	if (SHA->GetPos().x >= 11985.0f
 		&& PlayerState::MOVE == SHA->GetShantaeState())
@@ -168,7 +156,6 @@ void Machinegun::LevelSet()
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
 		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
 	}
-
 	if (1 == AnimationSet)
 	{
 		SHA->SetStartAnimationStart(true);
@@ -178,6 +165,23 @@ void Machinegun::LevelSet()
 			SHA->ChangeState(PlayerState::IDLE);
 			AnimationSet = 0;
 		}
+	}
+}
+
+void Machinegun::CameraAction()
+{
+	if (SHA->GetPos().x >= 11250.0f)
+	{
+		SHA->CameraMoveFalse();
+	}
+	else if (SHA->GetPos().x >= 640.0f)
+	{
+		SHA->CameraMoveTrue();
+	}
+	else if (SHA->GetPos().x <= 640.0f)
+	{
+		SHA->CameraMoveFalse();
+		Shantae->GetLevel()->SetCameraPos({ 55, 120 });
 	}
 }
 

@@ -57,10 +57,12 @@ void Scuttle::Loading()
 
 void Scuttle::Update(float _DeltaTime)
 {
+	OverlapTime += _DeltaTime;
+
 	LevelSet();
 	Debugging();
 
-	OverlapTime += _DeltaTime;
+	CameraAction();
 
 	if (GameEngineInput::IsPress("UpMove"))
 	{
@@ -94,38 +96,6 @@ void Scuttle::Update(float _DeltaTime)
 			GameEngineCore::GetInst()->ChangeLevel("SkyRoom");
 			OverlapTime = 0.0f;
 		}
-
-	}
-
-	if (1200 >= SHA->GetPos().y)
-	{
-		YCamera = true;
-	}
-	else if (1200 < SHA->GetPos().y)
-	{
-		YCamera = false;
-	}
-
-	float x = SHA->GetPos().x - 620;
-	float y = SHA->GetPos().y - 520;
-
-	if (true == YCamera)
-	{
-		SHA->GetLevel()->SetCameraPos({ x, y });
-	}
-
-	if (SHA->GetPos().x >= 7715.0f)
-	{
-		SHA->CameraMoveFalse();
-	}
-	else if (SHA->GetPos().x >= 620.0f)
-	{
-		SHA->CameraMoveTrue();
-	}
-	else if (SHA->GetPos().x <= 620.0f)
-	{
-		SHA->CameraMoveFalse();
-		Shantae->GetLevel()->SetCameraPos({ 0, 680 });
 	}
 
 	if (SHA->GetPos().x >= 8355.0f)
@@ -171,6 +141,40 @@ void Scuttle::LevelSet()
 			SHA->ChangeState(PlayerState::IDLE);
 			AnimationSet = 0;
 		}
+	}
+}
+
+void Scuttle::CameraAction()
+{
+	if (1200 >= SHA->GetPos().y)
+	{
+		YCamera = true;
+	}
+	else if (1200 < SHA->GetPos().y)
+	{
+		YCamera = false;
+	}
+
+	float x = SHA->GetPos().x - 620;
+	float y = SHA->GetPos().y - 520;
+
+	if (true == YCamera)
+	{
+		SHA->GetLevel()->SetCameraPos({ x, y });
+	}
+
+	if (SHA->GetPos().x >= 7715.0f)
+	{
+		SHA->CameraMoveFalse();
+	}
+	else if (SHA->GetPos().x >= 620.0f)
+	{
+		SHA->CameraMoveTrue();
+	}
+	else if (SHA->GetPos().x <= 620.0f)
+	{
+		SHA->CameraMoveFalse();
+		Shantae->GetLevel()->SetCameraPos({ 0, 680 });
 	}
 }
 

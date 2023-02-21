@@ -57,11 +57,11 @@ void BeforeBoss::Loading()
 
 void BeforeBoss::Update(float _DeltaTime)
 {
-	LevelSet();
-	Debugging();
-
 	OverlapTime += _DeltaTime;
 
+	LevelSet();
+	Debugging();
+	
 	if (SHA->GetPos().x >= 1250.0f
 		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{
@@ -97,7 +97,6 @@ void BeforeBoss::LevelSet()
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
 		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
 	}
-
 	if (1 == AnimationSet)
 	{
 		SHA->SetStartAnimationStart(true);

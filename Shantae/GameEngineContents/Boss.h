@@ -30,6 +30,7 @@ protected:
 private:
 	void LevelSet();
 	void Debugging();
+	void CameraAction();
 
 	GameEngineSoundPlayer BGMPlayer;
 	GameEngineImage* ColMap = nullptr;
