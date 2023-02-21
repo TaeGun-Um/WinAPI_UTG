@@ -109,7 +109,7 @@ void Spa::Update(float _DeltaTime)
 		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
 	}
 
-	if (SHA->GetPos().x <= 50.0f)
+	if (SHA->GetPos().x <= 40.0f)
 	{
 		GameEngineCore::GetInst()->ChangeLevel("Scuttle");
 	}

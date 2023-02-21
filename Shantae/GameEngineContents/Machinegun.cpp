@@ -107,8 +107,8 @@ void Machinegun::Loading()
 	SHA = dynamic_cast<Player*>(Shantae);
 
 	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 45, 563 });
-	Shantae->GetLevel()->SetCameraPos({ 55, 120 });
+	SHA->SetPos({ 45, 563 }); // 45, 563
+	Shantae->GetLevel()->SetCameraPos({ 55, 120 }); // 55, 120
 	SHA->SetAnimationStart(false);
 	SHA->SetStartAnimationStart(false);
 }

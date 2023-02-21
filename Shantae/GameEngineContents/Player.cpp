@@ -53,7 +53,6 @@ void Player::Update(float _DeltaTime)
 		LevelChangeAnimation(_DeltaTime);
 		return;
 	}
-
 	if (true == IsStartAnimationStart)
 	{
 		LevelStartAnimation(_DeltaTime);
@@ -237,8 +236,11 @@ void Player::MoveCalculation(float _DeltaTime)
 		MsgAssert("충돌용 맵 이미지가 없습니다.");
 	}
 
-	WallCheck(600.0f);
-
+	if (false == IsStartAnimationStart)
+	{
+		WallCheck(600.0f);
+	}
+	
 	// 땅
 	NextPos = GetPos() + MoveDir * _DeltaTime;
 	if (RGB(0, 248, 0) == ColMap->GetPixelColor(NextPos, RGB(0, 0, 0)))

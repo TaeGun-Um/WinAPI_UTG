@@ -40,10 +40,10 @@ void Boss::Loading()
 	CreateActor<Boss_ColMap>();
 
 	// Monster
-	Tank = CreateActor<Boss_Tank>();
-	BOS = dynamic_cast<Boss_Tank*>(Tank);
-	Tank->SetPos({ 1200, 750 });
-	BOS->SetColMap(ColMap);
+	//Tank = CreateActor<Boss_Tank>();
+	//BOS = dynamic_cast<Boss_Tank*>(Tank);
+	//Tank->SetPos({ 1200, 750 });
+	//BOS->SetColMap(ColMap);
 
 	// UI
 	CreateActor<GemWindow>();
@@ -129,7 +129,7 @@ void Boss::Update(float _DeltaTime)
 		Shantae->GetLevel()->SetCameraPos({ 125, 130 });
 	}
 
-	if (SHA->GetPos().x >= 1600.0f
+	if (SHA->GetPos().x >= 1530.0f
 		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{
 		SHA->SetAnimationStart(true);

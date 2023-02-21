@@ -70,8 +70,8 @@ void Move1::Loading()
 	SHA = dynamic_cast<Player*>(Shantae);
 
 	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 106, 653 });
-	Shantae->GetLevel()->SetCameraPos({ 100, 50 });
+	SHA->SetPos({ 106, 653 }); //  106, 653
+	Shantae->GetLevel()->SetCameraPos({ 100, 50 }); // 100, 50
 	SHA->SetAnimationStart(false);
 	SHA->SetStartAnimationStart(false);
 }
