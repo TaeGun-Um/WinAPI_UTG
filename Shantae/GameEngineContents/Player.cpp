@@ -42,27 +42,13 @@ void Player::Start()
 	ChangeState(PlayerState::IDLE);
 }
 
-bool FreeMove = false;
-
 void Player::Update(float _DeltaTime)
 {
 	OverlapTime += _DeltaTime;
 
-	if (true == IsAnimationStart)
-	{
-		LevelChangeAnimation(_DeltaTime);
-		return;
-	}
-	if (true == IsStartAnimationStart)
-	{
-		LevelStartAnimation(_DeltaTime);
-	}
-
-	if (true == FreeMoveState(_DeltaTime))
-	{
-		return;
-	}
-	if (true == GameEngineInput::IsPress("PositionText"))
+	//////////////////  디버깅  //////////////////
+	// 텍스트
+	if (true == GameEngineInput::IsDown("PositionText"))
 	{
 		if (OverlapTime > 0.5f)
 		{
@@ -70,6 +56,7 @@ void Player::Update(float _DeltaTime)
 			OverlapTime = 0.0;
 		}
 	}
+	// 콜리전
 	if (true == GameEngineInput::IsDown("DebugRenderSwitch"))
 	{
 		if (OverlapTime > 0.5f)
@@ -78,10 +65,34 @@ void Player::Update(float _DeltaTime)
 			OverlapTime = 0.0;
 		}
 	}
+	// 프리무브
+	if (true == FreeMoveState(_DeltaTime))
+	{
+		return;
+	}
+
+	//////////////////  레벨이동 애니메이션  //////////////////
+	// 레벨 시작 애니메이션
+	if (true == IsAnimationStart)
+	{
+		LevelChangeAnimation(_DeltaTime);
+		return;
+	}
+	// 레벨 끝, 이동 애니메이션
+	if (true == IsStartAnimationStart)
+	{
+		LevelStartAnimation(_DeltaTime);
+	}
+	// 포탈 이동 애니메이션
+	// 추가 필요
+	//////////////////  콜리전 체크  //////////////////
 	
-	// Player_State, Physics, Collision
 	CollisionCheck(_DeltaTime);
+
+	//////////////////  이동 계산 및 애니메이션  //////////////////
+	
 	MoveCalculation(_DeltaTime);
+	
 }
 
 void Player::Render(float _DeltaTime)
@@ -92,41 +103,19 @@ void Player::Render(float _DeltaTime)
 	}
 }
 
-bool Player::LevelChangeAnimation(float _DeltaTime)
-{
-	AnimationTime += _DeltaTime;
+// <나열 순서>
+// 1. 디버깅
+// 2. 이동
+// 3. 콜리전
+// 4. 레벨이동 애니메이션
+// 5. 추가 조작
+// 6. 세팅
 
-	SetMove(float4::Right * MoveSpeed * _DeltaTime);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////// 1. 디버깅  //////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	if (2.0f <= AnimationTime)
-	{
-		AnimationTime = 0.0f;
-		return true;
-	}
-
-	return false;
-}
-
-void Player::LevelStartAnimation(float _DeltaTime)
-{
-	AnimationRender->ChangeAnimation("Run_R");
-
-	AnimationTime += _DeltaTime;
-
-	SetMove(float4::Right * MoveSpeed * _DeltaTime);
-}
-
-void Player::PositionText()
-{
-	std::string PlayerText = "PlayerPosition : ";
-	PlayerText += GetPos().ToString();
-
-	std::string CameraMouseText = "CameraPosition : ";
-	CameraMouseText += GetLevel()->GetCameraPos().ToString();
-
-	GameEngineLevel::DebugTextPush(PlayerText);
-	GameEngineLevel::DebugTextPush(CameraMouseText);
-}
+// 디버깅에 필요한 함수들입니다.
 
 bool Player::FreeMoveState(float _DeltaTime)
 {
@@ -171,6 +160,24 @@ bool Player::FreeMoveState(float _DeltaTime)
 	return false;
 }
 
+void Player::PositionText()
+{
+	std::string PlayerText = "PlayerPosition : ";
+	PlayerText += GetPos().ToString();
+
+	std::string CameraMouseText = "CameraPosition : ";
+	CameraMouseText += GetLevel()->GetCameraPos().ToString();
+
+	GameEngineLevel::DebugTextPush(PlayerText);
+	GameEngineLevel::DebugTextPush(CameraMouseText);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////  2. 이동  //////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// 키 입력에 따른 플레이어블 캐릭터의 이동을 계산하고, 애니메이션을 변경합니다.
+
 std::string Player::DirCheck(const std::string_view& _AnimationName)
 {
 	std::string PrevDirString = DirString;
@@ -196,7 +203,7 @@ std::string Player::DirCheck(const std::string_view& _AnimationName)
 // 중력, 점프, 맵타일
 void Player::MoveCalculation(float _DeltaTime)
 {
-	///////////////////////////////////////////////////  중력  ///////////////////////////////////////////////////
+	//////////////////  중력  //////////////////
 
 	if (true == IsGravity && MoveDir.y <= 2000)
 	{
@@ -206,11 +213,11 @@ void Player::MoveCalculation(float _DeltaTime)
 		}
 		if (false == IsGravityPlus)
 		{
-			MoveDir += float4::Down * 3500.0f *_DeltaTime;
+			MoveDir += float4::Down * 3500.0f * _DeltaTime;
 		}
 	}
 
-	///////////////////////////////////////////////////  점프  ///////////////////////////////////////////////////
+	//////////////////  점프  //////////////////
 
 	if (true == GameEngineInput::IsDown("Jump") && true == GameEngineInput::IsPress("DownMove")
 		&& RGB(74, 65, 42) == ColMap->GetPixelColor(NextPos, RGB(0, 0, 0)))
@@ -229,8 +236,8 @@ void Player::MoveCalculation(float _DeltaTime)
 		Fall = true;
 	}
 
-	/////////////////////////////////////////////////// 맵타일 ///////////////////////////////////////////////////
-	
+	////////////////// 맵타일 //////////////////
+
 	if (nullptr == ColMap)
 	{
 		MsgAssert("충돌용 맵 이미지가 없습니다.");
@@ -240,7 +247,7 @@ void Player::MoveCalculation(float _DeltaTime)
 	{
 		WallCheck(600.0f);
 	}
-	
+
 	// 땅
 	NextPos = GetPos() + MoveDir * _DeltaTime;
 	if (RGB(0, 248, 0) == ColMap->GetPixelColor(NextPos, RGB(0, 0, 0)))
@@ -324,7 +331,7 @@ void Player::MoveCalculation(float _DeltaTime)
 		Pass = 1;
 	}
 
-	/////////////////////////////////////////////////// 기타 조건 ///////////////////////////////////////////////////
+	////////////////// 기타 조건 //////////////////
 
 	// 공중공격
 	if (true == IsJump || true == Fall)
@@ -346,18 +353,109 @@ void Player::MoveCalculation(float _DeltaTime)
 		}
 	}
 
-	//////// 최종 위치 ////////
+	////////////////// State //////////////////
+
 	UpdateState(_DeltaTime);
 
 	SetMove(MoveDir * _DeltaTime);
 }
 
-// 콜리전 충돌체크
+void Player::WallCheck(float _Speed)
+{
+	// 좌우
+	ForwardPosR_Low = GetPos() + (float4::Up * 5) + (float4::Right * 30);
+	ForwardPosL_Low = GetPos() + (float4::Up * 5) + (float4::Left * 30);
+	ForwardPosR_High = GetPos() + (float4::Up * 100) + (float4::Right * 30);
+	ForwardPosL_High = GetPos() + (float4::Up * 100) + (float4::Left * 30);
+
+	// 위
+	UpPos = GetPos() + (float4::Up * 100);
+	CrouchUpPos_R = GetPos() + (float4::Up * 100) + (float4::Right * 29);
+	CrouchUpPos_L = GetPos() + (float4::Up * 100) + (float4::Left * 29);
+
+	if (RGB(0, 248, 0) == ColMap->GetPixelColor(ForwardPosR_Low, RGB(0, 0, 0)))
+	{
+		MoveSpeed = 0.0f;
+		CrouchSpeed = 0.0f;
+
+		if (GameEngineInput::IsPress("LeftMove"))
+		{
+			MoveSpeed = _Speed;
+			CrouchSpeed = 200.0f;
+		}
+	}
+	else if (RGB(0, 248, 0) == ColMap->GetPixelColor(ForwardPosR_High, RGB(0, 0, 0)) && false == IsCrouch)
+	{
+		MoveSpeed = 0.0f;
+
+		if (GameEngineInput::IsPress("LeftMove"))
+		{
+			MoveSpeed = _Speed;
+		}
+	}
+	else if (RGB(0, 248, 0) == ColMap->GetPixelColor(ForwardPosL_Low, RGB(0, 0, 0)))
+	{
+		MoveSpeed = 0.0f;
+		CrouchSpeed = 0.0f;
+
+		if (GameEngineInput::IsPress("RightMove"))
+		{
+			MoveSpeed = _Speed;
+			CrouchSpeed = 200.0f;
+		}
+	}
+	else if (RGB(0, 248, 0) == ColMap->GetPixelColor(ForwardPosL_High, RGB(0, 0, 0)) && false == IsCrouch)
+	{
+		MoveSpeed = 0.0f;
+
+		if (GameEngineInput::IsPress("RightMove"))
+		{
+			MoveSpeed = _Speed;
+		}
+	}
+	else
+	{
+		MoveSpeed = _Speed;
+		CrouchSpeed = 200.0f;
+	}
+
+	// 위
+
+	if (false == IsCrouch)
+	{
+		CrouchMaintain = false;
+		if (RGB(0, 248, 0) == ColMap->GetPixelColor(UpPos, RGB(0, 0, 0)))
+		{
+			Fall = true;
+			MoveDir.y = 100.0f;
+		}
+	}
+	else if (true == IsCrouch)
+	{
+		if (RGB(0, 248, 0) == ColMap->GetPixelColor(CrouchUpPos_R, RGB(0, 0, 0))
+			|| RGB(0, 248, 0) == ColMap->GetPixelColor(CrouchUpPos_L, RGB(0, 0, 0)))
+		{
+			CrouchMaintain = true;
+		}
+		else if (RGB(0, 248, 0) != ColMap->GetPixelColor(CrouchUpPos_R, RGB(0, 0, 0))
+			|| RGB(0, 248, 0) != ColMap->GetPixelColor(CrouchUpPos_L, RGB(0, 0, 0)))
+		{
+			CrouchMaintain = false;
+		}
+	}
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////  3. 콜리전  //////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// 플레이어블 캐릭터의 콜리전 상태와 충돌조건을 체크합니다.
+
 void Player::CollisionCheck(float _DeltaTime)
 {
 	// BodyCollision
 	// Crouch
-	if (GameEngineInput::IsPress("DownMove") || true == CrouchMaintain)
+	if (false == IsJump && GameEngineInput::IsPress("DownMove") || true == CrouchMaintain)
 	{
 		BodyCollision->SetScale({ 50, 55 });
 		BodyCollision->SetPosition({ 0, -27.5f });
@@ -461,6 +559,42 @@ void Player::CollisionCheck(float _DeltaTime)
 	}
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////  4. 애니메이션  ///////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// 플레이어블 캐릭터가 레벨에 진입하거나, 레벨을 이동할 때 실시하는 애니메이션입니다.
+
+void Player::LevelStartAnimation(float _DeltaTime)
+{
+	AnimationRender->ChangeAnimation("Run_R");
+
+	AnimationTime += _DeltaTime;
+
+	SetMove(float4::Right * MoveSpeed * _DeltaTime);
+}
+
+bool Player::LevelChangeAnimation(float _DeltaTime)
+{
+	AnimationTime += _DeltaTime;
+
+	SetMove(float4::Right * MoveSpeed * _DeltaTime);
+
+	if (2.0f <= AnimationTime)
+	{
+		AnimationTime = 0.0f;
+		return true;
+	}
+
+	return false;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////  5. 추가 조작  ///////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// 플레이어블 캐릭터의 추가 조작 (총알 발사, 캐릭터 사망 등)의 함수들 입니다.
+
 void Player::Shoot()
 {
 	Pistol_Bullet* NewBullet = nullptr;
@@ -481,90 +615,11 @@ void Player::Kill()
 	ColActor->Death();
 }
 
-void Player::WallCheck(float _Speed)
-{
-	// 좌우
-	ForwardPosR_Low = GetPos() + (float4::Up * 5) + (float4::Right * 30);
-	ForwardPosL_Low = GetPos() + (float4::Up * 5) + (float4::Left * 30);
-	ForwardPosR_High = GetPos() + (float4::Up * 100) + (float4::Right * 30);
-	ForwardPosL_High = GetPos() + (float4::Up * 100) + (float4::Left * 30);
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////  6. 세팅  ///////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	// 위
-	UpPos = GetPos() + (float4::Up * 100);
-	CrouchUpPos_R = GetPos() + (float4::Up * 100) + (float4::Right * 29);
-	CrouchUpPos_L = GetPos() + (float4::Up * 100) + (float4::Left * 29);
-
-	if (RGB(0, 248, 0) == ColMap->GetPixelColor(ForwardPosR_Low, RGB(0, 0, 0)))
-	{
-		MoveSpeed = 0.0f;
-		CrouchSpeed = 0.0f;
-
-		if (GameEngineInput::IsPress("LeftMove"))
-		{
-			MoveSpeed = _Speed;
-			CrouchSpeed = 200.0f;
-		}
-	}
-	else if (RGB(0, 248, 0) == ColMap->GetPixelColor(ForwardPosR_High, RGB(0, 0, 0)) && false == IsCrouch)
-	{
-		MoveSpeed = 0.0f;
-
-		if (GameEngineInput::IsPress("LeftMove"))
-		{
-			MoveSpeed = _Speed;
-		}
-	}
-	else if (RGB(0, 248, 0) == ColMap->GetPixelColor(ForwardPosL_Low, RGB(0, 0, 0)))
-	{
-		MoveSpeed = 0.0f;
-		CrouchSpeed = 0.0f;
-
-		if (GameEngineInput::IsPress("RightMove"))
-		{
-			MoveSpeed = _Speed;
-			CrouchSpeed = 200.0f;
-		}
-	}
-	else if (RGB(0, 248, 0) == ColMap->GetPixelColor(ForwardPosL_High, RGB(0, 0, 0)) && false == IsCrouch)
-	{
-		MoveSpeed = 0.0f;
-
-		if (GameEngineInput::IsPress("RightMove"))
-		{
-			MoveSpeed = _Speed;
-		}
-	}
-	else
-	{
-		MoveSpeed = _Speed;
-		CrouchSpeed = 200.0f;
-	}
-
-	// 위
-
-	if (false == IsCrouch)
-	{
-		CrouchMaintain = false;
-		if (RGB(0, 248, 0) == ColMap->GetPixelColor(UpPos, RGB(0, 0, 0)))
-		{
-			Fall = true;
-			MoveDir.y = 100.0f;
-		}
-	}
-	else if (true == IsCrouch)
-	{
-		if (RGB(0, 248, 0) == ColMap->GetPixelColor(CrouchUpPos_R, RGB(0, 0, 0))
-			|| RGB(0, 248, 0) == ColMap->GetPixelColor(CrouchUpPos_L, RGB(0, 0, 0)))
-		{
-			CrouchMaintain = true;
-		}
-		else if (RGB(0, 248, 0) != ColMap->GetPixelColor(CrouchUpPos_R, RGB(0, 0, 0))
-			|| RGB(0, 248, 0) != ColMap->GetPixelColor(CrouchUpPos_L, RGB(0, 0, 0)))
-		{
-			CrouchMaintain = false;
-		}
-	}
-}
+// 플레이어블 캐릭터 생성 시 필요한 데이터를 업데이트 합니다.
 
 void Player::RenderSet()
 {

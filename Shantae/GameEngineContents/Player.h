@@ -147,11 +147,11 @@ public:
 		return StateValue;
 	}
 
-	bool LevelChangeAnimation(float _DeltaTime);
-	void LevelStartAnimation(float _DeltaTime);
 	bool FreeMoveState(float _DeltaTime);
 	void PositionText();
 	void ChangeState(PlayerState _State);
+	bool LevelChangeAnimation(float _DeltaTime);
+	void LevelStartAnimation(float _DeltaTime);
 
 protected:
 	void Start() override;
@@ -160,13 +160,13 @@ protected:
 
 private:
 	std::string DirCheck(const std::string_view& _AnimationName);
-	void RenderSet();
-	void CollisionSet();
-	void CollisionCheck(float _DeltaTime);
 	void MoveCalculation(float _DeltaTime);
+	void WallCheck(float _Speed);
+	void CollisionCheck(float _DeltaTime);
 	void Shoot();
 	void Kill();
-	void WallCheck(float _Speed);
+	void RenderSet();
+	void CollisionSet();
 
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineImage* ColMap = nullptr;
@@ -203,6 +203,7 @@ private:
 	int HP = 8;
 	int PlayerGem = 0;
 
+	bool FreeMove = false;
 	bool ShantaeMove = true;
 	bool CameraMove  = true;
 	bool IsGravity = true;

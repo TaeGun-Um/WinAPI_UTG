@@ -1,7 +1,6 @@
 #pragma once
 
 #include <GameEngineCore/GameEngineActor.h>
-#include <GameEngineCore/NumberRenderObject.h>
 
 class GameEngineImage;
 
@@ -33,8 +32,17 @@ protected:
 private:
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
+	GameEngineImage* ColMap = nullptr;
 
-	NumberRenderObject TestNumber;
+	float4 MoveDir = float4::Zero;
+	float4 NextPos = float4::Zero;
 
+	bool Hitonoff = false;
+
+	float HitTime = 0.0f;
+
+	void CollisionCheck(float _DeltaTime);
+	void MoveCalculation(float _DeltaTime);
+	void Kill();
 };
 
