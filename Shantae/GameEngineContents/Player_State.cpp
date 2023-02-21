@@ -465,7 +465,13 @@ void Player::JumpStart()
 	IsGravityPlus = false;
 	JumpPos = GetPos().y;
 
-	MoveDir.y -= 1250.0f;
+	if (GameEngineInput::IsUp("Jump"))
+	{
+		MoveDir.y -= 600.0f;
+	} 
+	{
+		MoveDir.y -= 1250.0f;
+	}
 
 	DirCheck("Jump");
 }

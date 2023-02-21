@@ -414,6 +414,7 @@ void Player::WallCheck(float _Speed)
 		{
 			MoveSpeed = _Speed;
 			CrouchSpeed = 200.0f;
+			// 벽뚫버그 여기
 		}
 	}
 	else if (RGB(0, 248, 0) == ColMap->GetPixelColor(ForwardPosL_High, RGB(0, 0, 0)) && false == IsCrouch)
