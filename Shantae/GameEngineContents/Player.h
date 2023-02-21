@@ -152,6 +152,7 @@ public:
 	void ChangeState(PlayerState _State);
 	bool LevelChangeAnimation(float _DeltaTime);
 	void LevelStartAnimation(float _DeltaTime);
+	void CameraShake(float _DeltaTime, float _ShakingTime);
 
 protected:
 	void Start() override;
@@ -165,7 +166,6 @@ private:
 	void CollisionCheck(float _DeltaTime);
 	void Shoot();
 	void Kill();
-	void CameraShake(float _DeltaTime);
 	void AlphaBlinker(float _DeltaTime);
 	void CreateDummy();
 	void CreateImpact();

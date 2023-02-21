@@ -632,13 +632,15 @@ bool Player::LevelChangeAnimation(float _DeltaTime)
 
 // 플레이어블 캐릭터의 추가 조작 (총알 발사, 캐릭터 사망 등)의 함수들 입니다.
 
-void Player::CameraShake(float _DeltaTime)
+void Player::CameraShake(float _DeltaTime, float _ShakingTime)
 {
 	float4 Cam = GetLevel()->GetCameraPos();
+	float4 Up = Cam + (float4::Up * 3);
+	float4 Down = Cam + (float4::Down * 3);
 
 	ShakingTime += _DeltaTime;
 
-	if (1.0f <= ShakingTime)
+	if (_ShakingTime <= ShakingTime)
 	{
 		ShakingTime = 0.0f;
 		CameraShaking = false;
@@ -647,28 +649,50 @@ void Player::CameraShake(float _DeltaTime)
 
 	// GetLevel()->SetCameraMove(float4::Left * MoveSpeed * _DeltaTime);
 
-	if (1.0f >= ShakingTime && true == CameraShaking)
+	if (_ShakingTime >= ShakingTime && true == CameraShaking)
 	{
-		if (0 == ShakingCount && 0.3f >= ShakingTime)
+		if (0 == ShakingCount)
 		{
-			float4 Up = Cam + float4::Up * 10;
 			GetLevel()->SetCameraPos(Up);
 			ShakingCount++;
 		}
-		else if (1 == ShakingCount && 0.6f >= ShakingTime)
+		else if (1 == ShakingCount)
 		{
-			float4 Down = Cam + float4::Down * 10;
+			GetLevel()->SetCameraPos(Up);
+			ShakingCount++;
+		}
+		else if (2 == ShakingCount)
+		{
+			GetLevel()->SetCameraPos(Cam);
+			ShakingCount++;
+		}
+		else if (3 == ShakingCount)
+		{
+			GetLevel()->SetCameraPos(Cam);
+			ShakingCount++;
+		}
+		else if (4 == ShakingCount)
+		{
+
 			GetLevel()->SetCameraPos(Down);
 			ShakingCount++;
 		}
-		else if (2 == ShakingCount && 0.9f >= ShakingTime)
+		else if (5 == ShakingCount)
 		{
-			// float4 Up = Cam + float4::Up * 10;
+			GetLevel()->SetCameraPos(Down);
+			ShakingCount++;
+		}
+		else if (6 == ShakingCount)
+		{
+			GetLevel()->SetCameraPos(Cam);
+			ShakingCount++;
+		}
+		else if (7 == ShakingCount)
+		{
 			GetLevel()->SetCameraPos(Cam);
 			ShakingCount = 0;
 		}
 	}
-
 }
 
 void Player::AlphaBlinker(float _DeltaTime)
