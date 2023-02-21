@@ -193,13 +193,14 @@ void Soldier_Blue::MoveCalculation(float _DeltaTime)
 				}
 			}
 
+			// 끝에서 점프 조건
 			if ("_L" == DirString)
 			{
-				JumpP = GetPos() + (float4::Left * 2) + (float4::Down * 6);
+				JumpP = GetPos() + (float4::Left * 2) + (float4::Down * 5);
 			}
 			else
 			{
-				JumpP = GetPos() + (float4::Right * 2) + (float4::Down * 6);
+				JumpP = GetPos() + (float4::Right * 2) + (float4::Down * 5);
 			}
 
 			if (RGB(74, 65, 42) != ColMap->GetPixelColor(JumpP, RGB(0, 0, 0)))
