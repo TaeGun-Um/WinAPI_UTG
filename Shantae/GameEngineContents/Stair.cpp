@@ -75,9 +75,9 @@ void Stair::Update(float _DeltaTime)
 
 	LevelSet();
 	Debugging();
-
 	CameraAction();
 
+	// 레벨 이동
 	if (SHA->GetPos().x >= 1435.0f
 		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{
@@ -112,7 +112,6 @@ void Stair::LevelSet()
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
 		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
 	}
-
 	if (1 == AnimationSet)
 	{
 		SHA->SetStartAnimationStart(true);

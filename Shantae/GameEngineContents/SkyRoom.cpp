@@ -60,6 +60,7 @@ void SkyRoom::Update(float _DeltaTime)
 	LevelSet();
 	Debugging();
 
+	// 레벨 이동
 	if (SHA->GetPos().x <= 50.0f)
 	{
 		GameEngineCore::GetInst()->ChangeLevel("Scuttle");

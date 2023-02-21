@@ -62,6 +62,7 @@ void BeforeBoss::Update(float _DeltaTime)
 	LevelSet();
 	Debugging();
 	
+	// 레벨 이동
 	if (SHA->GetPos().x >= 1250.0f
 		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{

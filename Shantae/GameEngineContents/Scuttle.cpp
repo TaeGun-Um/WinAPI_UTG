@@ -61,42 +61,10 @@ void Scuttle::Update(float _DeltaTime)
 
 	LevelSet();
 	Debugging();
-
 	CameraAction();
 
-	if (GameEngineInput::IsPress("UpMove"))
-	{
-		if (2545.0f <= SHA->GetPos().x && SHA->GetPos().x <= 2680.0f && SHA->GetPos().y >= 1175.0f)
-		{
-			GameEngineCore::GetInst()->ChangeLevel("UncleRoom");
-			OverlapTime = 0.0f;
-		}
-		if (4705.0f <= SHA->GetPos().x && SHA->GetPos().x <= 4795.0f && SHA->GetPos().y >= 1175.0f)
-		{
-			GameEngineCore::GetInst()->ChangeLevel("Smith");
-			OverlapTime = 0.0f;
-		}
-		if (5330.0f <= SHA->GetPos().x && SHA->GetPos().x <= 5495.0f && SHA->GetPos().y >= 1175.0f)
-		{
-			GameEngineCore::GetInst()->ChangeLevel("Shop");
-			OverlapTime = 0.0f;
-		}
-		if (6160.0f <= SHA->GetPos().x && SHA->GetPos().x <= 6280.0f && SHA->GetPos().y >= 1175.0f)
-		{
-			GameEngineCore::GetInst()->ChangeLevel("SaveRoom");
-			OverlapTime = 0.0f;
-		}
-		if (4840.0f <= SHA->GetPos().x && SHA->GetPos().x <= 4960.0f && SHA->GetPos().y <= 1175.0f)
-		{
-			GameEngineCore::GetInst()->ChangeLevel("Spa");
-			OverlapTime = 0.0f;
-		}
-		if (5330.0f <= SHA->GetPos().x && SHA->GetPos().x <= 5495.0f && SHA->GetPos().y <= 1175.0f)
-		{
-			GameEngineCore::GetInst()->ChangeLevel("SkyRoom");
-			OverlapTime = 0.0f;
-		}
-	}
+	// 레벨 이동
+	Portal();
 
 	if (SHA->GetPos().x >= 8355.0f)
 	{
@@ -207,5 +175,42 @@ void Scuttle::Debugging()
 	if (GameEngineInput::IsDown("Back"))
 	{
 		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
+	}
+}
+
+void Scuttle::Portal()
+{
+	if (GameEngineInput::IsPress("UpMove"))
+	{
+		if (2545.0f <= SHA->GetPos().x && SHA->GetPos().x <= 2680.0f && SHA->GetPos().y >= 1175.0f)
+		{
+			GameEngineCore::GetInst()->ChangeLevel("UncleRoom");
+			OverlapTime = 0.0f;
+		}
+		if (4705.0f <= SHA->GetPos().x && SHA->GetPos().x <= 4795.0f && SHA->GetPos().y >= 1175.0f)
+		{
+			GameEngineCore::GetInst()->ChangeLevel("Smith");
+			OverlapTime = 0.0f;
+		}
+		if (5330.0f <= SHA->GetPos().x && SHA->GetPos().x <= 5495.0f && SHA->GetPos().y >= 1175.0f)
+		{
+			GameEngineCore::GetInst()->ChangeLevel("Shop");
+			OverlapTime = 0.0f;
+		}
+		if (6160.0f <= SHA->GetPos().x && SHA->GetPos().x <= 6280.0f && SHA->GetPos().y >= 1175.0f)
+		{
+			GameEngineCore::GetInst()->ChangeLevel("SaveRoom");
+			OverlapTime = 0.0f;
+		}
+		if (4840.0f <= SHA->GetPos().x && SHA->GetPos().x <= 4960.0f && SHA->GetPos().y <= 1175.0f)
+		{
+			GameEngineCore::GetInst()->ChangeLevel("Spa");
+			OverlapTime = 0.0f;
+		}
+		if (5330.0f <= SHA->GetPos().x && SHA->GetPos().x <= 5495.0f && SHA->GetPos().y <= 1175.0f)
+		{
+			GameEngineCore::GetInst()->ChangeLevel("SkyRoom");
+			OverlapTime = 0.0f;
+		}
 	}
 }

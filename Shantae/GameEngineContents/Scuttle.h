@@ -30,6 +30,7 @@ private:
 	void LevelSet();
 	void Debugging();
 	void CameraAction();
+	void Portal();
 
 	GameEngineSoundPlayer BGMPlayer;
 	GameEngineActor* Shantae = nullptr;

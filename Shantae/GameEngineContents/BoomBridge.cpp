@@ -74,26 +74,12 @@ void BoomBridge::Update(float _DeltaTime)
 
 	LevelSet();
 	Debugging();
-
 	CameraAction();
 
-	if (0 == TimerCol1->GetTimerSet())
-	{
-		SetTimerRenewal_One(TimerCol1->GetAccTime());
-	}
-	if (0 == TimerCol2->GetTimerSet())
-	{
-		SetTimerRenewal_Two(TimerCol2->GetAccTime());
-	}
-	if (0 == TimerCol3->GetTimerSet())
-	{
-		SetTimerRenewal_Three(TimerCol3->GetAccTime());
-	}
-	if (0 == TimerCol4->GetTimerSet())
-	{
-		SetTimerRenewal_Four(TimerCol4->GetAccTime());
-	}
+	// 타이머 시작
+	TimerStart();
 
+	// 레벨 이동
 	if (SHA->GetPos().x >= 1660.0f
 		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{
@@ -192,6 +178,26 @@ void BoomBridge::Debugging()
 	if (GameEngineInput::IsDown("Back"))
 	{
 		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
+	}
+}
+
+void BoomBridge::TimerStart()
+{
+	if (0 == TimerCol1->GetTimerSet())
+	{
+		SetTimerRenewal_One(TimerCol1->GetAccTime());
+	}
+	if (0 == TimerCol2->GetTimerSet())
+	{
+		SetTimerRenewal_Two(TimerCol2->GetAccTime());
+	}
+	if (0 == TimerCol3->GetTimerSet())
+	{
+		SetTimerRenewal_Three(TimerCol3->GetAccTime());
+	}
+	if (0 == TimerCol4->GetTimerSet())
+	{
+		SetTimerRenewal_Four(TimerCol4->GetAccTime());
 	}
 }
 

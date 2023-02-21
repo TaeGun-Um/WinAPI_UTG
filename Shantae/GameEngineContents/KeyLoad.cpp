@@ -12,98 +12,44 @@ KeyLoad::~KeyLoad()
 
 void KeyLoad::Loading()
 {
-	// 0130, 0201
-	if (false == GameEngineInput::IsKey("TitleScroll"))
+	// Title
+	if (false == GameEngineInput::IsKey("TitleActorMove"))        // 타이틀화면에서만 사용
 	{
+		GameEngineInput::CreateKey("SelectMoveRight", VK_RIGHT);
+		GameEngineInput::CreateKey("SelectMoveLeft", VK_LEFT);
+		GameEngineInput::CreateKey("Select", 'Z');
+
+		// 선형보간 테스트용
 		GameEngineInput::CreateKey("TitleScrollLeft", 'A');
 		GameEngineInput::CreateKey("TitleScrollRight", 'D');
 		GameEngineInput::CreateKey("TitleScrollUp", 'W');
 		GameEngineInput::CreateKey("TitleScrollDown", 'S');
 	}
 
-	// Title
-	if (false == GameEngineInput::IsKey("SelectMoveRight"))
-	{
-		GameEngineInput::CreateKey("SelectMoveRight", VK_RIGHT);
-	}
-	if (false == GameEngineInput::IsKey("SelectMoveLeft"))
-	{
-		GameEngineInput::CreateKey("SelectMoveLeft", VK_LEFT);
-	}
-	if (false == GameEngineInput::IsKey("Select"))
-	{
-		GameEngineInput::CreateKey("Select", 'Z');
-	}
-
-	// Player Action
-	if (false == GameEngineInput::IsKey("UpMove"))
+	// Player Action == 방향키, ESC, Z, X, C
+	if (false == GameEngineInput::IsKey("PlayerMove"))            // 플레이어만 사용
 	{
 		GameEngineInput::CreateKey("UpMove", VK_UP);
-	}
-	if (false == GameEngineInput::IsKey("DownMove"))
-	{
 		GameEngineInput::CreateKey("DownMove", VK_DOWN);
-	}
-	if (false == GameEngineInput::IsKey("LeftMove"))
-	{
 		GameEngineInput::CreateKey("LeftMove", VK_LEFT);
-	}
-	if (false == GameEngineInput::IsKey("RightMove"))
-	{
 		GameEngineInput::CreateKey("RightMove", VK_RIGHT);
-	}
-	if (false == GameEngineInput::IsKey("Attack"))
-	{
 		GameEngineInput::CreateKey("Attack", 'Z');
-	}
-	if (false == GameEngineInput::IsKey("Jump"))
-	{
 		GameEngineInput::CreateKey("Jump", 'X');
-	}
-	if (false == GameEngineInput::IsKey("Fire"))
-	{
 		GameEngineInput::CreateKey("Fire", 'C');
-	}
-	if (false == GameEngineInput::IsKey("Back"))
-	{
 		GameEngineInput::CreateKey("Back", '\x1b');
 	}
 
-	// 디버깅용 키
-	if (false == GameEngineInput::IsKey("NextLevel"))
+	// Debug == P, O, A, S, 1, 2, 3, 4, 5
+	if (false == GameEngineInput::IsKey("Debug"))    
 	{
-		GameEngineInput::CreateKey("NextLevel", 'P');
-	}
-	if (false == GameEngineInput::IsKey("BeforeLevel"))
-	{
-		GameEngineInput::CreateKey("BeforeLevel", 'O');
-	}
-	if (false == GameEngineInput::IsKey("FreeMoveOn"))
-	{
-		GameEngineInput::CreateKey("FreeMoveOn", '1');
-	}
-	if (false == GameEngineInput::IsKey("FreeMoveOff"))
-	{
-		GameEngineInput::CreateKey("FreeMoveOff", '2');
-	}
-	if (false == GameEngineInput::IsKey("ColMapSwitch"))
-	{
-		GameEngineInput::CreateKey("ColMapSwitch", '3');
-	}
-	if (false == GameEngineInput::IsKey("PositionText"))
-	{
-		GameEngineInput::CreateKey("PositionText", '4');
-	}
-	if (false == GameEngineInput::IsKey("DebugRenderSwitch"))
-	{
-		GameEngineInput::CreateKey("DebugRenderSwitch", '5');
-	}
-	if (false == GameEngineInput::IsKey("MonsterTest"))
-	{
-		GameEngineInput::CreateKey("MonsterTest", 'A');
-	}
-	if (false == GameEngineInput::IsKey("CreateMonster"))
-	{
-		GameEngineInput::CreateKey("CreateMonster", 'S');
+		GameEngineInput::CreateKey("NextLevel", 'P');         // 다음 레벨로 이동(각 레벨)
+		GameEngineInput::CreateKey("BeforeLevel", 'O');       // 이전 레벨로 이동(각 레벨)
+		GameEngineInput::CreateKey("FreeMoveOn", '1');        // 프리무브 on (플레이어)
+		GameEngineInput::CreateKey("FreeMoveOff", '2');       // 프리무브 off (플레이어)
+		GameEngineInput::CreateKey("ColMapSwitch", '3');      // ColMapRender (각 레벨)
+		GameEngineInput::CreateKey("PositionText", '4');      // 위치 텍스트 (플레이어)
+		GameEngineInput::CreateKey("DebugRenderSwitch", '5'); // 충돌체, 텍스트박스 (플레이어)
+		GameEngineInput::CreateKey("MonsterTest", 'A');       // 몬스터 테스트 (플레이어 or 몬스터)
+		GameEngineInput::CreateKey("CreateMonster", 'S');     // 더미몬스터 생성 (플레이어)
 	}
 }

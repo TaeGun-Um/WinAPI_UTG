@@ -62,6 +62,7 @@ void Spa::Update(float _DeltaTime)
 	LevelSet();
 	Debugging();
 
+	// 레벨 이동
 	if (SHA->GetPos().x <= 40.0f)
 	{
 		GameEngineCore::GetInst()->ChangeLevel("Scuttle");

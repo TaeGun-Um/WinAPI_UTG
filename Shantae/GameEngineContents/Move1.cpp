@@ -82,9 +82,9 @@ void Move1::Update(float _DeltaTime)
 	
 	LevelSet();
 	Debugging();
-
 	CameraAction();
 
+	// 레벨 이동
 	if (SHA->GetPos().x >= 11720.0f
 		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{
@@ -119,7 +119,6 @@ void Move1::LevelSet()
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
 		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
 	}
-
 	if (1 == AnimationSet)
 	{
 		SHA->SetStartAnimationStart(true);
