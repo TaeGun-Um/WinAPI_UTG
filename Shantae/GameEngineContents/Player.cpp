@@ -9,6 +9,7 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineCollision.h>
 
+#include "Scarecrow.h"
 #include "Pistol_Bullet.h"
 #include "ContentsEnum.h"
 
@@ -69,6 +70,11 @@ void Player::Update(float _DeltaTime)
 	if (true == FreeMoveState(_DeltaTime))
 	{
 		return;
+	}
+	// 더미몬스터
+	if (GameEngineInput::IsDown("CreateMonster"))
+	{
+		CreateDummy();
 	}
 
 	//////////////////  레벨이동 애니메이션  //////////////////
@@ -594,6 +600,17 @@ bool Player::LevelChangeAnimation(float _DeltaTime)
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // 플레이어블 캐릭터의 추가 조작 (총알 발사, 캐릭터 사망 등)의 함수들 입니다.
+
+void Player::CreateDummy()
+{
+	Scarecrow* NewDummy = nullptr;
+	float4 NewDummyPos = float4::Zero;
+	NewDummyPos = GetPos() + (float4::Right * 250) + (float4::Up * 50);
+
+	NewDummy = GetLevel()->CreateActor<Scarecrow>();
+	NewDummy->SetColMap(ColMap);
+	NewDummy->SetPos(NewDummyPos);
+}
 
 void Player::Shoot()
 {

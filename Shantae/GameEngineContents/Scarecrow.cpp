@@ -23,7 +23,9 @@ void Scarecrow::Start()
 	AnimationRender->CreateAnimation({ .AnimationName = "Idle_L",  .ImageName = "Scarecrow_L.bmp", .Start = 0, .End = 6, .InterTime = 0.1f });
 
 	BodyCollision = CreateCollision(CollisionOrder::Monster);
-	BodyCollision->SetScale({ 50, 50 });
+	BodyCollision->SetDebugRenderType(CT_Rect);
+	BodyCollision->SetScale({ 50, 90 });
+	BodyCollision->SetPosition({ 0, -50 });
 
 	// Text(예시; 0206 추가)
 	//GameEngineRender* Render = CreateRender(RenderOrder::Monster);

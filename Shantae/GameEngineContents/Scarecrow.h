@@ -24,6 +24,11 @@ public:
 	Scarecrow& operator=(const Scarecrow& _Other) = delete;
 	Scarecrow& operator=(Scarecrow&& _Other) noexcept = delete;
 
+	void SetColMap(GameEngineImage* _NextColMap)
+	{
+		ColMap = _NextColMap;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;

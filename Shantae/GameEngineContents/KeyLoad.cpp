@@ -60,6 +60,10 @@ void KeyLoad::Loading()
 	{
 		GameEngineInput::CreateKey("Jump", 'X');
 	}
+	if (false == GameEngineInput::IsKey("Fire"))
+	{
+		GameEngineInput::CreateKey("Fire", 'C');
+	}
 	if (false == GameEngineInput::IsKey("Back"))
 	{
 		GameEngineInput::CreateKey("Back", '\x1b');
@@ -97,5 +101,9 @@ void KeyLoad::Loading()
 	if (false == GameEngineInput::IsKey("MonsterTest"))
 	{
 		GameEngineInput::CreateKey("MonsterTest", 'A');
+	}
+	if (false == GameEngineInput::IsKey("CreateMonster"))
+	{
+		GameEngineInput::CreateKey("CreateMonster", 'S');
 	}
 }

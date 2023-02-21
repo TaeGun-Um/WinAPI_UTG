@@ -167,6 +167,7 @@ private:
 	void Kill();
 	void RenderSet();
 	void CollisionSet();
+	void CreateDummy();
 
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineImage* ColMap = nullptr;
