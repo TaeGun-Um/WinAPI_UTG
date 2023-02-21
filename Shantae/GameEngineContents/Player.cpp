@@ -10,6 +10,7 @@
 #include <GameEngineCore/GameEngineCollision.h>
 
 #include "Scarecrow.h"
+#include "Impact.h"
 #include "Pistol_Bullet.h"
 #include "ContentsEnum.h"
 
@@ -485,14 +486,17 @@ void Player::CollisionCheck(float _DeltaTime)
 			if (true == IsAirAttack)
 			{
 				AttackCollision->SetPosition({ 100, -75 });
+				ImpactPos = GetPos() + (float4::Right * 150) + (float4::Up * 70);
 			}
 			else if (true == IsCrouchAttack)
 			{
 				AttackCollision->SetPosition({ 100, -40 });
+				ImpactPos = GetPos() + (float4::Right * 150) + (float4::Up * 25);
 			}
 			else if (true == IsAttack)
 			{
 				AttackCollision->SetPosition({ 100, -60 });
+				ImpactPos = GetPos() + (float4::Right * 150) + (float4::Up * 55);
 			}
 		}
 		else // Left
@@ -500,28 +504,30 @@ void Player::CollisionCheck(float _DeltaTime)
 			if (true == IsAirAttack)
 			{
 				AttackCollision->SetPosition({ -100, -75 });
+				ImpactPos = GetPos() + (float4::Left * 150) + (float4::Up * 70);
 			}
 			else if (true == IsCrouchAttack)
 			{
 				AttackCollision->SetPosition({ -100, -40 });
+				ImpactPos = GetPos() + (float4::Left * 150) + (float4::Up * 25);
 			}
 			else if (true == IsAttack)
 			{
 				AttackCollision->SetPosition({ -100, -60 });
+				ImpactPos = GetPos() + (float4::Left * 150) + (float4::Up * 55);
 			}
 		}
 		AttackCollision->On();
 	}
-
 	
 	if (false == IsAttackStart)
 	{
 		AttackCollision->Off();
 	}
 
-	// Contact with Monster
 	if (nullptr != BodyCollision)
-	{
+	{   
+		// Contact with Monster
 		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Monster), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
 			HP -= 1;
@@ -529,11 +535,7 @@ void Player::CollisionCheck(float _DeltaTime)
 			HitTimeCheck = true;
 			BodyCollision->Off();
 		}
-	}
-
-	// Attack for Monster
-	if (nullptr != BodyCollision)
-	{
+		// Attack for Monster
 		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::MonsterAttack), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
 			HP -= 1;
@@ -550,6 +552,14 @@ void Player::CollisionCheck(float _DeltaTime)
 		if (true == StandingCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Ground), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
 			CollisionGround = true;
+		}
+	}
+
+	if (nullptr != AttackCollision)
+	{
+		if (true == AttackCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Monster), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+		{
+			CreateImpact();
 		}
 	}
 
@@ -604,12 +614,20 @@ bool Player::LevelChangeAnimation(float _DeltaTime)
 void Player::CreateDummy()
 {
 	Scarecrow* NewDummy = nullptr;
-	float4 NewDummyPos = float4::Zero;
-	NewDummyPos = GetPos() + (float4::Right * 250) + (float4::Up * 50);
+	float4 DummyPos = float4::Zero;
+	DummyPos = GetPos() + (float4::Right * 250) + (float4::Up * 50);
 
 	NewDummy = GetLevel()->CreateActor<Scarecrow>();
 	NewDummy->SetColMap(ColMap);
-	NewDummy->SetPos(NewDummyPos);
+	NewDummy->SetPos(DummyPos);
+}
+
+void Player::CreateImpact()
+{
+	Impact* NewImpact = nullptr;
+
+	NewImpact = GetLevel()->CreateActor<Impact>();
+	NewImpact->SetPos(ImpactPos);
 }
 
 void Player::Shoot()

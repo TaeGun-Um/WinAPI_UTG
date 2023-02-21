@@ -19,8 +19,8 @@ void Impact::Start()
 {
 	// Animation
 	AnimationRender = CreateRender(RenderOrder::Effect);
-	AnimationRender->SetScale({ 400, 400 });
-	AnimationRender->CreateAnimation({ .AnimationName = "Impact",  .ImageName = "Impact.bmp", .Start = 0, .End = 5, .InterTime = 0.08f });
+	AnimationRender->SetScale({ 300, 300 });
+	AnimationRender->CreateAnimation({ .AnimationName = "Impact",  .ImageName = "Impact.bmp", .Start = 0, .End = 5, .InterTime = 0.035f });
 	AnimationRender->ChangeAnimation("Impact");
 }
 

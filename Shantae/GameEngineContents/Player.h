@@ -165,9 +165,10 @@ private:
 	void CollisionCheck(float _DeltaTime);
 	void Shoot();
 	void Kill();
+	void CreateDummy();
+	void CreateImpact();
 	void RenderSet();
 	void CollisionSet();
-	void CreateDummy();
 
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineImage* ColMap = nullptr;
@@ -186,6 +187,7 @@ private:
 	float4 CrouchUpPos_L = float4::Zero;
 	float4 UpPos = float4::Zero;
 	float4 JumpLand = float4::Zero;
+	float4 ImpactPos = float4::Zero;
 
 	float MoveSpeed = 600.0f;
 	float CrouchSpeed = 200.0f;

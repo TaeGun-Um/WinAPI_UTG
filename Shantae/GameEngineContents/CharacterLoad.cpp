@@ -28,7 +28,7 @@ void CharacterLoad::Loading()
 	GameEngineImage* Image1010 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Shantae\\Splash.bmp"));
 	Image1010->Cut(9, 1);
 	GameEngineImage* Image0101 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Shantae\\Impact.bmp"));
-	Image1010->Cut(6, 1);
+	Image0101->Cut(6, 1);
 	GameEngineImage* Image1111 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Shantae\\Pistol_Bullet.bmp"));
 	Image1111->Cut(6, 1);
 
