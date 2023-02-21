@@ -67,6 +67,7 @@ private:
 	float MoveSpeed = 500.0f;
 	float HitTime = 0.0f;
 	float AmbushTime = 0.0f;
+	float BlinkTime = 0.0f;
 
 	float4 MoveDir = float4::Zero;
 	float4 NextPos = float4::Zero;
@@ -86,6 +87,7 @@ private:
 	bool IsTurn = false;
 	bool HitAction = false;
 	bool IsDeath = false;
+	bool Blinker = false;
 
 	std::string DirString = "_L";
 	std::string HitDir = "_L";
@@ -96,6 +98,7 @@ private:
 	void CollisionCheck();
 	void Explosion();
 	void Kill();
+	void AlphaBlinker(float _DeltaTime);
 
 	void RenderSet();
 	void CollisionSet();

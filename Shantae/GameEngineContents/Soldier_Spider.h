@@ -57,6 +57,7 @@ private:
 	float AccTime = 0.0f;
 	float AttackDelay = 0.0f;
 	float HitTime = 0.0f;
+	float BlinkTime = 0.0f;
 
 	float4 MoveDir = float4::Zero;
 	float4 NextPos = float4::Zero;
@@ -68,8 +69,10 @@ private:
 	bool MoveDirect = false;
 	bool HitAction = false;
 	bool IsAttack = false;
+	bool Blinker = false;
 
 	int ChangeCount = 1;
+	int BlinkCount = 1;
 
 	std::string DirString = "_R";
 	Soldier_SpiderState StateValue = Soldier_SpiderState::MOVE;
@@ -79,6 +82,7 @@ private:
 	void CollisionCheck();
 	void Explosion();
 	void Kill();
+	void AlphaBlinker(float _DeltaTime);
 
 	void RenderSet();
 	void CollisionSet();

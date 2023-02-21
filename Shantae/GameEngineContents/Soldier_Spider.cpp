@@ -46,6 +46,17 @@ void Soldier_Spider::Update(float _DeltaTime)
 
 		if (7.0f <= AccTime)
 		{
+			if (1 == BlinkCount)
+			{
+				BlinkCount = 0;
+				Blinker = true;
+			}
+			
+			if (true == Blinker)
+			{
+				AlphaBlinker(_DeltaTime);
+			}
+
 			ChangeState(Soldier_SpiderState::HIT);
 		}
 	}
@@ -169,6 +180,33 @@ void Soldier_Spider::Explosion()
 	Ex = GetLevel()->CreateActor<Public_Boom>();
 	Ex->SetPos(ExPos);
 	Ex->SetExPlus(1);
+}
+
+void Soldier_Spider::AlphaBlinker(float _DeltaTime)
+{
+	BlinkTime += _DeltaTime;
+
+	if (true == Blinker)
+	{
+		if (0.15f <= BlinkTime)
+		{
+			BlinkTime = 0.0f;
+			Blinker = false;
+			AnimationRender->SetAlpha(255);
+		}
+		if (0.10f <= BlinkTime && true == Blinker)
+		{
+			AnimationRender->SetAlpha(120);
+		}
+		else if (0.05f <= BlinkTime && true == Blinker)
+		{
+			AnimationRender->SetAlpha(180);
+		}
+		else if (0.05f >= BlinkTime && true == Blinker)
+		{
+			AnimationRender->SetAlpha(240);
+		}
+	}
 }
 
 void Soldier_Spider::RenderSet()

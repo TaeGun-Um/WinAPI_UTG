@@ -160,7 +160,6 @@ void Soldier_Spider::AttackEnd()
 void Soldier_Spider::HitStart()
 {
 	CollisionGround = false;
-
 	IsGravity = false;
 
 	MoveDir.y += 10.0f;

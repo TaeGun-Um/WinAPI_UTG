@@ -67,6 +67,8 @@ private:
 	void CollisionSet();
 	void CollisionCheck(float _DeltaTime);
 	void MoveCalculation(float _DeltaTime);
+	void AlphaBlinker(float _DeltaTime);
+	void CreateImpact();
 
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
@@ -79,6 +81,7 @@ private:
 	float DowningTime = 0.0f;
 	float StruggleTime = 0.0f;
 	float HitTime = 0.0f;
+	float BlinkTime = 0.0f;
 
 	int BaronHP = 10;
 
@@ -88,6 +91,7 @@ private:
 	bool Hitonoff = true;
 	bool IsStruggle = false;
 	bool IsEnd = false;
+	bool Blinker = false;
 
 	AmmoBaronState StateValue = AmmoBaronState::IDLE;
 	void ChangeState(AmmoBaronState _State);

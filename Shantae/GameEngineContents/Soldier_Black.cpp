@@ -42,6 +42,11 @@ void Soldier_Black::Update(float _DeltaTime)
 	CharacterDirectSetting(_DeltaTime);
 	CollisionCheck(_DeltaTime);
 	MoveCalculation(_DeltaTime);
+
+	if (true == Blinker)
+	{
+		AlphaBlinker(_DeltaTime);
+	}
 }
 
 void Soldier_Black::Render(float _DeltaTime)
@@ -154,6 +159,7 @@ void Soldier_Black::CollisionCheck(float _DeltaTime)
 				Hitonoff = false;
 				HitTime2 = 0.0f;
 				BodyCollision->Off();
+				Blinker = true;
 				HP -= 5;
 
 				if (0 >= HP)
@@ -212,6 +218,33 @@ void Soldier_Black::Explosion()
 	Ex = GetLevel()->CreateActor<Public_Boom>();
 	Ex->SetPos(ExPos);
 	Ex->SetExPlus(1);
+}
+
+void Soldier_Black::AlphaBlinker(float _DeltaTime)
+{
+	BlinkTime += _DeltaTime;
+
+	if (true == Blinker)
+	{
+		if (0.15f <= BlinkTime)
+		{
+			BlinkTime = 0.0f;
+			Blinker = false;
+			AnimationRender->SetAlpha(255);
+		}
+		if (0.10f <= BlinkTime && true == Blinker)
+		{
+			AnimationRender->SetAlpha(120);
+		}
+		else if (0.05f <= BlinkTime && true == Blinker)
+		{
+			AnimationRender->SetAlpha(180);
+		}
+		else if (0.05f >= BlinkTime && true == Blinker)
+		{
+			AnimationRender->SetAlpha(240);
+		}
+	}
 }
 
 void Soldier_Black::RenderSet()

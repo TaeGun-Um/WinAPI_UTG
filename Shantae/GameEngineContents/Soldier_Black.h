@@ -58,6 +58,7 @@ private:
 	float HitTime2 = 0.0f;
 	float ShootStartTime = 0.0f;
 	float ShootTime = 0.0f;
+	float BlinkTime = 0.0f;
 
 	// true = left, false = right
 	bool MoveDirect = true;
@@ -67,6 +68,7 @@ private:
 	bool IsDeath = false;
 	bool trace = true;
 	bool Hitonoff = true;
+	bool Blinker = false;
 
 	int ShootCount = 3;
 	int HP = 15;
@@ -83,6 +85,7 @@ private:
 	void Explosion();
 	void Shoot();
 	void Kill();
+	void AlphaBlinker(float _DeltaTime);
 
 	void RenderSet();
 	void CollisionSet();

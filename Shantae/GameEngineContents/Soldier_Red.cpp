@@ -39,8 +39,12 @@ void Soldier_Red::Update(float _DeltaTime)
 	}
 
 	CollisionCheck();
-
 	MoveCalculation(_DeltaTime);
+
+	if (true == Blinker)
+	{
+		AlphaBlinker(_DeltaTime);
+	}
 }
 void Soldier_Red::Render(float _DeltaTime)
 {
@@ -250,6 +254,7 @@ void Soldier_Red::CollisionCheck()
 	{
 		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PlayerAttack), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
+			Blinker = true;
 			if (10 == HP)
 			{
 				HP = 5;
@@ -283,6 +288,33 @@ void Soldier_Red::Explosion()
 	Ex = GetLevel()->CreateActor<Public_Boom>();
 	Ex->SetPos(ExPos);
 	Ex->SetExPlus(1);
+}
+
+void Soldier_Red::AlphaBlinker(float _DeltaTime)
+{
+	BlinkTime += _DeltaTime;
+
+	if (true == Blinker)
+	{
+		if (0.15f <= BlinkTime)
+		{
+			BlinkTime = 0.0f;
+			Blinker = false;
+			AnimationRender->SetAlpha(255);
+		}
+		if (0.10f <= BlinkTime && true == Blinker)
+		{
+			AnimationRender->SetAlpha(120);
+		}
+		else if (0.05f <= BlinkTime && true == Blinker)
+		{
+			AnimationRender->SetAlpha(180);
+		}
+		else if (0.05f >= BlinkTime && true == Blinker)
+		{
+			AnimationRender->SetAlpha(240);
+		}
+	}
 }
 
 void Soldier_Red::RenderSet()

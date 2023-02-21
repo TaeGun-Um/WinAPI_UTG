@@ -55,6 +55,7 @@ private:
 
 	float HitTime = 0.0f;
 	float LobStatTime = 0.0f;
+	float BlinkTime = 0.0f;
 
 	// true = left, false = right
 	bool MoveDirect = true;
@@ -63,6 +64,7 @@ private:
 	bool HitAction = false;
 	bool IsDeath = false;
 	bool trace = true;
+	bool Blinker = false;
 
 	int BoomCount = 1;
 
@@ -77,6 +79,7 @@ private:
 	void Explosion();
 	void Throw();
 	void Kill();
+	void AlphaBlinker(float _DeltaTime);
 
 	void RenderSet();
 	void CollisionSet();

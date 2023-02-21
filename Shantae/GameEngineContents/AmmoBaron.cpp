@@ -4,8 +4,10 @@
 #include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineCollision.h>
 #include <GameEngineCore/GameEngineRender.h>
+#include <GameEngineCore/GameEngineLevel.h>
 
 #include "ContentsEnum.h"
+#include "Impact.h"
 
 AmmoBaron::AmmoBaron() 
 {
@@ -27,6 +29,11 @@ void AmmoBaron::Update(float _DeltaTime)
 {
 	CollisionCheck(_DeltaTime);
 	MoveCalculation(_DeltaTime);
+
+	if (true == Blinker)
+	{
+		AlphaBlinker(_DeltaTime);
+	}
 }
 void AmmoBaron::Render(float _DeltaTime)
 {
@@ -70,10 +77,48 @@ void AmmoBaron::CollisionCheck(float _DeltaTime)
 				Hitonoff = false;
 				HitTime = 0.0f;
 				BodyCollision->Off();
+				CreateImpact();
+				Blinker = true;
 				BaronHP -= 5;
 			}
 		}
 
+	}
+}
+
+void AmmoBaron::CreateImpact()
+{
+	Impact* NewImpact = nullptr;
+	float4 ImpactPos = GetPos() + (float4::Up * 20) + (float4::Left * 10);
+
+	NewImpact = GetLevel()->CreateActor<Impact>();
+	NewImpact->SetPos(ImpactPos);
+}
+
+void AmmoBaron::AlphaBlinker(float _DeltaTime)
+{
+	BlinkTime += _DeltaTime;
+
+	if (true == Blinker)
+	{
+		if (0.15f <= BlinkTime)
+		{
+			BlinkTime = 0.0f;
+			Blinker = false;
+			AnimationRender->SetAlpha(255);
+		}
+		if (0.10f <= BlinkTime && true == Blinker)
+		{
+			AnimationRender->SetAlpha(120);
+		}
+		else if (0.05f <= BlinkTime && true == Blinker)
+		{
+			AnimationRender->SetAlpha(180);
+		}
+		else if (0.05f >= BlinkTime && true == Blinker)
+		{
+			AnimationRender->SetAlpha(240);
+		}
 	}
 }
 
