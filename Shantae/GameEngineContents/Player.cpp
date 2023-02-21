@@ -106,10 +106,6 @@ void Player::Update(float _DeltaTime)
 	// 이동계산
 	MoveCalculation(_DeltaTime);
 	// 카메라흔들림
-	if (GameEngineInput::IsDown("MonsterTest"))
-	{
-		CameraShaking = true;
-	}
 	if (true == CameraShaking)
 	{
 		CameraShake(_DeltaTime);
@@ -632,15 +628,23 @@ bool Player::LevelChangeAnimation(float _DeltaTime)
 
 // 플레이어블 캐릭터의 추가 조작 (총알 발사, 캐릭터 사망 등)의 함수들 입니다.
 
-void Player::CameraShake(float _DeltaTime, float _ShakingTime)
+void Player::SetCameraShaking(float _SetShakingTime, float _SetShakingValue)
+{
+	// 사용법 == player 헤더 참조 후 Player::Mainpayer->SetCameraShaking() 호출
+	CameraShaking = true;
+	SetShakingTime = _SetShakingTime;
+	SetShakingValue = _SetShakingValue;
+}
+
+void Player::CameraShake(float _DeltaTime)
 {
 	float4 Cam = GetLevel()->GetCameraPos();
-	float4 Up = Cam + (float4::Up * 3);
-	float4 Down = Cam + (float4::Down * 3);
+	float4 Up = Cam + (float4::Up * SetShakingValue);
+	float4 Down = Cam + (float4::Down * SetShakingValue);
 
 	ShakingTime += _DeltaTime;
 
-	if (_ShakingTime <= ShakingTime)
+	if (SetShakingTime <= ShakingTime)
 	{
 		ShakingTime = 0.0f;
 		CameraShaking = false;
@@ -649,7 +653,7 @@ void Player::CameraShake(float _DeltaTime, float _ShakingTime)
 
 	// GetLevel()->SetCameraMove(float4::Left * MoveSpeed * _DeltaTime);
 
-	if (_ShakingTime >= ShakingTime && true == CameraShaking)
+	if (SetShakingTime >= ShakingTime && true == CameraShaking)
 	{
 		if (0 == ShakingCount)
 		{

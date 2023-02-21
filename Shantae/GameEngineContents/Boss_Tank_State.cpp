@@ -5,6 +5,7 @@
 
 #include "ContentsEnum.h"
 #include "AmmoBaron.h"
+#include "Player.h"
 
 // Player State º¯°æ
 void Boss_Tank::ChangeState(Boss_TankState _State)
@@ -220,6 +221,7 @@ void Boss_Tank::ChargeUpdate(float _DeltaTime)
 		{
 			IsCharge = true;
 			SetPos(ChargePos);
+			Player::MainPlayer->SetCameraShaking(0.5f, 5);
 		}
 	}
 

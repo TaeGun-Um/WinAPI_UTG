@@ -147,12 +147,12 @@ public:
 		return StateValue;
 	}
 
+	void SetCameraShaking(float _SetShakingTime, float _SetShakingValu);
 	bool FreeMoveState(float _DeltaTime);
 	void PositionText();
 	void ChangeState(PlayerState _State);
 	bool LevelChangeAnimation(float _DeltaTime);
 	void LevelStartAnimation(float _DeltaTime);
-	void CameraShake(float _DeltaTime, float _ShakingTime);
 
 protected:
 	void Start() override;
@@ -164,11 +164,12 @@ private:
 	void MoveCalculation(float _DeltaTime);
 	void WallCheck(float _Speed);
 	void CollisionCheck(float _DeltaTime);
-	void Shoot();
-	void Kill();
+	void CameraShake(float _DeltaTime);
 	void AlphaBlinker(float _DeltaTime);
 	void CreateDummy();
 	void CreateImpact();
+	void Shoot();
+	void Kill();
 	void RenderSet();
 	void CollisionSet();
 
@@ -204,6 +205,8 @@ private:
 	float HitTime = 0.0f;
 	float BlinkTime = 0.0f;
 	float ShakingTime = 0.0f;
+	float SetShakingTime = 0.0f;
+	float SetShakingValue = 0;
 
 	int Pass = 1;
 	int MaxHP = 8;
