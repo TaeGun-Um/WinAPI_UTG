@@ -82,7 +82,6 @@ void AmmoBaron::CollisionCheck(float _DeltaTime)
 				BaronHP -= 5;
 			}
 		}
-
 	}
 }
 

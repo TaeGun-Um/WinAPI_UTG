@@ -82,6 +82,21 @@ void Scarecrow::MoveCalculation(float _DeltaTime)
 
 void Scarecrow::CollisionCheck(float _DeltaTime)
 {
+	//std::string MouseText = "MousePosition : \n";
+	//MouseText += GetLevel()->GetMousePos().ToString();
+
+	//std::string CameraMouseText = "MousePositionCamera : ";
+	//CameraMouseText += GetLevel()->GetMousePosToCamera().ToString();
+
+	//GameEngineLevel::DebugTextPush(MouseText);
+	//// GameEngineLevel::DebugTextPush(CameraMouseText);
+
+	////std::string Text = "출력";
+	////SetBkMode(DoubleDC, TRANSPARENT);
+	////TextOut(DoubleDC, 0, 0, Text.c_str(), Text.size());
+
+	//// 디버깅용.
+
 	HitTime += _DeltaTime;
 
 	if (0.2f <= HitTime)
