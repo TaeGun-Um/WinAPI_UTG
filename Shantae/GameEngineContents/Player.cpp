@@ -95,7 +95,12 @@ void Player::Update(float _DeltaTime)
 	//////////////////  콜리전 체크  //////////////////
 	
 	CollisionCheck(_DeltaTime);
-
+	
+	if (true == Blinker)
+	{
+		AlphaBlinker(_DeltaTime);
+	}
+	
 	//////////////////  이동 계산 및 애니메이션  //////////////////
 	
 	MoveCalculation(_DeltaTime);
@@ -534,6 +539,8 @@ void Player::CollisionCheck(float _DeltaTime)
 			HitAction = true;
 			HitTimeCheck = true;
 			BodyCollision->Off();
+
+			Blinker = true;
 		}
 		// Attack for Monster
 		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::MonsterAttack), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
@@ -542,6 +549,8 @@ void Player::CollisionCheck(float _DeltaTime)
 			HitAction = true;
 			HitTimeCheck = true;
 			BodyCollision->Off();
+
+			Blinker = true;
 		}
 	}
 
@@ -572,6 +581,8 @@ void Player::CollisionCheck(float _DeltaTime)
 		HitTime = 0.0f;
 		HitTimeCheck = false;
 		BodyCollision->On();
+		Blinker = false;
+		AnimationRender->SetAlpha(255);
 	}
 }
 
@@ -610,6 +621,32 @@ bool Player::LevelChangeAnimation(float _DeltaTime)
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // 플레이어블 캐릭터의 추가 조작 (총알 발사, 캐릭터 사망 등)의 함수들 입니다.
+
+void Player::AlphaBlinker(float _DeltaTime)
+{
+	BlinkTime += _DeltaTime;
+
+	if (true == Blinker)
+	{
+		if (0.15f <= BlinkTime)
+		{
+			BlinkTime = 0.0f;
+		}
+
+		if (0.10f <= BlinkTime)
+		{
+			AnimationRender->SetAlpha(120);
+		}
+		else if (0.05f <= BlinkTime)
+		{
+			AnimationRender->SetAlpha(180);
+		}
+		else if (0.05f >= BlinkTime)
+		{
+			AnimationRender->SetAlpha(240);
+		}
+	}
+}
 
 void Player::CreateDummy()
 {

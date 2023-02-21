@@ -165,6 +165,7 @@ private:
 	void CollisionCheck(float _DeltaTime);
 	void Shoot();
 	void Kill();
+	void AlphaBlinker(float _DeltaTime);
 	void CreateDummy();
 	void CreateImpact();
 	void RenderSet();
@@ -200,6 +201,7 @@ private:
 	float JumpPos = 0.0f;
 	float IdleTime = 0.0f;
 	float HitTime = 0.0f;
+	float BlinkTime = 0.0f;
 
 	int Pass = 1;
 	int MaxHP = 8;
@@ -223,6 +225,7 @@ private:
 	bool HitAction = false;
 	bool HitTimeCheck = false;
 	bool IsJumpHit = false;
+	bool Blinker = false;
 
 	bool CollisionGround = false;
 
