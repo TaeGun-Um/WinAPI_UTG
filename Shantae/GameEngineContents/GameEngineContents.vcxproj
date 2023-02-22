@@ -492,10 +492,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Scarecrow_Black.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="Scuttle.h">
       <SubType>
       </SubType>
@@ -1115,10 +1111,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Scarecrow.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Scarecrow_Black.cpp">
       <SubType>
       </SubType>
     </ClCompile>

@@ -352,10 +352,7 @@
       <Filter>Character\Monster\Soldier</Filter>
     </ClInclude>
     <ClInclude Include="Scarecrow.h">
-      <Filter>Character\Monster\Scarecrow</Filter>
-    </ClInclude>
-    <ClInclude Include="Scarecrow_Black.h">
-      <Filter>Character\Monster\Scarecrow</Filter>
+      <Filter>Character\Monster\Scarecrow%28Dummy%29</Filter>
     </ClInclude>
     <ClInclude Include="Mermaid.h">
       <Filter>Character\Monster\Mermaid</Filter>
@@ -820,10 +817,7 @@
       <Filter>Character\Monster\Soldier</Filter>
     </ClCompile>
     <ClCompile Include="Scarecrow.cpp">
-      <Filter>Character\Monster\Scarecrow</Filter>
-    </ClCompile>
-    <ClCompile Include="Scarecrow_Black.cpp">
-      <Filter>Character\Monster\Scarecrow</Filter>
+      <Filter>Character\Monster\Scarecrow%28Dummy%29</Filter>
     </ClCompile>
     <ClCompile Include="Mermaid.cpp">
       <Filter>Character\Monster\Mermaid</Filter>
@@ -976,9 +970,6 @@
     </Filter>
     <Filter Include="Character\Monster\Soldier">
       <UniqueIdentifier>{78d21142-3e18-4440-904d-9f0339841c2c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Character\Monster\Scarecrow">
-      <UniqueIdentifier>{45e60511-836b-472f-abc6-27d9f901e413}</UniqueIdentifier>
     </Filter>
     <Filter Include="Character\Monster\Mermaid">
       <UniqueIdentifier>{d2a379c4-4415-4b3b-b709-69df4b33191d}</UniqueIdentifier>
@@ -1171,6 +1162,9 @@
     </Filter>
     <Filter Include="Loader\ObjectLoad">
       <UniqueIdentifier>{9035dd2c-dd5e-401f-95a7-adb5899c6dc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character\Monster\Scarecrow%28Dummy%29">
+      <UniqueIdentifier>{45e60511-836b-472f-abc6-27d9f901e413}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -55,7 +55,7 @@ void Bridge_Boom::Update(float _DeltaTime)
 			{
 				SoundCount = 0;
 				BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Bridgeboom.wav");
-				BGMPlayer.Volume(0.02f);
+				BGMPlayer.Volume(0.07f);
 				BGMPlayer.LoopCount(1);
 			}
 			else if (2 == AnimationRender->GetFrame() && false == IsDeath)

@@ -84,22 +84,6 @@ void CharacterLoad::Loading()
 	Image20->Cut(5, 12);
 	GameEngineImage* Image21 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Scarecrow\\Scarecrow_R.BMP"));
 	Image21->Cut(5, 12);
-	GameEngineImage* Image22 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Scarecrow\\Scarecrow_Pumpkine_L.BMP"));
-	Image22->Cut(8, 1);
-	GameEngineImage* Image23 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Scarecrow\\Scarecrow_Pumpkine_R.BMP"));
-	Image23->Cut(8, 1);
-	GameEngineImage* Image24 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Scarecrow\\Scarecrow_PumpkineBoom_L.BMP"));
-	Image24->Cut(6, 1);
-	GameEngineImage* Image25 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Scarecrow\\Scarecrow_PumpkineBoom_R.BMP"));
-	Image25->Cut(6, 1);
-	GameEngineImage* Image26 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Scarecrow\\Scarecrow_Black_L.BMP"));
-	Image26->Cut(5, 13);
-	GameEngineImage* Image27 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Scarecrow\\Scarecrow_Black_R.BMP"));
-	Image27->Cut(5, 13);
-	GameEngineImage* Image28 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Scarecrow\\Scarecrow_Black_Fire_L.BMP"));
-	Image28->Cut(15, 1);
-	GameEngineImage* Image29 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Scarecrow\\Scarecrow_Black_Fire_R.BMP"));
-	Image29->Cut(15, 1);
 
 	// Mermaid
 	GameEngineImage* Image30 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Mermaid\\Mermaid_L.BMP"));

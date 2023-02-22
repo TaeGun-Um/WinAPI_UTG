@@ -208,7 +208,7 @@ void Boss_Tank::ChargeStart()
 	AnimationRender->ChangeAnimation("Charge");
 
 	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Tank_Charge.mp3");
-	BGMPlayer.Volume(0.2f);
+	BGMPlayer.Volume(0.15f);
 	BGMPlayer.LoopCount(1);
 }
 void Boss_Tank::ChargeUpdate(float _DeltaTime)
@@ -298,7 +298,7 @@ void Boss_Tank::FireUpdate(float _DeltaTime)
 			Fire();
 
 			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Boom_blast.wav");
-			BGMPlayer.Volume(0.4f);
+			BGMPlayer.Volume(0.2f);
 			BGMPlayer.LoopCount(1);
 
 			ChangeState(Boss_TankState::PUSHOUT);
@@ -311,7 +311,7 @@ void Boss_Tank::FireUpdate(float _DeltaTime)
 			Fire();
 
 			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Boom_blast.wav");
-			BGMPlayer.Volume(0.4f);
+			BGMPlayer.Volume(0.2f);
 			BGMPlayer.LoopCount(1);
 
 			ChangeState(Boss_TankState::PUSHOUT);

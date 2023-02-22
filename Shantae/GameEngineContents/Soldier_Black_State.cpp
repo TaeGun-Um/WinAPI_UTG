@@ -136,7 +136,7 @@ void Soldier_Black::ShootUpdate(float _Time)
 		--ShootCount;
 
 		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_gun_fire.mp3");
-		BGMPlayer.Volume(0.05f);
+		BGMPlayer.Volume(0.15f);
 		BGMPlayer.LoopCount(1);
 
 		DirCheck("Shoot");

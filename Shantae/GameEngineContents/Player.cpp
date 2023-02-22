@@ -373,8 +373,11 @@ void Player::MoveCalculation(float _DeltaTime)
 
 	////////////////// State //////////////////
 
-	UpdateState(_DeltaTime);
-
+	if (false == IsStartAnimationStart)
+	{
+		UpdateState(_DeltaTime);
+	}
+	
 	SetMove(MoveDir * _DeltaTime);
 }
 
@@ -485,15 +488,15 @@ void Player::CollisionCheck(float _DeltaTime)
 	{
 		BodyCollision->SetScale({ 50, 55 });
 		BodyCollision->SetPosition({ 0, -27.5f });
-		StandingCollision->SetScale({ 50, 55 });
-		StandingCollision->SetPosition({ 0, -27.5f });
+		StandingCollision->SetScale({ 40, 45 });
+		StandingCollision->SetPosition({ 0, -22.5f });
 	}
 	else // Normal
 	{
 		BodyCollision->SetScale({ 50, 90 });
-		BodyCollision->SetPosition({ 0, -50 });
-		StandingCollision->SetScale({ 50, 90 });
-		StandingCollision->SetPosition({ 0, -45 });
+		BodyCollision->SetPosition({ 0, -45 });
+		StandingCollision->SetScale({ 40, 80 });
+		StandingCollision->SetPosition({ 0, -40 });
 	}
 
 	// AttackCollision
@@ -613,6 +616,30 @@ void Player::LevelStartAnimation(float _DeltaTime)
 	AnimationTime += _DeltaTime;
 
 	SetMove(float4::Right * MoveSpeed * _DeltaTime);
+
+	MoveSoundTime += _DeltaTime;
+
+	if (0.24f <= MoveSoundTime)
+	{
+		if (2 == MoveSoundCount)
+		{
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_move3.wav");
+			BGMPlayer.Volume(0.3f);
+			BGMPlayer.LoopCount(1);
+
+			MoveSoundTime = 0.0f;
+			MoveSoundCount = 1;
+		}
+		else if (1 == MoveSoundCount)
+		{
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_move2.wav");
+			BGMPlayer.Volume(0.3f);
+			BGMPlayer.LoopCount(1);
+
+			MoveSoundTime = 0.0f;
+			MoveSoundCount = 2;
+		}
+	}
 }
 
 bool Player::LevelChangeAnimation(float _DeltaTime)
@@ -853,12 +880,12 @@ void Player::CollisionSet()
 	BodyCollision = CreateCollision(CollisionOrder::Player);
 	BodyCollision->SetDebugRenderType(CT_Rect);
 	BodyCollision->SetScale({ 50, 90 });
-	BodyCollision->SetPosition({ 0, -50 });
+	BodyCollision->SetPosition({ 0, -45 });
 
 	StandingCollision = CreateCollision(CollisionOrder::Effect);
 	StandingCollision->SetDebugRenderType(CT_Rect);
-	StandingCollision->SetScale({ 50, 90 });
-	StandingCollision->SetPosition({ 0, -45 });
+	StandingCollision->SetScale({ 40, 80 });
+	StandingCollision->SetPosition({ 0, -40 });
 
 	// Attack
 	AttackCollision = CreateCollision(CollisionOrder::PlayerAttack);
