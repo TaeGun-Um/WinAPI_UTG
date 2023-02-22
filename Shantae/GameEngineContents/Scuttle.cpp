@@ -161,7 +161,7 @@ void Scuttle::Debugging()
 			OverlapTime = 0.0f;
 		}
 	}
-	if (GameEngineInput::IsPress("BeforeLevel"))
+	if (GameEngineInput::IsDown("BeforeLevel"))
 	{
 		if (OverlapTime > 0.5f)
 		{
@@ -169,12 +169,14 @@ void Scuttle::Debugging()
 			OverlapTime = 0.0f;
 		}
 	}
-	if (GameEngineInput::IsPress("NextLevel"))
+	if (GameEngineInput::IsDown("NextLevel"))
 	{
 		if (OverlapTime > 0.5f)
 		{
 			GameEngineCore::GetInst()->ChangeLevel("UncleRoom");
 			OverlapTime = 0.0f;
+			ScuttleBGMPlayer.Stop();
+			ScuttlePalyer = false;
 		}
 	}
 	if (GameEngineInput::IsDown("Back"))
