@@ -397,19 +397,19 @@
       <Filter>Collision\Assistant\MonsterSpawner</Filter>
     </ClInclude>
     <ClInclude Include="CharacterLoad.h">
-      <Filter>ImageLoader\CharacterLoad</Filter>
+      <Filter>Loader\CharacterLoad</Filter>
     </ClInclude>
     <ClInclude Include="KeyLoad.h">
-      <Filter>ImageLoader\KeyLoad</Filter>
+      <Filter>Loader\KeyLoad</Filter>
     </ClInclude>
     <ClInclude Include="SoundLoad.h">
-      <Filter>ImageLoader\SoundLoad</Filter>
+      <Filter>Loader\SoundLoad</Filter>
     </ClInclude>
     <ClInclude Include="UILoad.h">
-      <Filter>ImageLoader\UILoad</Filter>
+      <Filter>Loader\UILoad</Filter>
     </ClInclude>
     <ClInclude Include="ObjectLoad.h">
-      <Filter>ImageLoader\ObjectLoad</Filter>
+      <Filter>Loader\ObjectLoad</Filter>
     </ClInclude>
     <ClInclude Include="Building0.h">
       <Filter>PlayLevel\FieldLevel\2. HouseFront\Actor</Filter>
@@ -874,19 +874,19 @@
       <Filter>Collision\Assistant\MonsterSpawner</Filter>
     </ClCompile>
     <ClCompile Include="CharacterLoad.cpp">
-      <Filter>ImageLoader\CharacterLoad</Filter>
+      <Filter>Loader\CharacterLoad</Filter>
     </ClCompile>
     <ClCompile Include="KeyLoad.cpp">
-      <Filter>ImageLoader\KeyLoad</Filter>
+      <Filter>Loader\KeyLoad</Filter>
     </ClCompile>
     <ClCompile Include="SoundLoad.cpp">
-      <Filter>ImageLoader\SoundLoad</Filter>
+      <Filter>Loader\SoundLoad</Filter>
     </ClCompile>
     <ClCompile Include="UILoad.cpp">
-      <Filter>ImageLoader\UILoad</Filter>
+      <Filter>Loader\UILoad</Filter>
     </ClCompile>
     <ClCompile Include="ObjectLoad.cpp">
-      <Filter>ImageLoader\ObjectLoad</Filter>
+      <Filter>Loader\ObjectLoad</Filter>
     </ClCompile>
     <ClCompile Include="Building0.cpp">
       <Filter>PlayLevel\FieldLevel\2. HouseFront\Actor</Filter>
@@ -1064,24 +1064,6 @@
     <Filter Include="Character\Player">
       <UniqueIdentifier>{6ffada37-bd9d-4efa-9431-adaee1bc2d22}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ImageLoader">
-      <UniqueIdentifier>{d0474782-1626-4cf8-b78a-23cfcbefa928}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ImageLoader\CharacterLoad">
-      <UniqueIdentifier>{a906cf5d-ccc6-4fc6-8cd5-95ab799806c3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ImageLoader\KeyLoad">
-      <UniqueIdentifier>{b1e622d3-b253-463c-9890-e2e54577e908}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ImageLoader\SoundLoad">
-      <UniqueIdentifier>{bb951c7e-4710-4fc3-b261-a4d44569ed52}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ImageLoader\UILoad">
-      <UniqueIdentifier>{a1b3ea1a-8725-483e-9b3a-fbe7d2359702}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ImageLoader\ObjectLoad">
-      <UniqueIdentifier>{9035dd2c-dd5e-401f-95a7-adb5899c6dc6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="UI">
       <UniqueIdentifier>{3f2526df-17d9-4f62-921b-1e8dedea7008}</UniqueIdentifier>
     </Filter>
@@ -1159,6 +1141,24 @@
     </Filter>
     <Filter Include="Character\Player\Effect">
       <UniqueIdentifier>{30407b12-3fa0-423e-81f1-931c02a8fba8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Loader">
+      <UniqueIdentifier>{d0474782-1626-4cf8-b78a-23cfcbefa928}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Loader\CharacterLoad">
+      <UniqueIdentifier>{a906cf5d-ccc6-4fc6-8cd5-95ab799806c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Loader\KeyLoad">
+      <UniqueIdentifier>{b1e622d3-b253-463c-9890-e2e54577e908}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Loader\SoundLoad">
+      <UniqueIdentifier>{bb951c7e-4710-4fc3-b261-a4d44569ed52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Loader\UILoad">
+      <UniqueIdentifier>{a1b3ea1a-8725-483e-9b3a-fbe7d2359702}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Loader\ObjectLoad">
+      <UniqueIdentifier>{9035dd2c-dd5e-401f-95a7-adb5899c6dc6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
