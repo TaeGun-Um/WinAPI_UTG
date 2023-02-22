@@ -52,6 +52,7 @@ protected:
 private:
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
+	GameEngineCollision* SensorCollision = nullptr;
 	GameEngineImage* ColMap = nullptr;
 
 	float4 MoveDir = float4::Zero;
@@ -72,6 +73,7 @@ private:
 	bool trace = true;
 	bool Hitonoff = true;
 	bool Blinker = false;
+	bool IsAttack = false;
 
 	int ShootCount = 3;
 	int HP = 15;

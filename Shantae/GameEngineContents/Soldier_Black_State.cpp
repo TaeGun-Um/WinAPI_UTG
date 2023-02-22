@@ -90,7 +90,7 @@ void Soldier_Black::IdleUpdate(float _Time)
 
 	ShootStartTime += _Time;
 
-	if (2.0f <= ShootStartTime)
+	if (2.0f <= ShootStartTime && true == IsAttack)
 	{
 		ShootCount = 3;
 		ShootStartTime = 0.0f;
@@ -134,8 +134,14 @@ void Soldier_Black::ShootUpdate(float _Time)
 		ShootTime = 0.0f;
 		Shoot();
 		--ShootCount;
+
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_gun_fire.mp3");
+		BGMPlayer.Volume(0.05f);
+		BGMPlayer.LoopCount(1);
+
 		DirCheck("Shoot");
 	}
+
 }
 void Soldier_Black::ShootEnd()
 {

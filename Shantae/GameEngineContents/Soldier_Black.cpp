@@ -142,6 +142,18 @@ void Soldier_Black::MoveCalculation(float _DeltaTime)
 
 void Soldier_Black::CollisionCheck(float _DeltaTime)
 {
+	if (nullptr != SensorCollision)
+	{
+		if (true == SensorCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+		{
+			IsAttack = true;
+		}
+		else
+		{
+			IsAttack = false;
+		}
+	}
+
 	HitTime2 += _DeltaTime;
 
 	if (0.2f <= HitTime2 && false == HitAction)
@@ -172,7 +184,6 @@ void Soldier_Black::CollisionCheck(float _DeltaTime)
 				}
 			}
 		}
-
 	}
 
 	if (true == IsDeath)
@@ -274,4 +285,9 @@ void Soldier_Black::CollisionSet()
 	BodyCollision->SetDebugRenderType(CT_Rect);
 	BodyCollision->SetScale({ 130, 150 });
 	BodyCollision->SetPosition({ 30, -75 });
+
+	SensorCollision = CreateCollision(CollisionOrder::Trigger);
+	SensorCollision->SetDebugRenderType(CT_Rect);
+	SensorCollision->SetScale({ 1000, 500 });
+	SensorCollision->SetPosition({ 0, -150 });
 }

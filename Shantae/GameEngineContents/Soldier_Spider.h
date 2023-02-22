@@ -76,6 +76,7 @@ private:
 
 	int ChangeCount = 1;
 	int BlinkCount = 1;
+	int HitSound = 1;
 
 	std::string DirString = "_R";
 	Soldier_SpiderState StateValue = Soldier_SpiderState::MOVE;

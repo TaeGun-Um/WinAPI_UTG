@@ -208,7 +208,7 @@ void Boss_Tank::ChargeStart()
 	AnimationRender->ChangeAnimation("Charge");
 
 	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Tank_Charge.mp3");
-	BGMPlayer.Volume(0.3f);
+	BGMPlayer.Volume(0.2f);
 	BGMPlayer.LoopCount(1);
 }
 void Boss_Tank::ChargeUpdate(float _DeltaTime)
@@ -405,9 +405,38 @@ void Boss_Tank::EmptyStart()
 {
 	AnimationRender->ChangeAnimation("IdleRev");
 	BodyCollision->Off();
+	IsPopCornSound = true;
 }
 void Boss_Tank::EmptyUpdate(float _DeltaTime)
 {
+	PopCornSoundTime += _DeltaTime;
+
+	if (0.4f <= PopCornSoundTime && 2 == PopcornSound && true == IsPopCornSound)
+	{
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_boom_explosion.mp3");
+		BGMPlayer.Volume(0.1f);
+		BGMPlayer.LoopCount(1);
+
+		PopcornSound--;
+	}
+	else if (0.7f <= PopCornSoundTime && 1 == PopcornSound && true == IsPopCornSound)
+	{
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_boom_explosion.mp3");
+		BGMPlayer.Volume(0.1f);
+		BGMPlayer.LoopCount(1);
+
+		PopcornSound--;
+	}
+	else if (1.1f <= PopCornSoundTime && 0 == PopcornSound && true == IsPopCornSound)
+	{
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_boom_explosion.mp3");
+		BGMPlayer.Volume(0.1f);
+		BGMPlayer.LoopCount(1);
+
+		PopCornSoundTime = 0.0f;
+		PopcornSound = 2;
+	}
+
 	ExplosionTime += _DeltaTime;
 	RandomExplosionTime += _DeltaTime;
 
@@ -420,6 +449,8 @@ void Boss_Tank::EmptyUpdate(float _DeltaTime)
 
 	if (4.0f <= ExplosionTime)
 	{
+		IsPopCornSound = false;
+
 		if (1 == BaronStart)
 		{
 			BaronStart = 0;

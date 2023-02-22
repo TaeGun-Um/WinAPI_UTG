@@ -74,6 +74,7 @@ private:
 	float PushoutTime = 0.0f;
 	float ExplosionTime = 0.0f;
 	float RandomExplosionTime = 0.0f;
+	float PopCornSoundTime = 0.0f;
 	
 	int BaronCreate = 1;
 	int BaronStart = 1;
@@ -81,10 +82,12 @@ private:
 	int CreateCount = 1;
 	int RandCreate = 1;
 	int Rand = 0;
+	int PopcornSound = 2;
 
 	bool HitAction = false;
 	bool IsCharge = false;
 	bool IsBackUp = false;
+	bool IsPopCornSound = false;
 
 	Boss_TankState StateValue = Boss_TankState::IDLE;
 	void ChangeState(Boss_TankState _State);

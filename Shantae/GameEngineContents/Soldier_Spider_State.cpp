@@ -168,9 +168,13 @@ void Soldier_Spider::HitStart()
 
 	DirCheck("Hit");
 
-	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_die.wav");
-	BGMPlayer.Volume(0.05f);
-	BGMPlayer.LoopCount(1);
+	if (1 == HitSound)
+	{
+		HitSound = 0;
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_die.wav");
+		BGMPlayer.Volume(0.05f);
+		BGMPlayer.LoopCount(1);
+	}
 }
 void Soldier_Spider::HitUpdate(float _Time)
 {

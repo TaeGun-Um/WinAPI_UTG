@@ -108,6 +108,7 @@ void Boss_Tank::CreateExplosion()
 	Ex = GetLevel()->CreateActor<Public_Boom>();
 	Ex->SetPos(ExPos);
 	Ex->SetExPlus(0);
+	Ex->SetSoundOff();
 }
 
 void Boss_Tank::Explosions(float4 _Value)
@@ -117,6 +118,7 @@ void Boss_Tank::Explosions(float4 _Value)
 	Ex = GetLevel()->CreateActor<Public_Boom>();
 	Ex->SetPos(_Value);
 	Ex->SetExPlus(0);
+	Ex->SetSoundOff();
 }
 
 void Boss_Tank::RandomCreateExplosion(float _DeltaTime)
