@@ -51,9 +51,13 @@ void Move0::Loading()
 	CreateSpawner({ 4423, 0 }, "blue", ColMap, { 5400, 637 }, 5);
 	MonsterSpawner* s1 = CreateSpawner({ 6986, 0 }, "Red", ColMap, { 7357, 900 }, 5); // am
 	s1->SetAmbushTrue();
-	CreateSpawner({ 7350, 0 }, "blue", ColMap, { 8400, 544 }, 5);
-	MonsterSpawner* s2 = CreateSpawner({ 8340, 0 }, "red", ColMap, { 8590, 900 }, 5); // am
+	MonsterSpawner* s2 = CreateSpawner({ 7086, 0 }, "blue", ColMap, { 7457, 900 }, 5); // am
 	s2->SetAmbushTrue();
+	CreateSpawner({ 7350, 0 }, "blue", ColMap, { 8400, 544 }, 5);
+	MonsterSpawner* s3 = CreateSpawner({ 8340, 0 }, "red", ColMap, { 8590, 900 }, 5); // am
+	s3->SetAmbushTrue();
+	MonsterSpawner* s4 = CreateSpawner({ 8440, 0 }, "blue", ColMap, { 8690, 900 }, 5); // am
+	s4->SetAmbushTrue();
 	CreateSpawner({ 8590, 0 }, "blue", ColMap, { 9580, 637 }, 5);
 	CreateSpawner({ 8640, 0 }, "blue", ColMap, { 9720, 637 }, 5);
 	CreateSpawner({ 8690, 0 }, "blue", ColMap, { 9930, 637 }, 5);

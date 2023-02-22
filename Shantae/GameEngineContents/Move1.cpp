@@ -50,10 +50,11 @@ void Move1::Loading()
 	s1->SetPos({ 1767, 288 });
 	s1->SetColMap(ColMap);
 
-	CreateSpawner({ 2300, 0 }, "black", ColMap, { 3145, 651 }, 5);
-	CreateSpawner({ 2300, 0 }, "Bomberman", ColMap, { 3277, 345 }, 5);
+	CreateSpawner({ 2300, 0 }, "black", ColMap, { 3145, 651 }, 4);
+	CreateSpawner({ 2300, 0 }, "Bomberman", ColMap, { 3277, 345 }, 4);
 	CreateSpawner({ 3600, 0 }, "black", ColMap, { 4575, 650 }, 5);
 	CreateSpawner({ 5850, 0 }, "Bomberman", ColMap, { 6755, 447 }, 5);
+	CreateSpawner({ 5850, 0 }, "black", ColMap, { 7500, 650 }, 5);
 	CreateSpawner({ 7845, 0 }, "Bomberman", ColMap, { 8718, 381 }, 5);
 	CreateSpawner({ 7845, 0 }, "Bomberman", ColMap, { 9278, 545 }, 5);
 	CreateSpawner({ 7845, 0 }, "Bomberman", ColMap, { 9932, 282 }, 5);

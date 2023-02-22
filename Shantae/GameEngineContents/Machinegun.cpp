@@ -122,7 +122,7 @@ void Machinegun::Update(float _DeltaTime)
 	CameraAction();
 
 	// 레벨 이동
-	if (SHA->GetPos().x >= 11900.0f
+	if (SHA->GetPos().x >= 11930.0f
 		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{
 		SHA->SetAnimationStart(true);

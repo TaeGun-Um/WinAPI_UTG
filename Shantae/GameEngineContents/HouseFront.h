@@ -29,15 +29,28 @@ protected:
 private:
 	void LevelSet();
 	void Debugging();
+	void SoundCombination(float _DeltaTime);
 
 	GameEngineSoundPlayer BGMPlayer;
+	GameEngineSoundPlayer SeagullPlayer;
+	GameEngineSoundPlayer WavePlayer;
+	GameEngineSoundPlayer BellPlayer;
+
 	GameEngineActor* Shantae = nullptr;
 	GameEngineImage* ColMap = nullptr;
 	Player* SHA = nullptr;
 	
 	float OverlapTime = 0.0f;
+	float SeagullTime = 0.0f;
+	float WaveTime = 1;
+	float BellTime = 1;
+
 	int Set = 1;
 	int AnimationSet = 1;
 
+	int SeagullCount = 1;
+	int WaveCount = 1;
+	int BellCount = 1;
+	
 };
 

@@ -397,29 +397,7 @@ void Player::MoveStart()
 }
 void Player::MoveUpdate(float _Time)
 {
-	MoveSoundTime += _Time;
-
-	if (0.24f <= MoveSoundTime)
-	{
-		if (2 == MoveSoundCount)
-		{
-			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_move3.wav");
-			BGMPlayer.Volume(0.3f);
-			BGMPlayer.LoopCount(1);
-			
-			MoveSoundTime = 0.0f;
-			MoveSoundCount = 1;
-		}
-		else if (1 == MoveSoundCount)
-		{
-			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_move2.wav");
-			BGMPlayer.Volume(0.3f);
-			BGMPlayer.LoopCount(1);
-			
-			MoveSoundTime = 0.0f;
-			MoveSoundCount = 2;
-		}
-	}
+	WalkSoundSet(_Time);
 
 	if (true == HitAction)
 	{
@@ -504,7 +482,7 @@ void Player::JumpStart()
 {
 	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 10);
 
-	if (1 == RandC)
+	if (3 == RandC || 7 == RandC)
 	{
 		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_jump.wav");
 		BGMPlayer.Volume(0.1f);
@@ -770,7 +748,7 @@ void Player::AttackStart()
 
 	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 10);
 
-	if (1 == RandC)
+	if (3 == RandC || 7 == RandC)
 	{
 		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_attack_voice2.wav");
 		BGMPlayer.Volume(0.1f);
@@ -826,7 +804,7 @@ void Player::CrouchAttackStart()
 
 	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 10);
 
-	if (1 == RandC)
+	if (3 == RandC || 7 == RandC)
 	{
 		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_attack_voice1.wav");
 		BGMPlayer.Volume(0.1f);
@@ -886,7 +864,7 @@ void Player::AirAttackStart()
 
 	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 10);
 
-	if (1 == RandC)
+	if (3 == RandC || 7 == RandC)
 	{
 		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_attack_voice1.wav");
 		BGMPlayer.Volume(0.1f);
@@ -1169,9 +1147,9 @@ void Player::CrouchingEnd()
 
 void Player::LandingStart()
 {
-	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 5);
+	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 10);
 
-	if (1 == RandC)
+	if (3 == RandC || 7 == RandC)
 	{
 		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_land.wav");
 		BGMPlayer.Volume(0.1f);

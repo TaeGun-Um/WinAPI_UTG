@@ -168,6 +168,7 @@ private:
 	void MoveCalculation(float _DeltaTime);
 	void WallCheck(float _Speed);
 	void CollisionCheck(float _DeltaTime);
+	void WalkSoundSet(float _DeltaTime);
 	void CameraShake(float _DeltaTime);
 	void AlphaBlinker(float _DeltaTime);
 	void CreateDummy();
@@ -195,6 +196,7 @@ private:
 	float4 UpPos = float4::Zero;
 	float4 JumpLand = float4::Zero;
 	float4 ImpactPos = float4::Zero;
+	float4 Cam = float4::Zero;
 
 	float MoveSpeed = 600.0f;
 	float CrouchSpeed = 200.0f;
@@ -222,6 +224,7 @@ private:
 	int MoveSoundCount = 2;
 	int CrouchMoveSoundCount = 1;
 	int UpCol = 1;
+	int CameraPosSet = 1;
 
 	bool FreeMove = false;
 	bool ShantaeMove = true;

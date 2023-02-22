@@ -617,6 +617,26 @@ void Player::LevelStartAnimation(float _DeltaTime)
 
 	SetMove(float4::Right * MoveSpeed * _DeltaTime);
 
+	WalkSoundSet(_DeltaTime);
+}
+
+bool Player::LevelChangeAnimation(float _DeltaTime)
+{
+	AnimationTime += _DeltaTime;
+
+	SetMove(float4::Right * MoveSpeed * _DeltaTime);
+
+	if (2.0f <= AnimationTime)
+	{
+		AnimationTime = 0.0f;
+		return true;
+	}
+
+	return false;
+}
+
+void Player::WalkSoundSet(float _DeltaTime)
+{
 	MoveSoundTime += _DeltaTime;
 
 	if (0.24f <= MoveSoundTime)
@@ -642,21 +662,6 @@ void Player::LevelStartAnimation(float _DeltaTime)
 	}
 }
 
-bool Player::LevelChangeAnimation(float _DeltaTime)
-{
-	AnimationTime += _DeltaTime;
-
-	SetMove(float4::Right * MoveSpeed * _DeltaTime);
-
-	if (2.0f <= AnimationTime)
-	{
-		AnimationTime = 0.0f;
-		return true;
-	}
-
-	return false;
-}
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////  5. 추가 조작  ///////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -673,7 +678,11 @@ void Player::SetCameraShaking(float _SetShakingTime, float _SetShakingValue)
 
 void Player::CameraShake(float _DeltaTime)
 {
-	float4 Cam = GetLevel()->GetCameraPos();
+	if (1 == CameraPosSet)
+	{
+		Cam = GetLevel()->GetCameraPos();
+	}
+	
 	float4 Up = Cam + (float4::Up * SetShakingValue);
 	float4 Down = Cam + (float4::Down * SetShakingValue);
 

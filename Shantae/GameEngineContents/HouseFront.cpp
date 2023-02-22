@@ -1,6 +1,7 @@
 #include "HouseFront.h"
 
 // GE
+#include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineBase/GameEngineDirectory.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineResources.h>
@@ -77,6 +78,7 @@ void HouseFront::Update(float _DeltaTime)
 
 	LevelSet();
 	Debugging();
+	SoundCombination(_DeltaTime);
 
 	// 레벨 이동
 	if (SHA->GetPos().x >= 1250.0f
@@ -155,5 +157,78 @@ void HouseFront::Debugging()
 	if (GameEngineInput::IsDown("Back"))
 	{
 		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
+	}
+}
+
+void HouseFront::SoundCombination(float _DeltaTime)
+{
+	SeagullTime += _DeltaTime;
+	WaveTime += _DeltaTime;
+	BellTime += _DeltaTime;
+
+	// Seagull
+	if (1.0f <= SeagullTime && 0 == SeagullCount)
+	{
+		SeagullCount = 1;
+		SeagullTime = 0.0f;
+	}
+	if (1 == SeagullCount)
+	{
+		SeagullCount = 0;
+
+		int RandC = GameEngineRandom::MainRandom.RandomInt(1, 7);
+
+		if (1 == RandC)
+		{
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Housefront_seagull1.wav");
+			BGMPlayer.Volume(0.075f);
+			BGMPlayer.LoopCount(1);
+		}
+		else if (2 == RandC)
+		{
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Housefront_seagull2.wav");
+			BGMPlayer.Volume(0.075f);
+			BGMPlayer.LoopCount(1);
+		}
+
+	}
+
+	// Bell
+	if (1.0f <= BellTime && 0 == BellCount)
+	{
+		BellCount = 1;
+		BellTime = 0.0f;
+	}
+	if (1 == BellCount)
+	{
+		BellCount = 0;
+
+		int RandC = GameEngineRandom::MainRandom.RandomInt(1, 5);
+
+		if (1 == RandC)
+		{
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Housefront_bell.wav");
+			BGMPlayer.Volume(0.075f);
+			BGMPlayer.LoopCount(1);
+		}
+	}
+
+	if (1.2f <= WaveTime && 0 == WaveCount)
+	{
+		WaveCount = 1;
+		WaveTime = 0.0f;
+	}
+	if (1 == WaveCount)
+	{
+		WaveCount = 0;
+
+		int RandC = GameEngineRandom::MainRandom.RandomInt(1, 2);
+
+		if (1 == RandC)
+		{
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Housefront_wave.wav");
+			BGMPlayer.Volume(0.075f);
+			BGMPlayer.LoopCount(1);
+		}
 	}
 }
