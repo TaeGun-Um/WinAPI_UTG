@@ -45,6 +45,7 @@ private:
 	void DirectCheckForKill();
 	void Explosion();
 	void CreatePoof();
+	void CreateImpact();
 
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;

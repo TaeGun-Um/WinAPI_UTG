@@ -31,7 +31,7 @@ void Public_Boom::Update(float _DeltaTime)
 		BoomSoundCount = 0;
 
 		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_boom_explosion.mp3");
-		BGMPlayer.Volume(0.07f);
+		BGMPlayer.Volume(0.1f);
 		BGMPlayer.LoopCount(1);
 	}
 

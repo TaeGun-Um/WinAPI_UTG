@@ -52,6 +52,8 @@ private:
 	float MoveSpeed = 1450.0f;
 	int BounceCount = 1;
 
+	bool BoomSoundOff = false;
+
 	float4 MoveDir = float4::Zero;
 	float4 NextPos = float4::Zero;
 	float4 OwnerPos = float4::Zero;

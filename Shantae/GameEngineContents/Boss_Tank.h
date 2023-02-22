@@ -82,7 +82,7 @@ private:
 	int CreateCount = 1;
 	int RandCreate = 1;
 	int Rand = 0;
-	int PopcornSound = 2;
+	int PopcornSound = 3;
 
 	bool HitAction = false;
 	bool IsCharge = false;

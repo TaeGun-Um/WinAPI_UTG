@@ -9,6 +9,7 @@
 #include "ContentsEnum.h"
 #include "Public_Boom.h"
 #include "SmallPoof.h"
+#include "Impact.h"
 
 Boss_Boom_Red::Boss_Boom_Red()
 {
@@ -103,10 +104,12 @@ void Boss_Boom_Red::CollisionCheck()
 			{
 				HitSound = 0;
 				BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Strike_enemy.mp3");
-				BGMPlayer.Volume(0.05f);
+				BGMPlayer.Volume(0.15f);
 				BGMPlayer.LoopCount(1);
+				
+				CreateImpact();
 			}
-
+			BodyCollision->Off();
 			AttackCollision = CreateCollision(CollisionOrder::Trigger);
 			AttackCollision->SetDebugRenderType(CT_Rect);
 			AttackCollision->SetScale({ 50, 50 });
@@ -123,13 +126,22 @@ void Boss_Boom_Red::CollisionCheck()
 	}
 }
 
+void Boss_Boom_Red::CreateImpact()
+{
+	Impact* NewImpact = nullptr;
+	float4 ImpactPos = GetPos() + (float4::Down * 10) + (float4::Left * 15);
+
+	NewImpact = GetLevel()->CreateActor<Impact>();
+	NewImpact->SetPos(ImpactPos);
+}
+
 void Boss_Boom_Red::Bounce()
 {
 	if (0 < BounceCount)
 	{
 		--BounceCount;
 		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Boom_bounce.mp3");
-		BGMPlayer.Volume(0.2f);
+		BGMPlayer.Volume(0.1f);
 		BGMPlayer.LoopCount(1);
 	}
 

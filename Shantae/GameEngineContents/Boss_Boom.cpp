@@ -97,7 +97,7 @@ void Boss_Boom::Bounce()
 	{
 		BounceCount = 0;
 		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Boom_bounce.mp3");
-		BGMPlayer.Volume(0.2f);
+		BGMPlayer.Volume(0.1f);
 		BGMPlayer.LoopCount(1);
 	}
 
