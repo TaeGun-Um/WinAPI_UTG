@@ -121,29 +121,32 @@ void Soldier_Machinegun::IdleStart()
 }
 void Soldier_Machinegun::IdleUpdate(float _Time)
 {
-	AccTime += _Time;
+	if (true == IsAttack)
+	{
+		AccTime += _Time;
 
-	if (0.5f <= AccTime && 3 == AimCount)
-	{
-		AimCount = 2;
-		CreateAim(0);
-	}
-	if (1.0f <= AccTime && 2 == AimCount)
-	{
-		AimCount = 1;
-		CreateAim(1);
-	}
-	if (1.5f <= AccTime && 1 == AimCount)
-	{
-		AimCount = 0;
-		CreateAim(2);
-	}
+		if (0.5f <= AccTime && 3 == AimCount)
+		{
+			AimCount = 2;
+			CreateAim(0);
+		}
+		if (1.0f <= AccTime && 2 == AimCount)
+		{
+			AimCount = 1;
+			CreateAim(1);
+		}
+		if (1.5f <= AccTime && 1 == AimCount)
+		{
+			AimCount = 0;
+			CreateAim(2);
+		}
 
-	if (2.0f <= AccTime)
-	{
-		AccTime = 0.0f;
-		ChangeState(Soldier_MachinegunState::TURN_L);
-		return;
+		if (2.0f <= AccTime)
+		{
+			AccTime = 0.0f;
+			ChangeState(Soldier_MachinegunState::TURN_L);
+			return;
+		}
 	}
 }
 void Soldier_Machinegun::IdleEnd()

@@ -41,6 +41,8 @@ protected:
 
 private:
 	GameEngineRender* AnimationRender = nullptr;
+	GameEngineCollision* SensorCollision = nullptr;
+	GameEngineCollision* SensorCollision2 = nullptr;
 	Soldier_Aim* Aim_L = nullptr;
 	Soldier_Aim* Aim_M = nullptr;
 	Soldier_Aim* Aim_R = nullptr;
@@ -49,7 +51,11 @@ private:
 	int FireCount = 1;
 	int AimCount = 3;
 
+	bool IsAttack = false;
+
 	void RenderSet();
+	void CollisionSet();
+	void CollisionCheck(float _DeltaTime);
 
 	// 0 = Left, 1 = Middle, 2 = Right
 	void Fire(const int _Value); 

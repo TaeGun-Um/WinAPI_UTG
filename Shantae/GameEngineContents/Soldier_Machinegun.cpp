@@ -24,17 +24,38 @@ void Soldier_Machinegun::Start()
 	// Animation
 	RenderSet();
 
+	CollisionSet();
+
 	// state
 	ChangeState(Soldier_MachinegunState::IDLE);
 }
 
 void Soldier_Machinegun::Update(float _DeltaTime)
 {
+	CollisionCheck(_DeltaTime);
 	UpdateState(_DeltaTime);
 }
 void Soldier_Machinegun::Render(float _DeltaTime)
 {
 
+}
+
+void Soldier_Machinegun::CollisionCheck(float _DeltaTime)
+{
+	if (nullptr != SensorCollision)
+	{
+		if (true == SensorCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+		{
+			IsAttack = true;
+		}
+	}
+	if (nullptr != SensorCollision2)
+	{
+		if (true == SensorCollision2->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+		{
+			IsAttack = false;
+		}
+	}
 }
 
 void Soldier_Machinegun::CreateAim(const int _Value)
@@ -137,4 +158,16 @@ void Soldier_Machinegun::RenderSet()
 	AnimationRender->CreateAnimation({ .AnimationName = "Fire_R",  .ImageName = "Soldier_Machinegun_R.bmp", .Start = 6, .End = 7, .InterTime = 0.05f });
 	AnimationRender->CreateAnimation({ .AnimationName = "Turn_RB",  .ImageName = "Soldier_Machinegun_R.bmp", .Start = 12, .End = 15, .InterTime = 0.08f });
 
+}
+void Soldier_Machinegun::CollisionSet()
+{
+	SensorCollision = CreateCollision(CollisionOrder::Trigger);
+	SensorCollision->SetDebugRenderType(CT_Rect);
+	SensorCollision->SetScale({ 10, 500 });
+	SensorCollision->SetPosition({ -650, 0 });
+
+	SensorCollision2 = CreateCollision(CollisionOrder::Trigger);
+	SensorCollision2->SetDebugRenderType(CT_Rect);
+	SensorCollision2->SetScale({ 10, 500 });
+	SensorCollision2->SetPosition({ 650, 0 });
 }

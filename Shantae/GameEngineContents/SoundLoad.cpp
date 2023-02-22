@@ -20,16 +20,16 @@ void SoundLoad::Loading()
 	Dir.Move("Map");
 
 	// Title
-	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Title\\Title_Theme.mp3"));             // Opening BGM
-	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Title\\Title_announce.wav"));          // Opening 샨테 음성
-	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Title\\File_Select.mp3"));             // Title BGM
-	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Title\\Botton_move.wav"));             // 선택버튼 움직임 효과음
-	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Title\\Botton_select.wav"));           // 선택버튼 선택 효과음
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Title\\Title_Theme.mp3"));             // o Opening BGM
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Title\\Title_announce.wav"));          // o Opening 샨테 음성
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Title\\File_Select.mp3"));             // o Title BGM
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Title\\Botton_move.wav"));             // o 선택버튼 움직임 효과음
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Title\\Botton_select.wav"));           // o 선택버튼 선택 효과음
 
 	// Field
-	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Boss_Battle.mp3"));             // 보스전 BGM
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Boss_Battle.mp3"));             // o 보스전 BGM
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\stage_clear.mp3"));             // Boss 잡은 후
-	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\We_Love_Burning_Town.mp3"));    // FieldLevel BGM
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\We_Love_Burning_Town.mp3"));    // o FieldLevel BGM
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\You_Found_an_item.mp3"));       // 상자에서 아이템 획득 시
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Explode_bridge.wav"));          // Boombridge 다리 폭파
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Explode_plat.wav"));            // Machinegun 발판 폭파
@@ -43,10 +43,10 @@ void SoundLoad::Loading()
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Clash_smalljar.wav"));			 // jar 파괴 시 효과음
 
 	// Town
-	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Town\\Scuttle_Town.mp3"));             // TownLevel BGM
-	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Town\\Uncle_Room.mp3"));               // Uncle_Room BGM
-	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Town\\Customer.mp3"));                 // Smith, Shop BGM
-	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Town\\Sky.mp3"));                      // SkyRoom BGM
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Town\\Scuttle_Town.mp3"));             // o TownLevel BGM
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Town\\Uncle_Room.mp3"));               // o Uncle_Room BGM
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Town\\Customer.mp3"));                 // o Smith, Shop BGM
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Town\\Sky.mp3"));                      // o SkyRoom BGM
 
 	// Ending
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Ending\\Ending.mp3"));                 // 엔딩 크레딧 BGM
