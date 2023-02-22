@@ -59,10 +59,10 @@ void SoundLoad::Loading()
 	Dir1.Move("Character");
 
 	// Shatae
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_attack.wav"));         // 공격 시 효과음
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_attack_voice1.wav"));  // 공격 시 보이스 1
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_attack_voice2.wav"));  // 공격 시 보이스 2
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Strike_enemy.mp3"));          // 적이 공격에 맞았을 때 효과음
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_attack.wav"));         // o 공격 시 효과음
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_attack_voice1.wav"));  // o 공격 시 보이스 1
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_attack_voice2.wav"));  // o 공격 시 보이스 2
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Strike_enemy.mp3"));          // o 적이 공격에 맞았을 때 효과음
 
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_move1.wav"));          // o 이동 시 효과음 1  
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_move2.wav"));          // o 이동 시 효과음 2
@@ -71,13 +71,13 @@ void SoundLoad::Loading()
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_crouchmove.wav"));     // o 웅크리기 이동 효과음
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_death.wav"));          // 플레이어 사망 효과음
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_fall.wav"));           // 플레이어 낙사 효과음
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_hit1.wav"));           // 플레이어 맞을 시 보이스 1
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_hit2.wav"));           // 플레이어 맞을 시 보이스 2
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_hit3.wav"));           // 플레이어 맞을 시 보이스 3
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_hit4.wav"));           // 플레이어 맞을 시 보이스 4
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_hit5.wav"));           // 플레이어 맞을 시 보이스 5
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_jump.wav"));           // 점프 시 보이스
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_land.wav"));           // 랜딩 시 보이스
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_hit1.wav"));           // o 플레이어 맞을 시 보이스 1
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_hit2.wav"));           // o 플레이어 맞을 시 보이스 2
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_hit3.wav"));           // o 플레이어 맞을 시 보이스 3
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_hit4.wav"));           // o 플레이어 맞을 시 보이스 4
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_hit5.wav"));           // o 플레이어 맞을 시 보이스 5
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_jump.wav"));           // o 점프 시 보이스
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_land.wav"));           // o 랜딩 시 보이스
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Splash_water.wav"));          // 물장구 효과음
 
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Inventory_in.wav"));          // 인벤토리 오픈
@@ -92,20 +92,20 @@ void SoundLoad::Loading()
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Store_purchase.wav"));        // 상점 아이템 구매 효과음
 	
 	// Soldier
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Soldier\\Soldier_die.wav"));                // Soldier 사망 시 효과음
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Soldier\\Soldier_boom_explosion.mp3"));     // Bomberman 폭탄 폭파
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Soldier\\Soldier_boom_throw.mp3"));         // Bomberman 폭탄 던지기
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Soldier\\Soldier_die.wav"));                // o Soldier 사망 시 효과음
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Soldier\\Soldier_boom_explosion.mp3"));     // o Bomberman 폭탄 폭파
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Soldier\\Soldier_boom_throw.mp3"));         // o Bomberman 폭탄 던지기
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Soldier\\Soldier_gun_fire.mp3"));           // Black 총알 발사
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Soldier\\Soldier_machinegun_fire.mp3"));    // machinegun 총알 발사
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Soldier\\Bridgeboom.wav"));                 // Bridgeboom 시간 경과 효과음
 
 	// Boss
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Boss\\Boom_blast.wav"));      // 폭탄 발사 효과음
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Boss\\Boom_bounce.mp3"));     // 폭탄 바운스 효과음
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Boss\\Boss_fly.mp3"));        // 보스 튕겨나올 때 효과음
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Boss\\Boss_Run.mp3"));        // 보스 탱크로 복귀할 때 효과음
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Boss\\Explode_popcorn.wav")); // 보스 사망 시, 폭탄 히트 시 효과음
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Boss\\Tank_Charge.mp3"));     // 탱크 차지 효과음
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Boss\\Boom_blast.wav"));      // o 폭탄 발사 효과음
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Boss\\Boom_bounce.mp3"));     // o 폭탄 바운스 효과음
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Boss\\Boss_fly.mp3"));        // o 보스 튕겨나올 때 효과음
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Boss\\Boss_Run.mp3"));        // o 보스 탱크로 복귀할 때 효과음
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Boss\\Explode_popcorn.wav")); // o 보스 사망 시, 폭탄 히트 시 효과음
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Boss\\Tank_Charge.mp3"));     // o 탱크 차지 효과음
 
 }
 

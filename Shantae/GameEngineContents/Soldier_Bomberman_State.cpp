@@ -142,6 +142,10 @@ void Soldier_Bomberman::HitStart()
 	MoveDir.y += -900.0f;
 
 	BodyCollision->Off();
+
+	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_die.wav");
+	BGMPlayer.Volume(0.05f);
+	BGMPlayer.LoopCount(1);
 }
 void Soldier_Bomberman::HitUpdate(float _Time)
 {

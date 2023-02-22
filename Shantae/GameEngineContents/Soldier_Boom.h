@@ -1,6 +1,7 @@
 #pragma once
 
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/GameEngineResources.h>
 
 class GameEngineImage;
 
@@ -28,6 +29,8 @@ public:
 		DirString = _Dir;
 	}
 
+	GameEngineSoundPlayer BGMPlayer;
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -54,6 +57,8 @@ private:
 	// true = left, false = right
 	bool MoveDirect = true;
 	bool HitAction = true;
+
+	int BoomThrowSound = 1;
 
 	void MoveCalculation(float _DeltaTime);
 	void CollisionCheck();

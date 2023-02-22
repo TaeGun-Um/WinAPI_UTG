@@ -31,6 +31,14 @@ void Soldier_Boom::Start()
 
 void Soldier_Boom::Update(float _DeltaTime)
 {
+	if (1 == BoomThrowSound)
+	{
+		BoomThrowSound = 0;
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_boom_throw.mp3");
+		BGMPlayer.Volume(0.05f);
+		BGMPlayer.LoopCount(1);
+	}
+
 	DirCheck("Boom");
 	CollisionCheck();
 	MoveCalculation(_DeltaTime);

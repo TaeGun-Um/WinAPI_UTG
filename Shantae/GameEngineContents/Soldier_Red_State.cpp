@@ -314,10 +314,14 @@ void Soldier_Red::HitStart()
 
 	if (5 == HP)
 	{
-		MoveDir.y -= 300.0f;
+		MoveDir.y -= 400.0f;
 	}
 	else if (0 == HP)
 	{
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_die.wav");
+		BGMPlayer.Volume(0.05f);
+		BGMPlayer.LoopCount(1);
+
 		MoveDir.y -= 900.0f;
 	}
 

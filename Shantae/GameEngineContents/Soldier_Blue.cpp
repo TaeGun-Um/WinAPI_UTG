@@ -97,7 +97,7 @@ void Soldier_Blue::MoveCalculation(float _DeltaTime)
 	{
 		if (true == IsGravityPlus && false == IsJump)
 		{
-			MoveDir += float4::Down * 550.0f;
+			MoveDir += float4::Down * 450.0f;
 		}
 		else
 		{

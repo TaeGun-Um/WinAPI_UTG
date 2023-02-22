@@ -39,7 +39,7 @@ void Opening::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	AnnouncePlayer.LoopCount(1);
 
 	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Title_Theme.mp3");
-	BGMPlayer.Volume(0.1f);
+	BGMPlayer.Volume(0.08f);
 	BGMPlayer.LoopCount(10);
 }
 

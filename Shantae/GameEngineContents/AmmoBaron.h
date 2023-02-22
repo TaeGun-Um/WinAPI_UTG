@@ -58,6 +58,7 @@ public:
 	}
 
 	GameEngineSoundPlayer BGMPlayer;
+	GameEngineSoundPlayer RunPlayer;
 
 protected:
 	void Start() override;

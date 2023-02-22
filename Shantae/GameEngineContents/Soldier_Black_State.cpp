@@ -179,6 +179,10 @@ void Soldier_Black::HitStart()
 	MoveDir.y += -900.0f;
 
 	BodyCollision->Off();
+
+	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_die.wav");
+	BGMPlayer.Volume(0.05f);
+	BGMPlayer.LoopCount(1);
 }
 void Soldier_Black::HitUpdate(float _Time)
 {

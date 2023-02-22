@@ -26,6 +26,15 @@ void Public_Boom::Start()
 
 void Public_Boom::Update(float _DeltaTime)
 {
+	if (1 == BoomSoundCount && true == IsSound)
+	{
+		BoomSoundCount = 0;
+
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_boom_explosion.mp3");
+		BGMPlayer.Volume(0.05f);
+		BGMPlayer.LoopCount(1);
+	}
+
 	ExPlusTime += _DeltaTime;
 
 	if (1 <= Plus)
@@ -56,5 +65,6 @@ void Public_Boom::ExplosionPlus(float _Time)
 
 		ExPlus = GetLevel()->CreateActor<Public_Boom>();
 		ExPlus->SetPos(ExPlusPos);
+		ExPlus->SetSoundOff();
 	}
 }

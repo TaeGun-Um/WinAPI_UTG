@@ -101,7 +101,7 @@ void SelectMeun::Update(float _DeltaTime)
 void SelectMeun::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("File_Select.mp3");
-	BGMPlayer.Volume(0.1f);
+	BGMPlayer.Volume(0.08f);
 	BGMPlayer.LoopCount(10);
 }
 

@@ -85,7 +85,7 @@ void Boss::Update(float _DeltaTime)
 void Boss::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Boss_Battle.mp3");
-	BGMPlayer.Volume(0.1f);
+	BGMPlayer.Volume(0.05f);
 	BGMPlayer.LoopCount(100);
 
 	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());

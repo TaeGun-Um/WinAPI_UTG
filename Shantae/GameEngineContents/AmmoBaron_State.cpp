@@ -157,6 +157,10 @@ void AmmoBaron::MoveEnd()
 
 void AmmoBaron::FlyStart()
 {
+	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Boss_fly.mp3");
+	BGMPlayer.Volume(0.1f);
+	BGMPlayer.LoopCount(1);
+
 	AnimationRender->ChangeAnimation("Fly");
 	AnimationRender->On();
 	MoveDir.y -= 600.0f;
@@ -285,6 +289,10 @@ void AmmoBaron::DustoffEnd()
 
 void AmmoBaron::RunStart()
 {
+	RunPlayer = GameEngineResources::GetInst().SoundPlayToControl("Boss_Run.mp3");
+	RunPlayer.Volume(0.1f);
+	RunPlayer.LoopCount(1);
+
 	AnimationRender->ChangeAnimation("Run");
 	MoveSpeed = 500.0f;
 }
@@ -297,11 +305,10 @@ void AmmoBaron::RunUpdate(float _DeltaTime)
 		ChangeState(AmmoBaronState::JUMP);
 		return;
 	}
-
 }
 void AmmoBaron::RunEnd()
 {
-
+	RunPlayer.Stop();
 }
 
 void AmmoBaron::JumpStart()

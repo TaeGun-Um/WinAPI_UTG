@@ -1,6 +1,7 @@
 #pragma once
 
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/GameEngineResources.h>
 
 // Ό³Έν : Player Chracter
 class Public_Boom : public GameEngineActor
@@ -23,6 +24,13 @@ public:
 		Plus = _Value;
 	}
 
+	void SetSoundOff()
+	{
+		IsSound = false;
+	}
+
+	GameEngineSoundPlayer BGMPlayer;
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -33,6 +41,10 @@ private:
 	GameEngineCollision* BodyCollision = nullptr;
 
 	float ExPlusTime = 0.0f;
+
+	bool IsSound = true;
+
 	int Plus = 0;
+	int BoomSoundCount = 1;
 };
 

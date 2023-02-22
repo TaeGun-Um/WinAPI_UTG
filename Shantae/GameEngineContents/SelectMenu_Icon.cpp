@@ -28,7 +28,7 @@ void SelectMenu_Icon::Start()
 
 void SelectMenu_Icon::Update(float _DeltaTime)
 {
-	if (true == GameEngineInput::IsDown("Select"))
+	if (true == GameEngineInput::IsDown("Select") && false == SelectTimeon)
 	{
 		if (GetPos().ix() == SelectMenu_Button_Start::StartB->GetPos().ix())
 		{
@@ -51,7 +51,6 @@ void SelectMenu_Icon::Update(float _DeltaTime)
 			BGMPlayer.LoopCount(1);
 			GameEnd = true;
 		}
-
 		SelectTimeon = true;
 	}
 

@@ -310,6 +310,10 @@ void Soldier_Blue::HitStart()
 	MoveSpeed = 250.0f;
 
 	IsJump = true;
+
+	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_die.wav");
+	BGMPlayer.Volume(0.05f);
+	BGMPlayer.LoopCount(1);
 }
 void Soldier_Blue::HitUpdate(float _Time)
 {

@@ -88,4 +88,5 @@ void Misillie::Explosion()
 	Ex = GetLevel()->CreateActor<Public_Boom>();
 	Ex->SetPos(ExPos);
 	Ex->SetExPlus(0);
+	Ex->SetSoundOff();
 }

@@ -99,7 +99,7 @@ void Move0::Update(float _DeltaTime)
 void Move0::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 	FieldBGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("We_Love_Burning_Town.mp3");
-	FieldBGMPlayer.Volume(0.1f);
+	FieldBGMPlayer.Volume(0.07f);
 	FieldBGMPlayer.LoopCount(100);
 
 	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());

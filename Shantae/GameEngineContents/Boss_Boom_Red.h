@@ -1,6 +1,7 @@
 #pragma once
 
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/GameEngineResources.h>
 
 class GameEngineImage;
 
@@ -28,6 +29,8 @@ public:
 		OwnerPos = _Pos;
 	}
 
+	GameEngineSoundPlayer BGMPlayer;
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -49,6 +52,7 @@ private:
 	GameEngineImage* ColMap = nullptr;
 
 	float MoveSpeed = 500.0f;
+	int BounceCount = 4;
 
 	float4 MoveDir = float4::Zero;
 	float4 NextPos = float4::Zero;

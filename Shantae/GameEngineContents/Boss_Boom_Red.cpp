@@ -116,8 +116,17 @@ void Boss_Boom_Red::CollisionCheck()
 
 void Boss_Boom_Red::Bounce()
 {
+	if (0 < BounceCount)
+	{
+		--BounceCount;
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Boom_bounce.mp3");
+		BGMPlayer.Volume(0.2f);
+		BGMPlayer.LoopCount(1);
+	}
+
 	MoveSpeed = 300.0f;
 	MoveDir.y -= 1300.0f;
+
 	CreatePoof();
 }
 

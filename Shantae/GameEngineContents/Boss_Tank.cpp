@@ -11,6 +11,7 @@
 
 #include "ContentsEnum.h"
 
+#include "Player.h"
 #include "Public_Boom.h"
 #include "Boss_Boom.h"
 #include "Boss_Boom_Red.h"
@@ -60,6 +61,7 @@ void Boss_Tank::CollisionCheck()
 		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Trigger), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
 			HitAction = true;
+			Player::MainPlayer->SetCameraShaking(1.0f, 5.0f);
 		}
 	}
 }
