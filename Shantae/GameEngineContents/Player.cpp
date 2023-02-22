@@ -812,7 +812,7 @@ void Player::RenderSet()
 	AnimationRender->CreateAnimation({ .AnimationName = "CrouchingMaintain_R",  .ImageName = "Shantae_R.bmp", .Start = 132, .End = 141, .InterTime = 0.07f });
 	AnimationRender->CreateAnimation({ .AnimationName = "CrouchingMove_R",  .ImageName = "Shantae_R.bmp", .Start = 170, .End = 179, .InterTime = 0.07f });
 	AnimationRender->CreateAnimation({ .AnimationName = "CrouchingAttack_R",  .ImageName = "Shantae_R.bmp", .Start = 162, .End = 169, .InterTime = 0.04f });
-	AnimationRender->CreateAnimation({ .AnimationName = "CrouchingHit_R",  .ImageName = "Shantae_R.bmp", .Start = 156, .End = 161, .InterTime = 0.07f });
+	AnimationRender->CreateAnimation({ .AnimationName = "CrouchingHit_R",  .ImageName = "Shantae_R.bmp", .Start = 156, .End = 161, .InterTime = 0.08f });
 
 	// Left
 	AnimationRender->CreateAnimation({ .AnimationName = "Idle_L",  .ImageName = "Shantae_L.bmp", .Start = 0, .End = 6, .InterTime = 0.1f });
@@ -844,7 +844,7 @@ void Player::RenderSet()
 	AnimationRender->CreateAnimation({ .AnimationName = "CrouchingMaintain_L",  .ImageName = "Shantae_L.bmp", .Start = 132, .End = 141, .InterTime = 0.07f });
 	AnimationRender->CreateAnimation({ .AnimationName = "CrouchingMove_L",  .ImageName = "Shantae_L.bmp", .Start = 170, .End = 179, .InterTime = 0.07f });
 	AnimationRender->CreateAnimation({ .AnimationName = "CrouchingAttack_L",  .ImageName = "Shantae_L.bmp", .Start = 162, .End = 169, .InterTime = 0.04f });
-	AnimationRender->CreateAnimation({ .AnimationName = "CrouchingHit_L",  .ImageName = "Shantae_L.bmp", .Start = 156, .End = 161, .InterTime = 0.07f });
+	AnimationRender->CreateAnimation({ .AnimationName = "CrouchingHit_L",  .ImageName = "Shantae_L.bmp", .Start = 156, .End = 161, .InterTime = 0.08f });
 }
 
 void Player::CollisionSet()

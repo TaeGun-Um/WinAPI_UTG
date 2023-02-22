@@ -242,6 +242,7 @@ private:
 	bool IsJumpHit = false;
 	bool Blinker = false;
 	bool CameraShaking = false;
+	bool CrouchHit = false;
 
 	bool CollisionGround = false;
 
