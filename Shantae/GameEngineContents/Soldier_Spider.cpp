@@ -158,7 +158,6 @@ void Soldier_Spider::CollisionCheck()
 			}
 		}
 	}
-
 }
 
 void Soldier_Spider::Kill()

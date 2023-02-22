@@ -43,7 +43,7 @@ void Misillie::Render(float _DeltaTime)
 // 중력, 점프, 맵타일
 void Misillie::MoveCalculation(float _DeltaTime)
 {
-	MoveSpeed = 800.0f;
+	MoveSpeed = 900.0f;
 	SetMove(float4::Up * MoveSpeed * _DeltaTime);
 }
 

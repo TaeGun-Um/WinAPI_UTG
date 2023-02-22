@@ -86,6 +86,8 @@ void ObjectLoad::Loading()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Machinegun\\Machinegun_Background.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Machinegun\\Machinegun_Map.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Machinegun\\Machinegun_Plat.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Machinegun\\Machinegun_PlatPiece1.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Machinegun\\Machinegun_PlatPiece2.bmp"));
 
 	// BoomBridge
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\BoomBridge\\BoomBridge_Background.bmp"));

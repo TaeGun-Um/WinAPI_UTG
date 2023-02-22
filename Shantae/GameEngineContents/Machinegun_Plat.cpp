@@ -7,6 +7,8 @@
 
 #include "Soldier_Aim.h"
 #include "Misillie.h"
+#include "Machinegun_PlatPiece1.h"
+#include "Machinegun_PlatPiece2.h"
 
 #include "Public_Boom.h"
 #include "ContentsEnum.h"
@@ -68,7 +70,7 @@ void Machinegun_Plat::MisillieCreate()
 {
 	Misillie*  NewMisillie = nullptr;
 	float4 MisilliePos = float4::Zero;
-	MisilliePos = GetPos() + (float4::Down * 850);
+	MisilliePos = GetPos() + (float4::Down * 950);
 
 	NewMisillie = GetLevel()->CreateActor<Misillie>();
 	NewMisillie->SetPos(MisilliePos);
@@ -91,20 +93,28 @@ void Machinegun_Plat::Kill()
 	ColActor->Off();
 
 	NewAim->SetDeath(true);
-	// BreakGround();
+	BreakGround();
 
 	ColActor->Death();
 }
 
 void Machinegun_Plat::BreakGround()
 {
-	//Public_Boom* Ex = nullptr;
-	//float4 ExPos = float4::Zero;
-	//ExPos = GetPos() + (float4::Up * 60);
+	Machinegun_PlatPiece1* Piece1 = nullptr;
+	float4 Piece1Pos = float4::Zero;
+	Piece1Pos = GetPos() + (float4::Left * 25);
 
-	//Ex = GetLevel()->CreateActor<Public_Boom>();
-	//Ex->SetPos(ExPos);
-	//Ex->SetExPlus(1);
+	Piece1 = GetLevel()->CreateActor<Machinegun_PlatPiece1>();
+	Piece1->SetPos(Piece1Pos);
+	Piece1->SetOwnerPos(GetPos());
+
+	Machinegun_PlatPiece2* Piece2 = nullptr;
+	float4 Piece2Pos = float4::Zero;
+	Piece2Pos = GetPos() + (float4::Right * 25);
+
+	Piece2 = GetLevel()->CreateActor<Machinegun_PlatPiece2>();
+	Piece2->SetPos(Piece2Pos);
+	Piece2->SetOwnerPos(GetPos());
 }
 
 void Machinegun_Plat::RenderSet()

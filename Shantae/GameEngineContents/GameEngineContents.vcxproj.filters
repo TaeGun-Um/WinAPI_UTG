@@ -462,6 +462,12 @@
     <ClInclude Include="Pistol_Bullet.h">
       <Filter>Character\Player\Effect</Filter>
     </ClInclude>
+    <ClInclude Include="Machinegun_PlatPiece2.h">
+      <Filter>Collision\Map\Machinegun</Filter>
+    </ClInclude>
+    <ClInclude Include="Machinegun_PlatPiece1.h">
+      <Filter>Collision\Map\Machinegun</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShantaeCore.cpp" />
@@ -950,6 +956,12 @@
     </ClCompile>
     <ClCompile Include="Pistol_Bullet.cpp">
       <Filter>Character\Player\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Machinegun_PlatPiece2.cpp">
+      <Filter>Collision\Map\Machinegun</Filter>
+    </ClCompile>
+    <ClCompile Include="Machinegun_PlatPiece1.cpp">
+      <Filter>Collision\Map\Machinegun</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

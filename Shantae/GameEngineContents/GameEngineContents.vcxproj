@@ -295,6 +295,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Machinegun_PlatPiece1.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Machinegun_PlatPiece2.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Machinegun_Sky.h">
       <SubType>
       </SubType>
@@ -910,6 +918,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Machinegun_Plat.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Machinegun_PlatPiece1.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Machinegun_PlatPiece2.cpp">
       <SubType>
       </SubType>
     </ClCompile>
