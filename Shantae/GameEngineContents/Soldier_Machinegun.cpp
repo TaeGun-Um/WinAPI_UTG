@@ -164,10 +164,10 @@ void Soldier_Machinegun::CollisionSet()
 	SensorCollision = CreateCollision(CollisionOrder::Trigger);
 	SensorCollision->SetDebugRenderType(CT_Rect);
 	SensorCollision->SetScale({ 10, 500 });
-	SensorCollision->SetPosition({ -650, 0 });
+	SensorCollision->SetPosition({ -750, 0 });
 
 	SensorCollision2 = CreateCollision(CollisionOrder::Trigger);
 	SensorCollision2->SetDebugRenderType(CT_Rect);
 	SensorCollision2->SetScale({ 10, 500 });
-	SensorCollision2->SetPosition({ 650, 0 });
+	SensorCollision2->SetPosition({ 900, 0 });
 }

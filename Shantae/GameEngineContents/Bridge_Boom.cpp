@@ -28,14 +28,30 @@ void Bridge_Boom::Start()
 }
 void Bridge_Boom::Update(float _DeltaTime)
 {
-	if (5.0f <= AccTime)
+	if (0.01f <= AccTime)
 	{
-		AnimationRender->ChangeAnimation("On");
-	}
-	
-	if (7.0f <= AccTime)
-	{
-		Kill();
+		if (5.0f <= AccTime)
+		{
+			AnimationRender->ChangeAnimation("On");
+		}
+
+		if (7.0f <= AccTime)
+		{
+			IsDeath = true;
+			Kill();
+		}
+
+		if (1 == AnimationRender->GetFrame() && 1 == SoundCount && false == IsDeath)
+		{
+			SoundCount = 0;
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Bridgeboom.wav");
+			BGMPlayer.Volume(0.02f);
+			BGMPlayer.LoopCount(1);
+		}
+		else if (2 == AnimationRender->GetFrame() && false == IsDeath)
+		{
+			SoundCount = 1;
+		}
 	}
 }
 

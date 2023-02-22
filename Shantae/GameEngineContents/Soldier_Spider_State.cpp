@@ -189,7 +189,7 @@ void Soldier_Spider::HitUpdate(float _Time)
 
 	HitTime += _Time;
 
-	if (0.5f <= HitTime)
+	if (0.6f <= HitTime)
 	{
 		Kill();
 		return;

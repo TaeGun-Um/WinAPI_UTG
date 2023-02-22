@@ -184,6 +184,10 @@ void Soldier_Machinegun::FireLUpdate(float _Time)
 {
 	if (1 == FireCount)
 	{
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_machinegun_fire.mp3");
+		BGMPlayer.Volume(0.1f);
+		BGMPlayer.LoopCount(1);
+
 		FireCount = 0;
 		AimKill(0);
 		Fire(0);
@@ -191,7 +195,7 @@ void Soldier_Machinegun::FireLUpdate(float _Time)
 	
 	AccTime += _Time;
 
-	if (0.5f <= AccTime)
+	if (0.4f <= AccTime)
 	{
 		ChangeState(Soldier_MachinegunState::TURN_LB);
 		return;
@@ -237,7 +241,7 @@ void Soldier_Machinegun::FireMUpdate(float _Time)
 	
 	AccTime += _Time;
 
-	if (0.5f <= AccTime)
+	if (0.4f <= AccTime)
 	{
 		ChangeState(Soldier_MachinegunState::TURN_R);
 		return;
@@ -283,7 +287,7 @@ void Soldier_Machinegun::FireRUpdate(float _Time)
 	
 	AccTime += _Time;
 
-	if (0.5f <= AccTime)
+	if (0.4f <= AccTime)
 	{
 		ChangeState(Soldier_MachinegunState::TURN_RB);
 		return;

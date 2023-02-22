@@ -31,8 +31,8 @@ void SoundLoad::Loading()
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\stage_clear.mp3"));             // Boss 잡은 후
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\We_Love_Burning_Town.mp3"));    // o FieldLevel BGM
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\You_Found_an_item.mp3"));       // 상자에서 아이템 획득 시
-	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Explode_bridge.wav"));          // Boombridge 다리 폭파
-	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Explode_plat.wav"));            // Machinegun 발판 폭파
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Explode_bridge.wav"));          // o Boombridge 다리 폭파
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Explode_plat.wav"));            // o Machinegun 발판 폭파
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Explosion1.mp3"));              // Home, HouseFront, Move0 폭파 환경음 1
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Explosion2.mp3"));              // Home, HouseFront, Move0 폭파 환경음 2
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Fleeing_crowd.mp3"));           // Move0 도망치는 관중들
@@ -96,8 +96,8 @@ void SoundLoad::Loading()
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Soldier\\Soldier_boom_explosion.mp3"));     // o Bomberman 폭탄 폭파
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Soldier\\Soldier_boom_throw.mp3"));         // o Bomberman 폭탄 던지기
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Soldier\\Soldier_gun_fire.mp3"));           // o Black 총알 발사
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Soldier\\Soldier_machinegun_fire.mp3"));    // machinegun 총알 발사
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Soldier\\Bridgeboom.wav"));                 // Bridgeboom 시간 경과 효과음
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Soldier\\Soldier_machinegun_fire.mp3"));    // o machinegun 총알 발사
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Soldier\\Bridgeboom.wav"));                 // o Bridgeboom 시간 경과 효과음
 
 	// Boss
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Boss\\Boom_blast.wav"));      // o 폭탄 발사 효과음

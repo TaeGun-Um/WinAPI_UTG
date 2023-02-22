@@ -1,7 +1,6 @@
 #pragma once
 
 #include <GameEngineCore/GameEngineActor.h>
-#include <GameEngineCore/NumberRenderObject.h>
 
 // Ό³Έν :
 class BoomBridge_Bridge2 : public GameEngineActor

@@ -40,7 +40,6 @@ private:
 
 	bool IsDeath = false;
 
-	void GetOwnerDeath();
 	void MoveCalculation(float _DeltaTime);
 	void CollisionCheck();
 	void Kill();

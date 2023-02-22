@@ -1,7 +1,7 @@
 #pragma once
 
 #include <GameEngineCore/GameEngineActor.h>
-#include <GameEngineCore/NumberRenderObject.h>
+#include <GameEngineCore/GameEngineResources.h>
 
 // Ό³Έν :
 class BoomBridge_Bridge1 : public GameEngineActor
@@ -21,6 +21,8 @@ public:
 	{
 		AccTime = _Timer;
 	}
+
+	GameEngineSoundPlayer BGMPlayer;
 
 protected:
 	void Start() override;

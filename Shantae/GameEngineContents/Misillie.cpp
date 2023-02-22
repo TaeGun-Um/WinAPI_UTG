@@ -32,7 +32,6 @@ void Misillie::Start()
 
 void Misillie::Update(float _DeltaTime)
 {
-	GetOwnerDeath();
 	CollisionCheck();
 	MoveCalculation(_DeltaTime);
 }
@@ -41,18 +40,10 @@ void Misillie::Render(float _DeltaTime)
 
 }
 
-void Misillie::GetOwnerDeath()
-{
-	//if (true == Machinegun_Plat::PlatPtr->IsCrash())
-	//{
-	//	Kill();
-	//}
-}
-
 // 중력, 점프, 맵타일
 void Misillie::MoveCalculation(float _DeltaTime)
 {
-	MoveSpeed = 700.0f;
+	MoveSpeed = 800.0f;
 	SetMove(float4::Up * MoveSpeed * _DeltaTime);
 }
 

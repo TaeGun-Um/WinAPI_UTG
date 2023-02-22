@@ -42,6 +42,10 @@ void Machinegun_Plat::Update(float _DeltaTime)
 
 	if (true == MisillieDeath)
 	{
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Explode_plat.wav");
+		BGMPlayer.Volume(0.2f);
+		BGMPlayer.LoopCount(1);
+
 		Kill();
 	}
 }
@@ -64,7 +68,7 @@ void Machinegun_Plat::MisillieCreate()
 {
 	Misillie*  NewMisillie = nullptr;
 	float4 MisilliePos = float4::Zero;
-	MisilliePos = GetPos() + (float4::Down * 700);
+	MisilliePos = GetPos() + (float4::Down * 850);
 
 	NewMisillie = GetLevel()->CreateActor<Misillie>();
 	NewMisillie->SetPos(MisilliePos);

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <GameEngineCore/GameEngineActor.h>
-#include <GameEngineCore/NumberRenderObject.h>
+#include <GameEngineCore/GameEngineResources.h>
 
 // Ό³Έν : Player Chracter
 class Bridge_Boom : public GameEngineActor
@@ -27,6 +27,8 @@ public:
 		AccTime = _Timer;
 	}
 
+	GameEngineSoundPlayer BGMPlayer;
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -36,6 +38,9 @@ private:
 	GameEngineRender* AnimationRender = nullptr;
 
 	float AccTime = 0.0f;
+
+	int SoundCount = 1;
+
 	bool IsDeath = false;
 
 	void Kill();

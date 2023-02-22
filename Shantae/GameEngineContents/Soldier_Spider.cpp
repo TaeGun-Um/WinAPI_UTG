@@ -52,10 +52,10 @@ void Soldier_Spider::Update(float _DeltaTime)
 				Blinker = true;
 			}
 			
-			if (true == Blinker)
-			{
-				AlphaBlinker(_DeltaTime);
-			}
+			//if (true == Blinker)
+			//{
+			//	AlphaBlinker(_DeltaTime);
+			//}
 
 			ChangeState(Soldier_SpiderState::HIT);
 		}
@@ -166,7 +166,7 @@ void Soldier_Spider::Kill()
 	GameEngineActor* ColActor = BodyCollision->GetActor();
 	ColActor->Off();
 
-	Explosion();
+	// Explosion();
 
 	ColActor->Death();
 }
