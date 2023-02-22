@@ -43,6 +43,44 @@ void House::Loading()
 
 void House::Update(float _DeltaTime)
 {
+	OverlapTime += _DeltaTime;
+
+	LevelSet();
+	Debugging();
+	AnimationChange();
+	SoundCombination();
+}
+
+void House::LevelChangeStart(GameEngineLevel* _PrevLevel)
+{
+}
+
+void House::LevelChangeEnd(GameEngineLevel* _NextLevel)
+{
+}
+
+void House::LevelSet()
+{
+}
+
+void House::Debugging()
+{
+	if (GameEngineInput::IsDown("NextLevel"))
+	{
+		if (OverlapTime > 0.5f)
+		{
+			GameEngineCore::GetInst()->ChangeLevel("HouseFront");
+			OverlapTime = 0.0f;
+		}
+	}
+	if (GameEngineInput::IsDown("Back"))
+	{
+		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
+	}
+}
+
+void House::AnimationChange()
+{
 	if (GameEngineInput::IsDown("Attack"))
 	{
 		++Change;
@@ -64,19 +102,8 @@ void House::Update(float _DeltaTime)
 			GameEngineCore::GetInst()->ChangeLevel("HouseFront");
 		}
 	}
-
-	if (GameEngineInput::IsDown("Back"))
-	{
-		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
-	}
-
-	OverlapTime += _DeltaTime;
 }
-
-void House::LevelChangeStart(GameEngineLevel* _PrevLevel)
+void House::SoundCombination()
 {
-}
 
-void House::LevelChangeEnd(GameEngineLevel* _NextLevel)
-{
 }

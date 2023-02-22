@@ -41,15 +41,14 @@ private:
 	GameEngineSoundPlayer BGMPlayer;
 	GameEngineActor* Shantae = nullptr;
 	GameEngineImage* ColMap = nullptr;
+	Player* SHA = nullptr;
 
 	TimerCollision* TimerCol1 = nullptr;
 	TimerCollision* TimerCol2 = nullptr;
 	TimerCollision* TimerCol3 = nullptr;
 	TimerCollision* TimerCol4 = nullptr;
 
-	Player* SHA = nullptr;
 	float OverlapTime = 0.0f;
-
 	bool YCamera = false;
 	int Set = 1;
 	int AnimationSet = 1;

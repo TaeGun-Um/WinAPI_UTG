@@ -35,8 +35,8 @@ private:
 	GameEngineActor* Shantae = nullptr;
 	GameEngineImage* ColMap = nullptr;
 	Player* SHA = nullptr;
-	float OverlapTime = 0.0f;
 
+	float OverlapTime = 0.0f;
 	int Set = 1;
 	int AnimationSet = 1;
 

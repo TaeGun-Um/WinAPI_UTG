@@ -27,11 +27,12 @@ protected:
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 
 private:
-	GameEngineActor* Shantae = nullptr;
-	GameEngineImage* ColMap = nullptr;
-	Player* SHA = nullptr;
-	float OverlapTime = 0.0f;
+	void LevelSet();
+	void Debugging();
+	void AnimationChange();
+	void SoundCombination();
 
+	float OverlapTime = 0.0f;
 	int Change = 0;
 
 };

@@ -162,7 +162,7 @@ void Move0::Debugging()
 			OverlapTime = 0.0f;
 		}
 	}
-	if (GameEngineInput::IsPress("BeforeLevel"))
+	if (GameEngineInput::IsDown("BeforeLevel"))
 	{
 		if (OverlapTime > 0.5f)
 		{
@@ -170,7 +170,7 @@ void Move0::Debugging()
 			OverlapTime = 0.0f;
 		}
 	}
-	if (GameEngineInput::IsPress("NextLevel"))
+	if (GameEngineInput::IsDown("NextLevel"))
 	{
 		if (OverlapTime > 0.5f)
 		{

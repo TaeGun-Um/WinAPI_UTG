@@ -46,13 +46,11 @@ void Move1::Loading()
 	// ½ºÆ÷³Ê»ç¿ë¹ý   ½ºÆ÷³Ê À§Ä¡    ¸÷ÀÌ¸§    ÄÝ¸Ê    ¸÷ Á¨ À§Ä¡   ¸®Á¨½Ã°£
 	// CreateSpawner({ 250, 300 }, "blue", ColMap, { 350, 590 }, 5);
 
-	// CreateSpawner({ 800, 0 }, "Bomberman", ColMap, { 1767, 288 }, 5);
+	Soldier_Bomberman* s1 = CreateActor<Soldier_Bomberman>();
+	s1->SetPos({ 1767, 288 });
+	s1->SetColMap(ColMap);
 
-	Soldier_Bomberman* sss = CreateActor<Soldier_Bomberman>();
-	sss->SetPos({ 1767, 288 });
-	sss->SetColMap(ColMap);
-
-	CreateSpawner({ 2300, 0 }, "black", ColMap, { 3145, 651 }, 6);
+	CreateSpawner({ 2300, 0 }, "black", ColMap, { 3145, 651 }, 5);
 	CreateSpawner({ 2300, 0 }, "Bomberman", ColMap, { 3277, 345 }, 5);
 	CreateSpawner({ 3600, 0 }, "black", ColMap, { 4575, 650 }, 5);
 	CreateSpawner({ 5850, 0 }, "Bomberman", ColMap, { 6755, 447 }, 5);
@@ -158,7 +156,7 @@ void Move1::Debugging()
 			OverlapTime = 0.0f;
 		}
 	}
-	if (GameEngineInput::IsPress("BeforeLevel"))
+	if (GameEngineInput::IsDown("BeforeLevel"))
 	{
 		if (OverlapTime > 0.5f)
 		{
@@ -166,7 +164,7 @@ void Move1::Debugging()
 			OverlapTime = 0.0f;
 		}
 	}
-	if (GameEngineInput::IsPress("NextLevel"))
+	if (GameEngineInput::IsDown("NextLevel"))
 	{
 		if (OverlapTime > 0.5f)
 		{
