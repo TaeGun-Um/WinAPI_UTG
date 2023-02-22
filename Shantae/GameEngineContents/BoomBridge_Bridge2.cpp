@@ -27,7 +27,7 @@ void BoomBridge_Bridge2::Start()
 
 void BoomBridge_Bridge2::Update(float _DeltaTime)
 {
-	if (7.5f <= AccTime)
+	if (7.6f <= AccTime)
 	{
 		Kill();
 	}

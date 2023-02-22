@@ -38,30 +38,41 @@ void Bridge_Boom::Update(float _DeltaTime)
 		if (7.0f <= AccTime)
 		{
 			IsDeath = true;
-			Kill();
+
+			if (true == Direct)
+			{
+				LeftCreateExplosion(_DeltaTime);
+			}
+			else
+			{
+				RightCreateExplosion(_DeltaTime);
+			}
 		}
 
-		if (1 == AnimationRender->GetFrame() && 1 == SoundCount && false == IsDeath)
+		if (true == IsSound)
 		{
-			SoundCount = 0;
-			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Bridgeboom.wav");
-			BGMPlayer.Volume(0.02f);
-			BGMPlayer.LoopCount(1);
-		}
-		else if (2 == AnimationRender->GetFrame() && false == IsDeath)
-		{
-			SoundCount = 1;
+			if (1 == AnimationRender->GetFrame() && 1 == SoundCount && false == IsDeath)
+			{
+				SoundCount = 0;
+				BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Bridgeboom.wav");
+				BGMPlayer.Volume(0.02f);
+				BGMPlayer.LoopCount(1);
+			}
+			else if (2 == AnimationRender->GetFrame() && false == IsDeath)
+			{
+				SoundCount = 1;
+			}
 		}
 	}
+}
+
+void Bridge_Boom::Render(float _DeltaTime)
+{
 }
 
 void Bridge_Boom::Kill()
 {
 	GameEngineActor* ColActor = AnimationRender->GetActor();
-	ColActor->Off();
-
-	Explosion();
-
 	ColActor->Death();
 }
 
@@ -75,6 +86,103 @@ void Bridge_Boom::Explosion()
 	Ex->SetPos(ExPos);
 }
 
-void Bridge_Boom::Render(float _DeltaTime)
+void Bridge_Boom::Explosions(float4 _Value)
 {
+	Public_Boom* Ex = nullptr;
+
+	Ex = GetLevel()->CreateActor<Public_Boom>();
+	Ex->SetPos(_Value);
+	Ex->SetExPlus(0);
+	if (false == Direct)
+	{
+		Ex->SetSoundOff();
+	}
+}
+
+void Bridge_Boom::RightCreateExplosion(float _DeltaTime)
+{
+	AnimationRender->Off();
+	BoomTime += _DeltaTime;
+
+	if (0.1f <= BoomTime)
+	{
+		if (4 == BoomCount)
+		{
+			Explosions(GetPos());
+			BoomTime = 0.0f;
+			BoomCount--;
+		}
+		else if (3 == BoomCount)
+		{
+			Explosions(GetPos() + (float4::Right * 100));
+			BoomTime = 0.0f;
+			BoomCount--;
+		}
+		else if (2 == BoomCount)
+		{
+			Explosions(GetPos() + (float4::Right * 200));
+			BoomTime = 0.0f;
+			BoomCount--;
+		}
+		else if (1 == BoomCount)
+		{
+			Explosions(GetPos() + (float4::Right * 300));
+			BoomTime = 0.0f;
+			BoomCount--;
+		}
+		else if (0 == BoomCount)
+		{
+			Explosions(GetPos() + (float4::Right * 400));
+			BoomTime = 0.0f;
+			BoomCount--;
+		}
+		else
+		{
+			Kill();
+		}
+	}
+}
+
+void Bridge_Boom::LeftCreateExplosion(float _DeltaTime)
+{
+	AnimationRender->Off();
+	BoomTime += _DeltaTime;
+
+	if (0.1f <= BoomTime)
+	{
+		if (4 == BoomCount)
+		{
+			Explosions(GetPos());
+			BoomTime = 0.0f;
+			BoomCount--;
+		}
+		else if (3 == BoomCount)
+		{
+			Explosions(GetPos() + (float4::Left * 100));
+			BoomTime = 0.0f;
+			BoomCount--;
+		}
+		else if (2 == BoomCount)
+		{
+			Explosions(GetPos() + (float4::Left * 200));
+			BoomTime = 0.0f;
+			BoomCount--;
+		}
+		else if (1 == BoomCount)
+		{
+			Explosions(GetPos() + (float4::Left * 300));
+			BoomTime = 0.0f;
+			BoomCount--;
+		}
+		else if (0 == BoomCount)
+		{
+			Explosions(GetPos() + (float4::Left * 400));
+			BoomTime = 0.0f;
+			BoomCount--;
+		}
+		else
+		{
+			Kill();
+		}
+	}
 }

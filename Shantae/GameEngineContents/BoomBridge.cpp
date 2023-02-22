@@ -216,6 +216,8 @@ void BoomBridge::Set_One()
 
 	Boom1 = CreateActor<Bridge_Boom>();
 	Boom1->SetPos({ 610, 675 });
+	Boom1->SetSoundOff();
+	Boom1->SetDirect(false);
 	Boom2 = CreateActor<Bridge_Boom>();
 	Boom2->SetPos({ 1545, 675 });
 
@@ -251,6 +253,8 @@ void BoomBridge::Set_Two()
 
 	Boom3 = CreateActor<Bridge_Boom>();
 	Boom3->SetPos({ 610, 2295 });
+	Boom3->SetSoundOff();
+	Boom3->SetDirect(false);
 	Boom4 = CreateActor<Bridge_Boom>();
 	Boom4->SetPos({ 1545, 2295 });
 
@@ -290,6 +294,8 @@ void BoomBridge::Set_Three()
 
 	Boom5 = CreateActor<Bridge_Boom>();
 	Boom5->SetPos({ 610, 3715 });
+	Boom5->SetSoundOff();
+	Boom5->SetDirect(false);
 	Boom6 = CreateActor<Bridge_Boom>();
 	Boom6->SetPos({ 1545, 3715 });
 
@@ -335,6 +341,8 @@ void BoomBridge::Set_Four()
 
 	Boom7 = CreateActor<Bridge_Boom>();
 	Boom7->SetPos({ 610, 5135 });
+	Boom7->SetSoundOff();
+	Boom7->SetDirect(false);
 	Boom8 = CreateActor<Bridge_Boom>();
 	Boom8->SetPos({ 1545, 5135 });
 

@@ -27,7 +27,7 @@ void BoomBridge_Bridge1::Start()
 
 void BoomBridge_Bridge1::Update(float _DeltaTime)
 {
-	if (7.5f <= AccTime)
+	if (7.6f <= AccTime)
 	{
 		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Explode_bridge.wav");
 		BGMPlayer.Volume(0.2f);
