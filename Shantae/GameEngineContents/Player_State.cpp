@@ -1313,7 +1313,7 @@ void Player::MoveStopEnd()
 
 void Player::HitStart()
 {
-	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 5);
+	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 2);
 
 	if (1 == RandC)
 	{
@@ -1322,24 +1322,6 @@ void Player::HitStart()
 		BGMPlayer.LoopCount(1);
 	}
 	else if (2 == RandC)
-	{
-		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_hit2.wav");
-		BGMPlayer.Volume(0.1f);
-		BGMPlayer.LoopCount(1);
-	}
-	else if (3 == RandC)
-	{
-		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_hit3.wav");
-		BGMPlayer.Volume(0.1f);
-		BGMPlayer.LoopCount(1);
-	}
-	else if (4 == RandC)
-	{
-		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_hit4.wav");
-		BGMPlayer.Volume(0.1f);
-		BGMPlayer.LoopCount(1);
-	}
-	else if (5 == RandC)
 	{
 		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_hit5.wav");
 		BGMPlayer.Volume(0.1f);
@@ -1375,38 +1357,9 @@ void Player::HitEnd()
 
 void Player::CrouchHitStart()
 {
-	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 5);
-
-	if (1 == RandC)
-	{
-		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_hit1.wav");
-		BGMPlayer.Volume(0.1f);
-		BGMPlayer.LoopCount(1);
-	}
-	else if (2 == RandC)
-	{
-		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_hit2.wav");
-		BGMPlayer.Volume(0.1f);
-		BGMPlayer.LoopCount(1);
-	}
-	else if (3 == RandC)
-	{
-		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_hit3.wav");
-		BGMPlayer.Volume(0.1f);
-		BGMPlayer.LoopCount(1);
-	}
-	else if (4 == RandC)
-	{
-		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_hit4.wav");
-		BGMPlayer.Volume(0.1f);
-		BGMPlayer.LoopCount(1);
-	}
-	else if (5 == RandC)
-	{
-		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_hit5.wav");
-		BGMPlayer.Volume(0.1f);
-		BGMPlayer.LoopCount(1);
-	}
+	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_hit2.wav");
+	BGMPlayer.Volume(0.1f);
+	BGMPlayer.LoopCount(1);
 
 	DirCheck("CrouchingHit");
 }
@@ -1429,35 +1382,17 @@ void Player::CrouchHitEnd()
 
 void Player::JumpHitStart()
 {
-	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 5);
+	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 2);
 
 	if (1 == RandC)
-	{
-		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_hit1.wav");
-		BGMPlayer.Volume(0.1f);
-		BGMPlayer.LoopCount(1);
-	}
-	else if (2 == RandC)
-	{
-		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_hit2.wav");
-		BGMPlayer.Volume(0.1f);
-		BGMPlayer.LoopCount(1);
-	}
-	else if (3 == RandC)
 	{
 		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_hit3.wav");
 		BGMPlayer.Volume(0.1f);
 		BGMPlayer.LoopCount(1);
 	}
-	else if (4 == RandC)
+	else if (2 == RandC)
 	{
 		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_hit4.wav");
-		BGMPlayer.Volume(0.1f);
-		BGMPlayer.LoopCount(1);
-	}
-	else if (5 == RandC)
-	{
-		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_hit5.wav");
 		BGMPlayer.Volume(0.1f);
 		BGMPlayer.LoopCount(1);
 	}
