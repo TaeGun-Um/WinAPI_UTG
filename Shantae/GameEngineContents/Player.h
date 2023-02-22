@@ -1,6 +1,7 @@
 #pragma once
 
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/NumberRenderObject.h>
 
 class GameEngineImage;
@@ -154,6 +155,9 @@ public:
 	bool LevelChangeAnimation(float _DeltaTime);
 	void LevelStartAnimation(float _DeltaTime);
 
+	GameEngineSoundPlayer BGMPlayer;
+	GameEngineSoundPlayer CrouchMovePlayer;
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -206,13 +210,18 @@ private:
 	float BlinkTime = 0.0f;
 	float ShakingTime = 0.0f;
 	float SetShakingTime = 0.0f;
-	float SetShakingValue = 0;
+	float SetShakingValue = 0.0f;
+	float MoveSoundTime = 0.0f;
+	float CrouchMoveSoundTime = 0.0f;
 
 	int Pass = 1;
 	int MaxHP = 8;
 	int HP = 8;
 	int PlayerGem = 0;
 	int ShakingCount = 0;
+	int MoveSoundCount = 2;
+	int CrouchMoveSoundCount = 1;
+	int UpCol = 1;
 
 	bool FreeMove = false;
 	bool ShantaeMove = true;

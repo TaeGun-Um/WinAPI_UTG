@@ -1,6 +1,7 @@
 #pragma once
 
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/GameEngineResources.h>
 
 class GameEngineImage;
 class Soldier_Aim;
@@ -30,6 +31,8 @@ public:
 	Soldier_Machinegun(Soldier_Machinegun&& _Other) noexcept = delete;
 	Soldier_Machinegun& operator=(const Soldier_Machinegun& _Other) = delete;
 	Soldier_Machinegun& operator=(Soldier_Machinegun&& _Other) noexcept = delete;
+
+	GameEngineSoundPlayer BGMPlayer;
 
 protected:
 	void Start() override;

@@ -272,6 +272,7 @@ void Player::MoveCalculation(float _DeltaTime)
 		IsJump = false;
 		Fall = false;
 		MoveDir.y = 0.0f;
+		UpCol = 1;
 	}
 
 	if (RGB(74, 65, 42) != ColMap->GetPixelColor(NextPos, RGB(0, 0, 0))
@@ -438,7 +439,6 @@ void Player::WallCheck(float _Speed)
 	}
 
 	// À§
-
 	if (false == IsCrouch)
 	{
 		CrouchMaintain = false;
@@ -446,6 +446,14 @@ void Player::WallCheck(float _Speed)
 		{
 			Fall = true;
 			MoveDir.y = 100.0f;
+
+			if (1 == UpCol)
+			{
+				UpCol = 0;
+				BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_crouch.mp3");
+				BGMPlayer.Volume(0.1f);
+				BGMPlayer.LoopCount(1);
+			}
 		}
 	}
 	else if (true == IsCrouch)

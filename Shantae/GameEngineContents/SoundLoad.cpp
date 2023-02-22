@@ -62,10 +62,11 @@ void SoundLoad::Loading()
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_attack.wav"));         // 공격 시 효과음
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_attack_voice1.wav"));  // 공격 시 보이스 1
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_attack_voice2.wav"));  // 공격 시 보이스 2
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Strike_enemy.wav"));          // 적이 공격에 맞았을 때 효과음
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Strike_enemy.mp3"));          // 적이 공격에 맞았을 때 효과음
 
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_move1.wav"));          // 이동 시 효과음 (전)
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_move2.wav"));          // 이동 시 효과음 (후)
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_move1.wav"));          // 이동 시 효과음 1
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_move2.wav"));          // 이동 시 효과음 2
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_move3.wav"));          // 이동 시 효과음 3
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_crouch.mp3"));         // 웅크리기, 랜딩 효과임
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_crouchmove.wav"));     // 웅크리기 이동 효과음
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_death.wav"));          // 플레이어 사망 효과음

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/GameEngineResources.h>
 
 class GameEngineImage;
 
@@ -40,6 +41,8 @@ public:
 	{
 		return DirString;
 	}
+
+	GameEngineSoundPlayer BGMPlayer;
 
 protected:
 	void Start() override;

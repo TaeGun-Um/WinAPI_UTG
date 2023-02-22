@@ -243,7 +243,12 @@ void Soldier_Red::CollisionCheck()
 	{
 		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PlayerAttack), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Strike_enemy.mp3");
+			BGMPlayer.Volume(0.05f);
+			BGMPlayer.LoopCount(1);
+
 			Blinker = true;
+
 			if (10 == HP)
 			{
 				HP = 5;

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/GameEngineResources.h>
 
 class GameEngineImage;
 
@@ -49,6 +50,8 @@ public:
 	}
 
 	void SetAmbush();
+
+	GameEngineSoundPlayer BGMPlayer;
 
 protected:
 	void Start() override;

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <GameEngineCore/GameEngineActor.h>
-#include <GameEngineCore/NumberRenderObject.h>
+#include <GameEngineCore/GameEngineResources.h>
 
 class GameEngineImage;
 
@@ -56,6 +56,8 @@ public:
 	{
 		return BaronHP;
 	}
+
+	GameEngineSoundPlayer BGMPlayer;
 
 protected:
 	void Start() override;

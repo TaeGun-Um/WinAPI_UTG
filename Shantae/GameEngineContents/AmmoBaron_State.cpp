@@ -2,6 +2,7 @@
 
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineCollision.h>
+#include <GameEngineCore/GameEngineRender.h>
 
 #include "ContentsEnum.h"
 

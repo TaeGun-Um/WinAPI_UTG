@@ -1,6 +1,7 @@
 #pragma once
 
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/GameEngineResources.h>
 
 class GameEngineImage;
 class AmmoBaron;
@@ -35,6 +36,8 @@ public:
 	{
 		ColMap = _NextColMap;
 	}
+
+	GameEngineSoundPlayer BGMPlayer;
 
 protected:
 	void Start() override;
