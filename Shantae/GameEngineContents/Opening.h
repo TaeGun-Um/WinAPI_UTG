@@ -18,6 +18,7 @@ public:
 	Opening& operator=(Opening&& _Other) noexcept = delete;
 
 	GameEngineSoundPlayer BGMPlayer;
+	GameEngineSoundPlayer AnnouncePlayer;
 
 protected:
 	void Loading();

@@ -34,6 +34,10 @@ void Opening::Update(float _DeltaTime)
 
 void Opening::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	AnnouncePlayer = GameEngineResources::GetInst().SoundPlayToControl("Title_announce.wav");
+	AnnouncePlayer.Volume(0.1f);
+	AnnouncePlayer.LoopCount(1);
+
 	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Title_Theme.mp3");
 	BGMPlayer.Volume(0.1f);
 	BGMPlayer.LoopCount(10);
@@ -42,4 +46,5 @@ void Opening::LevelChangeStart(GameEngineLevel* _PrevLevel)
 void Opening::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	BGMPlayer.Stop();
+	AnnouncePlayer.Stop();
 }

@@ -28,6 +28,64 @@ void SelectMenu_Icon::Start()
 
 void SelectMenu_Icon::Update(float _DeltaTime)
 {
+	if (true == GameEngineInput::IsDown("Select"))
+	{
+		if (GetPos().ix() == SelectMenu_Button_Start::StartB->GetPos().ix())
+		{
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Botton_select.wav");
+			BGMPlayer.Volume(0.1f);
+			BGMPlayer.LoopCount(1);
+			GameStart = true;
+		}
+		if (GetPos().ix() == SelectMenu_Button_Test::TestB->GetPos().ix())
+		{
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Botton_select.wav");
+			BGMPlayer.Volume(0.1f);
+			BGMPlayer.LoopCount(1);
+			GameTest = true;
+		}
+		if (GetPos().ix() == SelectMenu_Button_End::EndB->GetPos().ix())
+		{
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Botton_select.wav");
+			BGMPlayer.Volume(0.1f);
+			BGMPlayer.LoopCount(1);
+			GameEnd = true;
+		}
+
+		SelectTimeon = true;
+	}
+
+	if (true == SelectTimeon)
+	{
+		SelectTime += _DeltaTime;
+
+		if (SelectTime >= 2.0f)
+		{
+			if (true == GameStart)
+			{
+				GameEngineCore::GetInst()->ChangeLevel("House");
+				SelectTime = 0.0f;
+				GameStart = false;
+				SelectTimeon = false;
+			}
+			if (true == GameTest)
+			{
+				GameEngineCore::GetInst()->ChangeLevel("TestLevel");
+				SelectTime = 0.0f;
+				GameTest = false;
+				SelectTimeon = false;
+			}
+			if (true == GameEnd)
+			{
+				GameEngineWindow::AppOff();
+				SelectTime = 0.0f;
+				GameEnd = false;
+				SelectTimeon = false;
+			}
+		}
+		return;
+	}
+
 	OverlapTime += _DeltaTime;
 
 	if (OverlapTime < 0.2f)
@@ -35,12 +93,15 @@ void SelectMenu_Icon::Update(float _DeltaTime)
 		return;
 	}
 
-	if (true == GameEngineInput::IsPress("SelectMoveRight"))
+	if (true == GameEngineInput::IsDown("SelectMoveRight"))
 	{
 		if (DelayTime < OverlapTime)
 		{
 			if (GetPos().ix() == SelectMenu_Button_Start::StartB->GetPos().ix())
 			{
+				BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Botton_move.wav");
+				BGMPlayer.Volume(0.1f);
+				BGMPlayer.LoopCount(1);
 				SetPos(SelectMenu_Button_Test::TestB->GetPos());
 				OverlapTime = 0.0;
 			}
@@ -49,6 +110,9 @@ void SelectMenu_Icon::Update(float _DeltaTime)
 		{
 			if (GetPos().ix() == SelectMenu_Button_Test::TestB->GetPos().ix())
 			{
+				BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Botton_move.wav");
+				BGMPlayer.Volume(0.1f);
+				BGMPlayer.LoopCount(1);
 				SetPos(SelectMenu_Button_End::EndB->GetPos());
 				OverlapTime = 0.0;
 			}
@@ -57,18 +121,24 @@ void SelectMenu_Icon::Update(float _DeltaTime)
 		{
 			if (GetPos().ix() == SelectMenu_Button_End::EndB->GetPos().ix())
 			{
+				BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Botton_move.wav");
+				BGMPlayer.Volume(0.1f);
+				BGMPlayer.LoopCount(1);
 				SetPos(SelectMenu_Button_Start::StartB->GetPos());
 				OverlapTime = 0.0;
 			}
 		}
 	}
 
-	if (true == GameEngineInput::IsPress("SelectMoveLeft"))
+	if (true == GameEngineInput::IsDown("SelectMoveLeft"))
 	{
 		if (DelayTime < OverlapTime)
 		{
 			if (GetPos().ix() == SelectMenu_Button_Start::StartB->GetPos().ix())
 			{
+				BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Botton_move.wav");
+				BGMPlayer.Volume(0.1f);
+				BGMPlayer.LoopCount(1);
 				SetPos(SelectMenu_Button_End::EndB->GetPos());
 				OverlapTime = 0.0;
 			}
@@ -77,6 +147,9 @@ void SelectMenu_Icon::Update(float _DeltaTime)
 		{
 			if (GetPos().ix() == SelectMenu_Button_Test::TestB->GetPos().ix())
 			{
+				BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Botton_move.wav");
+				BGMPlayer.Volume(0.1f);
+				BGMPlayer.LoopCount(1);
 				SetPos(SelectMenu_Button_Start::StartB->GetPos());
 				OverlapTime = 0.0;
 			}
@@ -85,25 +158,14 @@ void SelectMenu_Icon::Update(float _DeltaTime)
 		{
 			if (GetPos().ix() == SelectMenu_Button_End::EndB->GetPos().ix())
 			{
+				BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Botton_move.wav");
+				BGMPlayer.Volume(0.1f);
+				BGMPlayer.LoopCount(1);
 				SetPos(SelectMenu_Button_Test::TestB->GetPos());
 				OverlapTime = 0.0;
 			}
 		}
 	}
 
-	if (true == GameEngineInput::IsPress("Select"))
-	{
-		if (GetPos().ix() == SelectMenu_Button_Start::StartB->GetPos().ix())
-		{
-			GameEngineCore::GetInst()->ChangeLevel("House");
-		}
-		if (GetPos().ix() == SelectMenu_Button_Test::TestB->GetPos().ix())
-		{
-			GameEngineCore::GetInst()->ChangeLevel("TestLevel");
-		}
-		if (GetPos().ix() == SelectMenu_Button_End::EndB->GetPos().ix())
-		{
-			GameEngineWindow::AppOff();
-		}
-	}
+
 }
