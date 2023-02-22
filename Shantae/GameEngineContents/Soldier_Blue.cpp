@@ -244,7 +244,7 @@ void Soldier_Blue::CollisionCheck()
 		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PlayerAttack), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
 			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Strike_enemy.mp3");
-			BGMPlayer.Volume(0.05f);
+			BGMPlayer.Volume(0.75f);
 			BGMPlayer.LoopCount(1);
 
 			HitAction = true;
