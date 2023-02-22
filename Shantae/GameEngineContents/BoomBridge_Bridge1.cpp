@@ -27,26 +27,60 @@ void BoomBridge_Bridge1::Start()
 
 void BoomBridge_Bridge1::Update(float _DeltaTime)
 {
+	if (1 == CurrentPosCount)
+	{
+		CurrentPosCount = 0;
+		CurrentPos = GetPos();
+	}
+
 	if (7.6f <= AccTime)
 	{
-		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Explode_bridge.wav");
-		BGMPlayer.Volume(0.2f);
-		BGMPlayer.LoopCount(1);
+		if (1 == SoundCount)
+		{
+			SoundCount = 0;
 
-		Kill();
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Explode_bridge.wav");
+			BGMPlayer.Volume(0.2f);
+			BGMPlayer.LoopCount(1);
+		}
+
+		MoveStart = true;
+	}
+
+	if (true == MoveStart)
+	{
+		BodyCollision->Off();
+		MoveCalculation(_DeltaTime);
+		DirectCheckForKill();
 	}
 }
 void BoomBridge_Bridge1::Render(float _DeltaTime)
 {
 }
 
+void BoomBridge_Bridge1::MoveCalculation(float _DeltaTime)
+{
+	MoveDir += float4::Down * 2000.0f * _DeltaTime;
+
+	SetMove(float4::Left * 200.0f * _DeltaTime);
+
+	SetMove(MoveDir * _DeltaTime);
+}
+
+void BoomBridge_Bridge1::DirectCheckForKill()
+{
+	float4 Pos = CurrentPos + (float4::Down * 1500);
+
+	if (GetPos().y >= Pos.y)
+	{
+		Kill();
+	}
+}
+
 void BoomBridge_Bridge1::Kill()
 {
 	GameEngineActor* ColActor = BodyCollision->GetActor();
 	ColActor->Off();
-
-	// BreakGround();
-
 	ColActor->Death();
 }
 

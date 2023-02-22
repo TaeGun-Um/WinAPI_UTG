@@ -30,12 +30,22 @@ private:
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
 
+	float4 MoveDir = float4::Zero;
+	float4 CurrentPos = float4::Zero;
+
 	float AccTime = 0.0f;
 
-	void Kill();
+	int CurrentPosCount = 1;
+	int SoundCount = 1;
 
+	bool MoveStart = false;
+	bool IsJump = true;
+
+	void Kill();
 	void RenderSet();
 	void CollisionSet();
+	void MoveCalculation(float _DeltaTime);
+	void DirectCheckForKill();
 
 };
 

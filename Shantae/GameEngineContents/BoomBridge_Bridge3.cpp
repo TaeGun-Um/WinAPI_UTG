@@ -27,9 +27,22 @@ void BoomBridge_Bridge3::Start()
 
 void BoomBridge_Bridge3::Update(float _DeltaTime)
 {
+	if (1 == CurrentPosCount)
+	{
+		CurrentPosCount = 0;
+		CurrentPos = GetPos();
+	}
+
 	if (7.6f <= AccTime)
 	{
-		Kill();
+		MoveStart = true;
+	}
+
+	if (true == MoveStart)
+	{
+		BodyCollision->Off();
+		MoveCalculation(_DeltaTime);
+		DirectCheckForKill();
 	}
 }
 
@@ -37,13 +50,29 @@ void BoomBridge_Bridge3::Render(float _DeltaTime)
 {
 }
 
+void BoomBridge_Bridge3::MoveCalculation(float _DeltaTime)
+{
+	MoveDir += float4::Down * 2200.0f * _DeltaTime;
+
+	SetMove(float4::Right * 120.0f * _DeltaTime);
+
+	SetMove(MoveDir * _DeltaTime);
+}
+
+void BoomBridge_Bridge3::DirectCheckForKill()
+{
+	float4 Pos = CurrentPos + (float4::Down * 1500);
+
+	if (GetPos().y >= Pos.y)
+	{
+		Kill();
+	}
+}
+
 void BoomBridge_Bridge3::Kill()
 {
 	GameEngineActor* ColActor = BodyCollision->GetActor();
 	ColActor->Off();
-
-	// BreakGround();
-
 	ColActor->Death();
 }
 
