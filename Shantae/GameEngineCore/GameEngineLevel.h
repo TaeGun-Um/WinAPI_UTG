@@ -129,6 +129,18 @@ public:
 		return Result;
 	}
 
+	// 그룹을 지정하여 deletaTime을 조정하는 인터페이스로 설계
+	template<typename EnumType>
+	void SetTimeScale(EnumType _GroupIndex, float _Time)
+	{
+		SetTimeScale(static_cast<int>(_GroupIndex), _Time);
+	}
+
+	void SetTimeScale(int _GroupIndex, float _Time)
+	{
+		TimeScales[_GroupIndex] = _Time;
+	}
+
 protected:
 	virtual void Loading() = 0;
 	virtual void Update(float _DeltaTime) = 0;
@@ -157,4 +169,5 @@ private:
 
 	void Release();                                            // Rlease 구조는 엔진 수준의 기능이기 때문에 private(중요)
 
+	std::map<int, float> TimeScales; // 그룹을 지정하여 deletaTime을 조정하는 인터페이스로 설계
 };

@@ -81,7 +81,7 @@ void GameEngineRender::Render(float _DeltaTime)
 	{
 		TextRender(_DeltaTime);
 	}
-	else
+	else 
 	{
 		ImageRender(_DeltaTime);
 	}
@@ -270,6 +270,7 @@ void GameEngineRender::SetText(const std::string_view& _Text, const int _TextHei
 // RenderText에 저장된 Text를 특정 위치에 출력
 void GameEngineRender::TextRender(float _DeltaTime)
 {
+
 	float4 CameraPos = float4::Zero;
 
 	if (true == IsEffectCamera)
@@ -299,7 +300,7 @@ void GameEngineRender::TextRender(float _DeltaTime)
 	hFont = CreateFontIndirect(&lf);
 	OldFont = static_cast<HFONT>(SelectObject(hdc, hFont));
 
-	SetTextAlign(hdc, static_cast<UINT>(Align));
+	//SetTextAlign(hdc, static_cast<UINT>(Align));
 	SetTextColor(hdc, TextColor);
 	SetBkMode(hdc, TRANSPARENT);
 

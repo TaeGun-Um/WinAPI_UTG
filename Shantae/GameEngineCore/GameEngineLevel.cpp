@@ -88,42 +88,30 @@ void GameEngineLevel::ActorStart(GameEngineActor* _Actor, int _Order)
 void GameEngineLevel::ActorsUpdate(float _DeltaTime)
 {
 	{
-		// GELevel map : 상속한 Actor의 Update 콜
 		std::map<int, std::list<GameEngineActor*>>::iterator GroupStartIter = Actors.begin();
 		std::map<int, std::list<GameEngineActor*>>::iterator GroupEndIter = Actors.end();
 
 		for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
 		{
 			std::list<GameEngineActor*>& ActorList = GroupStartIter->second;
-
-			for (GameEngineActor* Actor : ActorList)
+			int Order = GroupStartIter->first;
+			float CurTimeScale = 1.0f;
+			if (TimeScales.end() != TimeScales.find(Order))
 			{
-				if (nullptr == Actor || false == Actor->IsUpdate())
-				{
-					continue;
-				}
-				Actor->LiveTime += _DeltaTime;
-				Actor->Update(_DeltaTime); // Actor Pos SetMove
+				CurTimeScale = TimeScales[Order];
 			}
-		}
-	}
-
-	{
-		// GELevel map : 상속한 Actor의 LateUpdate 콜 (아직 안씀)
-		std::map<int, std::list<GameEngineActor*>>::iterator GroupStartIter = Actors.begin();
-		std::map<int, std::list<GameEngineActor*>>::iterator GroupEndIter = Actors.end();
-
-		for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
-		{
-			std::list<GameEngineActor*>& ActorList = GroupStartIter->second;
 
 			for (GameEngineActor* Actor : ActorList)
 			{
+				// Actors.erase()
 				if (nullptr == Actor || false == Actor->IsUpdate())
 				{
 					continue;
 				}
-				Actor->LateUpdate(_DeltaTime);
+
+				Actor->TimeScale = CurTimeScale;
+				Actor->LiveTime += _DeltaTime;
+				Actor->Update(_DeltaTime * CurTimeScale);
 			}
 		}
 	}
@@ -147,7 +135,7 @@ void GameEngineLevel::ActorsRender(float _DeltaTime)
 				{
 					continue;
 				}
-				Renderer->Render(_DeltaTime); // Render Pos setting, Transcopy 콜
+				Renderer->Render(_DeltaTime * Renderer->GetActor()->TimeScale); // Render Pos setting, Transcopy 콜
 			}
 		}
 	}
@@ -204,9 +192,19 @@ void GameEngineLevel::ActorsRender(float _DeltaTime)
 
 		for (size_t i = 0; i < DebugTexts.size(); i++)
 		{
-			// 250은 0216 내가 추가한것
 			HDC ImageDc = GameEngineWindow::GetDoubleBufferImage()->GetImageDC();
-			TextOutA(ImageDc, TextOutStart.ix() + 250, TextOutStart.iy(), DebugTexts[i].c_str(), static_cast<int>(DebugTexts[i].size()));
+
+			// TextOutStart.ix(), TextOutStart.iy(),
+
+			RECT Rect;
+			Rect.left = TextOutStart.ix();
+			Rect.top = TextOutStart.iy();
+			Rect.right = TextOutStart.ix() + 100;
+			Rect.bottom = TextOutStart.iy() + 100;
+
+			DrawTextA(ImageDc, DebugTexts[i].c_str(), static_cast<int>(DebugTexts[i].size()), &Rect, DT_LEFT);
+
+			// TextOutA(ImageDc, TextOutStart.ix(), TextOutStart.iy(), DebugTexts[i].c_str(), static_cast<int>(DebugTexts[i].size()));
 			TextOutStart.y += 20.0f;
 		}
 

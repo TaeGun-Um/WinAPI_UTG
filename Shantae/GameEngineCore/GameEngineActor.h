@@ -97,5 +97,7 @@ private:
 	std::list<GameEngineRender*> RenderList;       // 호출한 Level이 지니는 Actor의 Render들
 	std::list<GameEngineCollision*> CollisionList; // 호출한 Level이 지니는 Actor의 Collision들
 
+	float TimeScale = 0.0; // 그룹화 지정하여 DeltaTime을 조정(0222)
+
 	void Release();
 };

@@ -118,6 +118,9 @@ void Player::Render(float _DeltaTime)
 	{
 		PositionText();
 	}
+
+
+
 }
 
 // <나열 순서>
@@ -185,6 +188,12 @@ void Player::PositionText()
 	std::string CameraMouseText = "CameraPosition : ";
 	CameraMouseText += GetLevel()->GetCameraPos().ToString();
 
+	float4 Angle = GetLevel()->GetMousePos() - GetPos();
+	float Deg = Angle.GetAnagleDeg();
+	std::string AngleText = "Angle : ";
+	AngleText += std::to_string(Deg);
+
+	//GameEngineLevel::DebugTextPush(AngleText);
 	GameEngineLevel::DebugTextPush(PlayerText);
 	GameEngineLevel::DebugTextPush(CameraMouseText);
 }

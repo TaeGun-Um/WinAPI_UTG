@@ -161,11 +161,11 @@ private:
 	std::map<std::string, FrameAnimation> Animation;
 	FrameAnimation* CurrentAnimation = nullptr;
 
+	void TextRender(float _DeltaTime);   // Text를 특정 위치에 출력
+
 	/// <summary>
 	/// TextRender
 	/// </summary>
-	void TextRender(float _DeltaTime);   // Text를 특정 위치에 출력
-
 	std::string RenderText = std::string();
 	int TextHeight = 0;
 	std::string TextType = std::string();
