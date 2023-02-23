@@ -285,3 +285,28 @@ void GameEngineImage::AlphaCopy(const GameEngineImage* _OtherImage, float4 _Copy
 		_OtherImageSize.iy(),
 		BF);
 }
+
+// 이미지 회전을 위한 함수
+void GameEngineImage::PlgCopy(const GameEngineImage* _OtherImage, float4 _CopyCenterPos, float4 _CopySize, float4 _OtherImagePos, float4 _OtherImageSize, float _Angle, GameEngineImage* _FilterImage)
+{
+	POINT ArrRotPoint[3];
+
+	PlgBlt(ImageDC, // 여기에 그려라.
+		ArrRotPoint,
+		_OtherImage->GetImageDC(),
+		_OtherImagePos.ix(),// 이미지의 x y에서부터
+		_OtherImagePos.iy(),
+		_OtherImageSize.ix(), // 이미지의 x y까지의 위치를
+		_OtherImageSize.iy(),
+		_FilterImage->BitMap,
+		_OtherImagePos.ix(),
+		_OtherImagePos.iy()
+	);
+
+}
+
+
+void GameEngineImage::PlgCopy(const GameEngineImage* _OtherImage, int _CutIndex, float4 _CopyCenterPos, float4 _CopySize, float _Angle, GameEngineImage* _FilterImage)
+{
+
+}
