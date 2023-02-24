@@ -60,6 +60,7 @@ void Smith::Update(float _DeltaTime)
 {
 	OverlapTime += _DeltaTime;
 
+	BlackBoxOutAnimation();
 	LevelSet();
 	Debugging();
 
@@ -84,6 +85,7 @@ void Smith::LevelChangeStart(GameEngineLevel* _PrevLevel)
 void Smith::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	BGMPlayer.Stop();
+	// InBoxKill();
 }
 
 void Smith::BlackBoxOutAnimation()
@@ -92,7 +94,7 @@ void Smith::BlackBoxOutAnimation()
 	{
 		BBoxOutCount = 0;
 		BBoxOut = CreateActor<BlackBox>();
-		BBoxOut->FadeOutStart(0, 0.5f);
+		BBoxOut->FadeOutStart(2, 0);
 	}
 }
 
@@ -102,7 +104,7 @@ void Smith::BlackBoxInAnimation()
 	{
 		BBoxInCount = 0;
 		BBoxIn = CreateActor<BlackBox>();
-		BBoxIn->FadeInStart(0, 0.5f);
+		BBoxIn->FadeInStart(2, 0.5f);
 	}
 }
 

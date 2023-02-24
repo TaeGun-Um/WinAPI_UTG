@@ -58,6 +58,7 @@ void SkyRoom::Update(float _DeltaTime)
 {
 	OverlapTime += _DeltaTime;
 
+	BlackBoxOutAnimation();
 	LevelSet();
 	Debugging();
 
@@ -82,6 +83,7 @@ void SkyRoom::LevelChangeStart(GameEngineLevel* _PrevLevel)
 void SkyRoom::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	BGMPlayer.Stop();
+	// InBoxKill();
 }
 
 void SkyRoom::BlackBoxOutAnimation()
@@ -90,7 +92,7 @@ void SkyRoom::BlackBoxOutAnimation()
 	{
 		BBoxOutCount = 0;
 		BBoxOut = CreateActor<BlackBox>();
-		BBoxOut->FadeOutStart(0, 0.5f);
+		BBoxOut->FadeOutStart(2, 0);
 	}
 }
 
@@ -100,7 +102,7 @@ void SkyRoom::BlackBoxInAnimation()
 	{
 		BBoxInCount = 0;
 		BBoxIn = CreateActor<BlackBox>();
-		BBoxIn->FadeInStart(0, 0.5f);
+		BBoxIn->FadeInStart(2, 0.5f);
 	}
 }
 

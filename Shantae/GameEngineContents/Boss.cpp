@@ -67,6 +67,7 @@ void Boss::Update(float _DeltaTime)
 {
 	OverlapTime += _DeltaTime;
 
+	BlackBoxOutAnimation();
 	LevelSet();
 	Debugging();
 	CameraAction();
@@ -75,6 +76,7 @@ void Boss::Update(float _DeltaTime)
 	if (SHA->GetPos().x >= 1530.0f
 		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{
+		BlackBoxInAnimation();
 		SHA->SetAnimationStart(true);
 		SHA->SetMoveSpeed(100.0f);
 		if (true == SHA->LevelChangeAnimation(_DeltaTime))
@@ -98,6 +100,7 @@ void Boss::LevelChangeStart(GameEngineLevel* _PrevLevel)
 void Boss::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	BGMPlayer.Stop();
+	InBoxKill();
 }
 
 void Boss::LevelSet()
@@ -129,7 +132,7 @@ void Boss::BlackBoxOutAnimation()
 	{
 		BBoxOutCount = 0;
 		BBoxOut = CreateActor<BlackBox>();
-		BBoxOut->FadeOutStart(0, 0.5f);
+		BBoxOut->FadeOutStart(2, 0);
 	}
 }
 
@@ -139,7 +142,7 @@ void Boss::BlackBoxInAnimation()
 	{
 		BBoxInCount = 0;
 		BBoxIn = CreateActor<BlackBox>();
-		BBoxIn->FadeInStart(0, 0.5f);
+		BBoxIn->FadeInStart(2, 0.1f);
 	}
 }
 

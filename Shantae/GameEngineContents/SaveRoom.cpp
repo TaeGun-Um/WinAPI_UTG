@@ -62,6 +62,7 @@ void SaveRoom::Update(float _DeltaTime)
 {
 	OverlapTime += _DeltaTime;
 
+	BlackBoxOutAnimation();
 	LevelSet();
 	Debugging();
 
@@ -81,6 +82,7 @@ void SaveRoom::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 void SaveRoom::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
+	// InBoxKill();
 }
 
 void SaveRoom::BlackBoxOutAnimation()
@@ -89,7 +91,7 @@ void SaveRoom::BlackBoxOutAnimation()
 	{
 		BBoxOutCount = 0;
 		BBoxOut = CreateActor<BlackBox>();
-		BBoxOut->FadeOutStart(0, 0.5f);
+		BBoxOut->FadeOutStart(2, 0);
 	}
 }
 
@@ -99,7 +101,7 @@ void SaveRoom::BlackBoxInAnimation()
 	{
 		BBoxInCount = 0;
 		BBoxIn = CreateActor<BlackBox>();
-		BBoxIn->FadeInStart(0, 0.5f);
+		BBoxIn->FadeInStart(2, 0.5f);
 	}
 }
 

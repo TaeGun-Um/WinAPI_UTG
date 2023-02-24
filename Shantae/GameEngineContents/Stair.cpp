@@ -75,6 +75,7 @@ void Stair::Update(float _DeltaTime)
 {
 	OverlapTime += _DeltaTime;
 
+	BlackBoxOutAnimation();
 	LevelSet();
 	Debugging();
 	CameraAction();
@@ -83,6 +84,7 @@ void Stair::Update(float _DeltaTime)
 	if (SHA->GetPos().x >= 1435.0f
 		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{
+		BlackBoxInAnimation();
 		SHA->SetAnimationStart(true);
 		SHA->SetMoveSpeed(100.0f);
 		if (true == SHA->LevelChangeAnimation(_DeltaTime))
@@ -101,6 +103,7 @@ void Stair::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 void Stair::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
+	InBoxKill();
 }
 
 void Stair::BlackBoxOutAnimation()
@@ -109,7 +112,7 @@ void Stair::BlackBoxOutAnimation()
 	{
 		BBoxOutCount = 0;
 		BBoxOut = CreateActor<BlackBox>();
-		BBoxOut->FadeOutStart(0, 0.5f);
+		BBoxOut->FadeOutStart(2, 0.01f);
 	}
 }
 
@@ -119,7 +122,7 @@ void Stair::BlackBoxInAnimation()
 	{
 		BBoxInCount = 0;
 		BBoxIn = CreateActor<BlackBox>();
-		BBoxIn->FadeInStart(0, 0.5f);
+		BBoxIn->FadeInStart(2, 0.1f);
 	}
 }
 

@@ -60,6 +60,7 @@ void BeforeBoss::Update(float _DeltaTime)
 {
 	OverlapTime += _DeltaTime;
 
+	BlackBoxOutAnimation();
 	LevelSet();
 	Debugging();
 	
@@ -67,6 +68,7 @@ void BeforeBoss::Update(float _DeltaTime)
 	if (SHA->GetPos().x >= 1250.0f
 		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{
+		BlackBoxInAnimation();
 		SHA->SetAnimationStart(true);
 		SHA->SetMoveSpeed(100.0f);
 		if (true == SHA->LevelChangeAnimation(_DeltaTime))
@@ -86,6 +88,7 @@ void BeforeBoss::LevelChangeStart(GameEngineLevel* _PrevLevel)
 void BeforeBoss::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	Move0::FieldBGMPlayer.Stop();
+	InBoxKill();
 }
 
 void BeforeBoss::BlackBoxOutAnimation()
@@ -94,7 +97,7 @@ void BeforeBoss::BlackBoxOutAnimation()
 	{
 		BBoxOutCount = 0;
 		BBoxOut = CreateActor<BlackBox>();
-		BBoxOut->FadeOutStart(0, 0.5f);
+		BBoxOut->FadeOutStart(2, 0.01f);
 	}
 }
 
@@ -104,7 +107,7 @@ void BeforeBoss::BlackBoxInAnimation()
 	{
 		BBoxInCount = 0;
 		BBoxIn = CreateActor<BlackBox>();
-		BBoxIn->FadeInStart(0, 0.5f);
+		BBoxIn->FadeInStart(2, 0.1f);
 	}
 }
 

@@ -84,6 +84,7 @@ void Move0::Update(float _DeltaTime)
 {
 	OverlapTime += _DeltaTime;
 
+	BlackBoxOutAnimation();
 	LevelSet();
 	Debugging();
 	CameraAction();
@@ -92,6 +93,7 @@ void Move0::Update(float _DeltaTime)
 	if (SHA->GetPos().x >= 11800.0f
 		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{
+		BlackBoxInAnimation();
 		SHA->SetAnimationStart(true);
 		SHA->SetMoveSpeed(100.0f);
 		if (true == SHA->LevelChangeAnimation(_DeltaTime))
@@ -115,6 +117,7 @@ void Move0::LevelChangeStart(GameEngineLevel* _PrevLevel)
 void Move0::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	// BGMPlayer.Stop();
+	InBoxKill();
 }
 
 void Move0::BlackBoxOutAnimation()
@@ -123,7 +126,7 @@ void Move0::BlackBoxOutAnimation()
 	{
 		BBoxOutCount = 0;
 		BBoxOut = CreateActor<BlackBox>();
-		BBoxOut->FadeOutStart(0, 0.5f);
+		BBoxOut->FadeOutStart(2, 0.25f);
 	}
 }
 
@@ -133,7 +136,7 @@ void Move0::BlackBoxInAnimation()
 	{
 		BBoxInCount = 0;
 		BBoxIn = CreateActor<BlackBox>();
-		BBoxIn->FadeInStart(0, 0.5f);
+		BBoxIn->FadeInStart(2, 0.1f);
 	}
 }
 

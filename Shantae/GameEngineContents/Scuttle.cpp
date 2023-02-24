@@ -62,6 +62,7 @@ void Scuttle::Update(float _DeltaTime)
 {
 	OverlapTime += _DeltaTime;
 
+	BlackBoxOutAnimation();
 	LevelSet();
 	Debugging();
 	CameraAction();
@@ -91,7 +92,7 @@ void Scuttle::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 void Scuttle::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
-	
+	// InBoxKill();
 }
 
 void Scuttle::BlackBoxOutAnimation()
@@ -100,7 +101,7 @@ void Scuttle::BlackBoxOutAnimation()
 	{
 		BBoxOutCount = 0;
 		BBoxOut = CreateActor<BlackBox>();
-		BBoxOut->FadeOutStart(0, 0.5f);
+		BBoxOut->FadeOutStart(2, 0.25f);
 	}
 }
 
@@ -110,7 +111,7 @@ void Scuttle::BlackBoxInAnimation()
 	{
 		BBoxInCount = 0;
 		BBoxIn = CreateActor<BlackBox>();
-		BBoxIn->FadeInStart(0, 0.5f);
+		BBoxIn->FadeInStart(2, 0.25f);
 	}
 }
 
@@ -140,7 +141,7 @@ void Scuttle::LevelSet()
 	if (1 == AnimationSet)
 	{
 		SHA->SetStartAnimationStart(true);
-		if (220 <= SHA->GetPos().x)
+		if (500 <= SHA->GetPos().x)
 		{
 			SHA->SetStartAnimationStart(false);
 			SHA->ChangeState(PlayerState::IDLE);
