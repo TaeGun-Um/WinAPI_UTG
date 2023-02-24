@@ -71,17 +71,34 @@ void Boss::Update(float _DeltaTime)
 	LevelSet();
 	Debugging();
 	CameraAction();
+	
+	if (true == BOS->GetIsBossEnd())
+	{
+		BGMPlayer.PauseOn();
+		
+		WhiteBoxInAnimation(_DeltaTime);
+
+		if (true == BOS->GetBaronOfTank()->GetIsEnd())
+		{
+			InWBoxKill();
+			WhiteBoxOutAnimation();
+			IsBossDeath = true;
+		}
+	}
 
 	// 레벨 이동
-	if (SHA->GetPos().x >= 1530.0f
-		&& PlayerState::MOVE == SHA->GetShantaeState())
+	if (true == IsBossDeath)
 	{
-		BlackBoxInAnimation();
-		SHA->SetAnimationStart(true);
-		SHA->SetMoveSpeed(100.0f);
-		if (true == SHA->LevelChangeAnimation(_DeltaTime))
+		if (SHA->GetPos().x >= 1510.0f
+			&& PlayerState::MOVE == SHA->GetShantaeState())
 		{
-			GameEngineCore::GetInst()->ChangeLevel("Scuttle");
+			BlackBoxInAnimation();
+			SHA->SetAnimationStart(true);
+			SHA->SetMoveSpeed(100.0f);
+			if (true == SHA->LevelChangeAnimation(_DeltaTime))
+			{
+				GameEngineCore::GetInst()->ChangeLevel("Scuttle");
+			}
 		}
 	}
 }
@@ -99,7 +116,6 @@ void Boss::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 void Boss::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
-	BGMPlayer.Stop();
 	InBoxKill();
 }
 
@@ -132,7 +148,7 @@ void Boss::BlackBoxOutAnimation()
 	{
 		BBoxOutCount = 0;
 		BBoxOut = CreateActor<BlackBox>();
-		BBoxOut->FadeOutStart(2, 0);
+		BBoxOut->FadeOutStart(1, 0.25f);
 	}
 }
 
@@ -154,6 +170,38 @@ void Boss::InBoxKill()
 		BBoxIn = nullptr;
 		BBoxInCount = 1;
 		BBoxOutCount = 1;
+	}
+}
+
+void Boss::WhiteBoxOutAnimation()
+{
+	if (1 == WBoxOutCount)
+	{
+		WBoxOutCount = 0;
+		WBoxOut = CreateActor<WhiteBox>();
+		WBoxOut->FadeOutStart(5, 0);
+	}
+}
+
+void Boss::WhiteBoxInAnimation(float _DeltaTime)
+{
+	WhiteBoxTime += _DeltaTime;
+
+	if (3.5f <= WhiteBoxTime && 1 == WBoxInCount)
+	{
+		WBoxInCount = 0;
+		WBoxIn = CreateActor<WhiteBox>();
+		WBoxIn->FadeInStart(0, 0);
+	}
+}
+
+void Boss::InWBoxKill()
+{
+	if (nullptr != WBoxIn && 1 == WBoxDelete)
+	{
+		WBoxDelete = 0;
+		WBoxIn->Death();
+		WBoxIn = nullptr;
 	}
 }
 

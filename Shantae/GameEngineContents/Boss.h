@@ -5,6 +5,7 @@
 
 class Player;
 class BlackBox;
+class WhiteBox;
 class Boss_Tank;
 
 // Ό³Έν : FieldLevel_10
@@ -32,11 +33,20 @@ private:
 	void BlackBoxOutAnimation();
 	void BlackBoxInAnimation();
 	void InBoxKill();
+	void WhiteBoxOutAnimation();
+	void WhiteBoxInAnimation(float _DeltaTime);
+	void InWBoxKill();
 
 	BlackBox* BBoxOut = nullptr;
 	BlackBox* BBoxIn = nullptr;
 	int BBoxOutCount = 1;
 	int BBoxInCount = 1;
+
+	WhiteBox* WBoxOut = nullptr;
+	WhiteBox* WBoxIn = nullptr;
+	int WBoxOutCount = 1;
+	int WBoxInCount = 1;
+	int WBoxDelete = 1;
 
 	void LevelSet();
 	void Debugging();
@@ -50,8 +60,11 @@ private:
 	Boss_Tank* BOS = nullptr;
 	
 	float OverlapTime = 0.0f;
+	float WhiteBoxTime = 0.0f;
 	int Set = 1;
 	int AnimationSet = 1;
+
+	bool IsBossDeath = false;
 
 };
 

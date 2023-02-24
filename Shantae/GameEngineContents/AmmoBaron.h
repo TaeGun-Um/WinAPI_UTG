@@ -52,6 +52,11 @@ public:
 		IsEnd = true;
 	}
 
+	bool GetIsEnd()
+	{
+		return IsEnd;
+	}
+
 	int GetBaronHP()
 	{
 		return BaronHP;

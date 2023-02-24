@@ -37,6 +37,16 @@ public:
 		ColMap = _NextColMap;
 	}
 
+	bool GetIsBossEnd()
+	{
+		return BossEnd;
+	}
+
+	AmmoBaron* GetBaronOfTank()
+	{
+		return Baron;
+	}
+
 	GameEngineSoundPlayer BGMPlayer;
 
 protected:
@@ -82,12 +92,13 @@ private:
 	int CreateCount = 1;
 	int RandCreate = 1;
 	int Rand = 0;
-	int PopcornSound = 3;
+	int PopcornSound = 6;
 
 	bool HitAction = false;
 	bool IsCharge = false;
 	bool IsBackUp = false;
 	bool IsPopCornSound = false;
+	bool BossEnd = false;
 
 	Boss_TankState StateValue = Boss_TankState::IDLE;
 	void ChangeState(Boss_TankState _State);

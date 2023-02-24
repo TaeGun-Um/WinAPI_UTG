@@ -49,5 +49,7 @@ private:
 	int Set = 1;
 	int AnimationSet = 1;
 
+	bool IsBossDeath = false;
+
 };
 

@@ -112,9 +112,5 @@ void CharacterLoad::Loading()
 	GameEngineImage* Image40 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Bat\\Bat_L.BMP"));
 	Image40->Cut(5, 10);
 
-	// Spider
-	GameEngineImage* Image41 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Spider\\Spider.BMP"));
-	Image41->Cut(5, 7);
-
 	//////////////////////////////// NPC ////////////////////////////////
 }

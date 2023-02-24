@@ -3,6 +3,8 @@
 #include <GameEngineCore/GameEngineCollision.h>
 #include <GameEngineCore/GameEngineRender.h>
 
+#include <GameEnginePlatform/GameEngineInput.h>
+
 #include "ContentsEnum.h"
 #include "AmmoBaron.h"
 #include "Player.h"
@@ -149,6 +151,12 @@ void Boss_Tank::IdleUpdate(float _DeltaTime)
 		return;
 	}
 
+	if (GameEngineInput::IsDown("MonsterTest"))
+	{
+		ChangeState(Boss_TankState::EMPTY);
+		return;
+	}
+
 	if (0 <= Baron->GetBaronHP())
 	{
 		if (true == HitAction)
@@ -164,7 +172,6 @@ void Boss_Tank::IdleUpdate(float _DeltaTime)
 			Rand = RandomNumberGeneration();
 		}
 
-		/*if (0 <= Rand && Rand <= 4)*/
 		if (0 == Rand % 2)
 		{
 			if (2.0f <= AccTime && 3 == FireCount)
@@ -187,7 +194,6 @@ void Boss_Tank::IdleUpdate(float _DeltaTime)
 			}
 		}
 
-		/*if (5 <= Rand && Rand <= 9)*/
 		if (0 != Rand % 2)
 		{
 			if (2.0f <= AccTime)
@@ -406,57 +412,38 @@ void Boss_Tank::EmptyStart()
 	AnimationRender->ChangeAnimation("IdleRev");
 	BodyCollision->Off();
 	IsPopCornSound = true;
+	BossEnd = true;
 }
 void Boss_Tank::EmptyUpdate(float _DeltaTime)
 {
 	PopCornSoundTime += _DeltaTime;
 
-	if (0.1f <= PopCornSoundTime && 3 == PopcornSound && true == IsPopCornSound)
-	{
-		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_boom_explosion.mp3");
-		BGMPlayer.Volume(0.1f);
-		BGMPlayer.LoopCount(1);
-
-		PopcornSound--;
-	}
-	else if (0.5f <= PopCornSoundTime && 2 == PopcornSound && true == IsPopCornSound)
-	{
-		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_boom_explosion.mp3");
-		BGMPlayer.Volume(0.1f);
-		BGMPlayer.LoopCount(1);
-
-		PopcornSound--;
-	}
-	else if (0.7f <= PopCornSoundTime && 1 == PopcornSound && true == IsPopCornSound)
-	{
-		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_boom_explosion.mp3");
-		BGMPlayer.Volume(0.1f);
-		BGMPlayer.LoopCount(1);
-
-		PopcornSound--;
-
-	}
-	else if (1.0f <= PopCornSoundTime && 0 == PopcornSound && true == IsPopCornSound)
+	if (0.15f <= PopCornSoundTime && 1 <= PopcornSound && true == IsPopCornSound)
 	{
 		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_boom_explosion.mp3");
 		BGMPlayer.Volume(0.1f);
 		BGMPlayer.LoopCount(1);
 
 		PopCornSoundTime = 0.0f;
-		PopcornSound = 3;
+		PopcornSound--;
+	}
+	else if (0.15f <= PopCornSoundTime && 0 == PopcornSound && true == IsPopCornSound)
+	{
+		PopCornSoundTime = 0.0f;
+		PopcornSound = 6;
 	}
 
 	ExplosionTime += _DeltaTime;
 	RandomExplosionTime += _DeltaTime;
 
 	if (0.1f <= RandomExplosionTime 
-		&& 4.0f >= ExplosionTime)
+		&& 8.0f >= ExplosionTime)
 	{
 		RandomCreateExplosion(_DeltaTime);
 		RandomExplosionTime = 0.0f;
 	}
 
-	if (4.0f <= ExplosionTime)
+	if (8.0f <= ExplosionTime)
 	{
 		IsPopCornSound = false;
 

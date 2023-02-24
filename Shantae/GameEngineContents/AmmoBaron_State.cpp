@@ -229,16 +229,16 @@ void AmmoBaron::StruggleUpdate(float _DeltaTime)
 	}
 	else if (IsEnd == true)
 	{
-		StruggleTime += _DeltaTime;
+		//StruggleTime += _DeltaTime;
 
-		if (3.0f <= StruggleTime)
-		{
-			IsTurn = false;
-			IsStart = false;
-			IsAction = false;
-			ChangeState(AmmoBaronState::STANDUP);
-			return;
-		}
+		//if (3.0f <= StruggleTime)
+		//{
+		//	IsTurn = false;
+		//	IsStart = false;
+		//	IsAction = false;
+		//	ChangeState(AmmoBaronState::STANDUP);
+		//	return;
+		//}
 	}
 }
 void AmmoBaron::StruggleEnd()

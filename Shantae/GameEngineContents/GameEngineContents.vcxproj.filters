@@ -353,9 +353,6 @@
     <ClInclude Include="Bat.h">
       <Filter>Character\Monster\Bat</Filter>
     </ClInclude>
-    <ClInclude Include="Spider.h">
-      <Filter>Character\Monster\Spider</Filter>
-    </ClInclude>
     <ClInclude Include="AmmoBaron.h">
       <Filter>Character\Monster\Boss</Filter>
     </ClInclude>
@@ -830,9 +827,6 @@
     <ClCompile Include="Bat.cpp">
       <Filter>Character\Monster\Bat</Filter>
     </ClCompile>
-    <ClCompile Include="Spider.cpp">
-      <Filter>Character\Monster\Spider</Filter>
-    </ClCompile>
     <ClCompile Include="AmmoBaron.cpp">
       <Filter>Character\Monster\Boss</Filter>
     </ClCompile>
@@ -996,9 +990,6 @@
     </Filter>
     <Filter Include="Character\Monster\Bat">
       <UniqueIdentifier>{4d30f2bf-56f3-48c4-93b2-92696c0b1134}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Character\Monster\Spider">
-      <UniqueIdentifier>{4c422c2a-fb3e-41ef-9512-9b2797f851ba}</UniqueIdentifier>
     </Filter>
     <Filter Include="Character\Monster\Boss">
       <UniqueIdentifier>{835e2f93-b470-480a-bcb6-016a62938529}</UniqueIdentifier>
@@ -1183,11 +1174,11 @@
     <Filter Include="AssistantCollision\Timer">
       <UniqueIdentifier>{9b85a7b5-f593-4ef8-a9e8-10fbca6cee37}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ITem">
-      <UniqueIdentifier>{89e7a3f2-1642-4eaf-b838-de3a9f4e70b5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="UI\AnimationBox">
       <UniqueIdentifier>{01e825b2-f2ae-4ac4-82a9-ccb1af5922c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item">
+      <UniqueIdentifier>{89e7a3f2-1642-4eaf-b838-de3a9f4e70b5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

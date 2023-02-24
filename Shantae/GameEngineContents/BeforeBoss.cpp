@@ -63,17 +63,25 @@ void BeforeBoss::Update(float _DeltaTime)
 	BlackBoxOutAnimation();
 	LevelSet();
 	Debugging();
-	
-	// 레벨 이동
-	if (SHA->GetPos().x >= 1250.0f
-		&& PlayerState::MOVE == SHA->GetShantaeState())
+		
+	if (GameEngineInput::IsDown("MonsterTest"))
 	{
-		BlackBoxInAnimation();
-		SHA->SetAnimationStart(true);
-		SHA->SetMoveSpeed(100.0f);
-		if (true == SHA->LevelChangeAnimation(_DeltaTime))
+		IsBossDeath = true;
+	}
+
+	if (true == IsBossDeath)
+	{
+		// 레벨 이동
+		if (SHA->GetPos().x >= 1250.0f
+			&& PlayerState::MOVE == SHA->GetShantaeState())
 		{
-			GameEngineCore::GetInst()->ChangeLevel("Boss");
+			BlackBoxInAnimation();
+			SHA->SetAnimationStart(true);
+			SHA->SetMoveSpeed(100.0f);
+			if (true == SHA->LevelChangeAnimation(_DeltaTime))
+			{
+				GameEngineCore::GetInst()->ChangeLevel("Boss");
+			}
 		}
 	}
 }
