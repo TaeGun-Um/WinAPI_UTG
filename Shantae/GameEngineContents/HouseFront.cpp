@@ -28,6 +28,7 @@
 #include "Player.h"
 #include "ContentsEnum.h"
 #include "ObjectLoad.h"
+#include "BlackBox.h"
 
 HouseFront::HouseFront() 
 {

@@ -3,6 +3,8 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/GameEngineResources.h>
 
+class BlackBox;
+
 // 설명 : 버튼 선택 아이콘
 class SelectMenu_Icon : public GameEngineActor
 {
@@ -24,9 +26,13 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
+	BlackBox* BBox = nullptr;
+	int BBoxCount = 1;
+
 	float OverlapTime = 0.0f;
 	float DelayTime = 0.2f;
 	float SelectTime = 0.0f;
+	float Delay = 0.0f;
 
 	bool GameStart = false;
 	bool GameTest = false;

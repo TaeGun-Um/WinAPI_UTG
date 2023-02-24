@@ -9,6 +9,7 @@
 #include "SelectMenu_Button_Test.h"
 #include "SelectMenu_Button_End.h"
 #include "SelectMenu_Icon.h"
+#include "BlackBox.h"
 
 SelectMeun::SelectMeun() 
 {
@@ -38,6 +39,13 @@ float4 DownPosTitle = float4::Zero;
 
 void SelectMeun::Update(float _DeltaTime)
 {
+	if (1 == BBoxCount)
+	{
+		BBoxCount = 0;
+		BBox = CreateActor<BlackBox>();
+		BBox->FadeOutStart(1, 0.0f);
+	}
+
 	// 0130
 	//if (true == GameEngineInput::IsDown("TitleScroll"))
 	//{

@@ -18,6 +18,7 @@
 #include "GemWindow.h"
 #include "Health.h"
 #include "ObjectLoad.h"
+#include "BlackBox.h"
 
 House::House() 
 {
@@ -130,38 +131,38 @@ void House::AnimationChange(float _DeltaTime)
 		}
 	}
 
-	//if (7.0f <= AnimationTime)
-	//{
-	//	if (1 == ExplosionCount)
-	//	{
-	//		ExplosionCount = 0;
-	//		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("House_explosion.mp3");
-	//		BGMPlayer.Volume(0.5f);
-	//		BGMPlayer.LoopCount(1);
+	if (7.0f <= AnimationTime)
+	{
+		if (1 == ExplosionCount)
+		{
+			ExplosionCount = 0;
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("House_explosion.mp3");
+			BGMPlayer.Volume(0.5f);
+			BGMPlayer.LoopCount(1);
 
-	//		Player::MainPlayer->SetCameraShaking(1.5f, 3);
-	//	}
+			Player::MainPlayer->SetCameraShaking(1.5f, 3);
+		}
 
-	//	if (true == Shantae_Pajamas::AnimationRender->IsAnimationEnd() && 1 == AnimationChangeCount3)
-	//	{
-	//		AnimationChangeCount3 = 0;
-	//		Shantae_Pajamas::AnimationRender->ChangeAnimation("Surprise");
-	//	}
+		if (true == Shantae_Pajamas::AnimationRender->IsAnimationEnd() && 1 == AnimationChangeCount3)
+		{
+			AnimationChangeCount3 = 0;
+			Shantae_Pajamas::AnimationRender->ChangeAnimation("Surprise");
+		}
 
-	//	if (true == Shantae_Pajamas::AnimationRender->IsAnimationEnd() && 1 == AnimationChangeCount4)
-	//	{
-	//		AnimationChangeCount4 = 0;
-	//		Shantae_Pajamas::AnimationRender->ChangeAnimation("SurpriseMaintain");
-	//	}
+		if (true == Shantae_Pajamas::AnimationRender->IsAnimationEnd() && 1 == AnimationChangeCount4)
+		{
+			AnimationChangeCount4 = 0;
+			Shantae_Pajamas::AnimationRender->ChangeAnimation("SurpriseMaintain");
+		}
 
-	//}
+	}
 
-	//if (11.0f <= AnimationTime)
-	//{
-	//	GameEngineCore::GetInst()->ChangeLevel("HouseFront");
-	//	Change = 0;
-	//	AnimationTime = 0.0f;
-	//}
+	if (11.0f <= AnimationTime)
+	{
+		GameEngineCore::GetInst()->ChangeLevel("HouseFront");
+		Change = 0;
+		AnimationTime = 0.0f;
+	}
 }
 
 void House::SoundCombination(float _DeltaTime)

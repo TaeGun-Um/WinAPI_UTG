@@ -2,6 +2,11 @@
 
 #include <GameEngineCore/GameEngineResources.h>
 #include "PlayLevel.h"
+#include "WhiteBox.h"
+#include "BlackBox.h"
+
+class WhiteBox;
+class BlackBox;
 
 // 설명 : 오프닝 화면
 class Opening : public PlayLevel
@@ -18,6 +23,7 @@ public:
 	Opening& operator=(Opening&& _Other) noexcept = delete;
 
 	GameEngineSoundPlayer BGMPlayer;
+	GameEngineSoundPlayer SelectPlayer;
 	GameEngineSoundPlayer AnnouncePlayer;
 
 protected:
@@ -28,6 +34,12 @@ protected:
 	void LevelChangeEnd(GameEngineLevel* _PrevLevel) override;
 
 private:
+	BlackBox* BBox = nullptr;
+	WhiteBox* WBox = nullptr;
+	int WBoxCount = 1;
+	int BBoxCount = 1;
+
+	float Delay = 0.0f;
 
 };
 

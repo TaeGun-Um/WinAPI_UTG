@@ -19,6 +19,7 @@
 #include "GemWindow.h"
 #include "Health.h"
 #include "ObjectLoad.h"
+#include "BlackBox.h"
 
 Move1::Move1() 
 {

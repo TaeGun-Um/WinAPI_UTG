@@ -1,7 +1,6 @@
 #pragma once
 
 #include <GameEngineCore/GameEngineActor.h>
-#include <GameEngineCore/NumberRenderObject.h>
 
 class Machinegun_Plat;
 

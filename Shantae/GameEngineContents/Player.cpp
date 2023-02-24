@@ -46,11 +46,6 @@ void Player::Start()
 
 void Player::Update(float _DeltaTime)
 {
-	if (GameEngineInput::IsDown("MonsterTest"))
-	{
-		SetCameraShaking(1.0f, 5);
-	}
-
 	OverlapTime += _DeltaTime;
 
 	//////////////////  µð¹ö±ë  //////////////////
@@ -191,7 +186,10 @@ bool Player::FreeMoveState(float _DeltaTime)
 
 void Player::PositionText()
 {
+	// float PlayerPos = GetPos().x;
+	// PlayerText += std::to_string(PlayerPos);
 	std::string PlayerText = "PlayerPosition : ";
+	
 	PlayerText += GetPos().ToString();
 
 	std::string CameraMouseText = "CameraPosition : ";
@@ -202,7 +200,7 @@ void Player::PositionText()
 	std::string AngleText = "Angle : ";
 	AngleText += std::to_string(Deg);
 
-	//GameEngineLevel::DebugTextPush(AngleText);
+	GameEngineLevel::DebugTextPush(AngleText);
 	GameEngineLevel::DebugTextPush(PlayerText);
 	GameEngineLevel::DebugTextPush(CameraMouseText);
 }

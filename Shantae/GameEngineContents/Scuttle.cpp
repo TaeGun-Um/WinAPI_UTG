@@ -16,6 +16,7 @@
 #include "GemWindow.h"
 #include "Health.h"
 #include "ObjectLoad.h"
+#include "BlackBox.h"
 
 GameEngineSoundPlayer Scuttle::ScuttleBGMPlayer = 0;
 

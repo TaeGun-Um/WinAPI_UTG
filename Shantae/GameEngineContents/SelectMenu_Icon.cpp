@@ -4,11 +4,13 @@
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineCore.h>
+#include <GameEngineCore/GameEngineLevel.h>
 
 #include "SelectMenu_Button_Start.h"
 #include "SelectMenu_Button_Test.h"
 #include "SelectMenu_Button_End.h"
 #include "ContentsEnum.h"
+#include "BlackBox.h"
 
 SelectMenu_Icon::SelectMenu_Icon() 
 {
@@ -54,12 +56,43 @@ void SelectMenu_Icon::Update(float _DeltaTime)
 		SelectTimeon = true;
 	}
 
+	//if (0 == BBoxCount)
+	//{
+	//	if (true == BBox->GetIsFadeInOver())
+	//	{
+	//		Delay += _DeltaTime;
+
+	//		if (Delay >= 0.5f)
+	//		{
+	//			GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
+	//		}
+	//	}
+	//}
+
 	if (true == SelectTimeon)
 	{
 		SelectTime += _DeltaTime;
 
+		if (SelectTime >= 1.0f)
+		{
+			if (1 == BBoxCount)
+			{
+				BBoxCount = 0;
+				BBox = GetLevel()->CreateActor<BlackBox>();
+				BBox->FadeInStart(1, 0.0f);
+			}
+		}
+
 		if (SelectTime >= 2.0f)
 		{
+			if (nullptr != BBox)
+			{
+				BBox->SetFadeInCount(0);
+				BBox->Death();
+				BBox = nullptr;
+				BBoxCount = 1;
+			}
+
 			if (true == GameStart)
 			{
 				GameEngineCore::GetInst()->ChangeLevel("House");
@@ -165,6 +198,4 @@ void SelectMenu_Icon::Update(float _DeltaTime)
 			}
 		}
 	}
-
-
 }

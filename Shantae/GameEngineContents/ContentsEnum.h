@@ -9,6 +9,7 @@ enum class RenderOrder
 	Map,        // 4
 	Effect,     // 5
 	UI,         // 6
+	Box,        // 7
 };
 
 // Collision 그룹화를 위한 Enum 추가

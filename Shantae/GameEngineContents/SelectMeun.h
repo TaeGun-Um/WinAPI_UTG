@@ -3,6 +3,8 @@
 #include <GameEngineCore/GameEngineResources.h>
 #include "PlayLevel.h"
 
+class BlackBox;
+
 // 설명 : 메뉴 화면
 class SelectMeun : public PlayLevel
 {
@@ -27,7 +29,9 @@ protected:
 	void LevelChangeEnd(GameEngineLevel* _NextLevel) override;
 
 private:
-	// 0201
+	BlackBox* BBox = nullptr;
+	int BBoxCount = 1;
+
 	float Time = 0.0f;
 	float4 Start = float4::Zero;
 	float4 End = float4::Zero;

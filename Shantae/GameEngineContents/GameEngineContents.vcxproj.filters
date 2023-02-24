@@ -2,7 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="ShantaeCore.h" />
-    <ClInclude Include="ContentsEnum.h" />
     <ClInclude Include="TestLevel.h">
       <Filter>PlayLevel\TestLevel</Filter>
     </ClInclude>
@@ -330,12 +329,6 @@
     <ClInclude Include="SaveRoom_ColMap.h">
       <Filter>PlayLevel\TownLevel\7. SaveRoom\Object</Filter>
     </ClInclude>
-    <ClInclude Include="GemWindow.h">
-      <Filter>UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Health.h">
-      <Filter>UI</Filter>
-    </ClInclude>
     <ClInclude Include="Soldier_Black.h">
       <Filter>Character\Monster\Soldier</Filter>
     </ClInclude>
@@ -391,22 +384,22 @@
       <Filter>Character\Player</Filter>
     </ClInclude>
     <ClInclude Include="MonsterSpawner.h">
-      <Filter>Collision\Assistant\MonsterSpawner</Filter>
+      <Filter>AssistantCollision\MonsterSpawner</Filter>
     </ClInclude>
     <ClInclude Include="CharacterLoad.h">
-      <Filter>Loader\CharacterLoad</Filter>
+      <Filter>FileLoader\CharacterLoad</Filter>
     </ClInclude>
     <ClInclude Include="KeyLoad.h">
-      <Filter>Loader\KeyLoad</Filter>
+      <Filter>FileLoader\KeyLoad</Filter>
     </ClInclude>
     <ClInclude Include="SoundLoad.h">
-      <Filter>Loader\SoundLoad</Filter>
+      <Filter>FileLoader\SoundLoad</Filter>
     </ClInclude>
     <ClInclude Include="UILoad.h">
-      <Filter>Loader\UILoad</Filter>
+      <Filter>FileLoader\UILoad</Filter>
     </ClInclude>
     <ClInclude Include="ObjectLoad.h">
-      <Filter>Loader\ObjectLoad</Filter>
+      <Filter>FileLoader\ObjectLoad</Filter>
     </ClInclude>
     <ClInclude Include="Building0.h">
       <Filter>PlayLevel\FieldLevel\2. HouseFront\Actor</Filter>
@@ -420,20 +413,8 @@
     <ClInclude Include="Machinegun_Bulletmarks.h">
       <Filter>Character\Monster\Soldier\Effect</Filter>
     </ClInclude>
-    <ClInclude Include="Machinegun_Plat.h">
-      <Filter>Collision\Map\Machinegun</Filter>
-    </ClInclude>
-    <ClInclude Include="BoomBridge_Bridge1.h">
-      <Filter>Collision\Map\BoomBridge</Filter>
-    </ClInclude>
-    <ClInclude Include="BoomBridge_Bridge2.h">
-      <Filter>Collision\Map\BoomBridge</Filter>
-    </ClInclude>
-    <ClInclude Include="BoomBridge_Bridge3.h">
-      <Filter>Collision\Map\BoomBridge</Filter>
-    </ClInclude>
     <ClInclude Include="TimerCollision.h">
-      <Filter>Collision\Assistant\Timer</Filter>
+      <Filter>AssistantCollision\Timer</Filter>
     </ClInclude>
     <ClInclude Include="Soldier_Pile.h">
       <Filter>Character\Monster\Soldier\Effect</Filter>
@@ -459,14 +440,41 @@
     <ClInclude Include="Pistol_Bullet.h">
       <Filter>Character\Player\Effect</Filter>
     </ClInclude>
-    <ClInclude Include="Machinegun_PlatPiece2.h">
-      <Filter>Collision\Map\Machinegun</Filter>
-    </ClInclude>
-    <ClInclude Include="Machinegun_PlatPiece1.h">
-      <Filter>Collision\Map\Machinegun</Filter>
-    </ClInclude>
     <ClInclude Include="House_BlackBox.h">
       <Filter>PlayLevel\FieldLevel\1. House\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Health.h">
+      <Filter>UI\PlayerUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GemWindow.h">
+      <Filter>UI\PlayerUI</Filter>
+    </ClInclude>
+    <ClInclude Include="BoomBridge_Bridge3.h">
+      <Filter>PlayLevel\FieldLevel\7. BoomBridge\Actor\CollisionActor</Filter>
+    </ClInclude>
+    <ClInclude Include="BoomBridge_Bridge1.h">
+      <Filter>PlayLevel\FieldLevel\7. BoomBridge\Actor\CollisionActor</Filter>
+    </ClInclude>
+    <ClInclude Include="BoomBridge_Bridge2.h">
+      <Filter>PlayLevel\FieldLevel\7. BoomBridge\Actor\CollisionActor</Filter>
+    </ClInclude>
+    <ClInclude Include="Machinegun_Plat.h">
+      <Filter>PlayLevel\FieldLevel\6. Machinegun\Actor\CollisionActor</Filter>
+    </ClInclude>
+    <ClInclude Include="Machinegun_PlatPiece1.h">
+      <Filter>PlayLevel\FieldLevel\6. Machinegun\Actor\CollisionActor</Filter>
+    </ClInclude>
+    <ClInclude Include="Machinegun_PlatPiece2.h">
+      <Filter>PlayLevel\FieldLevel\6. Machinegun\Actor\CollisionActor</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentsEnum.h">
+      <Filter>FileLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="WhiteBox.h">
+      <Filter>UI\AnimationBox</Filter>
+    </ClInclude>
+    <ClInclude Include="BlackBox.h">
+      <Filter>UI\AnimationBox</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -798,12 +806,6 @@
     <ClCompile Include="SaveRoom_ColMap.cpp">
       <Filter>PlayLevel\TownLevel\7. SaveRoom\Object</Filter>
     </ClCompile>
-    <ClCompile Include="GemWindow.cpp">
-      <Filter>UI</Filter>
-    </ClCompile>
-    <ClCompile Include="Health.cpp">
-      <Filter>UI</Filter>
-    </ClCompile>
     <ClCompile Include="Soldier_Black.cpp">
       <Filter>Character\Monster\Soldier</Filter>
     </ClCompile>
@@ -874,22 +876,22 @@
       <Filter>Character\Player</Filter>
     </ClCompile>
     <ClCompile Include="MonsterSpawner.cpp">
-      <Filter>Collision\Assistant\MonsterSpawner</Filter>
+      <Filter>AssistantCollision\MonsterSpawner</Filter>
     </ClCompile>
     <ClCompile Include="CharacterLoad.cpp">
-      <Filter>Loader\CharacterLoad</Filter>
+      <Filter>FileLoader\CharacterLoad</Filter>
     </ClCompile>
     <ClCompile Include="KeyLoad.cpp">
-      <Filter>Loader\KeyLoad</Filter>
+      <Filter>FileLoader\KeyLoad</Filter>
     </ClCompile>
     <ClCompile Include="SoundLoad.cpp">
-      <Filter>Loader\SoundLoad</Filter>
+      <Filter>FileLoader\SoundLoad</Filter>
     </ClCompile>
     <ClCompile Include="UILoad.cpp">
-      <Filter>Loader\UILoad</Filter>
+      <Filter>FileLoader\UILoad</Filter>
     </ClCompile>
     <ClCompile Include="ObjectLoad.cpp">
-      <Filter>Loader\ObjectLoad</Filter>
+      <Filter>FileLoader\ObjectLoad</Filter>
     </ClCompile>
     <ClCompile Include="Building0.cpp">
       <Filter>PlayLevel\FieldLevel\2. HouseFront\Actor</Filter>
@@ -903,18 +905,6 @@
     <ClCompile Include="Machinegun_Bulletmarks.cpp">
       <Filter>Character\Monster\Soldier\Effect</Filter>
     </ClCompile>
-    <ClCompile Include="Machinegun_Plat.cpp">
-      <Filter>Collision\Map\Machinegun</Filter>
-    </ClCompile>
-    <ClCompile Include="BoomBridge_Bridge1.cpp">
-      <Filter>Collision\Map\BoomBridge</Filter>
-    </ClCompile>
-    <ClCompile Include="BoomBridge_Bridge2.cpp">
-      <Filter>Collision\Map\BoomBridge</Filter>
-    </ClCompile>
-    <ClCompile Include="BoomBridge_Bridge3.cpp">
-      <Filter>Collision\Map\BoomBridge</Filter>
-    </ClCompile>
     <ClCompile Include="Soldier_Spider_State.cpp">
       <Filter>Character\Monster\Soldier</Filter>
     </ClCompile>
@@ -922,7 +912,7 @@
       <Filter>Character\Monster\Soldier</Filter>
     </ClCompile>
     <ClCompile Include="TimerCollision.cpp">
-      <Filter>Collision\Assistant\Timer</Filter>
+      <Filter>AssistantCollision\Timer</Filter>
     </ClCompile>
     <ClCompile Include="Soldier_Pile.cpp">
       <Filter>Character\Monster\Soldier\Effect</Filter>
@@ -954,14 +944,38 @@
     <ClCompile Include="Pistol_Bullet.cpp">
       <Filter>Character\Player\Effect</Filter>
     </ClCompile>
-    <ClCompile Include="Machinegun_PlatPiece2.cpp">
-      <Filter>Collision\Map\Machinegun</Filter>
-    </ClCompile>
-    <ClCompile Include="Machinegun_PlatPiece1.cpp">
-      <Filter>Collision\Map\Machinegun</Filter>
-    </ClCompile>
     <ClCompile Include="House_BlackBox.cpp">
       <Filter>PlayLevel\FieldLevel\1. House\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="GemWindow.cpp">
+      <Filter>UI\PlayerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Health.cpp">
+      <Filter>UI\PlayerUI</Filter>
+    </ClCompile>
+    <ClCompile Include="BoomBridge_Bridge1.cpp">
+      <Filter>PlayLevel\FieldLevel\7. BoomBridge\Actor\CollisionActor</Filter>
+    </ClCompile>
+    <ClCompile Include="BoomBridge_Bridge2.cpp">
+      <Filter>PlayLevel\FieldLevel\7. BoomBridge\Actor\CollisionActor</Filter>
+    </ClCompile>
+    <ClCompile Include="BoomBridge_Bridge3.cpp">
+      <Filter>PlayLevel\FieldLevel\7. BoomBridge\Actor\CollisionActor</Filter>
+    </ClCompile>
+    <ClCompile Include="Machinegun_Plat.cpp">
+      <Filter>PlayLevel\FieldLevel\6. Machinegun\Actor\CollisionActor</Filter>
+    </ClCompile>
+    <ClCompile Include="Machinegun_PlatPiece1.cpp">
+      <Filter>PlayLevel\FieldLevel\6. Machinegun\Actor\CollisionActor</Filter>
+    </ClCompile>
+    <ClCompile Include="Machinegun_PlatPiece2.cpp">
+      <Filter>PlayLevel\FieldLevel\6. Machinegun\Actor\CollisionActor</Filter>
+    </ClCompile>
+    <ClCompile Include="WhiteBox.cpp">
+      <Filter>UI\AnimationBox</Filter>
+    </ClCompile>
+    <ClCompile Include="BlackBox.cpp">
+      <Filter>UI\AnimationBox</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1076,27 +1090,6 @@
     <Filter Include="UI">
       <UniqueIdentifier>{3f2526df-17d9-4f62-921b-1e8dedea7008}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Collision">
-      <UniqueIdentifier>{9a521f75-00bf-464c-ba23-e763bfb2a734}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Collision\Map">
-      <UniqueIdentifier>{8093ac98-ce76-44c9-8fee-544536438a2d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Collision\Map\Machinegun">
-      <UniqueIdentifier>{d4cd76ba-efda-4688-80c8-e55859dbf9e2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Collision\Map\BoomBridge">
-      <UniqueIdentifier>{a5e77c8e-3dab-4f16-af75-c1fbeab87b2f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Collision\Assistant">
-      <UniqueIdentifier>{ca977b54-c810-41ac-ab68-8b10210c764b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Collision\Assistant\MonsterSpawner">
-      <UniqueIdentifier>{296ebf79-2f8f-4e72-a6d6-651fea6530aa}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Collision\Assistant\Timer">
-      <UniqueIdentifier>{9b85a7b5-f593-4ef8-a9e8-10fbca6cee37}</UniqueIdentifier>
-    </Filter>
     <Filter Include="PlayLevel\FieldLevel\8. BeforeBoss">
       <UniqueIdentifier>{e5fbb1e4-bad8-401a-a6cd-3cace26bbd08}</UniqueIdentifier>
     </Filter>
@@ -1151,26 +1144,50 @@
     <Filter Include="Character\Player\Effect">
       <UniqueIdentifier>{30407b12-3fa0-423e-81f1-931c02a8fba8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Loader">
-      <UniqueIdentifier>{d0474782-1626-4cf8-b78a-23cfcbefa928}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Loader\CharacterLoad">
-      <UniqueIdentifier>{a906cf5d-ccc6-4fc6-8cd5-95ab799806c3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Loader\KeyLoad">
-      <UniqueIdentifier>{b1e622d3-b253-463c-9890-e2e54577e908}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Loader\SoundLoad">
-      <UniqueIdentifier>{bb951c7e-4710-4fc3-b261-a4d44569ed52}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Loader\UILoad">
-      <UniqueIdentifier>{a1b3ea1a-8725-483e-9b3a-fbe7d2359702}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Loader\ObjectLoad">
-      <UniqueIdentifier>{9035dd2c-dd5e-401f-95a7-adb5899c6dc6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Character\Monster\Scarecrow%28Dummy%29">
       <UniqueIdentifier>{45e60511-836b-472f-abc6-27d9f901e413}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\PlayerUI">
+      <UniqueIdentifier>{acd8b3f9-5abb-427c-8ff2-949eda025212}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileLoader">
+      <UniqueIdentifier>{d0474782-1626-4cf8-b78a-23cfcbefa928}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileLoader\CharacterLoad">
+      <UniqueIdentifier>{a906cf5d-ccc6-4fc6-8cd5-95ab799806c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileLoader\KeyLoad">
+      <UniqueIdentifier>{b1e622d3-b253-463c-9890-e2e54577e908}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileLoader\SoundLoad">
+      <UniqueIdentifier>{bb951c7e-4710-4fc3-b261-a4d44569ed52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileLoader\UILoad">
+      <UniqueIdentifier>{a1b3ea1a-8725-483e-9b3a-fbe7d2359702}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileLoader\ObjectLoad">
+      <UniqueIdentifier>{9035dd2c-dd5e-401f-95a7-adb5899c6dc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\FieldLevel\7. BoomBridge\Actor\CollisionActor">
+      <UniqueIdentifier>{4fb9034a-b2c3-452e-be52-ec5f3c4cf5bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\FieldLevel\6. Machinegun\Actor\CollisionActor">
+      <UniqueIdentifier>{30b7c505-0907-4af3-a6b9-3c5f43bfa2b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AssistantCollision">
+      <UniqueIdentifier>{9a521f75-00bf-464c-ba23-e763bfb2a734}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AssistantCollision\MonsterSpawner">
+      <UniqueIdentifier>{296ebf79-2f8f-4e72-a6d6-651fea6530aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AssistantCollision\Timer">
+      <UniqueIdentifier>{9b85a7b5-f593-4ef8-a9e8-10fbca6cee37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ITem">
+      <UniqueIdentifier>{89e7a3f2-1642-4eaf-b838-de3a9f4e70b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\AnimationBox">
+      <UniqueIdentifier>{01e825b2-f2ae-4ac4-82a9-ccb1af5922c3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

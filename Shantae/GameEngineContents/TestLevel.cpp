@@ -25,6 +25,8 @@
 
 #include "GemWindow.h"
 #include "Health.h"
+#include "BlackBox.h"
+#include "WhiteBox.h"
 
 #include "ContentsEnum.h"
 #include "ObjectLoad.h"
@@ -69,6 +71,21 @@ void TestLevel::Update(float _DeltaTime)
 {
 	LevelSet();
 	Debugging();
+
+	if (GameEngineInput::IsDown("MonsterTest"))
+	{
+		//BlackBox* NewDummy = nullptr;
+		//float4 DummyPos = float4::Zero;
+
+		//NewDummy = CreateActor<BlackBox>();
+		//NewDummy->FadeOutStart(0, 1.0f);
+
+		WhiteBox* NewDummy = nullptr;
+		float4 DummyPos = float4::Zero;
+
+		NewDummy = CreateActor<WhiteBox>();
+		NewDummy->FadeInStart(0, 2.0f);
+	}
 
 	// CameraAction();
 

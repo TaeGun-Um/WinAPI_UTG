@@ -17,6 +17,7 @@
 #include "GemWindow.h"
 #include "Health.h"
 #include "ObjectLoad.h"
+#include "BlackBox.h"
 
 SaveRoom::SaveRoom() 
 {

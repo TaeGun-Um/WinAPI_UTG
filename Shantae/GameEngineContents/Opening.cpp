@@ -8,6 +8,8 @@
 
 // Actor header
 #include "Opening_Background.h"
+#include "BlackBox.h"
+#include "WhiteBox.h"
 
 Opening::Opening()
 {
@@ -24,11 +26,39 @@ void Opening::Loading()
 
 void Opening::Update(float _DeltaTime)
 {
+	if (1 == WBoxCount)
+	{
+		WBoxCount = 0;
+		WBox = CreateActor<WhiteBox>();
+		WBox->FadeOutStart(1, 0.0f);
+	}
+
 	// AnyKey == true 시 Level Change(Window 매크로 함수와 연결)
 	if (true == GameEngineInput::IsAnyKey())
 	{
-		// BGMPlayer.Stop();
-		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
+		if (1 == BBoxCount)
+		{
+			BBoxCount = 0;
+			BBox = CreateActor<BlackBox>();
+			BBox->FadeInStart(1, 0.0f);
+
+			SelectPlayer = GameEngineResources::GetInst().SoundPlayToControl("Botton_select.wav");
+			SelectPlayer.Volume(0.1f);
+			SelectPlayer.LoopCount(1);
+		}
+	}
+
+	if (0 == BBoxCount)
+	{
+		if (true == BBox->GetIsFadeInOver())
+		{
+			Delay += _DeltaTime;
+
+			if (Delay >= 0.5f)
+			{
+				GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
+			}
+		}
 	}
 }
 
@@ -47,4 +77,11 @@ void Opening::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	BGMPlayer.Stop();
 	AnnouncePlayer.Stop();
+
+	if (nullptr != BBox)
+	{
+		BBox->Death();
+		BBox = nullptr;
+		BBoxCount = 1;
+	}
 }

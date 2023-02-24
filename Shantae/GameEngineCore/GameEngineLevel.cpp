@@ -160,7 +160,7 @@ void GameEngineLevel::ActorsRender(float _DeltaTime)
 		}
 	}
 
-	// CollisionDebugRender 0202 충돌체 디버깅용 랜더
+	// 디버그 충돌체(5) 랜더링
 	{
 		if (true == IsDebugRender)
 		{
@@ -186,7 +186,7 @@ void GameEngineLevel::ActorsRender(float _DeltaTime)
 		}
 	}
 
-	// 여러분들의 text 출력
+	// 디버그 텍스트(4) 출력
 	{
 		TextOutStart = float4::Zero;
 
@@ -194,17 +194,15 @@ void GameEngineLevel::ActorsRender(float _DeltaTime)
 		{
 			HDC ImageDc = GameEngineWindow::GetDoubleBufferImage()->GetImageDC();
 
-			// TextOutStart.ix(), TextOutStart.iy(),
-
+			// 텍스트 박스 크기
 			RECT Rect;
 			Rect.left = TextOutStart.ix();
 			Rect.top = TextOutStart.iy();
-			Rect.right = TextOutStart.ix() + 100;
+			Rect.right = TextOutStart.ix() + 500;
 			Rect.bottom = TextOutStart.iy() + 100;
 
 			DrawTextA(ImageDc, DebugTexts[i].c_str(), static_cast<int>(DebugTexts[i].size()), &Rect, DT_LEFT);
-
-			// TextOutA(ImageDc, TextOutStart.ix(), TextOutStart.iy(), DebugTexts[i].c_str(), static_cast<int>(DebugTexts[i].size()));
+			
 			TextOutStart.y += 20.0f;
 		}
 
