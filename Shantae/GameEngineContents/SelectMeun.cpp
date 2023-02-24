@@ -116,4 +116,13 @@ void SelectMeun::LevelChangeStart(GameEngineLevel* _PrevLevel)
 void SelectMeun::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	BGMPlayer.Stop();
+
+	if (nullptr != SelectMenu_Icon::BBox)
+	{
+		SelectMenu_Icon::BBox->SetFadeInCount(0);
+		SelectMenu_Icon::BBox->Death();
+		SelectMenu_Icon::BBox = nullptr;
+		SelectMenu_Icon::BBoxCount = 1;
+		BBoxCount = 1;
+	}
 }

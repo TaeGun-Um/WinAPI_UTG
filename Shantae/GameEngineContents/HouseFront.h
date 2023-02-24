@@ -4,6 +4,7 @@
 #include "PlayLevel.h"
 
 class Player;
+class BlackBox;
 
 // Ό³Έν : FieldLevel_2
 class HouseFront : public PlayLevel
@@ -27,9 +28,15 @@ protected:
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 
 private:
+	void BlackBoxAnimation(float _DeltaTime);
 	void LevelSet();
 	void Debugging();
 	void SoundCombination(float _DeltaTime);
+
+	BlackBox* BBoxOut = nullptr;
+	BlackBox* BBoxIn = nullptr;
+	int BBoxOutCount = 1;
+	int BBoxInCount = 1;
 
 	GameEngineSoundPlayer BGMPlayer;
 	GameEngineSoundPlayer SeagullPlayer;

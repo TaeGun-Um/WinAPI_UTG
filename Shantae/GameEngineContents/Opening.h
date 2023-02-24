@@ -34,6 +34,8 @@ protected:
 	void LevelChangeEnd(GameEngineLevel* _PrevLevel) override;
 
 private:
+	void BlackBoxAnimation(float _DeltaTime);
+
 	BlackBox* BBox = nullptr;
 	WhiteBox* WBox = nullptr;
 	int WBoxCount = 1;

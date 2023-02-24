@@ -4,6 +4,7 @@
 #include "PlayLevel.h"
 
 class Player;
+class BlackBox;
 
 // Ό³Έν : FieldLevel_4
 class Move1 : public PlayLevel
@@ -27,9 +28,15 @@ protected:
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 
 private:
+	void BlackBoxAnimation(float _DeltaTime);
 	void LevelSet();
 	void Debugging();
 	void CameraAction();
+
+	BlackBox* BBoxOut = nullptr;
+	BlackBox* BBoxIn = nullptr;
+	int BBoxOutCount = 1;
+	int BBoxInCount = 1;
 
 	GameEngineSoundPlayer BGMPlayer;
 	GameEngineActor* Shantae = nullptr;

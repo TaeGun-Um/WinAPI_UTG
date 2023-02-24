@@ -12,6 +12,9 @@
 #include "ContentsEnum.h"
 #include "BlackBox.h"
 
+BlackBox* SelectMenu_Icon::BBox = nullptr;
+int SelectMenu_Icon::BBoxCount = 1;
+
 SelectMenu_Icon::SelectMenu_Icon() 
 {
 }
@@ -85,14 +88,6 @@ void SelectMenu_Icon::Update(float _DeltaTime)
 
 		if (SelectTime >= 2.0f)
 		{
-			if (nullptr != BBox)
-			{
-				BBox->SetFadeInCount(0);
-				BBox->Death();
-				BBox = nullptr;
-				BBoxCount = 1;
-			}
-
 			if (true == GameStart)
 			{
 				GameEngineCore::GetInst()->ChangeLevel("House");

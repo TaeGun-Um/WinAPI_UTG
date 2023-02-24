@@ -4,6 +4,7 @@
 #include "PlayLevel.h"
 
 class Player;
+class BlackBox;
 class Boss_Tank;
 
 // Ό³Έν : FieldLevel_10
@@ -28,9 +29,15 @@ protected:
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 
 private:
+	void BlackBoxAnimation(float _DeltaTime);
 	void LevelSet();
 	void Debugging();
 	void CameraAction();
+
+	BlackBox* BBoxOut = nullptr;
+	BlackBox* BBoxIn = nullptr;
+	int BBoxOutCount = 1;
+	int BBoxInCount = 1;
 
 	GameEngineSoundPlayer BGMPlayer;
 	GameEngineImage* ColMap = nullptr;

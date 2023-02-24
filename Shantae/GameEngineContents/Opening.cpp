@@ -26,6 +26,35 @@ void Opening::Loading()
 
 void Opening::Update(float _DeltaTime)
 {
+	BlackBoxAnimation(_DeltaTime);
+}
+
+void Opening::LevelChangeStart(GameEngineLevel* _PrevLevel)
+{
+	AnnouncePlayer = GameEngineResources::GetInst().SoundPlayToControl("Title_announce.wav");
+	AnnouncePlayer.Volume(0.1f);
+	AnnouncePlayer.LoopCount(1);
+
+	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Title_Theme.mp3");
+	BGMPlayer.Volume(0.08f);
+	BGMPlayer.LoopCount(10);
+}
+
+void Opening::LevelChangeEnd(GameEngineLevel* _NextLevel)
+{
+	BGMPlayer.Stop();
+	AnnouncePlayer.Stop();
+
+	if (nullptr != BBox)
+	{
+		BBox->Death();
+		BBox = nullptr;
+		BBoxCount = 1;
+	}
+}
+
+void Opening::BlackBoxAnimation(float _DeltaTime)
+{
 	if (1 == WBoxCount)
 	{
 		WBoxCount = 0;
@@ -59,29 +88,5 @@ void Opening::Update(float _DeltaTime)
 				GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
 			}
 		}
-	}
-}
-
-void Opening::LevelChangeStart(GameEngineLevel* _PrevLevel)
-{
-	AnnouncePlayer = GameEngineResources::GetInst().SoundPlayToControl("Title_announce.wav");
-	AnnouncePlayer.Volume(0.1f);
-	AnnouncePlayer.LoopCount(1);
-
-	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Title_Theme.mp3");
-	BGMPlayer.Volume(0.08f);
-	BGMPlayer.LoopCount(10);
-}
-
-void Opening::LevelChangeEnd(GameEngineLevel* _NextLevel)
-{
-	BGMPlayer.Stop();
-	AnnouncePlayer.Stop();
-
-	if (nullptr != BBox)
-	{
-		BBox->Death();
-		BBox = nullptr;
-		BBoxCount = 1;
 	}
 }

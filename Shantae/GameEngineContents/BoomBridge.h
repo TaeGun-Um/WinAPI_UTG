@@ -4,6 +4,7 @@
 #include "PlayLevel.h"
 
 class Player;
+class BlackBox;
 class TimerCollision;
 class Bridge_Boom;
 class BoomBridge_Bridge1;
@@ -33,10 +34,16 @@ protected:
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 
 private:
+	void BlackBoxAnimation(float _DeltaTime);
 	void LevelSet();
 	void Debugging();
 	void CameraAction();
 	void TimerStart();
+
+	BlackBox* BBoxOut = nullptr;
+	BlackBox* BBoxIn = nullptr;
+	int BBoxOutCount = 1;
+	int BBoxInCount = 1;
 
 	GameEngineSoundPlayer BGMPlayer;
 	GameEngineActor* Shantae = nullptr;

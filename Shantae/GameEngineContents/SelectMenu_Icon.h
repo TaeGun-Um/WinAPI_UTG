@@ -9,6 +9,9 @@ class BlackBox;
 class SelectMenu_Icon : public GameEngineActor
 {
 public:
+	static BlackBox* BBox;
+	static int BBoxCount;
+
 	// constrcuter destructer
 	SelectMenu_Icon();
 	~SelectMenu_Icon();
@@ -26,8 +29,8 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
-	BlackBox* BBox = nullptr;
-	int BBoxCount = 1;
+	
+	
 
 	float OverlapTime = 0.0f;
 	float DelayTime = 0.2f;

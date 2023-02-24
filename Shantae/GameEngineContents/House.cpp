@@ -62,6 +62,7 @@ void House::Update(float _DeltaTime)
 {
 	OverlapTime += _DeltaTime;
 
+	BlackBoxOutAnimation();
 	LevelSet();
 	Debugging();
 	AnimationChange(_DeltaTime);
@@ -75,6 +76,21 @@ void House::LevelChangeStart(GameEngineLevel* _PrevLevel)
 void House::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	// Player::MainPlayer->IsHouseSet(false);
+}
+
+void House::BlackBoxOutAnimation()
+{
+	if (1 == BBoxOutCount)
+	{
+		BBoxOutCount = 0;
+		BBoxOut = CreateActor<BlackBox>();
+		BBoxOut->FadeOutStart(1, 0.0f);
+	}
+}
+
+void House::BlackBoxInAnimation(float _DeltaTime)
+{
+
 }
 
 void House::LevelSet()
