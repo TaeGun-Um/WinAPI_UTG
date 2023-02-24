@@ -694,48 +694,41 @@ void Player::SetCameraShaking(float _SetShakingTime, float _SetShakingValue)
 	SetShakingValue = _SetShakingValue;
 }
 
+//if (true == CameraShaking)
+//{
+//	CameraShake(_DeltaTime);
+//}
+
 void Player::CameraShake(float _DeltaTime)
 {
-	if (1 == CameraPosSet)
-	{
-		CameraPosSet = 0;
-		Cam = GetLevel()->GetCameraPos();
-	}
-	
-	float4 Up = Cam + (float4::Up * (SetShakingValue));
-	float4 Down = Cam + (float4::Down * (SetShakingValue));
+	float4 MCam = GetLevel()->GetCameraPos();
+	float4 UpCam = MCam + (float4::Up * (SetShakingValue));
+	float4 DownCam = MCam + (float4::Down * (SetShakingValue));
+	float4 DownCamX2 = MCam + (float4::Down * (SetShakingValue*2));
 
 	ShakingTime += _DeltaTime;
 
-	if (SetShakingTime - 0.05f >= ShakingTime && true == CameraShaking)
+	if (SetShakingTime >= ShakingTime)
 	{
 		if (0 == ShakingCount || 1 == ShakingCount)
 		{
-			GetLevel()->SetCameraPos(Up);
+			GetLevel()->SetCameraPos(UpCam);
 			ShakingCount++;
 		}
 		else if (2 == ShakingCount || 3 == ShakingCount)
 		{
-			GetLevel()->SetCameraPos(Cam);
+			GetLevel()->SetCameraPos(MCam);
 			ShakingCount++;
 		}
 		else if (4 == ShakingCount || 5 == ShakingCount)
 		{
-			GetLevel()->SetCameraPos(Down);
+			GetLevel()->SetCameraPos(DownCam);
 			ShakingCount++;
 		}
-		else if (6 == ShakingCount || 7 == ShakingCount)
+		else if (6 == ShakingCount)
 		{
-			GetLevel()->SetCameraPos(Cam);
-
-			if (6 == ShakingCount)
-			{
-				ShakingCount++;
-			}
-			else
-			{
-				ShakingCount = 0;
-			}
+			GetLevel()->SetCameraPos(MCam);
+			ShakingCount = 0;
 		}
 	}
 
@@ -743,8 +736,22 @@ void Player::CameraShake(float _DeltaTime)
 	{
 		ShakingTime = 0.0f;
 		CameraShaking = false;
-		CameraPosSet = 1;
-		GetLevel()->SetCameraPos(Cam);
+
+	}
+
+	// º¹±¸
+	if (false == CameraShaking)
+	{
+		if (1 == ShakingCount || 5 == ShakingCount)
+		{
+			GetLevel()->SetCameraPos(DownCam);
+		}
+		else if (2 == ShakingCount || 3 == ShakingCount || 4 == ShakingCount)
+		{
+			GetLevel()->SetCameraPos(DownCamX2);
+		}
+
+		ShakingCount = 0;
 	}
 }
 

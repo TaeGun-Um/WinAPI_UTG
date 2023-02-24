@@ -201,7 +201,6 @@ private:
 	float4 UpPos = float4::Zero;
 	float4 JumpLand = float4::Zero;
 	float4 ImpactPos = float4::Zero;
-	float4 Cam = float4::Zero;
 	
 	float MoveSpeed = 600.0f;
 	float CrouchSpeed = 200.0f;
@@ -231,7 +230,6 @@ private:
 	int MoveSoundCount = 2;
 	int CrouchMoveSoundCount = 1;
 	int UpCol = 1;
-	int CameraPosSet = 1;
 
 	bool FreeMove = false;
 	bool ShantaeMove = true;
