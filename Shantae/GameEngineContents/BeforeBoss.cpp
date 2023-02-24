@@ -88,6 +88,37 @@ void BeforeBoss::LevelChangeEnd(GameEngineLevel* _NextLevel)
 	Move0::FieldBGMPlayer.Stop();
 }
 
+void BeforeBoss::BlackBoxOutAnimation()
+{
+	if (1 == BBoxOutCount)
+	{
+		BBoxOutCount = 0;
+		BBoxOut = CreateActor<BlackBox>();
+		BBoxOut->FadeOutStart(0, 0.5f);
+	}
+}
+
+void BeforeBoss::BlackBoxInAnimation()
+{
+	if (1 == BBoxInCount)
+	{
+		BBoxInCount = 0;
+		BBoxIn = CreateActor<BlackBox>();
+		BBoxIn->FadeInStart(0, 0.5f);
+	}
+}
+
+void BeforeBoss::InBoxKill()
+{
+	if (nullptr != BBoxIn)
+	{
+		BBoxIn->Death();
+		BBoxIn = nullptr;
+		BBoxInCount = 1;
+		BBoxOutCount = 1;
+	}
+}
+
 void BeforeBoss::LevelSet()
 {
 	if (1 == Set)

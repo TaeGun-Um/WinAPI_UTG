@@ -28,15 +28,18 @@ protected:
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 
 private:
-	void BlackBoxAnimation(float _DeltaTime);
-	void LevelSet();
-	void Debugging();
-	void SoundCombination(float _DeltaTime);
+	void BlackBoxOutAnimation();
+	void BlackBoxInAnimation();
+	void InBoxKill();
 
 	BlackBox* BBoxOut = nullptr;
 	BlackBox* BBoxIn = nullptr;
 	int BBoxOutCount = 1;
 	int BBoxInCount = 1;
+
+	void LevelSet();
+	void Debugging();
+	void SoundCombination(float _DeltaTime);
 
 	GameEngineSoundPlayer BGMPlayer;
 	GameEngineSoundPlayer SeagullPlayer;

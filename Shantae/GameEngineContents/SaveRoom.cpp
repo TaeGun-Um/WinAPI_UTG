@@ -83,6 +83,37 @@ void SaveRoom::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 }
 
+void SaveRoom::BlackBoxOutAnimation()
+{
+	if (1 == BBoxOutCount)
+	{
+		BBoxOutCount = 0;
+		BBoxOut = CreateActor<BlackBox>();
+		BBoxOut->FadeOutStart(0, 0.5f);
+	}
+}
+
+void SaveRoom::BlackBoxInAnimation()
+{
+	if (1 == BBoxInCount)
+	{
+		BBoxInCount = 0;
+		BBoxIn = CreateActor<BlackBox>();
+		BBoxIn->FadeInStart(0, 0.5f);
+	}
+}
+
+void SaveRoom::InBoxKill()
+{
+	if (nullptr != BBoxIn)
+	{
+		BBoxIn->Death();
+		BBoxIn = nullptr;
+		BBoxInCount = 1;
+		BBoxOutCount = 1;
+	}
+}
+
 void SaveRoom::LevelSet()
 {
 	if (1 == Set)

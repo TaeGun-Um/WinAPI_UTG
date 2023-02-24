@@ -94,6 +94,37 @@ void Scuttle::LevelChangeEnd(GameEngineLevel* _NextLevel)
 	
 }
 
+void Scuttle::BlackBoxOutAnimation()
+{
+	if (1 == BBoxOutCount)
+	{
+		BBoxOutCount = 0;
+		BBoxOut = CreateActor<BlackBox>();
+		BBoxOut->FadeOutStart(0, 0.5f);
+	}
+}
+
+void Scuttle::BlackBoxInAnimation()
+{
+	if (1 == BBoxInCount)
+	{
+		BBoxInCount = 0;
+		BBoxIn = CreateActor<BlackBox>();
+		BBoxIn->FadeInStart(0, 0.5f);
+	}
+}
+
+void Scuttle::InBoxKill()
+{
+	if (nullptr != BBoxIn)
+	{
+		BBoxIn->Death();
+		BBoxIn = nullptr;
+		BBoxInCount = 1;
+		BBoxOutCount = 1;
+	}
+}
+
 void Scuttle::LevelSet()
 {
 	if (1 == Set)

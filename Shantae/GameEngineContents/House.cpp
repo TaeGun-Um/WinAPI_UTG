@@ -76,6 +76,7 @@ void House::LevelChangeStart(GameEngineLevel* _PrevLevel)
 void House::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	// Player::MainPlayer->IsHouseSet(false);
+	InBoxKill();
 }
 
 void House::BlackBoxOutAnimation()
@@ -84,13 +85,29 @@ void House::BlackBoxOutAnimation()
 	{
 		BBoxOutCount = 0;
 		BBoxOut = CreateActor<BlackBox>();
-		BBoxOut->FadeOutStart(1, 0.0f);
+		BBoxOut->FadeOutStart(0, 0.5f);
 	}
 }
 
-void House::BlackBoxInAnimation(float _DeltaTime)
+void House::BlackBoxInAnimation()
 {
+	if (1 == BBoxInCount)
+	{
+		BBoxInCount = 0;
+		BBoxIn = CreateActor<BlackBox>();
+		BBoxIn->FadeInStart(0, 0.5f);
+	}
+}
 
+void House::InBoxKill()
+{
+	if (nullptr != BBoxIn)
+	{
+		BBoxIn->Death();
+		BBoxIn = nullptr;
+		BBoxInCount = 1;
+		BBoxOutCount = 1;
+	}
 }
 
 void House::LevelSet()
@@ -175,9 +192,13 @@ void House::AnimationChange(float _DeltaTime)
 
 	if (11.0f <= AnimationTime)
 	{
-		GameEngineCore::GetInst()->ChangeLevel("HouseFront");
-		Change = 0;
-		AnimationTime = 0.0f;
+		BlackBoxInAnimation();
+		if (255 <= BBoxIn->GetFadeInCount() && 0 == BBoxInCount)
+		{
+			GameEngineCore::GetInst()->ChangeLevel("HouseFront");
+			Change = 0;
+			AnimationTime = 0.0f;
+		}
 	}
 }
 

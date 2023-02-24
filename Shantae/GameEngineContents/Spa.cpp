@@ -81,6 +81,37 @@ void Spa::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 }
 
+void Spa::BlackBoxOutAnimation()
+{
+	if (1 == BBoxOutCount)
+	{
+		BBoxOutCount = 0;
+		BBoxOut = CreateActor<BlackBox>();
+		BBoxOut->FadeOutStart(0, 0.5f);
+	}
+}
+
+void Spa::BlackBoxInAnimation()
+{
+	if (1 == BBoxInCount)
+	{
+		BBoxInCount = 0;
+		BBoxIn = CreateActor<BlackBox>();
+		BBoxIn->FadeInStart(0, 0.5f);
+	}
+}
+
+void Spa::InBoxKill()
+{
+	if (nullptr != BBoxIn)
+	{
+		BBoxIn->Death();
+		BBoxIn = nullptr;
+		BBoxInCount = 1;
+		BBoxOutCount = 1;
+	}
+}
+
 void Spa::LevelSet()
 {
 	if (1 == Set)

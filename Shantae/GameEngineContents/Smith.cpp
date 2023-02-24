@@ -86,6 +86,37 @@ void Smith::LevelChangeEnd(GameEngineLevel* _NextLevel)
 	BGMPlayer.Stop();
 }
 
+void Smith::BlackBoxOutAnimation()
+{
+	if (1 == BBoxOutCount)
+	{
+		BBoxOutCount = 0;
+		BBoxOut = CreateActor<BlackBox>();
+		BBoxOut->FadeOutStart(0, 0.5f);
+	}
+}
+
+void Smith::BlackBoxInAnimation()
+{
+	if (1 == BBoxInCount)
+	{
+		BBoxInCount = 0;
+		BBoxIn = CreateActor<BlackBox>();
+		BBoxIn->FadeInStart(0, 0.5f);
+	}
+}
+
+void Smith::InBoxKill()
+{
+	if (nullptr != BBoxIn)
+	{
+		BBoxIn->Death();
+		BBoxIn = nullptr;
+		BBoxInCount = 1;
+		BBoxOutCount = 1;
+	}
+}
+
 void Smith::LevelSet()
 {
 	if (1 == Set)

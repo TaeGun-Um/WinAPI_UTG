@@ -29,16 +29,18 @@ protected:
 
 private:
 	void BlackBoxOutAnimation();
-	void BlackBoxInAnimation(float _DeltaTime);
-	void LevelSet();
-	void Debugging();
-	void AnimationChange(float _DeltaTime);
-	void SoundCombination(float _DeltaTime);
+	void BlackBoxInAnimation();
+	void InBoxKill();
 
 	BlackBox* BBoxOut = nullptr;
 	BlackBox* BBoxIn = nullptr;
 	int BBoxOutCount = 1;
 	int BBoxInCount = 1;
+
+	void LevelSet();
+	void Debugging();
+	void AnimationChange(float _DeltaTime);
+	void SoundCombination(float _DeltaTime);
 
 	GameEngineActor* Shantae = nullptr;
 	GameEngineImage* ColMap = nullptr;
