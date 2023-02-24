@@ -148,6 +148,11 @@ public:
 		return StateValue;
 	}
 
+	void IsHouseSet(bool _Is)
+	{
+		IsHouse = _Is;
+	}
+
 	void SetCameraShaking(float _SetShakingTime, float _SetShakingValu);
 	bool FreeMoveState(float _DeltaTime);
 	void PositionText();
@@ -256,6 +261,7 @@ private:
 	bool IsAttack = false;
 	bool IsAnimationStart = false;
 	bool IsStartAnimationStart = false;
+	bool IsHouse = false;
 
 	float AccTime = 0.0f;
 	int StartFrame = 0;             // cut을 위한 인덱스 번호

@@ -71,6 +71,7 @@ void House::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 void House::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
+	// Player::MainPlayer->IsHouseSet(false);
 }
 
 void House::LevelSet()
@@ -83,6 +84,7 @@ void House::LevelSet()
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
 		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
+		Player::MainPlayer->IsHouseSet(true);
 	}
 }
 
@@ -111,7 +113,7 @@ void House::AnimationChange(float _DeltaTime)
 		++Change;
 	}
 
-	if (5.0f <= AnimationTime)
+	if (3.0f <= AnimationTime)
 	{
 		if (true == Shantae_Pajamas::AnimationRender->IsAnimationEnd() && 1 == AnimationChangeCount1)
 		{
@@ -126,7 +128,7 @@ void House::AnimationChange(float _DeltaTime)
 		}
 	}
 
-	if (10.0f <= AnimationTime)
+	if (7.0f <= AnimationTime)
 	{
 		if (1 == ExplosionCount)
 		{
@@ -134,6 +136,7 @@ void House::AnimationChange(float _DeltaTime)
 			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("House_explosion.mp3");
 			BGMPlayer.Volume(0.5f);
 			BGMPlayer.LoopCount(1);
+
 			Player::MainPlayer->SetCameraShaking(1.5f, 3);
 		}
 
@@ -151,7 +154,7 @@ void House::AnimationChange(float _DeltaTime)
 
 	}
 
-	if (18.0f <= AnimationTime)
+	if (11.0f <= AnimationTime)
 	{
 		GameEngineCore::GetInst()->ChangeLevel("HouseFront");
 		Change = 0;

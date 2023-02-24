@@ -103,13 +103,20 @@ void Player::Update(float _DeltaTime)
 	}
 	
 	//////////////////  이동 계산 및 애니메이션  //////////////////
-	// 이동계산
-	MoveCalculation(_DeltaTime);
 	// 카메라흔들림
 	if (true == CameraShaking)
 	{
 		CameraShake(_DeltaTime);
 	}
+	
+	if (true == IsHouse)
+	{
+		return;
+	}
+
+	// 이동계산
+	MoveCalculation(_DeltaTime);
+
 }
 
 void Player::Render(float _DeltaTime)

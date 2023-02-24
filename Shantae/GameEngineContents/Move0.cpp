@@ -46,8 +46,8 @@ void Move0::Loading()
 	// ½ºÆ÷³Ê»ç¿ë¹ý   ½ºÆ÷³Ê À§Ä¡    ¸÷ÀÌ¸§    ÄÝ¸Ê    ¸÷ Á¨ À§Ä¡   ¸®Á¨½Ã°£
 	// CreateSpawner({ 250, 300 }, "blue", ColMap, { 350, 590 }, 5);
 
-	CreateSpawner({ 1860, 0 }, "blue", ColMap, { 3251, 342 }, 5);
-	CreateSpawner({ 3852, 0 }, "blue", ColMap, { 4821, 291 }, 5);
+	CreateSpawner({ 1860, 0 }, "blue", ColMap, { 3251, 340 }, 5);
+	CreateSpawner({ 3852, 0 }, "blue", ColMap, { 4821, 286 }, 5);
 	CreateSpawner({ 4423, 0 }, "blue", ColMap, { 5400, 637 }, 5);
 	MonsterSpawner* s1 = CreateSpawner({ 6986, 0 }, "Red", ColMap, { 7357, 900 }, 5); // am
 	s1->SetAmbushTrue();

@@ -305,7 +305,6 @@ void GameEngineImage::PlgCopy(const GameEngineImage* _OtherImage, float4 _CopyCe
 
 }
 
-
 void GameEngineImage::PlgCopy(const GameEngineImage* _OtherImage, int _CutIndex, float4 _CopyCenterPos, float4 _CopySize, float _Angle, GameEngineImage* _FilterImage)
 {
 
