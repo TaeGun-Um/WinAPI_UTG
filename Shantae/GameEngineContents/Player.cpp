@@ -694,11 +694,6 @@ void Player::SetCameraShaking(float _SetShakingTime, float _SetShakingValue)
 	SetShakingValue = _SetShakingValue;
 }
 
-//if (true == CameraShaking)
-//{
-//	CameraShake(_DeltaTime);
-//}
-
 void Player::CameraShake(float _DeltaTime)
 {
 	float4 MCam = GetLevel()->GetCameraPos();

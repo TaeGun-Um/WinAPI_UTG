@@ -10,6 +10,7 @@
 
 // Actor
 #include "Player.h"
+#include "House_BlackBox.h"
 #include "House_Hut.h"
 #include "House_Interior.h"
 #include "Shantae_Pajamas.h"
@@ -31,6 +32,7 @@ void House::Loading()
 	ColMap = ObjectLoad::GetObjectLoadPtr()->GetColMap("House");
 
 	// Background
+	CreateActor<House_BlackBox>();
 	CreateActor<House_Hut>();
 
 	// Map

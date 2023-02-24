@@ -169,6 +169,8 @@ void ObjectLoad::Loading()
 	I8->Cut(8, 5);
 	GameEngineImage* I9 = GameEngineResources::GetInst().ImageLoad(Dir1.GetPlusFileName("Wave.bmp"));
 	I9->Cut(1, 8);
+	GameEngineResources::GetInst().ImageLoad(Dir1.GetPlusFileName("WhiteBox.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir1.GetPlusFileName("BlackBox.bmp"));
 }
 
 void ObjectLoad::AnmationObjectLoad()

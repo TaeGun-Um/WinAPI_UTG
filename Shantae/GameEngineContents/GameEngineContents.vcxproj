@@ -267,6 +267,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="House_BlackBox.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Impact.h">
       <SubType>
       </SubType>
@@ -886,6 +890,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="HouseFront_ColMap.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="House_BlackBox.cpp">
       <SubType>
       </SubType>
     </ClCompile>
