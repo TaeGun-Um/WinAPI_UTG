@@ -46,6 +46,11 @@ void Player::Start()
 
 void Player::Update(float _DeltaTime)
 {
+	if (GameEngineInput::IsDown("MonsterTest"))
+	{
+		SetCameraShaking(1.0f, 5);
+	}
+
 	OverlapTime += _DeltaTime;
 
 	//////////////////  디버깅  //////////////////
@@ -125,9 +130,6 @@ void Player::Render(float _DeltaTime)
 	{
 		PositionText();
 	}
-
-
-
 }
 
 // <나열 순서>
@@ -696,66 +698,53 @@ void Player::CameraShake(float _DeltaTime)
 {
 	if (1 == CameraPosSet)
 	{
+		CameraPosSet = 0;
 		Cam = GetLevel()->GetCameraPos();
 	}
 	
-	float4 Up = Cam + (float4::Up * SetShakingValue);
-	float4 Down = Cam + (float4::Down * SetShakingValue);
+	float4 Up = Cam + (float4::Up * (SetShakingValue));
+	float4 Down = Cam + (float4::Down * (SetShakingValue));
 
 	ShakingTime += _DeltaTime;
+
+	if (SetShakingTime - 0.05f >= ShakingTime && true == CameraShaking)
+	{
+		if (0 == ShakingCount || 1 == ShakingCount)
+		{
+			GetLevel()->SetCameraPos(Up);
+			ShakingCount++;
+		}
+		else if (2 == ShakingCount || 3 == ShakingCount)
+		{
+			GetLevel()->SetCameraPos(Cam);
+			ShakingCount++;
+		}
+		else if (4 == ShakingCount || 5 == ShakingCount)
+		{
+			GetLevel()->SetCameraPos(Down);
+			ShakingCount++;
+		}
+		else if (6 == ShakingCount || 7 == ShakingCount)
+		{
+			GetLevel()->SetCameraPos(Cam);
+
+			if (6 == ShakingCount)
+			{
+				ShakingCount++;
+			}
+			else
+			{
+				ShakingCount = 0;
+			}
+		}
+	}
 
 	if (SetShakingTime <= ShakingTime)
 	{
 		ShakingTime = 0.0f;
 		CameraShaking = false;
+		CameraPosSet = 1;
 		GetLevel()->SetCameraPos(Cam);
-	}
-
-	// GetLevel()->SetCameraMove(float4::Left * MoveSpeed * _DeltaTime);
-
-	if (SetShakingTime >= ShakingTime && true == CameraShaking)
-	{
-		if (0 == ShakingCount)
-		{
-			GetLevel()->SetCameraPos(Up);
-			ShakingCount++;
-		}
-		else if (1 == ShakingCount)
-		{
-			GetLevel()->SetCameraPos(Up);
-			ShakingCount++;
-		}
-		else if (2 == ShakingCount)
-		{
-			GetLevel()->SetCameraPos(Cam);
-			ShakingCount++;
-		}
-		else if (3 == ShakingCount)
-		{
-			GetLevel()->SetCameraPos(Cam);
-			ShakingCount++;
-		}
-		else if (4 == ShakingCount)
-		{
-
-			GetLevel()->SetCameraPos(Down);
-			ShakingCount++;
-		}
-		else if (5 == ShakingCount)
-		{
-			GetLevel()->SetCameraPos(Down);
-			ShakingCount++;
-		}
-		else if (6 == ShakingCount)
-		{
-			GetLevel()->SetCameraPos(Cam);
-			ShakingCount++;
-		}
-		else if (7 == ShakingCount)
-		{
-			GetLevel()->SetCameraPos(Cam);
-			ShakingCount = 0;
-		}
 	}
 }
 

@@ -23,12 +23,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project_DOC", "Project_DOC"
 		GameEngineInput.txt = GameEngineInput.txt
 		GameEngineLevel.txt = GameEngineLevel.txt
 		GameEngineCore\GameEngineRender.txt = GameEngineCore\GameEngineRender.txt
-		GameEngineBase\GameEngineTime.txt = GameEngineBase\GameEngineTime.txt
 		GameEngineSound.txt = GameEngineSound.txt
+		GameEngineBase\GameEngineTime.txt = GameEngineBase\GameEngineTime.txt
 		GameEngineWindow.txt = GameEngineWindow.txt
 		ShantaeCore.txt = ShantaeCore.txt
 		선형보간, 정규화.txt = 선형보간, 정규화.txt
 		프로젝트 구성 구조.txt = 프로젝트 구성 구조.txt
+		이미지회전.txt = 이미지회전.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Level_0", "Level_0", "{BF02EA68-9172-4450-9DE5-2DB11DCF4B16}"

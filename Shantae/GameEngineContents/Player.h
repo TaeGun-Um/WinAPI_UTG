@@ -202,11 +202,12 @@ private:
 	float4 JumpLand = float4::Zero;
 	float4 ImpactPos = float4::Zero;
 	float4 Cam = float4::Zero;
-
+	
 	float MoveSpeed = 600.0f;
 	float CrouchSpeed = 200.0f;
 	float GravitySpeed = 3500.0f;
-	float AnimationTime = 0.0f;
+	float SetShakingValue = 0.0f;
+
 	float OverlapTime = 0.0f;
 	float MoveTime = 0.0f;
 	float JumpTime = 0.0f;
@@ -215,10 +216,11 @@ private:
 	float IdleTime = 0.0f;
 	float HitTime = 0.0f;
 	float BlinkTime = 0.0f;
+
+	float AnimationTime = 0.0f;
+	float MoveSoundTime = 0.0f;
 	float ShakingTime = 0.0f;
 	float SetShakingTime = 0.0f;
-	float SetShakingValue = 0.0f;
-	float MoveSoundTime = 0.0f;
 	float CrouchMoveSoundTime = 0.0f;
 
 	int Pass = 1;
