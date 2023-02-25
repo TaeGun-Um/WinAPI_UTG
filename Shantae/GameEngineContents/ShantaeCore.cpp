@@ -92,7 +92,7 @@ void ShantaeCore::Start()
 	CreateLevel<TestLevel>("TestLevel");
 
 // ------------------------------- 레벨 선택 -------------------------------
-	ChangeLevel("Move1");
+	ChangeLevel("TestLevel");
 }
 
 void ShantaeCore::Update()

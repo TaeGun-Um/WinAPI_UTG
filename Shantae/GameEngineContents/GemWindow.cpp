@@ -27,7 +27,7 @@ void GemWindow::Start()
 
 	// Number
 	GemNumber.SetOwner(this);
-	GemNumber.SetImage("Numbers.Bmp", { 20, 26 }, 6, RGB(255, 0, 255), "GemWindow.bmp");
+	GemNumber.SetImage("Numbers.Bmp", { 20, 26 }, 7, RGB(255, 0, 255), "GemWindow.bmp");
 	GemNumber.SetValue(NumberOfGems);
 	GemNumber.SetAlign(Align::Right);
 	GemNumber.SetNumOfDigits(3);
