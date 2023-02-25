@@ -16,12 +16,18 @@ public:
 	Ship& operator=(const Ship& _Other) = delete;
 	Ship& operator=(Ship&& _Other) noexcept = delete;
 
+	void SetMoveStop()
+	{
+		forceStop = true;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void Render(float _DeltaTime) override;
 
 private:
+	void PlayerCheck();
 	void MoveCalculation(float _DeltaTime);
 
 	GameEngineRender* AnimationRender = nullptr;
@@ -31,6 +37,9 @@ private:
 	float DelayTime = 0.0f;
 	float AngleTime = 0.0f;
 	float Angle = 0.0f;
+
+	bool Stop = false;
+	bool forceStop = false;
 
 	int InitCount = 1;
 	int MotionCount = 0;

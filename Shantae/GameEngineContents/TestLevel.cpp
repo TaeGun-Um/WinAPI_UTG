@@ -53,8 +53,8 @@ void TestLevel::Loading()
 
 	CreateActor<TestMap>();
 
-	//GameEngineActor* A1 = CreateActor<Ship>();
-	//A1->SetPos({ 500, 300 });
+	GameEngineActor* A1 = CreateActor<Ship>();
+	A1->SetPos({ 500, 300 });
 
 	//GameEngineActor* A1 = CreateActor<Sea>();
 	//A1->SetPos({ 1000, 300 });
@@ -63,8 +63,8 @@ void TestLevel::Loading()
 	//A3->SetPos({ 800, 300 });
 	//A3->SetLeftBreak();
 
-	GameEngineActor* A4 = CreateActor<Building2>();
-	A4->SetPos({ 800, 300 });
+	//GameEngineActor* A4 = CreateActor<Building2>();
+	//A4->SetPos({ 800, 300 });
 
 	CreateActor<GemWindow>();
 

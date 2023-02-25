@@ -4,6 +4,7 @@
 #include <GameEngineCore/GameEngineRender.h>
 
 #include "ContentsEnum.h"
+#include "Player.h"
 
 Ship::Ship() 
 {
@@ -30,14 +31,41 @@ void Ship::Update(float _DeltaTime)
 		InitPos = GetPos();
 	}
 
-	MoveCalculation(_DeltaTime);
+	PlayerCheck();
+
+	if (false == Stop)
+	{
+		MoveCalculation(_DeltaTime);
+	}
+	
 }
 void Ship::Render(float _DeltaTime)
 {
 
 }
 
-// DelayTime += _DeltaTime;
+void Ship::PlayerCheck()
+{
+	float4 PlayerPos = Player::MainPlayer->GetPos();
+
+	if (InitPos.x + 750.0f <= PlayerPos.x)
+	{
+		Stop = true;
+	}
+	else if (InitPos.x - 900 >= PlayerPos.x)
+	{
+		Stop = true;
+	}
+	else
+	{
+		Stop = false;
+
+		if (true == forceStop)
+		{
+			Stop = true;
+		}
+	}
+}
 
 // 중력, 점프, 맵타일
 void Ship::MoveCalculation(float _DeltaTime)

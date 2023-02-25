@@ -46,6 +46,7 @@ void Boss::Loading()
 	{
 		Ship* Ship0 = CreateActor<Ship>();
 		Ship0->SetPos({ 200, 480 });
+		Ship0->SetMoveStop();
 	}
 
 	// Map
@@ -85,7 +86,6 @@ void Boss::Update(float _DeltaTime)
 	BlackBoxOutAnimation();
 	LevelSet();
 	Debugging();
-	CameraAction();
 	
 	if (true == BOS->GetIsBossEnd())
 	{
@@ -104,6 +104,8 @@ void Boss::Update(float _DeltaTime)
 	// 레벨 이동
 	if (true == IsBossDeath)
 	{
+		CameraAction();
+
 		if (SHA->GetPos().x >= 1510.0f
 			&& PlayerState::MOVE == SHA->GetShantaeState())
 		{
