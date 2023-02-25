@@ -15,6 +15,7 @@
 #include "Sea.h"
 #include "Sky.h"
 #include "Ship.h"
+#include "Building1.h"
 
 #include "Soldier_Bomberman.h"
 
@@ -50,6 +51,22 @@ void Move1::Loading()
 	{
 		Ship* Ship0 = CreateActor<Ship>();
 		Ship0->SetPos({ 6475, 425 });
+
+		Building1* B0 = CreateActor<Building1>();
+		B0->SetPos({ 1700, 20 });
+		B0->SetLeftBreak();
+
+		Building1* B1 = CreateActor<Building1>();
+		B1->SetPos({ 3950, 15 });
+		B1->SetRightBreak();
+
+		Building1* B2 = CreateActor<Building1>();
+		B2->SetPos({ 8350, 70 });
+		B2->SetLeftBreak();
+
+		Building1* B3 = CreateActor<Building1>();
+		B3->SetPos({ 8800, -65 });
+		B3->SetLeftBreak();
 	}
 	CreateActor<Move1_Buliding>();
 

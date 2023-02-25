@@ -23,7 +23,7 @@ void Building1::Start()
 	// Collision
 	BodyCollision = CreateCollision(CollisionOrder::Trigger);
 	BodyCollision->SetDebugRenderType(CT_Rect);
-	BodyCollision->SetScale({ 10, 600 });
+	BodyCollision->SetScale({ 10, 700 });
 	BodyCollision->SetPosition({ -350, 300 });
 }
 

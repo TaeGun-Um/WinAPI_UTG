@@ -12,6 +12,8 @@
 #include "Move0_ETCBackground.h"
 #include "Wave.h"
 #include "Ship.h"
+#include "Building1.h"
+#include "Building2.h"
 #include "Player.h"
 
 #include "Sea.h"
@@ -55,6 +57,17 @@ void Move0::Loading()
 
 		Ship* Ship1 = CreateActor<Ship>();
 		Ship1->SetPos({ 5850, 400 });
+
+		Building1* B0 = CreateActor<Building1>();
+		B0->SetPos({ 3000, 100 });
+		B0->SetLeftBreak();
+
+		Building1* B1 = CreateActor<Building1>();
+		B1->SetPos({ 5030, 350 });
+		B1->SetRightBreak();
+
+		Building2* B2 = CreateActor<Building2>();
+		B2->SetPos({ 9550, 300 });
 	}
 	CreateActor<Move0_Buliding>();
 
