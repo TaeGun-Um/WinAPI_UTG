@@ -227,7 +227,7 @@ void AmmoBaron::StruggleUpdate(float _DeltaTime)
 			return;
 		}
 	}
-	else if (IsEnd == true)
+	else if (IsEnd == true) 
 	{
 		//StruggleTime += _DeltaTime;
 
