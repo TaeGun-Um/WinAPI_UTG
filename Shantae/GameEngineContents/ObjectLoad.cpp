@@ -46,9 +46,15 @@ void ObjectLoad::Loading()
 	//////////////////////////////// Field ////////////////////////////////
 	// Public
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Public\\Building0.bmp"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Public\\Building1.bmp"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Public\\Building2.bmp"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Public\\Ship.bmp"));
+	GameEngineImage* II1 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Public\\Building1.bmp"));
+	II1->Cut(1, 1);
+	GameEngineImage* II2 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Public\\Building2.bmp"));
+	II2->Cut(1, 1);
+	GameEngineImage* II3 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Public\\Ship.bmp"));
+	II3->Cut(1, 1);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Public\\Building1_F.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Public\\Building2_F.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Public\\Ship_F.bmp"));
 	 
 	// House
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\House\\House_Hut.bmp"));

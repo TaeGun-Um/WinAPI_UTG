@@ -18,6 +18,7 @@ class FrameAnimationParameter
 public:
 	std::string_view AnimationName = "";                   // 저장한 애니메이션 이름
 	std::string_view ImageName     = "";                   // 애니메이션에 사용한 이미지 이름
+	std::string_view FilterName    = "";				   // 회전을 위한 필터 지정
 	int Start                      = 0;                    // 애니메이션 시작 인덱스
 	int End                        = 0;                    // 애니메이션 종료 인덱스
 	int CurrentIndex               = 0;                    // 현재 애니메이션 나오는 인덱스 번호
@@ -120,14 +121,36 @@ public:
 		return TextHeight;
 	}
 
+	// 필터 이미지 세팅
+	void SetRotFilter(const std::string_view& _ImageName);
+
+	inline void SetAngle(float _Angle)
+	{
+		Angle = _Angle;
+	}
+
+	// 회전값 확인, 세팅
+	inline float GetAngle(float _Angle)
+	{
+		return Angle;
+	}
+
+	inline void SetAngleAdd(float _Angle)
+	{
+		Angle += _Angle;
+	}
+
 protected:
 
 private:
-	GameEngineActor* Owner = nullptr;      // 자신의 주체
-	GameEngineImage* Image = nullptr;      // 랜더할 이미지
-	int Frame              = 0;            // Cut시 프레임
+	GameEngineActor* Owner = nullptr;		   // 자신의 주체
+	GameEngineImage* Image = nullptr;		   // 랜더할 이미지
+	GameEngineImage* RotationFilter = nullptr; // 필터용 이미지
+	int Frame              = 0;				   // Cut시 프레임
 
+	// 회전하면서 반투명 >> 안됨
 	int Alpha = 255;
+	float Angle = 0.0f;
 
 	bool IsEffectCamera = true;
 	int TransColor = RGB(255, 0, 255);
@@ -139,13 +162,14 @@ private:
 	class FrameAnimation
 	{
 	public:
-		GameEngineRender* Parent = nullptr; // 
-		GameEngineImage* Image   = nullptr; // find 한 이미지(cut 상태 확인)
-		std::vector<int> FrameIndex;        // 프레임 번호
-		std::vector<float> FrameTime;       // 프레임 지연시간
-		int CurrentIndex         = 0;       // 현재 인덱스의 번호
-		float CurrentTime        = 0.0f;    // 현재 인덱스의 시간(프레임 유지)
-		bool Loop                = true;    // 애니메이션 실행여부
+		GameEngineRender* Parent = nullptr; 
+		GameEngineImage* Image   = nullptr;		// find 한 이미지(cut 상태 확인)
+		GameEngineImage* FilterImage = nullptr; 
+		std::vector<int> FrameIndex;			// 프레임 번호
+		std::vector<float> FrameTime;			// 프레임 지연시간
+		int CurrentIndex         = 0;			// 현재 인덱스의 번호
+		float CurrentTime        = 0.0f;		// 현재 인덱스의 시간(프레임 유지)
+		bool Loop                = true;		// 애니메이션 실행여부
 
 		bool IsEnd();
 

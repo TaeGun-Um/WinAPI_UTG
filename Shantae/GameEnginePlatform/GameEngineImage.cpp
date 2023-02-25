@@ -287,9 +287,32 @@ void GameEngineImage::AlphaCopy(const GameEngineImage* _OtherImage, float4 _Copy
 }
 
 // 이미지 회전을 위한 함수
+void GameEngineImage::PlgCopy(const GameEngineImage* _OtherImage, int _CutIndex, float4 _CopyCenterPos, float4 _CopySize, float _Angle, GameEngineImage* _FilterImage)
+{
+	if (false == _OtherImage->IsCut)
+	{
+		MsgAssert(" 잘리지 않은 이미지로 cut출력 함수를 사용하려고 했습니다.");
+		return;
+	}
+
+	ImageCutData Data = _OtherImage->GetCutData(_CutIndex);
+
+	PlgCopy(_OtherImage, _CopyCenterPos, _CopySize, Data.GetStartPos(), Data.GetScale(), _Angle, _FilterImage);
+}
+
 void GameEngineImage::PlgCopy(const GameEngineImage* _OtherImage, float4 _CopyCenterPos, float4 _CopySize, float4 _OtherImagePos, float4 _OtherImageSize, float _Angle, GameEngineImage* _FilterImage)
 {
 	POINT ArrRotPoint[3];
+
+	CollisionData Data = { float4::Zero, _CopySize };
+
+	float4 LeftTop = Data.LeftTop();
+	float4 RightTop = Data.RightTop();
+	float4 LeftBot = Data.LeftBot();
+
+	ArrRotPoint[0] = (LeftTop.RotaitonZDegReturn(_Angle) + _CopyCenterPos).ToWindowPOINT();
+	ArrRotPoint[1] = (RightTop.RotaitonZDegReturn(_Angle) + _CopyCenterPos).ToWindowPOINT();
+	ArrRotPoint[2] = (LeftBot.RotaitonZDegReturn(_Angle) + _CopyCenterPos).ToWindowPOINT();
 
 	PlgBlt(ImageDC, // 여기에 그려라.
 		ArrRotPoint,
@@ -301,11 +324,6 @@ void GameEngineImage::PlgCopy(const GameEngineImage* _OtherImage, float4 _CopyCe
 		_FilterImage->BitMap,
 		_OtherImagePos.ix(),
 		_OtherImagePos.iy()
-	);
-
-}
-
-void GameEngineImage::PlgCopy(const GameEngineImage* _OtherImage, int _CutIndex, float4 _CopyCenterPos, float4 _CopySize, float _Angle, GameEngineImage* _FilterImage)
-{
+		);
 
 }

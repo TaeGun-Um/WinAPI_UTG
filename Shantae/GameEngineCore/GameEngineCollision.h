@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <GameEngineBase/GameEngineMath.h>
 #include "GameEngineComponent.h"
 
 // switch로 정해도 되지만, 하나가 추가되면 굉장한 수정을 거쳐야 한다.
@@ -20,31 +21,6 @@ public:
 	int TargetGroup = -342367842;                           // 제대로 입력 안하면 터질만한 값으로 초기화
 	CollisionType TargetColType = CollisionType::CT_CirCle; // 충돌할 대상 Collition type
 	CollisionType ThisColType = CollisionType::CT_CirCle;   // 자신의 Collistion type
-};
-
-// Scale과 Position 정보만 있어도 원(Circle)과 사각형(Rect)은 충분히 표현할 수 있음
-class CollisionData
-{
-public:
-	float4 Position;
-	float4 Scale;    // 원의 반지름은 X로 볼 것(결정)
-
-	float Left() const
-	{
-		return Position.x - Scale.hx();
-	}
-	float Right() const
-	{
-		return Position.x + Scale.hx();
-	}
-	float Top() const
-	{
-		return Position.y - Scale.hy();
-	}
-	float Bot() const
-	{
-		return Position.y + Scale.hy();
-	}
 };
 
 // 설명 :

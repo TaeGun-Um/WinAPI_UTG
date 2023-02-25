@@ -259,6 +259,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Building1.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Building2.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="GemWindow.h">
       <SubType>
       </SubType>
@@ -548,11 +556,12 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="ShantaeCore.h">
+    <ClInclude Include="ShantaeCore.h" />
+    <ClInclude Include="Shantae_Pajamas.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Shantae_Pajamas.h">
+    <ClInclude Include="Ship.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -889,6 +898,14 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Building1.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Building2.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="GemWindow.cpp">
       <SubType>
       </SubType>
@@ -1183,6 +1200,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Shantae_Pajamas.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Ship.cpp">
       <SubType>
       </SubType>
     </ClCompile>

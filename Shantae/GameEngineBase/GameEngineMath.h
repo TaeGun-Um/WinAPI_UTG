@@ -3,6 +3,7 @@
 #include <math.h>
 #include <cmath>
 #include <string>
+#include <Windows.h>
 #include <vector>
 
 // 설명 : 고립된 추상 클래스, 전역변수 선언용
@@ -134,13 +135,12 @@ public:
 			Result = GameEngineMath::PIE2 - Result;
 		}
 		return Result;
-
 	}
 
 	// 코사 사코~
 	void RotaitonZDeg(float _Deg)
 	{
-		RotaitonZRad(_Deg * GameEngineMath::RadToDeg);
+		RotaitonZRad(_Deg * GameEngineMath::DegToRad);
 	}
 
 	void RotaitonZRad(float _Rad)
@@ -148,6 +148,18 @@ public:
 		float4 Copy = *this;
 		x = Copy.x * cosf(_Rad) - Copy.y * sinf(_Rad);
 		y = Copy.x * sinf(_Rad) + Copy.y * cosf(_Rad);
+	}
+
+	float4 RotaitonZDegReturn(float _Deg)
+	{
+		float4 Copy = *this;
+		Copy.RotaitonZDeg(_Deg);
+		return Copy;
+	}
+
+	POINT ToWindowPOINT()
+	{
+		return POINT(ix(), iy());
 	}
 
 	inline bool IsZero() const
@@ -192,8 +204,16 @@ public:
 		x /= SizeValue;
 		y /= SizeValue;
 		z /= SizeValue;
-
 	}
+
+	// 자기가 길이 1로 줄어든 것을 리턴
+	float4 NormalizeReturn()
+	{
+		float4 Result = *this;
+		Result.Normalize();
+		return Result;
+	}
+
 
 	float4 operator +(const float4 _Value) const
 	{
@@ -294,5 +314,47 @@ public:
 
 		return std::string(ArrReturn);
 	}
+};
 
+// Collision.h에 있던 것을 옮김(0225)
+// Scale과 Position 정보만 있어도 원(Circle)과 사각형(Rect)은 충분히 표현할 수 있음
+class CollisionData
+{
+public:
+	float4 Position;
+	float4 Scale;
+
+	float Left() const
+	{
+		return Position.x - Scale.hx();
+	}
+	float Right() const
+	{
+		return Position.x + Scale.hx();
+	}
+	float Top() const
+	{
+		return Position.y - Scale.hy();
+	}
+	float Bot() const
+	{
+		return Position.y + Scale.hy();
+	}
+
+	float4 LeftTop() const
+	{
+		return float4{ Left(), Top() };
+	}
+	float4 RightTop() const
+	{
+		return float4{ Right(), Top() };
+	}
+	float4 LeftBot() const
+	{
+		return float4{ Left(), Bot() };
+	}
+	float4 RightBot() const
+	{
+		return float4{ Right(), Bot() };
+	}
 };

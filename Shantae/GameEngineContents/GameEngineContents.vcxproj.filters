@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="ShantaeCore.h" />
     <ClInclude Include="TestLevel.h">
       <Filter>PlayLevel\TestLevel</Filter>
     </ClInclude>
@@ -472,6 +471,16 @@
     </ClInclude>
     <ClInclude Include="BlackBox.h">
       <Filter>UI\AnimationBox</Filter>
+    </ClInclude>
+    <ClInclude Include="ShantaeCore.h" />
+    <ClInclude Include="Ship.h">
+      <Filter>PlayLevel\FieldLevel\3. Move0\Actor\ETC_Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Building1.h">
+      <Filter>PlayLevel\FieldLevel\3. Move0\Actor\ETC_Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Building2.h">
+      <Filter>PlayLevel\FieldLevel\3. Move0\Actor\ETC_Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -971,6 +980,15 @@
     <ClCompile Include="BlackBox.cpp">
       <Filter>UI\AnimationBox</Filter>
     </ClCompile>
+    <ClCompile Include="Ship.cpp">
+      <Filter>PlayLevel\FieldLevel\3. Move0\Actor\ETC_Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Building1.cpp">
+      <Filter>PlayLevel\FieldLevel\3. Move0\Actor\ETC_Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Building2.cpp">
+      <Filter>PlayLevel\FieldLevel\3. Move0\Actor\ETC_Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Character">
@@ -1179,6 +1197,15 @@
     </Filter>
     <Filter Include="Item">
       <UniqueIdentifier>{89e7a3f2-1642-4eaf-b838-de3a9f4e70b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character\NPC\Normal">
+      <UniqueIdentifier>{eba36577-7a3a-4e3c-a785-2e30aed9b402}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character\NPC\Sepcial">
+      <UniqueIdentifier>{80caf39b-3208-49a6-951b-7f6a1789bfa6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\FieldLevel\3. Move0\Actor\ETC_Actor">
+      <UniqueIdentifier>{0eb53fc0-a8ed-4a74-b67e-1ff837cd1375}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

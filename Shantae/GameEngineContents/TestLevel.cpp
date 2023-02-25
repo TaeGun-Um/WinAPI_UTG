@@ -22,6 +22,7 @@
 #include "Bridge_Boom.h"
 #include "MonsterSpawner.h"
 #include "Machinegun_Plat.h"
+#include "Ship.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -46,6 +47,9 @@ void TestLevel::Loading()
 	// CreateActor<AnimationBox>();
 
 	CreateActor<TestMap>();
+
+	GameEngineActor* A1 = CreateActor<Ship>();
+	A1->SetPos({ 500, 300 });
 
 	CreateActor<GemWindow>();
 
@@ -72,20 +76,6 @@ void TestLevel::Update(float _DeltaTime)
 	LevelSet();
 	Debugging();
 
-	if (GameEngineInput::IsDown("MonsterTest"))
-	{
-		//BlackBox* NewDummy = nullptr;
-		//float4 DummyPos = float4::Zero;
-
-		//NewDummy = CreateActor<BlackBox>();
-		//NewDummy->FadeOutStart(0, 1.0f);
-
-		WhiteBox* NewDummy = nullptr;
-		float4 DummyPos = float4::Zero;
-
-		NewDummy = CreateActor<WhiteBox>();
-		NewDummy->FadeInStart(0, 2.0f);
-	}
 
 	// CameraAction();
 

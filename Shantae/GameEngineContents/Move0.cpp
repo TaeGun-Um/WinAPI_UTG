@@ -12,6 +12,7 @@
 #include "Move0_Sea.h"
 #include "Move0_Sky.h"
 #include "Move0_ETCBackground.h"
+#include "Ship.h"
 #include "Player.h"
 
 #include "GemWindow.h"
