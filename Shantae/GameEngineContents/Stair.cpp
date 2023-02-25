@@ -39,7 +39,9 @@ void Stair::Loading()
 
 	// Background(¼ø¼­)
 	{
-		CreateActor<Sky>();
+		Sky* Sk = CreateActor<Sky>();
+		Sk->SetSkyYPos(200);
+		Sk->SetSkySpeed(25.0f);
 	}
 
 	CreateActor<Stair_Tower>();

@@ -5,6 +5,7 @@
 
 class Player;
 class BlackBox;
+class Sea;
 
 // Ό³Έν :
 class Scuttle : public PlayLevel
@@ -43,6 +44,8 @@ private:
 	void Debugging();
 	void CameraAction();
 	void Portal();
+
+	Sea* Se = nullptr;
 
 	GameEngineSoundPlayer BGMPlayer;
 	GameEngineActor* Shantae = nullptr;

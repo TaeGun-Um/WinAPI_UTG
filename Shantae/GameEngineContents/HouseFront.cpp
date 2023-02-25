@@ -46,8 +46,12 @@ void HouseFront::Loading()
 
 	// Background(¼ø¼­)
 	{
-		CreateActor<Sky>();
-		CreateActor<Sea>();
+		Sky* Sk = CreateActor<Sky>();
+		Sk->SetSkyYPos(0);
+		Sk->SetSkySpeed(25.0f);
+		Sea* Se = CreateActor<Sea>();
+		Se->SetPos({500, 600});
+		Se->SetCount();
 	}
 
 	CreateActor<HouseFront_Building>();

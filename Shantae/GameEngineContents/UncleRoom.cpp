@@ -33,8 +33,11 @@ void UncleRoom::Loading()
 
 	// Background(¼ø¼­)
 	{
-		CreateActor<Sky>(); // { 640, 200 }
-		CreateActor<Sea>();
+		Sky* Sk = CreateActor<Sky>();
+		Sk->SetSkyYPos(200);
+		Sk->SetSkySpeed(25.0f);
+		Sea* Se = CreateActor<Sea>();
+		Se->SetPos({ 650, 700 });
 	}
 
 	CreateActor<UncleRoom_Background>();

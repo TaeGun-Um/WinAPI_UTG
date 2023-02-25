@@ -31,7 +31,9 @@ void SkyRoom::Loading()
 
 	// Background(¼ø¼­)
 	{
-		CreateActor<Sky>(); // { 640, 300 }
+		Sky* Sk = CreateActor<Sky>();
+		Sk->SetSkyYPos(300);
+		Sk->SetSkySpeed(25.0f);
 	}
 	
 	CreateActor<SkyRoom_Background>();

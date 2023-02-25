@@ -33,8 +33,9 @@ void SaveRoom::Loading()
 
 	// Background(¼ø¼­)
 	{
-		CreateActor<Sky>(); // { 640, 200 }
-		CreateActor<Sea>();
+		Sky* Sk = CreateActor<Sky>();
+		Sk->SetSkyYPos(250);
+		Sk->SetSkySpeed(25.0f);
 	}
 
 	CreateActor<SaveRoom_Background>();

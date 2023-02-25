@@ -56,10 +56,8 @@ void TestLevel::Loading()
 	//GameEngineActor* A1 = CreateActor<Ship>();
 	//A1->SetPos({ 500, 300 });
 
-	Sky* A1 = CreateActor<Sky>();
-	A1->SetSkyYPos(200);
-	A1->SetSkySpeed(1000);
-	
+	GameEngineActor* A1 = CreateActor<Sea>();
+	A1->SetPos({ 1000, 300 });
 
 	//GameEngineActor* A3 = CreateActor<Building1>();
 	//A3->SetPos({ 600, 300 });

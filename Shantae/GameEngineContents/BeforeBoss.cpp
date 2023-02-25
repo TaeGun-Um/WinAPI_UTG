@@ -33,7 +33,9 @@ void BeforeBoss::Loading()
 
 	// Background(¼ø¼­)
 	{
-		CreateActor<Sky>();
+		Sky* Sk = CreateActor<Sky>();
+		Sk->SetSkyYPos(-50);
+		Sk->SetSkySpeed(25.0f);
 	}
 	
 	CreateActor<BeforeBoss_Background>();

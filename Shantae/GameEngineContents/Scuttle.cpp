@@ -34,8 +34,12 @@ void Scuttle::Loading()
 
 	// Background(¼ø¼­)
 	{
-		CreateActor<Sky>();
-		CreateActor<Sea>();
+		Sky* Sk = CreateActor<Sky>();
+		Sk->SetSkyYPos(50);
+		Sk->SetSkySpeed(25.0f);
+		Se = CreateActor<Sea>();
+		Se->SetPos({ 1000, 700 });
+		Se->SetCount();
 	}
 
 	CreateActor<Scuttle_Background>();
