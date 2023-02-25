@@ -34,7 +34,10 @@ void Boss::Loading()
 	ColMap = ObjectLoad::GetObjectLoadPtr()->GetColMap("Boss");
 
 	// Background(¼ø¼­)
-	CreateActor<Sky>();
+	{
+		CreateActor<Sky>();
+	}
+	
 	CreateActor<Boss_ETCBackground>();
 
 	// Map
@@ -42,25 +45,29 @@ void Boss::Loading()
 	CreateActor<Boss_ColMap>();
 
 	// Monster
-	Tank = CreateActor<Boss_Tank>();
-	BOS = dynamic_cast<Boss_Tank*>(Tank);
-	Tank->SetPos({ 1200, 750 });
-	BOS->SetColMap(ColMap);
-
-	// UI
-	CreateActor<GemWindow>();
-	CreateActor<Health>();
+	{
+		Tank = CreateActor<Boss_Tank>();
+		BOS = dynamic_cast<Boss_Tank*>(Tank);
+		Tank->SetPos({ 1200, 750 });
+		BOS->SetColMap(ColMap);
+	}
 
 	// Player
-	Shantae = CreateActor<Player>();
-	SHA = dynamic_cast<Player*>(Shantae);
+	{
+		Shantae = CreateActor<Player>();
+		SHA = dynamic_cast<Player*>(Shantae);
 
-	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 131, 734 });
-	Shantae->GetLevel()->SetCameraPos({ 125, 130 });
-	SHA->CameraMoveSwitch();
-	SHA->SetAnimationStart(false);
-	SHA->SetStartAnimationStart(false);
+		SHA->SetColMap(ColMap);
+		SHA->SetPos({ 131, 734 });
+		Shantae->GetLevel()->SetCameraPos({ 125, 130 });
+		SHA->CameraMoveSwitch();
+		SHA->SetAnimationStart(false);
+		SHA->SetStartAnimationStart(false);
+
+		// UI
+		CreateActor<GemWindow>();
+		CreateActor<Health>();
+	}
 }
 
 void Boss::Update(float _DeltaTime)

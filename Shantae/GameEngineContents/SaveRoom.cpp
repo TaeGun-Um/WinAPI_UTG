@@ -10,7 +10,7 @@
 #include "SaveRoom_ColMap.h"
 #include "SaveRoom_Front.h"
 #include "SaveRoom_Map.h"
-#include "SaveRoom_Sky.h"
+#include "Scuttle_Sky.h"
 #include "Player.h"
 #include "Sea.h"
 
@@ -32,8 +32,11 @@ void SaveRoom::Loading()
 	ColMap = ObjectLoad::GetObjectLoadPtr()->GetColMap("SaveRoom");
 
 	// Background(¼ø¼­)
-	CreateActor<SaveRoom_Sky>();
-	CreateActor<Sea>();
+	{
+		CreateActor<Scuttle_Sky>(); // { 640, 200 }
+		CreateActor<Sea>();
+	}
+
 	CreateActor<SaveRoom_Background>();
 
 	// Map		
@@ -41,21 +44,21 @@ void SaveRoom::Loading()
 	CreateActor<SaveRoom_Front>();
 	CreateActor<SaveRoom_ColMap>();
 
-	// Monster
-
-	// UI
-	CreateActor<GemWindow>();
-	CreateActor<Health>();
-
 	// Player
-	Shantae = CreateActor<Player>();
-	SHA = dynamic_cast<Player*>(Shantae);
+	{
+		Shantae = CreateActor<Player>();
+		SHA = dynamic_cast<Player*>(Shantae);
 
-	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 157, 789 });
-	Shantae->GetLevel()->SetCameraPos({ 150, 150 });
-	SHA->CameraMoveSwitch();
-	SHA->SetAnimationStart(false);
+		SHA->SetColMap(ColMap);
+		SHA->SetPos({ 157, 789 });
+		Shantae->GetLevel()->SetCameraPos({ 150, 150 });
+		SHA->CameraMoveSwitch();
+		SHA->SetAnimationStart(false);
+
+		// UI
+		CreateActor<GemWindow>();
+		CreateActor<Health>();
+	}
 }
 
 void SaveRoom::Update(float _DeltaTime)

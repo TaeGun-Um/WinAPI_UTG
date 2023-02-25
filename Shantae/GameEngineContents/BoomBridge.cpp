@@ -37,7 +37,10 @@ void BoomBridge::Loading()
 	ColMap = ObjectLoad::GetObjectLoadPtr()->GetColMap("BoomBridge");
 
 	// Background(¼ø¼­)
-	CreateActor<Sky>();
+	{
+		CreateActor<Sky>();
+	}
+	
 	CreateActor<BoomBridge_Background>();
 
 	// Map
@@ -45,26 +48,30 @@ void BoomBridge::Loading()
 	CreateActor<BoomBridge_ColMap>();
 
 	// Monster
-	CreateActor<Soldier_Pile>();
-	Set_One();
-	Set_Two();
-	Set_Three();
-	Set_Four();
-
-	// UI
-	CreateActor<GemWindow>();
-	CreateActor<Health>();
+	{
+		CreateActor<Soldier_Pile>();
+		Set_One();
+		Set_Two();
+		Set_Three();
+		Set_Four();
+	}
 
 	// Player
-	Shantae = CreateActor<Player>();
-	SHA = dynamic_cast<Player*>(Shantae);
+	{
+		Shantae = CreateActor<Player>();
+		SHA = dynamic_cast<Player*>(Shantae);
 
-	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 426, 647 });
-	Shantae->GetLevel()->SetCameraPos({ 430, 220 });
-	SHA->CameraMoveSwitch();
-	SHA->SetAnimationStart(false);
-	SHA->SetStartAnimationStart(false);
+		SHA->SetColMap(ColMap);
+		SHA->SetPos({ 426, 647 });
+		Shantae->GetLevel()->SetCameraPos({ 430, 220 });
+		SHA->CameraMoveSwitch();
+		SHA->SetAnimationStart(false);
+		SHA->SetStartAnimationStart(false);
+
+		// UI
+		CreateActor<GemWindow>();
+		CreateActor<Health>();
+	}
 }
 
 bool ch = true;

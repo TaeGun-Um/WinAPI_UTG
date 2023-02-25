@@ -9,7 +9,7 @@
 #include "SkyRoom_Background.h"
 #include "SkyRoom_ColMap.h"
 #include "SkyRoom_Map.h"
-#include "SkyRoom_Sky.h"
+#include "Scuttle_Sky.h"
 #include "Player.h"
 
 #include "GemWindow.h"
@@ -30,28 +30,31 @@ void SkyRoom::Loading()
 	ColMap = ObjectLoad::GetObjectLoadPtr()->GetColMap("SkyRoom");
 
 	// Background(¼ø¼­)
-	CreateActor<SkyRoom_Sky>();
+	{
+		CreateActor<Scuttle_Sky>(); // { 640, 300 }
+	}
+	
 	CreateActor<SkyRoom_Background>();
 
 	// Map		
 	CreateActor<SkyRoom_Map>();
 	CreateActor<SkyRoom_ColMap>();
 
-	// Monster
-
-	// UI
-	CreateActor<GemWindow>();
-	CreateActor<Health>();
-
 	// Player
-	Shantae = CreateActor<Player>();
-	SHA = dynamic_cast<Player*>(Shantae);
+	{
+		Shantae = CreateActor<Player>();
+		SHA = dynamic_cast<Player*>(Shantae);
 
-	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 192, 829 });
-	Shantae->GetLevel()->SetCameraPos({ 200, 150 });
-	SHA->CameraMoveSwitch();
-	SHA->SetAnimationStart(false);
+		SHA->SetColMap(ColMap);
+		SHA->SetPos({ 192, 829 });
+		Shantae->GetLevel()->SetCameraPos({ 200, 150 });
+		SHA->CameraMoveSwitch();
+		SHA->SetAnimationStart(false);
+
+		// UI
+		CreateActor<GemWindow>();
+		CreateActor<Health>();
+	}
 }
 
 void SkyRoom::Update(float _DeltaTime)

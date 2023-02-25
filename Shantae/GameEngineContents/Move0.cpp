@@ -37,8 +37,11 @@ void Move0::Loading()
 	ColMap = ObjectLoad::GetObjectLoadPtr()->GetColMap("Move0");
 
 	// Background(¼ø¼­)
-	CreateActor<Sky>();
-	CreateActor<Sea>();
+	{
+		CreateActor<Sky>();
+		CreateActor<Sea>();
+	}
+
 	CreateActor<Move0_ETCBackground>();
 	CreateActor<Move0_Buliding>();
 
@@ -46,52 +49,59 @@ void Move0::Loading()
 	CreateActor<Move0_Map>();
 	CreateActor<Move0_ColMap>();
 
-	GameEngineActor* W1 = CreateActor<Wave>();
-	W1->SetPos({ 7300, 775 });
-	GameEngineActor* W2 = CreateActor<Wave>();
-	W2->SetPos({ 7691, 775 });
-	GameEngineActor* W3 = CreateActor<Wave>();
-	W3->SetPos({ 8082, 775 });
-	GameEngineActor* W4 = CreateActor<Wave>();
-	W4->SetPos({ 8473, 775 });
-	GameEngineActor* W5 = CreateActor<Wave>();
-	W5->SetPos({ 8864, 775 });
+	// wave
+	{
+		GameEngineActor* W1 = CreateActor<Wave>();
+		W1->SetPos({ 7300, 775 });
+		GameEngineActor* W2 = CreateActor<Wave>();
+		W2->SetPos({ 7691, 775 });
+		GameEngineActor* W3 = CreateActor<Wave>();
+		W3->SetPos({ 8082, 775 });
+		GameEngineActor* W4 = CreateActor<Wave>();
+		W4->SetPos({ 8473, 775 });
+		GameEngineActor* W5 = CreateActor<Wave>();
+		W5->SetPos({ 8864, 775 });
+	}
 
 	// Monster
 	// ½ºÆ÷³Ê»ç¿ë¹ý   ½ºÆ÷³Ê À§Ä¡    ¸÷ÀÌ¸§    ÄÝ¸Ê    ¸÷ Á¨ À§Ä¡   ¸®Á¨½Ã°£
 	// CreateSpawner({ 250, 300 }, "blue", ColMap, { 350, 590 }, 5);
-
-	CreateSpawner({ 1860, 0 }, "blue", ColMap, { 3251, 340 }, 5);
-	CreateSpawner({ 3852, 0 }, "blue", ColMap, { 4815, 280 }, 5);
-	CreateSpawner({ 4423, 0 }, "blue", ColMap, { 5400, 637 }, 5);
-	MonsterSpawner* s1 = CreateSpawner({ 6986, 0 }, "Red", ColMap, { 7357, 900 }, 5); // am
-	s1->SetAmbushTrue();
-	MonsterSpawner* s2 = CreateSpawner({ 7086, 0 }, "blue", ColMap, { 7457, 900 }, 5); // am
-	s2->SetAmbushTrue();
-	CreateSpawner({ 7350, 0 }, "blue", ColMap, { 8400, 544 }, 5);
-	MonsterSpawner* s3 = CreateSpawner({ 8340, 0 }, "red", ColMap, { 8590, 900 }, 5); // am
-	s3->SetAmbushTrue();
-	MonsterSpawner* s4 = CreateSpawner({ 8440, 0 }, "blue", ColMap, { 8690, 900 }, 5); // am
-	s4->SetAmbushTrue();
-	CreateSpawner({ 8590, 0 }, "blue", ColMap, { 9580, 637 }, 5);
-	CreateSpawner({ 8640, 0 }, "blue", ColMap, { 9720, 637 }, 5);
-	CreateSpawner({ 8690, 0 }, "blue", ColMap, { 9930, 637 }, 5);
-	CreateSpawner({ 8740, 0 }, "blue", ColMap, { 10040, 637 }, 5);
-	CreateSpawner({ 10110, 0 }, "blue", ColMap, { 11225, 592 }, 5);
-
-	// UI
-	CreateActor<GemWindow>();
-	CreateActor<Health>();
+	{
+		CreateSpawner({ 1860, 0 }, "blue", ColMap, { 3251, 340 }, 5);
+		CreateSpawner({ 3852, 0 }, "blue", ColMap, { 4815, 280 }, 5);
+		CreateSpawner({ 4423, 0 }, "blue", ColMap, { 5400, 637 }, 5);
+		MonsterSpawner* s1 = CreateSpawner({ 6986, 0 }, "Red", ColMap, { 7357, 900 }, 5); // am
+		s1->SetAmbushTrue();
+		MonsterSpawner* s2 = CreateSpawner({ 7086, 0 }, "blue", ColMap, { 7457, 900 }, 5); // am
+		s2->SetAmbushTrue();
+		CreateSpawner({ 7350, 0 }, "blue", ColMap, { 8400, 544 }, 5);
+		MonsterSpawner* s3 = CreateSpawner({ 8340, 0 }, "red", ColMap, { 8590, 900 }, 5); // am
+		s3->SetAmbushTrue();
+		MonsterSpawner* s4 = CreateSpawner({ 8440, 0 }, "blue", ColMap, { 8690, 900 }, 5); // am
+		s4->SetAmbushTrue();
+		CreateSpawner({ 8590, 0 }, "blue", ColMap, { 9580, 637 }, 5);
+		CreateSpawner({ 8640, 0 }, "blue", ColMap, { 9720, 637 }, 5);
+		CreateSpawner({ 8690, 0 }, "blue", ColMap, { 9930, 637 }, 5);
+		CreateSpawner({ 8740, 0 }, "blue", ColMap, { 10040, 637 }, 5);
+		CreateSpawner({ 10110, 0 }, "blue", ColMap, { 11225, 592 }, 5);
+	}
 
 	// Player
-	Shantae = CreateActor<Player>();
-	SHA = dynamic_cast<Player*>(Shantae);
+	{
+		Shantae = CreateActor<Player>();
+		SHA = dynamic_cast<Player*>(Shantae);
 
-	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 49, 641 }); // { 49, 641 }
-	Shantae->GetLevel()->SetCameraPos({ 50, 50 }); // { 50, 50 }
-	SHA->SetAnimationStart(false);
-	SHA->SetStartAnimationStart(false);
+		SHA->SetColMap(ColMap);
+		SHA->SetPos({ 49, 641 }); // { 49, 641 }
+		Shantae->GetLevel()->SetCameraPos({ 50, 50 }); // { 50, 50 }
+		SHA->SetAnimationStart(false);
+		SHA->SetStartAnimationStart(false);
+
+		// UI
+		CreateActor<GemWindow>();
+		CreateActor<Health>();
+	}
+
 }
 
 void Move0::Update(float _DeltaTime)

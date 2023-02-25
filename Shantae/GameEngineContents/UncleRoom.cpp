@@ -10,7 +10,7 @@
 #include "UncleRoom_ColMap.h"
 #include "UncleRoom_Front.h"
 #include "UncleRoom_Map.h"
-#include "UncleRoom_Sky.h"
+#include "Scuttle_Sky.h"
 #include "Player.h"
 #include "Sea.h"
 
@@ -32,8 +32,11 @@ void UncleRoom::Loading()
 	ColMap = ObjectLoad::GetObjectLoadPtr()->GetColMap("UncleRoom");
 
 	// Background(¼ø¼­)
-	CreateActor<UncleRoom_Sky>();
-	CreateActor<Sea>();
+	{
+		CreateActor<Scuttle_Sky>(); // { 640, 200 }
+		CreateActor<Sea>();
+	}
+
 	CreateActor<UncleRoom_Background>();
 				
 	// Map		
@@ -41,21 +44,22 @@ void UncleRoom::Loading()
 	CreateActor<UncleRoom_Front>();
 	CreateActor<UncleRoom_ColMap>();
 
-	// Monster
-
-	// UI
-	CreateActor<GemWindow>();
-	CreateActor<Health>();
-
 	// Player
-	Shantae = CreateActor<Player>();
-	SHA = dynamic_cast<Player*>(Shantae);
+	{
+		Shantae = CreateActor<Player>();
+		SHA = dynamic_cast<Player*>(Shantae);
 
-	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 90, 781 });
-	Shantae->GetLevel()->SetCameraPos({ 50, 100 });
-	SHA->CameraMoveSwitch();
-	SHA->SetAnimationStart(false);
+		SHA->SetColMap(ColMap);
+		SHA->SetPos({ 90, 781 });
+		Shantae->GetLevel()->SetCameraPos({ 50, 100 });
+		SHA->CameraMoveSwitch();
+		SHA->SetAnimationStart(false);
+
+		// UI
+		CreateActor<GemWindow>();
+		CreateActor<Health>();
+	}
+
 }
 
 void UncleRoom::Update(float _DeltaTime)

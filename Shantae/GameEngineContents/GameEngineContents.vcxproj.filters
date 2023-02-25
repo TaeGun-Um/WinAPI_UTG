@@ -172,23 +172,8 @@
     <ClInclude Include="SaveRoom.h">
       <Filter>PlayLevel\TownLevel\7. SaveRoom</Filter>
     </ClInclude>
-    <ClInclude Include="UncleRoom_Sky.h">
-      <Filter>PlayLevel\TownLevel\2. UncleRoom\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Shop_Sky.h">
-      <Filter>PlayLevel\TownLevel\3. Shop\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Spa_Sky.h">
-      <Filter>PlayLevel\TownLevel\4. Spa\Object</Filter>
-    </ClInclude>
     <ClInclude Include="Smith_Sky.h">
       <Filter>PlayLevel\TownLevel\5. Smith\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="SkyRoom_Sky.h">
-      <Filter>PlayLevel\TownLevel\6. SkyRoom\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="SaveRoom_Sky.h">
-      <Filter>PlayLevel\TownLevel\7. SaveRoom\Object</Filter>
     </ClInclude>
     <ClInclude Include="Shop_Background.h">
       <Filter>PlayLevel\TownLevel\3. Shop\Object</Filter>
@@ -623,23 +608,8 @@
     <ClCompile Include="SaveRoom.cpp">
       <Filter>PlayLevel\TownLevel\7. SaveRoom</Filter>
     </ClCompile>
-    <ClCompile Include="UncleRoom_Sky.cpp">
-      <Filter>PlayLevel\TownLevel\2. UncleRoom\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Shop_Sky.cpp">
-      <Filter>PlayLevel\TownLevel\3. Shop\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Spa_Sky.cpp">
-      <Filter>PlayLevel\TownLevel\4. Spa\Object</Filter>
-    </ClCompile>
     <ClCompile Include="Smith_Sky.cpp">
       <Filter>PlayLevel\TownLevel\5. Smith\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="SkyRoom_Sky.cpp">
-      <Filter>PlayLevel\TownLevel\6. SkyRoom\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="SaveRoom_Sky.cpp">
-      <Filter>PlayLevel\TownLevel\7. SaveRoom\Object</Filter>
     </ClCompile>
     <ClCompile Include="Shop_Background.cpp">
       <Filter>PlayLevel\TownLevel\3. Shop\Object</Filter>

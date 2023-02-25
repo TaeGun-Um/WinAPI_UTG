@@ -35,8 +35,11 @@ void Move1::Loading()
 	ColMap = ObjectLoad::GetObjectLoadPtr()->GetColMap("Move1");
 
 	// Background(¼ø¼­)
-	CreateActor<Sky>();
-	CreateActor<Sea>();
+	{
+		CreateActor<Sky>();
+		CreateActor<Sea>();
+	}
+
 	CreateActor<Move1_ETCBackground>();
 	CreateActor<Move1_Buliding>();
 
@@ -44,58 +47,63 @@ void Move1::Loading()
 	CreateActor<Move1_Map>();
 	CreateActor<Move1_ColMap>();
 
-	GameEngineActor* W1 = CreateActor<Wave>();
-	W1->SetPos({ 2480, 775 });
-	GameEngineActor* W2 = CreateActor<Wave>();
-	W2->SetPos({ 4700, 775 });
-	GameEngineActor* W3 = CreateActor<Wave>();
-	W3->SetPos({ 5090, 775 });
-	GameEngineActor* W4 = CreateActor<Wave>();
-	W4->SetPos({ 5480, 775 });
-	GameEngineActor* W5 = CreateActor<Wave>();
-	W5->SetPos({ 5870, 775 });
-	GameEngineActor* W6 = CreateActor<Wave>();
-	W6->SetPos({ 7730, 775 });
-	GameEngineActor* W10 = CreateActor<Wave>();
-	W10->SetPos({ 8120, 775 });
-	GameEngineActor* W7 = CreateActor<Wave>();
-	W7->SetPos({ 8890, 775 });
-	GameEngineActor* W8 = CreateActor<Wave>();
-	W8->SetPos({ 9430, 775 });
-	GameEngineActor* W9 = CreateActor<Wave>();
-	W9->SetPos({ 10280, 775 });
+	// wave
+	{
+		GameEngineActor* W1 = CreateActor<Wave>();
+		W1->SetPos({ 2480, 775 });
+		GameEngineActor* W2 = CreateActor<Wave>();
+		W2->SetPos({ 4700, 775 });
+		GameEngineActor* W3 = CreateActor<Wave>();
+		W3->SetPos({ 5090, 775 });
+		GameEngineActor* W4 = CreateActor<Wave>();
+		W4->SetPos({ 5480, 775 });
+		GameEngineActor* W5 = CreateActor<Wave>();
+		W5->SetPos({ 5870, 775 });
+		GameEngineActor* W6 = CreateActor<Wave>();
+		W6->SetPos({ 7730, 775 });
+		GameEngineActor* W10 = CreateActor<Wave>();
+		W10->SetPos({ 8120, 775 });
+		GameEngineActor* W7 = CreateActor<Wave>();
+		W7->SetPos({ 8890, 775 });
+		GameEngineActor* W8 = CreateActor<Wave>();
+		W8->SetPos({ 9430, 775 });
+		GameEngineActor* W9 = CreateActor<Wave>();
+		W9->SetPos({ 10280, 775 });
+	}
 
 	// Monster
 	// ½ºÆ÷³Ê»ç¿ë¹ý   ½ºÆ÷³Ê À§Ä¡    ¸÷ÀÌ¸§    ÄÝ¸Ê    ¸÷ Á¨ À§Ä¡   ¸®Á¨½Ã°£
 	// CreateSpawner({ 250, 300 }, "blue", ColMap, { 350, 590 }, 5);
-
-	Soldier_Bomberman* s1 = CreateActor<Soldier_Bomberman>();
-	s1->SetPos({ 1767, 288 });
-	s1->SetColMap(ColMap);
-
-	CreateSpawner({ 2300, 0 }, "black", ColMap, { 3145, 651 }, 4);
-	CreateSpawner({ 2300, 0 }, "Bomberman", ColMap, { 3277, 345 }, 4);
-	CreateSpawner({ 3600, 0 }, "black", ColMap, { 4575, 650 }, 5);
-	CreateSpawner({ 5850, 0 }, "Bomberman", ColMap, { 6755, 447 }, 5);
-	CreateSpawner({ 5850, 0 }, "black", ColMap, { 7500, 650 }, 5);
-	CreateSpawner({ 7845, 0 }, "Bomberman", ColMap, { 8718, 381 }, 5);
-	CreateSpawner({ 7845, 0 }, "Bomberman", ColMap, { 9278, 545 }, 5);
-	CreateSpawner({ 7845, 0 }, "Bomberman", ColMap, { 9932, 282 }, 5);
-	CreateSpawner({ 9465, 0 }, "Bomberman", ColMap, { 10545, 446 }, 5);
-
-	// UI
-	CreateActor<GemWindow>();
-	CreateActor<Health>();
+	{
+		Soldier_Bomberman* s1 = CreateActor<Soldier_Bomberman>();
+		s1->SetPos({ 1767, 288 });
+		s1->SetColMap(ColMap);
+		CreateSpawner({ 2300, 0 }, "black", ColMap, { 3145, 651 }, 4);
+		CreateSpawner({ 2300, 0 }, "Bomberman", ColMap, { 3277, 345 }, 4);
+		CreateSpawner({ 3600, 0 }, "black", ColMap, { 4575, 650 }, 5);
+		CreateSpawner({ 5850, 0 }, "Bomberman", ColMap, { 6755, 447 }, 5);
+		CreateSpawner({ 5850, 0 }, "black", ColMap, { 7500, 650 }, 5);
+		CreateSpawner({ 7845, 0 }, "Bomberman", ColMap, { 8718, 381 }, 5);
+		CreateSpawner({ 7845, 0 }, "Bomberman", ColMap, { 9278, 545 }, 5);
+		CreateSpawner({ 7845, 0 }, "Bomberman", ColMap, { 9932, 282 }, 5);
+		CreateSpawner({ 9465, 0 }, "Bomberman", ColMap, { 10545, 446 }, 5);
+	}
 
 	// Player
-	Shantae = CreateActor<Player>();
-	SHA = dynamic_cast<Player*>(Shantae);
+	{
+		Shantae = CreateActor<Player>();
+		SHA = dynamic_cast<Player*>(Shantae);
 
-	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 106, 653 }); //  106, 653
-	Shantae->GetLevel()->SetCameraPos({ 100, 50 }); // 100, 50
-	SHA->SetAnimationStart(false);
-	SHA->SetStartAnimationStart(false);
+		SHA->SetColMap(ColMap);
+		SHA->SetPos({ 106, 653 }); //  106, 653
+		Shantae->GetLevel()->SetCameraPos({ 100, 50 }); // 100, 50
+		SHA->SetAnimationStart(false);
+		SHA->SetStartAnimationStart(false);
+
+		// UI
+		CreateActor<GemWindow>();
+		CreateActor<Health>();
+	}
 }
 
 void Move1::Update(float _DeltaTime)

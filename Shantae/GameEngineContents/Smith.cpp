@@ -9,7 +9,7 @@
 #include "Smith_Background.h"
 #include "Smith_ColMap.h"
 #include "Smith_Map.h"
-#include "Smith_Sky.h"
+#include "Scuttle_Sky.h"
 #include "Player.h"
 #include "Sea.h"
 
@@ -31,29 +31,32 @@ void Smith::Loading()
 	ColMap = ObjectLoad::GetObjectLoadPtr()->GetColMap("Smith");
 
 	// Background(¼ø¼­)
-	CreateActor<Smith_Sky>();
-	CreateActor<Sea>();
+	{
+		CreateActor<Scuttle_Sky>(); // { 640, 300 }
+		CreateActor<Sea>();
+	}
+
 	CreateActor<Smith_Background>();
 
 	// Map		
 	CreateActor<Smith_Map>();
 	CreateActor<Smith_ColMap>();
 
-	// Monster
-
-	// UI
-	CreateActor<GemWindow>();
-	CreateActor<Health>();
-
 	// Player
-	Shantae = CreateActor<Player>();
-	SHA = dynamic_cast<Player*>(Shantae);
+	{
+		Shantae = CreateActor<Player>();
+		SHA = dynamic_cast<Player*>(Shantae);
 
-	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 155, 841 });
-	Shantae->GetLevel()->SetCameraPos({ 150, 150 });
-	SHA->CameraMoveSwitch();
-	SHA->SetAnimationStart(false);
+		SHA->SetColMap(ColMap);
+		SHA->SetPos({ 155, 841 });
+		Shantae->GetLevel()->SetCameraPos({ 150, 150 });
+		SHA->CameraMoveSwitch();
+		SHA->SetAnimationStart(false);
+
+		// UI
+		CreateActor<GemWindow>();
+		CreateActor<Health>();
+	}
 }
 
 void Smith::Update(float _DeltaTime)

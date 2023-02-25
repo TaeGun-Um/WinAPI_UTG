@@ -33,29 +33,33 @@ void Scuttle::Loading()
 	ColMap = ObjectLoad::GetObjectLoadPtr()->GetColMap("Scuttle");
 
 	// Background(¼ø¼­)
-	CreateActor<Scuttle_Sky>();
-	CreateActor<Sea>();
+	{
+		CreateActor<Scuttle_Sky>();
+		CreateActor<Sea>();
+	}
+
 	CreateActor<Scuttle_Background>();
 
 	// Map
 	CreateActor<Scuttle_Map>();
 	CreateActor<Scuttle_ColMap>();
 
-	// Monster
-
-	// UI
-	CreateActor<GemWindow>();
-	CreateActor<Health>();
-
 	// Player
-	Shantae = CreateActor<Player>();
-	SHA = dynamic_cast<Player*>(Shantae);
+	{
+		Shantae = CreateActor<Player>();
+		SHA = dynamic_cast<Player*>(Shantae);
 
-	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 0, 1316 });
-	Shantae->GetLevel()->SetCameraPos({ 0, 680 });
-	SHA->SetAnimationStart(false);
-	SHA->SetStartAnimationStart(false);
+		SHA->SetColMap(ColMap);
+		SHA->SetPos({ 0, 1316 });
+		Shantae->GetLevel()->SetCameraPos({ 0, 680 });
+		SHA->SetAnimationStart(false);
+		SHA->SetStartAnimationStart(false);
+
+		// UI
+		CreateActor<GemWindow>();
+		CreateActor<Health>();
+	}
+
 }
 
 void Scuttle::Update(float _DeltaTime)

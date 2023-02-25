@@ -38,7 +38,10 @@ void Stair::Loading()
 	ColMap = ObjectLoad::GetObjectLoadPtr()->GetColMap("Stair");
 
 	// Background(¼ø¼­)
-	CreateActor<Sky>();
+	{
+		CreateActor<Sky>();
+	}
+
 	CreateActor<Stair_Tower>();
 	CreateActor<Stair_Bush2>();
 	CreateActor<Stair_Bush1>();
@@ -50,26 +53,30 @@ void Stair::Loading()
 
 	// Monster
 	// ½ºÆ÷³Ê»ç¿ë¹ý   ½ºÆ÷³Ê À§Ä¡   ¸÷ÀÌ¸§   ÄÝ¸Ê    ¸÷ Á¨ À§Ä¡   ¸®Á¨½Ã°£
-	CreateSpawner({ 800, 2700 }, "blue", ColMap, { 372, 2015 }, 2);
+	{
+		CreateSpawner({ 800, 2700 }, "blue", ColMap, { 372, 2015 }, 2);
 
-	Soldier_Black* Spawn3 = CreateActor<Soldier_Black>();
-	Spawn3->SetPos({ 1185, 895 });
-	Spawn3->SetColMap(ColMap);
-
-	// UI
-	CreateActor<GemWindow>();
-	CreateActor<Health>();
+		Soldier_Black* Spawn3 = CreateActor<Soldier_Black>();
+		Spawn3->SetPos({ 1185, 895 });
+		Spawn3->SetColMap(ColMap);
+	}
 
 	// Player
-	Shantae = CreateActor<Player>();
-	SHA = dynamic_cast<Player*>(Shantae);
+	{
+		Shantae = CreateActor<Player>();
+		SHA = dynamic_cast<Player*>(Shantae);
 
-	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 200, 3563 });
-	Shantae->GetLevel()->SetCameraPos({ 200, 3000 });
-	SHA->CameraMoveSwitch();
-	SHA->SetAnimationStart(false);
-	SHA->SetStartAnimationStart(false);
+		SHA->SetColMap(ColMap);
+		SHA->SetPos({ 200, 3563 });
+		Shantae->GetLevel()->SetCameraPos({ 200, 3000 });
+		SHA->CameraMoveSwitch();
+		SHA->SetAnimationStart(false);
+		SHA->SetStartAnimationStart(false);
+
+		// UI
+		CreateActor<GemWindow>();
+		CreateActor<Health>();
+	}
 }
 
 void Stair::Update(float _DeltaTime)

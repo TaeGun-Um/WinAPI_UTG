@@ -10,7 +10,7 @@
 #include "Shop_ColMap.h"
 #include "Shop_Front.h"
 #include "Shop_Map.h"
-#include "Shop_Sky.h"
+#include "Scuttle_Sky.h"
 #include "Player.h"
 #include "Sea.h"
 
@@ -32,8 +32,11 @@ void Shop::Loading()
 	ColMap = ObjectLoad::GetObjectLoadPtr()->GetColMap("Shop");
 
 	// Background(¼ø¼­)
-	CreateActor<Shop_Sky>();
-	CreateActor<Sea>();
+	{
+		CreateActor<Scuttle_Sky>(); // { 640, 300 }
+		CreateActor<Sea>();
+	}
+
 	CreateActor<Shop_Background>();
 
 	// Map		
@@ -41,21 +44,22 @@ void Shop::Loading()
 	CreateActor<Shop_Front>();
 	CreateActor<Shop_ColMap>();
 
-	// Monster
-
-	// UI
-	CreateActor<GemWindow>();
-	CreateActor<Health>();
-
 	// Player
-	Shantae = CreateActor<Player>();
-	SHA = dynamic_cast<Player*>(Shantae);
+	{
+		Shantae = CreateActor<Player>();
+		SHA = dynamic_cast<Player*>(Shantae);
 
-	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 140, 862 });
-	Shantae->GetLevel()->SetCameraPos({ 140, 170 });
-	SHA->CameraMoveSwitch();
-	SHA->SetAnimationStart(false);
+		SHA->SetColMap(ColMap);
+		SHA->SetPos({ 140, 862 });
+		Shantae->GetLevel()->SetCameraPos({ 140, 170 });
+		SHA->CameraMoveSwitch();
+		SHA->SetAnimationStart(false);
+
+		// UI
+		CreateActor<GemWindow>();
+		CreateActor<Health>();
+	}
+
 }
 
 void Shop::Update(float _DeltaTime)

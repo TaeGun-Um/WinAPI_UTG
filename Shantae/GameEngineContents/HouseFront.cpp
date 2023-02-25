@@ -45,7 +45,11 @@ void HouseFront::Loading()
 	ColMap = ObjectLoad::GetObjectLoadPtr()->GetColMap("HouseFront");
 
 	// Background(¼ø¼­)
-	// CreateActor<HouseFront_Sea>();
+	{
+		CreateActor<Sky>();
+		CreateActor<Sea>();
+	}
+
 	CreateActor<HouseFront_Building>();
 	CreateActor<Building0>();
 	CreateActor<HouseFront_Island>();
@@ -53,33 +57,36 @@ void HouseFront::Loading()
 	CreateActor<HouseFront_Bush>();
 	CreateActor<HouseFront_LightHouse>();
 	CreateActor<HouseFront_WindVane>();
-	GameEngineActor* W1 = CreateActor<Wave>();
-	W1->SetPos({ 150, 725 });
-	GameEngineActor* W2 = CreateActor<Wave>();
-	W2->SetPos({ 600, 725 });
-	GameEngineActor* W3 = CreateActor<Wave>();
-	W3->SetPos({ 991, 725 });
+	
+	// wave
+	{
+		GameEngineActor* W1 = CreateActor<Wave>();
+		W1->SetPos({ 150, 725 });
+		GameEngineActor* W2 = CreateActor<Wave>();
+		W2->SetPos({ 600, 725 });
+		GameEngineActor* W3 = CreateActor<Wave>();
+		W3->SetPos({ 991, 725 });
+	}
 
 	// Map
 	CreateActor<HouseFront_Map>();
 	CreateActor<HouseFront_ColMap>();
 
-	// Monster
-
-
-	// UI
-	CreateActor<GemWindow>();
-	CreateActor<Health>();
-
 	// Player
-	Shantae = CreateActor<Player>();
-	SHA = dynamic_cast<Player*>(Shantae);
+	{
+		Shantae = CreateActor<Player>();
+		SHA = dynamic_cast<Player*>(Shantae);
 
-	SHA->SetColMap(ColMap);
-	SHA->SetPos({5, 590});
-	SHA->CameraMoveSwitch();
-	SHA->SetAnimationStart(false);
-	SHA->SetStartAnimationStart(false);
+		SHA->SetColMap(ColMap);
+		SHA->SetPos({ 5, 590 });
+		SHA->CameraMoveSwitch();
+		SHA->SetAnimationStart(false);
+		SHA->SetStartAnimationStart(false);
+
+		// UI
+		CreateActor<GemWindow>();
+		CreateActor<Health>();
+	}
 }
 
 void HouseFront::Update(float _DeltaTime)

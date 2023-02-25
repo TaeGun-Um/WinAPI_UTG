@@ -32,36 +32,44 @@ void BeforeBoss::Loading()
 	ColMap = ObjectLoad::GetObjectLoadPtr()->GetColMap("BeforeBoss");
 
 	// Background(¼ø¼­)
-	CreateActor<Sky>();
+	{
+		CreateActor<Sky>();
+	}
+	
 	CreateActor<BeforeBoss_Background>();
 
 	// Map
 	CreateActor<BeforeBoss_Map>();
 	CreateActor<BeforeBoss_ColMap>();
 
-	GameEngineActor* W1 = CreateActor<Wave>();
-	W1->SetPos({ 190, 780 });
-	GameEngineActor* W2 = CreateActor<Wave>();
-	W2->SetPos({ 581, 780 });
-	GameEngineActor* W3 = CreateActor<Wave>();
-	W3->SetPos({ 972, 780 });
-	GameEngineActor* W4 = CreateActor<Wave>();
-	W4->SetPos({ 1363, 780 });
-
-	// UI
-	CreateActor<GemWindow>();
-	CreateActor<Health>();
+	// wave
+	{
+		GameEngineActor* W1 = CreateActor<Wave>();
+		W1->SetPos({ 190, 780 });
+		GameEngineActor* W2 = CreateActor<Wave>();
+		W2->SetPos({ 581, 780 });
+		GameEngineActor* W3 = CreateActor<Wave>();
+		W3->SetPos({ 972, 780 });
+		GameEngineActor* W4 = CreateActor<Wave>();
+		W4->SetPos({ 1363, 780 });
+	}
 
 	// Player
-	Shantae = CreateActor<Player>();
-	SHA = dynamic_cast<Player*>(Shantae);
+	{
+		Shantae = CreateActor<Player>();
+		SHA = dynamic_cast<Player*>(Shantae);
 
-	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 5, 603 });
-	Shantae->GetLevel()->SetCameraPos({ 0, 50 });
-	SHA->CameraMoveSwitch();
-	SHA->SetAnimationStart(false);
-	SHA->SetStartAnimationStart(false);
+		SHA->SetColMap(ColMap);
+		SHA->SetPos({ 5, 603 });
+		Shantae->GetLevel()->SetCameraPos({ 0, 50 });
+		SHA->CameraMoveSwitch();
+		SHA->SetAnimationStart(false);
+		SHA->SetStartAnimationStart(false);
+
+		// UI
+		CreateActor<GemWindow>();
+		CreateActor<Health>();
+	}
 }
 
 void BeforeBoss::Update(float _DeltaTime)

@@ -476,10 +476,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="SaveRoom_Sky.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="Scarecrow.h">
       <SubType>
       </SubType>
@@ -557,10 +553,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Shop_Sky.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="SkyRoom.h">
       <SubType>
       </SubType>
@@ -574,10 +566,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="SkyRoom_Map.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="SkyRoom_Sky.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -665,10 +653,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Spa_Sky.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="Splash.h">
       <SubType>
       </SubType>
@@ -731,10 +715,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="UncleRoom_Map.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="UncleRoom_Sky.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -1071,10 +1051,6 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="SaveRoom_Sky.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="Scarecrow.cpp">
       <SubType>
       </SubType>
@@ -1155,10 +1131,6 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Shop_Sky.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="SkyRoom.cpp">
       <SubType>
       </SubType>
@@ -1172,10 +1144,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="SkyRoom_Map.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="SkyRoom_Sky.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -1269,10 +1237,6 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Spa_Sky.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="Splash.cpp">
       <SubType>
       </SubType>
@@ -1335,10 +1299,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="UncleRoom_Map.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="UncleRoom_Sky.cpp">
       <SubType>
       </SubType>
     </ClCompile>

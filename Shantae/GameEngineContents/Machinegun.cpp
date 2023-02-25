@@ -33,85 +33,94 @@ void Machinegun::Loading()
 	ColMap = ObjectLoad::GetObjectLoadPtr()->GetColMap("Machinegun");
 
 	// Background(¼ø¼­)
-	CreateActor<Sky>();
+	{
+		CreateActor<Sky>();
+	}
+
 	CreateActor<Machinegun_Background>();
 
 	// Map
 	CreateActor<Machinegun_Map>();
 	CreateActor<Machinegun_ColMap>();
 
-	Machinegun_Plat* Plat1 = CreateActor<Machinegun_Plat>();
-	Plat1->SetPos({ 1605, 630 });
-	Machinegun_Plat* Plat2 = CreateActor<Machinegun_Plat>();
-	Plat2->SetPos({ 1705, 630 });
-	Machinegun_Plat* Plat33 = CreateActor<Machinegun_Plat>();
-	Plat33->SetPos({ 1805, 630 });
-	Machinegun_Plat* Plat44 = CreateActor<Machinegun_Plat>();
-	Plat44->SetPos({ 1905, 630 });
-	Machinegun_Plat* Plat3 = CreateActor<Machinegun_Plat>();
-	Plat3->SetPos({ 2620, 475 });
-	Machinegun_Plat* Plat4 = CreateActor<Machinegun_Plat>();
-	Plat4->SetPos({ 2850, 475 });
-	Machinegun_Plat* Plat5 = CreateActor<Machinegun_Plat>();
-	Plat5->SetPos({ 3100, 590 });
-	Machinegun_Plat* Plat6 = CreateActor<Machinegun_Plat>();
-	Plat6->SetPos({ 4360, 580 });
-	Machinegun_Plat* Plat7 = CreateActor<Machinegun_Plat>();
-	Plat7->SetPos({ 4460, 580 });
-	Machinegun_Plat* Plat8 = CreateActor<Machinegun_Plat>();
-	Plat8->SetPos({ 4700, 430 });
-	Machinegun_Plat* Plat9 = CreateActor<Machinegun_Plat>();
-	Plat9->SetPos({ 4800, 430 });
-	Machinegun_Plat* Plat10 = CreateActor<Machinegun_Plat>();
-	Plat10->SetPos({ 5652.5f, 390 });
-	Machinegun_Plat* Plat11 = CreateActor<Machinegun_Plat>();
-	Plat11->SetPos({ 5752.5f, 390 });
-	Machinegun_Plat* Plat12 = CreateActor<Machinegun_Plat>();
-	Plat12->SetPos({ 6425, 735 });
-	Machinegun_Plat* Plat13 = CreateActor<Machinegun_Plat>();
-	Plat13->SetPos({ 6595, 590 });
-	Machinegun_Plat* Plat14 = CreateActor<Machinegun_Plat>();
-	Plat14->SetPos({ 9278, 550 });
-	Machinegun_Plat* Plat15 = CreateActor<Machinegun_Plat>();
-	Plat15->SetPos({ 9765, 590 });
-	Machinegun_Plat* Plat16 = CreateActor<Machinegun_Plat>();
-	Plat16->SetPos({ 10505, 590 });
-	Machinegun_Plat* Plat17 = CreateActor<Machinegun_Plat>();
-	Plat17->SetPos({ 10605, 590 });
-	Machinegun_Plat* Plat18 = CreateActor<Machinegun_Plat>();
-	Plat18->SetPos({ 10905, 590 });
-	Machinegun_Plat* Plat19 = CreateActor<Machinegun_Plat>();
-	Plat19->SetPos({ 11005, 590 });
+	// plat
+	{
+		Machinegun_Plat* Plat1 = CreateActor<Machinegun_Plat>();
+		Plat1->SetPos({ 1605, 630 });
+		Machinegun_Plat* Plat2 = CreateActor<Machinegun_Plat>();
+		Plat2->SetPos({ 1705, 630 });
+		Machinegun_Plat* Plat33 = CreateActor<Machinegun_Plat>();
+		Plat33->SetPos({ 1805, 630 });
+		Machinegun_Plat* Plat44 = CreateActor<Machinegun_Plat>();
+		Plat44->SetPos({ 1905, 630 });
+		Machinegun_Plat* Plat3 = CreateActor<Machinegun_Plat>();
+		Plat3->SetPos({ 2620, 475 });
+		Machinegun_Plat* Plat4 = CreateActor<Machinegun_Plat>();
+		Plat4->SetPos({ 2850, 475 });
+		Machinegun_Plat* Plat5 = CreateActor<Machinegun_Plat>();
+		Plat5->SetPos({ 3100, 590 });
+		Machinegun_Plat* Plat6 = CreateActor<Machinegun_Plat>();
+		Plat6->SetPos({ 4360, 580 });
+		Machinegun_Plat* Plat7 = CreateActor<Machinegun_Plat>();
+		Plat7->SetPos({ 4460, 580 });
+		Machinegun_Plat* Plat8 = CreateActor<Machinegun_Plat>();
+		Plat8->SetPos({ 4700, 430 });
+		Machinegun_Plat* Plat9 = CreateActor<Machinegun_Plat>();
+		Plat9->SetPos({ 4800, 430 });
+		Machinegun_Plat* Plat10 = CreateActor<Machinegun_Plat>();
+		Plat10->SetPos({ 5652.5f, 390 });
+		Machinegun_Plat* Plat11 = CreateActor<Machinegun_Plat>();
+		Plat11->SetPos({ 5752.5f, 390 });
+		Machinegun_Plat* Plat12 = CreateActor<Machinegun_Plat>();
+		Plat12->SetPos({ 6425, 735 });
+		Machinegun_Plat* Plat13 = CreateActor<Machinegun_Plat>();
+		Plat13->SetPos({ 6595, 590 });
+		Machinegun_Plat* Plat14 = CreateActor<Machinegun_Plat>();
+		Plat14->SetPos({ 9278, 550 });
+		Machinegun_Plat* Plat15 = CreateActor<Machinegun_Plat>();
+		Plat15->SetPos({ 9765, 590 });
+		Machinegun_Plat* Plat16 = CreateActor<Machinegun_Plat>();
+		Plat16->SetPos({ 10505, 590 });
+		Machinegun_Plat* Plat17 = CreateActor<Machinegun_Plat>();
+		Plat17->SetPos({ 10605, 590 });
+		Machinegun_Plat* Plat18 = CreateActor<Machinegun_Plat>();
+		Plat18->SetPos({ 10905, 590 });
+		Machinegun_Plat* Plat19 = CreateActor<Machinegun_Plat>();
+		Plat19->SetPos({ 11005, 590 });
+	}
 
 	// Monster
 	// ½ºÆ÷³Ê»ç¿ë¹ý   ½ºÆ÷³Ê À§Ä¡    ¸÷ÀÌ¸§    ÄÝ¸Ê    ¸÷ Á¨ À§Ä¡   ¸®Á¨½Ã°£
 	// CreateSpawner({ 250, 300 }, "blue", ColMap, { 350, 590 }, 5);
+	{
+		Soldier_Machinegun* Ma1 = CreateActor<Soldier_Machinegun>();
+		Ma1->SetPos({ 790, 362 });
 
-	Soldier_Machinegun* Ma1 = CreateActor<Soldier_Machinegun>();
-	Ma1->SetPos({ 790, 362 });
+		Soldier_Machinegun* Ma2 = CreateActor<Soldier_Machinegun>();
+		Ma2->SetPos({ 3748, 362 });
 
-	Soldier_Machinegun* Ma2 = CreateActor<Soldier_Machinegun>();
-	Ma2->SetPos({ 3748, 362 });
+		Soldier_Machinegun* Ma3 = CreateActor<Soldier_Machinegun>();
+		Ma3->SetPos({ 7467, 362 });
 
-	Soldier_Machinegun* Ma3 = CreateActor<Soldier_Machinegun>();
-	Ma3->SetPos({ 7467, 362 });
-
-	Soldier_Machinegun* Ma4 = CreateActor<Soldier_Machinegun>();
-	Ma4->SetPos({ 8471, 364 });
-
-	// UI
-	CreateActor<GemWindow>();
-	CreateActor<Health>();
+		Soldier_Machinegun* Ma4 = CreateActor<Soldier_Machinegun>();
+		Ma4->SetPos({ 8471, 364 });
+	}
 
 	// Player
-	Shantae = CreateActor<Player>();
-	SHA = dynamic_cast<Player*>(Shantae);
+	{
+		Shantae = CreateActor<Player>();
+		SHA = dynamic_cast<Player*>(Shantae);
 
-	SHA->SetColMap(ColMap);
-	SHA->SetPos({ 45, 563 }); // 45, 563
-	Shantae->GetLevel()->SetCameraPos({ 55, 120 }); // 55, 120
-	SHA->SetAnimationStart(false);
-	SHA->SetStartAnimationStart(false);
+		SHA->SetColMap(ColMap);
+		SHA->SetPos({ 45, 563 }); // 45, 563
+		Shantae->GetLevel()->SetCameraPos({ 55, 120 }); // 55, 120
+		SHA->SetAnimationStart(false);
+		SHA->SetStartAnimationStart(false);
+
+		// UI
+		CreateActor<GemWindow>();
+		CreateActor<Health>();
+	}
 }
 
 void Machinegun::Update(float _DeltaTime)
