@@ -14,22 +14,45 @@ Sky::~Sky()
 
 void Sky::Start()
 {
-	// 768 417 1.84
-	GameEngineRender* Render = CreateRender("Sky.Bmp", RenderOrder::BackGround);
-	Render->SetPosition({ 640, -80 });
-	Render->SetScale({ 2200, 1177 });
-	Render->EffectCameraOff();
-}
+	Sky_one = CreateRender("Sky.Bmp", RenderOrder::BackGround);
+	Sky_one->SetScale(Sky_one->GetImage()->GetImageScale());
+	Sky_one->SetPosition({ 1100, 200 });
+	Sky_one->EffectCameraOff();
+	OneInitPos = Sky_one->GetPosition();
 
+	Sky_two = CreateRender("Sky.Bmp", RenderOrder::BackGround);
+	Sky_two->SetScale(Sky_two->GetImage()->GetImageScale());
+	Sky_two->SetPosition({ 3300, 200 });
+	Sky_two->EffectCameraOff();
+	TwoInitPos = Sky_two->GetPosition();
+}
 
 void Sky::Update(float _DeltaTime)
 {
-	// SHA->SetPos({ 300, 600 });
-	// float4 Dir = float4::Left;
-	// SetMove(Dir * 1000.0f * _DeltaTime);
+	if (1 == InitCount)
+	{
+		InitCount = 0;
+		Sky_one->SetPosition({ 1100, YPos });
+		Sky_two->SetPosition({ 3300, YPos });
+	}
 
-	//if (GetPos().x > 0)
-	//{
-	//	SetMove({ 640, -80 });
-	//}
+	SkyMove(_DeltaTime);
+}
+
+void Sky::SkyMove(float _DeltaTime)
+{
+	Sky_one->SetMove(float4::Left * MoveSpeed * _DeltaTime);
+	Sky_two->SetMove(float4::Left * MoveSpeed * _DeltaTime);
+
+	if (Sky_one->GetPosition().x <= -1100)
+	{
+		++Minus;
+		Sky_one->SetPosition({ 3300.0f - (Minus * 2), YPos });
+	}
+
+	if (Sky_two->GetPosition().x <= -1100)
+	{
+		++Minus;
+		Sky_two->SetPosition({ 3300.0f - (Minus * 2), YPos });
+	}
 }

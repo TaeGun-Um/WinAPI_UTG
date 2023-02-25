@@ -26,6 +26,8 @@
 #include "Wave.h"
 #include "Building1.h"
 #include "Building2.h"
+#include "Sky.h"
+#include "Sea.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -54,8 +56,10 @@ void TestLevel::Loading()
 	//GameEngineActor* A1 = CreateActor<Ship>();
 	//A1->SetPos({ 500, 300 });
 
-	GameEngineActor* A2 = CreateActor<Wave>();
-	A2->SetPos({ 500, 300 });
+	Sky* A1 = CreateActor<Sky>();
+	A1->SetSkyYPos(200);
+	A1->SetSkySpeed(1000);
+	
 
 	//GameEngineActor* A3 = CreateActor<Building1>();
 	//A3->SetPos({ 600, 300 });

@@ -151,9 +151,6 @@
     <ClInclude Include="Scuttle_Background.h">
       <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
     </ClInclude>
-    <ClInclude Include="Scuttle_Map.h">
-      <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
-    </ClInclude>
     <ClInclude Include="UncleRoom.h">
       <Filter>PlayLevel\TownLevel\2. UncleRoom</Filter>
     </ClInclude>
@@ -431,8 +428,8 @@
     <ClInclude Include="Sea.h">
       <Filter>PlayLevel\FieldLevel\0. ETC_Actor</Filter>
     </ClInclude>
-    <ClInclude Include="Scuttle_Sky.h">
-      <Filter>PlayLevel\TownLevel\0. ETC_Actor</Filter>
+    <ClInclude Include="Scuttle_Map.h">
+      <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -585,9 +582,6 @@
       <Filter>PlayLevel\TestLevel\Object</Filter>
     </ClCompile>
     <ClCompile Include="Scuttle_Background.cpp">
-      <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Scuttle_Map.cpp">
       <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
     </ClCompile>
     <ClCompile Include="UncleRoom.cpp">
@@ -890,8 +884,8 @@
     <ClCompile Include="Sky.cpp">
       <Filter>PlayLevel\FieldLevel\0. ETC_Actor</Filter>
     </ClCompile>
-    <ClCompile Include="Scuttle_Sky.cpp">
-      <Filter>PlayLevel\TownLevel\0. ETC_Actor</Filter>
+    <ClCompile Include="Scuttle_Map.cpp">
+      <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1110,9 +1104,6 @@
     </Filter>
     <Filter Include="PlayLevel\FieldLevel\0. ETC_Actor">
       <UniqueIdentifier>{0eb53fc0-a8ed-4a74-b67e-1ff837cd1375}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="PlayLevel\TownLevel\0. ETC_Actor">
-      <UniqueIdentifier>{509cdea9-657c-40fe-9ff3-85f5af00f352}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

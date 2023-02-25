@@ -10,8 +10,8 @@
 #include "UncleRoom_ColMap.h"
 #include "UncleRoom_Front.h"
 #include "UncleRoom_Map.h"
-#include "Scuttle_Sky.h"
 #include "Player.h"
+#include "Sky.h"
 #include "Sea.h"
 
 #include "GemWindow.h"
@@ -33,7 +33,7 @@ void UncleRoom::Loading()
 
 	// Background(¼ø¼­)
 	{
-		CreateActor<Scuttle_Sky>(); // { 640, 200 }
+		CreateActor<Sky>(); // { 640, 200 }
 		CreateActor<Sea>();
 	}
 

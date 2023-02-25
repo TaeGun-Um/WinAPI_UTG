@@ -9,8 +9,8 @@
 #include "SkyRoom_Background.h"
 #include "SkyRoom_ColMap.h"
 #include "SkyRoom_Map.h"
-#include "Scuttle_Sky.h"
 #include "Player.h"
+#include "Sky.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -31,7 +31,7 @@ void SkyRoom::Loading()
 
 	// Background(¼ø¼­)
 	{
-		CreateActor<Scuttle_Sky>(); // { 640, 300 }
+		CreateActor<Sky>(); // { 640, 300 }
 	}
 	
 	CreateActor<SkyRoom_Background>();

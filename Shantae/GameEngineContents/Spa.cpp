@@ -9,7 +9,7 @@
 #include "Spa_Background.h"
 #include "Spa_ColMap.h"
 #include "Spa_Map.h"
-#include "Scuttle_Sky.h"
+#include "Sky.h"
 #include "Player.h"
 #include "Sea.h"
 
@@ -32,7 +32,7 @@ void Spa::Loading()
 
 	// Background(¼ø¼­)
 	{
-		CreateActor<Scuttle_Sky>(); // { 640, 200 }
+		CreateActor<Sky>(); // { 640, 200 }
 		CreateActor<Sea>();
 	}
 

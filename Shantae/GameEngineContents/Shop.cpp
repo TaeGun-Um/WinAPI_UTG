@@ -10,8 +10,8 @@
 #include "Shop_ColMap.h"
 #include "Shop_Front.h"
 #include "Shop_Map.h"
-#include "Scuttle_Sky.h"
 #include "Player.h"
+#include "Sky.h"
 #include "Sea.h"
 
 #include "GemWindow.h"
@@ -33,7 +33,7 @@ void Shop::Loading()
 
 	// Background(¼ø¼­)
 	{
-		CreateActor<Scuttle_Sky>(); // { 640, 300 }
+		CreateActor<Sky>(); // { 640, 300 }
 		CreateActor<Sea>();
 	}
 

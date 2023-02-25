@@ -114,7 +114,6 @@ void ObjectLoad::Loading()
 	// Scuttle
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Town\\Scuttle\\Scuttle_Background.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Town\\Scuttle\\Scuttle_Map.bmp"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Town\\Scuttle\\Scuttle_Sky.bmp"));
 
 	// UncleRoom
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Town\\UncleRoom\\UncleRoom_Background.bmp"));
