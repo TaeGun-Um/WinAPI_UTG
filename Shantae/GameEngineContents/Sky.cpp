@@ -1,28 +1,28 @@
-#include "Move0_Sky.h"
+#include "Sky.h"
 
 #include <GameEngineCore/GameEngineRender.h>
 
 #include "ContentsEnum.h"
 
-Move0_Sky::Move0_Sky() 
+Sky::Sky()
 {
 }
 
-Move0_Sky::~Move0_Sky() 
+Sky::~Sky()
 {
 }
 
-void Move0_Sky::Start()
+void Sky::Start()
 {
 	// 768 417 1.84
-	GameEngineRender* Render = CreateRender("Move0_Sky.Bmp", RenderOrder::BackGround);
+	GameEngineRender* Render = CreateRender("Sky.Bmp", RenderOrder::BackGround);
 	Render->SetPosition({ 640, -80 });
 	Render->SetScale({ 2200, 1177 });
 	Render->EffectCameraOff();
 }
 
 
-void Move0_Sky::Update(float _DeltaTime)
+void Sky::Update(float _DeltaTime)
 {
 	// SHA->SetPos({ 300, 600 });
 	// float4 Dir = float4::Left;

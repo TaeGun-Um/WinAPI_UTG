@@ -16,10 +16,11 @@
 #include "HouseFront_Island.h"
 #include "HouseFront_LightHouse.h"
 #include "HouseFront_PalmTree.h"
-#include "HouseFront_Sea.h"
 #include "HouseFront_WindVane.h"
 #include "Building0.h"
 #include "Wave.h"
+#include "Sea.h"
+#include "Sky.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -44,7 +45,7 @@ void HouseFront::Loading()
 	ColMap = ObjectLoad::GetObjectLoadPtr()->GetColMap("HouseFront");
 
 	// Background(¼ø¼­)
-	CreateActor<HouseFront_Sea>();
+	// CreateActor<HouseFront_Sea>();
 	CreateActor<HouseFront_Building>();
 	CreateActor<Building0>();
 	CreateActor<HouseFront_Island>();

@@ -9,9 +9,9 @@
 #include "Scuttle_Background.h"
 #include "Scuttle_ColMap.h"
 #include "Scuttle_Map.h"
-#include "Scuttle_Sea.h"
 #include "Scuttle_Sky.h"
 #include "Player.h"
+#include "Sea.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -34,7 +34,7 @@ void Scuttle::Loading()
 
 	// Background(¼ø¼­)
 	CreateActor<Scuttle_Sky>();
-	CreateActor<Scuttle_Sea>();
+	CreateActor<Sea>();
 	CreateActor<Scuttle_Background>();
 
 	// Map

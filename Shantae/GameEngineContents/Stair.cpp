@@ -13,6 +13,7 @@
 #include "Stair_Map.h"
 #include "Stair_Stair.h"
 #include "Stair_Tower.h"
+#include "Sky.h"
 
 #include "Soldier_Black.h"
 #include "Soldier_Blue.h"
@@ -37,7 +38,7 @@ void Stair::Loading()
 	ColMap = ObjectLoad::GetObjectLoadPtr()->GetColMap("Stair");
 
 	// Background(¼ø¼­)
-	CreateActor<Stair_Sky>();
+	CreateActor<Sky>();
 	CreateActor<Stair_Tower>();
 	CreateActor<Stair_Bush2>();
 	CreateActor<Stair_Bush1>();

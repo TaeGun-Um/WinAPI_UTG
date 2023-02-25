@@ -9,12 +9,13 @@
 #include "Move0_Buliding.h"
 #include "Move0_ColMap.h"
 #include "Move0_Map.h"
-#include "Move0_Sea.h"
-#include "Move0_Sky.h"
 #include "Move0_ETCBackground.h"
 #include "Wave.h"
 #include "Ship.h"
 #include "Player.h"
+
+#include "Sea.h"
+#include "Sky.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -36,8 +37,8 @@ void Move0::Loading()
 	ColMap = ObjectLoad::GetObjectLoadPtr()->GetColMap("Move0");
 
 	// Background(¼ø¼­)
-	CreateActor<Move0_Sky>();
-	CreateActor<Move0_Sea>();
+	CreateActor<Sky>();
+	CreateActor<Sea>();
 	CreateActor<Move0_ETCBackground>();
 	CreateActor<Move0_Buliding>();
 

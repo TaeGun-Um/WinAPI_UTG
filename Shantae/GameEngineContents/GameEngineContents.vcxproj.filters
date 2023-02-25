@@ -94,12 +94,6 @@
     <ClInclude Include="Move0_Map.h">
       <Filter>PlayLevel\FieldLevel\3. Move0\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="Move0_Sea.h">
-      <Filter>PlayLevel\FieldLevel\3. Move0\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="Move0_Sky.h">
-      <Filter>PlayLevel\FieldLevel\3. Move0\Actor</Filter>
-    </ClInclude>
     <ClInclude Include="Move0_ETCBackground.h">
       <Filter>PlayLevel\FieldLevel\3. Move0\Actor</Filter>
     </ClInclude>
@@ -107,12 +101,6 @@
       <Filter>PlayLevel\FieldLevel\4. Move1\Actor</Filter>
     </ClInclude>
     <ClInclude Include="Move1_Buliding.h">
-      <Filter>PlayLevel\FieldLevel\4. Move1\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="Move1_Sky.h">
-      <Filter>PlayLevel\FieldLevel\4. Move1\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="Move1_Sea.h">
       <Filter>PlayLevel\FieldLevel\4. Move1\Actor</Filter>
     </ClInclude>
     <ClInclude Include="Move1_ETCBackground.h">
@@ -133,9 +121,6 @@
     <ClInclude Include="Stair_Bush2.h">
       <Filter>PlayLevel\FieldLevel\5. Stair\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="Stair_Sky.h">
-      <Filter>PlayLevel\FieldLevel\5. Stair\Actor</Filter>
-    </ClInclude>
     <ClInclude Include="BeforeBoss_Background.h">
       <Filter>PlayLevel\FieldLevel\8. BeforeBoss\Actor</Filter>
     </ClInclude>
@@ -143,9 +128,6 @@
       <Filter>PlayLevel\FieldLevel\8. BeforeBoss\Actor</Filter>
     </ClInclude>
     <ClInclude Include="Boss_Map.h">
-      <Filter>PlayLevel\FieldLevel\9. Boss\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss_Sky.h">
       <Filter>PlayLevel\FieldLevel\9. Boss\Actor</Filter>
     </ClInclude>
     <ClInclude Include="Boss_ETCBackground.h">
@@ -157,13 +139,7 @@
     <ClInclude Include="Machinegun_Map.h">
       <Filter>PlayLevel\FieldLevel\6. Machinegun\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="Machinegun_Sky.h">
-      <Filter>PlayLevel\FieldLevel\6. Machinegun\Actor</Filter>
-    </ClInclude>
     <ClInclude Include="BoomBridge_Background.h">
-      <Filter>PlayLevel\FieldLevel\7. BoomBridge\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="BoomBridge_Sky.h">
       <Filter>PlayLevel\FieldLevel\7. BoomBridge\Actor</Filter>
     </ClInclude>
     <ClInclude Include="Scuttle.h">
@@ -176,12 +152,6 @@
       <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
     </ClInclude>
     <ClInclude Include="Scuttle_Map.h">
-      <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Scuttle_Sky.h">
-      <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Scuttle_Sea.h">
       <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
     </ClInclude>
     <ClInclude Include="UncleRoom.h">
@@ -205,34 +175,19 @@
     <ClInclude Include="UncleRoom_Sky.h">
       <Filter>PlayLevel\TownLevel\2. UncleRoom\Object</Filter>
     </ClInclude>
-    <ClInclude Include="UncleRoom_Sea.h">
-      <Filter>PlayLevel\TownLevel\2. UncleRoom\Object</Filter>
-    </ClInclude>
     <ClInclude Include="Shop_Sky.h">
-      <Filter>PlayLevel\TownLevel\3. Shop\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Shop_Sea.h">
       <Filter>PlayLevel\TownLevel\3. Shop\Object</Filter>
     </ClInclude>
     <ClInclude Include="Spa_Sky.h">
       <Filter>PlayLevel\TownLevel\4. Spa\Object</Filter>
     </ClInclude>
-    <ClInclude Include="Spa_Sea.h">
-      <Filter>PlayLevel\TownLevel\4. Spa\Object</Filter>
-    </ClInclude>
     <ClInclude Include="Smith_Sky.h">
-      <Filter>PlayLevel\TownLevel\5. Smith\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Smith_Sea.h">
       <Filter>PlayLevel\TownLevel\5. Smith\Object</Filter>
     </ClInclude>
     <ClInclude Include="SkyRoom_Sky.h">
       <Filter>PlayLevel\TownLevel\6. SkyRoom\Object</Filter>
     </ClInclude>
     <ClInclude Include="SaveRoom_Sky.h">
-      <Filter>PlayLevel\TownLevel\7. SaveRoom\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="SaveRoom_Sea.h">
       <Filter>PlayLevel\TownLevel\7. SaveRoom\Object</Filter>
     </ClInclude>
     <ClInclude Include="Shop_Background.h">
@@ -485,6 +440,15 @@
     <ClInclude Include="Wave.h">
       <Filter>PlayLevel\FieldLevel\0. ETC_Actor</Filter>
     </ClInclude>
+    <ClInclude Include="Sky.h">
+      <Filter>PlayLevel\FieldLevel\0. ETC_Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Sea.h">
+      <Filter>PlayLevel\FieldLevel\0. ETC_Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Scuttle_Sky.h">
+      <Filter>PlayLevel\TownLevel\0. ETC_Actor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShantaeCore.cpp" />
@@ -581,12 +545,6 @@
     <ClCompile Include="Move0_Map.cpp">
       <Filter>PlayLevel\FieldLevel\3. Move0\Actor</Filter>
     </ClCompile>
-    <ClCompile Include="Move0_Sea.cpp">
-      <Filter>PlayLevel\FieldLevel\3. Move0\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="Move0_Sky.cpp">
-      <Filter>PlayLevel\FieldLevel\3. Move0\Actor</Filter>
-    </ClCompile>
     <ClCompile Include="Move0_ETCBackground.cpp">
       <Filter>PlayLevel\FieldLevel\3. Move0\Actor</Filter>
     </ClCompile>
@@ -594,12 +552,6 @@
       <Filter>PlayLevel\FieldLevel\4. Move1\Actor</Filter>
     </ClCompile>
     <ClCompile Include="Move1_Buliding.cpp">
-      <Filter>PlayLevel\FieldLevel\4. Move1\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="Move1_Sky.cpp">
-      <Filter>PlayLevel\FieldLevel\4. Move1\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="Move1_Sea.cpp">
       <Filter>PlayLevel\FieldLevel\4. Move1\Actor</Filter>
     </ClCompile>
     <ClCompile Include="Move1_ETCBackground.cpp">
@@ -620,9 +572,6 @@
     <ClCompile Include="Stair_Bush2.cpp">
       <Filter>PlayLevel\FieldLevel\5. Stair\Actor</Filter>
     </ClCompile>
-    <ClCompile Include="Stair_Sky.cpp">
-      <Filter>PlayLevel\FieldLevel\5. Stair\Actor</Filter>
-    </ClCompile>
     <ClCompile Include="BeforeBoss_Background.cpp">
       <Filter>PlayLevel\FieldLevel\8. BeforeBoss\Actor</Filter>
     </ClCompile>
@@ -630,9 +579,6 @@
       <Filter>PlayLevel\FieldLevel\8. BeforeBoss\Actor</Filter>
     </ClCompile>
     <ClCompile Include="Boss_Map.cpp">
-      <Filter>PlayLevel\FieldLevel\9. Boss\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss_Sky.cpp">
       <Filter>PlayLevel\FieldLevel\9. Boss\Actor</Filter>
     </ClCompile>
     <ClCompile Include="Boss_ETCBackground.cpp">
@@ -644,13 +590,7 @@
     <ClCompile Include="Machinegun_Map.cpp">
       <Filter>PlayLevel\FieldLevel\6. Machinegun\Actor</Filter>
     </ClCompile>
-    <ClCompile Include="Machinegun_Sky.cpp">
-      <Filter>PlayLevel\FieldLevel\6. Machinegun\Actor</Filter>
-    </ClCompile>
     <ClCompile Include="BoomBridge_Background.cpp">
-      <Filter>PlayLevel\FieldLevel\7. BoomBridge\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="BoomBridge_Sky.cpp">
       <Filter>PlayLevel\FieldLevel\7. BoomBridge\Actor</Filter>
     </ClCompile>
     <ClCompile Include="Scuttle.cpp">
@@ -663,12 +603,6 @@
       <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
     </ClCompile>
     <ClCompile Include="Scuttle_Map.cpp">
-      <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Scuttle_Sky.cpp">
-      <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Scuttle_Sea.cpp">
       <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
     </ClCompile>
     <ClCompile Include="UncleRoom.cpp">
@@ -692,34 +626,19 @@
     <ClCompile Include="UncleRoom_Sky.cpp">
       <Filter>PlayLevel\TownLevel\2. UncleRoom\Object</Filter>
     </ClCompile>
-    <ClCompile Include="UncleRoom_Sea.cpp">
-      <Filter>PlayLevel\TownLevel\2. UncleRoom\Object</Filter>
-    </ClCompile>
     <ClCompile Include="Shop_Sky.cpp">
-      <Filter>PlayLevel\TownLevel\3. Shop\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Shop_Sea.cpp">
       <Filter>PlayLevel\TownLevel\3. Shop\Object</Filter>
     </ClCompile>
     <ClCompile Include="Spa_Sky.cpp">
       <Filter>PlayLevel\TownLevel\4. Spa\Object</Filter>
     </ClCompile>
-    <ClCompile Include="Spa_Sea.cpp">
-      <Filter>PlayLevel\TownLevel\4. Spa\Object</Filter>
-    </ClCompile>
     <ClCompile Include="Smith_Sky.cpp">
-      <Filter>PlayLevel\TownLevel\5. Smith\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Smith_Sea.cpp">
       <Filter>PlayLevel\TownLevel\5. Smith\Object</Filter>
     </ClCompile>
     <ClCompile Include="SkyRoom_Sky.cpp">
       <Filter>PlayLevel\TownLevel\6. SkyRoom\Object</Filter>
     </ClCompile>
     <ClCompile Include="SaveRoom_Sky.cpp">
-      <Filter>PlayLevel\TownLevel\7. SaveRoom\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="SaveRoom_Sea.cpp">
       <Filter>PlayLevel\TownLevel\7. SaveRoom\Object</Filter>
     </ClCompile>
     <ClCompile Include="Shop_Background.cpp">
@@ -995,6 +914,15 @@
     <ClCompile Include="Wave.cpp">
       <Filter>PlayLevel\FieldLevel\0. ETC_Actor</Filter>
     </ClCompile>
+    <ClCompile Include="Sea.cpp">
+      <Filter>PlayLevel\FieldLevel\0. ETC_Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Sky.cpp">
+      <Filter>PlayLevel\FieldLevel\0. ETC_Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Scuttle_Sky.cpp">
+      <Filter>PlayLevel\TownLevel\0. ETC_Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Character">
@@ -1212,6 +1140,9 @@
     </Filter>
     <Filter Include="PlayLevel\FieldLevel\0. ETC_Actor">
       <UniqueIdentifier>{0eb53fc0-a8ed-4a74-b67e-1ff837cd1375}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PlayLevel\TownLevel\0. ETC_Actor">
+      <UniqueIdentifier>{509cdea9-657c-40fe-9ff3-85f5af00f352}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

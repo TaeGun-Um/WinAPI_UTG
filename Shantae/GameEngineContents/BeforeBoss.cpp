@@ -7,10 +7,10 @@
 #include <GameEngineCore/GameEngineCore.h>
 
 #include "Move0.h"
-#include "Move0_Sky.h"
 #include "BeforeBoss_Background.h"
 #include "BeforeBoss_ColMap.h"
 #include "BeforeBoss_Map.h"
+#include "Sky.h"
 #include "Wave.h"
 #include "Player.h"
 
@@ -32,7 +32,7 @@ void BeforeBoss::Loading()
 	ColMap = ObjectLoad::GetObjectLoadPtr()->GetColMap("BeforeBoss");
 
 	// Background(¼ø¼­)
-	CreateActor<Move0_Sky>();
+	CreateActor<Sky>();
 	CreateActor<BeforeBoss_Background>();
 
 	// Map

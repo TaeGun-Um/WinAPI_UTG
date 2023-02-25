@@ -9,9 +9,9 @@
 #include "Spa_Background.h"
 #include "Spa_ColMap.h"
 #include "Spa_Map.h"
-#include "Spa_Sea.h"
 #include "Spa_Sky.h"
 #include "Player.h"
+#include "Sea.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -32,7 +32,7 @@ void Spa::Loading()
 
 	// Background(¼ø¼­)
 	CreateActor<Spa_Sky>();
-	CreateActor<Spa_Sea>();
+	CreateActor<Sea>();
 	CreateActor<Spa_Background>();
 
 	// Map		

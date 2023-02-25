@@ -10,10 +10,10 @@
 #include "Move1_ColMap.h"
 #include "Move1_ETCBackground.h"
 #include "Move1_Map.h"
-#include "Move1_Sea.h"
-#include "Move1_Sky.h"
 #include "Player.h"
 #include "Wave.h"
+#include "Sea.h"
+#include "Sky.h"
 
 #include "Soldier_Bomberman.h"
 
@@ -35,8 +35,8 @@ void Move1::Loading()
 	ColMap = ObjectLoad::GetObjectLoadPtr()->GetColMap("Move1");
 
 	// Background(¼ø¼­)
-	CreateActor<Move1_Sky>();
-	CreateActor<Move1_Sea>();
+	CreateActor<Sky>();
+	CreateActor<Sea>();
 	CreateActor<Move1_ETCBackground>();
 	CreateActor<Move1_Buliding>();
 

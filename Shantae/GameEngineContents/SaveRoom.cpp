@@ -10,9 +10,9 @@
 #include "SaveRoom_ColMap.h"
 #include "SaveRoom_Front.h"
 #include "SaveRoom_Map.h"
-#include "SaveRoom_Sea.h"
 #include "SaveRoom_Sky.h"
 #include "Player.h"
+#include "Sea.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -33,7 +33,7 @@ void SaveRoom::Loading()
 
 	// Background(¼ø¼­)
 	CreateActor<SaveRoom_Sky>();
-	CreateActor<SaveRoom_Sea>();
+	CreateActor<Sea>();
 	CreateActor<SaveRoom_Background>();
 
 	// Map		

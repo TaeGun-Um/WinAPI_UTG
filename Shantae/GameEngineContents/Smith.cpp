@@ -9,9 +9,9 @@
 #include "Smith_Background.h"
 #include "Smith_ColMap.h"
 #include "Smith_Map.h"
-#include "Smith_Sea.h"
 #include "Smith_Sky.h"
 #include "Player.h"
+#include "Sea.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -32,7 +32,7 @@ void Smith::Loading()
 
 	// Background(¼ø¼­)
 	CreateActor<Smith_Sky>();
-	CreateActor<Smith_Sea>();
+	CreateActor<Sea>();
 	CreateActor<Smith_Background>();
 
 	// Map		

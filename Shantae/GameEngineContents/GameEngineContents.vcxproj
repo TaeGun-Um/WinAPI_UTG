@@ -215,10 +215,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="BoomBridge_Sky.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="Boss.h">
       <SubType>
       </SubType>
@@ -244,10 +240,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Boss_Tank.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Boss_Sky.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -316,10 +308,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Machinegun_PlatPiece2.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Machinegun_Sky.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -404,11 +392,11 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Move0_Sea.h">
+    <ClInclude Include="Sea.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Move0_Sky.h">
+    <ClInclude Include="Sky.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -425,14 +413,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Move1_Map.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Move1_Sea.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Move1_Sky.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -496,10 +476,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="SaveRoom_Sea.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="SaveRoom_Sky.h">
       <SubType>
       </SubType>
@@ -521,10 +497,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Scuttle_Map.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Scuttle_Sea.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -585,10 +557,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Shop_Sea.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="Shop_Sky.h">
       <SubType>
       </SubType>
@@ -630,10 +598,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Smith_Map.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Smith_Sea.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -701,10 +665,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Spa_Sea.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="Spa_Sky.h">
       <SubType>
       </SubType>
@@ -730,10 +690,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Stair_Map.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Stair_Sky.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -775,10 +731,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="UncleRoom_Map.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="UncleRoom_Sea.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -857,10 +809,6 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="BoomBridge_Sky.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="Boss.cpp">
       <SubType>
       </SubType>
@@ -886,10 +834,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Boss_Tank.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Boss_Sky.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -959,10 +903,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Machinegun_PlatPiece2.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Machinegun_Sky.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -1046,11 +986,11 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Move0_Sea.cpp">
+    <ClCompile Include="Sea.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Move0_Sky.cpp">
+    <ClCompile Include="Sky.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -1067,14 +1007,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Move1_Map.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Move1_Sea.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Move1_Sky.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -1139,10 +1071,6 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="SaveRoom_Sea.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="SaveRoom_Sky.cpp">
       <SubType>
       </SubType>
@@ -1164,10 +1092,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Scuttle_Map.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Scuttle_Sea.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -1231,10 +1155,6 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Shop_Sea.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="Shop_Sky.cpp">
       <SubType>
       </SubType>
@@ -1276,10 +1196,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Smith_Map.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Smith_Sea.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -1353,10 +1269,6 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Spa_Sea.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="Spa_Sky.cpp">
       <SubType>
       </SubType>
@@ -1382,10 +1294,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Stair_Map.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Stair_Sky.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -1427,10 +1335,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="UncleRoom_Map.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="UncleRoom_Sea.cpp">
       <SubType>
       </SubType>
     </ClCompile>

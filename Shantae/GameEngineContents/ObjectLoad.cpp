@@ -41,8 +41,6 @@ void ObjectLoad::Loading()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Title\\SelectMenu_Button_End.BMP"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Title\\SelectMenu_Icon.BMP"));
 
-
-
 	//////////////////////////////// Field ////////////////////////////////
 	// Public
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Public\\Building0.bmp"));
@@ -52,6 +50,8 @@ void ObjectLoad::Loading()
 	II2->Cut(1, 1);
 	GameEngineImage* II3 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Public\\Ship.bmp"));
 	II3->Cut(1, 1);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Public\\Sea.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Public\\Sky.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Public\\Building1_F.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Public\\Building2_F.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Public\\Ship_F.bmp"));
@@ -67,14 +67,12 @@ void ObjectLoad::Loading()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\HouseFront\\HouseFront_Island.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\HouseFront\\HouseFront_LightHouse.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\HouseFront\\HouseFront_PalmTree.bmp"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\HouseFront\\HouseFront_Sea.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\HouseFront\\HouseFront_Sea.bmp")); //
 
 	// Move0
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Move0\\Move0_Buliding.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Move0\\Move0_Bush.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Move0\\Move0_Map.bmp"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Move0\\Move0_Sea.bmp"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Move0\\Move0_Sky.bmp"));
 
 	// Move1
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Move1\\Move1_Buliding.bmp"));

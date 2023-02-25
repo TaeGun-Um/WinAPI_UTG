@@ -9,11 +9,11 @@
 #include "BoomBridge_Background.h"
 #include "BoomBridge_Map.h"
 #include "BoomBridge_ColMap.h"
-#include "BoomBridge_Sky.h"
 #include "BoomBridge_Bridge1.h"
 #include "BoomBridge_Bridge2.h"
 #include "BoomBridge_Bridge3.h"
 #include "Bridge_Boom.h"
+#include "Sky.h"
 #include "TimerCollision.h"
 
 #include "Soldier_Spider.h"
@@ -37,7 +37,7 @@ void BoomBridge::Loading()
 	ColMap = ObjectLoad::GetObjectLoadPtr()->GetColMap("BoomBridge");
 
 	// Background(¼ø¼­)
-	CreateActor<BoomBridge_Sky>();
+	CreateActor<Sky>();
 	CreateActor<BoomBridge_Background>();
 
 	// Map

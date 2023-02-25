@@ -9,7 +9,7 @@
 #include "Machinegun_Background.h"
 #include "Machinegun_ColMap.h"
 #include "Machinegun_Map.h"
-#include "Machinegun_Sky.h"
+#include "Sky.h"
 
 #include "Player.h"
 #include "Machinegun_Plat.h"
@@ -33,7 +33,7 @@ void Machinegun::Loading()
 	ColMap = ObjectLoad::GetObjectLoadPtr()->GetColMap("Machinegun");
 
 	// Background(¼ø¼­)
-	CreateActor<Machinegun_Sky>();
+	CreateActor<Sky>();
 	CreateActor<Machinegun_Background>();
 
 	// Map

@@ -9,7 +9,7 @@
 #include "Boss_ColMap.h"
 #include "Boss_ETCBackground.h"
 #include "Boss_Map.h"
-#include "Boss_Sky.h"
+#include "Sky.h"
 
 #include "Player.h"
 #include "Boss_Tank.h"
@@ -34,7 +34,7 @@ void Boss::Loading()
 	ColMap = ObjectLoad::GetObjectLoadPtr()->GetColMap("Boss");
 
 	// Background(¼ø¼­)
-	CreateActor<Boss_Sky>();
+	CreateActor<Sky>();
 	CreateActor<Boss_ETCBackground>();
 
 	// Map
