@@ -101,6 +101,13 @@ void Building2::CollisionCheck()
 			BodyCollision->Off();
 			Break = true;
 			Player::MainPlayer->SetCameraShaking(3.0f, 3.0f);
+			if (1 == SoundCount || 2 == SoundCount)
+			{
+				--SoundCount;
+				BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Explosion_deep.wav");
+				BGMPlayer.Volume(0.1f);
+				BGMPlayer.LoopCount(1);
+			}
 		}
 	}
 }

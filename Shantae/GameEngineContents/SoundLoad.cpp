@@ -40,7 +40,8 @@ void SoundLoad::Loading()
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Housefront_seagull1.wav"));     // o Home, HouseFront 갈매기 환경음 1
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Housefront_seagull2.wav"));     // o Home, HouseFront 갈매기 환경음 2
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Housefront_wave.wav"));         // o Home, HouseFront 파도소리 환경음
-	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\House_explosion.mp3"));    // o Home 폭발음
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\House_explosion.mp3"));		 // o Home 폭발음
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Explosion_deep.wav"));		 // o 건물 폭발음
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Clash_smalljar.wav"));			 // jar 파괴 시 효과음
 
 	// Town

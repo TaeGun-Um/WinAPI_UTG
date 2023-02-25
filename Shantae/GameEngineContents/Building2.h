@@ -1,5 +1,6 @@
 #pragma once
 
+#include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineActor.h>
 
 // Ό³Έν : Player Chracter
@@ -30,6 +31,9 @@ private:
 
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
+
+	GameEngineSoundPlayer BGMPlayer;
+
 	float4 InitPos = float4::Zero;
 	float4 MoveDir = float4::Zero;
 
@@ -39,6 +43,7 @@ private:
 	float BreakDelay = 0.0f;
 
 	int InitCount = 1;
+	int SoundCount = 2;
 
 	bool Break = false;
 };
