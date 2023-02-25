@@ -11,6 +11,7 @@
 #include "BeforeBoss_Background.h"
 #include "BeforeBoss_ColMap.h"
 #include "BeforeBoss_Map.h"
+#include "Wave.h"
 #include "Player.h"
 
 #include "GemWindow.h"
@@ -38,7 +39,14 @@ void BeforeBoss::Loading()
 	CreateActor<BeforeBoss_Map>();
 	CreateActor<BeforeBoss_ColMap>();
 
-	// Monster
+	GameEngineActor* W1 = CreateActor<Wave>();
+	W1->SetPos({ 190, 780 });
+	GameEngineActor* W2 = CreateActor<Wave>();
+	W2->SetPos({ 581, 780 });
+	GameEngineActor* W3 = CreateActor<Wave>();
+	W3->SetPos({ 972, 780 });
+	GameEngineActor* W4 = CreateActor<Wave>();
+	W4->SetPos({ 1363, 780 });
 
 	// UI
 	CreateActor<GemWindow>();

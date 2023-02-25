@@ -15,10 +15,10 @@ Building2::~Building2()
 
 void Building2::Start()
 {
-	//AnimationRender = CreateRender("Building2.Bmp", RenderOrder::BackGround);
-	//AnimationRender->SetRotFilter("Building2_F.bmp");
-	//AnimationRender->SetScale(AnimationRender->GetImage()->GetImageScale());
-	// AnimationRender->SetAngleAdd(30);
+	AnimationRender = CreateRender("Building2.Bmp", RenderOrder::BackGround);
+	AnimationRender->SetRotFilter("Building2_F.bmp");
+	AnimationRender->SetScale(AnimationRender->GetImage()->GetImageScale());
+	AnimationRender->SetAngleAdd(30);
 
 	// Collision
 	BodyCollision = CreateCollision(CollisionOrder::Effect);
@@ -40,8 +40,6 @@ void Building2::Render(float _DeltaTime)
 // 중력, 점프, 맵타일
 void Building2::MoveCalculation(float _DeltaTime)
 {
-	MoveSpeed = 900.0f;
-	SetMove(float4::Up * MoveSpeed * _DeltaTime);
 }
 
 void Building2::CollisionCheck()

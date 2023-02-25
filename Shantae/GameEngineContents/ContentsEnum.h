@@ -2,14 +2,15 @@
 
 enum class RenderOrder
 {
-	BackGround, // 0
-	Object,     // 1
-	Monster,    // 2
-	Player,     // 3
-	Map,        // 4
-	Effect,     // 5
-	UI,         // 6
-	Box,        // 7
+	BackGround,		 // 0
+	Object,			 // 1
+	Monster,		 // 2
+	Player,			 // 3
+	AnimationObject, // 4
+	Map,			 // 5
+	Effect,			 // 6
+	UI,				 // 7
+	Box,			 // 8
 };
 
 // Collision 그룹화를 위한 Enum 추가

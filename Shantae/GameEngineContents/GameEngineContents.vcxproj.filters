@@ -474,13 +474,16 @@
     </ClInclude>
     <ClInclude Include="ShantaeCore.h" />
     <ClInclude Include="Ship.h">
-      <Filter>PlayLevel\FieldLevel\3. Move0\Actor\ETC_Actor</Filter>
+      <Filter>PlayLevel\FieldLevel\0. ETC_Actor</Filter>
     </ClInclude>
     <ClInclude Include="Building1.h">
-      <Filter>PlayLevel\FieldLevel\3. Move0\Actor\ETC_Actor</Filter>
+      <Filter>PlayLevel\FieldLevel\0. ETC_Actor</Filter>
     </ClInclude>
     <ClInclude Include="Building2.h">
-      <Filter>PlayLevel\FieldLevel\3. Move0\Actor\ETC_Actor</Filter>
+      <Filter>PlayLevel\FieldLevel\0. ETC_Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Wave.h">
+      <Filter>PlayLevel\FieldLevel\0. ETC_Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -981,13 +984,16 @@
       <Filter>UI\AnimationBox</Filter>
     </ClCompile>
     <ClCompile Include="Ship.cpp">
-      <Filter>PlayLevel\FieldLevel\3. Move0\Actor\ETC_Actor</Filter>
+      <Filter>PlayLevel\FieldLevel\0. ETC_Actor</Filter>
     </ClCompile>
     <ClCompile Include="Building1.cpp">
-      <Filter>PlayLevel\FieldLevel\3. Move0\Actor\ETC_Actor</Filter>
+      <Filter>PlayLevel\FieldLevel\0. ETC_Actor</Filter>
     </ClCompile>
     <ClCompile Include="Building2.cpp">
-      <Filter>PlayLevel\FieldLevel\3. Move0\Actor\ETC_Actor</Filter>
+      <Filter>PlayLevel\FieldLevel\0. ETC_Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Wave.cpp">
+      <Filter>PlayLevel\FieldLevel\0. ETC_Actor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1204,7 +1210,7 @@
     <Filter Include="Character\NPC\Sepcial">
       <UniqueIdentifier>{80caf39b-3208-49a6-951b-7f6a1789bfa6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="PlayLevel\FieldLevel\3. Move0\Actor\ETC_Actor">
+    <Filter Include="PlayLevel\FieldLevel\0. ETC_Actor">
       <UniqueIdentifier>{0eb53fc0-a8ed-4a74-b67e-1ff837cd1375}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

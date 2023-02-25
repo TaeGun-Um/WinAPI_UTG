@@ -23,6 +23,9 @@
 #include "MonsterSpawner.h"
 #include "Machinegun_Plat.h"
 #include "Ship.h"
+#include "Wave.h"
+#include "Building1.h"
+#include "Building2.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -48,8 +51,17 @@ void TestLevel::Loading()
 
 	CreateActor<TestMap>();
 
-	GameEngineActor* A1 = CreateActor<Ship>();
-	A1->SetPos({ 500, 300 });
+	//GameEngineActor* A1 = CreateActor<Ship>();
+	//A1->SetPos({ 500, 300 });
+
+	GameEngineActor* A2 = CreateActor<Wave>();
+	A2->SetPos({ 500, 300 });
+
+	//GameEngineActor* A3 = CreateActor<Building1>();
+	//A3->SetPos({ 600, 300 });
+
+	//GameEngineActor* A4 = CreateActor<Building2>();
+	//A4->SetPos({ 700, 300 });
 
 	CreateActor<GemWindow>();
 

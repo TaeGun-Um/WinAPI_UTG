@@ -12,6 +12,7 @@
 #include "Move0_Sea.h"
 #include "Move0_Sky.h"
 #include "Move0_ETCBackground.h"
+#include "Wave.h"
 #include "Ship.h"
 #include "Player.h"
 
@@ -44,12 +45,23 @@ void Move0::Loading()
 	CreateActor<Move0_Map>();
 	CreateActor<Move0_ColMap>();
 
+	GameEngineActor* W1 = CreateActor<Wave>();
+	W1->SetPos({ 7300, 775 });
+	GameEngineActor* W2 = CreateActor<Wave>();
+	W2->SetPos({ 7691, 775 });
+	GameEngineActor* W3 = CreateActor<Wave>();
+	W3->SetPos({ 8082, 775 });
+	GameEngineActor* W4 = CreateActor<Wave>();
+	W4->SetPos({ 8473, 775 });
+	GameEngineActor* W5 = CreateActor<Wave>();
+	W5->SetPos({ 8864, 775 });
+
 	// Monster
 	// ½ºÆ÷³Ê»ç¿ë¹ý   ½ºÆ÷³Ê À§Ä¡    ¸÷ÀÌ¸§    ÄÝ¸Ê    ¸÷ Á¨ À§Ä¡   ¸®Á¨½Ã°£
 	// CreateSpawner({ 250, 300 }, "blue", ColMap, { 350, 590 }, 5);
 
 	CreateSpawner({ 1860, 0 }, "blue", ColMap, { 3251, 340 }, 5);
-	CreateSpawner({ 3852, 0 }, "blue", ColMap, { 4821, 286 }, 5);
+	CreateSpawner({ 3852, 0 }, "blue", ColMap, { 4815, 280 }, 5);
 	CreateSpawner({ 4423, 0 }, "blue", ColMap, { 5400, 637 }, 5);
 	MonsterSpawner* s1 = CreateSpawner({ 6986, 0 }, "Red", ColMap, { 7357, 900 }, 5); // am
 	s1->SetAmbushTrue();

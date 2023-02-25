@@ -13,6 +13,7 @@
 #include "Move1_Sea.h"
 #include "Move1_Sky.h"
 #include "Player.h"
+#include "Wave.h"
 
 #include "Soldier_Bomberman.h"
 
@@ -42,6 +43,27 @@ void Move1::Loading()
 	// Map
 	CreateActor<Move1_Map>();
 	CreateActor<Move1_ColMap>();
+
+	GameEngineActor* W1 = CreateActor<Wave>();
+	W1->SetPos({ 2480, 775 });
+	GameEngineActor* W2 = CreateActor<Wave>();
+	W2->SetPos({ 4700, 775 });
+	GameEngineActor* W3 = CreateActor<Wave>();
+	W3->SetPos({ 5090, 775 });
+	GameEngineActor* W4 = CreateActor<Wave>();
+	W4->SetPos({ 5480, 775 });
+	GameEngineActor* W5 = CreateActor<Wave>();
+	W5->SetPos({ 5870, 775 });
+	GameEngineActor* W6 = CreateActor<Wave>();
+	W6->SetPos({ 7730, 775 });
+	GameEngineActor* W10 = CreateActor<Wave>();
+	W10->SetPos({ 8120, 775 });
+	GameEngineActor* W7 = CreateActor<Wave>();
+	W7->SetPos({ 8890, 775 });
+	GameEngineActor* W8 = CreateActor<Wave>();
+	W8->SetPos({ 9430, 775 });
+	GameEngineActor* W9 = CreateActor<Wave>();
+	W9->SetPos({ 10280, 775 });
 
 	// Monster
 	// ½ºÆ÷³Ê»ç¿ë¹ý   ½ºÆ÷³Ê À§Ä¡    ¸÷ÀÌ¸§    ÄÝ¸Ê    ¸÷ Á¨ À§Ä¡   ¸®Á¨½Ã°£

@@ -15,10 +15,10 @@ Building1::~Building1()
 
 void Building1::Start()
 {
-	//AnimationRender = CreateRender("Building1.Bmp", RenderOrder::BackGround);
-	//AnimationRender->SetRotFilter("Building1_F.bmp");
-	//AnimationRender->SetScale(AnimationRender->GetImage()->GetImageScale());
-	// AnimationRender->SetAngleAdd(30);
+	AnimationRender = CreateRender("Building1.Bmp", RenderOrder::BackGround);
+	AnimationRender->SetRotFilter("Building1_F.bmp");
+	AnimationRender->SetScale(AnimationRender->GetImage()->GetImageScale());
+	AnimationRender->SetAngleAdd(30);
 
 	// Collision
 	BodyCollision = CreateCollision(CollisionOrder::Effect);

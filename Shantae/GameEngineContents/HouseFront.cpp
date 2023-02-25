@@ -19,6 +19,7 @@
 #include "HouseFront_Sea.h"
 #include "HouseFront_WindVane.h"
 #include "Building0.h"
+#include "Wave.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -50,13 +51,20 @@ void HouseFront::Loading()
 	CreateActor<HouseFront_PalmTree>();
 	CreateActor<HouseFront_Bush>();
 	CreateActor<HouseFront_LightHouse>();
+	CreateActor<HouseFront_WindVane>();
+	GameEngineActor* W1 = CreateActor<Wave>();
+	W1->SetPos({ 150, 725 });
+	GameEngineActor* W2 = CreateActor<Wave>();
+	W2->SetPos({ 600, 725 });
+	GameEngineActor* W3 = CreateActor<Wave>();
+	W3->SetPos({ 991, 725 });
 
 	// Map
 	CreateActor<HouseFront_Map>();
 	CreateActor<HouseFront_ColMap>();
 
 	// Monster
-	CreateActor<HouseFront_WindVane>();
+
 
 	// UI
 	CreateActor<GemWindow>();
