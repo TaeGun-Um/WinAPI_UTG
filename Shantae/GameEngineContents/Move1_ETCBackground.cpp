@@ -41,8 +41,4 @@ void Move1_ETCBackground::Start()
 	GameEngineRender* Building5 = CreateRender("Building1.Bmp", RenderOrder::BackGround);
 	Building5->SetPosition({ 11150, 350 });
 	Building5->SetScale(Building5->GetImage()->GetImageScale());
-
-	GameEngineRender* Ship0 = CreateRender("Ship.Bmp", RenderOrder::BackGround);
-	Ship0->SetPosition({ 6475, 425 });
-	Ship0->SetScale(Ship0->GetImage()->GetImageScale());
 }

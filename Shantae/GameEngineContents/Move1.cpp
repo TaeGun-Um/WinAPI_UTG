@@ -14,6 +14,7 @@
 #include "Wave.h"
 #include "Sea.h"
 #include "Sky.h"
+#include "Ship.h"
 
 #include "Soldier_Bomberman.h"
 
@@ -45,6 +46,11 @@ void Move1::Loading()
 	}
 
 	CreateActor<Move1_ETCBackground>();
+	// rotationActor
+	{
+		Ship* Ship0 = CreateActor<Ship>();
+		Ship0->SetPos({ 6475, 425 });
+	}
 	CreateActor<Move1_Buliding>();
 
 	// Map

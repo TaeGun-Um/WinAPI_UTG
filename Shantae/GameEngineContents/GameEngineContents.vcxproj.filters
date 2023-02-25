@@ -169,9 +169,6 @@
     <ClInclude Include="SaveRoom.h">
       <Filter>PlayLevel\TownLevel\7. SaveRoom</Filter>
     </ClInclude>
-    <ClInclude Include="Smith_Sky.h">
-      <Filter>PlayLevel\TownLevel\5. Smith\Object</Filter>
-    </ClInclude>
     <ClInclude Include="Shop_Background.h">
       <Filter>PlayLevel\TownLevel\3. Shop\Object</Filter>
     </ClInclude>
@@ -601,9 +598,6 @@
     </ClCompile>
     <ClCompile Include="SaveRoom.cpp">
       <Filter>PlayLevel\TownLevel\7. SaveRoom</Filter>
-    </ClCompile>
-    <ClCompile Include="Smith_Sky.cpp">
-      <Filter>PlayLevel\TownLevel\5. Smith\Object</Filter>
     </ClCompile>
     <ClCompile Include="Shop_Background.cpp">
       <Filter>PlayLevel\TownLevel\3. Shop\Object</Filter>

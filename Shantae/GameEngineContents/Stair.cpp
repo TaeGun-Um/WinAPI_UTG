@@ -6,7 +6,6 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineCore.h>
 
-#include "Stair_Sky.h"
 #include "Stair_Bush1.h"
 #include "Stair_Bush2.h"
 #include "Stair_ColMap.h"

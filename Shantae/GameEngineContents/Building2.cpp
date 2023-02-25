@@ -4,6 +4,7 @@
 #include <GameEngineCore/GameEngineRender.h>
 
 #include "ContentsEnum.h"
+#include "Player.h"
 
 Building2::Building2() 
 {
@@ -18,36 +19,88 @@ void Building2::Start()
 	AnimationRender = CreateRender("Building2.Bmp", RenderOrder::BackGround);
 	AnimationRender->SetRotFilter("Building2_F.bmp");
 	AnimationRender->SetScale(AnimationRender->GetImage()->GetImageScale());
-	AnimationRender->SetAngleAdd(30);
 
 	// Collision
-	BodyCollision = CreateCollision(CollisionOrder::Effect);
+	BodyCollision = CreateCollision(CollisionOrder::Trigger);
 	BodyCollision->SetDebugRenderType(CT_Rect);
-	BodyCollision->SetScale({ 50, 75 });
-	BodyCollision->SetPosition({ 0, 0 });
+	BodyCollision->SetScale({ 10, 600 });
+	BodyCollision->SetPosition({ -350, 300 });
 }
 
 void Building2::Update(float _DeltaTime)
 {
+	if (1 == InitCount)
+	{
+		InitCount = 0;
+		InitPos = GetPos();
+	}
+
 	CollisionCheck();
-	MoveCalculation(_DeltaTime);
+
+	if (true == Break)
+	{
+		BuildingBreak(_DeltaTime);
+
+		BreakDelay += _DeltaTime;
+
+		if (0.5f <= BreakDelay)
+		{
+			MoveCalculation(_DeltaTime);
+		}
+
+		DirectCheckForKill();
+	}
 }
 void Building2::Render(float _DeltaTime)
 {
 
 }
 
-// 중력, 점프, 맵타일
 void Building2::MoveCalculation(float _DeltaTime)
 {
+	MoveDir += float4::Down * 100.0f * _DeltaTime;
+
+	SetMove(MoveDir * _DeltaTime);
+}
+
+void Building2::DirectCheckForKill()
+{
+	float4 Pos = InitPos + (float4::Down * 500);
+
+	if (GetPos().y >= Pos.y)
+	{
+		Kill();
+	}
+}
+
+void Building2::Kill()
+{
+	GameEngineActor* ColActor = AnimationRender->GetActor();
+	ColActor->Off();
+	ColActor->Death();
+}
+
+void Building2::BuildingBreak(float _DeltaTime)
+{
+	BTime += _DeltaTime;
+
+	if (0.25f <= BTime)
+	{
+		B += 0.01f;
+
+		AnimationRender->SetAngle(B);
+	}
 }
 
 void Building2::CollisionCheck()
 {
 	if (nullptr != BodyCollision)
 	{
-		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Ground), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
+			BodyCollision->Off();
+			Break = true;
+			Player::MainPlayer->SetCameraShaking(3.0f, 3.0f);
 		}
 	}
 }

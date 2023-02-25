@@ -27,8 +27,6 @@ void Sea::Update(float _DeltaTime)
 	if (1 == InitCount)
 	{
 		InitCount = 0;
-		InitSeaonePos = SeaRender_one->GetPosition();
-		InitSeaYPos = InitSeaonePos.y;
 		InitCameraPos = Player::MainPlayer->GetLevel()->GetCameraPos();
 	}
 
@@ -44,6 +42,6 @@ void Sea::Perspective()
 
 		float4 SeaMove = InitCameraPos - CameraPos;
 
-		SeaRender_one->SetPosition({ (InitSeaonePos.x + SeaMove.x) * 0.05f , InitSeaYPos });
+		SeaRender_one->SetPosition({ (SeaMove.x * 0.05f) , 0 });
 	}
 }

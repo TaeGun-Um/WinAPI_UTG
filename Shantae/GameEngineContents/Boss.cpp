@@ -10,6 +10,7 @@
 #include "Boss_ETCBackground.h"
 #include "Boss_Map.h"
 #include "Sky.h"
+#include "Ship.h"
 
 #include "Player.h"
 #include "Boss_Tank.h"
@@ -41,6 +42,11 @@ void Boss::Loading()
 	}
 	
 	CreateActor<Boss_ETCBackground>();
+	// rotationActor
+	{
+		Ship* Ship0 = CreateActor<Ship>();
+		Ship0->SetPos({ 200, 480 });
+	}
 
 	// Map
 	CreateActor<Boss_Map>();

@@ -582,10 +582,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Smith_Sky.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="Soldier_Aim.h">
       <SubType>
       </SubType>
@@ -1150,10 +1146,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Smith_Map.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Smith_Sky.cpp">
       <SubType>
       </SubType>
     </ClCompile>

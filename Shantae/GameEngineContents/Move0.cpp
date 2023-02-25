@@ -47,6 +47,15 @@ void Move0::Loading()
 	}
 
 	CreateActor<Move0_ETCBackground>();
+
+	// rotationActor
+	{
+		Ship* Ship0 = CreateActor<Ship>();
+		Ship0->SetPos({ 1250, 400 });
+
+		Ship* Ship1 = CreateActor<Ship>();
+		Ship1->SetPos({ 5850, 400 });
+	}
 	CreateActor<Move0_Buliding>();
 
 	// Map

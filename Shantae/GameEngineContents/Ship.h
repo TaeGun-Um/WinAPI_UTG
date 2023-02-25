@@ -25,6 +25,14 @@ private:
 	void MoveCalculation(float _DeltaTime);
 
 	GameEngineRender* AnimationRender = nullptr;
-	float MoveSpeed = 250.0f;
+
+	float4 InitPos = float4::Zero;
+
+	float DelayTime = 0.0f;
+	float AngleTime = 0.0f;
+	float Angle = 0.0f;
+
+	int InitCount = 1;
+	int MotionCount = 0;
 };
 

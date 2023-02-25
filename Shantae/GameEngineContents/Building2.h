@@ -23,11 +23,23 @@ protected:
 
 private:
 	void CollisionCheck();
+	void BuildingBreak(float _DeltaTime);
 	void MoveCalculation(float _DeltaTime);
+	void DirectCheckForKill();
+	void Kill();
 
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
+	float4 InitPos = float4::Zero;
+	float4 MoveDir = float4::Zero;
 
 	float MoveSpeed = 250.0f;
+	float B = 0.0f;
+	float BTime = 0.0f;
+	float BreakDelay = 0.0f;
+
+	int InitCount = 1;
+
+	bool Break = false;
 };
 

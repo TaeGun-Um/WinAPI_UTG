@@ -25,8 +25,4 @@ void Boss_ETCBackground::Start()
 	GameEngineRender* Building0 = CreateRender("Building1.Bmp", RenderOrder::BackGround);
 	Building0->SetPosition({ 585, 570 });
 	Building0->SetScale(Building0->GetImage()->GetImageScale());
-
-	GameEngineRender* Ship0 = CreateRender("Ship.Bmp", RenderOrder::BackGround);
-	Ship0->SetPosition({ 200, 480 });
-	Ship0->SetScale(Ship0->GetImage()->GetImageScale());
 }
