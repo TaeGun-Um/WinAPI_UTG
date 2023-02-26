@@ -29,6 +29,8 @@
 #include "Sky.h"
 #include "Sea.h"
 
+#include "AnimationBox_Door.h"
+
 #include "GemWindow.h"
 #include "Health.h"
 #include "BlackBox.h"
@@ -49,22 +51,10 @@ void TestLevel::Loading()
 {
 	ColMap = ObjectLoad::GetObjectLoadPtr()->GetColMap("Test");
 
-	// CreateActor<AnimationBox>();
-
 	CreateActor<TestMap>();
 
-	GameEngineActor* A1 = CreateActor<Ship>();
-	A1->SetPos({ 500, 300 });
-
-	//GameEngineActor* A1 = CreateActor<Sea>();
-	//A1->SetPos({ 1000, 300 });
-
-	//Building1* A3 = CreateActor<Building1>();
-	//A3->SetPos({ 800, 300 });
-	//A3->SetLeftBreak();
-
-	//GameEngineActor* A4 = CreateActor<Building2>();
-	//A4->SetPos({ 800, 300 });
+	AnimationBox_Door* Door = CreateActor<AnimationBox_Door>();
+	Door->SetPos({ 600, 675 });
 
 	CreateActor<GemWindow>();
 
@@ -90,7 +80,7 @@ void TestLevel::Update(float _DeltaTime)
 {
 	LevelSet();
 	Debugging();
-
+	Portal();
 
 	// CameraAction();
 
@@ -131,8 +121,24 @@ void TestLevel::CameraAction()
 
 void TestLevel::Debugging()
 {
+	if (GameEngineInput::IsDown("NextLevel"))
+	{
+		GameEngineCore::GetInst()->ChangeLevel("Boss");
+	}
+
 	if (GameEngineInput::IsDown("Back"))
 	{
 		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
+	}
+}
+
+void TestLevel::Portal()
+{
+	if (GameEngineInput::IsDown("UpMove"))
+	{
+		if (600 <= SHA->GetPos().x && SHA->GetPos().x <= 750 && SHA->GetPos().y >= 690)
+		{
+			GameEngineCore::GetInst()->ChangeLevel("TestRoom");
+		}
 	}
 }

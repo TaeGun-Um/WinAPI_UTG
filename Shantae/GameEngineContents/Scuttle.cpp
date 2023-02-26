@@ -228,7 +228,7 @@ void Scuttle::Debugging()
 
 void Scuttle::Portal()
 {
-	if (GameEngineInput::IsPress("UpMove"))
+	if (GameEngineInput::IsDown("UpMove"))
 	{
 		if (2545.0f <= SHA->GetPos().x && SHA->GetPos().x <= 2680.0f && SHA->GetPos().y >= 1175.0f)
 		{

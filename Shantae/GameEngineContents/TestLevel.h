@@ -34,6 +34,7 @@ private:
 	void LevelSet();
 	void Debugging();
 	void CameraAction();
+	void Portal();
 
 	GameEngineActor* Shantae = nullptr;
 	GameEngineImage* ColMap = nullptr;

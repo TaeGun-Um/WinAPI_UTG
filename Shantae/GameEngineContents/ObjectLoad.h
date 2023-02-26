@@ -42,6 +42,7 @@ private:
 	void AnmationObjectLoad();
 
 	GameEngineImage* Test = nullptr;
+	GameEngineImage* TestRoom = nullptr;
 	GameEngineImage* House = nullptr;
 	GameEngineImage* HouseFront = nullptr;
 	GameEngineImage* Move0 = nullptr;

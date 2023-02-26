@@ -428,6 +428,15 @@
     <ClInclude Include="Scuttle_Map.h">
       <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
     </ClInclude>
+    <ClInclude Include="TestRoom.h">
+      <Filter>PlayLevel\TestLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="TestRoomMap.h">
+      <Filter>PlayLevel\TestLevel\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationBox_Door.h">
+      <Filter>PlayLevel\TestLevel\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShantaeCore.cpp" />
@@ -880,6 +889,15 @@
     </ClCompile>
     <ClCompile Include="Scuttle_Map.cpp">
       <Filter>PlayLevel\TownLevel\1. Scuttle\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="TestRoom.cpp">
+      <Filter>PlayLevel\TestLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="TestRoomMap.cpp">
+      <Filter>PlayLevel\TestLevel\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationBox_Door.cpp">
+      <Filter>PlayLevel\TestLevel\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -32,6 +32,7 @@ void ObjectLoad::Loading()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Test\\AnimationBox_Run.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Test\\AnimationBox_Spot.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Test\\AnimationBox_Jump.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Test\\AnimationBox_Door.bmp"));
 
 	// Title
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Title\\Opening_Background.BMP"));
@@ -189,6 +190,7 @@ void ObjectLoad::ColMapLoad()
 {
 	// Test
 	Test = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Test\\TestMap.bmp"));
+	TestRoom = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Test\\TestRoomMap.bmp"));
 
 	// Field
 	House = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\House\\House_ColMap.bmp"));
@@ -218,6 +220,10 @@ GameEngineImage* ObjectLoad::GetColMap(const std::string_view& _Name)
 	if (GameEngineString::ToUpper("Test") == UpperName)
 	{
 		return Test;
+	}
+	else if (GameEngineString::ToUpper("TestRoom") == UpperName)
+	{
+		return TestRoom;
 	}
 	else if (GameEngineString::ToUpper("House") == UpperName)
 	{
