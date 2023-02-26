@@ -162,6 +162,15 @@ void Scuttle::LevelChangeStart(GameEngineLevel* _PrevLevel)
 void Scuttle::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	// InBoxKill();
+	BBoxOutCount = 1;
+
+	if (nullptr != PortalDoor::BBox)
+	{
+		PortalDoor::BBox->SetFadeInCount(0);
+		PortalDoor::BBox->Death();
+		PortalDoor::BBox = nullptr;
+		PortalDoor::BBoxCount = 1;
+	}
 }
 
 void Scuttle::BlackBoxOutAnimation()

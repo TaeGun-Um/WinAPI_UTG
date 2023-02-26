@@ -14,10 +14,15 @@ enum class PortalType
 	SaveRoom,
 };
 
+class BlackBox;
+
 // Ό³Έν :
 class PortalDoor : public GameEngineActor
 {
 public:
+	static BlackBox* BBox;
+	static int BBoxCount;
+
 	// constrcuter destructer
 	PortalDoor();
 	~PortalDoor();
@@ -38,6 +43,8 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
+	void BlackBoxInAnimation();
+	void InBoxKill();
 	void PortalCheck(float _DeltaTime);
 	void Portal();
 

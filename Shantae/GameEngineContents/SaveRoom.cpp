@@ -74,7 +74,7 @@ void SaveRoom::Update(float _DeltaTime)
 	if (SHA->GetPos().x <= 155.0f
 		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{
-		// BlackBoxInAnimation();
+		BlackBoxInAnimation();
 		SHA->SetRoomAnimationStart(true);
 		SHA->SetMoveSpeed(100.0f);
 		if (true == SHA->RoomChangeAnimation(_DeltaTime))
@@ -86,6 +86,8 @@ void SaveRoom::Update(float _DeltaTime)
 
 void SaveRoom::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Set = 1;
+
 	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());
 	SetPlayLevelMaxHP(Player::MainPlayer->GetPlayerMaxHP());
 	SetPlayLevelGem(Player::MainPlayer->GetPlayerGem());
@@ -93,9 +95,10 @@ void SaveRoom::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 void SaveRoom::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
-	// InBoxKill();
-	SHA->SetPos({ 170, 789 });
+	InBoxKill();
 	AnimationSet = 1;
+	BBoxOutCount = 1;
+	SHA->SetPos({ 170, 789 });
 	SHA->SetRoomAnimationStart(false);
 }
 
@@ -105,7 +108,7 @@ void SaveRoom::BlackBoxOutAnimation()
 	{
 		BBoxOutCount = 0;
 		BBoxOut = CreateActor<BlackBox>();
-		BBoxOut->FadeOutStart(2, 0);
+		BBoxOut->FadeOutStart(2, 0.05f);
 	}
 }
 
@@ -115,7 +118,7 @@ void SaveRoom::BlackBoxInAnimation()
 	{
 		BBoxInCount = 0;
 		BBoxIn = CreateActor<BlackBox>();
-		BBoxIn->FadeInStart(2, 0.5f);
+		BBoxIn->FadeInStart(2, 0);
 	}
 }
 

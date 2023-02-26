@@ -8,6 +8,10 @@
 
 #include "ContentsEnum.h"
 #include "Player.h"
+#include "BlackBox.h"
+
+BlackBox* PortalDoor::BBox = nullptr;
+int PortalDoor::BBoxCount = 1;
 
 PortalDoor::PortalDoor()
 {
@@ -69,6 +73,11 @@ void PortalDoor::PortalCheck(float _DeltaTime)
 
 		if (true == IsPortalIn)
 		{
+			if (240 <= Player::MainPlayer->GetShataeAnimationRender()->GetFrame())
+			{
+				BlackBoxInAnimation();
+			}
+
 			if ((GetPos().x + 70.0f) >= Player::MainPlayer->GetPos().x)
 			{
 				Player::MainPlayer->SetMove(float4::Right * 100.0f * _DeltaTime);
@@ -83,7 +92,7 @@ void PortalDoor::PortalCheck(float _DeltaTime)
 
 		if (PlayerState::PORTALING == Player::MainPlayer->GetShantaeState())
 		{
-			if (1 == Por)
+			if (1 == Por && true == BBox->GetIsFadeInOver())
 			{
 				Portal();
 				Por = 0;
@@ -123,5 +132,24 @@ void PortalDoor::Portal()
 	default:
 		break;
 	}
+}
 
+void PortalDoor::BlackBoxInAnimation()
+{
+	if (1 == BBoxCount)
+	{
+		BBoxCount = 0;
+		BBox = GetLevel()->CreateActor<BlackBox>();
+		BBox->FadeInStart(2, 0);
+	}
+}
+
+void PortalDoor::InBoxKill()
+{
+	if (nullptr != BBox)
+	{
+		BBox->Death();
+		BBox = nullptr;
+		BBoxCount = 1;
+	}
 }

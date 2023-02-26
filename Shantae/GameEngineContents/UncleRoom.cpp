@@ -77,7 +77,7 @@ void UncleRoom::Update(float _DeltaTime)
 	if (SHA->GetPos().x <= 90.0f
 		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{
-		// BlackBoxInAnimation();
+		BlackBoxInAnimation();
 		SHA->SetRoomAnimationStart(true);
 		SHA->SetMoveSpeed(100.0f);
 		if (true == SHA->RoomChangeAnimation(_DeltaTime))
@@ -89,6 +89,8 @@ void UncleRoom::Update(float _DeltaTime)
 
 void UncleRoom::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Set = 1;
+
 	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Uncle_Room.mp3");
 	BGMPlayer.Volume(0.1f);
 	BGMPlayer.LoopCount(100);
@@ -101,9 +103,10 @@ void UncleRoom::LevelChangeStart(GameEngineLevel* _PrevLevel)
 void UncleRoom::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	BGMPlayer.Stop();
-	// InBoxKill();
-	SHA->SetPos({ 110, 781 });
+	InBoxKill();
 	AnimationSet = 1;
+	BBoxOutCount = 1;
+	SHA->SetPos({ 110, 781 });
 	SHA->SetRoomAnimationStart(false);
 }
 
@@ -113,7 +116,7 @@ void UncleRoom::BlackBoxOutAnimation()
 	{
 		BBoxOutCount = 0;
 		BBoxOut = CreateActor<BlackBox>();
-		BBoxOut->FadeOutStart(2, 0);
+		BBoxOut->FadeOutStart(2, 0.05f);
 	}
 }
 
@@ -123,7 +126,7 @@ void UncleRoom::BlackBoxInAnimation()
 	{
 		BBoxInCount = 0;
 		BBoxIn = CreateActor<BlackBox>();
-		BBoxIn->FadeInStart(2, 0.5f);
+		BBoxIn->FadeInStart(2, 0);
 	}
 }
 

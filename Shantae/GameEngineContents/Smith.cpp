@@ -74,7 +74,7 @@ void Smith::Update(float _DeltaTime)
 	if (SHA->GetPos().x <= 140.0f
 		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{
-		// BlackBoxInAnimation();
+		BlackBoxInAnimation();
 		SHA->SetRoomAnimationStart(true);
 		SHA->SetMoveSpeed(100.0f);
 		if (true == SHA->RoomChangeAnimation(_DeltaTime))
@@ -86,6 +86,8 @@ void Smith::Update(float _DeltaTime)
 
 void Smith::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Set = 1;
+
 	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Customer.mp3");
 	BGMPlayer.Volume(0.1f);
 	BGMPlayer.LoopCount(100);
@@ -98,9 +100,10 @@ void Smith::LevelChangeStart(GameEngineLevel* _PrevLevel)
 void Smith::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	BGMPlayer.Stop();
-	// InBoxKill();
-	SHA->SetPos({ 155, 841 });
+	InBoxKill();
 	AnimationSet = 1;
+	BBoxOutCount = 1;
+	SHA->SetPos({ 155, 841 });
 	SHA->SetRoomAnimationStart(false);
 }
 
@@ -110,7 +113,7 @@ void Smith::BlackBoxOutAnimation()
 	{
 		BBoxOutCount = 0;
 		BBoxOut = CreateActor<BlackBox>();
-		BBoxOut->FadeOutStart(2, 0);
+		BBoxOut->FadeOutStart(2, 0.05f);
 	}
 }
 
@@ -120,7 +123,7 @@ void Smith::BlackBoxInAnimation()
 	{
 		BBoxInCount = 0;
 		BBoxIn = CreateActor<BlackBox>();
-		BBoxIn->FadeInStart(2, 0.5f);
+		BBoxIn->FadeInStart(2, 0);
 	}
 }
 
