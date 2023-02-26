@@ -24,6 +24,8 @@ enum class PlayerState
 	JUMPHIT,
 	JUMPHIT2,
 	CROUCHHIT,
+	PORTALIN,
+	PORTALOUT,
 };
 
 // Ό³Έν : Player Chracter
@@ -337,6 +339,14 @@ private:
 	void CrouchHitStart();
 	void CrouchHitUpdate(float _Time);
 	void CrouchHitEnd();
+
+	void PortalInStart();
+	void PortalInUpdate(float _Time);
+	void PortalInEnd();
+
+	void PortalOutStart();
+	void PortalOutUpdate(float _Time);
+	void PortalOutEnd();
 
 };
 

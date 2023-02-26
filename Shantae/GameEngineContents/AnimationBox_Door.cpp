@@ -2,8 +2,11 @@
 
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineCollision.h>
+#include <GameEngineCore/GameEngineCore.h>
+#include <GameEnginePlatform/GameEngineInput.h>
 
 #include "ContentsEnum.h"
+#include "Player.h"
 
 AnimationBox_Door::AnimationBox_Door() 
 {
@@ -27,16 +30,47 @@ void AnimationBox_Door::Start()
 
 void AnimationBox_Door::Update(float _DeltaTime)
 {
-	CollisionCheck();
+	PortalCheck(_DeltaTime);
 }
 
-void AnimationBox_Door::CollisionCheck()
+void AnimationBox_Door::PortalCheck(float _DeltaTime)
 {
 	if (nullptr != BodyCollision)
 	{
 		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
-			int a = 0;
+			IsPortal = true;
+		}
+		else 
+		{
+			IsPortal = false;
 		}
 	}
+
+	if (true == IsPortal)
+	{
+		if (GameEngineInput::IsDown("UpMove") && PlayerState::IDLE == Player::MainPlayer->GetShantaeState())
+		{
+			int a = 0;
+			//Player::MainPlayer->ChangeState(PlayerState::PORTALIN);
+		}
+	}
+}
+
+void AnimationBox_Door::Portal(PortalType _Type)
+{
+	PortalValue = _Type;
+
+	switch (PortalValue)
+	{
+	case PortalType::TestRoom:
+		GameEngineCore::GetInst()->ChangeLevel("TestRoom");
+		break;
+	case PortalType::TestRoom2:
+		GameEngineCore::GetInst()->ChangeLevel("TestRoom");
+		break;
+	default:
+		break;
+	}
+
 }

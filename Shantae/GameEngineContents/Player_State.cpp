@@ -80,6 +80,12 @@ void Player::ChangeState(PlayerState _State)
 		IsGravityPlus = false;
 		CrouchHitStart();
 		break;
+	case PlayerState::PORTALIN:
+		PortalInStart();
+		break;
+	case PlayerState::PORTALOUT:
+		PortalOutStart();
+		break;
 	default:
 		break;
 	}
@@ -139,6 +145,12 @@ void Player::ChangeState(PlayerState _State)
 	case PlayerState::CROUCHHIT:
 		IsGravityPlus = false;
 		CrouchHitEnd();
+		break;
+	case PlayerState::PORTALIN:
+		PortalInEnd();
+		break;
+	case PlayerState::PORTALOUT:
+		PortalOutEnd();
 		break;
 	default:
 		break;
@@ -211,6 +223,12 @@ void Player::UpdateState(float _Time)
 	case PlayerState::CROUCHHIT:
 		IsGravityPlus = false;
 		CrouchHitUpdate(_Time);
+		break;
+	case PlayerState::PORTALIN:
+		PortalInUpdate(_Time);
+		break;
+	case PlayerState::PORTALOUT:
+		PortalOutUpdate(_Time);
 		break;
 	default:
 		break;
@@ -1449,4 +1467,32 @@ void Player::JumpHitUpdate2(float _Time)
 }
 void Player::JumpHitEnd2()
 {
+}
+
+///////////////////////////////////////////////////////  Portal  ///////////////////////////////////////////////////////
+
+void Player::PortalInStart()
+{
+
+}
+void Player::PortalInUpdate(float _Time)
+{
+
+}
+void Player::PortalInEnd()
+{
+
+}
+
+void Player::PortalOutStart()
+{
+
+}
+void Player::PortalOutUpdate(float _Time)
+{
+
+}
+void Player::PortalOutEnd()
+{
+
 }

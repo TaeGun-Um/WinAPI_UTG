@@ -56,6 +56,9 @@ void TestLevel::Loading()
 	AnimationBox_Door* Door = CreateActor<AnimationBox_Door>();
 	Door->SetPos({ 600, 675 });
 
+	AnimationBox_Door* Door2 = CreateActor<AnimationBox_Door>();
+	Door2->SetPos({ 800, 675 });
+
 	CreateActor<GemWindow>();
 
 	CreateActor<Health>();
@@ -80,7 +83,7 @@ void TestLevel::Update(float _DeltaTime)
 {
 	LevelSet();
 	Debugging();
-	Portal();
+	// Portal();
 
 	// CameraAction();
 
@@ -123,7 +126,7 @@ void TestLevel::Debugging()
 {
 	if (GameEngineInput::IsDown("NextLevel"))
 	{
-		GameEngineCore::GetInst()->ChangeLevel("Boss");
+		GameEngineCore::GetInst()->ChangeLevel("TestRoom");
 	}
 
 	if (GameEngineInput::IsDown("Back"))
@@ -134,11 +137,16 @@ void TestLevel::Debugging()
 
 void TestLevel::Portal()
 {
-	if (GameEngineInput::IsDown("UpMove"))
-	{
-		if (600 <= SHA->GetPos().x && SHA->GetPos().x <= 750 && SHA->GetPos().y >= 690)
-		{
-			GameEngineCore::GetInst()->ChangeLevel("TestRoom");
-		}
-	}
+	//if (GameEngineInput::IsDown("UpMove"))
+	//{
+	//	if (600 <= SHA->GetPos().x && SHA->GetPos().x <= 750 && SHA->GetPos().y >= 690)
+	//	{
+	//		GameEngineCore::GetInst()->ChangeLevel("TestRoom");
+	//	}
+
+	//	if (800 <= SHA->GetPos().x && SHA->GetPos().x <= 950 && SHA->GetPos().y >= 690)
+	//	{
+	//		GameEngineCore::GetInst()->ChangeLevel("TestRoom2");
+	//	}
+	//}
 }

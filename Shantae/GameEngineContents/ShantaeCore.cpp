@@ -31,6 +31,7 @@
 // TestLevel
 #include "TestLevel.h"
 #include "TestRoom.h"
+#include "TestRoom2.h"
 
 //ETC
 #include "CharacterLoad.h"
@@ -92,6 +93,7 @@ void ShantaeCore::Start()
 	// TestLevel
 	CreateLevel<TestLevel>("TestLevel");
 	CreateLevel<TestRoom>("TestRoom");
+	CreateLevel<TestRoom2>("TestRoom2");
 
 // ------------------------------- 레벨 선택 -------------------------------
 	ChangeLevel("TestLevel");

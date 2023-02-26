@@ -687,7 +687,15 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="TestRoom2.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="TestRoomMap.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TestRoomMap2.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -1272,7 +1280,15 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="TestRoom2.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="TestRoomMap.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TestRoomMap2.cpp">
       <SubType>
       </SubType>
     </ClCompile>

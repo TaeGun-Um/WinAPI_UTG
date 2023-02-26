@@ -43,6 +43,7 @@ private:
 
 	GameEngineImage* Test = nullptr;
 	GameEngineImage* TestRoom = nullptr;
+	GameEngineImage* TestRoom2 = nullptr;
 	GameEngineImage* House = nullptr;
 	GameEngineImage* HouseFront = nullptr;
 	GameEngineImage* Move0 = nullptr;

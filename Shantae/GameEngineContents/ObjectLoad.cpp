@@ -191,6 +191,7 @@ void ObjectLoad::ColMapLoad()
 	// Test
 	Test = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Test\\TestMap.bmp"));
 	TestRoom = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Test\\TestRoomMap.bmp"));
+	TestRoom2 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Test\\TestRoomMap2.bmp"));
 
 	// Field
 	House = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\House\\House_ColMap.bmp"));
@@ -224,6 +225,10 @@ GameEngineImage* ObjectLoad::GetColMap(const std::string_view& _Name)
 	else if (GameEngineString::ToUpper("TestRoom") == UpperName)
 	{
 		return TestRoom;
+	}
+	else if (GameEngineString::ToUpper("TestRoom2") == UpperName)
+	{
+		return TestRoom2;
 	}
 	else if (GameEngineString::ToUpper("House") == UpperName)
 	{

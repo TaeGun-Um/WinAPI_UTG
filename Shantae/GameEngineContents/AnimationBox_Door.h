@@ -2,6 +2,12 @@
 
 #include <GameEngineCore/GameEngineActor.h>
 
+enum class PortalType
+{
+	TestRoom,
+	TestRoom2,
+};
+
 // Ό³Έν :
 class AnimationBox_Door : public GameEngineActor
 {
@@ -21,9 +27,13 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
-	void CollisionCheck();
+	void PortalCheck(float _DeltaTime);
+	void Portal(PortalType _Type);
 
 	GameEngineCollision* BodyCollision = nullptr;
 
+	PortalType PortalValue = PortalType::TestRoom;
+
+	bool IsPortal = false;
 };
 

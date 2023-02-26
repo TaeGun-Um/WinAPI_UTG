@@ -437,6 +437,12 @@
     <ClInclude Include="AnimationBox_Door.h">
       <Filter>PlayLevel\TestLevel\Object</Filter>
     </ClInclude>
+    <ClInclude Include="TestRoom2.h">
+      <Filter>PlayLevel\TestLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="TestRoomMap2.h">
+      <Filter>PlayLevel\TestLevel\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShantaeCore.cpp" />
@@ -897,6 +903,12 @@
       <Filter>PlayLevel\TestLevel\Object</Filter>
     </ClCompile>
     <ClCompile Include="AnimationBox_Door.cpp">
+      <Filter>PlayLevel\TestLevel\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="TestRoom2.cpp">
+      <Filter>PlayLevel\TestLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="TestRoomMap2.cpp">
       <Filter>PlayLevel\TestLevel\Object</Filter>
     </ClCompile>
   </ItemGroup>
