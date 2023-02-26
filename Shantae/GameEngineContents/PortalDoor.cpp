@@ -1,4 +1,4 @@
-#include "AnimationBox_Door.h"
+#include "PortalDoor.h"
 
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineCore.h>
@@ -9,19 +9,20 @@
 #include "ContentsEnum.h"
 #include "Player.h"
 
-AnimationBox_Door::AnimationBox_Door() 
+PortalDoor::PortalDoor()
 {
 }
 
-AnimationBox_Door::~AnimationBox_Door() 
+PortalDoor::~PortalDoor()
 {
 }
 
-void AnimationBox_Door::Start()
+void PortalDoor::Start()
 {
-	GameEngineRender* Render3 = CreateRender("AnimationBox_Door.Bmp", RenderOrder::BackGround);
+	GameEngineRender* Render3 = CreateRender("AnimationBox_Door.Bmp", RenderOrder::Object);
 	Render3->SetPosition(Render3->GetImage()->GetImageScale().half());
 	Render3->SetScale(Render3->GetImage()->GetImageScale());
+	Render3->Off();
 
 	BodyCollision = CreateCollision(CollisionOrder::Trigger);
 	BodyCollision->SetDebugRenderType(CT_Rect);
@@ -29,12 +30,12 @@ void AnimationBox_Door::Start()
 	BodyCollision->SetPosition({ 75, 112.5f });
 }
 
-void AnimationBox_Door::Update(float _DeltaTime)
+void PortalDoor::Update(float _DeltaTime)
 {
 	PortalCheck(_DeltaTime);
 }
 
-void AnimationBox_Door::PortalCheck(float _DeltaTime)
+void PortalDoor::PortalCheck(float _DeltaTime)
 {
 	if (nullptr != BodyCollision)
 	{
@@ -42,7 +43,7 @@ void AnimationBox_Door::PortalCheck(float _DeltaTime)
 		{
 			IsPortal = true;
 		}
-		else 
+		else
 		{
 			IsPortal = false;
 		}
@@ -87,12 +88,11 @@ void AnimationBox_Door::PortalCheck(float _DeltaTime)
 				Portal();
 				Por = 0;
 			}
-			
 		}
 	}
 }
 
-void AnimationBox_Door::Portal()
+void PortalDoor::Portal()
 {
 	switch (PortalValue)
 	{
@@ -101,6 +101,24 @@ void AnimationBox_Door::Portal()
 		break;
 	case PortalType::TestRoom2:
 		GameEngineCore::GetInst()->ChangeLevel("TestRoom2");
+		break;
+	case PortalType::UncleRoom:
+		GameEngineCore::GetInst()->ChangeLevel("UncleRoom");
+		break;
+	case PortalType::Shop:
+		GameEngineCore::GetInst()->ChangeLevel("Shop");
+		break;
+	case PortalType::Spa:
+		GameEngineCore::GetInst()->ChangeLevel("Spa");
+		break;
+	case PortalType::Smith:
+		GameEngineCore::GetInst()->ChangeLevel("Smith");
+		break;
+	case PortalType::SkyRoom:
+		GameEngineCore::GetInst()->ChangeLevel("SkyRoom");
+		break;
+	case PortalType::SaveRoom:
+		GameEngineCore::GetInst()->ChangeLevel("SaveRoom");
 		break;
 	default:
 		break;

@@ -91,6 +91,11 @@ public:
 		return DirString;
 	}
 
+	void SetDir(std::string _Dir)
+	{
+		DirString = _Dir;
+	}
+
 	int GetPlayerHP()
 	{
 		return HP;
@@ -141,6 +146,11 @@ public:
 		IsAnimationStart = _Is;
 	}
 
+	void SetRoomAnimationStart(bool _Is)
+	{
+		IsRoomAnimationStart = _Is;
+	}
+
 	void SetStartAnimationStart(bool _Is)
 	{
 		IsStartAnimationStart = _Is;
@@ -149,6 +159,11 @@ public:
 	PlayerState GetShantaeState()
 	{
 		return StateValue;
+	}
+
+	GameEngineRender* GetShataeAnimationRender()
+	{
+		return AnimationRender;
 	}
 
 	void IsHouseSet(bool _Is)
@@ -161,6 +176,7 @@ public:
 	void PositionText();
 	void ChangeState(PlayerState _State);
 	bool LevelChangeAnimation(float _DeltaTime);
+	bool RoomChangeAnimation(float _DeltaTime);
 	void LevelStartAnimation(float _DeltaTime);
 
 	GameEngineSoundPlayer BGMPlayer;
@@ -264,6 +280,7 @@ private:
 	bool IsAttack = false;
 	bool IsAnimationStart = false;
 	bool IsStartAnimationStart = false;
+	bool IsRoomAnimationStart = false;
 	bool IsHouse = false;
 
 	float AccTime = 0.0f;

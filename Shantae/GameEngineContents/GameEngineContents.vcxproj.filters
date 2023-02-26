@@ -443,6 +443,9 @@
     <ClInclude Include="TestRoomMap2.h">
       <Filter>PlayLevel\TestLevel\Object</Filter>
     </ClInclude>
+    <ClInclude Include="PortalDoor.h">
+      <Filter>AssistantCollision\Portal</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShantaeCore.cpp" />
@@ -911,6 +914,9 @@
     <ClCompile Include="TestRoomMap2.cpp">
       <Filter>PlayLevel\TestLevel\Object</Filter>
     </ClCompile>
+    <ClCompile Include="PortalDoor.cpp">
+      <Filter>AssistantCollision\Portal</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Character">
@@ -1128,6 +1134,9 @@
     </Filter>
     <Filter Include="PlayLevel\FieldLevel\0. ETC_Actor">
       <UniqueIdentifier>{0eb53fc0-a8ed-4a74-b67e-1ff837cd1375}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AssistantCollision\Portal">
+      <UniqueIdentifier>{6d4b9e53-e38a-4c8e-a03c-3969eb5e9409}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

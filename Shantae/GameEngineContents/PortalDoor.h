@@ -6,21 +6,27 @@ enum class PortalType
 {
 	TestRoom,
 	TestRoom2,
+	UncleRoom,
+	Shop,
+	Spa,
+	Smith,
+	SkyRoom,
+	SaveRoom,
 };
 
 // Ό³Έν :
-class AnimationBox_Door : public GameEngineActor
+class PortalDoor : public GameEngineActor
 {
 public:
 	// constrcuter destructer
-	AnimationBox_Door();
-	~AnimationBox_Door();
+	PortalDoor();
+	~PortalDoor();
 
 	// delete Function
-	AnimationBox_Door(const AnimationBox_Door& _Other) = delete;
-	AnimationBox_Door(AnimationBox_Door&& _Other) noexcept = delete;
-	AnimationBox_Door& operator=(const AnimationBox_Door& _Other) = delete;
-	AnimationBox_Door& operator=(AnimationBox_Door&& _Other) noexcept = delete;
+	PortalDoor(const PortalDoor& _Other) = delete;
+	PortalDoor(PortalDoor&& _Other) noexcept = delete;
+	PortalDoor& operator=(const PortalDoor& _Other) = delete;
+	PortalDoor& operator=(PortalDoor&& _Other) noexcept = delete;
 
 	void SetPortalValue(PortalType _Value)
 	{

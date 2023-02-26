@@ -66,6 +66,7 @@ void TestRoom2::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	SHA->SetPos({ 700, 750 });
 	//BGMPlayer.Stop();
+	Set = 1;
 }
 
 void TestRoom2::LevelSet()

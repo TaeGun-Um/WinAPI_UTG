@@ -12,6 +12,7 @@
 #include "Player.h"
 #include "Sky.h"
 #include "Sea.h"
+#include "PortalDoor.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -48,6 +49,33 @@ void Scuttle::Loading()
 	CreateActor<Scuttle_Map>();
 	CreateActor<Scuttle_ColMap>();
 
+	// Portal
+	{
+		PortalDoor* Door = CreateActor<PortalDoor>();
+		Door->SetPos({ 2535.0f, 1100.0f });
+		Door->SetPortalValue(PortalType::UncleRoom);
+
+		PortalDoor* Door2 = CreateActor<PortalDoor>();
+		Door2->SetPos({ 5340.0f, 1100.0f });
+		Door2->SetPortalValue(PortalType::Shop);
+
+		PortalDoor* Door3 = CreateActor<PortalDoor>();
+		Door3->SetPos({ 4825.0f, 820.0f });
+		Door3->SetPortalValue(PortalType::Spa);
+
+		PortalDoor* Door4 = CreateActor<PortalDoor>();
+		Door4->SetPos({ 4675.0f, 1100.0f });
+		Door4->SetPortalValue(PortalType::Smith);
+
+		PortalDoor* Door5 = CreateActor<PortalDoor>();
+		Door5->SetPos({ 5340.0f, 540.0f });
+		Door5->SetPortalValue(PortalType::SkyRoom);
+
+		PortalDoor* Door6 = CreateActor<PortalDoor>();
+		Door6->SetPos({ 6145.0f, 1100.0f });
+		Door6->SetPortalValue(PortalType::SaveRoom);
+	}
+
 	// Player
 	{
 		Shantae = CreateActor<Player>();
@@ -66,6 +94,40 @@ void Scuttle::Loading()
 
 }
 
+// asdf
+void Scuttle::Portal()
+{
+
+			GameEngineCore::GetInst()->ChangeLevel("UncleRoom");
+			OverlapTime = 0.0f;
+			ScuttleBGMPlayer.Stop();
+			ScuttlePalyer = false;
+
+			GameEngineCore::GetInst()->ChangeLevel("Smith");
+			OverlapTime = 0.0f;
+			ScuttleBGMPlayer.Stop();
+			ScuttlePalyer = false;
+
+			GameEngineCore::GetInst()->ChangeLevel("Shop");
+			OverlapTime = 0.0f;
+			ScuttleBGMPlayer.Stop();
+			ScuttlePalyer = false;
+
+			GameEngineCore::GetInst()->ChangeLevel("SaveRoom");
+			OverlapTime = 0.0f;
+			ScuttlePalyer = true;
+
+			GameEngineCore::GetInst()->ChangeLevel("Spa");
+			OverlapTime = 0.0f;
+			ScuttlePalyer = true;
+
+			GameEngineCore::GetInst()->ChangeLevel("SkyRoom");
+			OverlapTime = 0.0f;
+			ScuttleBGMPlayer.Stop();
+			ScuttlePalyer = false;
+
+}
+
 void Scuttle::Update(float _DeltaTime)
 {
 	OverlapTime += _DeltaTime;
@@ -75,9 +137,6 @@ void Scuttle::Update(float _DeltaTime)
 	Debugging();
 	CameraAction();
 
-	// 레벨 이동
-	Portal();
-
 	if (SHA->GetPos().x >= 8355.0f)
 	{
 		GameEngineCore::GetInst()->ChangeLevel("Opening");
@@ -86,10 +145,12 @@ void Scuttle::Update(float _DeltaTime)
 
 void Scuttle::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Set = 1;
+
 	if (false == ScuttlePalyer)
 	{
 		ScuttleBGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Scuttle_Town.mp3");
-		ScuttleBGMPlayer.Volume(0.1f);
+		ScuttleBGMPlayer.Volume(0.0f);
 		ScuttleBGMPlayer.LoopCount(100);
 	}
 
@@ -223,52 +284,5 @@ void Scuttle::Debugging()
 	if (GameEngineInput::IsDown("Back"))
 	{
 		GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
-	}
-}
-
-void Scuttle::Portal()
-{
-	if (GameEngineInput::IsDown("UpMove"))
-	{
-		if (2545.0f <= SHA->GetPos().x && SHA->GetPos().x <= 2680.0f && SHA->GetPos().y >= 1175.0f)
-		{
-			GameEngineCore::GetInst()->ChangeLevel("UncleRoom");
-			OverlapTime = 0.0f;
-			ScuttleBGMPlayer.Stop();
-			ScuttlePalyer = false;
-		}
-		if (4705.0f <= SHA->GetPos().x && SHA->GetPos().x <= 4795.0f && SHA->GetPos().y >= 1175.0f)
-		{
-			GameEngineCore::GetInst()->ChangeLevel("Smith");
-			OverlapTime = 0.0f;
-			ScuttleBGMPlayer.Stop();
-			ScuttlePalyer = false;
-		}
-		if (5330.0f <= SHA->GetPos().x && SHA->GetPos().x <= 5495.0f && SHA->GetPos().y >= 1175.0f)
-		{
-			GameEngineCore::GetInst()->ChangeLevel("Shop");
-			OverlapTime = 0.0f;
-			ScuttleBGMPlayer.Stop();
-			ScuttlePalyer = false;
-		}
-		if (6160.0f <= SHA->GetPos().x && SHA->GetPos().x <= 6280.0f && SHA->GetPos().y >= 1175.0f)
-		{
-			GameEngineCore::GetInst()->ChangeLevel("SaveRoom");
-			OverlapTime = 0.0f;
-			ScuttlePalyer = true;
-		}
-		if (4840.0f <= SHA->GetPos().x && SHA->GetPos().x <= 4960.0f && SHA->GetPos().y <= 1175.0f)
-		{
-			GameEngineCore::GetInst()->ChangeLevel("Spa");
-			OverlapTime = 0.0f;
-			ScuttlePalyer = true;
-		}
-		if (5330.0f <= SHA->GetPos().x && SHA->GetPos().x <= 5495.0f && SHA->GetPos().y <= 1175.0f)
-		{
-			GameEngineCore::GetInst()->ChangeLevel("SkyRoom");
-			OverlapTime = 0.0f;
-			ScuttleBGMPlayer.Stop();
-			ScuttlePalyer = false;
-		}
 	}
 }

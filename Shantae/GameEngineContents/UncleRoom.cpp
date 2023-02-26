@@ -53,7 +53,7 @@ void UncleRoom::Loading()
 		SHA = dynamic_cast<Player*>(Shantae);
 
 		SHA->SetColMap(ColMap);
-		SHA->SetPos({ 90, 781 });
+		SHA->SetPos({ 110, 781 });
 		Shantae->GetLevel()->SetCameraPos({ 50, 100 });
 		SHA->CameraMoveSwitch();
 		SHA->SetAnimationStart(false);
@@ -74,9 +74,16 @@ void UncleRoom::Update(float _DeltaTime)
 	Debugging();
 
 	// 레벨 이동
-	if (SHA->GetPos().x <= 50.0f)
+	if (SHA->GetPos().x <= 90.0f
+		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{
-		GameEngineCore::GetInst()->ChangeLevel("Scuttle");
+		// BlackBoxInAnimation();
+		SHA->SetRoomAnimationStart(true);
+		SHA->SetMoveSpeed(100.0f);
+		if (true == SHA->RoomChangeAnimation(_DeltaTime))
+		{
+			GameEngineCore::GetInst()->ChangeLevel("Scuttle");
+		}
 	}
 }
 
@@ -95,6 +102,9 @@ void UncleRoom::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	BGMPlayer.Stop();
 	// InBoxKill();
+	SHA->SetPos({ 110, 781 });
+	AnimationSet = 1;
+	SHA->SetRoomAnimationStart(false);
 }
 
 void UncleRoom::BlackBoxOutAnimation()
@@ -142,7 +152,9 @@ void UncleRoom::LevelSet()
 	if (1 == AnimationSet)
 	{
 		SHA->SetStartAnimationStart(true);
-		if (200 <= SHA->GetPos().x)
+		SHA->SetMoveSpeed(600.0f);
+		SHA->SetDir("_R");
+		if (300 <= SHA->GetPos().x)
 		{
 			SHA->SetStartAnimationStart(false);
 			SHA->ChangeState(PlayerState::IDLE);

@@ -74,9 +74,16 @@ void Shop::Update(float _DeltaTime)
 	Debugging();
 
 	// 레벨 이동
-	if (SHA->GetPos().x <= 50.0f)
+	if (SHA->GetPos().x <= 125.0f
+		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{
-		GameEngineCore::GetInst()->ChangeLevel("Scuttle");
+		// BlackBoxInAnimation();
+		SHA->SetRoomAnimationStart(true);
+		SHA->SetMoveSpeed(100.0f);
+		if (true == SHA->RoomChangeAnimation(_DeltaTime))
+		{
+			GameEngineCore::GetInst()->ChangeLevel("Scuttle");
+		}
 	}
 }
 
@@ -95,6 +102,9 @@ void Shop::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	BGMPlayer.Stop();
 	// InBoxKill();
+	SHA->SetPos({ 140, 862 });
+	AnimationSet = 1;
+	SHA->SetRoomAnimationStart(false);
 }
 
 void Shop::BlackBoxOutAnimation()
@@ -142,6 +152,8 @@ void Shop::LevelSet()
 	if (1 == AnimationSet)
 	{
 		SHA->SetStartAnimationStart(true);
+		SHA->SetMoveSpeed(600.0f);
+		SHA->SetDir("_R");
 		if (300 <= SHA->GetPos().x)
 		{
 			SHA->SetStartAnimationStart(false);

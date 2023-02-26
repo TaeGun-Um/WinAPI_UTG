@@ -55,9 +55,11 @@ void TestLevel::Loading()
 
 	AnimationBox_Door* Door = CreateActor<AnimationBox_Door>();
 	Door->SetPos({ 600, 675 });
+	Door->SetPortalValue(PortalType::TestRoom);
 
 	AnimationBox_Door* Door2 = CreateActor<AnimationBox_Door>();
 	Door2->SetPos({ 800, 675 });
+	Door2->SetPortalValue(PortalType::TestRoom2);
 
 	CreateActor<GemWindow>();
 
@@ -99,6 +101,7 @@ void TestLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 void TestLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	//BGMPlayer.Stop();
+	Set = 1;
 }
 
 void TestLevel::LevelSet()

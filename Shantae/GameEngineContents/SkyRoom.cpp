@@ -48,7 +48,7 @@ void SkyRoom::Loading()
 		SHA = dynamic_cast<Player*>(Shantae);
 
 		SHA->SetColMap(ColMap);
-		SHA->SetPos({ 192, 829 });
+		SHA->SetPos({ 210, 829 });
 		Shantae->GetLevel()->SetCameraPos({ 200, 150 });
 		SHA->CameraMoveSwitch();
 		SHA->SetAnimationStart(false);
@@ -68,9 +68,16 @@ void SkyRoom::Update(float _DeltaTime)
 	Debugging();
 
 	// 레벨 이동
-	if (SHA->GetPos().x <= 50.0f)
+	if (SHA->GetPos().x <= 190.0f
+		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{
-		GameEngineCore::GetInst()->ChangeLevel("Scuttle");
+		// BlackBoxInAnimation();
+		SHA->SetRoomAnimationStart(true);
+		SHA->SetMoveSpeed(100.0f);
+		if (true == SHA->RoomChangeAnimation(_DeltaTime))
+		{
+			GameEngineCore::GetInst()->ChangeLevel("Scuttle");
+		}
 	}
 }
 
@@ -89,6 +96,9 @@ void SkyRoom::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	BGMPlayer.Stop();
 	// InBoxKill();
+	SHA->SetPos({ 210, 829 });
+	AnimationSet = 1;
+	SHA->SetRoomAnimationStart(false);
 }
 
 void SkyRoom::BlackBoxOutAnimation()
@@ -136,7 +146,9 @@ void SkyRoom::LevelSet()
 	if (1 == AnimationSet)
 	{
 		SHA->SetStartAnimationStart(true);
-		if (360 <= SHA->GetPos().x)
+		SHA->SetMoveSpeed(600.0f);
+		SHA->SetDir("_R");
+		if (390 <= SHA->GetPos().x)
 		{
 			SHA->SetStartAnimationStart(false);
 			SHA->ChangeState(PlayerState::IDLE);

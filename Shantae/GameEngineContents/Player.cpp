@@ -85,13 +85,18 @@ void Player::Update(float _DeltaTime)
 		LevelChangeAnimation(_DeltaTime);
 		return;
 	}
+	// 포탈 이동 애니메이션
+	if (true == IsRoomAnimationStart)
+	{
+		RoomChangeAnimation(_DeltaTime);
+		return;
+	}
 	// 레벨 끝 애니메이션
 	if (true == IsStartAnimationStart)
 	{
 		LevelStartAnimation(_DeltaTime);
 	}
-	// 포탈 이동 애니메이션
-	// 추가 필요
+
 	
 	//////////////////  콜리전 체크  //////////////////
 	
@@ -641,6 +646,21 @@ bool Player::LevelChangeAnimation(float _DeltaTime)
 	AnimationTime += _DeltaTime;
 
 	SetMove(float4::Right * MoveSpeed * _DeltaTime);
+
+	if (2.0f <= AnimationTime)
+	{
+		AnimationTime = 0.0f;
+		return true;
+	}
+
+	return false;
+}
+
+bool Player::RoomChangeAnimation(float _DeltaTime)
+{
+	AnimationTime += _DeltaTime;
+
+	SetMove(float4::Left * MoveSpeed * _DeltaTime);
 
 	if (2.0f <= AnimationTime)
 	{
