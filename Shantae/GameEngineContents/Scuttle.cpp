@@ -20,6 +20,7 @@
 #include "BlackBox.h"
 
 GameEngineSoundPlayer Scuttle::ScuttleBGMPlayer = 0;
+bool Scuttle::ScuttlePalyer = false;
 
 Scuttle::Scuttle()
 {
@@ -94,40 +95,6 @@ void Scuttle::Loading()
 
 }
 
-// asdf
-void Scuttle::Portal()
-{
-
-			GameEngineCore::GetInst()->ChangeLevel("UncleRoom");
-			OverlapTime = 0.0f;
-			ScuttleBGMPlayer.Stop();
-			ScuttlePalyer = false;
-
-			GameEngineCore::GetInst()->ChangeLevel("Smith");
-			OverlapTime = 0.0f;
-			ScuttleBGMPlayer.Stop();
-			ScuttlePalyer = false;
-
-			GameEngineCore::GetInst()->ChangeLevel("Shop");
-			OverlapTime = 0.0f;
-			ScuttleBGMPlayer.Stop();
-			ScuttlePalyer = false;
-
-			GameEngineCore::GetInst()->ChangeLevel("SaveRoom");
-			OverlapTime = 0.0f;
-			ScuttlePalyer = true;
-
-			GameEngineCore::GetInst()->ChangeLevel("Spa");
-			OverlapTime = 0.0f;
-			ScuttlePalyer = true;
-
-			GameEngineCore::GetInst()->ChangeLevel("SkyRoom");
-			OverlapTime = 0.0f;
-			ScuttleBGMPlayer.Stop();
-			ScuttlePalyer = false;
-
-}
-
 void Scuttle::Update(float _DeltaTime)
 {
 	OverlapTime += _DeltaTime;
@@ -137,9 +104,18 @@ void Scuttle::Update(float _DeltaTime)
 	Debugging();
 	CameraAction();
 
-	if (SHA->GetPos().x >= 8355.0f)
+	// 레벨 이동
+	if (SHA->GetPos().x >= 8335.0f
+		&& PlayerState::MOVE == SHA->GetShantaeState())
 	{
-		GameEngineCore::GetInst()->ChangeLevel("Opening");
+		BlackBoxInAnimation();
+		SHA->SetAnimationStart(true);
+		SHA->SetMoveSpeed(100.0f);
+		if (true == SHA->LevelChangeAnimation(_DeltaTime))
+		{
+			ScuttleBGMPlayer.Stop();
+			GameEngineCore::GetInst()->ChangeLevel("Opening");
+		}
 	}
 }
 
@@ -150,7 +126,7 @@ void Scuttle::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	if (false == ScuttlePalyer)
 	{
 		ScuttleBGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Scuttle_Town.mp3");
-		ScuttleBGMPlayer.Volume(0.0f);
+		ScuttleBGMPlayer.Volume(0.1f);
 		ScuttleBGMPlayer.LoopCount(100);
 	}
 
@@ -214,6 +190,7 @@ void Scuttle::LevelSet()
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
 		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
+		Player::MainPlayer->SetPortalEnd(true);
 	}
 
 	if (1 == AnimationSet)

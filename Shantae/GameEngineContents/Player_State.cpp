@@ -1509,7 +1509,7 @@ void Player::PortalingStart()
 }
 void Player::PortalingUpdate(float _Time)
 {
-	if (GameEngineInput::IsDown("MonsterTest"))
+	if (true == PortalEnd)
 	{
 		ChangeState(PlayerState::PORTALOUT);
 		return;
@@ -1517,7 +1517,7 @@ void Player::PortalingUpdate(float _Time)
 }
 void Player::PortalingEnd()
 {
-
+	PortalEnd = false;
 }
 
 void Player::PortalOutStart()

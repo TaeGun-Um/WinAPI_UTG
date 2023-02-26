@@ -171,6 +171,11 @@ public:
 		IsHouse = _Is;
 	}
 
+	void SetPortalEnd(bool _Is)
+	{
+		PortalEnd = _Is;
+	}
+
 	void SetCameraShaking(float _SetShakingTime, float _SetShakingValu);
 	bool FreeMoveState(float _DeltaTime);
 	void PositionText();
@@ -282,6 +287,7 @@ private:
 	bool IsStartAnimationStart = false;
 	bool IsRoomAnimationStart = false;
 	bool IsHouse = false;
+	bool PortalEnd = false;
 
 	float AccTime = 0.0f;
 	int StartFrame = 0;             // cut을 위한 인덱스 번호

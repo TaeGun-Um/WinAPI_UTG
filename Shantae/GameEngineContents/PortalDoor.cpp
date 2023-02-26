@@ -6,6 +6,7 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineCollision.h>
 
+#include "Scuttle.h"
 #include "ContentsEnum.h"
 #include "Player.h"
 #include "BlackBox.h"
@@ -60,6 +61,7 @@ void PortalDoor::PortalCheck(float _DeltaTime)
 			Por = 1;
 			Player::MainPlayer->ChangeState(PlayerState::PORTALIN);
 			IsPortalIn = true;
+			Player::MainPlayer->SetPortalEnd(false);
 		}
 
 		if (PlayerState::PORTALIN == Player::MainPlayer->GetShantaeState())
@@ -112,21 +114,31 @@ void PortalDoor::Portal()
 		GameEngineCore::GetInst()->ChangeLevel("TestRoom2");
 		break;
 	case PortalType::UncleRoom:
+		Scuttle::ScuttleBGMPlayer.Stop();
+		Scuttle::ScuttlePalyer = false;
 		GameEngineCore::GetInst()->ChangeLevel("UncleRoom");
 		break;
 	case PortalType::Shop:
+		Scuttle::ScuttleBGMPlayer.Stop();
+		Scuttle::ScuttlePalyer = false;
 		GameEngineCore::GetInst()->ChangeLevel("Shop");
 		break;
 	case PortalType::Spa:
+		Scuttle::ScuttlePalyer = true;
 		GameEngineCore::GetInst()->ChangeLevel("Spa");
 		break;
 	case PortalType::Smith:
+		Scuttle::ScuttleBGMPlayer.Stop();
+		Scuttle::ScuttlePalyer = false;
 		GameEngineCore::GetInst()->ChangeLevel("Smith");
 		break;
 	case PortalType::SkyRoom:
+		Scuttle::ScuttleBGMPlayer.Stop();
+		Scuttle::ScuttlePalyer = false;
 		GameEngineCore::GetInst()->ChangeLevel("SkyRoom");
 		break;
 	case PortalType::SaveRoom:
+		Scuttle::ScuttlePalyer = true;
 		GameEngineCore::GetInst()->ChangeLevel("SaveRoom");
 		break;
 	default:

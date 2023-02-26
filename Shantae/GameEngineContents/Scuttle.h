@@ -12,6 +12,7 @@ class Scuttle : public PlayLevel
 {
 public:
 	static GameEngineSoundPlayer ScuttleBGMPlayer;
+	static bool ScuttlePalyer;
 
 	// constrcuter destructer
 	Scuttle();
@@ -43,7 +44,6 @@ private:
 	void LevelSet();
 	void Debugging();
 	void CameraAction();
-	void Portal();
 
 	Sea* Se = nullptr;
 
@@ -54,7 +54,6 @@ private:
 	float OverlapTime = 0.0f;
 	
 	bool YCamera = false;
-	bool ScuttlePalyer = false;
 
 	int Set = 1;
 	int AnimationSet = 1;
