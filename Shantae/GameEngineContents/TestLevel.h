@@ -41,6 +41,8 @@ private:
 	Player* SHA = nullptr;
 	float OverlapTime = 0.0f;
 	float DelayTime = 0.2f;
+
+	int Set = 1;
 	
 	// MonsterSpawner* CreateSpawner(const float4& _SpawnerPos, const std::string_view& _MonsterType, GameEngineImage* _MonsterColMap, const float4& _MonstorPos);
 

@@ -40,5 +40,6 @@ private:
 	float OverlapTime = 0.0f;
 	float DelayTime = 0.2f;
 
+	int Set = 1;
 };
 

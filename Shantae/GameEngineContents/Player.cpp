@@ -378,14 +378,14 @@ void Player::MoveCalculation(float _DeltaTime)
 	}
 
 	// Run 시간 축적
-	if (RGB(74, 65, 42) == ColMap->GetPixelColor(NextPos, RGB(0, 0, 0))
-		|| RGB(0, 248, 0) == ColMap->GetPixelColor(NextPos, RGB(0, 0, 0)))
-	{
-		if (GameEngineInput::IsPress("LeftMove") || GameEngineInput::IsPress("RightMove"))
-		{
-			MoveTime += _DeltaTime;
-		}
-	}
+	//if (RGB(74, 65, 42) == ColMap->GetPixelColor(NextPos, RGB(0, 0, 0))
+	//	|| RGB(0, 248, 0) == ColMap->GetPixelColor(NextPos, RGB(0, 0, 0)))
+	//{
+	//	if (GameEngineInput::IsPress("LeftMove") || GameEngineInput::IsPress("RightMove"))
+	//	{
+	//		MoveTime += _DeltaTime;
+	//	}
+	//}
 
 	////////////////// State //////////////////
 
@@ -836,8 +836,9 @@ void Player::RenderSet()
 	AnimationRender->CreateAnimation({ .AnimationName = "Anger_R",  .ImageName = "Shantae_R.bmp", .Start = 64, .End = 71, .InterTime = 0.07f });
 	AnimationRender->CreateAnimation({ .AnimationName = "GetItem_R",  .ImageName = "Shantae_R.bmp", .Start = 72, .End = 79, .InterTime = 0.07f });
 	AnimationRender->CreateAnimation({ .AnimationName = "LowHP_R",  .ImageName = "Shantae_R.bmp", .Start = 361, .End = 369, .InterTime = 0.08f });
-	AnimationRender->CreateAnimation({ .AnimationName = "Enter_R",  .ImageName = "Shantae_R.bmp", .Start = 204, .End = 242, .InterTime = 0.07f });
-	AnimationRender->CreateAnimation({ .AnimationName = "Out_R",  .ImageName = "Shantae_R.bmp", .Start = 243, .End = 266, .InterTime = 0.07f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Enter_R",  .ImageName = "Shantae_R.bmp", .Start = 204, .End = 242, .InterTime = 0.07f, .Loop = false });
+	AnimationRender->CreateAnimation({ .AnimationName = "Portaling_R",  .ImageName = "Shantae_R.bmp", .Start = 242, .End = 242, .InterTime = 0.07f, .Loop = false });
+	AnimationRender->CreateAnimation({ .AnimationName = "Out_R",  .ImageName = "Shantae_R.bmp", .Start = 243, .End = 266, .InterTime = 0.07f, .Loop = false });
 
 	AnimationRender->CreateAnimation({ .AnimationName = "Jump_R",  .ImageName = "Shantae_R.bmp", .Start = 107, .End = 110, .InterTime = 0.07f });
 	AnimationRender->CreateAnimation({ .AnimationName = "JumpHighest_R",  .ImageName = "Shantae_R.bmp", .Start = 111, .End = 115, .InterTime = 0.07f, .Loop = false });
@@ -868,8 +869,9 @@ void Player::RenderSet()
 	AnimationRender->CreateAnimation({ .AnimationName = "Anger_L",  .ImageName = "Shantae_L.bmp", .Start = 64, .End = 71, .InterTime = 0.07f });
 	AnimationRender->CreateAnimation({ .AnimationName = "GetItem_L",  .ImageName = "Shantae_L.bmp", .Start = 72, .End = 79, .InterTime = 0.07f });
 	AnimationRender->CreateAnimation({ .AnimationName = "LowHP_L",  .ImageName = "Shantae_L.bmp", .Start = 361, .End = 369, .InterTime = 0.08f });
-	AnimationRender->CreateAnimation({ .AnimationName = "Enter_L",  .ImageName = "Shantae_L.bmp", .Start = 204, .End = 242, .InterTime = 0.07f });
-	AnimationRender->CreateAnimation({ .AnimationName = "Out_L",  .ImageName = "Shantae_L.bmp", .Start = 243, .End = 266, .InterTime = 0.07f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Enter_L",  .ImageName = "Shantae_L.bmp", .Start = 204, .End = 242, .InterTime = 0.07f, .Loop = false });
+	AnimationRender->CreateAnimation({ .AnimationName = "Portaling_L",  .ImageName = "Shantae_L.bmp", .Start = 242, .End = 242, .InterTime = 0.07f, .Loop = false });
+	AnimationRender->CreateAnimation({ .AnimationName = "Out_L",  .ImageName = "Shantae_L.bmp", .Start = 243, .End = 266, .InterTime = 0.07f, .Loop = false });
 
 	AnimationRender->CreateAnimation({ .AnimationName = "Jump_L",  .ImageName = "Shantae_L.bmp", .Start = 107, .End = 110, .InterTime = 0.07f });
 	AnimationRender->CreateAnimation({ .AnimationName = "JumpHighest_L",  .ImageName = "Shantae_L.bmp", .Start = 111, .End = 115, .InterTime = 0.07f, .Loop = false });

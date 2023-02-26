@@ -51,8 +51,29 @@ void AnimationBox_Door::PortalCheck(float _DeltaTime)
 	{
 		if (GameEngineInput::IsDown("UpMove") && PlayerState::IDLE == Player::MainPlayer->GetShantaeState())
 		{
-			int a = 0;
-			//Player::MainPlayer->ChangeState(PlayerState::PORTALIN);
+			Player::MainPlayer->ChangeState(PlayerState::PORTALIN);
+			IsPortalIn = true;
+		}
+
+		if (PlayerState::PORTALIN == Player::MainPlayer->GetShantaeState())
+		{
+			IsPortalIn = true;
+		}
+		else
+		{
+			IsPortalIn = false;
+		}
+
+		if (true == IsPortalIn)
+		{
+			if ((GetPos().x + 70.0f) >= Player::MainPlayer->GetPos().x)
+			{
+				Player::MainPlayer->SetMove(float4::Right * 100.0f * _DeltaTime);
+			}
+			else if ((GetPos().x + 80.0f) <= Player::MainPlayer->GetPos().x)
+			{
+				Player::MainPlayer->SetMove(float4::Left * 100.0f * _DeltaTime);
+			}
 		}
 	}
 }

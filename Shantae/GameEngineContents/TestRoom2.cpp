@@ -70,6 +70,12 @@ void TestRoom2::LevelChangeEnd(GameEngineLevel* _NextLevel)
 
 void TestRoom2::LevelSet()
 {
+	if (1 == Set)
+	{
+		Set = 0;
+
+		Player::MainPlayer = SHA;
+	}
 }
 
 void TestRoom2::Debugging()

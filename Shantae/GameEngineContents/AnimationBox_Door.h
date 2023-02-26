@@ -35,5 +35,6 @@ private:
 	PortalType PortalValue = PortalType::TestRoom;
 
 	bool IsPortal = false;
+	bool IsPortalIn = false;
 };
 

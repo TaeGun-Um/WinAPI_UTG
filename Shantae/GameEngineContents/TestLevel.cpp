@@ -103,6 +103,12 @@ void TestLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 
 void TestLevel::LevelSet()
 {
+	if (1 == Set)
+	{
+		Set = 0;
+
+		Player::MainPlayer = SHA;
+	}
 }
 
 void TestLevel::CameraAction()

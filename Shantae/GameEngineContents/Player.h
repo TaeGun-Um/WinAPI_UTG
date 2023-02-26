@@ -25,6 +25,7 @@ enum class PlayerState
 	JUMPHIT2,
 	CROUCHHIT,
 	PORTALIN,
+	PORTALING,
 	PORTALOUT,
 };
 
@@ -343,6 +344,10 @@ private:
 	void PortalInStart();
 	void PortalInUpdate(float _Time);
 	void PortalInEnd();
+
+	void PortalingStart();
+	void PortalingUpdate(float _Time);
+	void PortalingEnd();
 
 	void PortalOutStart();
 	void PortalOutUpdate(float _Time);

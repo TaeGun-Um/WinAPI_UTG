@@ -83,6 +83,9 @@ void Player::ChangeState(PlayerState _State)
 	case PlayerState::PORTALIN:
 		PortalInStart();
 		break;
+	case PlayerState::PORTALING:
+		PortalingStart();
+		break;
 	case PlayerState::PORTALOUT:
 		PortalOutStart();
 		break;
@@ -148,6 +151,9 @@ void Player::ChangeState(PlayerState _State)
 		break;
 	case PlayerState::PORTALIN:
 		PortalInEnd();
+		break;
+	case PlayerState::PORTALING:
+		PortalingEnd();
 		break;
 	case PlayerState::PORTALOUT:
 		PortalOutEnd();
@@ -226,6 +232,9 @@ void Player::UpdateState(float _Time)
 		break;
 	case PlayerState::PORTALIN:
 		PortalInUpdate(_Time);
+		break;
+	case PlayerState::PORTALING:
+		PortalingUpdate(_Time);
 		break;
 	case PlayerState::PORTALOUT:
 		PortalOutUpdate(_Time);
@@ -448,6 +457,7 @@ void Player::MoveUpdate(float _Time)
 			{
 				GetLevel()->SetCameraMove(float4::Left * MoveSpeed * _Time);
 			}
+			MoveTime += _Time;
 		}
 		else if (true == GameEngineInput::IsPress("RightMove"))
 		{
@@ -459,6 +469,11 @@ void Player::MoveUpdate(float _Time)
 			{
 				GetLevel()->SetCameraMove(float4::Right * MoveSpeed * _Time);
 			}
+			MoveTime += _Time;
+		}
+		else
+		{
+			MoveTime = 0.0f;
 		}
 	}
 
@@ -1473,24 +1488,49 @@ void Player::JumpHitEnd2()
 
 void Player::PortalInStart()
 {
-
+	DirCheck("Enter");
 }
 void Player::PortalInUpdate(float _Time)
 {
-
+	if (true == AnimationRender->IsAnimationEnd())
+	{
+		ChangeState(PlayerState::PORTALING);
+		return;
+	}
 }
 void Player::PortalInEnd()
 {
 
 }
 
-void Player::PortalOutStart()
+void Player::PortalingStart()
+{
+	DirCheck("Portaling");
+}
+void Player::PortalingUpdate(float _Time)
+{
+	if (GameEngineInput::IsDown("MonsterTest"))
+	{
+		ChangeState(PlayerState::PORTALOUT);
+		return;
+	}
+}
+void Player::PortalingEnd()
 {
 
 }
+
+void Player::PortalOutStart()
+{
+	DirCheck("Out");
+}
 void Player::PortalOutUpdate(float _Time)
 {
-
+	if (true == AnimationRender->IsAnimationEnd())
+	{
+		ChangeState(PlayerState::IDLE);
+		return;
+	}
 }
 void Player::PortalOutEnd()
 {
