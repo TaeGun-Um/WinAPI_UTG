@@ -48,11 +48,11 @@ void Ship::PlayerCheck()
 {
 	float4 PlayerPos = Player::MainPlayer->GetPos();
 
-	if (InitPos.x + 750.0f <= PlayerPos.x)
+	if (InitPos.x + 850.0f <= PlayerPos.x)
 	{
 		Stop = true;
 	}
-	else if (InitPos.x - 900 >= PlayerPos.x)
+	else if (InitPos.x - 1000 >= PlayerPos.x)
 	{
 		Stop = true;
 	}
