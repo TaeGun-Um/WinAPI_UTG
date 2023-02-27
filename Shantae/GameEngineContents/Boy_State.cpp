@@ -18,9 +18,6 @@ void Boy::ChangeState(BoyState _State)
 	case BoyState::MOVE:
 		MoveStart();
 		break;
-	case BoyState::TURN:
-		TurnStart();
-		break;
 	case BoyState::RUN:
 		RunStart();
 		break;
@@ -35,9 +32,6 @@ void Boy::ChangeState(BoyState _State)
 		break;
 	case BoyState::MOVE:
 		MoveEnd();
-		break;
-	case BoyState::TURN:
-		TurnEnd();
 		break;
 	case BoyState::RUN:
 		RunEnd();
@@ -56,9 +50,6 @@ void Boy::UpdateState(float _Time)
 		break;
 	case BoyState::MOVE:
 		MoveUpdate(_Time);
-		break;
-	case BoyState::TURN:
-		TurnUpdate(_Time);
 		break;
 	case BoyState::RUN:
 		RunUpdate(_Time);
@@ -145,13 +136,6 @@ void Boy::MoveUpdate(float _Time)
 void Boy::MoveEnd()
 {
 }
-
-void Boy::TurnStart()
-{}
-void Boy::TurnUpdate(float _Time)
-{}
-void Boy::TurnEnd()
-{}
 
 void Boy::RunStart()
 {

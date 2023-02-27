@@ -38,6 +38,7 @@
 #include "Desert_Man.h"
 #include "Mayor_Scuttlebutt.h"
 #include "Dancer.h"
+#include "Merchant.h"
 
 #include "AnimationBox_Door.h"
 
@@ -77,11 +78,13 @@ void TestLevel::Loading()
 
 	// NPC
 	{
-		Boy* M3 = CreateActor<Boy>();
-		M3->SetPos({ 400, 900 });
+		//Boy* M3 = CreateActor<Boy>();
+		//M3->SetPos({ 400, 900 });
+		//M3->SetRun();
 
 		//Girl* M4 = CreateActor<Girl>();
 		//M4->SetPos({ 400, 900 });
+		//M4->SetRun();
 
 		//Jug_Woman* M5 = CreateActor<Jug_Woman>();
 		//M5->SetPos({ 400, 900 });
@@ -91,6 +94,11 @@ void TestLevel::Loading()
 
 		//Desert_Man* M7 = CreateActor<Desert_Man>();
 		//M7->SetPos({ 400, 900 });
+
+		Merchant* M7 = CreateActor<Merchant>();
+		M7->SetPos({ 400, 900 });
+		M7->SetRun();
+		
 
 	}
 

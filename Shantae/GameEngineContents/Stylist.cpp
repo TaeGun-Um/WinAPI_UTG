@@ -26,10 +26,11 @@ void Stylist::Start()
 	AnimationRender->CreateAnimation({ .AnimationName = "Turn_R",  .ImageName = "Stylist_L.bmp", .Start = 4, .End = 7, .InterTime = 0.1f });
 	AnimationRender->CreateAnimation({ .AnimationName = "Move_R",  .ImageName = "Stylist_R.bmp", .Start = 8, .End = 11, .InterTime = 0.1f });
 
-	AnimationRender->CreateAnimation({ .AnimationName = "Idle_L",  .ImageName = "Stylist_L.bmp", .Start = 12, .End = 15, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Run",  .ImageName = "Stylist_L.bmp", .Start = 12, .End = 15, .InterTime = 0.1f });
 
 	ChangeState(StylistState::IDLE);
 }
+
 void Stylist::Update(float _DeltaTime)
 {
 	if (1 == CurrentPosCount)
@@ -41,6 +42,7 @@ void Stylist::Update(float _DeltaTime)
 	UpdateState(_DeltaTime);
 	DirectCheckForKill();
 }
+
 void Stylist::Render(float _DeltaTime)
 {
 

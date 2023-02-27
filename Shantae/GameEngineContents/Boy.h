@@ -6,7 +6,6 @@ enum class BoyState
 {
 	IDLE,
 	MOVE,
-	TURN,
 	RUN,
 };
 
@@ -23,6 +22,11 @@ public:
 	Boy(Boy&& _Other) noexcept = delete;
 	Boy& operator=(const Boy& _Other) = delete;
 	Boy& operator=(Boy&& _Other) noexcept = delete;
+
+	void SetRun()
+	{
+		IsRun = true;
+	}
 
 protected:
 	void Start() override;
@@ -61,10 +65,6 @@ private:
 	void MoveStart();
 	void MoveUpdate(float _Time);
 	void MoveEnd();
-
-	void TurnStart();
-	void TurnUpdate(float _Time);
-	void TurnEnd();
 
 	void RunStart();
 	void RunUpdate(float _Time);

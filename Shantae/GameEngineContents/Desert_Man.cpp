@@ -26,7 +26,7 @@ void Desert_Man::Start()
 	AnimationRender->CreateAnimation({ .AnimationName = "Turn_R",  .ImageName = "Desert Man_L.bmp", .Start = 6, .End = 10, .InterTime = 0.1f });
 	AnimationRender->CreateAnimation({ .AnimationName = "Move_R",  .ImageName = "Desert Man_R.bmp", .Start = 11, .End = 18, .InterTime = 0.1f });
 
-	AnimationRender->CreateAnimation({ .AnimationName = "Run",  .ImageName = "Desert Man.bmp", .Start = 19, .End = 26, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Run",  .ImageName = "Desert Man_L.bmp", .Start = 19, .End = 26, .InterTime = 0.1f });
 
 	ChangeState(Desert_ManState::IDLE);
 }

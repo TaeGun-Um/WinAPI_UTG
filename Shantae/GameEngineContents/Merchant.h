@@ -18,6 +18,11 @@ public:
 	Merchant& operator=(const Merchant& _Other) = delete;
 	Merchant& operator=(Merchant&& _Other) noexcept = delete;
 
+	void SetRun()
+	{
+		IsRun = true;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;

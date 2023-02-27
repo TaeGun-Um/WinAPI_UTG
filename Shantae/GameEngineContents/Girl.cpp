@@ -24,7 +24,7 @@ void Girl::Start()
 	AnimationRender->CreateAnimation({ .AnimationName = "Idle_R",  .ImageName = "Girl_R.bmp", .Start = 0, .End = 7, .InterTime = 0.1f });
 	AnimationRender->CreateAnimation({ .AnimationName = "Move_R",  .ImageName = "Girl_R.bmp", .Start = 8, .End = 15, .InterTime = 0.1f });
 
-	AnimationRender->CreateAnimation({ .AnimationName = "Run",  .ImageName = "Girl_L.bmp", .Start = 0, .End = 7, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Run",  .ImageName = "Girl_L.bmp", .Start = 16, .End = 23, .InterTime = 0.1f });
 
 	ChangeState(GirlState::IDLE);
 }

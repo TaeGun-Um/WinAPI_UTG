@@ -24,6 +24,11 @@ public:
 	Jug_Woman& operator=(const Jug_Woman& _Other) = delete;
 	Jug_Woman& operator=(Jug_Woman&& _Other) noexcept = delete;
 
+	void SetRun()
+	{
+		IsRun = true;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -36,11 +41,16 @@ private:
 	GameEngineRender* AnimationRender = nullptr;
 
 	float4 CurrentPos = float4::Zero;
+	float4 LeftMovePos = float4::Zero;
+
+	float MoveTime = 0.0f;
 
 	int CurrentPosCount = 1;
+	int Pass = 1;
 
 	bool MoveDirect = true; // true = Left, false = Right
 	bool IsRun = false;
+	bool IsTurn = false;
 
 	// State
 	std::string DirString = "_L";
