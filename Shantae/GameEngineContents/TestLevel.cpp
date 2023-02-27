@@ -53,13 +53,13 @@ void TestLevel::Loading()
 
 	CreateActor<TestMap>();
 
-	AnimationBox_Door* Door = CreateActor<AnimationBox_Door>();
-	Door->SetPos({ 600, 675 });
-	Door->SetPortalValue(PortalType::TestRoom);
+	//AnimationBox_Door* Door = CreateActor<AnimationBox_Door>();
+	//Door->SetPos({ 600, 675 });
+	//Door->SetPortalValue(PortalType::TestRoom);
 
-	AnimationBox_Door* Door2 = CreateActor<AnimationBox_Door>();
-	Door2->SetPos({ 800, 675 });
-	Door2->SetPortalValue(PortalType::TestRoom2);
+	//AnimationBox_Door* Door2 = CreateActor<AnimationBox_Door>();
+	//Door2->SetPos({ 800, 675 });
+	//Door2->SetPortalValue(PortalType::TestRoom2);
 
 	CreateActor<GemWindow>();
 

@@ -112,5 +112,61 @@ void CharacterLoad::Loading()
 	GameEngineImage* Image40 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Bat\\Bat_L.BMP"));
 	Image40->Cut(5, 10);
 
+	// Cacklebat
+	GameEngineImage* Image41 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Cacklebat\\Cacklebat_L.BMP"));
+	Image41->Cut(5, 11);
+	GameEngineImage* Image42 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Cacklebat\\Cacklebat_R.BMP"));
+	Image42->Cut(5, 11);
+
 	//////////////////////////////// NPC ////////////////////////////////
+
+	GameEngineImage* Image43 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Bathwoman.BMP"));
+	Image43->Cut(11, 1);
+	GameEngineImage* Image44 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Boy_L.BMP"));
+	Image44->Cut(5, 5);
+	GameEngineImage* Image45 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Boy_R.BMP"));
+	Image45->Cut(5, 5);
+	GameEngineImage* Image46 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Dancer_L.BMP"));
+	Image46->Cut(5, 2);
+	GameEngineImage* Image47 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Dancer_R.BMP"));
+	Image47->Cut(5, 2);
+	GameEngineImage* Image48 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Desert Man_L.BMP"));
+	Image48->Cut(5, 6);
+	GameEngineImage* Image49 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Desert Man_R.BMP"));
+	Image49->Cut(5, 6);
+	GameEngineImage* Image50 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Girl_L.BMP"));
+	Image50->Cut(5, 5);
+	GameEngineImage* Image51 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Girl_R.BMP"));
+	Image51->Cut(5, 5);
+	GameEngineImage* Image52 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Jug Woman_L.BMP"));
+	Image52->Cut(5, 6);
+	GameEngineImage* Image53 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Jug Woman_R.BMP"));
+	Image53->Cut(5, 6);
+	GameEngineImage* Image54 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Mayor Scuttlebutt_L.BMP"));
+	Image54->Cut(5, 2);
+	GameEngineImage* Image55 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Mayor Scuttlebutt_R.BMP"));
+	Image55->Cut(5, 2);
+	GameEngineImage* Image56 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Merchant.BMP"));
+	Image56->Cut(5, 2);
+	GameEngineImage* Image57 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Sailor_L.BMP"));
+	Image57->Cut(5, 3);
+	GameEngineImage* Image58 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Sailor_R.BMP"));
+	Image58->Cut(5, 3);
+	GameEngineImage* Image59 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Sky_L.BMP"));
+	Image59->Cut(5, 9);
+	GameEngineImage* Image60 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Sky_R.BMP"));
+	Image60->Cut(5, 9);
+	GameEngineImage* Image61 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Squidsmith.BMP"));
+	Image61->Cut(5, 18);
+	GameEngineImage* Image62 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Stylist_L.BMP"));
+	Image62->Cut(5, 4);
+	GameEngineImage* Image63 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Stylist_R.BMP"));
+	Image63->Cut(5, 4);
+	GameEngineImage* Image64 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Town Guard_L.BMP"));
+	Image64->Cut(5, 3);
+	GameEngineImage* Image65 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Town Guard_R.BMP"));
+	Image65->Cut(5, 3);
+	GameEngineImage* Image66 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Wrench.BMP"));
+	Image66->Cut(5, 5);
+
 }
