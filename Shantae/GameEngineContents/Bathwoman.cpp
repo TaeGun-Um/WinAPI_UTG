@@ -20,7 +20,6 @@ void Bathwoman::Start()
 	AnimationRender = CreateRender(RenderOrder::Monster);
 	AnimationRender->SetScale({ 400, 400 });
 
-	// Right
 	AnimationRender->CreateAnimation({ .AnimationName = "Idle",  .ImageName = "Bathwoman.bmp", .Start = 0, .End = 10, .InterTime = 0.1f });
 
 	BodyCollision = CreateCollision(CollisionOrder::Trigger);

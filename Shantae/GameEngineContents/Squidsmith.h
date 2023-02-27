@@ -39,6 +39,7 @@ private:
 	A_Button* AButton = nullptr;
 
 	bool MoveDirect = true; // true = Left, false = Right
+	bool Isturn = false;
 
 	int CreateAButtion = 1;
 
@@ -54,5 +55,12 @@ private:
 	void IdleUpdate(float _Time);
 	void IdleEnd();
 
-};
+	void TurnStart();
+	void TurnUpdate(float _Time);
+	void TurnEnd();
 
+	void ActionStart();
+	void ActionUpdate(float _Time);
+	void ActionEnd();
+
+};

@@ -49,7 +49,7 @@ void Smith::Loading()
 	// NPC
 	{
 		Squidsmith* M = CreateActor<Squidsmith>();
-		M->SetPos({ 700, 500 });
+		M->SetPos({ 880, 637 });
 	}
 
 	// Player
