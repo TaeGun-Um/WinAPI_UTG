@@ -171,6 +171,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Bathwoman.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BeforeBoss.h">
       <SubType>
       </SubType>
@@ -247,6 +251,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Boy.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Bridge_Boom.h">
       <SubType>
       </SubType>
@@ -263,7 +271,19 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Dancer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Desert_Man.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="GemWindow.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Girl.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -280,6 +300,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Impact.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Jug_Woman.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -316,6 +340,14 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="CharacterLoad.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Mayor_Scuttlebutt.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Merchant.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -397,6 +429,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="PortalDoor.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Sailor.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -554,6 +590,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="SkyNPC.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="SkyRoom.h">
       <SubType>
       </SubType>
@@ -654,6 +694,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Squidsmith.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Stair.h">
       <SubType>
       </SubType>
@@ -676,6 +720,10 @@
     </ClInclude>
     <ClInclude Include="Stair_Stair.h" />
     <ClInclude Include="Stair_Tower.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Stylist.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -704,6 +752,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="TimerCollision.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Town_Guard.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -739,6 +791,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Wrench.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AmmoBaron.cpp">
@@ -755,6 +811,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Bat.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Bathwoman.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -835,6 +895,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Boss_Tank_State.cpp" />
+    <ClCompile Include="Boy.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Bridge_Boom.cpp">
       <SubType>
       </SubType>
@@ -851,7 +915,19 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Dancer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Desert_Man.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="GemWindow.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Girl.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -868,6 +944,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Impact.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Jug_Woman.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -904,6 +984,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="CharacterLoad.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Mayor_Scuttlebutt.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Merchant.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -984,6 +1072,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="PortalDoor.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Sailor.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -1145,6 +1237,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="SkyNPC.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="SkyRoom.cpp">
       <SubType>
       </SubType>
@@ -1251,6 +1347,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Squidsmith.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Stair.cpp">
       <SubType>
       </SubType>
@@ -1273,6 +1373,10 @@
     </ClCompile>
     <ClCompile Include="Stair_Stair.cpp" />
     <ClCompile Include="Stair_Tower.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Stylist.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -1301,6 +1405,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="TimerCollision.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Town_Guard.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -1333,6 +1441,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="WhiteBox.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Wrench.cpp">
       <SubType>
       </SubType>
     </ClCompile>

@@ -446,6 +446,48 @@
     <ClInclude Include="PortalDoor.h">
       <Filter>AssistantCollision\Portal</Filter>
     </ClInclude>
+    <ClInclude Include="Bathwoman.h">
+      <Filter>Character\NPC\Sepcial</Filter>
+    </ClInclude>
+    <ClInclude Include="SkyNPC.h">
+      <Filter>Character\NPC\Sepcial</Filter>
+    </ClInclude>
+    <ClInclude Include="Squidsmith.h">
+      <Filter>Character\NPC\Sepcial</Filter>
+    </ClInclude>
+    <ClInclude Include="Town_Guard.h">
+      <Filter>Character\NPC\Sepcial</Filter>
+    </ClInclude>
+    <ClInclude Include="Wrench.h">
+      <Filter>Character\NPC\Sepcial</Filter>
+    </ClInclude>
+    <ClInclude Include="Boy.h">
+      <Filter>Character\NPC\Normal</Filter>
+    </ClInclude>
+    <ClInclude Include="Dancer.h">
+      <Filter>Character\NPC\Normal</Filter>
+    </ClInclude>
+    <ClInclude Include="Desert_Man.h">
+      <Filter>Character\NPC\Normal</Filter>
+    </ClInclude>
+    <ClInclude Include="Girl.h">
+      <Filter>Character\NPC\Normal</Filter>
+    </ClInclude>
+    <ClInclude Include="Jug_Woman.h">
+      <Filter>Character\NPC\Normal</Filter>
+    </ClInclude>
+    <ClInclude Include="Mayor_Scuttlebutt.h">
+      <Filter>Character\NPC\Sepcial</Filter>
+    </ClInclude>
+    <ClInclude Include="Sailor.h">
+      <Filter>Character\NPC\Normal</Filter>
+    </ClInclude>
+    <ClInclude Include="Stylist.h">
+      <Filter>Character\NPC\Normal</Filter>
+    </ClInclude>
+    <ClInclude Include="Merchant.h">
+      <Filter>Character\NPC\Sepcial</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShantaeCore.cpp" />
@@ -916,6 +958,48 @@
     </ClCompile>
     <ClCompile Include="PortalDoor.cpp">
       <Filter>AssistantCollision\Portal</Filter>
+    </ClCompile>
+    <ClCompile Include="Bathwoman.cpp">
+      <Filter>Character\NPC\Sepcial</Filter>
+    </ClCompile>
+    <ClCompile Include="SkyNPC.cpp">
+      <Filter>Character\NPC\Sepcial</Filter>
+    </ClCompile>
+    <ClCompile Include="Squidsmith.cpp">
+      <Filter>Character\NPC\Sepcial</Filter>
+    </ClCompile>
+    <ClCompile Include="Town_Guard.cpp">
+      <Filter>Character\NPC\Sepcial</Filter>
+    </ClCompile>
+    <ClCompile Include="Wrench.cpp">
+      <Filter>Character\NPC\Sepcial</Filter>
+    </ClCompile>
+    <ClCompile Include="Boy.cpp">
+      <Filter>Character\NPC\Normal</Filter>
+    </ClCompile>
+    <ClCompile Include="Dancer.cpp">
+      <Filter>Character\NPC\Normal</Filter>
+    </ClCompile>
+    <ClCompile Include="Desert_Man.cpp">
+      <Filter>Character\NPC\Normal</Filter>
+    </ClCompile>
+    <ClCompile Include="Girl.cpp">
+      <Filter>Character\NPC\Normal</Filter>
+    </ClCompile>
+    <ClCompile Include="Jug_Woman.cpp">
+      <Filter>Character\NPC\Normal</Filter>
+    </ClCompile>
+    <ClCompile Include="Mayor_Scuttlebutt.cpp">
+      <Filter>Character\NPC\Sepcial</Filter>
+    </ClCompile>
+    <ClCompile Include="Sailor.cpp">
+      <Filter>Character\NPC\Normal</Filter>
+    </ClCompile>
+    <ClCompile Include="Stylist.cpp">
+      <Filter>Character\NPC\Normal</Filter>
+    </ClCompile>
+    <ClCompile Include="Merchant.cpp">
+      <Filter>Character\NPC\Sepcial</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
