@@ -18,7 +18,17 @@ void Stylist::Start()
 	AnimationRender->SetScale({ 400, 400 });
 
 	// Right
-	AnimationRender->CreateAnimation({ .AnimationName = "Move_R",  .ImageName = "Soldier_Blue_R.bmp", .Start = 0, .End = 9, .InterTime = 0.08f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_L",  .ImageName = "Stylist_L.bmp", .Start = 0, .End = 3, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Turn_L",  .ImageName = "Stylist_R.bmp", .Start = 4, .End = 7, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Move_L",  .ImageName = "Stylist_L.bmp", .Start = 8, .End = 11, .InterTime = 0.1f });
+
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_R",  .ImageName = "Stylist_R.bmp", .Start = 0, .End = 3, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Turn_R",  .ImageName = "Stylist_L.bmp", .Start = 4, .End = 7, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Move_R",  .ImageName = "Stylist_R.bmp", .Start = 8, .End = 11, .InterTime = 0.1f });
+
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_L",  .ImageName = "Stylist_L.bmp", .Start = 12, .End = 15, .InterTime = 0.1f });
+
+	ChangeState(StylistState::IDLE);
 }
 void Stylist::Update(float _DeltaTime)
 {
@@ -27,6 +37,9 @@ void Stylist::Update(float _DeltaTime)
 		CurrentPosCount = 0;
 		CurrentPos = GetPos();
 	}
+
+	UpdateState(_DeltaTime);
+	DirectCheckForKill();
 }
 void Stylist::Render(float _DeltaTime)
 {
@@ -35,9 +48,9 @@ void Stylist::Render(float _DeltaTime)
 
 void Stylist::DirectCheckForKill()
 {
-	float4 Pos = CurrentPos + (float4::Down * 1500);
+	float4 Pos = CurrentPos + (float4::Left * 1800);
 
-	if (GetPos().y >= Pos.y)
+	if (GetPos().x <= Pos.x)
 	{
 		Kill();
 	}

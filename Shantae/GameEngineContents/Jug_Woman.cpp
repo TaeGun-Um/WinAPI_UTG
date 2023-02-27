@@ -17,8 +17,17 @@ void Jug_Woman::Start()
 	AnimationRender = CreateRender(RenderOrder::Monster);
 	AnimationRender->SetScale({ 400, 400 });
 
-	// Right
-	AnimationRender->CreateAnimation({ .AnimationName = "Move_R",  .ImageName = "Soldier_Blue_R.bmp", .Start = 0, .End = 9, .InterTime = 0.08f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_L",  .ImageName = "Jug Woman_L.bmp", .Start = 0, .End = 7, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Turn_L",  .ImageName = "Jug Woman_R.bmp", .Start = 8, .End = 11, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Move_L",  .ImageName = "Jug Woman_L.bmp", .Start = 8, .End = 19, .InterTime = 0.1f });
+
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_R",  .ImageName = "Jug Woman_R.bmp", .Start = 0, .End = 7, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Turn_R",  .ImageName = "Jug Woman_L.bmp", .Start = 8, .End = 11, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Move_R",  .ImageName = "Jug Woman_R.bmp", .Start = 8, .End = 19, .InterTime = 0.1f });
+
+	AnimationRender->CreateAnimation({ .AnimationName = "Run",  .ImageName = "Jug Woman_L.bmp", .Start = 20, .End = 27, .InterTime = 0.1f });
+
+	ChangeState(Jug_WomanState::IDLE);
 }
 void Jug_Woman::Update(float _DeltaTime)
 {
@@ -27,6 +36,9 @@ void Jug_Woman::Update(float _DeltaTime)
 		CurrentPosCount = 0;
 		CurrentPos = GetPos();
 	}
+
+	UpdateState(_DeltaTime);
+	DirectCheckForKill();
 }
 void Jug_Woman::Render(float _DeltaTime)
 {
@@ -35,9 +47,9 @@ void Jug_Woman::Render(float _DeltaTime)
 
 void Jug_Woman::DirectCheckForKill()
 {
-	float4 Pos = CurrentPos + (float4::Down * 1500);
+	float4 Pos = CurrentPos + (float4::Left * 1800);
 
-	if (GetPos().y >= Pos.y)
+	if (GetPos().x <= Pos.x)
 	{
 		Kill();
 	}

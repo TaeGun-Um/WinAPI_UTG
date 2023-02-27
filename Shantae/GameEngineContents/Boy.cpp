@@ -18,7 +18,15 @@ void Boy::Start()
 	AnimationRender->SetScale({ 400, 400 });
 
 	// Right
-	AnimationRender->CreateAnimation({ .AnimationName = "Move_R",  .ImageName = "Soldier_Blue_R.bmp", .Start = 0, .End = 9, .InterTime = 0.08f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_L",  .ImageName = "Boy_L.bmp", .Start = 0, .End = 4, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Move_L",  .ImageName = "Boy_L.bmp", .Start = 5, .End = 12, .InterTime = 0.1f });
+
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_R",  .ImageName = "Boy_R.bmp", .Start = 0, .End = 4, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Move_R",  .ImageName = "Boy_R.bmp", .Start = 5, .End = 12, .InterTime = 0.1f });
+
+	AnimationRender->CreateAnimation({ .AnimationName = "Run",  .ImageName = "Boy_L.bmp", .Start = 13, .End = 20, .InterTime = 0.1f });
+
+	ChangeState(BoyState::IDLE);
 }
 void Boy::Update(float _DeltaTime)
 {
@@ -26,7 +34,11 @@ void Boy::Update(float _DeltaTime)
 	{
 		CurrentPosCount = 0;
 		CurrentPos = GetPos();
+		LeftMovePos = CurrentPos + (float4::Left * 600);
 	}
+
+	UpdateState(_DeltaTime);
+	DirectCheckForKill();
 }
 void Boy::Render(float _DeltaTime)
 {
@@ -35,9 +47,9 @@ void Boy::Render(float _DeltaTime)
 
 void Boy::DirectCheckForKill()
 {
-	float4 Pos = CurrentPos + (float4::Down * 1500);
+	float4 Pos = CurrentPos + (float4::Left * 1800);
 
-	if (GetPos().y >= Pos.y)
+	if (GetPos().x <= Pos.x)
 	{
 		Kill();
 	}

@@ -54,5 +54,17 @@ private:
 	void IdleUpdate(float _Time);
 	void IdleEnd();
 
+	void MoveStart();
+	void MoveUpdate(float _Time);
+	void MoveEnd();
+
+	void TurnStart();
+	void TurnUpdate(float _Time);
+	void TurnEnd();
+
+	void RunStart();
+	void RunUpdate(float _Time);
+	void RunEnd();
+
 };
 

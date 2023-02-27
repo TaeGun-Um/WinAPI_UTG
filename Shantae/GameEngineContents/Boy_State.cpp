@@ -1,5 +1,8 @@
 #include "Boy.h"
 
+#include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEngineCore/GameEngineRender.h>
+
 void Boy::ChangeState(BoyState _State)
 {
 	BoyState NextState = _State;
@@ -12,6 +15,15 @@ void Boy::ChangeState(BoyState _State)
 	case BoyState::IDLE:
 		IdleStart();
 		break;
+	case BoyState::MOVE:
+		MoveStart();
+		break;
+	case BoyState::TURN:
+		TurnStart();
+		break;
+	case BoyState::RUN:
+		RunStart();
+		break;
 	default:
 		break;
 	}
@@ -20,6 +32,15 @@ void Boy::ChangeState(BoyState _State)
 	{
 	case BoyState::IDLE:
 		IdleEnd();
+		break;
+	case BoyState::MOVE:
+		MoveEnd();
+		break;
+	case BoyState::TURN:
+		TurnEnd();
+		break;
+	case BoyState::RUN:
+		RunEnd();
 		break;
 	default:
 		break;
@@ -33,6 +54,15 @@ void Boy::UpdateState(float _Time)
 	case BoyState::IDLE:
 		IdleUpdate(_Time);
 		break;
+	case BoyState::MOVE:
+		MoveUpdate(_Time);
+		break;
+	case BoyState::TURN:
+		TurnUpdate(_Time);
+		break;
+	case BoyState::RUN:
+		RunUpdate(_Time);
+		break;
 	default:
 		break;
 	}
@@ -40,13 +70,96 @@ void Boy::UpdateState(float _Time)
 
 void Boy::IdleStart()
 {
-
+	DirCheck("Idle");
 }
 void Boy::IdleUpdate(float _Time)
 {
+	MoveTime += _Time;
 
+	if (true == IsTurn && 1.0f <= MoveTime)
+	{
+		MoveDirect = false;
+		MoveTime = 0.0f;
+		ChangeState(BoyState::MOVE);
+		return;
+	}
+
+	if (1.0f <= MoveTime)
+	{
+		MoveDirect = true;
+		MoveTime = 0.0f;
+		ChangeState(BoyState::MOVE);
+		return;
+	}
+
+	if (true == IsRun)
+	{
+		ChangeState(BoyState::RUN);
+		return;
+	}
+	if (GameEngineInput::IsDown("MonsterTest"))
+	{
+		ChangeState(BoyState::RUN);
+		return;
+	}
 }
 void Boy::IdleEnd()
 {
 
 }
+
+void Boy::MoveStart()
+{
+	DirCheck("Move");
+}
+void Boy::MoveUpdate(float _Time)
+{
+	if (true == MoveDirect)
+	{
+		if (GetPos().x >= LeftMovePos.x)
+		{
+			SetMove(float4::Left * 300.0f * _Time);
+		}
+		else
+		{
+			IsTurn = true;
+			ChangeState(BoyState::IDLE);
+			return;
+		}
+	}
+	else if (false == MoveDirect)
+	{
+		if (GetPos().x <= CurrentPos.x)
+		{
+			SetMove(float4::Right * 300.0f * _Time);
+		}
+		else
+		{
+			IsTurn = false;
+			ChangeState(BoyState::IDLE);
+			return;
+		}
+	}
+	
+}
+void Boy::MoveEnd()
+{
+}
+
+void Boy::TurnStart()
+{}
+void Boy::TurnUpdate(float _Time)
+{}
+void Boy::TurnEnd()
+{}
+
+void Boy::RunStart()
+{
+	AnimationRender->ChangeAnimation("Run");
+}
+void Boy::RunUpdate(float _Time)
+{
+	SetMove(float4::Left * 400.0f * _Time);
+}
+void Boy::RunEnd()
+{}

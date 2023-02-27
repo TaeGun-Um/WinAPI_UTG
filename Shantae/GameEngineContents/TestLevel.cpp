@@ -77,8 +77,8 @@ void TestLevel::Loading()
 
 	// NPC
 	{
-		//Boy* M3 = CreateActor<Boy>();
-		//M3->SetPos({ 400, 900 });
+		Boy* M3 = CreateActor<Boy>();
+		M3->SetPos({ 400, 900 });
 
 		//Girl* M4 = CreateActor<Girl>();
 		//M4->SetPos({ 400, 900 });
@@ -99,9 +99,9 @@ void TestLevel::Loading()
 	//s->SetPos({ 500, 850 });
 	//s->SetColMap(ColMap);
 
-	Soldier_Bomberman* s1 = CreateActor<Soldier_Bomberman>();
-	s1->SetPos({ 500, 850 });
-	s1->SetColMap(ColMap);
+	//Soldier_Bomberman* s1 = CreateActor<Soldier_Bomberman>();
+	//s1->SetPos({ 500, 850 });
+	//s1->SetColMap(ColMap);
 
 	Shantae = CreateActor<Player>();
 	SHA = dynamic_cast<Player*>(Shantae);
