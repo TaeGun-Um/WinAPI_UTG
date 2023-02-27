@@ -9,9 +9,10 @@
 #include "Smith_Background.h"
 #include "Smith_ColMap.h"
 #include "Smith_Map.h"
-#include "Player.h"
 #include "Sky.h"
 #include "Sea.h"
+#include "Player.h"
+#include "Squidsmith.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -44,6 +45,12 @@ void Smith::Loading()
 	// Map		
 	CreateActor<Smith_Map>();
 	CreateActor<Smith_ColMap>();
+
+	// NPC
+	{
+		Squidsmith* M = CreateActor<Squidsmith>();
+		M->SetPos({ 700, 500 });
+	}
 
 	// Player
 	{

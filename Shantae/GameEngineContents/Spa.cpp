@@ -10,8 +10,9 @@
 #include "Spa_ColMap.h"
 #include "Spa_Map.h"
 #include "Sky.h"
-#include "Player.h"
 #include "Sea.h"
+#include "Player.h"
+#include "Bathwoman.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -44,6 +45,12 @@ void Spa::Loading()
 	// Map		
 	CreateActor<Spa_Map>();
 	CreateActor<Spa_ColMap>();
+
+	// NPC
+	{
+		Bathwoman* M = CreateActor<Bathwoman>();
+		M->SetPos({ 1110, 745 });
+	}
 
 	// Player
 	{

@@ -2,6 +2,13 @@
 
 #include <GameEngineCore/GameEngineActor.h>
 
+enum class SkyNPCState
+{
+	IDLE,
+	MOVE,
+	TURN,
+};
+
 // Ό³Έν : Player Chracter
 class SkyNPC : public GameEngineActor
 {
@@ -23,11 +30,22 @@ protected:
 
 private:
 	void CollisionCheck();
-	void DirCheck();
+	void CharacterDirect();
 
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
 	bool MoveDirect = true; // true = Left, false = Right
 
+	// State
+	std::string DirString = "_L";
+	SkyNPCState StateValue = SkyNPCState::IDLE;
+
+	void ChangeState(SkyNPCState _State);
+	void UpdateState(float _Time);
+	std::string DirCheck(const std::string_view& _AnimationName);
+
+	void IdleStart();
+	void IdleUpdate(float _Time);
+	void IdleEnd();
 };
 

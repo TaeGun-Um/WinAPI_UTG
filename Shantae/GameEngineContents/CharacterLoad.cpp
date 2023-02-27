@@ -156,8 +156,10 @@ void CharacterLoad::Loading()
 	Image59->Cut(5, 9);
 	GameEngineImage* Image60 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Sky_R.BMP"));
 	Image60->Cut(5, 9);
-	GameEngineImage* Image61 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Squidsmith.BMP"));
+	GameEngineImage* Image61 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Squidsmith_L.BMP"));
 	Image61->Cut(5, 18);
+	GameEngineImage* Image611 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Squidsmith_R.BMP"));
+	Image611->Cut(5, 18);
 	GameEngineImage* Image62 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Stylist_L.BMP"));
 	Image62->Cut(5, 4);
 	GameEngineImage* Image63 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Stylist_R.BMP"));

@@ -10,9 +10,10 @@
 #include "Shop_ColMap.h"
 #include "Shop_Front.h"
 #include "Shop_Map.h"
-#include "Player.h"
 #include "Sky.h"
 #include "Sea.h"
+#include "Player.h"
+#include "Merchant.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -46,6 +47,12 @@ void Shop::Loading()
 	CreateActor<Shop_Map>();
 	CreateActor<Shop_Front>();
 	CreateActor<Shop_ColMap>();
+
+	// NPC
+	{
+		Merchant* M = CreateActor<Merchant>();
+		M->SetPos({ 1100, 862 });
+	}
 
 	// Player
 	{

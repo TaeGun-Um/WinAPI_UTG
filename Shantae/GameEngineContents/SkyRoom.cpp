@@ -9,8 +9,10 @@
 #include "SkyRoom_Background.h"
 #include "SkyRoom_ColMap.h"
 #include "SkyRoom_Map.h"
-#include "Player.h"
 #include "Sky.h"
+#include "Player.h"
+#include "SkyNPC.h"
+#include "Wrench.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -41,6 +43,16 @@ void SkyRoom::Loading()
 	// Map		
 	CreateActor<SkyRoom_Map>();
 	CreateActor<SkyRoom_ColMap>();
+
+	// NPC
+	{
+		SkyNPC* M = CreateActor<SkyNPC>();
+		M->SetPos({ 1100, 862 });
+
+		Wrench* M1 = CreateActor<Wrench>();
+		M1->SetPos({ 1100, 862 });
+
+	}
 
 	// Player
 	{

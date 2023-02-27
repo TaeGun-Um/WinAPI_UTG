@@ -22,19 +22,52 @@ void Stylist::Start()
 }
 void Stylist::Update(float _DeltaTime)
 {
-
+	if (1 == CurrentPosCount)
+	{
+		CurrentPosCount = 0;
+		CurrentPos = GetPos();
+	}
 }
 void Stylist::Render(float _DeltaTime)
 {
 
 }
 
-void Stylist::Run()
+std::string Stylist::DirCheck(const std::string_view& _AnimationName)
 {
+	std::string PrevDirString = DirString;
+	AnimationRender->ChangeAnimation(_AnimationName.data() + DirString);
 
+	if (true == MoveDirect)
+	{
+		DirString = "_L";
+	}
+	else if (false == MoveDirect)
+	{
+		DirString = "_R";
+	}
+
+	if (PrevDirString != DirString)
+	{
+		AnimationRender->ChangeAnimation(_AnimationName.data() + DirString);
+	}
+
+	return DirString;
 }
 
-void Stylist::Move()
+void Stylist::DirectCheckForKill()
 {
+	float4 Pos = CurrentPos + (float4::Down * 1500);
 
+	if (GetPos().y >= Pos.y)
+	{
+		Kill();
+	}
+}
+
+void Stylist::Kill()
+{
+	GameEngineActor* ColActor = AnimationRender->GetActor();
+	ColActor->Off();
+	ColActor->Death();
 }

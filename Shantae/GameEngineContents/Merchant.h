@@ -22,11 +22,19 @@ protected:
 	void Render(float _DeltaTime) override;
 
 private:
-	void Run();
+	void Run(float _DeltaTime);
 	void CollisionCheck();
+	void DirectCheckForKill();
+	void Kill();
 
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
+
+	float4 CurrentPos = float4::Zero;
+
+	int CurrentPosCount = 1;
+
+	bool IsRun = false;
 
 };
 

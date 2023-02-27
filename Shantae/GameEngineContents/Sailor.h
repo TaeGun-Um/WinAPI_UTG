@@ -2,6 +2,12 @@
 
 #include <GameEngineCore/GameEngineActor.h>
 
+enum class SailorState
+{
+	IDLE,
+	TURN,
+};
+
 // Ό³Έν : Player Chracter
 class Sailor : public GameEngineActor
 {
@@ -22,10 +28,22 @@ protected:
 	void Render(float _DeltaTime) override;
 
 private:
-	void DirCheck();
+	void CharacterDirect();
 
 	GameEngineRender* AnimationRender = nullptr;
 	bool MoveDirect = true; // true = Left, false = Right
+
+	// State
+	std::string DirString = "_L";
+	SailorState StateValue = SailorState::IDLE;
+
+	void ChangeState(SailorState _State);
+	void UpdateState(float _Time);
+	std::string DirCheck(const std::string_view& _AnimationName);
+
+	void IdleStart();
+	void IdleUpdate(float _Time);
+	void IdleEnd();
 
 };
 

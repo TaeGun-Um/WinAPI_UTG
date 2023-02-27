@@ -1,6 +1,7 @@
 #include "Bathwoman.h"
 
 #include <GameEngineCore/GameEngineRender.h>
+#include <GameEngineCore/GameEngineCollision.h>
 
 #include "ContentsEnum.h"
 
@@ -18,7 +19,14 @@ void Bathwoman::Start()
 	AnimationRender->SetScale({ 400, 400 });
 
 	// Right
-	AnimationRender->CreateAnimation({ .AnimationName = "Move_R",  .ImageName = "Soldier_Blue_R.bmp", .Start = 0, .End = 9, .InterTime = 0.08f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle",  .ImageName = "Bathwoman.bmp", .Start = 0, .End = 10, .InterTime = 0.1f });
+
+	BodyCollision = CreateCollision(CollisionOrder::Trigger);
+	BodyCollision->SetDebugRenderType(CT_Rect);
+	BodyCollision->SetScale({ 100, 100 });
+	BodyCollision->SetPosition({ 50, -50 });
+
+	AnimationRender->ChangeAnimation("Idle");
 }
 void Bathwoman::Update(float _DeltaTime)
 {
@@ -31,5 +39,11 @@ void Bathwoman::Render(float _DeltaTime)
 
 void Bathwoman::CollisionCheck()
 {
-
+	if (nullptr != BodyCollision)
+	{
+		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+		{
+			int a = 0;
+		}
+	}
 }

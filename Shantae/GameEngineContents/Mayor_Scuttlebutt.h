@@ -2,6 +2,12 @@
 
 #include <GameEngineCore/GameEngineActor.h>
 
+enum class Mayor_ScuttlebuttState
+{
+	IDLE,
+	TURN,
+};
+
 // Ό³Έν : Player Chracter
 class Mayor_Scuttlebutt : public GameEngineActor
 {
@@ -22,10 +28,22 @@ protected:
 	void Render(float _DeltaTime) override;
 
 private:
-	void DirCheck();
+	void CharacterDirect();
 
 	GameEngineRender* AnimationRender = nullptr;
 	bool MoveDirect = true; // true = Left, false = Right
+
+	// State
+	std::string DirString = "_L";
+	Mayor_ScuttlebuttState StateValue = Mayor_ScuttlebuttState::IDLE;
+
+	void ChangeState(Mayor_ScuttlebuttState _State);
+	void UpdateState(float _Time);
+	std::string DirCheck(const std::string_view& _AnimationName);
+
+	void IdleStart();
+	void IdleUpdate(float _Time);
+	void IdleEnd();
 
 };
 

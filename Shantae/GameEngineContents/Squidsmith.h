@@ -2,6 +2,13 @@
 
 #include <GameEngineCore/GameEngineActor.h>
 
+enum class SquidsmithState
+{
+	IDLE,
+	TURN,
+	ACTION,
+};
+
 // Ό³Έν : Player Chracter
 class Squidsmith : public GameEngineActor
 {
@@ -23,10 +30,23 @@ protected:
 
 private:
 	void CollisionCheck();
+	void CharacterDirect();
 
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
+	bool MoveDirect = true; // true = Left, false = Right
 
+	// State
+	std::string DirString = "_L";
+	SquidsmithState StateValue = SquidsmithState::IDLE;
+
+	void ChangeState(SquidsmithState _State);
+	void UpdateState(float _Time);
+	std::string DirCheck(const std::string_view& _AnimationName);
+
+	void IdleStart();
+	void IdleUpdate(float _Time);
+	void IdleEnd();
 
 };
 

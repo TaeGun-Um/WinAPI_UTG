@@ -30,7 +30,29 @@ void Mayor_Scuttlebutt::Render(float _DeltaTime)
 
 }
 
-void Mayor_Scuttlebutt::DirCheck()
+std::string Mayor_Scuttlebutt::DirCheck(const std::string_view& _AnimationName)
+{
+	std::string PrevDirString = DirString;
+	AnimationRender->ChangeAnimation(_AnimationName.data() + DirString);
+
+	if (true == MoveDirect)
+	{
+		DirString = "_L";
+	}
+	else if (false == MoveDirect)
+	{
+		DirString = "_R";
+	}
+
+	if (PrevDirString != DirString)
+	{
+		AnimationRender->ChangeAnimation(_AnimationName.data() + DirString);
+	}
+
+	return DirString;
+}
+
+void Mayor_Scuttlebutt::CharacterDirect()
 {
 	float interval = Player::MainPlayer->GetPos().x - GetPos().x;
 

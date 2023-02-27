@@ -2,6 +2,12 @@
 
 #include <GameEngineCore/GameEngineActor.h>
 
+enum class Town_GuardState
+{
+	IDLE,
+	TURN,
+};
+
 // Ό³Έν : Player Chracter
 class Town_Guard : public GameEngineActor
 {
@@ -23,11 +29,23 @@ protected:
 
 private:
 	void CollisionCheck();
-	void DirCheck();
+	void CharacterDirect();
 
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
+
 	bool MoveDirect = true; // true = Left, false = Right
 
+	// State
+	std::string DirString = "_L";
+	Town_GuardState StateValue = Town_GuardState::IDLE;
+
+	void ChangeState(Town_GuardState _State);
+	void UpdateState(float _Time);
+	std::string DirCheck(const std::string_view& _AnimationName);
+
+	void IdleStart();
+	void IdleUpdate(float _Time);
+	void IdleEnd();
 };
 
