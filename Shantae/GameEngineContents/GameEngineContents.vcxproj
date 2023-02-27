@@ -787,6 +787,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Up_Button.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Wave.h">
       <SubType>
       </SubType>
@@ -1441,6 +1445,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="UncleRoom_Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Up_Button.cpp">
       <SubType>
       </SubType>
     </ClCompile>

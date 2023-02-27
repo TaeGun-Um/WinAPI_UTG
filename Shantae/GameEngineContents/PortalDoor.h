@@ -15,6 +15,7 @@ enum class PortalType
 };
 
 class BlackBox;
+class Up_Button;
 
 // Ό³Έν :
 class PortalDoor : public GameEngineActor
@@ -49,6 +50,7 @@ private:
 	void Portal();
 
 	GameEngineCollision* BodyCollision = nullptr;
+	Up_Button* UpButton = nullptr;
 
 	PortalType PortalValue = PortalType::TestRoom;
 
@@ -56,5 +58,6 @@ private:
 	bool IsPortalIn = false;
 
 	int Por = 0;
+	int CreateUpButtion = 1;
 };
 

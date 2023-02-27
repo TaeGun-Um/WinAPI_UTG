@@ -22,12 +22,19 @@ void Town_Guard::Start()
 	AnimationRender->SetScale({ 400, 400 });
 
 	// Right
-	AnimationRender->CreateAnimation({ .AnimationName = "Move_R",  .ImageName = "Soldier_Blue_R.bmp", .Start = 0, .End = 9, .InterTime = 0.08f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_L",  .ImageName = "Town Guard_L.bmp", .Start = 0, .End = 6, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Turn_L",  .ImageName = "Town Guard_R.bmp", .Start = 7, .End = 10, .InterTime = 0.1f });
+
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_R",  .ImageName = "Town Guard_R.bmp", .Start = 0, .End = 6, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Turn_R",  .ImageName = "Town Guard_L.bmp", .Start = 7, .End = 10, .InterTime = 0.1f });
+
 
 	BodyCollision = CreateCollision(CollisionOrder::Trigger);
 	BodyCollision->SetDebugRenderType(CT_Rect);
 	BodyCollision->SetScale({ 120, 100 });
 	BodyCollision->SetPosition({ 0, -50 });
+
+	ChangeState(Town_GuardState::IDLE);
 }
 
 void Town_Guard::Update(float _DeltaTime)

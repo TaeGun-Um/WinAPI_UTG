@@ -16,6 +16,11 @@ public:
 	Dancer& operator=(const Dancer& _Other) = delete;
 	Dancer& operator=(Dancer&& _Other) noexcept = delete;
 
+	void SetDirect(bool _Is)
+	{
+		Direct = _Is;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -23,6 +28,9 @@ protected:
 
 private:
 	GameEngineRender* AnimationRender = nullptr;
+
+	bool Direct = false;
+	int Set = 1;
 
 };
 

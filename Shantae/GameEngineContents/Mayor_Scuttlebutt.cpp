@@ -18,12 +18,18 @@ void Mayor_Scuttlebutt::Start()
 	AnimationRender = CreateRender(RenderOrder::Monster);
 	AnimationRender->SetScale({ 400, 400 });
 
-	AnimationRender->CreateAnimation({ .AnimationName = "Move_R",  .ImageName = "Soldier_Blue_R.bmp", .Start = 0, .End = 9, .InterTime = 0.08f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_L",  .ImageName = "Mayor Scuttlebutt_L.bmp", .Start = 0, .End = 3, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Turn_L",  .ImageName = "Mayor Scuttlebutt_R.bmp", .Start = 4, .End = 7, .InterTime = 0.1f });
+
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_R",  .ImageName = "Mayor Scuttlebutt_R.bmp", .Start = 0, .End = 3, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Turn_R",  .ImageName = "Mayor Scuttlebutt_L.bmp", .Start = 4, .End = 7, .InterTime = 0.1f });
+
 }
 
 void Mayor_Scuttlebutt::Update(float _DeltaTime)
 {
-
+	CharacterDirect();
+	UpdateState(_DeltaTime);
 }
 
 void Mayor_Scuttlebutt::Render(float _DeltaTime)

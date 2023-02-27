@@ -51,7 +51,6 @@ void SkyRoom::Loading()
 
 		Wrench* M1 = CreateActor<Wrench>();
 		M1->SetPos({ 1330, 498 });
-
 	}
 
 	// Player

@@ -9,11 +9,14 @@
 #include "Scuttle_Background.h"
 #include "Scuttle_ColMap.h"
 #include "Scuttle_Map.h"
-#include "Player.h"
 #include "Sky.h"
 #include "Sea.h"
-#include "PortalDoor.h"
+#include "Player.h"
+#include "Town_Guard.h"
+#include "Sailor.h"
+#include "Dancer.h"
 
+#include "PortalDoor.h"
 #include "GemWindow.h"
 #include "Health.h"
 #include "ObjectLoad.h"
@@ -75,6 +78,26 @@ void Scuttle::Loading()
 		PortalDoor* Door6 = CreateActor<PortalDoor>();
 		Door6->SetPos({ 6145.0f, 1100.0f });
 		Door6->SetPortalValue(PortalType::SaveRoom);
+	}
+
+	// NPC
+	{
+		Town_Guard* M1 = CreateActor<Town_Guard>();
+		M1->SetPos({ 770, 1322 });
+
+		Town_Guard* M2 = CreateActor<Town_Guard>();
+		M2->SetPos({ 8000, 1322 });
+
+		Sailor* M3 = CreateActor<Sailor>();
+		M3->SetPos({ 2970, 1322 });
+
+		Dancer* M4 = CreateActor<Dancer>();
+		M4->SetPos({ 5100, 1316 });
+		M4->SetDirect(false);
+
+		Dancer* M5 = CreateActor<Dancer>();
+		M5->SetPos({ 6435, 1316 });
+		M4->SetDirect(true);
 	}
 
 	// Player

@@ -491,6 +491,9 @@
     <ClInclude Include="A_Button.h">
       <Filter>Character\NPC\Sepcial\Effect</Filter>
     </ClInclude>
+    <ClInclude Include="Up_Button.h">
+      <Filter>AssistantCollision\Portal\Effect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShantaeCore.cpp" />
@@ -1037,6 +1040,9 @@
     <ClCompile Include="Stylist_State.cpp">
       <Filter>Character\NPC\Normal</Filter>
     </ClCompile>
+    <ClCompile Include="Up_Button.cpp">
+      <Filter>AssistantCollision\Portal\Effect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Character">
@@ -1260,6 +1266,9 @@
     </Filter>
     <Filter Include="Character\NPC\Sepcial\Effect">
       <UniqueIdentifier>{d703077f-912e-47e8-91c4-c15f7c0c53ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AssistantCollision\Portal\Effect">
+      <UniqueIdentifier>{037f41dc-87c5-4772-9c06-e111c5cd4948}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

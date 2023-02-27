@@ -10,6 +10,7 @@
 #include "ContentsEnum.h"
 #include "Player.h"
 #include "BlackBox.h"
+#include "Up_Button.h"
 
 BlackBox* PortalDoor::BBox = nullptr;
 int PortalDoor::BBoxCount = 1;
@@ -37,21 +38,41 @@ void PortalDoor::Start()
 
 void PortalDoor::Update(float _DeltaTime)
 {
+	if (1 == CreateUpButtion)
+	{
+		CreateUpButtion = 0;
+		UpButton = nullptr;
+		float4 AButtonPos = float4::Zero;
+		AButtonPos = GetPos() + (float4::Up * -10) + (float4::Right * 80);
+
+		UpButton = GetLevel()->CreateActor<Up_Button>();
+		UpButton->SetPos(AButtonPos);
+		UpButton->Off();
+	}
+
 	PortalCheck(_DeltaTime);
 }
 
 void PortalDoor::PortalCheck(float _DeltaTime)
 {
+
 	if (nullptr != BodyCollision)
 	{
 		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
 			IsPortal = true;
+			UpButton->On();
 		}
 		else
 		{
 			IsPortal = false;
+			UpButton->Off();
 		}
+	}
+
+	if (PlayerState::PORTALOUT == Player::MainPlayer->GetShantaeState())
+	{
+		UpButton->Off();
 	}
 
 	if (true == IsPortal)
@@ -75,6 +96,8 @@ void PortalDoor::PortalCheck(float _DeltaTime)
 
 		if (true == IsPortalIn)
 		{
+			UpButton->Off();
+
 			if (240 <= Player::MainPlayer->GetShataeAnimationRender()->GetFrame())
 			{
 				BlackBoxInAnimation();
@@ -94,6 +117,8 @@ void PortalDoor::PortalCheck(float _DeltaTime)
 
 		if (PlayerState::PORTALING == Player::MainPlayer->GetShantaeState())
 		{
+			UpButton->Off();
+
 			if (1 == Por && true == BBox->GetIsFadeInOver())
 			{
 				Portal();

@@ -29,6 +29,16 @@
 #include "Sky.h"
 #include "Sea.h"
 
+#include "Town_Guard.h"
+#include "Sailor.h"
+#include "Boy.h"
+#include "Girl.h"
+#include "Jug_Woman.h"
+#include "Stylist.h"
+#include "Desert_Man.h"
+#include "Mayor_Scuttlebutt.h"
+#include "Dancer.h"
+
 #include "AnimationBox_Door.h"
 
 #include "GemWindow.h"
@@ -64,6 +74,25 @@ void TestLevel::Loading()
 	CreateActor<GemWindow>();
 
 	CreateActor<Health>();
+
+	// NPC
+	{
+		//Boy* M3 = CreateActor<Boy>();
+		//M3->SetPos({ 400, 900 });
+
+		//Girl* M4 = CreateActor<Girl>();
+		//M4->SetPos({ 400, 900 });
+
+		//Jug_Woman* M5 = CreateActor<Jug_Woman>();
+		//M5->SetPos({ 400, 900 });
+
+		//Stylist* M6 = CreateActor<Stylist>();
+		//M6->SetPos({ 400, 900 });
+
+		//Desert_Man* M7 = CreateActor<Desert_Man>();
+		//M7->SetPos({ 400, 900 });
+
+	}
 
 	Shantae = CreateActor<Player>();
 	SHA = dynamic_cast<Player*>(Shantae);
