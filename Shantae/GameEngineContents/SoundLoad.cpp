@@ -33,15 +33,15 @@ void SoundLoad::Loading()
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\You_Found_an_item.mp3"));       // 상자에서 아이템 획득 시
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Explode_bridge.wav"));          // o Boombridge 다리 폭파
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Explode_plat.wav"));            // o Machinegun 발판 폭파
-	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Fleeing_crowd.mp3"));           // Move0 도망치는 관중들
-	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Explosion1.mp3"));              // Home, HouseFront, Move0 폭파 환경음 1
-	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Explosion2.mp3"));              // Home, HouseFront, Move0 폭파 환경음 2
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Fleeing_crowd.mp3"));           // o Move0 도망치는 관중들
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Explosion1.mp3"));              // o Home, HouseFront, Move0 폭파 환경음 1
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Explosion2.mp3"));              // o Home, HouseFront, Move0 폭파 환경음 2
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Housefront_bell.wav"));         // o Home, HouseFront 종소리 환경음
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Housefront_seagull1.wav"));     // o Home, HouseFront 갈매기 환경음 1
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Housefront_seagull2.wav"));     // o Home, HouseFront 갈매기 환경음 2
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Housefront_wave.wav"));         // o Home, HouseFront 파도소리 환경음
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\House_explosion.mp3"));		 // o Home 폭발음
-	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Explosion_deep.wav"));		 // o 건물 폭발음
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Explosion_deep.wav"));			 // o 건물 폭발음
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Clash_smalljar.wav"));			 // jar 파괴 시 효과음
 
 	// Town

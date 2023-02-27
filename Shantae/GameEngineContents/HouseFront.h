@@ -28,6 +28,7 @@ protected:
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 
 private:
+	void RandExplosion(float _DeltaTime);
 	void BlackBoxOutAnimation();
 	void BlackBoxInAnimation();
 	void InBoxKill();
@@ -54,6 +55,7 @@ private:
 	float SeagullTime = 0.0f;
 	float WaveTime = 1;
 	float BellTime = 1;
+	float RandTime = 0.0f;
 
 	int Set = 1;
 	int AnimationSet = 1;

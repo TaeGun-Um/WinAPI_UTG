@@ -177,7 +177,7 @@ void Jug_Woman::RunStart()
 }
 void Jug_Woman::RunUpdate(float _Time)
 {
-	SetMove(float4::Left * 400.0f * _Time);
+	SetMove(float4::Left * RunSpeed * _Time);
 }
 void Jug_Woman::RunEnd()
 {}

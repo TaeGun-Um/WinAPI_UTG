@@ -49,7 +49,7 @@ void Desert_Man::Render(float _DeltaTime)
 
 void Desert_Man::DirectCheckForKill()
 {
-	float4 Pos = CurrentPos + (float4::Left * 1800);
+	float4 Pos = CurrentPos + (float4::Left * 2500);
 
 	if (GetPos().x <= Pos.x)
 	{

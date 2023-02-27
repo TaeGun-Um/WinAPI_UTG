@@ -171,7 +171,7 @@ void Stylist::RunStart()
 }
 void Stylist::RunUpdate(float _Time)
 {
-	SetMove(float4::Left * 400.0f * _Time);
+	SetMove(float4::Left * RunSpeed * _Time);
 }
 void Stylist::RunEnd()
 {}

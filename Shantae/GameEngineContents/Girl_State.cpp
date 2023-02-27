@@ -143,7 +143,7 @@ void Girl::RunStart()
 }
 void Girl::RunUpdate(float _Time)
 {
-	SetMove(float4::Left * 400.0f * _Time);
+	SetMove(float4::Left * RunSpeed * _Time);
 }
 void Girl::RunEnd()
 {

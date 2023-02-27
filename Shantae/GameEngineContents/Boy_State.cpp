@@ -143,7 +143,7 @@ void Boy::RunStart()
 }
 void Boy::RunUpdate(float _Time)
 {
-	SetMove(float4::Left * 400.0f * _Time);
+	SetMove(float4::Left * RunSpeed * _Time);
 }
 void Boy::RunEnd()
 {}

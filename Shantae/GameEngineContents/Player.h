@@ -176,6 +176,7 @@ public:
 		PortalEnd = _Is;
 	}
 
+	void SetCameraShakinghard(float _SetShakingTime, float _SetShakingValue);
 	void SetCameraShaking(float _SetShakingTime, float _SetShakingValu);
 	bool FreeMoveState(float _DeltaTime);
 	void PositionText();
@@ -199,6 +200,7 @@ private:
 	void CollisionCheck(float _DeltaTime);
 	void WalkSoundSet(float _DeltaTime);
 	void CameraShake(float _DeltaTime);
+	void CameraShakehard(float _DeltaTime);
 	void AlphaBlinker(float _DeltaTime);
 	void CreateDummy();
 	void CreateImpact();
@@ -230,6 +232,7 @@ private:
 	float CrouchSpeed = 200.0f;
 	float GravitySpeed = 3500.0f;
 	float SetShakingValue = 0.0f;
+	float SetShakingValuehard = 0.0f;
 
 	float OverlapTime = 0.0f;
 	float MoveTime = 0.0f;
@@ -251,6 +254,7 @@ private:
 	int HP = 8;
 	int PlayerGem = 0;
 	int ShakingCount = 0;
+	int HardShakingCount = 0;
 	int MoveSoundCount = 2;
 	int CrouchMoveSoundCount = 1;
 	int UpCol = 1;
@@ -274,6 +278,7 @@ private:
 	bool IsJumpHit = false;
 	bool Blinker = false;
 	bool CameraShaking = false;
+	bool CameraShakinghard = false;
 	bool CrouchHit = false;
 
 	bool CollisionGround = false;

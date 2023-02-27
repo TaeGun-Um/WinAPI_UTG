@@ -51,7 +51,7 @@ void Stylist::Render(float _DeltaTime)
 
 void Stylist::DirectCheckForKill()
 {
-	float4 Pos = CurrentPos + (float4::Left * 1800);
+	float4 Pos = CurrentPos + (float4::Left * 2500);
 
 	if (GetPos().x <= Pos.x)
 	{

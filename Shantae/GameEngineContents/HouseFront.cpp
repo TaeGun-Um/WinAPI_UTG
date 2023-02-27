@@ -114,6 +114,8 @@ void HouseFront::Update(float _DeltaTime)
 			GameEngineCore::GetInst()->ChangeLevel("Move0");
 		}
 	}
+
+	RandExplosion(_DeltaTime);
 }
 
 void HouseFront::LevelChangeStart(GameEngineLevel* _PrevLevel)
@@ -126,6 +128,30 @@ void HouseFront::LevelChangeStart(GameEngineLevel* _PrevLevel)
 void HouseFront::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	InBoxKill();
+}
+
+void HouseFront::RandExplosion(float _DeltaTime)
+{
+	RandTime += _DeltaTime;
+
+	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 500);
+
+	if (1 == RandC && 0.2f <= RandTime)
+	{
+		RandTime = 0.0f;
+		Player::MainPlayer->SetCameraShakinghard(0.25f, 3.0f);
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Explosion1.mp3");
+		BGMPlayer.Volume(0.25f);
+		BGMPlayer.LoopCount(1);
+	}
+	else if (250 == RandC && 0.2f <= RandTime)
+	{
+		RandTime = 0.0f;
+		Player::MainPlayer->SetCameraShakinghard(0.25f, 3.0f);
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Explosion2.mp3");
+		BGMPlayer.Volume(0.25f);
+		BGMPlayer.LoopCount(1);
+	}
 }
 
 void HouseFront::BlackBoxOutAnimation()

@@ -48,7 +48,7 @@ void Jug_Woman::Render(float _DeltaTime)
 
 void Jug_Woman::DirectCheckForKill()
 {
-	float4 Pos = CurrentPos + (float4::Left * 1800);
+	float4 Pos = CurrentPos + (float4::Left * 2500);
 
 	if (GetPos().x <= Pos.x)
 	{

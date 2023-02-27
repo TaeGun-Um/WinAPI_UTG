@@ -113,6 +113,10 @@ void Player::Update(float _DeltaTime)
 	{
 		CameraShake(_DeltaTime);
 	}
+	if (true == CameraShakinghard)
+	{
+		CameraShakehard(_DeltaTime);
+	}
 	
 	if (true == IsHouse)
 	{
@@ -765,6 +769,64 @@ void Player::CameraShake(float _DeltaTime)
 		}
 
 		ShakingCount = 0;
+	}
+}
+
+void Player::SetCameraShakinghard(float _SetShakingTime, float _SetShakingValue)
+{
+	// 사용법 == player 헤더 참조 후 Player::Mainpayer->SetCameraShaking() 호출
+	CameraShakinghard = true;
+	SetShakingTime = _SetShakingTime;
+	SetShakingValuehard = _SetShakingValue;
+}
+
+void Player::CameraShakehard(float _DeltaTime)
+{
+	float4 MCam = GetLevel()->GetCameraPos();
+	float4 UpCam = MCam + (float4::Up * (SetShakingValuehard));
+	float4 DownCam = MCam + (float4::Down * (SetShakingValuehard));
+
+	ShakingTime += _DeltaTime;
+
+	if (SetShakingTime >= ShakingTime)
+	{
+		if (0 == HardShakingCount)
+		{
+			GetLevel()->SetCameraPos(UpCam);
+			HardShakingCount++;
+		}
+		else if (1 == HardShakingCount)
+		{
+			GetLevel()->SetCameraPos(MCam);
+			HardShakingCount++;
+		}
+		else if (2 == HardShakingCount)
+		{
+			GetLevel()->SetCameraPos(DownCam);
+			HardShakingCount++;
+		}
+		else if (3 == HardShakingCount)
+		{
+			GetLevel()->SetCameraPos(MCam);
+			HardShakingCount = 0;
+		}
+	}
+
+	if (SetShakingTime <= ShakingTime)
+	{
+		ShakingTime = 0.0f;
+		CameraShakinghard = false;
+	}
+
+	// 복구
+	if (false == CameraShakinghard)
+	{
+		if (1 == HardShakingCount || 2 == HardShakingCount)
+		{
+			GetLevel()->SetCameraPos(DownCam);
+		}
+
+		HardShakingCount = 0;
 	}
 }
 

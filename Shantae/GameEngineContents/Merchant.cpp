@@ -84,12 +84,12 @@ void Merchant::Run(float _DeltaTime)
 {
 	AnimationRender->ChangeAnimation("Run");
 	BodyCollision->Off();
-	SetMove(float4::Left * 400.0f * _DeltaTime);
+	SetMove(float4::Left * RunSpeed * _DeltaTime);
 }
 
 void Merchant::DirectCheckForKill()
 {
-	float4 Pos = CurrentPos + (float4::Left * 1800);
+	float4 Pos = CurrentPos + (float4::Left * 2500);
 
 	if (GetPos().x <= Pos.x)
 	{

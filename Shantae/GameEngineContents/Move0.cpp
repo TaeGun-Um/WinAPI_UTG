@@ -1,5 +1,6 @@
 #include "Move0.h"
 
+#include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineBase/GameEngineDirectory.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineResources.h>
@@ -15,6 +16,13 @@
 #include "Building1.h"
 #include "Building2.h"
 #include "Player.h"
+
+#include "Merchant.h"
+#include "Boy.h"
+#include "Girl.h"
+#include "Jug_Woman.h"
+#include "Stylist.h"
+#include "Desert_Man.h"
 
 #include "Sea.h"
 #include "Sky.h"
@@ -89,6 +97,81 @@ void Move0::Loading()
 		W5->SetPos({ 8864, 775 });
 	}
 
+	// NPC
+	{
+		
+		Desert_Man* M12 = CreateActor<Desert_Man>();
+		M12->SetPos({ 1390, 641 });
+		M12->SetRun();
+		M12->SetRunSpeed(230);
+
+		Merchant* M1 = CreateActor<Merchant>();
+		M1->SetPos({ 1970, 641 });
+		M1->SetRun();
+		M1->SetRunSpeed(255);
+
+		Jug_Woman* M8 = CreateActor<Jug_Woman>();
+		M8->SetPos({ 1650, 641 });
+		M8->SetRun();
+		M8->SetRunSpeed(215);
+
+		Boy* M3 = CreateActor<Boy>();
+		M3->SetPos({ 1400, 641 });
+		M3->SetRun();
+		M3->SetRunSpeed(240);
+
+		Stylist* M11 = CreateActor<Stylist>();
+		M11->SetPos({ 1590, 641 });
+		M11->SetRun();
+		M11->SetRunSpeed(205);
+
+		Desert_Man* M13 = CreateActor<Desert_Man>();
+		M13->SetPos({ 1700, 641 });
+		M13->SetRun();
+		M13->SetRunSpeed(225);
+
+		Merchant* M2 = CreateActor<Merchant>();
+		M2->SetPos({ 1520, 641 });
+		M2->SetRun();
+		M2->SetRunSpeed(260);
+
+		Girl* M5 = CreateActor<Girl>();
+		M5->SetPos({ 1550, 641 });
+		M5->SetRun();
+		M5->SetRunSpeed(220);
+
+		Boy* M4 = CreateActor<Boy>();
+		M4->SetPos({ 2000, 641 });
+		M4->SetRun();
+		M4->SetRunSpeed(235);
+
+		Jug_Woman* M7 = CreateActor<Jug_Woman>();
+		M7->SetPos({ 2000, 641 });
+		M7->SetRun();
+		M7->SetRunSpeed(220);
+
+		Girl* M6 = CreateActor<Girl>();
+		M6->SetPos({ 1750, 641 });
+		M6->SetRun();
+		M6->SetRunSpeed(225);
+
+		Jug_Woman* M9 = CreateActor<Jug_Woman>();
+		M9->SetPos({ 1290, 641 });
+		M9->SetRun();
+		M9->SetRunSpeed(195);
+
+		Stylist* M10 = CreateActor<Stylist>();
+		M10->SetPos({ 1960, 641 });
+		M10->SetRun();
+		M10->SetRunSpeed(195);
+
+		Desert_Man* M14 = CreateActor<Desert_Man>();
+		M14->SetPos({ 2070, 641 });
+		M14->SetRun();
+		M14->SetRunSpeed(240);
+
+	}
+
 	// Monster
 	// ½ºÆ÷³Ê»ç¿ë¹ý   ½ºÆ÷³Ê À§Ä¡    ¸÷ÀÌ¸§    ÄÝ¸Ê    ¸÷ Á¨ À§Ä¡   ¸®Á¨½Ã°£
 	// CreateSpawner({ 250, 300 }, "blue", ColMap, { 350, 590 }, 5);
@@ -151,6 +234,18 @@ void Move0::Update(float _DeltaTime)
 			GameEngineCore::GetInst()->ChangeLevel("Move1");
 		}
 	}
+
+	if (1 == RunAnimation)
+	{
+		RunAnimation = 0;
+		Player::MainPlayer->SetCameraShakinghard(10.0f, 3.0f);
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Fleeing_crowd.mp3");
+		BGMPlayer.Volume(0.35f);
+		BGMPlayer.LoopCount(1);
+	}
+
+	RandExplosion(_DeltaTime);
+
 }
 
 void Move0::LevelChangeStart(GameEngineLevel* _PrevLevel)
@@ -168,6 +263,34 @@ void Move0::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	// BGMPlayer.Stop();
 	InBoxKill();
+}
+
+void Move0::RandExplosion(float _DeltaTime)
+{
+	RunAnimationTime += _DeltaTime;
+	RandTime += _DeltaTime;
+
+	if (11.0f <= RunAnimationTime)
+	{
+		int RandC = GameEngineRandom::MainRandom.RandomInt(1, 2000);
+
+		if (1 == RandC && 0.2f <= RandTime)
+		{
+			RandTime = 0.0f;
+			Player::MainPlayer->SetCameraShakinghard(0.25f, 3.0f);
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Explosion1.mp3");
+			BGMPlayer.Volume(0.3f);
+			BGMPlayer.LoopCount(1);
+		}
+		else if (250 == RandC && 0.2f <= RandTime)
+		{
+			RandTime = 0.0f;
+			Player::MainPlayer->SetCameraShakinghard(0.25f, 3.0f);
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Explosion2.mp3");
+			BGMPlayer.Volume(0.3f);
+			BGMPlayer.LoopCount(1);
+		}
+	}
 }
 
 void Move0::BlackBoxOutAnimation()

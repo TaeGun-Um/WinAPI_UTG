@@ -28,6 +28,11 @@ public:
 		IsRun = true;
 	}
 
+	void SetRunSpeed(float _Speed)
+	{
+		RunSpeed = _Speed;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -43,6 +48,7 @@ private:
 	float4 LeftMovePos = float4::Zero;
 
 	float MoveTime = 0.0f;
+	float RunSpeed = 0.0f;
 
 	int CurrentPosCount = 1;
 
