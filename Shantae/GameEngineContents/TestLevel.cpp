@@ -92,12 +92,12 @@ void TestLevel::Loading()
 		//Stylist* M6 = CreateActor<Stylist>();
 		//M6->SetPos({ 400, 900 });
 
-		//Desert_Man* M7 = CreateActor<Desert_Man>();
-		//M7->SetPos({ 400, 900 });
-
-		Merchant* M7 = CreateActor<Merchant>();
+		Desert_Man* M7 = CreateActor<Desert_Man>();
 		M7->SetPos({ 400, 900 });
-		M7->SetRun();
+
+		//Merchant* M7 = CreateActor<Merchant>();
+		//M7->SetPos({ 400, 900 });
+		//M7->SetRun();
 		
 
 	}
