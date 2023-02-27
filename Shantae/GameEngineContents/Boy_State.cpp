@@ -67,7 +67,7 @@ void Boy::IdleUpdate(float _Time)
 {
 	MoveTime += _Time;
 
-	if (true == IsTurn && 1.0f <= MoveTime)
+	if (true == IsTurn && 1.5f <= MoveTime)
 	{
 		MoveDirect = false;
 		MoveTime = 0.0f;
@@ -75,7 +75,7 @@ void Boy::IdleUpdate(float _Time)
 		return;
 	}
 
-	if (1.0f <= MoveTime)
+	if (1.5f <= MoveTime)
 	{
 		MoveDirect = true;
 		MoveTime = 0.0f;
@@ -109,7 +109,7 @@ void Boy::MoveUpdate(float _Time)
 	{
 		if (GetPos().x >= LeftMovePos.x)
 		{
-			SetMove(float4::Left * 300.0f * _Time);
+			SetMove(float4::Left * 100.0f * _Time);
 		}
 		else
 		{
@@ -122,7 +122,7 @@ void Boy::MoveUpdate(float _Time)
 	{
 		if (GetPos().x <= CurrentPos.x)
 		{
-			SetMove(float4::Right * 300.0f * _Time);
+			SetMove(float4::Right * 100.0f * _Time);
 		}
 		else
 		{

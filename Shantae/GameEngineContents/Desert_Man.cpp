@@ -18,11 +18,11 @@ void Desert_Man::Start()
 	AnimationRender->SetScale({ 400, 400 });
 
 	// Right
-	AnimationRender->CreateAnimation({ .AnimationName = "Idle_L",  .ImageName = "Desert Man_L.bmp", .Start = 0, .End = 5, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_L",  .ImageName = "Desert Man_L.bmp", .Start = 0, .End = 5, .InterTime = 0.15f });
 	AnimationRender->CreateAnimation({ .AnimationName = "Turn_L",  .ImageName = "Desert Man_R.bmp", .Start = 6, .End = 10, .InterTime = 0.1f });
 	AnimationRender->CreateAnimation({ .AnimationName = "Move_L",  .ImageName = "Desert Man_L.bmp", .Start = 11, .End = 18, .InterTime = 0.1f });
 
-	AnimationRender->CreateAnimation({ .AnimationName = "Idle_R",  .ImageName = "Desert Man_R.bmp", .Start = 0, .End = 5, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_R",  .ImageName = "Desert Man_R.bmp", .Start = 0, .End = 5, .InterTime = 0.15f });
 	AnimationRender->CreateAnimation({ .AnimationName = "Turn_R",  .ImageName = "Desert Man_L.bmp", .Start = 6, .End = 10, .InterTime = 0.1f });
 	AnimationRender->CreateAnimation({ .AnimationName = "Move_R",  .ImageName = "Desert Man_R.bmp", .Start = 11, .End = 18, .InterTime = 0.1f });
 
@@ -36,6 +36,7 @@ void Desert_Man::Update(float _DeltaTime)
 	{
 		CurrentPosCount = 0;
 		CurrentPos = GetPos();
+		LeftMovePos = CurrentPos + (float4::Left * 350);
 	}
 
 	UpdateState(_DeltaTime);

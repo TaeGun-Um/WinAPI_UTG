@@ -18,10 +18,10 @@ void Boy::Start()
 	AnimationRender->SetScale({ 400, 400 });
 
 	// Right
-	AnimationRender->CreateAnimation({ .AnimationName = "Idle_L",  .ImageName = "Boy_L.bmp", .Start = 0, .End = 4, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_L",  .ImageName = "Boy_L.bmp", .Start = 0, .End = 4, .InterTime = 0.15f });
 	AnimationRender->CreateAnimation({ .AnimationName = "Move_L",  .ImageName = "Boy_L.bmp", .Start = 5, .End = 12, .InterTime = 0.1f });
 
-	AnimationRender->CreateAnimation({ .AnimationName = "Idle_R",  .ImageName = "Boy_R.bmp", .Start = 0, .End = 4, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_R",  .ImageName = "Boy_R.bmp", .Start = 0, .End = 4, .InterTime = 0.15f });
 	AnimationRender->CreateAnimation({ .AnimationName = "Move_R",  .ImageName = "Boy_R.bmp", .Start = 5, .End = 12, .InterTime = 0.1f });
 
 	AnimationRender->CreateAnimation({ .AnimationName = "Run",  .ImageName = "Boy_L.bmp", .Start = 13, .End = 20, .InterTime = 0.1f });
@@ -34,7 +34,7 @@ void Boy::Update(float _DeltaTime)
 	{
 		CurrentPosCount = 0;
 		CurrentPos = GetPos();
-		LeftMovePos = CurrentPos + (float4::Left * 600);
+		LeftMovePos = CurrentPos + (float4::Left * 500);
 	}
 
 	UpdateState(_DeltaTime);

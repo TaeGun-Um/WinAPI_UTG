@@ -15,6 +15,11 @@
 #include "Town_Guard.h"
 #include "Sailor.h"
 #include "Dancer.h"
+#include "Boy.h"
+#include "Girl.h"
+#include "Jug_Woman.h"
+#include "Stylist.h"
+#include "Desert_Man.h"
 
 #include "PortalDoor.h"
 #include "GemWindow.h"
@@ -93,11 +98,29 @@ void Scuttle::Loading()
 
 		Dancer* M4 = CreateActor<Dancer>();
 		M4->SetPos({ 5100, 1316 });
-		M4->SetDirect(false);
+		M4->SetDirect(true);
 
 		Dancer* M5 = CreateActor<Dancer>();
 		M5->SetPos({ 6435, 1316 });
-		M4->SetDirect(true);
+		M5->SetDirect(false);
+
+		Boy* M6 = CreateActor<Boy>();
+		M6->SetPos({ 2240, 1316 });
+
+		Girl* M7 = CreateActor<Girl>();
+		M7->SetPos({ 1970, 1041 });
+
+		Jug_Woman* M8 = CreateActor<Jug_Woman>();
+		M8->SetPos({ 2785, 985 });
+
+		Stylist* M9 = CreateActor<Stylist>();
+		M9->SetPos({ 4860, 1040 });
+
+		Desert_Man* M10 = CreateActor<Desert_Man>();
+		M10->SetPos({ 5510, 765 });
+
+		Jug_Woman* M11 = CreateActor<Jug_Woman>();
+		M11->SetPos({ 6380, 932 });
 	}
 
 	// Player
@@ -149,7 +172,7 @@ void Scuttle::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	if (false == ScuttlePalyer)
 	{
 		ScuttleBGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Scuttle_Town.mp3");
-		ScuttleBGMPlayer.Volume(0.1f);
+		ScuttleBGMPlayer.Volume(0.0f);
 		ScuttleBGMPlayer.LoopCount(100);
 	}
 

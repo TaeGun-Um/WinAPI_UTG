@@ -75,7 +75,7 @@ void Stylist::IdleUpdate(float _Time)
 {
 	MoveTime += _Time;
 
-	if (true == IsTurn && 1.0f <= MoveTime)
+	if (true == IsTurn && 2.2f <= MoveTime)
 	{
 		MoveDirect = false;
 		MoveTime = 0.0f;
@@ -83,7 +83,7 @@ void Stylist::IdleUpdate(float _Time)
 		return;
 	}
 
-	if (1.0f <= MoveTime)
+	if (2.2f <= MoveTime)
 	{
 		MoveDirect = true;
 		MoveTime = 0.0f;
@@ -112,7 +112,7 @@ void Stylist::MoveUpdate(float _Time)
 	{
 		if (GetPos().x >= LeftMovePos.x)
 		{
-			SetMove(float4::Left * 300.0f * _Time);
+			SetMove(float4::Left * 60 * _Time);
 		}
 		else
 		{
@@ -125,7 +125,7 @@ void Stylist::MoveUpdate(float _Time)
 	{
 		if (GetPos().x <= CurrentPos.x)
 		{
-			SetMove(float4::Right * 300.0f * _Time);
+			SetMove(float4::Right * 60 * _Time);
 		}
 		else
 		{

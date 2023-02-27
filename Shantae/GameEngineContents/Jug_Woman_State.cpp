@@ -74,9 +74,9 @@ void Jug_Woman::IdleStart()
 }
 void Jug_Woman::IdleUpdate(float _Time)
 {
-	// MoveTime += _Time;
+	MoveTime += _Time;
 
-	if (true == IsTurn && 1.0f <= MoveTime)
+	if (true == IsTurn && 1.7f <= MoveTime)
 	{
 		MoveDirect = false;
 		MoveTime = 0.0f;
@@ -84,7 +84,7 @@ void Jug_Woman::IdleUpdate(float _Time)
 		return;
 	}
 
-	if (1.0f <= MoveTime)
+	if (1.7f <= MoveTime)
 	{
 		MoveDirect = true;
 		MoveTime = 0.0f;
@@ -118,7 +118,7 @@ void Jug_Woman::MoveUpdate(float _Time)
 	{
 		if (GetPos().x >= LeftMovePos.x)
 		{
-			SetMove(float4::Left * 300.0f * _Time);
+			SetMove(float4::Left * 70 * _Time);
 		}
 		else
 		{
@@ -131,7 +131,7 @@ void Jug_Woman::MoveUpdate(float _Time)
 	{
 		if (GetPos().x <= CurrentPos.x)
 		{
-			SetMove(float4::Right * 300.0f * _Time);
+			SetMove(float4::Right * 70 * _Time);
 		}
 		else
 		{

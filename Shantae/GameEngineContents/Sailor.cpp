@@ -19,10 +19,10 @@ void Sailor::Start()
 	AnimationRender->SetScale({ 400, 400 });
 
 	// Right
-	AnimationRender->CreateAnimation({ .AnimationName = "Idle_L",  .ImageName = "Sailor_L.bmp", .Start = 0, .End = 4, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_L",  .ImageName = "Sailor_L.bmp", .Start = 0, .End = 4, .InterTime = 0.15f });
 	AnimationRender->CreateAnimation({ .AnimationName = "Turn_L",  .ImageName = "Sailor_R.bmp", .Start = 5, .End = 10, .InterTime = 0.1f });
 
-	AnimationRender->CreateAnimation({ .AnimationName = "Idle_R",  .ImageName = "Sailor_R.bmp", .Start = 0, .End = 4, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_R",  .ImageName = "Sailor_R.bmp", .Start = 0, .End = 4, .InterTime = 0.15f });
 	AnimationRender->CreateAnimation({ .AnimationName = "Turn_R",  .ImageName = "Sailor_L.bmp", .Start = 5, .End = 10, .InterTime = 0.1f });
 
 	ChangeState(SailorState::IDLE);

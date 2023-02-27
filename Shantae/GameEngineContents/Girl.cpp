@@ -18,10 +18,10 @@ void Girl::Start()
 	AnimationRender->SetScale({ 400, 400 });
 
 	// Right
-	AnimationRender->CreateAnimation({ .AnimationName = "Idle_L",  .ImageName = "Girl_L.bmp", .Start = 0, .End = 7, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_L",  .ImageName = "Girl_L.bmp", .Start = 0, .End = 7, .InterTime = 0.15f });
 	AnimationRender->CreateAnimation({ .AnimationName = "Move_L",  .ImageName = "Girl_L.bmp", .Start = 8, .End = 15, .InterTime = 0.1f });
 
-	AnimationRender->CreateAnimation({ .AnimationName = "Idle_R",  .ImageName = "Girl_R.bmp", .Start = 0, .End = 7, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_R",  .ImageName = "Girl_R.bmp", .Start = 0, .End = 7, .InterTime = 0.15f });
 	AnimationRender->CreateAnimation({ .AnimationName = "Move_R",  .ImageName = "Girl_R.bmp", .Start = 8, .End = 15, .InterTime = 0.1f });
 
 	AnimationRender->CreateAnimation({ .AnimationName = "Run",  .ImageName = "Girl_L.bmp", .Start = 16, .End = 23, .InterTime = 0.1f });
@@ -34,6 +34,7 @@ void Girl::Update(float _DeltaTime)
 	{
 		CurrentPosCount = 0;
 		CurrentPos = GetPos();
+		LeftMovePos = CurrentPos + (float4::Left * 300);
 	}
 
 	UpdateState(_DeltaTime);
