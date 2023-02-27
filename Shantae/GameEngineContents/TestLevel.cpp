@@ -94,6 +94,15 @@ void TestLevel::Loading()
 
 	}
 
+
+	//Soldier_Black* s = CreateActor<Soldier_Black>();
+	//s->SetPos({ 500, 850 });
+	//s->SetColMap(ColMap);
+
+	Soldier_Bomberman* s1 = CreateActor<Soldier_Bomberman>();
+	s1->SetPos({ 500, 850 });
+	s1->SetColMap(ColMap);
+
 	Shantae = CreateActor<Player>();
 	SHA = dynamic_cast<Player*>(Shantae);
 	SHA->SetColMap(ColMap);

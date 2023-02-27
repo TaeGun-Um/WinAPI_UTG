@@ -29,10 +29,6 @@ void Soldier_Black::Start()
 	// Collision
 	CollisionSet();
 
-	// Text(예시; 0206 추가)
-	//GameEngineRender* Render = CreateRender(RenderOrder::Monster);
-	//Render->SetText("1234");
-
 	// state
 	ChangeState(Soldier_BlackState::IDLE);
 }
@@ -214,7 +210,7 @@ void Soldier_Black::Shoot()
 	}
 	else
 	{
-		BulletPos = GetPos() + (float4::Up * 75) + (float4::Right * 50);
+		BulletPos = GetPos() + (float4::Up * 75) + (float4::Right * 85);
 	}
 	
 	NewBullet = GetLevel()->CreateActor<Soldier_Bullet>();
