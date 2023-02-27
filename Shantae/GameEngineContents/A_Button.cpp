@@ -15,7 +15,7 @@ A_Button::~A_Button()
 void A_Button::Start()
 {
 	AnimationRender = CreateRender("A.Bmp", RenderOrder::Effect);
-	AnimationRender->SetScale({ 400, 400 });
+	AnimationRender->SetScale({ 40, 40 });
 }
 void A_Button::Update(float _DeltaTime)
 {

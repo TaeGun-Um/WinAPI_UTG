@@ -34,6 +34,23 @@ void Desert_Man::Render(float _DeltaTime)
 
 }
 
+void Desert_Man::DirectCheckForKill()
+{
+	float4 Pos = CurrentPos + (float4::Down * 1500);
+
+	if (GetPos().y >= Pos.y)
+	{
+		Kill();
+	}
+}
+
+void Desert_Man::Kill()
+{
+	GameEngineActor* ColActor = AnimationRender->GetActor();
+	ColActor->Off();
+	ColActor->Death();
+}
+
 std::string Desert_Man::DirCheck(const std::string_view& _AnimationName)
 {
 	std::string PrevDirString = DirString;
@@ -54,21 +71,4 @@ std::string Desert_Man::DirCheck(const std::string_view& _AnimationName)
 	}
 
 	return DirString;
-}
-
-void Desert_Man::DirectCheckForKill()
-{
-	float4 Pos = CurrentPos + (float4::Down * 1500);
-
-	if (GetPos().y >= Pos.y)
-	{
-		Kill();
-	}
-}
-
-void Desert_Man::Kill()
-{
-	GameEngineActor* ColActor = AnimationRender->GetActor();
-	ColActor->Off();
-	ColActor->Death();
 }

@@ -2,6 +2,8 @@
 
 #include <GameEngineCore/GameEngineActor.h>
 
+class A_Button;
+
 // Ό³Έν : Player Chracter
 class Merchant : public GameEngineActor
 {
@@ -29,10 +31,12 @@ private:
 
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
+	A_Button* AButton = nullptr;
 
 	float4 CurrentPos = float4::Zero;
 
 	int CurrentPosCount = 1;
+	int CreateAButtion = 1;
 
 	bool IsRun = false;
 

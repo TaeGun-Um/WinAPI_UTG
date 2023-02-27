@@ -30,6 +30,20 @@ void Sailor::Render(float _DeltaTime)
 
 }
 
+void Sailor::CharacterDirect()
+{
+	float interval = Player::MainPlayer->GetPos().x - GetPos().x;
+
+	if (0.0f >= interval)
+	{
+		MoveDirect = true;
+	}
+	else
+	{
+		MoveDirect = false;
+	}
+}
+
 std::string Sailor::DirCheck(const std::string_view& _AnimationName)
 {
 	std::string PrevDirString = DirString;
@@ -50,18 +64,4 @@ std::string Sailor::DirCheck(const std::string_view& _AnimationName)
 	}
 
 	return DirString;
-}
-
-void Sailor::CharacterDirect()
-{
-	float interval = Player::MainPlayer->GetPos().x - GetPos().x;
-
-	if (0.0f >= interval)
-	{
-		MoveDirect = true;
-	}
-	else
-	{
-		MoveDirect = false;
-	}
 }

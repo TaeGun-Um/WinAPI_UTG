@@ -33,6 +33,23 @@ void Stylist::Render(float _DeltaTime)
 
 }
 
+void Stylist::DirectCheckForKill()
+{
+	float4 Pos = CurrentPos + (float4::Down * 1500);
+
+	if (GetPos().y >= Pos.y)
+	{
+		Kill();
+	}
+}
+
+void Stylist::Kill()
+{
+	GameEngineActor* ColActor = AnimationRender->GetActor();
+	ColActor->Off();
+	ColActor->Death();
+}
+
 std::string Stylist::DirCheck(const std::string_view& _AnimationName)
 {
 	std::string PrevDirString = DirString;
@@ -53,21 +70,4 @@ std::string Stylist::DirCheck(const std::string_view& _AnimationName)
 	}
 
 	return DirString;
-}
-
-void Stylist::DirectCheckForKill()
-{
-	float4 Pos = CurrentPos + (float4::Down * 1500);
-
-	if (GetPos().y >= Pos.y)
-	{
-		Kill();
-	}
-}
-
-void Stylist::Kill()
-{
-	GameEngineActor* ColActor = AnimationRender->GetActor();
-	ColActor->Off();
-	ColActor->Death();
 }

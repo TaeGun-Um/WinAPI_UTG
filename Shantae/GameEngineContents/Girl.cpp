@@ -33,6 +33,23 @@ void Girl::Render(float _DeltaTime)
 
 }
 
+void Girl::DirectCheckForKill()
+{
+	float4 Pos = CurrentPos + (float4::Down * 1500);
+
+	if (GetPos().y >= Pos.y)
+	{
+		Kill();
+	}
+}
+
+void Girl::Kill()
+{
+	GameEngineActor* ColActor = AnimationRender->GetActor();
+	ColActor->Off();
+	ColActor->Death();
+}
+
 std::string Girl::DirCheck(const std::string_view& _AnimationName)
 {
 	std::string PrevDirString = DirString;
@@ -53,21 +70,4 @@ std::string Girl::DirCheck(const std::string_view& _AnimationName)
 	}
 
 	return DirString;
-}
-
-void Girl::DirectCheckForKill()
-{
-	float4 Pos = CurrentPos + (float4::Down * 1500);
-
-	if (GetPos().y >= Pos.y)
-	{
-		Kill();
-	}
-}
-
-void Girl::Kill()
-{
-	GameEngineActor* ColActor = AnimationRender->GetActor();
-	ColActor->Off();
-	ColActor->Death();
 }

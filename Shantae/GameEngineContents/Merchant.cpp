@@ -2,8 +2,10 @@
 
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineCollision.h>
+#include <GameEngineCore/GameEngineLevel.h>
 
 #include "ContentsEnum.h"
+#include "A_Button.h"
 
 Merchant::Merchant() 
 {
@@ -28,12 +30,25 @@ void Merchant::Start()
 
 	AnimationRender->ChangeAnimation("Idle");
 }
+
 void Merchant::Update(float _DeltaTime)
 {
 	if (1 == CurrentPosCount)
 	{
 		CurrentPosCount = 0;
 		CurrentPos = GetPos();
+
+		if (1 == CreateAButtion)
+		{
+			CreateAButtion = 0;
+			AButton = nullptr;
+			float4 AButtonPos = float4::Zero;
+			AButtonPos = GetPos() + (float4::Up * 180);
+
+			AButton = GetLevel()->CreateActor<A_Button>();
+			AButton->SetPos(AButtonPos);
+			AButton->Off();
+		}
 	}
 
 	if (true == IsRun)
@@ -41,7 +56,9 @@ void Merchant::Update(float _DeltaTime)
 		Run(_DeltaTime);
 	}
 
+	CollisionCheck();
 }
+
 void Merchant::Render(float _DeltaTime)
 {
 
@@ -53,7 +70,11 @@ void Merchant::CollisionCheck()
 	{
 		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
-			int a = 0;
+			AButton->On();
+		}
+		else
+		{
+			AButton->Off();
 		}
 	}
 }

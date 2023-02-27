@@ -2,8 +2,10 @@
 
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineCollision.h>
+#include <GameEngineCore/GameEngineLevel.h>
 
 #include "ContentsEnum.h"
+#include "A_Button.h"
 #include "Player.h"
 
 Squidsmith::Squidsmith() 
@@ -31,13 +33,56 @@ void Squidsmith::Start()
 	BodyCollision->SetScale({ 120, 100 });
 	BodyCollision->SetPosition({ 0, -50 });
 }
+
 void Squidsmith::Update(float _DeltaTime)
 {
+	if (1 == CreateAButtion)
+	{
+		CreateAButtion = 0;
+		AButton = nullptr;
+		float4 AButtonPos = float4::Zero;
+		AButtonPos = GetPos() + (float4::Up * 180);
 
+		AButton = GetLevel()->CreateActor<A_Button>();
+		AButton->SetPos(AButtonPos);
+		AButton->Off();
+	}
+
+	CollisionCheck();
 }
+
 void Squidsmith::Render(float _DeltaTime)
 {
 
+}
+
+void Squidsmith::CollisionCheck()
+{
+	if (nullptr != BodyCollision)
+	{
+		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+		{
+			AButton->On();
+		}
+		else
+		{
+			AButton->Off();
+		}
+	}
+}
+
+void Squidsmith::CharacterDirect()
+{
+	float interval = Player::MainPlayer->GetPos().x - GetPos().x;
+
+	if (0.0f >= interval)
+	{
+		MoveDirect = true;
+	}
+	else
+	{
+		MoveDirect = false;
+	}
 }
 
 std::string Squidsmith::DirCheck(const std::string_view& _AnimationName)
@@ -60,29 +105,4 @@ std::string Squidsmith::DirCheck(const std::string_view& _AnimationName)
 	}
 
 	return DirString;
-}
-
-void Squidsmith::CollisionCheck()
-{
-	if (nullptr != BodyCollision)
-	{
-		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
-		{
-			int a = 0;
-		}
-	}
-}
-
-void Squidsmith::CharacterDirect()
-{
-	float interval = Player::MainPlayer->GetPos().x - GetPos().x;
-
-	if (0.0f >= interval)
-	{
-		MoveDirect = true;
-	}
-	else
-	{
-		MoveDirect = false;
-	}
 }

@@ -21,13 +21,29 @@ void Mayor_Scuttlebutt::Start()
 	// Right
 	AnimationRender->CreateAnimation({ .AnimationName = "Move_R",  .ImageName = "Soldier_Blue_R.bmp", .Start = 0, .End = 9, .InterTime = 0.08f });
 }
+
 void Mayor_Scuttlebutt::Update(float _DeltaTime)
 {
 
 }
+
 void Mayor_Scuttlebutt::Render(float _DeltaTime)
 {
 
+}
+
+void Mayor_Scuttlebutt::CharacterDirect()
+{
+	float interval = Player::MainPlayer->GetPos().x - GetPos().x;
+
+	if (0.0f >= interval)
+	{
+		MoveDirect = true;
+	}
+	else
+	{
+		MoveDirect = false;
+	}
 }
 
 std::string Mayor_Scuttlebutt::DirCheck(const std::string_view& _AnimationName)
@@ -50,18 +66,4 @@ std::string Mayor_Scuttlebutt::DirCheck(const std::string_view& _AnimationName)
 	}
 
 	return DirString;
-}
-
-void Mayor_Scuttlebutt::CharacterDirect()
-{
-	float interval = Player::MainPlayer->GetPos().x - GetPos().x;
-
-	if (0.0f >= interval)
-	{
-		MoveDirect = true;
-	}
-	else
-	{
-		MoveDirect = false;
-	}
 }

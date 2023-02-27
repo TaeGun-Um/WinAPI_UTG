@@ -33,6 +33,23 @@ void Boy::Render(float _DeltaTime)
 
 }
 
+void Boy::DirectCheckForKill()
+{
+	float4 Pos = CurrentPos + (float4::Down * 1500);
+
+	if (GetPos().y >= Pos.y)
+	{
+		Kill();
+	}
+}
+
+void Boy::Kill()
+{
+	GameEngineActor* ColActor = AnimationRender->GetActor();
+	ColActor->Off();
+	ColActor->Death();
+}
+
 std::string Boy::DirCheck(const std::string_view& _AnimationName)
 {
 	std::string PrevDirString = DirString;
@@ -53,21 +70,4 @@ std::string Boy::DirCheck(const std::string_view& _AnimationName)
 	}
 
 	return DirString;
-}
-
-void Boy::DirectCheckForKill()
-{
-	float4 Pos = CurrentPos + (float4::Down * 1500);
-
-	if (GetPos().y >= Pos.y)
-	{
-		Kill();
-	}
-}
-
-void Boy::Kill()
-{
-	GameEngineActor* ColActor = AnimationRender->GetActor();
-	ColActor->Off();
-	ColActor->Death();
 }

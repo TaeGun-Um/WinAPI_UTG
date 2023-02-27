@@ -9,6 +9,8 @@ enum class SkyNPCState
 	TURN,
 };
 
+class A_Button;
+
 // Ό³Έν : Player Chracter
 class SkyNPC : public GameEngineActor
 {
@@ -34,7 +36,14 @@ private:
 
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
+	A_Button* AButton = nullptr;
+
+	float4 CurrentPos = float4::Zero;
+
 	bool MoveDirect = true; // true = Left, false = Right
+
+	int CurrentPosCount = 1;
+	int CreateAButtion = 1;
 
 	// State
 	std::string DirString = "_L";

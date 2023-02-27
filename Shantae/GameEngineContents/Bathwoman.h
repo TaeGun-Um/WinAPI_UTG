@@ -2,6 +2,8 @@
 
 #include <GameEngineCore/GameEngineActor.h>
 
+class A_Button;
+
 // Ό³Έν : Player Chracter
 class Bathwoman : public GameEngineActor
 {
@@ -26,7 +28,8 @@ private:
 
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
+	A_Button* AButton = nullptr;
 
-
+	int CreateAButtion = 1;
 };
 

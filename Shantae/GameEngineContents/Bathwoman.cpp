@@ -2,8 +2,10 @@
 
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineCollision.h>
+#include <GameEngineCore/GameEngineLevel.h>
 
 #include "ContentsEnum.h"
+#include "A_Button.h"
 
 Bathwoman::Bathwoman() 
 {
@@ -28,10 +30,24 @@ void Bathwoman::Start()
 
 	AnimationRender->ChangeAnimation("Idle");
 }
+
 void Bathwoman::Update(float _DeltaTime)
 {
+	if (1 == CreateAButtion)
+	{
+		CreateAButtion = 0;
+		AButton = nullptr;
+		float4 AButtonPos = float4::Zero;
+		AButtonPos = GetPos() + (float4::Up * 180);
 
+		AButton = GetLevel()->CreateActor<A_Button>();
+		AButton->SetPos(AButtonPos);
+		AButton->Off();
+	}
+
+	CollisionCheck();
 }
+
 void Bathwoman::Render(float _DeltaTime)
 {
 
@@ -43,7 +59,11 @@ void Bathwoman::CollisionCheck()
 	{
 		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
-			int a = 0;
+			AButton->On();
+		}
+		else
+		{
+			AButton->Off();
 		}
 	}
 }
