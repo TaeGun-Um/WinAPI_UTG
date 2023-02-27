@@ -47,10 +47,10 @@ void SkyRoom::Loading()
 	// NPC
 	{
 		SkyNPC* M = CreateActor<SkyNPC>();
-		M->SetPos({ 1100, 862 });
+		M->SetPos({ 1130, 837 });
 
 		Wrench* M1 = CreateActor<Wrench>();
-		M1->SetPos({ 1100, 862 });
+		M1->SetPos({ 1330, 498 });
 
 	}
 

@@ -41,6 +41,7 @@ private:
 	float4 CurrentPos = float4::Zero;
 
 	bool MoveDirect = true; // true = Left, false = Right
+	bool Isturn = false;
 
 	int CurrentPosCount = 1;
 	int CreateAButtion = 1;
@@ -56,5 +57,10 @@ private:
 	void IdleStart();
 	void IdleUpdate(float _Time);
 	void IdleEnd();
+
+	void TurnStart();
+	void TurnUpdate(float _Time);
+	void TurnEnd();
+
 };
 

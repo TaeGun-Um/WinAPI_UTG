@@ -61,7 +61,7 @@ std::string Mayor_Scuttlebutt::DirCheck(const std::string_view& _AnimationName)
 
 	if (PrevDirString != DirString)
 	{
-		AnimationRender->ChangeAnimation(_AnimationName.data() + DirString);
+		Isturn = true;
 	}
 
 	return DirString;

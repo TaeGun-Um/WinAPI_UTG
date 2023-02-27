@@ -22,12 +22,22 @@ void SkyNPC::Start()
 	AnimationRender->SetScale({ 400, 400 });
 
 	// Right
-	AnimationRender->CreateAnimation({ .AnimationName = "Move_R",  .ImageName = "Soldier_Blue_R.bmp", .Start = 0, .End = 9, .InterTime = 0.08f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_L",  .ImageName = "Sky_L.bmp", .Start = 0, .End = 5, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Turn_L",  .ImageName = "Sky_R.bmp", .Start = 6, .End = 12, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "IdleRev_L",  .ImageName = "Sky_L.bmp", .Start = 21, .End = 26, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Run_L",  .ImageName = "Sky_L.bmp", .Start = 34, .End = 41, .InterTime = 0.1f });
+
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_R",  .ImageName = "Sky_R.bmp", .Start = 0, .End = 5, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Turn_R",  .ImageName = "Sky_L.bmp", .Start = 6, .End = 12, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "IdleRev_R",  .ImageName = "Sky_R.bmp", .Start = 21, .End = 26, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Run_R",  .ImageName = "Sky_R.bmp", .Start = 34, .End = 41, .InterTime = 0.1f });
 
 	BodyCollision = CreateCollision(CollisionOrder::Trigger);
 	BodyCollision->SetDebugRenderType(CT_Rect);
 	BodyCollision->SetScale({ 120, 100 });
 	BodyCollision->SetPosition({ 0, -50 });
+
+	ChangeState(SkyNPCState::IDLE);
 }
 
 void SkyNPC::Update(float _DeltaTime)
@@ -51,6 +61,8 @@ void SkyNPC::Update(float _DeltaTime)
 	}
 
 	CollisionCheck();
+	CharacterDirect();
+	UpdateState(_DeltaTime);
 }
 
 void SkyNPC::Render(float _DeltaTime)
@@ -103,7 +115,7 @@ std::string SkyNPC::DirCheck(const std::string_view& _AnimationName)
 
 	if (PrevDirString != DirString)
 	{
-		AnimationRender->ChangeAnimation(_AnimationName.data() + DirString);
+		Isturn = true;
 	}
 
 	return DirString;

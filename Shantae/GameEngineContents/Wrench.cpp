@@ -18,7 +18,9 @@ void Wrench::Start()
 	AnimationRender->SetScale({ 400, 400 });
 
 	// Right
-	AnimationRender->CreateAnimation({ .AnimationName = "Move_R",  .ImageName = "Soldier_Blue_R.bmp", .Start = 0, .End = 9, .InterTime = 0.08f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle",  .ImageName = "Wrench.bmp", .Start = 0, .End = 13, .InterTime = 0.1f });
+
+	AnimationRender->ChangeAnimation("Idle");
 }
 void Wrench::Update(float _DeltaTime)
 {

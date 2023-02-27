@@ -31,7 +31,9 @@ private:
 	void CharacterDirect();
 
 	GameEngineRender* AnimationRender = nullptr;
+
 	bool MoveDirect = true; // true = Left, false = Right
+	bool Isturn = false;
 
 	// State
 	std::string DirString = "_L";
@@ -44,6 +46,10 @@ private:
 	void IdleStart();
 	void IdleUpdate(float _Time);
 	void IdleEnd();
+
+	void TurnStart();
+	void TurnUpdate(float _Time);
+	void TurnEnd();
 
 };
 

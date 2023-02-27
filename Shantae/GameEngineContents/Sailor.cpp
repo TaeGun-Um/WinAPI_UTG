@@ -23,7 +23,8 @@ void Sailor::Start()
 }
 void Sailor::Update(float _DeltaTime)
 {
-
+	CharacterDirect();
+	UpdateState(_DeltaTime);
 }
 void Sailor::Render(float _DeltaTime)
 {
@@ -60,7 +61,7 @@ std::string Sailor::DirCheck(const std::string_view& _AnimationName)
 
 	if (PrevDirString != DirString)
 	{
-		AnimationRender->ChangeAnimation(_AnimationName.data() + DirString);
+		Isturn = true;
 	}
 
 	return DirString;

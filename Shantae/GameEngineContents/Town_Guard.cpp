@@ -45,6 +45,8 @@ void Town_Guard::Update(float _DeltaTime)
 	}
 
 	CollisionCheck();
+	CharacterDirect();
+	UpdateState(_DeltaTime);
 }
 
 void Town_Guard::Render(float _DeltaTime)
@@ -97,7 +99,7 @@ std::string Town_Guard::DirCheck(const std::string_view& _AnimationName)
 
 	if (PrevDirString != DirString)
 	{
-		AnimationRender->ChangeAnimation(_AnimationName.data() + DirString);
+		Isturn = true;
 	}
 
 	return DirString;
