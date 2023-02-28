@@ -313,6 +313,19 @@ void Player::IdleUpdate(float _Time)
 		ChangeState(PlayerState::REST);
 		return;
 	}
+
+	if (3 <= HP && 6 >= HP)
+	{
+		DirCheck("Idle");
+	}
+	else if (3 > HP)
+	{
+		DirCheck("LowHP");
+	}
+	else if (6 < HP)
+	{
+		DirCheck("IdleDance");
+	}
 }
 void Player::IdleEnd()
 {
