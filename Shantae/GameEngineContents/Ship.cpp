@@ -59,11 +59,6 @@ void Ship::PlayerCheck()
 	else
 	{
 		Stop = false;
-
-		if (true == forceStop)
-		{
-			Stop = true;
-		}
 	}
 }
 
@@ -127,64 +122,68 @@ void Ship::MoveCalculation(float _DeltaTime)
 		}
 	}
 
-	if (0 == MotionCount || 1 == MotionCount)
+	if (false == forceStop)
 	{
-		AngleTime += _DeltaTime;
-		if (0.1f <= AngleTime)
+		if (0 == MotionCount || 1 == MotionCount)
 		{
-			AngleTime = 0.0f;
-
-			if (Angle <= 1.0f)
+			AngleTime += _DeltaTime;
+			if (0.1f <= AngleTime)
 			{
-				Angle += 0.01f;
-			}
+				AngleTime = 0.0f;
 
-			AnimationRender->SetAngleAdd(Angle);
+				if (Angle <= 1.0f)
+				{
+					Angle += 0.01f;
+				}
+
+				AnimationRender->SetAngleAdd(Angle);
+			}
+		}
+		else if (2 == MotionCount)
+		{
+			AngleTime += _DeltaTime;
+			if (0.1f <= AngleTime)
+			{
+				AngleTime = 0.0f;
+
+				if (Angle >= -1.0f)
+				{
+					Angle -= 0.01f;
+				}
+
+				AnimationRender->SetAngleAdd(Angle);
+			}
+		}
+		else if (3 == MotionCount || 4 == MotionCount)
+		{
+			AngleTime += _DeltaTime;
+			if (0.1f <= AngleTime)
+			{
+				AngleTime = 0.0f;
+
+				if (Angle >= -1.0f)
+				{
+					Angle -= 0.01f;
+				}
+
+				AnimationRender->SetAngleAdd(Angle);
+			}
+		}
+		else if (5 == MotionCount)
+		{
+			AngleTime += _DeltaTime;
+			if (0.1f <= AngleTime)
+			{
+				AngleTime = 0.0f;
+
+				if (Angle <= 1.0f)
+				{
+					Angle += 0.01f;
+				}
+
+				AnimationRender->SetAngleAdd(Angle);
+			}
 		}
 	}
-	else if (2 == MotionCount)
-	{
-		AngleTime += _DeltaTime;
-		if (0.1f <= AngleTime)
-		{
-			AngleTime = 0.0f;
 
-			if (Angle >= -1.0f)
-			{
-				Angle -= 0.01f;
-			}
-
-			AnimationRender->SetAngleAdd(Angle);
-		}
-	}
-	else if (3 == MotionCount || 4 == MotionCount)
-	{
-		AngleTime += _DeltaTime;
-		if (0.1f <= AngleTime)
-		{
-			AngleTime = 0.0f;
-
-			if (Angle >= -1.0f)
-			{
-				Angle -= 0.01f;
-			}
-
-			AnimationRender->SetAngleAdd(Angle);
-		}
-	}
-	else if (5 == MotionCount)
-	{
-		AngleTime += _DeltaTime;
-		if (0.1f <= AngleTime)
-		{
-			AngleTime = 0.0f;
-
-			if (Angle <= 1.0f)
-			{
-				Angle += 0.01f;
-			}
-
-			AnimationRender->SetAngleAdd(Angle);
-		}
-	}
 }

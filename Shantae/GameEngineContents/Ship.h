@@ -16,7 +16,7 @@ public:
 	Ship& operator=(const Ship& _Other) = delete;
 	Ship& operator=(Ship&& _Other) noexcept = delete;
 
-	void SetMoveStop()
+	void SetRotationStop()
 	{
 		forceStop = true;
 	}

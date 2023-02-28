@@ -46,7 +46,7 @@ void Boss::Loading()
 	{
 		Ship* Ship0 = CreateActor<Ship>();
 		Ship0->SetPos({ 200, 480 });
-		Ship0->SetMoveStop();
+		Ship0->SetRotationStop();
 	}
 
 	// Map
