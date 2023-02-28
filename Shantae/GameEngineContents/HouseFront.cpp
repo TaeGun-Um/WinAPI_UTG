@@ -134,7 +134,7 @@ void HouseFront::RandExplosion(float _DeltaTime)
 {
 	RandTime += _DeltaTime;
 
-	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 500);
+	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 300);
 
 	if (1 == RandC && 0.2f <= RandTime)
 	{

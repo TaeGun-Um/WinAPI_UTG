@@ -243,9 +243,6 @@ void Move0::Update(float _DeltaTime)
 		BGMPlayer.Volume(0.35f);
 		BGMPlayer.LoopCount(1);
 	}
-
-	RandExplosion(_DeltaTime);
-
 }
 
 void Move0::LevelChangeStart(GameEngineLevel* _PrevLevel)
@@ -263,34 +260,6 @@ void Move0::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	// BGMPlayer.Stop();
 	InBoxKill();
-}
-
-void Move0::RandExplosion(float _DeltaTime)
-{
-	RunAnimationTime += _DeltaTime;
-	RandTime += _DeltaTime;
-
-	if (11.0f <= RunAnimationTime)
-	{
-		int RandC = GameEngineRandom::MainRandom.RandomInt(1, 2000);
-
-		if (1 == RandC && 0.2f <= RandTime)
-		{
-			RandTime = 0.0f;
-			Player::MainPlayer->SetCameraShakinghard(0.25f, 3.0f);
-			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Explosion1.mp3");
-			BGMPlayer.Volume(0.3f);
-			BGMPlayer.LoopCount(1);
-		}
-		else if (250 == RandC && 0.2f <= RandTime)
-		{
-			RandTime = 0.0f;
-			Player::MainPlayer->SetCameraShakinghard(0.25f, 3.0f);
-			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Explosion2.mp3");
-			BGMPlayer.Volume(0.3f);
-			BGMPlayer.LoopCount(1);
-		}
-	}
 }
 
 void Move0::BlackBoxOutAnimation()

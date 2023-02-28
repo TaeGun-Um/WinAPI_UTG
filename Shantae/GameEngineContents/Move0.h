@@ -30,7 +30,6 @@ protected:
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 
 private:
-	void RandExplosion(float _DeltaTime);
 	void BlackBoxOutAnimation();
 	void BlackBoxInAnimation();
 	void InBoxKill();
@@ -50,8 +49,6 @@ private:
 	Player* SHA = nullptr;
 
 	float OverlapTime = 0.0f;
-	float RunAnimationTime = 0.0f;
-	float RandTime = 0.0f;
 	
 	int Set = 1;
 	int AnimationSet = 1;
