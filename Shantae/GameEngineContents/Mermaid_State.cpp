@@ -1,5 +1,6 @@
 #include "Mermaid.h"
 
+#include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineCore/GameEngineCollision.h>
 
 #include "ContentsEnum.h"
@@ -18,14 +19,29 @@ void Mermaid::ChangeState(MermaidState _State)
 	case MermaidState::IDLE:
 		IdleStart();
 		break;
+	case MermaidState::LURE:
+		LureStart();
+		break;
+	case MermaidState::READY:
+		ReadyStart();
+		break;
+	case MermaidState::HOLD:
+		HoldStart();
+		break;
+	case MermaidState::DIVE:
+		DiveStart();
+		break;
+	case MermaidState::EMERGE:
+		EmergeStart();
+		break;
 	case MermaidState::SHOOT:
 		ShootStart();
 		break;
-	case MermaidState::RELOAD:
-		ReloadStart();
-		break;
 	case MermaidState::HIT:
 		HitStart();
+		break;
+	case MermaidState::DIE:
+		DieStart();
 		break;
 	default:
 		break;
@@ -36,14 +52,29 @@ void Mermaid::ChangeState(MermaidState _State)
 	case MermaidState::IDLE:
 		IdleEnd();
 		break;
+	case MermaidState::LURE:
+		LureEnd();
+		break;
+	case MermaidState::READY:
+		ReadyEnd();
+		break;
+	case MermaidState::HOLD:
+		HoldEnd();
+		break;
+	case MermaidState::DIVE:
+		DiveEnd();
+		break;
+	case MermaidState::EMERGE:
+		EmergeEnd();
+		break;
 	case MermaidState::SHOOT:
 		ShootEnd();
 		break;
-	case MermaidState::RELOAD:
-		ReloadEnd();
-		break;
 	case MermaidState::HIT:
 		HitEnd();
+		break;
+	case MermaidState::DIE:
+		DieEnd();
 		break;
 	default:
 		break;
@@ -57,23 +88,34 @@ void Mermaid::UpdateState(float _Time)
 	case MermaidState::IDLE:
 		IdleUpdate(_Time);
 		break;
+	case MermaidState::LURE:
+		LureUpdate(_Time);
+		break;
+	case MermaidState::READY:
+		ReadyUpdate(_Time);
+		break;
+	case MermaidState::HOLD:
+		HoldUpdate(_Time);
+		break;
+	case MermaidState::DIVE:
+		DiveUpdate(_Time);
+		break;
+	case MermaidState::EMERGE:
+		EmergeUpdate(_Time);
+		break;
 	case MermaidState::SHOOT:
 		ShootUpdate(_Time);
 		break;
-	case MermaidState::RELOAD:
-		ReloadUpdate(_Time);
-		break;
 	case MermaidState::HIT:
 		HitUpdate(_Time);
+		break;
+	case MermaidState::DIE:
+		DieUpdate(_Time);
 		break;
 	default:
 		break;
 	}
 }
-
-/////////////////////////////////////////////////////// States ///////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////  Idle  ///////////////////////////////////////////////////////
 
 void Mermaid::IdleStart()
 {
@@ -82,6 +124,12 @@ void Mermaid::IdleStart()
 }
 void Mermaid::IdleUpdate(float _Time)
 {
+	if (true == IsDeath)
+	{
+		ChangeState(MermaidState::DIE);
+		return;
+	}
+
 	if (true == HitAction)
 	{
 		ChangeState(MermaidState::HIT);
@@ -89,13 +137,33 @@ void Mermaid::IdleUpdate(float _Time)
 	}
 
 	ShootStartTime += _Time;
+	LureTime += _Time;
 
-	if (2.0f <= ShootStartTime && true == IsAttack)
+	if (3.0f <= ShootStartTime && true == IsAttack)
 	{
-		ShootCount = 3;
+		ShootCount = 1;
 		ShootStartTime = 0.0f;
-		ChangeState(MermaidState::SHOOT);
+		LureTime = 0.0f;
+		ChangeState(MermaidState::READY);
 		return;
+	}
+
+	if (5.0f <= LureTime && false == IsAttack)
+	{
+		int RandC = GameEngineRandom::MainRandom.RandomInt(1, 2);
+
+		if (1 == RandC)
+		{
+			LureTime = 0.0f;
+			ChangeState(MermaidState::LURE);
+			return;
+		}
+		else if (2 == RandC)
+		{
+			LureTime = 0.0f;
+			ChangeState(MermaidState::DIVE);
+			return;
+		}
 	}
 
 	DirCheck("Idle");
@@ -104,115 +172,218 @@ void Mermaid::IdleEnd()
 {
 }
 
-///////////////////////////////////////////////////////  Shoot  ///////////////////////////////////////////////////////
-
-void Mermaid::ShootStart()
+void Mermaid::LureStart()
 {
-	// Animation Start
-	DirCheck("Shoot");
-	trace = false;
+	DirCheck("Lure");
 }
-void Mermaid::ShootUpdate(float _Time)
+void Mermaid::LureUpdate(float _Time)
 {
+	if (true == IsDeath)
+	{
+		ChangeState(MermaidState::DIE);
+		return;
+	}
+
 	if (true == HitAction)
 	{
-		trace = true;
 		ChangeState(MermaidState::HIT);
 		return;
 	}
 
-	if (0 == ShootCount)
+	ShootStartTime += _Time;
+
+	if (3.0f <= ShootStartTime && true == IsAttack)
 	{
-		ChangeState(MermaidState::RELOAD);
+		ShootCount = 1;
+		ShootStartTime = 0.0f;
+		ChangeState(MermaidState::READY);
 		return;
 	}
 
-	ShootTime += _Time;
-
-	if (0 < ShootCount && 0.2f <= ShootTime)
+	if (true == AnimationRender->IsAnimationEnd())
 	{
-		ShootTime = 0.0f;
-		Shoot();
-		--ShootCount;
+		ChangeState(MermaidState::IDLE);
+		return;
+	}
+}
+void Mermaid::LureEnd()
+{
 
-		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_gun_fire.mp3");
-		BGMPlayer.Volume(0.15f);
-		BGMPlayer.LoopCount(1);
+}
 
-		DirCheck("Shoot");
+void Mermaid::ReadyStart()
+{
+	DirCheck("Ready");
+}
+void Mermaid::ReadyUpdate(float _Time)
+{
+	if (true == IsDeath)
+	{
+		ChangeState(MermaidState::DIE);
+		return;
 	}
 
-}
-void Mermaid::ShootEnd()
-{
-}
-
-///////////////////////////////////////////////////////  ReLoad  ///////////////////////////////////////////////////////
-
-void Mermaid::ReloadStart()
-{
-	// Animation Start
-	DirCheck("ReLoad");
-}
-void Mermaid::ReloadUpdate(float _Time)
-{
 	if (true == HitAction)
 	{
-		trace = true;
 		ChangeState(MermaidState::HIT);
 		return;
 	}
 
 	if (true == AnimationRender->IsAnimationEnd())
 	{
-		trace = true;
-		ChangeState(MermaidState::IDLE);
+		ChangeState(MermaidState::HOLD);
+		return;
+	}
+}
+void Mermaid::ReadyEnd()
+{
+
+}
+
+void Mermaid::HoldStart()
+{
+	DirCheck("Hold");
+}
+void Mermaid::HoldUpdate(float _Time)
+{
+	if (true == IsDeath)
+	{
+		ChangeState(MermaidState::DIE);
 		return;
 	}
 
-	DirCheck("ReLoad");
+	if (true == HitAction)
+	{
+		ChangeState(MermaidState::HIT);
+		return;
+	}
+
+	HoldTime += _Time;
+
+	if (0.5f <= HoldTime)
+	{
+		HoldTime = 0.0f;
+		ChangeState(MermaidState::SHOOT);
+		return;
+	}
 }
-void Mermaid::ReloadEnd()
+void Mermaid::HoldEnd()
 {
+
 }
 
-///////////////////////////////////////////////////////  Hit  ///////////////////////////////////////////////////////
+void Mermaid::ShootStart()
+{
+	// Animation Start
+	DirCheck("Attack");
+}
+void Mermaid::ShootUpdate(float _Time)
+{
+	if (true == IsDeath)
+	{
+		ChangeState(MermaidState::DIE);
+		return;
+	}
+
+	if (true == HitAction)
+	{
+		ChangeState(MermaidState::HIT);
+		return;
+	}
+
+	if (1 == ShootCount)
+	{
+		ShootCount = 0;
+		Shoot();
+		//BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_gun_fire.mp3");
+		//BGMPlayer.Volume(0.15f);
+		//BGMPlayer.LoopCount(1);
+	}
+
+	if (true == AnimationRender->IsAnimationEnd())
+	{
+		ChangeState(MermaidState::IDLE);
+		return;
+	}
+	
+}
+void Mermaid::ShootEnd()
+{
+}
 
 void Mermaid::HitStart()
 {
-	HitDir = Player::MainPlayer->GetDir().data();
-
-	MoveDir.y += -900.0f;
-
-	BodyCollision->Off();
-
-	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_die.wav");
-	BGMPlayer.Volume(0.05f);
-	BGMPlayer.LoopCount(1);
+	DirCheck("Hurt");
 }
 void Mermaid::HitUpdate(float _Time)
 {
-	IsTurn = false;
-
-	if ("_L" == HitDir)
+	if (true == AnimationRender->IsAnimationEnd())
 	{
-		AnimationRender->ChangeAnimation("Hit_R");
-		SetMove(float4::Left * 250.0f * _Time);
-	}
-	else if ("_R" == HitDir)
-	{
-		AnimationRender->ChangeAnimation("Hit_L");
-		SetMove(float4::Right * 250.0f * _Time);
-	}
-
-	HitTime += _Time;
-
-	if (0.5f <= HitTime)
-	{
-		IsDeath = true;
+		HitAction = false;
+		ChangeState(MermaidState::DIVE);
 		return;
 	}
 }
 void Mermaid::HitEnd()
 {
+}
+
+void Mermaid::DiveStart()
+{
+	BodyCollision->Off();
+
+	DirCheck("Dive");
+}
+void Mermaid::DiveUpdate(float _Time)
+{
+	if (true == AnimationRender->IsAnimationEnd())
+	{
+		DiveTime += _Time;
+
+		if (1.0f <= DiveTime)
+		{
+			DiveTime = 0.0f;
+			ChangeState(MermaidState::EMERGE);
+			return;
+		}
+
+	}
+}
+void Mermaid::DiveEnd()
+{
+
+}
+
+void Mermaid::EmergeStart()
+{
+	DirCheck("Emerge");
+}
+void Mermaid::EmergeUpdate(float _Time)
+{
+	if (true == AnimationRender->IsAnimationEnd())
+	{
+		BodyCollision->On();
+		ChangeState(MermaidState::IDLE);
+		return;
+	}
+}
+void Mermaid::EmergeEnd()
+{
+
+}
+
+void Mermaid::DieStart()
+{
+	DirCheck("Die");
+}
+void Mermaid::DieUpdate(float _Time)
+{
+	if (true == AnimationRender->IsAnimationEnd())
+	{
+		Kill();
+	}
+}
+void Mermaid::DieEnd()
+{
+
 }

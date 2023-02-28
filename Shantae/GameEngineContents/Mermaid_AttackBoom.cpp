@@ -1,44 +1,48 @@
 #include "Mermaid_AttackBoom.h"
 
+#include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineCollision.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineLevel.h>
 
 #include "ContentsEnum.h"
 
-Mermaid_AttackBoom::Mermaid_AttackBoom() 
+Mermaid_AttackBoom::Mermaid_AttackBoom()
 {
 }
 
-Mermaid_AttackBoom::~Mermaid_AttackBoom() 
+Mermaid_AttackBoom::~Mermaid_AttackBoom()
 {
 }
 
 void Mermaid_AttackBoom::Start()
 {
-	AnimationRender = CreateRender(RenderOrder::Monster);
+	// Animation
+	AnimationRender = CreateRender(RenderOrder::Effect);
 	AnimationRender->SetScale({ 400, 400 });
-
-	// Right
-	AnimationRender->CreateAnimation({ .AnimationName = "ALL",  .ImageName = "Mermaid_R.bmp", .Start = 0, .End = 101, .InterTime = 0.1f });
-
-	BodyCollision = CreateCollision(CollisionOrder::Monster);
-	BodyCollision->SetDebugRenderType(CT_Rect);
-	BodyCollision->SetScale({ 130, 150 });
-	BodyCollision->SetPosition({ 30, -75 });
+	AnimationRender->CreateAnimation({ .AnimationName = "Mermaid_AttackBoom",  .ImageName = "Mermaid_AttackBoom.bmp", .Start = 0, .End = 5, .InterTime = 0.1f });
+	AnimationRender->ChangeAnimation("Mermaid_AttackBoom");
 }
+
 void Mermaid_AttackBoom::Update(float _DeltaTime)
 {
+	//if (1 == BoomSoundCount)
+	//{
+	//	BoomSoundCount = 0;
 
+	//	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_boom_explosion.mp3");
+	//	BGMPlayer.Volume(0.1f);
+	//	BGMPlayer.LoopCount(1);
+	//}
+
+	if (true == AnimationRender->IsAnimationEnd())
+	{
+		GameEngineActor* Act = AnimationRender->GetActor();
+		Act->Death();
+	}
 }
+
 void Mermaid_AttackBoom::Render(float _DeltaTime)
 {
 
-}
-
-void Mermaid_AttackBoom::Kill()
-{
-	GameEngineActor* ColActor = AnimationRender->GetActor();
-	ColActor->Off();
-	ColActor->Death();
 }

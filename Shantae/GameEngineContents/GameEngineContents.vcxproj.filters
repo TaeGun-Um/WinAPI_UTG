@@ -283,9 +283,6 @@
     <ClInclude Include="Mermaid.h">
       <Filter>Character\Monster\Mermaid</Filter>
     </ClInclude>
-    <ClInclude Include="Bat.h">
-      <Filter>Character\Monster\Bat</Filter>
-    </ClInclude>
     <ClInclude Include="AmmoBaron.h">
       <Filter>Character\Monster\Boss</Filter>
     </ClInclude>
@@ -494,16 +491,10 @@
     <ClInclude Include="Up_Button.h">
       <Filter>AssistantCollision\Portal\Effect</Filter>
     </ClInclude>
-    <ClInclude Include="Cacklebat.h">
-      <Filter>Character\Monster\Cacklebat</Filter>
-    </ClInclude>
     <ClInclude Include="Mermaid_Attack.h">
       <Filter>Character\Monster\Mermaid\Effect</Filter>
     </ClInclude>
     <ClInclude Include="Mermaid_AttackBoom.h">
-      <Filter>Character\Monster\Mermaid\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="Mermaid_Heart.h">
       <Filter>Character\Monster\Mermaid\Effect</Filter>
     </ClInclude>
   </ItemGroup>
@@ -791,9 +782,6 @@
     <ClCompile Include="Mermaid.cpp">
       <Filter>Character\Monster\Mermaid</Filter>
     </ClCompile>
-    <ClCompile Include="Bat.cpp">
-      <Filter>Character\Monster\Bat</Filter>
-    </ClCompile>
     <ClCompile Include="AmmoBaron.cpp">
       <Filter>Character\Monster\Boss</Filter>
     </ClCompile>
@@ -1058,19 +1046,10 @@
     <ClCompile Include="Mermaid_State.cpp">
       <Filter>Character\Monster\Mermaid</Filter>
     </ClCompile>
-    <ClCompile Include="Cacklebat.cpp">
-      <Filter>Character\Monster\Cacklebat</Filter>
-    </ClCompile>
-    <ClCompile Include="Cacklebat_State.cpp">
-      <Filter>Character\Monster\Cacklebat</Filter>
-    </ClCompile>
     <ClCompile Include="Mermaid_Attack.cpp">
       <Filter>Character\Monster\Mermaid\Effect</Filter>
     </ClCompile>
     <ClCompile Include="Mermaid_AttackBoom.cpp">
-      <Filter>Character\Monster\Mermaid\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="Mermaid_Heart.cpp">
       <Filter>Character\Monster\Mermaid\Effect</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1089,9 +1068,6 @@
     </Filter>
     <Filter Include="Character\Monster\Mermaid">
       <UniqueIdentifier>{d2a379c4-4415-4b3b-b709-69df4b33191d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Character\Monster\Bat">
-      <UniqueIdentifier>{4d30f2bf-56f3-48c4-93b2-92696c0b1134}</UniqueIdentifier>
     </Filter>
     <Filter Include="Character\Monster\Boss">
       <UniqueIdentifier>{835e2f93-b470-480a-bcb6-016a62938529}</UniqueIdentifier>
@@ -1302,9 +1278,6 @@
     </Filter>
     <Filter Include="Character\Monster\Mermaid\Effect">
       <UniqueIdentifier>{5776095f-bfe7-4049-8e5c-eaf35a5a8f42}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Character\Monster\Cacklebat">
-      <UniqueIdentifier>{59bfb80a-8915-42c6-97ab-3e61fff9572b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

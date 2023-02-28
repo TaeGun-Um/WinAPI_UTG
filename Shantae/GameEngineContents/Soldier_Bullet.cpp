@@ -101,9 +101,6 @@ void Soldier_Bullet::CollisionCheck()
 		{
 			GameEngineActor* ColActor = BodyCollision->GetActor();
 			ColActor->Off();
-
-			// Explosion();
-
 			ColActor->Death();
 		}
 	}

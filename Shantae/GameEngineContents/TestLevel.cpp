@@ -28,6 +28,7 @@
 #include "Building2.h"
 #include "Sky.h"
 #include "Sea.h"
+#include "Mermaid.h"
 
 #include "Town_Guard.h"
 #include "Sailor.h"
@@ -92,9 +93,6 @@ void TestLevel::Loading()
 		//Stylist* M6 = CreateActor<Stylist>();
 		//M6->SetPos({ 400, 900 });
 
-		Desert_Man* M7 = CreateActor<Desert_Man>();
-		M7->SetPos({ 400, 900 });
-
 		//Merchant* M7 = CreateActor<Merchant>();
 		//M7->SetPos({ 400, 900 });
 		//M7->SetRun();
@@ -107,9 +105,12 @@ void TestLevel::Loading()
 	//s->SetPos({ 500, 850 });
 	//s->SetColMap(ColMap);
 
-	//Soldier_Bomberman* s1 = CreateActor<Soldier_Bomberman>();
-	//s1->SetPos({ 500, 850 });
-	//s1->SetColMap(ColMap);
+	Mermaid* s1 = CreateActor<Mermaid>();
+	s1->SetPos({ 700, 850 });
+	s1->SetColMap(ColMap);
+	s1->SetDirect(false);
+
+	
 
 	Shantae = CreateActor<Player>();
 	SHA = dynamic_cast<Player*>(Shantae);

@@ -8,9 +8,14 @@ class GameEngineImage;
 enum class MermaidState
 {
 	IDLE,
+	LURE,
+	READY,
+	HOLD,
+	DIVE,
+	EMERGE,
 	SHOOT,
-	RELOAD,
 	HIT,
+	DIE
 };
 
 // Ό³Έν : Player Chracter
@@ -32,13 +37,17 @@ public:
 		ColMap = _NextColMap;
 	}
 
+	void SetDirect(bool _Is)
+	{
+		MoveDirect = _Is;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void Render(float _DeltaTime) override;
 
 private:
-	void CharacterDirectSetting(float _DeltaTime);
 	void MoveCalculation(float _DeltaTime);
 	void CollisionCheck(float _DeltaTime);
 	void Shoot();
@@ -59,10 +68,12 @@ private:
 	float4 NextPos = float4::Zero;
 
 	float HitTime = 0.0f;
-	float HitTime2 = 0.0f;
 	float ShootStartTime = 0.0f;
+	float HoldTime = 0.0f;
 	float ShootTime = 0.0f;
 	float BlinkTime = 0.0f;
+	float LureTime = 0.0f;
+	float DiveTime = 0.0f;
 
 	// true = left, false = right
 	bool MoveDirect = true;
@@ -70,12 +81,10 @@ private:
 	bool IsTurn = false;
 	bool HitAction = false;
 	bool IsDeath = false;
-	bool trace = true;
-	bool Hitonoff = true;
 	bool Blinker = false;
 	bool IsAttack = false;
 
-	int ShootCount = 3;
+	int ShootCount = 1;
 	int HP = 15;
 	int HitSet = 1;
 
@@ -92,18 +101,37 @@ private:
 	void IdleUpdate(float _Time);
 	void IdleEnd();
 
+	void LureStart();
+	void LureUpdate(float _Time);
+	void LureEnd();
+
+	void ReadyStart();
+	void ReadyUpdate(float _Time);
+	void ReadyEnd();
+
+	void HoldStart();
+	void HoldUpdate(float _Time);
+	void HoldEnd();
+
+	void DiveStart();
+	void DiveUpdate(float _Time);
+	void DiveEnd();
+
+	void EmergeStart();
+	void EmergeUpdate(float _Time);
+	void EmergeEnd();
+
 	void ShootStart();
 	void ShootUpdate(float _Time);
 	void ShootEnd();
-
-	void ReloadStart();
-	void ReloadUpdate(float _Time);
-	void ReloadEnd();
 
 	void HitStart();
 	void HitUpdate(float _Time);
 	void HitEnd();
 
+	void DieStart();
+	void DieUpdate(float _Time);
+	void DieEnd();
 
 };
 

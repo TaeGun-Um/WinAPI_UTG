@@ -110,6 +110,11 @@ public:
 	{
 		HP += _PlusHP;
 	}
+
+	int GetPlayerDamage()
+	{
+		return PlayerDamage;
+	}
 	
 	int GetPlayerMaxHP()
 	{
@@ -252,6 +257,7 @@ private:
 	int Pass = 1;
 	int MaxHP = 8;
 	int HP = 8;
+	int PlayerDamage = 5;
 	int PlayerGem = 0;
 	int ShakingCount = 0;
 	int HardShakingCount = 0;

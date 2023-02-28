@@ -106,18 +106,6 @@ void CharacterLoad::Loading()
 	Image37->Cut(3, 1);
 	GameEngineImage* Image38 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Public\\Misillie.BMP"));
 
-	// Bat
-	GameEngineImage* Image39 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Bat\\Bat_R.BMP"));
-	Image39->Cut(5, 10);
-	GameEngineImage* Image40 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Bat\\Bat_L.BMP"));
-	Image40->Cut(5, 10);
-
-	// Cacklebat
-	GameEngineImage* Image41 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Cacklebat\\Cacklebat_L.BMP"));
-	Image41->Cut(5, 11);
-	GameEngineImage* Image42 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Monster\\Cacklebat\\Cacklebat_R.BMP"));
-	Image42->Cut(5, 11);
-
 	//////////////////////////////// NPC ////////////////////////////////
 
 	GameEngineImage* Image43 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC\\Bathwoman.BMP"));

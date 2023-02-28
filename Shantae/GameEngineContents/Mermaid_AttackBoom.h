@@ -22,10 +22,9 @@ protected:
 	void Render(float _DeltaTime) override;
 
 private:
-	void Kill();
-
 	GameEngineRender* AnimationRender = nullptr;
-	GameEngineCollision* BodyCollision = nullptr;
+
+	int BoomSoundCount = 1;
 
 };
 

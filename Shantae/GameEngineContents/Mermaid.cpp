@@ -7,6 +7,7 @@
 #include "Player.h"
 
 #include "ContentsEnum.h"
+#include "Mermaid_Attack.h"
 
 Mermaid::Mermaid() 
 {
@@ -22,12 +23,11 @@ void Mermaid::Start()
 
 	CollisionSet();
 
-	// ChangeState(MonsterState::IDLE);
+	ChangeState(MermaidState::IDLE);
 }
 
 void Mermaid::Update(float _DeltaTime)
 {
-	CharacterDirectSetting(_DeltaTime);
 	CollisionCheck(_DeltaTime);
 	MoveCalculation(_DeltaTime);
 
@@ -40,23 +40,6 @@ void Mermaid::Update(float _DeltaTime)
 void Mermaid::Render(float _DeltaTime)
 {
 
-}
-
-void Mermaid::CharacterDirectSetting(float _DeltaTime)
-{
-	float interval = Player::MainPlayer->GetPos().x - GetPos().x;
-
-	if (true == trace)
-	{
-		if (0.0f >= interval)
-		{
-			MoveDirect = true;
-		}
-		else
-		{
-			MoveDirect = false;
-		}
-	}
 }
 
 std::string Mermaid::DirCheck(const std::string_view& _AnimationName)
@@ -103,20 +86,14 @@ void Mermaid::MoveCalculation(float _DeltaTime)
 	NextPos = GetPos() + MoveDir * _DeltaTime;
 	if (RGB(0, 248, 0) == ColMap->GetPixelColor(NextPos, RGB(0, 0, 0)))
 	{
-		if (false == HitAction)
-		{
-			MoveDir.y = 0.0f;
-		}
+		MoveDir.y = 0.0f;
 	}
 
 	//////// RGB(74, 65, 42) ////////
 	// ¶¥
 	if (RGB(74, 65, 42) == ColMap->GetPixelColor(NextPos, RGB(0, 0, 0)))
 	{
-		if (false == HitAction)
-		{
-			MoveDir.y = 0.0f;
-		}
+		MoveDir.y = 0.0f;
 	}
 
 	/////////////////////////////////////////////////// ±âÅ¸ Á¶°Ç ///////////////////////////////////////////////////
@@ -130,6 +107,12 @@ void Mermaid::MoveCalculation(float _DeltaTime)
 
 void Mermaid::CollisionCheck(float _DeltaTime)
 {
+	if (false == MoveDirect)
+	{
+		SensorCollision->SetScale({ 500, 300 });
+		SensorCollision->SetPosition({ 300, -75 });
+	}
+
 	if (nullptr != SensorCollision)
 	{
 		if (true == SensorCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
@@ -142,41 +125,24 @@ void Mermaid::CollisionCheck(float _DeltaTime)
 		}
 	}
 
-	HitTime2 += _DeltaTime;
-
-	if (0.2f <= HitTime2 && false == HitAction)
-	{
-		Hitonoff = true;
-		BodyCollision->On();
-	}
-
 	if (nullptr != BodyCollision)
 	{
-		if (true == Hitonoff)
+		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PlayerAttack), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
-			if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PlayerAttack), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Strike_enemy.mp3");
+			BGMPlayer.Volume(0.075f);
+			BGMPlayer.LoopCount(1);
+
+			HitAction = true;
+			BodyCollision->Off();
+			Blinker = true;
+			HP -= Player::MainPlayer->GetPlayerDamage();
+
+			if (0 >= HP)
 			{
-				BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Strike_enemy.mp3");
-				BGMPlayer.Volume(0.075f);
-				BGMPlayer.LoopCount(1);
-
-				Hitonoff = false;
-				HitTime2 = 0.0f;
-				BodyCollision->Off();
-				Blinker = true;
-				HP -= 5;
-
-				if (0 >= HP)
-				{
-					HitAction = true;
-				}
+				IsDeath = true;
 			}
 		}
-	}
-
-	if (true == IsDeath)
-	{
-		Kill();
 	}
 }
 
@@ -190,23 +156,23 @@ void Mermaid::Kill()
 
 void Mermaid::Shoot()
 {
-	//Soldier_Bullet* NewBullet = nullptr;
-	//float4 BulletPos = float4::Zero;
+	Mermaid_Attack* NewBullet = nullptr;
+	float4 BulletPos = float4::Zero;
 
-	//if ("_L" == DirString)
-	//{
-	//	BulletPos = GetPos() + (float4::Up * 75) + (float4::Left * 50);
-	//}
-	//else
-	//{
-	//	BulletPos = GetPos() + (float4::Up * 75) + (float4::Right * 85);
-	//}
+	if ("_L" == DirString)
+	{
+		BulletPos = GetPos() + (float4::Up * 75) + (float4::Left * 50);
+	}
+	else
+	{
+		BulletPos = GetPos() + (float4::Up * 75) + (float4::Right * 85);
+	}
 
-	//NewBullet = GetLevel()->CreateActor<Soldier_Bullet>();
-	//NewBullet->SetColMap(ColMap);
-	//NewBullet->SetPos(BulletPos);
-	//NewBullet->SetOwnerPos(GetPos());
-	//NewBullet->SetDir(DirString);
+	NewBullet = GetLevel()->CreateActor<Mermaid_Attack>();
+	NewBullet->SetColMap(ColMap);
+	NewBullet->SetPos(BulletPos);
+	NewBullet->SetOwnerPos(GetPos());
+	NewBullet->SetDir(DirString);
 }
 
 void Mermaid::AlphaBlinker(float _DeltaTime)
@@ -239,24 +205,38 @@ void Mermaid::AlphaBlinker(float _DeltaTime)
 void Mermaid::RenderSet()
 {
 	AnimationRender = CreateRender(RenderOrder::Monster);
-	AnimationRender->SetScale({ 400, 400 });
+	AnimationRender->SetScale({ 750, 750 });
 
-	// Right
-	AnimationRender->CreateAnimation({ .AnimationName = "ALL",  .ImageName = "Mermaid_R.bmp", .Start = 0, .End = 101, .InterTime = 0.1f });
-	AnimationRender->CreateAnimation({ .AnimationName = "Idle_R",  .ImageName = "Mermaid_R.bmp", .Start = 0, .End = 6, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_l",  .ImageName = "Mermaid_L.bmp", .Start = 0, .End = 7, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Lure_L",  .ImageName = "Mermaid_L.bmp", .Start = 8, .End = 27, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Ready_L",  .ImageName = "Mermaid_L.bmp", .Start = 28, .End = 36, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Hold_L",  .ImageName = "Mermaid_L.bmp", .Start = 37, .End = 39, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Dive_L",  .ImageName = "Mermaid_L.bmp", .Start = 40, .End = 56, .InterTime = 0.1f, .Loop = false });
+	AnimationRender->CreateAnimation({ .AnimationName = "Emerge_L",  .ImageName = "Mermaid_L.bmp", .Start = 57, .End = 67, .InterTime = 0.1f, .Loop = false });
+	AnimationRender->CreateAnimation({ .AnimationName = "Attack_L",  .ImageName = "Mermaid_L.bmp", .Start = 68, .End = 77, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Hurt_L",  .ImageName = "Mermaid_L.bmp", .Start = 78, .End = 82, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Die_L",  .ImageName = "Mermaid_L.bmp", .Start = 83, .End = 103, .InterTime = 0.1f });
 
-	// Left
-	AnimationRender->CreateAnimation({ .AnimationName = "Idle_L",  .ImageName = "Mermaid_L.bmp", .Start = 0, .End = 6, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_R",  .ImageName = "Mermaid_R.bmp", .Start = 0, .End = 7, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Lure_R",  .ImageName = "Mermaid_R.bmp", .Start = 8, .End = 27, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Ready_R",  .ImageName = "Mermaid_R.bmp", .Start = 28, .End = 36, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Hold_R",  .ImageName = "Mermaid_R.bmp", .Start = 37, .End = 39, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Dive_R",  .ImageName = "Mermaid_R.bmp", .Start = 40, .End = 56, .InterTime = 0.1f, .Loop = false });
+	AnimationRender->CreateAnimation({ .AnimationName = "Emerge_R",  .ImageName = "Mermaid_R.bmp", .Start = 57, .End = 67, .InterTime = 0.1f, .Loop = false });
+	AnimationRender->CreateAnimation({ .AnimationName = "Attack_R",  .ImageName = "Mermaid_R.bmp", .Start = 68, .End = 77, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Hurt_R",  .ImageName = "Mermaid_R.bmp", .Start = 78, .End = 82, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Die_R",  .ImageName = "Mermaid_R.bmp", .Start = 83, .End = 103, .InterTime = 0.1f });
+
 }
 void Mermaid::CollisionSet()
 {
 	BodyCollision = CreateCollision(CollisionOrder::Monster);
 	BodyCollision->SetDebugRenderType(CT_Rect);
-	BodyCollision->SetScale({ 130, 150 });
+	BodyCollision->SetScale({ 120, 130 });
 	BodyCollision->SetPosition({ 30, -75 });
 
 	SensorCollision = CreateCollision(CollisionOrder::Trigger);
 	SensorCollision->SetDebugRenderType(CT_Rect);
-	SensorCollision->SetScale({ 1000, 500 });
-	SensorCollision->SetPosition({ 0, -150 });
+	SensorCollision->SetScale({ 500, 300 });
+	SensorCollision->SetPosition({ -250, -75 });
 }
