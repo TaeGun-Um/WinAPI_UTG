@@ -1,38 +1,31 @@
-#include "Soldier_Black.h"
+#include "Cacklebat.h"
 
-#include <GameEngineBase/GameEngineDebug.h>
-#include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineCollision.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineLevel.h>
 
-#include "Soldier_Bullet.h"
 #include "Player.h"
-#include "Public_Boom.h"
 
 #include "ContentsEnum.h"
 
-Soldier_Black::Soldier_Black()
+Cacklebat::Cacklebat()
 {
 }
 
-Soldier_Black::~Soldier_Black()
+Cacklebat::~Cacklebat()
 {
 }
 
-void Soldier_Black::Start()
+void Cacklebat::Start()
 {
-	// Animation
 	RenderSet();
 
-	// Collision
 	CollisionSet();
 
-	// state
-	ChangeState(Soldier_BlackState::IDLE);
+	// ChangeState(MonsterState::IDLE);
 }
 
-void Soldier_Black::Update(float _DeltaTime)
+void Cacklebat::Update(float _DeltaTime)
 {
 	CharacterDirectSetting(_DeltaTime);
 	CollisionCheck(_DeltaTime);
@@ -44,15 +37,15 @@ void Soldier_Black::Update(float _DeltaTime)
 	}
 }
 
-void Soldier_Black::Render(float _DeltaTime)
+void Cacklebat::Render(float _DeltaTime)
 {
 
 }
 
-void Soldier_Black::CharacterDirectSetting(float _DeltaTime)
+void Cacklebat::CharacterDirectSetting(float _DeltaTime)
 {
 	float interval = Player::MainPlayer->GetPos().x - GetPos().x;
-	
+
 	if (true == trace)
 	{
 		if (0.0f >= interval)
@@ -66,7 +59,7 @@ void Soldier_Black::CharacterDirectSetting(float _DeltaTime)
 	}
 }
 
-std::string Soldier_Black::DirCheck(const std::string_view& _AnimationName)
+std::string Cacklebat::DirCheck(const std::string_view& _AnimationName)
 {
 	std::string PrevDirString = DirString;
 	AnimationRender->ChangeAnimation(_AnimationName.data() + DirString);
@@ -89,7 +82,7 @@ std::string Soldier_Black::DirCheck(const std::string_view& _AnimationName)
 }
 
 // 중력, 점프, 맵타일
-void Soldier_Black::MoveCalculation(float _DeltaTime)
+void Cacklebat::MoveCalculation(float _DeltaTime)
 {
 	///////////////////////////////////////////////////  중력  ///////////////////////////////////////////////////
 
@@ -135,7 +128,7 @@ void Soldier_Black::MoveCalculation(float _DeltaTime)
 	SetMove(MoveDir * _DeltaTime);
 }
 
-void Soldier_Black::CollisionCheck(float _DeltaTime)
+void Cacklebat::CollisionCheck(float _DeltaTime)
 {
 	if (nullptr != SensorCollision)
 	{
@@ -187,50 +180,14 @@ void Soldier_Black::CollisionCheck(float _DeltaTime)
 	}
 }
 
-void Soldier_Black::Kill()
+void Cacklebat::Kill()
 {
 	GameEngineActor* ColActor = BodyCollision->GetActor();
 	ColActor->Off();
-
-	Explosion();
-
 	ColActor->Death();
 }
 
-
-void Soldier_Black::Shoot()
-{
-	Soldier_Bullet* NewBullet = nullptr;
-	float4 BulletPos = float4::Zero;
-
-	if ("_L" == DirString)
-	{
-		BulletPos = GetPos() + (float4::Up * 75) + (float4::Left * 50);
-	}
-	else
-	{
-		BulletPos = GetPos() + (float4::Up * 75) + (float4::Right * 85);
-	}
-	
-	NewBullet = GetLevel()->CreateActor<Soldier_Bullet>();
-	NewBullet->SetColMap(ColMap);
-	NewBullet->SetPos(BulletPos);
-	NewBullet->SetOwnerPos(GetPos());
-	NewBullet->SetDir(DirString);
-}
-
-void Soldier_Black::Explosion()
-{
-	Public_Boom* Ex = nullptr;
-	float4 ExPos = float4::Zero;
-	ExPos = GetPos() + (float4::Up * 60);
-
-	Ex = GetLevel()->CreateActor<Public_Boom>();
-	Ex->SetPos(ExPos);
-	Ex->SetExPlus(1);
-}
-
-void Soldier_Black::AlphaBlinker(float _DeltaTime)
+void Cacklebat::AlphaBlinker(float _DeltaTime)
 {
 	BlinkTime += _DeltaTime;
 
@@ -257,24 +214,19 @@ void Soldier_Black::AlphaBlinker(float _DeltaTime)
 	}
 }
 
-void Soldier_Black::RenderSet()
+void Cacklebat::RenderSet()
 {
 	AnimationRender = CreateRender(RenderOrder::Monster);
 	AnimationRender->SetScale({ 400, 400 });
 
 	// Right
-	AnimationRender->CreateAnimation({ .AnimationName = "Idle_R",  .ImageName = "Soldier_Black_R.bmp", .Start = 0, .End = 5, .InterTime = 0.08f });
-	AnimationRender->CreateAnimation({ .AnimationName = "Shoot_R",  .ImageName = "Soldier_Black_R.bmp", .Start = 6, .End = 7, .InterTime = 0.1f });
-	AnimationRender->CreateAnimation({ .AnimationName = "Reload_R",  .ImageName = "Soldier_Black_R.bmp", .Start = 8, .End = 21, .InterTime = 0.08f });
-	AnimationRender->CreateAnimation({ .AnimationName = "Hit_R",  .ImageName = "Soldier_Black_R.bmp", .Start = 22, .End = 22, .InterTime = 0.5f, .Loop = false });
+	AnimationRender->CreateAnimation({ .AnimationName = "ALL",  .ImageName = "Mermaid_R.bmp", .Start = 0, .End = 101, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_R",  .ImageName = "Mermaid_R.bmp", .Start = 0, .End = 6, .InterTime = 0.1f });
 
 	// Left
-	AnimationRender->CreateAnimation({ .AnimationName = "Idle_L",  .ImageName = "Soldier_Black_L.bmp", .Start = 0, .End = 5, .InterTime = 0.08f });
-	AnimationRender->CreateAnimation({ .AnimationName = "Shoot_L",  .ImageName = "Soldier_Black_L.bmp", .Start = 6, .End = 7, .InterTime = 0.1f });
-	AnimationRender->CreateAnimation({ .AnimationName = "Reload_L",  .ImageName = "Soldier_Black_L.bmp", .Start = 8, .End = 21, .InterTime = 0.08f });
-	AnimationRender->CreateAnimation({ .AnimationName = "Hit_L",  .ImageName = "Soldier_Black_L.bmp", .Start = 22, .End = 22, .InterTime = 0.5f, .Loop = false });
+	AnimationRender->CreateAnimation({ .AnimationName = "Idle_L",  .ImageName = "Mermaid_L.bmp", .Start = 0, .End = 6, .InterTime = 0.1f });
 }
-void Soldier_Black::CollisionSet()
+void Cacklebat::CollisionSet()
 {
 	BodyCollision = CreateCollision(CollisionOrder::Monster);
 	BodyCollision->SetDebugRenderType(CT_Rect);

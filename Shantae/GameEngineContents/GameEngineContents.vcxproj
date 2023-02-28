@@ -275,6 +275,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Cacklebat.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Dancer.h">
       <SubType>
       </SubType>
@@ -356,6 +360,18 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Mermaid.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Mermaid_Attack.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Mermaid_AttackBoom.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Mermaid_Heart.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -927,6 +943,11 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Cacklebat.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Cacklebat_State.cpp" />
     <ClCompile Include="Dancer.cpp">
       <SubType>
       </SubType>
@@ -1011,6 +1032,19 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Mermaid_Attack.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Mermaid_AttackBoom.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Mermaid_Heart.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Mermaid_State.cpp" />
     <ClCompile Include="Misillie.cpp">
       <SubType>
       </SubType>

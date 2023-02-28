@@ -1,45 +1,33 @@
 #pragma once
 
-#include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/GameEngineResources.h>
+#include <GameEngineCore/GameEngineActor.h>
 
 class GameEngineImage;
 
-enum class Soldier_BlackState
+enum class CacklebatState
 {
 	IDLE,
-	SHOOT,
-	RELOAD,
 	HIT,
 };
 
 // Ό³Έν : Player Chracter
-class Soldier_Black : public GameEngineActor
+class Cacklebat : public GameEngineActor
 {
 public:
 	// constrcuter destructer
-	Soldier_Black();
-	~Soldier_Black();
+	Cacklebat();
+	~Cacklebat();
 
 	// delete Function
-	Soldier_Black(const Soldier_Black& _Other) = delete;
-	Soldier_Black(Soldier_Black&& _Other) noexcept = delete;
-	Soldier_Black& operator=(const Soldier_Black& _Other) = delete;
-	Soldier_Black& operator=(Soldier_Black&& _Other) noexcept = delete;
+	Cacklebat(const Cacklebat& _Other) = delete;
+	Cacklebat(Cacklebat&& _Other) noexcept = delete;
+	Cacklebat& operator=(const Cacklebat& _Other) = delete;
+	Cacklebat& operator=(Cacklebat&& _Other) noexcept = delete;
 
 	void SetColMap(GameEngineImage* _NextColMap)
 	{
 		ColMap = _NextColMap;
-	}
-
-	void MoveDirectSwitch()
-	{
-		MoveDirect = !MoveDirect;
-	}
-
-	const std::string GetDir()
-	{
-		return DirString;
 	}
 
 protected:
@@ -48,6 +36,15 @@ protected:
 	void Render(float _DeltaTime) override;
 
 private:
+	void CharacterDirectSetting(float _DeltaTime);
+	void MoveCalculation(float _DeltaTime);
+	void CollisionCheck(float _DeltaTime);
+	void Kill();
+	void AlphaBlinker(float _DeltaTime);
+
+	void RenderSet();
+	void CollisionSet();
+
 	GameEngineSoundPlayer BGMPlayer;
 
 	GameEngineRender* AnimationRender = nullptr;
@@ -64,7 +61,6 @@ private:
 	float ShootTime = 0.0f;
 	float BlinkTime = 0.0f;
 
-	// true = left, false = right
 	bool MoveDirect = true;
 	bool IsGravity = true;
 	bool IsTurn = false;
@@ -75,44 +71,20 @@ private:
 	bool Blinker = false;
 	bool IsAttack = false;
 
-	int ShootCount = 3;
-	int HP = 15;
-	int HitSet = 1;
+	int HP = 0;
 
 	std::string DirString = "_L";
 	std::string HitDir = "_L";
-	Soldier_BlackState StateValue = Soldier_BlackState::IDLE;
+	CacklebatState StateValue = CacklebatState::IDLE;
 
 	std::string DirCheck(const std::string_view& _AnimationName);
-	void CharacterDirectSetting(float _DeltaTime);
-	void MoveCalculation(float _DeltaTime);
-	void CollisionCheck(float _DeltaTime);
-	void Explosion();
-	void Shoot();
-	void Kill();
-	void AlphaBlinker(float _DeltaTime);
 
-	void RenderSet();
-	void CollisionSet();
-
-	void ChangeState(Soldier_BlackState _State);
+	void ChangeState(CacklebatState _State);
 	void UpdateState(float _Time);
 
 	void IdleStart();
 	void IdleUpdate(float _Time);
 	void IdleEnd();
-
-	void ShootStart();
-	void ShootUpdate(float _Time);
-	void ShootEnd();
-
-	void ReloadStart();
-	void ReloadUpdate(float _Time);
-	void ReloadEnd();
-
-	void HitStart();
-	void HitUpdate(float _Time);
-	void HitEnd();
 
 };
 
