@@ -33,7 +33,7 @@ void SelectMenu_Icon::Start()
 
 void SelectMenu_Icon::Update(float _DeltaTime)
 {
-	if (true == GameEngineInput::IsDown("Select") && false == SelectTimeon)
+	if (true == GameEngineInput::IsDown("TitleSelect") && false == SelectTimeon)
 	{
 		if (GetPos().ix() == SelectMenu_Button_Start::StartB->GetPos().ix())
 		{

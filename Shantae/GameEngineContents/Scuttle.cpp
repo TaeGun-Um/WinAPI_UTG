@@ -160,7 +160,7 @@ void Scuttle::Update(float _DeltaTime)
 		if (true == SHA->LevelChangeAnimation(_DeltaTime))
 		{
 			ScuttleBGMPlayer.Stop();
-			GameEngineCore::GetInst()->ChangeLevel("Opening");
+			GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
 		}
 	}
 }
@@ -307,7 +307,7 @@ void Scuttle::Debugging()
 	{
 		if (OverlapTime > 0.5f)
 		{
-			GameEngineCore::GetInst()->ChangeLevel("UncleRoom");
+			GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
 			OverlapTime = 0.0f;
 			ScuttleBGMPlayer.Stop();
 			ScuttlePalyer = false;

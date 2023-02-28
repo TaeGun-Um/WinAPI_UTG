@@ -545,6 +545,9 @@
     <ClInclude Include="EndingAnimation.h">
       <Filter>PlayLevel\EndingLevel\Actor</Filter>
     </ClInclude>
+    <ClInclude Include="GameOverText.h">
+      <Filter>PlayLevel\EndingLevel\Actor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShantaeCore.cpp" />
@@ -1146,6 +1149,9 @@
       <Filter>PlayLevel\EndingLevel</Filter>
     </ClCompile>
     <ClCompile Include="EndingAnimation.cpp">
+      <Filter>PlayLevel\EndingLevel\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOverText.cpp">
       <Filter>PlayLevel\EndingLevel\Actor</Filter>
     </ClCompile>
   </ItemGroup>

@@ -41,6 +41,7 @@ private:
 	int WBoxCount = 1;
 	int BBoxCount = 1;
 
+	float OpeneingDelay = 0.0f;
 	float Delay = 0.0f;
 
 };

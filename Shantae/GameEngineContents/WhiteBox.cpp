@@ -99,7 +99,7 @@ void WhiteBox::FadeIn(float _DeltaTime)
 		return;
 	}
 
-	if (FadeInCount == 255)
+	if (FadeInCount >= 254)
 	{
 		FadeInOver = true;
 		IsFadeIn = false;

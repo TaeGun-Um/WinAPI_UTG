@@ -25,5 +25,17 @@ protected:
 private:
 	GameEngineRender* AnimationRender = nullptr;
 
+	float AnimationCutTime = 0.0f;
+	int AlphaValue = 0.0f;
+	int CutChange = 1;
+	int AnimationCount = 0;
+	int CreateTextCount = 1;
+
+	bool IsEnd = false;
+	bool Doubling = false;
+
+	void CreateText();
+	void CutCheck(const std::string_view& _AnimationName);
+	std::string DirString = "1";
 };
 

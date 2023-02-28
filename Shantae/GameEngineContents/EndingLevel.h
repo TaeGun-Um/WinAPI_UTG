@@ -30,6 +30,7 @@ protected:
 	void LevelChangeEnd(GameEngineLevel* _PrevLevel) override;
 
 private:
+	void Debugging();
 	void BlackBoxAnimation(float _DeltaTime);
 	GameEngineSoundPlayer BGMPlayer;
 

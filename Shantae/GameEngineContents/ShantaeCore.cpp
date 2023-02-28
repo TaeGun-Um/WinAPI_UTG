@@ -27,6 +27,7 @@
 #include "SaveRoom.h"
 
 //EndingLevel
+#include "EndingLevel.h"
 
 // TestLevel
 #include "TestLevel.h"
@@ -89,6 +90,7 @@ void ShantaeCore::Start()
 	CreateLevel<SaveRoom>("SaveRoom");
 
 	// EndingLevel
+	CreateLevel<EndingLevel>("EndingLevel");
 
 	// TestLevel
 	CreateLevel<TestLevel>("TestLevel");

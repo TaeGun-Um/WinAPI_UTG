@@ -31,6 +31,8 @@ void Opening::Update(float _DeltaTime)
 
 void Opening::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	OpeneingDelay = 0.0f;
+
 	AnnouncePlayer = GameEngineResources::GetInst().SoundPlayToControl("Title_announce.wav");
 	AnnouncePlayer.Volume(0.1f);
 	AnnouncePlayer.LoopCount(1);
@@ -44,6 +46,8 @@ void Opening::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	BGMPlayer.Stop();
 	AnnouncePlayer.Stop();
+	OpeneingDelay = 0.0f;
+	WBoxCount = 1;
 
 	if (nullptr != BBox)
 	{
@@ -62,8 +66,10 @@ void Opening::BlackBoxAnimation(float _DeltaTime)
 		WBox->FadeOutStart(1, 0.0f);
 	}
 
+	OpeneingDelay += _DeltaTime;
+
 	// AnyKey == true 시 Level Change(Window 매크로 함수와 연결)
-	if (true == GameEngineInput::IsAnyKey())
+	if (true == GameEngineInput::IsAnyKey() && 1.0f <= OpeneingDelay)
 	{
 		if (1 == BBoxCount)
 		{

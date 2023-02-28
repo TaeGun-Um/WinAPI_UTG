@@ -27,6 +27,11 @@ void ObjectLoad::Loading()
 
 	//////////////////////////////// Object ////////////////////////////////
 
+	// Ending
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Ending\\GameOver.bmp"));
+	GameEngineImage* ED = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Ending\\EndingCredit.bmp"));
+	ED->Cut(1, 8);
+	
 	// Test
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Test\\AnimationBox_Idle.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Test\\AnimationBox_Run.bmp"));
