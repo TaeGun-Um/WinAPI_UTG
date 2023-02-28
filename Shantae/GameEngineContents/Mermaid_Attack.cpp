@@ -26,8 +26,8 @@ void Mermaid_Attack::Start()
 
 	BodyCollision = CreateCollision(CollisionOrder::MonsterAttack);
 	BodyCollision->SetDebugRenderType(CT_Rect);
-	BodyCollision->SetScale({ 20, 20 });
-	BodyCollision->SetPosition({ 1.5f, -2 });
+	BodyCollision->SetScale({ 50, 50 });
+	BodyCollision->SetPosition({ 0, -2 });
 
 	AnimationRender->ChangeAnimation("Mermaid_Attack");
 }

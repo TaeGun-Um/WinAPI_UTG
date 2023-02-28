@@ -15,6 +15,7 @@
 #include "Sky.h"
 
 #include "Soldier_Black.h"
+#include "Mermaid.h"
 #include "Soldier_Blue.h"
 
 #include "Player.h"
@@ -60,6 +61,19 @@ void Stair::Loading()
 		Soldier_Black* Spawn3 = CreateActor<Soldier_Black>();
 		Spawn3->SetPos({ 1185, 895 });
 		Spawn3->SetColMap(ColMap);
+
+		Mermaid* Mer1 = CreateActor<Mermaid>();
+		Mer1->SetPos({ 1285, 3250 });
+		Mer1->SetColMap(ColMap);
+
+		Mermaid* Mer2 = CreateActor<Mermaid>();
+		Mer2->SetPos({ 1285, 2425 });
+		Mer2->SetColMap(ColMap);
+
+		Mermaid* Mer3 = CreateActor<Mermaid>();
+		Mer3->SetPos({ 475, 1195 });
+		Mer3->SetColMap(ColMap);
+		Mer3->SetDirect(false);
 	}
 
 	// Player

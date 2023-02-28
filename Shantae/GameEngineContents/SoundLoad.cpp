@@ -81,6 +81,7 @@ void SoundLoad::Loading()
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_jump.wav"));           // o 점프 시 보이스
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_land.wav"));           // o 랜딩 시 보이스
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Splash_water.wav"));          // 물장구 효과음
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\player_usebubble.wav"));      // 버블 사라질 때
 
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Inventory_in.wav"));          // 인벤토리 오픈
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Inventory_out.wav"));         // 인벤토리 닫기
@@ -108,6 +109,12 @@ void SoundLoad::Loading()
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Boss\\Boss_Run.mp3"));        // o 보스 탱크로 복귀할 때 효과음
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Boss\\Explode_popcorn.wav")); // o 보스 사망 시, 폭탄 히트 시 효과음
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Boss\\Tank_Charge.mp3"));     // o 탱크 차지 효과음
+
+	// mermaid
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Mermaid\\mermaid_bubble.wav"));
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Mermaid\\mermaid_death.wav"));
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Mermaid\\mermaid_hurt.wav"));
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Mermaid\\mermaid_jump.wav"));
 
 }
 

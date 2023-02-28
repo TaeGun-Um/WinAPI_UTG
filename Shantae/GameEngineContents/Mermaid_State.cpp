@@ -291,13 +291,13 @@ void Mermaid::ShootUpdate(float _Time)
 		return;
 	}
 
-	if (1 == ShootCount)
+	if (1 == ShootCount && 69 <= AnimationRender->GetFrame())
 	{
 		ShootCount = 0;
 		Shoot();
-		//BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_gun_fire.mp3");
-		//BGMPlayer.Volume(0.15f);
-		//BGMPlayer.LoopCount(1);
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("mermaid_bubble.wav");
+		BGMPlayer.Volume(0.25f);
+		BGMPlayer.LoopCount(1);
 	}
 
 	if (true == AnimationRender->IsAnimationEnd())
@@ -314,6 +314,10 @@ void Mermaid::ShootEnd()
 void Mermaid::HitStart()
 {
 	DirCheck("Hurt");
+
+	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("mermaid_hurt.wav");
+	BGMPlayer.Volume(0.1f);
+	BGMPlayer.LoopCount(1);
 }
 void Mermaid::HitUpdate(float _Time)
 {
@@ -357,6 +361,10 @@ void Mermaid::DiveEnd()
 void Mermaid::EmergeStart()
 {
 	DirCheck("Emerge");
+
+	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("mermaid_jump.wav");
+	BGMPlayer.Volume(0.1f);
+	BGMPlayer.LoopCount(1);
 }
 void Mermaid::EmergeUpdate(float _Time)
 {
@@ -375,6 +383,10 @@ void Mermaid::EmergeEnd()
 void Mermaid::DieStart()
 {
 	DirCheck("Die");
+
+	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("mermaid_death.wav");
+	BGMPlayer.Volume(0.1f);
+	BGMPlayer.LoopCount(1);
 }
 void Mermaid::DieUpdate(float _Time)
 {

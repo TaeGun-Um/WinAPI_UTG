@@ -161,11 +161,11 @@ void Mermaid::Shoot()
 
 	if ("_L" == DirString)
 	{
-		BulletPos = GetPos() + (float4::Up * 75) + (float4::Left * 50);
+		BulletPos = GetPos() + (float4::Up * 50) + (float4::Left * 85);
 	}
 	else
 	{
-		BulletPos = GetPos() + (float4::Up * 75) + (float4::Right * 85);
+		BulletPos = GetPos() + (float4::Up * 50) + (float4::Right * 85);
 	}
 
 	NewBullet = GetLevel()->CreateActor<Mermaid_Attack>();
@@ -232,8 +232,8 @@ void Mermaid::CollisionSet()
 {
 	BodyCollision = CreateCollision(CollisionOrder::Monster);
 	BodyCollision->SetDebugRenderType(CT_Rect);
-	BodyCollision->SetScale({ 120, 130 });
-	BodyCollision->SetPosition({ 30, -75 });
+	BodyCollision->SetScale({ 100, 110 });
+	BodyCollision->SetPosition({ 0, -50 });
 
 	SensorCollision = CreateCollision(CollisionOrder::Trigger);
 	SensorCollision->SetDebugRenderType(CT_Rect);
