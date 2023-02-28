@@ -1055,6 +1055,8 @@ void Player::CrouchingUpdate(float _Time)
 	{
 		if (true == GameEngineInput::IsPress("DownMove") && true == GameEngineInput::IsPress("LeftMove"))
 		{
+			IsGravityPlus = true;
+
 			CrouchMoveSoundTime += _Time;
 
 			if (0.35f <= CrouchMoveSoundTime)
@@ -1085,6 +1087,8 @@ void Player::CrouchingUpdate(float _Time)
 		}
 		else if (true == GameEngineInput::IsPress("DownMove") && true == GameEngineInput::IsPress("RightMove"))
 		{
+			IsGravityPlus = true;
+
 			CrouchMoveSoundTime += _Time;
 
 			if (0.35f <= CrouchMoveSoundTime)

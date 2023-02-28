@@ -14,7 +14,7 @@ Stylist::~Stylist()
 
 void Stylist::Start()
 {
-	AnimationRender = CreateRender(RenderOrder::Monster);
+	AnimationRender = CreateRender(RenderOrder::AnimationObject);
 	AnimationRender->SetScale({ 400, 400 });
 
 	// Right

@@ -44,14 +44,14 @@ void Soldier_Machinegun::CollisionCheck(float _DeltaTime)
 {
 	if (nullptr != SensorCollision)
 	{
-		if (true == SensorCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+		if (true == SensorCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Effect), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
 			IsAttack = true;
 		}
 	}
 	if (nullptr != SensorCollision2)
 	{
-		if (true == SensorCollision2->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+		if (true == SensorCollision2->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Effect), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
 			IsAttack = false;
 		}

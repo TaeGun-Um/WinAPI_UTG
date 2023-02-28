@@ -172,7 +172,7 @@ void Scuttle::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	if (false == ScuttlePalyer)
 	{
 		ScuttleBGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Scuttle_Town.mp3");
-		ScuttleBGMPlayer.Volume(0.0f);
+		ScuttleBGMPlayer.Volume(0.1f);
 		ScuttleBGMPlayer.LoopCount(100);
 	}
 
