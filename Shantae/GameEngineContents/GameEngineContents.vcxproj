@@ -259,6 +259,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Bubble.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Building0.h">
       <SubType>
       </SubType>
@@ -279,6 +283,18 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="EndingAnimation.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="EndingLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Gem.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="GemWindow.h">
       <SubType>
       </SubType>
@@ -291,6 +307,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Heart.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Heart_Octopus.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="HouseFront_ColMap.h">
       <SubType>
       </SubType>
@@ -299,7 +323,39 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Icon.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Impact.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ItemBox.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ItemSelect.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Jar.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Jar_Piece1.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Jar_Piece2.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Jar_Piece3.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -364,6 +420,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Misillie.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="MonsterMilk.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -433,6 +493,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Move0_Map.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PikeBall.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -915,6 +979,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Bubble.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Building0.cpp">
       <SubType>
       </SubType>
@@ -935,6 +1003,18 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="EndingAnimation.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="EndingLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Gem.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="GemWindow.cpp">
       <SubType>
       </SubType>
@@ -947,6 +1027,14 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Heart.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Heart_Octopus.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="HouseFront_ColMap.cpp">
       <SubType>
       </SubType>
@@ -955,7 +1043,39 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Icon.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Impact.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ItemBox.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ItemSelect.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Jar.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Jar_Piece1.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Jar_Piece2.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Jar_Piece3.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -1024,6 +1144,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="MonsterMilk.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="MonsterSpawner.cpp">
       <SubType>
       </SubType>
@@ -1089,6 +1213,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Move0_Map.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PikeBall.cpp">
       <SubType>
       </SubType>
     </ClCompile>
