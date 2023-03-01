@@ -7,6 +7,39 @@
 
 class ItemSelect;
 
+class ItemSpace
+{
+public:
+	// constrcuter destructer
+	ItemSpace();
+	~ItemSpace();
+
+	// delete Function
+	ItemSpace(const ItemSpace& _Other) = delete;
+	ItemSpace(ItemSpace&& _Other) noexcept = delete;
+	ItemSpace& operator=(const ItemSpace& _Other) = delete;
+	ItemSpace& operator=(ItemSpace&& _Other) noexcept = delete;
+
+	void SetBoxNumber(int _Value)
+	{
+		BoxNumber = _Value;
+	}
+
+	void SetBoxPos(float4 _Pos)
+	{
+		BoxPos = _Pos;
+	}
+
+	float4 GetBoxPos()
+	{
+		return BoxPos;
+	}
+
+private:
+	int BoxNumber = 1;
+	float4 BoxPos = float4::Zero;
+};
+
 // Ό³Έν :
 class Inventory : public GameEngineActor
 {
@@ -31,37 +64,22 @@ protected:
 	void Render(float _DeltaTime) override;
 
 private:
+	void SetItemBox(int _Order, float4 _BoxPos);
 	void SelectMove(float _DeltaTime);
 
 	ItemSelect* Select = nullptr;
+	std::map<int, ItemSpace*> Boxes;
 
 	GameEngineSoundPlayer BGMPlayer;
-	// std::map<int, ItemBox*> AllBox;
+
+	float4 BoxPos = float4::Zero;
+
+	float XPos = 0.0f;
+	float YPos = 0.0f;
 
 	int SelectCreate = 1;
+	int BoxNumber = 0;
+	
+	bool LeftMove = false;
 
 };
-
-//class ItemBox
-//{
-//public:
-//
-//	friend Inventory;
-//
-//	// constrcuter destructer
-//	ItemBox();
-//	~ItemBox();
-//
-//	// delete Function
-//	ItemBox(const ItemBox& _Other) = delete;
-//	ItemBox(ItemBox&& _Other) noexcept = delete;
-//	ItemBox& operator=(const ItemBox& _Other) = delete;
-//	ItemBox& operator=(ItemBox&& _Other) noexcept = delete;
-//
-//protected:
-//
-//private:
-//	int BoxNumber = 1;
-//	float4 BoxPos = float4::Zero;
-//
-//};
