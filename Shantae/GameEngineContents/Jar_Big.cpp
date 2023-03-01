@@ -12,6 +12,7 @@
 #include "Jar_Piece5.h"
 
 #include "Gem.h"
+#include "Heart.h"
 
 Jar_Big::Jar_Big() 
 {
@@ -130,11 +131,18 @@ void Jar_Big::Break()
 
 void Jar_Big::CreateItem()
 {
-	Gem* Gems = nullptr;
+	//Gem* Gems = nullptr;
 
-	Gems = GetLevel()->CreateActor<Gem>();
-	Gems->SetPos(GetPos());
-	Gems->SetColMap(ColMap);
+	//Gems = GetLevel()->CreateActor<Gem>();
+	//Gems->SetPos(GetPos());
+	//Gems->SetColMap(ColMap);
+
+	Heart* Hp = nullptr;
+
+	Hp = GetLevel()->CreateActor<Heart>();
+	Hp->SetPos(GetPos());
+	Hp->SetColMap(ColMap);
+	Hp->SetOwnerPos(GetPos());
 }
 
 void Jar_Big::Kill()

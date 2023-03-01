@@ -3,6 +3,12 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/GameEngineResources.h>
 
+enum class HeartState
+{
+	Small,          // 1
+	Large,          // 2
+};
+
 class GameEngineImage;
 
 // Ό³Έν :
@@ -24,17 +30,45 @@ public:
 		ColMap = _NextColMap;
 	}
 
+	void SetOwnerPos(float4 _OwnerPos)
+	{
+		OwnerPos = _OwnerPos;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void Render(float _DeltaTime) override;
 
 private:
+	void MoveCalculation(float _DeltaTime);
+	void MoveCalculationSmall(float _DeltaTime);
+	void CollisionCheck(float _DeltaTime);
+	void GemSetting();
+	void ApplyScore();
+	void DirectCheckForKill();
+	void Kill();
+
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
 	GameEngineImage* ColMap = nullptr;
 
 	GameEngineSoundPlayer BGMPlayer;
+
+	HeartState CreateHeart = HeartState::Small;
+
+	float4 MoveDir = float4::Zero;
+	float4 NextPos = float4::Zero;
+	float4 OwnerPos = float4::Zero;
+
+	float Jump = 800.0f;
+
+	int CreateSet = 1;
+	int Score = 0;
+	int SoundCount = 1;
+
+	bool IsStart = true;
+	bool MoveDirect = true;
 
 };
 

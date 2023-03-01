@@ -3,6 +3,20 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/GameEngineResources.h>
 
+enum class GemState
+{
+	Blue,          // 1
+	Green,         // 2
+	Pupple,        // 3
+	Red,           // 4
+	Yellow,        // 5
+	Blue_Big,      // 6
+	Green_Big,     // 7
+	Pupple_Big,    // 8
+	Red_Big,       // 9
+	Yellow_Big,    // 10
+};
+
 class GameEngineImage;
 
 // Ό³Έν :
@@ -32,17 +46,25 @@ protected:
 private:
 	void MoveCalculation(float _DeltaTime);
 	void CollisionCheck(float _DeltaTime);
+	void GemSetting();
+	void ApplyScore();
 	void Kill();
 
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
 	GameEngineImage* ColMap = nullptr;
 
+	GameEngineSoundPlayer BGMPlayer;
+
+	GemState CreateGem = GemState::Blue;
+
 	float4 MoveDir = float4::Zero;
 	float4 NextPos = float4::Zero;
 
-	GameEngineSoundPlayer BGMPlayer;
+	float Jump = 800.0f;
 
+	int CreateSet = 1;
+	int Score = 0;
 	int SoundCount = 1;
 	bool IsStart = true;
 
