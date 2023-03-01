@@ -118,6 +118,8 @@ void BeforeBoss::Update(float _DeltaTime)
 
 void BeforeBoss::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Inventory::PlayerInven = Inven;
+
 	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());
 	SetPlayLevelMaxHP(Player::MainPlayer->GetPlayerMaxHP());
 	SetPlayLevelGem(Player::MainPlayer->GetPlayerGem());
@@ -165,8 +167,6 @@ void BeforeBoss::LevelSet()
 	if (1 == Set)
 	{
 		Set = 0;
-
-		Inventory::PlayerInven = Inven;
 		Player::MainPlayer = SHA;
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());

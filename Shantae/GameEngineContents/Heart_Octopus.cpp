@@ -5,6 +5,7 @@
 
 #include "ContentsEnum.h"
 #include "Player.h"
+#include "Inventory.h"
 
 Heart_Octopus::Heart_Octopus() 
 {
@@ -112,7 +113,9 @@ void Heart_Octopus::CollisionCheck(float _DeltaTime)
 
 void Heart_Octopus::ApplyScore()
 {
-	//Player::MainPlayer->SetPlayerGem(Score);
+	Player::MainPlayer->PlusPlayerOctopus(1);
+	Player::MainPlayer->SetItemEquip(true);
+	Inventory::PlayerInven->SetEquipItem("Octopus");
 	Kill();
 }
 

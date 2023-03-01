@@ -8,6 +8,7 @@
 #include <GameEngineCore/GameEngineLevel.h>
 
 #include "ContentsEnum.h"
+#include "Player.h"
 #include "ItemSelect.h"
 #include "Icon.h"
 
@@ -73,22 +74,8 @@ void Inventory::Update(float _DeltaTime)
 	{
 		FamilyOn();
 		SelectMove(_DeltaTime);
+		PlayerItemCheck();
 		SelectItem();
-
-		if (GameEngineInput::IsDown("Attack"))
-		{
-			CreateItem("MonsterMilk");
-		}
-
-		if (GameEngineInput::IsDown("Jump"))
-		{
-			CreateItem("Meat");
-		}
-
-		if (GameEngineInput::IsDown("fire"))
-		{
-			CreateItem("PikeBall");
-		}
 	}
 }
 
@@ -149,6 +136,15 @@ void Inventory::SetItemBox(int _Order, float4 _BoxPos)
 	Box->SetBoxPos(_BoxPos);
 	Box->SetBoxNumber(_Order);
 	Boxes.insert(std::make_pair(_Order, Box));
+}
+
+void Inventory::PlayerItemCheck()
+{
+	if (true == Player::MainPlayer->GetItemEquip())
+	{
+		CreateItem(EquipItem);
+		Player::MainPlayer->SetItemEquip(false);
+	}
 }
 
 void Inventory::CreateItem(std::string_view _Name)
@@ -215,9 +211,8 @@ Icon* Inventory::SelectItem()
 				IconList = nullptr;
 				Boxes.find(BoxNumber)->second->SetItemIcon(IconList);
 			}
+			return ReturnValue;
 		}
-
-		return ReturnValue;
 	}
 }
 

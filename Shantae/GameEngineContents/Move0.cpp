@@ -255,7 +255,6 @@ void Move0::Loading()
 		CreateActor<Health>();
 		Inven = CreateActor<Inventory>();
 	}
-
 }
 
 void Move0::Update(float _DeltaTime)
@@ -292,6 +291,8 @@ void Move0::Update(float _DeltaTime)
 
 void Move0::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Inventory::PlayerInven = Inven;
+
 	FieldBGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("We_Love_Burning_Town.mp3");
 	FieldBGMPlayer.Volume(0.05f);
 	FieldBGMPlayer.LoopCount(100);
@@ -303,7 +304,7 @@ void Move0::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 void Move0::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
-	// BGMPlayer.Stop();
+	
 	InBoxKill();
 }
 
@@ -344,7 +345,6 @@ void Move0::LevelSet()
 	{
 		Set = 0;
 
-		Inventory::PlayerInven = Inven;
 		Player::MainPlayer = SHA;
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());

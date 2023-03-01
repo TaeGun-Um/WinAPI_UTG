@@ -106,6 +106,8 @@ void Smith::Update(float _DeltaTime)
 
 void Smith::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Inventory::PlayerInven = Inven;
+
 	Set = 1;
 
 	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Customer.mp3");
@@ -163,8 +165,6 @@ void Smith::LevelSet()
 	if (1 == Set)
 	{
 		Set = 0;
-
-		Inventory::PlayerInven = Inven;
 		Player::MainPlayer = SHA;
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());

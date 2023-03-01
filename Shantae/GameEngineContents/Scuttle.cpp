@@ -171,6 +171,8 @@ void Scuttle::Update(float _DeltaTime)
 
 void Scuttle::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Inventory::PlayerInven = Inven;
+
 	Set = 1;
 
 	if (false == ScuttlePalyer)
@@ -235,8 +237,6 @@ void Scuttle::LevelSet()
 	if (1 == Set)
 	{
 		Set = 0;
-
-		Inventory::PlayerInven = Inven;
 		Player::MainPlayer = SHA;
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());

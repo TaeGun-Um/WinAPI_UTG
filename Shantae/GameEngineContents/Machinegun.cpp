@@ -177,6 +177,8 @@ void Machinegun::Update(float _DeltaTime)
 
 void Machinegun::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Inventory::PlayerInven = Inven;
+
 	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());
 	SetPlayLevelMaxHP(Player::MainPlayer->GetPlayerMaxHP());
 	SetPlayLevelGem(Player::MainPlayer->GetPlayerGem());
@@ -223,8 +225,6 @@ void Machinegun::LevelSet()
 	if (1 == Set)
 	{
 		Set = 0;
-
-		Inventory::PlayerInven = Inven;
 		Player::MainPlayer = SHA;
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());

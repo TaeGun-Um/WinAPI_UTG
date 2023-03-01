@@ -99,6 +99,8 @@ void SaveRoom::Update(float _DeltaTime)
 
 void SaveRoom::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Inventory::PlayerInven = Inven;
+
 	Set = 1;
 
 	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());
@@ -151,8 +153,6 @@ void SaveRoom::LevelSet()
 	if (1 == Set)
 	{
 		Set = 0;
-
-		Inventory::PlayerInven = Inven;
 		Player::MainPlayer = SHA;
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());

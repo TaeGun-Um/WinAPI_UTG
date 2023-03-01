@@ -5,6 +5,7 @@
 #include "MonsterSpawner.h"
 
 class Player;
+class Inventory;
 
 // Ό³Έν : Scuttle Town ~ outskirts
 class PlayLevel : public GameEngineLevel

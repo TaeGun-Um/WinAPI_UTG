@@ -52,6 +52,7 @@ private:
 	GameEngineImage* ColMap = nullptr;
 	Player* SHA = nullptr;
 	Inventory* Inven = nullptr;
+	bool InvenOnOff = false;
 	
 	float OverlapTime = 0.0f;
 	float SeagullTime = 0.0f;

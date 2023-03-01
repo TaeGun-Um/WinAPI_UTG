@@ -96,6 +96,8 @@ void Spa::Update(float _DeltaTime)
 
 void Spa::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Inventory::PlayerInven = Inven;
+
 	Set = 1;
 
 	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());
@@ -148,8 +150,6 @@ void Spa::LevelSet()
 	if (1 == Set)
 	{
 		Set = 0;
-
-		Inventory::PlayerInven = Inven;
 		Player::MainPlayer = SHA;
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());

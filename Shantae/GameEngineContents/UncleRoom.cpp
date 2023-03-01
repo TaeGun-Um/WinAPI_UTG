@@ -102,6 +102,8 @@ void UncleRoom::Update(float _DeltaTime)
 
 void UncleRoom::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Inventory::PlayerInven = Inven;
+
 	Set = 1;
 
 	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Uncle_Room.mp3");
@@ -159,8 +161,6 @@ void UncleRoom::LevelSet()
 	if (1 == Set)
 	{
 		Set = 0;
-
-		Inventory::PlayerInven = Inven;
 		Player::MainPlayer = SHA;
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());

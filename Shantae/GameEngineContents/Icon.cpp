@@ -26,7 +26,6 @@ void Icon::Start()
 	
 	AnimationRender->EffectCameraOff();
 	AnimationRender->ChangeAnimation("Meat");
-
 }
 
 void Icon::Update(float _DeltaTime)

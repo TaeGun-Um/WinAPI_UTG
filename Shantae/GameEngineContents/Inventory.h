@@ -70,6 +70,11 @@ public:
 
 	GameEngineRender* AnimationRender = nullptr;
 
+	void SetEquipItem(std::string_view _Equip)
+	{
+		EquipItem = _Equip;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -82,12 +87,15 @@ private:
 	void SetItemBox(int _Order, float4 _BoxPos);
 	void CreateItem(std::string_view _Name);
 	Icon* SelectItem();
+	void PlayerItemCheck();
 	void SelectMove(float _DeltaTime);
 
 	ItemSelect* Select = nullptr;
 	std::map<int, ItemSpace*> Boxes;
 
 	GameEngineSoundPlayer BGMPlayer;
+
+	std::string_view EquipItem = "Meat";
 
 	float4 BoxPos = float4::Zero;
 

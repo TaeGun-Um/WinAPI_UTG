@@ -160,6 +160,8 @@ void Stair::Update(float _DeltaTime)
 
 void Stair::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Inventory::PlayerInven = Inven;
+
 	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());
 	SetPlayLevelMaxHP(Player::MainPlayer->GetPlayerMaxHP());
 	SetPlayLevelGem(Player::MainPlayer->GetPlayerGem());
@@ -206,8 +208,6 @@ void Stair::LevelSet()
 	if (1 == Set)
 	{
 		Set = 0;
-
-		Inventory::PlayerInven = Inven;
 		Player::MainPlayer = SHA;
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());

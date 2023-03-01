@@ -199,6 +199,11 @@ public:
 		return MonsterMilk;
 	}
 
+	void PlusPlayerMonsterMilk(int _MonsterMilk)
+	{
+		MonsterMilk += _MonsterMilk;
+	}
+
 	void SetPlayerMonsterMilk(int _MonsterMilk)
 	{
 		MonsterMilk = _MonsterMilk;
@@ -207,6 +212,11 @@ public:
 	int GetPlayerMeat()
 	{
 		return Meat;
+	}
+
+	void PlusPlayerMeat(int _Meat)
+	{
+		Meat += _Meat;
 	}
 
 	void SetPlayerMeat(int _Meat)
@@ -219,6 +229,11 @@ public:
 		return Bubble;
 	}
 
+	void PlusPlayerBubble(int _Bubble)
+	{
+		Bubble += _Bubble;
+	}
+
 	void SetPlayerBubble(int _Bubble)
 	{
 		Bubble = _Bubble;
@@ -227,6 +242,11 @@ public:
 	int GetPlayerPikeBall()
 	{
 		return PikeBall;
+	}
+
+	void PlusPlayerPikeBall(int _PikeBall)
+	{
+		PikeBall += _PikeBall;
 	}
 
 	void SetPlayerPikeBall(int _PikeBall)
@@ -239,19 +259,34 @@ public:
 		return Octopus;
 	}
 
+	void PlusPlayerOctopus(int _Octopus)
+	{
+		Octopus += _Octopus;
+	}
+
 	void SetPlayerOctopus(int _Octopus)
 	{
 		Octopus = _Octopus;
 	}
 
-	int GetPlayerPass()
+	int GetPlayerIDCard()
 	{
 		return IDCard;
 	}
 
-	void SetPlayerPass(int _IDCard)
+	void SetPlayerIDCard(int _IDCard)
 	{
 		IDCard = _IDCard;
+	}
+
+	bool GetItemEquip()
+	{
+		return IsItemEquip;
+	}
+
+	void SetItemEquip(bool _Is)
+	{
+		IsItemEquip = _Is;
 	}
 
 protected:
@@ -273,6 +308,8 @@ private:
 	int PikeBall = 0;
 	int Octopus = 0;
 	int Pass = 0;
+
+	bool IsItemEquip = false;
 
 	std::string DirCheck(const std::string_view& _AnimationName);
 	void MoveCalculation(float _DeltaTime);
