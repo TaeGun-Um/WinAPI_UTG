@@ -83,26 +83,26 @@ void Gem::CollisionCheck(float _DeltaTime)
 {
 	if (nullptr != BodyCollision)
 	{
-		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PlayerAttack), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PlayerEffect), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
 			BodyCollision->Off();
 
-			//if (1 == SoundCount)
-			//{
-			//	SoundCount = 0;
-			//	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Clash_smalljar.wav");
-			//	BGMPlayer.Volume(0.2f);
-			//	BGMPlayer.LoopCount(1);
-			//}
+			if (1 == SoundCount)
+			{
+				SoundCount = 0;
+				BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_gem.wav");
+				BGMPlayer.Volume(0.2f);
+				BGMPlayer.LoopCount(1);
+			}
 
-			//Break();
+			Kill();
 		}
 	}
 }
 
-//void Gem::Kill()
-//{
-//	GameEngineActor* ColActor = AnimationRender->GetActor();
-//	ColActor->Off();
-//	ColActor->Death();
-//}
+void Gem::Kill()
+{
+	GameEngineActor* ColActor = AnimationRender->GetActor();
+	ColActor->Off();
+	ColActor->Death();
+}

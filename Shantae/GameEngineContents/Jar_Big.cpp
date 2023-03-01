@@ -11,6 +11,8 @@
 #include "Jar_Piece4.h"
 #include "Jar_Piece5.h"
 
+#include "Gem.h"
+
 Jar_Big::Jar_Big() 
 {
 }
@@ -121,7 +123,18 @@ void Jar_Big::Break()
 	Piece5->SetPos(GetPos());
 	Piece5->SetOwnerPos(GetPos());
 
+	CreateItem();
+
 	Kill();
+}
+
+void Jar_Big::CreateItem()
+{
+	Gem* Gems = nullptr;
+
+	Gems = GetLevel()->CreateActor<Gem>();
+	Gems->SetPos(GetPos());
+	Gems->SetColMap(ColMap);
 }
 
 void Jar_Big::Kill()

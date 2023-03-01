@@ -33,6 +33,7 @@ private:
 	void MoveCalculation(float _DeltaTime);
 	void CollisionCheck(float _DeltaTime);
 	void Break();
+	void CreateItem();
 	void Kill();
 
 	GameEngineRender* AnimationRender = nullptr;

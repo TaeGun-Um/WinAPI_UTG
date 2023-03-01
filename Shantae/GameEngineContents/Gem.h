@@ -32,6 +32,7 @@ protected:
 private:
 	void MoveCalculation(float _DeltaTime);
 	void CollisionCheck(float _DeltaTime);
+	void Kill();
 
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
@@ -42,6 +43,7 @@ private:
 
 	GameEngineSoundPlayer BGMPlayer;
 
+	int SoundCount = 1;
 	bool IsStart = true;
 
 };
