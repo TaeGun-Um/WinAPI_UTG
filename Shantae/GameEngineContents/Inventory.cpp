@@ -9,6 +9,7 @@
 
 #include "ContentsEnum.h"
 #include "ItemSelect.h"
+#include "Icon.h"
 
 Inventory* Inventory::PlayerInven = nullptr;
 
@@ -123,27 +124,17 @@ void Inventory::Update(float _DeltaTime)
 		Select->On();
 		SelectMove(_DeltaTime);
 	}
+
+	if (GameEngineInput::IsDown("Select"))
+	{
+		CreateItem();
+	}
 }
 
 void Inventory::Render(float _DeltaTime)
 {
 
 }
-
-// 1 : { 465, 230 }
-// 2 : { 580, 230 }
-// 3 : { 695, 230 }
-// 4 : { 810, 230 }
-// 
-// 5 : { 465, 355 }
-// 6 : { 580, 355 }
-// 7 : { 695, 355 }
-// 8 : { 810, 355 }
-// 
-// 9 : { 465, 480 }
-// 10 : { 580, 480 }
-// 11 : { 695, 480 }
-// 12 : { 810, 480 }
 
 void Inventory::SetItemBox(int _Order, float4 _BoxPos)
 {
@@ -157,6 +148,33 @@ void Inventory::SetItemBox(int _Order, float4 _BoxPos)
 	Box->SetBoxPos(_BoxPos);
 	Box->SetBoxNumber(_Order);
 	Boxes.insert(std::make_pair(_Order, Box));
+}
+
+void Inventory::CreateItem()
+{
+	std::map<int, ItemSpace*>::iterator GroupStartIter = Boxes.begin();
+	std::map<int, ItemSpace*>::iterator GroupEndIter = Boxes.end();
+
+	for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
+	{
+		ItemSpace* SpaceList = GroupStartIter->second;
+		Icon* IconList = GroupStartIter->second->GetItemIcon();
+		int Order = GroupStartIter->first;
+		
+		if (nullptr != IconList)
+		{
+			continue;
+		}
+
+		float4 IconPos = SpaceList->GetBoxPos();
+		IconList = GetLevel()->CreateActor<Icon>();
+		IconList->SetPos(IconPos);
+		IconList->SetCount(2);
+
+		SpaceList->SetItemIcon(IconList);
+
+		break;
+	}
 }
 
 void Inventory::SelectMove(float _DeltaTime)

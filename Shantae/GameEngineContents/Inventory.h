@@ -6,6 +6,7 @@
 #include <GameEngineCore/GameEngineResources.h>
 
 class ItemSelect;
+class Icon;
 
 class ItemSpace
 {
@@ -35,9 +36,20 @@ public:
 		return BoxPos;
 	}
 
+	Icon* GetItemIcon()
+	{
+		return ItemIcon;
+	}
+
+	void SetItemIcon(Icon* _Icon)
+	{
+		ItemIcon = _Icon;
+	}
+
 private:
 	int BoxNumber = 1;
 	float4 BoxPos = float4::Zero;
+	Icon* ItemIcon = nullptr;
 };
 
 // Ό³Έν :
@@ -66,6 +78,7 @@ protected:
 private:
 	void SetItemBox(int _Order, float4 _BoxPos);
 	void SelectMove(float _DeltaTime);
+	void CreateItem();
 
 	ItemSelect* Select = nullptr;
 	std::map<int, ItemSpace*> Boxes;

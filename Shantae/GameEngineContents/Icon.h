@@ -16,6 +16,11 @@ public:
 	Icon& operator=(const Icon& _Other) = delete;
 	Icon& operator=(Icon&& _Other) noexcept = delete;
 
+	void SetCount(int _Value)
+	{
+		Count = _Value;
+	}
+	
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -23,6 +28,6 @@ protected:
 
 private:
 	GameEngineRender* AnimationRender = nullptr;
-
+	int Count = 0;
 };
 
