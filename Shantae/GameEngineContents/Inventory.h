@@ -76,8 +76,11 @@ protected:
 	void Render(float _DeltaTime) override;
 
 private:
+	void ItemSpaceSetting();
+	void FamilyOn();
+	void FamilyOff();
 	void SetItemBox(int _Order, float4 _BoxPos);
-	void CreateItem();
+	void CreateItem(std::string_view _Name);
 	void SelectItem();
 	void SelectMove(float _DeltaTime);
 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/NumberRenderObject.h>
 
 // Ό³Έν :
 class Icon : public GameEngineActor
@@ -16,14 +17,34 @@ public:
 	Icon& operator=(const Icon& _Other) = delete;
 	Icon& operator=(Icon&& _Other) noexcept = delete;
 
-	void SetCount(int _Value)
+	int GetItemCount()
 	{
-		Count = _Value;
+		return ItemCount;
+	}
+
+	void SetItemCount(int _Value)
+	{
+		ItemCount = _Value;
+	}
+
+	void PlusItemCount()
+	{
+		ItemCount += 1;
+	}
+
+	void MinusItemCount()
+	{
+		ItemCount -= 1;
 	}
 
 	void SetIconName(std::string_view _Name)
 	{
 		IconName = _Name;
+	}
+
+	std::string_view GetIconName()
+	{
+		return IconName;
 	}
 	
 protected:
@@ -33,9 +54,17 @@ protected:
 
 private:
 	void IconSelect();
+	void CreateNumber();
+	void CurrentPlayerItemNumber();
+	void ItemNumberControl();
 
 	GameEngineRender* AnimationRender = nullptr;
 	std::string IconName = "Milk";
-	int Count = 0;
+	NumberRenderObject ItemNumber;
+
+	int NumberCreate = 1;
+	int ItemCount = 1;
+
+	bool IsNumberCreate = false;
 };
 

@@ -50,57 +50,7 @@ void Inventory::Start()
 	AnimationRender->EffectCameraOff();
 	AnimationRender->Off();
 
-	// 0~3 : 230
-	// 4~7 : 255
-	// 8~11 : 480
-
-	int x = 0;
-	int y = 0;
-	int i = 0;
-
-	for (;x <= 2; x++)
-	{
-		if (0 == x)
-		{
-			YPos = 230.0f;
-		}
-		else if (1 == x)
-		{
-			YPos = 355.0f;
-		}
-		else if (2 == x)
-		{
-			YPos = 480.0f;
-		}
-		
-		for (; y <= 3; y++)
-		{
-			if (0 == y)
-			{
-				XPos = 465.0f;
-				i++;
-			}
-			else if (1 == y)
-			{
-				XPos = 580.0f;
-				i++;
-			}
-			else if (2 == y)
-			{
-				XPos = 695.0f;
-				i++;
-			}
-			else if (3 == y)
-			{
-				XPos = 810.0f;
-				i++;
-			}
-
-			BoxPos = { XPos, YPos };
-			SetItemBox(i, BoxPos);
-		}
-		y = 0;
-	}
+	ItemSpaceSetting();
 }
 
 void Inventory::Update(float _DeltaTime)
@@ -117,24 +67,74 @@ void Inventory::Update(float _DeltaTime)
 
 	if (false == AnimationRender->IsUpdate())
 	{
-		Select->Off();
+		FamilyOff();
 	}
 	else
 	{
-		Select->On();
+		FamilyOn();
 		SelectMove(_DeltaTime);
 		SelectItem();
-	}
 
-	if (GameEngineInput::IsDown("Attack"))
-	{
-		CreateItem();
+		if (GameEngineInput::IsDown("Attack"))
+		{
+			CreateItem("MonsterMilk");
+		}
+
+		if (GameEngineInput::IsDown("Jump"))
+		{
+			CreateItem("Meat");
+		}
+
+		if (GameEngineInput::IsDown("fire"))
+		{
+			CreateItem("PikeBall");
+		}
 	}
 }
 
 void Inventory::Render(float _DeltaTime)
 {
 
+}
+
+void Inventory::FamilyOn()
+{
+	Select->On();
+
+	std::map<int, ItemSpace*>::iterator GroupStartIter = Boxes.begin();
+	std::map<int, ItemSpace*>::iterator GroupEndIter = Boxes.end();
+
+	for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
+	{
+		Icon* IconList = GroupStartIter->second->GetItemIcon();
+
+		if (nullptr == IconList)
+		{
+			continue;
+		}
+
+		IconList->On();
+	}
+}
+
+void Inventory::FamilyOff()
+{
+	Select->Off();
+
+	std::map<int, ItemSpace*>::iterator GroupStartIter = Boxes.begin();
+	std::map<int, ItemSpace*>::iterator GroupEndIter = Boxes.end();
+
+	for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
+	{
+		Icon* IconList = GroupStartIter->second->GetItemIcon();
+
+		if (nullptr == IconList)
+		{
+			continue;
+		}
+
+		IconList->Off();
+	}
 }
 
 void Inventory::SetItemBox(int _Order, float4 _BoxPos)
@@ -151,7 +151,7 @@ void Inventory::SetItemBox(int _Order, float4 _BoxPos)
 	Boxes.insert(std::make_pair(_Order, Box));
 }
 
-void Inventory::CreateItem()
+void Inventory::CreateItem(std::string_view _Name)
 {
 	std::map<int, ItemSpace*>::iterator GroupStartIter = Boxes.begin();
 	std::map<int, ItemSpace*>::iterator GroupEndIter = Boxes.end();
@@ -164,17 +164,35 @@ void Inventory::CreateItem()
 		
 		if (nullptr != IconList)
 		{
-			continue;
+			if (_Name == IconList->GetIconName())
+			{
+				if (9 > IconList->GetItemCount())
+				{
+					IconList->PlusItemCount();
+				}
+				else
+				{
+					IconList->SetItemCount(9);
+				}
+				
+				break;
+			}
+			else 
+			{
+				continue;
+			}
 		}
+		else
+		{
+			float4 IconPos = SpaceList->GetBoxPos();
+			IconList = GetLevel()->CreateActor<Icon>();
+			IconList->SetPos(IconPos);
+			IconList->SetIconName(_Name);
 
-		float4 IconPos = SpaceList->GetBoxPos();
-		IconList = GetLevel()->CreateActor<Icon>();
-		IconList->SetPos(IconPos);
-		IconList->SetIconName("monsterMilk");
+			SpaceList->SetItemIcon(IconList);
 
-		SpaceList->SetItemIcon(IconList);
-
-		break;
+			break;
+		}
 	}
 }
 
@@ -186,9 +204,16 @@ void Inventory::SelectItem()
 
 		if (nullptr != IconList)
 		{
-			IconList->Death();
-			IconList = nullptr;
-			Boxes.find(BoxNumber)->second->SetItemIcon(IconList);
+			if (1 < Boxes.find(BoxNumber)->second->GetItemIcon()->GetItemCount())
+			{
+				Boxes.find(BoxNumber)->second->GetItemIcon()->MinusItemCount();
+			}
+			else
+			{
+				IconList->Death();
+				IconList = nullptr;
+				Boxes.find(BoxNumber)->second->SetItemIcon(IconList);
+			}
 		}
 	}
 }
@@ -299,5 +324,56 @@ void Inventory::SelectMove(float _DeltaTime)
 		
 		float4 Pos = Boxes.find(BoxNumber)->second->GetBoxPos();
 		Select->SetPos(Pos);
+	}
+}
+
+void Inventory::ItemSpaceSetting()
+{
+	int x = 0;
+	int y = 0;
+	int i = 0;
+
+	for (; x <= 2; x++)
+	{
+		if (0 == x)
+		{
+			YPos = 230.0f;
+		}
+		else if (1 == x)
+		{
+			YPos = 355.0f;
+		}
+		else if (2 == x)
+		{
+			YPos = 480.0f;
+		}
+
+		for (; y <= 3; y++)
+		{
+			if (0 == y)
+			{
+				XPos = 465.0f;
+				i++;
+			}
+			else if (1 == y)
+			{
+				XPos = 580.0f;
+				i++;
+			}
+			else if (2 == y)
+			{
+				XPos = 695.0f;
+				i++;
+			}
+			else if (3 == y)
+			{
+				XPos = 810.0f;
+				i++;
+			}
+
+			BoxPos = { XPos, YPos };
+			SetItemBox(i, BoxPos);
+		}
+		y = 0;
 	}
 }

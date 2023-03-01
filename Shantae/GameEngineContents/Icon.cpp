@@ -24,17 +24,53 @@ void Icon::Start()
 	AnimationRender->CreateAnimation({ .AnimationName = "Octopus",  .ImageName = "Items.bmp", .Start = 8, .End = 8, .InterTime = 10.0f, .Loop = false });
 	AnimationRender->CreateAnimation({ .AnimationName = "Pass",  .ImageName = "Items.bmp", .Start = 10, .End = 10, .InterTime = 10.0f, .Loop = false });
 	
+	AnimationRender->EffectCameraOff();
 	AnimationRender->ChangeAnimation("Meat");
+
 }
 
 void Icon::Update(float _DeltaTime)
 {
 	IconSelect();
+
+	CreateNumber();
+
+	if (true == IsNumberCreate)
+	{
+		CurrentPlayerItemNumber();
+		ItemNumberControl();
+	}
+
 }
 
 void Icon::Render(float _DeltaTime)
 {
 
+}
+
+void Icon::CreateNumber()
+{
+	if (1 == NumberCreate)
+	{
+		NumberCreate = 0;
+		ItemNumber.SetOwner(this);
+		ItemNumber.SetImage("Numbers.Bmp", { 20, 26 }, 8, RGB(255, 0, 255), "GemWindow.bmp");
+		ItemNumber.SetValue(ItemCount);
+		ItemNumber.SetAlign(Align::Right);
+		ItemNumber.SetNumOfDigits(1);
+		ItemNumber.SetRenderPos({ 30 , 25 });
+		IsNumberCreate = true;
+	}
+}
+
+void Icon::CurrentPlayerItemNumber()
+{
+	// ItemCount = Player::MainPlayer->GetPlayerGem();
+}
+
+void Icon::ItemNumberControl()
+{
+	ItemNumber.SetValue(ItemCount);
 }
 
 void Icon::IconSelect()

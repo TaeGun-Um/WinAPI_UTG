@@ -283,7 +283,7 @@ void Move0::Update(float _DeltaTime)
 	if (1 == RunAnimation)
 	{
 		RunAnimation = 0;
-		Player::MainPlayer->SetCameraShakinghard(10.0f, 3.0f);
+		Player::MainPlayer->SetCameraShakinghard(10.0f, 4.0f);
 		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Fleeing_crowd.mp3");
 		BGMPlayer.Volume(0.35f);
 		BGMPlayer.LoopCount(1);
