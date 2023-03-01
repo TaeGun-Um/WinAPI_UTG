@@ -11,6 +11,7 @@
 
 #include "Inventory.h"
 #include "Scarecrow.h"
+#include "Heart_Octopus.h"
 #include "Impact.h"
 #include "Pistol_Bullet.h"
 #include "ContentsEnum.h"
@@ -77,10 +78,10 @@ void Player::Update(float _DeltaTime)
 		return;
 	}
 	// 더미몬스터
-	//if (GameEngineInput::IsDown("CreateMonster"))
-	//{
-	//	CreateDummy();
-	//}
+	if (GameEngineInput::IsDown("CreateMonster"))
+	{
+		CreateDummy();
+	}
 
 	//////////////////  레벨이동 애니메이션  //////////////////
 	// 레벨 시작 애니메이션
@@ -900,13 +901,21 @@ void Player::AlphaBlinker(float _DeltaTime)
 
 void Player::CreateDummy()
 {
-	Scarecrow* NewDummy = nullptr;
+	//Scarecrow* NewDummy = nullptr;
+	//float4 DummyPos = float4::Zero;
+	//DummyPos = GetPos() + (float4::Right * 250) + (float4::Up * 50);
+
+	//NewDummy = GetLevel()->CreateActor<Scarecrow>();
+	//NewDummy->SetColMap(ColMap);
+	//NewDummy->SetPos(DummyPos);
+
+	Heart_Octopus* Oct = nullptr;
 	float4 DummyPos = float4::Zero;
 	DummyPos = GetPos() + (float4::Right * 250) + (float4::Up * 50);
 
-	NewDummy = GetLevel()->CreateActor<Scarecrow>();
-	NewDummy->SetColMap(ColMap);
-	NewDummy->SetPos(DummyPos);
+	Oct = GetLevel()->CreateActor<Heart_Octopus>();
+	Oct->SetPos(DummyPos);
+	Oct->SetColMap(ColMap);
 }
 
 void Player::CreateImpact()

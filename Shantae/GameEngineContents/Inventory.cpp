@@ -196,10 +196,11 @@ void Inventory::CreateItem(std::string_view _Name)
 	}
 }
 
-void Inventory::SelectItem()
+Icon* Inventory::SelectItem()
 {
 	if (GameEngineInput::IsDown("Select"))
 	{
+		Icon* ReturnValue = Boxes.find(BoxNumber)->second->GetItemIcon();
 		Icon* IconList = Boxes.find(BoxNumber)->second->GetItemIcon();
 
 		if (nullptr != IconList)
@@ -215,6 +216,8 @@ void Inventory::SelectItem()
 				Boxes.find(BoxNumber)->second->SetItemIcon(IconList);
 			}
 		}
+
+		return ReturnValue;
 	}
 }
 

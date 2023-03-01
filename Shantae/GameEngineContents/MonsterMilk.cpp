@@ -1,8 +1,10 @@
 #include "MonsterMilk.h"
 
 #include <GameEngineCore/GameEngineRender.h>
+#include <GameEngineCore/GameEngineCollision.h>
 
 #include "ContentsEnum.h"
+#include "Player.h"
 
 MonsterMilk::MonsterMilk() 
 {

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/GameEngineResources.h>
 
 // Ό³Έν :
 class Bubble : public GameEngineActor
@@ -22,7 +23,16 @@ protected:
 	void Render(float _DeltaTime) override;
 
 private:
-	GameEngineRender* AnimationRender = nullptr;
+	void MoveCalculation(float _DeltaTime);
+	void CollisionCheck(float _DeltaTime);
+	void ApplyScore();
+	void Kill();
 
+	GameEngineRender* AnimationRender = nullptr;
+	GameEngineCollision* BodyCollision = nullptr;
+
+	GameEngineSoundPlayer BGMPlayer;
+
+	int SoundCount = 1;
 };
 

@@ -96,56 +96,6 @@ public:
 		DirString = _Dir;
 	}
 
-	int GetPlayerHP()
-	{
-		return HP;
-	}
-
-	void SetPlayerHP(int _HP)
-	{
-		HP = _HP;
-	}
-
-	void PlusPlayerHP(int _PlusHP)
-	{
-		HP += _PlusHP;
-	}
-
-	int GetPlayerDamage()
-	{
-		return PlayerDamage;
-	}
-	
-	int GetPlayerMaxHP()
-	{
-		return MaxHP;
-	}
-
-	void SetPlayerMaxHP(int _MaxHP)
-	{
-		MaxHP = _MaxHP;
-	}
-
-	void PlusPlayerMaxHP(int _PlusMaxHP)
-	{
-		MaxHP += _PlusMaxHP;
-	}
-
-	int GetPlayerGem()
-	{
-		return PlayerGem;
-	}
-
-	void SetPlayerGem(int _Gem)
-	{
-		PlayerGem = _Gem;
-	}
-
-	void PlusPlayerGem(int _PlusGem)
-	{
-		PlayerGem += _PlusGem;
-	}
-
 	void SetAnimationStart(bool _Is)
 	{
 		IsAnimationStart = _Is;
@@ -193,12 +143,137 @@ public:
 	GameEngineSoundPlayer BGMPlayer;
 	GameEngineSoundPlayer CrouchMovePlayer;
 
+	// Status
+	int GetPlayerHP()
+	{
+		return HP;
+	}
+
+	void SetPlayerHP(int _HP)
+	{
+		HP = _HP;
+	}
+
+	void PlusPlayerHP(int _PlusHP)
+	{
+		HP += _PlusHP;
+	}
+
+	int GetPlayerDamage()
+	{
+		return PlayerDamage;
+	}
+
+	int GetPlayerMaxHP()
+	{
+		return MaxHP;
+	}
+
+	void SetPlayerMaxHP(int _MaxHP)
+	{
+		MaxHP = _MaxHP;
+	}
+
+	void PlusPlayerMaxHP(int _PlusMaxHP)
+	{
+		MaxHP += _PlusMaxHP;
+	}
+
+	int GetPlayerGem()
+	{
+		return PlayerGem;
+	}
+
+	void SetPlayerGem(int _Gem)
+	{
+		PlayerGem = _Gem;
+	}
+
+	void PlusPlayerGem(int _PlusGem)
+	{
+		PlayerGem += _PlusGem;
+	}
+
+	int GetPlayerMonsterMilk()
+	{
+		return MonsterMilk;
+	}
+
+	void SetPlayerMonsterMilk(int _MonsterMilk)
+	{
+		MonsterMilk = _MonsterMilk;
+	}
+
+	int GetPlayerMeat()
+	{
+		return Meat;
+	}
+
+	void SetPlayerMeat(int _Meat)
+	{
+		Meat = _Meat;
+	}
+
+	int GetPlayerBubble()
+	{
+		return Bubble;
+	}
+
+	void SetPlayerBubble(int _Bubble)
+	{
+		Bubble = _Bubble;
+	}
+
+	int GetPlayerPikeBall()
+	{
+		return PikeBall;
+	}
+
+	void SetPlayerPikeBall(int _PikeBall)
+	{
+		PikeBall = _PikeBall;
+	}
+
+	int GetPlayerOctopus()
+	{
+		return Octopus;
+	}
+
+	void SetPlayerOctopus(int _Octopus)
+	{
+		Octopus = _Octopus;
+	}
+
+	int GetPlayerPass()
+	{
+		return IDCard;
+	}
+
+	void SetPlayerPass(int _IDCard)
+	{
+		IDCard = _IDCard;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void Render(float _DeltaTime) override;
 
 private:
+	// Status
+	int IDCard = 1;
+	int MaxHP = 8;
+	int HP = 8;
+	int PlayerDamage = 5;
+	int PlayerGem = 0;
+
+	int MonsterMilk = 0;
+	int Meat = 0;
+	int Bubble = 0;
+	int PikeBall = 0;
+	int Octopus = 0;
+	int Pass = 0;
+
 	std::string DirCheck(const std::string_view& _AnimationName);
 	void MoveCalculation(float _DeltaTime);
 	void WallCheck(float _Speed);
@@ -255,11 +330,6 @@ private:
 	float CrouchMoveSoundTime = 0.0f;
 	float ImpactRe = 0.0f;
 
-	int Pass = 1;
-	int MaxHP = 8;
-	int HP = 8;
-	int PlayerDamage = 5;
-	int PlayerGem = 0;
 	int ShakingCount = 0;
 	int HardShakingCount = 0;
 	int MoveSoundCount = 2;

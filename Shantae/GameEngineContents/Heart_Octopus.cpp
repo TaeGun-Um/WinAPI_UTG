@@ -4,6 +4,7 @@
 #include <GameEngineCore/GameEngineCollision.h>
 
 #include "ContentsEnum.h"
+#include "Player.h"
 
 Heart_Octopus::Heart_Octopus() 
 {
@@ -111,7 +112,7 @@ void Heart_Octopus::CollisionCheck(float _DeltaTime)
 
 void Heart_Octopus::ApplyScore()
 {
-	// Player::MainPlayer->SetPlayerGem(Score); 획득시 플레이어 인벤토리의 옥토퍼스 카운트를 하나 증가시킨다.
+	//Player::MainPlayer->SetPlayerGem(Score);
 	Kill();
 }
 

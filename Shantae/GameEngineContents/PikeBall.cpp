@@ -1,8 +1,10 @@
 #include "PikeBall.h"
 
 #include <GameEngineCore/GameEngineRender.h>
+#include <GameEngineCore/GameEngineCollision.h>
 
 #include "ContentsEnum.h"
+#include "Player.h"
 
 PikeBall::PikeBall() 
 {

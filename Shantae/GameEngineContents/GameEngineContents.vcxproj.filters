@@ -509,15 +509,6 @@
     <ClInclude Include="Icon.h">
       <Filter>Item\Inventory</Filter>
     </ClInclude>
-    <ClInclude Include="Bubble.h">
-      <Filter>Item\UsingItem</Filter>
-    </ClInclude>
-    <ClInclude Include="PikeBall.h">
-      <Filter>Item\UsingItem</Filter>
-    </ClInclude>
-    <ClInclude Include="MonsterMilk.h">
-      <Filter>Item\UsingItem</Filter>
-    </ClInclude>
     <ClInclude Include="EndingLevel.h">
       <Filter>PlayLevel\EndingLevel</Filter>
     </ClInclude>
@@ -527,17 +518,8 @@
     <ClInclude Include="GameOverText.h">
       <Filter>PlayLevel\EndingLevel\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="Gem.h">
-      <Filter>Item\EqiupItem</Filter>
-    </ClInclude>
-    <ClInclude Include="Heart.h">
-      <Filter>Item\EqiupItem</Filter>
-    </ClInclude>
     <ClInclude Include="Jar_Big.h">
       <Filter>Item\Jar&amp;ItemBox</Filter>
-    </ClInclude>
-    <ClInclude Include="Heart_Octopus.h">
-      <Filter>Item\UsingItem</Filter>
     </ClInclude>
     <ClInclude Include="ItemBox.h">
       <Filter>Item\Jar&amp;ItemBox</Filter>
@@ -556,6 +538,24 @@
     </ClInclude>
     <ClInclude Include="Jar_Piece5.h">
       <Filter>Item\Jar&amp;ItemBox\JarPiece</Filter>
+    </ClInclude>
+    <ClInclude Include="Gem.h">
+      <Filter>Item\EqiupItem\Normal</Filter>
+    </ClInclude>
+    <ClInclude Include="Heart.h">
+      <Filter>Item\EqiupItem\Normal</Filter>
+    </ClInclude>
+    <ClInclude Include="Bubble.h">
+      <Filter>Item\EqiupItem\TotheInventory</Filter>
+    </ClInclude>
+    <ClInclude Include="Heart_Octopus.h">
+      <Filter>Item\EqiupItem\TotheInventory</Filter>
+    </ClInclude>
+    <ClInclude Include="MonsterMilk.h">
+      <Filter>Item\EqiupItem\TotheInventory</Filter>
+    </ClInclude>
+    <ClInclude Include="PikeBall.h">
+      <Filter>Item\EqiupItem\TotheInventory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1124,15 +1124,6 @@
     <ClCompile Include="Icon.cpp">
       <Filter>Item\Inventory</Filter>
     </ClCompile>
-    <ClCompile Include="Bubble.cpp">
-      <Filter>Item\UsingItem</Filter>
-    </ClCompile>
-    <ClCompile Include="PikeBall.cpp">
-      <Filter>Item\UsingItem</Filter>
-    </ClCompile>
-    <ClCompile Include="MonsterMilk.cpp">
-      <Filter>Item\UsingItem</Filter>
-    </ClCompile>
     <ClCompile Include="EndingLevel.cpp">
       <Filter>PlayLevel\EndingLevel</Filter>
     </ClCompile>
@@ -1142,17 +1133,8 @@
     <ClCompile Include="GameOverText.cpp">
       <Filter>PlayLevel\EndingLevel\Actor</Filter>
     </ClCompile>
-    <ClCompile Include="Gem.cpp">
-      <Filter>Item\EqiupItem</Filter>
-    </ClCompile>
-    <ClCompile Include="Heart.cpp">
-      <Filter>Item\EqiupItem</Filter>
-    </ClCompile>
     <ClCompile Include="Jar_Big.cpp">
       <Filter>Item\Jar&amp;ItemBox</Filter>
-    </ClCompile>
-    <ClCompile Include="Heart_Octopus.cpp">
-      <Filter>Item\UsingItem</Filter>
     </ClCompile>
     <ClCompile Include="ItemBox.cpp">
       <Filter>Item\Jar&amp;ItemBox</Filter>
@@ -1171,6 +1153,24 @@
     </ClCompile>
     <ClCompile Include="Jar_Piece5.cpp">
       <Filter>Item\Jar&amp;ItemBox\JarPiece</Filter>
+    </ClCompile>
+    <ClCompile Include="Gem.cpp">
+      <Filter>Item\EqiupItem\Normal</Filter>
+    </ClCompile>
+    <ClCompile Include="Heart.cpp">
+      <Filter>Item\EqiupItem\Normal</Filter>
+    </ClCompile>
+    <ClCompile Include="Bubble.cpp">
+      <Filter>Item\EqiupItem\TotheInventory</Filter>
+    </ClCompile>
+    <ClCompile Include="Heart_Octopus.cpp">
+      <Filter>Item\EqiupItem\TotheInventory</Filter>
+    </ClCompile>
+    <ClCompile Include="MonsterMilk.cpp">
+      <Filter>Item\EqiupItem\TotheInventory</Filter>
+    </ClCompile>
+    <ClCompile Include="PikeBall.cpp">
+      <Filter>Item\EqiupItem\TotheInventory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1405,9 +1405,6 @@
     <Filter Include="PlayLevel\EndingLevel\Actor">
       <UniqueIdentifier>{108d504d-deb7-4fed-9ef3-d045f750f1aa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Item\UsingItem">
-      <UniqueIdentifier>{99b9339a-9347-4bcf-88cc-2245e0f2d90d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Item\Jar&amp;ItemBox">
       <UniqueIdentifier>{19eac117-cedf-4974-988b-200d9a7391e5}</UniqueIdentifier>
     </Filter>
@@ -1419,6 +1416,12 @@
     </Filter>
     <Filter Include="Item\Inventory">
       <UniqueIdentifier>{fffdbb26-1466-4ac9-9f1f-9f628d2593a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item\EqiupItem\Normal">
+      <UniqueIdentifier>{fde8a458-1de0-498a-9870-9de0d8ab5bc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item\EqiupItem\TotheInventory">
+      <UniqueIdentifier>{8af0467d-ce9b-4527-8512-cc4bd292f4a3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
