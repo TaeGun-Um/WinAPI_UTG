@@ -4,6 +4,7 @@
 #include "PlayLevel.h"
 
 class Player;
+class Inventory;
 class BlackBox;
 class WhiteBox;
 class Boss_Tank;
@@ -57,6 +58,7 @@ private:
 	GameEngineActor* Shantae = nullptr;
 	GameEngineActor* Tank = nullptr;
 	Player* SHA = nullptr;
+	Inventory* Inven = nullptr;
 	Boss_Tank* BOS = nullptr;
 	
 	float OverlapTime = 0.0f;

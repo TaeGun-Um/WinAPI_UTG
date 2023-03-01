@@ -9,6 +9,7 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineCollision.h>
 
+#include "Inventory.h"
 #include "Scarecrow.h"
 #include "Impact.h"
 #include "Pistol_Bullet.h"
@@ -128,6 +129,21 @@ void Player::Update(float _DeltaTime)
 
 	// 이동계산
 	MoveCalculation(_DeltaTime);
+
+	if (GameEngineInput::IsDown("Inventory"))
+	{
+		InvenOnOff = !InvenOnOff;
+
+		if (true == InvenOnOff)
+		{
+			Inventory::PlayerInven->AnimationRender->On();
+		}
+		else
+		{
+			Inventory::PlayerInven->AnimationRender->Off();
+		}
+		
+	}
 
 }
 

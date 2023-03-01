@@ -4,6 +4,7 @@
 #include "PlayLevel.h"
 
 class Player;
+class Inventory;
 class BlackBox;
 
 // Ό³Έν : FieldLevel_5
@@ -45,6 +46,7 @@ private:
 	GameEngineActor* Shantae = nullptr;
 	GameEngineImage* ColMap = nullptr;
 	Player* SHA = nullptr;
+	Inventory* Inven = nullptr;
 
 	float OverlapTime = 0.0f; 
 	bool YCamera = false;

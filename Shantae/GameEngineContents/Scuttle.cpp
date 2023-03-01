@@ -22,8 +22,11 @@
 #include "Desert_Man.h"
 
 #include "PortalDoor.h"
+
 #include "GemWindow.h"
 #include "Health.h"
+#include "Inventory.h"
+
 #include "ObjectLoad.h"
 #include "BlackBox.h"
 
@@ -137,6 +140,7 @@ void Scuttle::Loading()
 		// UI
 		CreateActor<GemWindow>();
 		CreateActor<Health>();
+		Inven = CreateActor<Inventory>();
 	}
 
 }
@@ -232,6 +236,7 @@ void Scuttle::LevelSet()
 	{
 		Set = 0;
 
+		Inventory::PlayerInven = Inven;
 		Player::MainPlayer = SHA;
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());

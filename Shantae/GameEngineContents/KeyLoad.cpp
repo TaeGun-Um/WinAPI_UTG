@@ -37,6 +37,7 @@ void KeyLoad::Loading()
 		GameEngineInput::CreateKey("Jump", 'X');
 		GameEngineInput::CreateKey("Fire", 'C');
 		GameEngineInput::CreateKey("Select", 'A');
+		GameEngineInput::CreateKey("Inventory", 'I');
 		GameEngineInput::CreateKey("Back", '\x1b');
 	}
 

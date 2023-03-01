@@ -290,6 +290,7 @@ private:
 	bool CrouchHit = false;
 
 	bool CollisionGround = false;
+	bool InvenOnOff = false;
 
 	bool AttackDir = true;
 	bool IsAttackStart = false;

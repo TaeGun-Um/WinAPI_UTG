@@ -49,6 +49,7 @@
 
 #include "GemWindow.h"
 #include "Health.h"
+#include "Inventory.h"
 #include "BlackBox.h"
 #include "WhiteBox.h"
 
@@ -80,6 +81,8 @@ void TestLevel::Loading()
 	CreateActor<GemWindow>();
 
 	CreateActor<Health>();
+
+	
 
 	// NPC
 	{
@@ -117,6 +120,8 @@ void TestLevel::Loading()
 	SHA->SetColMap(ColMap);
 	SHA->SetPos({ 300, 850 });
 	Shantae->GetLevel()->SetCameraPos({ -300, 200 });
+	
+	//CreateActor<Inventory>();
 
 	// 罚待备开 soldier 积己
 	//srand(static_cast<unsigned int>(time(nullptr)));

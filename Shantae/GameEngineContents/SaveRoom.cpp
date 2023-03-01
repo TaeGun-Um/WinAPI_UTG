@@ -18,6 +18,8 @@
 
 #include "GemWindow.h"
 #include "Health.h"
+#include "Inventory.h"
+
 #include "ObjectLoad.h"
 #include "BlackBox.h"
 
@@ -69,6 +71,7 @@ void SaveRoom::Loading()
 		// UI
 		CreateActor<GemWindow>();
 		CreateActor<Health>();
+		Inven = CreateActor<Inventory>();
 	}
 }
 
@@ -149,6 +152,7 @@ void SaveRoom::LevelSet()
 	{
 		Set = 0;
 
+		Inventory::PlayerInven = Inven;
 		Player::MainPlayer = SHA;
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());

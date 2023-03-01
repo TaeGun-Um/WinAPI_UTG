@@ -6,6 +6,7 @@
 #include "MonsterSpawner.h"
 
 class Player;
+class GameEngineTileMap;
 
 // Ό³Έν : TestLevel
 class TestLevel : public GameEngineLevel
@@ -45,6 +46,6 @@ private:
 	int Set = 1;
 	
 	// MonsterSpawner* CreateSpawner(const float4& _SpawnerPos, const std::string_view& _MonsterType, GameEngineImage* _MonsterColMap, const float4& _MonstorPos);
-
+	
 };
 

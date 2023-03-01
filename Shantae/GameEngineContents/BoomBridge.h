@@ -4,6 +4,7 @@
 #include "PlayLevel.h"
 
 class Player;
+class Inventory;
 class BlackBox;
 class TimerCollision;
 class Bridge_Boom;
@@ -52,6 +53,7 @@ private:
 	GameEngineActor* Shantae = nullptr;
 	GameEngineImage* ColMap = nullptr;
 	Player* SHA = nullptr;
+	Inventory* Inven = nullptr;
 
 	TimerCollision* TimerCol1 = nullptr;
 	TimerCollision* TimerCol2 = nullptr;

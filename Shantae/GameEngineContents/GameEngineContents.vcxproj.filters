@@ -498,25 +498,16 @@
       <Filter>Character\Monster\Mermaid\Effect</Filter>
     </ClInclude>
     <ClInclude Include="Jar.h">
-      <Filter>Item\Jar</Filter>
-    </ClInclude>
-    <ClInclude Include="Jar_Piece1.h">
-      <Filter>Item\Jar</Filter>
-    </ClInclude>
-    <ClInclude Include="Jar_Piece2.h">
-      <Filter>Item\Jar</Filter>
-    </ClInclude>
-    <ClInclude Include="Jar_Piece3.h">
-      <Filter>Item\Jar</Filter>
+      <Filter>Item\Jar&amp;ItemBox</Filter>
     </ClInclude>
     <ClInclude Include="ItemSelect.h">
-      <Filter>Item\ItemIcon</Filter>
+      <Filter>Item\Inventory</Filter>
     </ClInclude>
     <ClInclude Include="Inventory.h">
-      <Filter>Item\ItemIcon</Filter>
+      <Filter>Item\Inventory</Filter>
     </ClInclude>
     <ClInclude Include="Icon.h">
-      <Filter>Item\ItemIcon</Filter>
+      <Filter>Item\Inventory</Filter>
     </ClInclude>
     <ClInclude Include="Bubble.h">
       <Filter>Item\UsingItem</Filter>
@@ -536,26 +527,35 @@
     <ClInclude Include="GameOverText.h">
       <Filter>PlayLevel\EndingLevel\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="ItemBox.h">
-      <Filter>Item\ObjectItem</Filter>
-    </ClInclude>
     <ClInclude Include="Gem.h">
-      <Filter>Item\ObjectItem</Filter>
+      <Filter>Item\EqiupItem</Filter>
     </ClInclude>
     <ClInclude Include="Heart.h">
-      <Filter>Item\ObjectItem</Filter>
-    </ClInclude>
-    <ClInclude Include="Heart_Octopus.h">
-      <Filter>Item\ObjectItem</Filter>
+      <Filter>Item\EqiupItem</Filter>
     </ClInclude>
     <ClInclude Include="Jar_Big.h">
-      <Filter>Item\Jar</Filter>
+      <Filter>Item\Jar&amp;ItemBox</Filter>
+    </ClInclude>
+    <ClInclude Include="Heart_Octopus.h">
+      <Filter>Item\UsingItem</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemBox.h">
+      <Filter>Item\Jar&amp;ItemBox</Filter>
+    </ClInclude>
+    <ClInclude Include="Jar_Piece1.h">
+      <Filter>Item\Jar&amp;ItemBox\JarPiece</Filter>
+    </ClInclude>
+    <ClInclude Include="Jar_Piece2.h">
+      <Filter>Item\Jar&amp;ItemBox\JarPiece</Filter>
+    </ClInclude>
+    <ClInclude Include="Jar_Piece3.h">
+      <Filter>Item\Jar&amp;ItemBox\JarPiece</Filter>
     </ClInclude>
     <ClInclude Include="Jar_Piece4.h">
-      <Filter>Item\Jar</Filter>
+      <Filter>Item\Jar&amp;ItemBox\JarPiece</Filter>
     </ClInclude>
     <ClInclude Include="Jar_Piece5.h">
-      <Filter>Item\Jar</Filter>
+      <Filter>Item\Jar&amp;ItemBox\JarPiece</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1113,25 +1113,16 @@
       <Filter>Character\Monster\Mermaid\Effect</Filter>
     </ClCompile>
     <ClCompile Include="Jar.cpp">
-      <Filter>Item\Jar</Filter>
-    </ClCompile>
-    <ClCompile Include="Jar_Piece1.cpp">
-      <Filter>Item\Jar</Filter>
-    </ClCompile>
-    <ClCompile Include="Jar_Piece2.cpp">
-      <Filter>Item\Jar</Filter>
-    </ClCompile>
-    <ClCompile Include="Jar_Piece3.cpp">
-      <Filter>Item\Jar</Filter>
+      <Filter>Item\Jar&amp;ItemBox</Filter>
     </ClCompile>
     <ClCompile Include="ItemSelect.cpp">
-      <Filter>Item\ItemIcon</Filter>
+      <Filter>Item\Inventory</Filter>
     </ClCompile>
     <ClCompile Include="Inventory.cpp">
-      <Filter>Item\ItemIcon</Filter>
+      <Filter>Item\Inventory</Filter>
     </ClCompile>
     <ClCompile Include="Icon.cpp">
-      <Filter>Item\ItemIcon</Filter>
+      <Filter>Item\Inventory</Filter>
     </ClCompile>
     <ClCompile Include="Bubble.cpp">
       <Filter>Item\UsingItem</Filter>
@@ -1152,25 +1143,34 @@
       <Filter>PlayLevel\EndingLevel\Actor</Filter>
     </ClCompile>
     <ClCompile Include="Gem.cpp">
-      <Filter>Item\ObjectItem</Filter>
+      <Filter>Item\EqiupItem</Filter>
     </ClCompile>
     <ClCompile Include="Heart.cpp">
-      <Filter>Item\ObjectItem</Filter>
-    </ClCompile>
-    <ClCompile Include="Heart_Octopus.cpp">
-      <Filter>Item\ObjectItem</Filter>
-    </ClCompile>
-    <ClCompile Include="ItemBox.cpp">
-      <Filter>Item\ObjectItem</Filter>
+      <Filter>Item\EqiupItem</Filter>
     </ClCompile>
     <ClCompile Include="Jar_Big.cpp">
-      <Filter>Item\Jar</Filter>
+      <Filter>Item\Jar&amp;ItemBox</Filter>
+    </ClCompile>
+    <ClCompile Include="Heart_Octopus.cpp">
+      <Filter>Item\UsingItem</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemBox.cpp">
+      <Filter>Item\Jar&amp;ItemBox</Filter>
+    </ClCompile>
+    <ClCompile Include="Jar_Piece1.cpp">
+      <Filter>Item\Jar&amp;ItemBox\JarPiece</Filter>
+    </ClCompile>
+    <ClCompile Include="Jar_Piece2.cpp">
+      <Filter>Item\Jar&amp;ItemBox\JarPiece</Filter>
+    </ClCompile>
+    <ClCompile Include="Jar_Piece3.cpp">
+      <Filter>Item\Jar&amp;ItemBox\JarPiece</Filter>
     </ClCompile>
     <ClCompile Include="Jar_Piece4.cpp">
-      <Filter>Item\Jar</Filter>
+      <Filter>Item\Jar&amp;ItemBox\JarPiece</Filter>
     </ClCompile>
     <ClCompile Include="Jar_Piece5.cpp">
-      <Filter>Item\Jar</Filter>
+      <Filter>Item\Jar&amp;ItemBox\JarPiece</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1399,23 +1399,26 @@
     <Filter Include="Character\Monster\Mermaid\Effect">
       <UniqueIdentifier>{5776095f-bfe7-4049-8e5c-eaf35a5a8f42}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Item\Jar">
-      <UniqueIdentifier>{19eac117-cedf-4974-988b-200d9a7391e5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Item\ItemIcon">
-      <UniqueIdentifier>{fffdbb26-1466-4ac9-9f1f-9f628d2593a1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="PlayLevel\EndingLevel">
       <UniqueIdentifier>{32567bba-fb2e-4fbc-b5a7-e835f57451f4}</UniqueIdentifier>
     </Filter>
     <Filter Include="PlayLevel\EndingLevel\Actor">
       <UniqueIdentifier>{108d504d-deb7-4fed-9ef3-d045f750f1aa}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Item\ObjectItem">
-      <UniqueIdentifier>{b70551f0-8145-456e-82ba-4e91d9bc33ea}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Item\UsingItem">
       <UniqueIdentifier>{99b9339a-9347-4bcf-88cc-2245e0f2d90d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item\Jar&amp;ItemBox">
+      <UniqueIdentifier>{19eac117-cedf-4974-988b-200d9a7391e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item\Jar&amp;ItemBox\JarPiece">
+      <UniqueIdentifier>{7c3ff6ab-6fe6-4a31-8bdf-fed7749ab71a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item\EqiupItem">
+      <UniqueIdentifier>{b70551f0-8145-456e-82ba-4e91d9bc33ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item\Inventory">
+      <UniqueIdentifier>{fffdbb26-1466-4ac9-9f1f-9f628d2593a1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

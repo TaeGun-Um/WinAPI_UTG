@@ -24,6 +24,7 @@
 
 #include "GemWindow.h"
 #include "Health.h"
+#include "Inventory.h"
 
 #include "Soldier_Black.h"
 
@@ -90,6 +91,7 @@ void HouseFront::Loading()
 		// UI
 		CreateActor<GemWindow>();
 		CreateActor<Health>();
+		Inven = CreateActor<Inventory>();
 	}
 }
 
@@ -100,7 +102,8 @@ void HouseFront::Update(float _DeltaTime)
 	BlackBoxOutAnimation();
 	LevelSet();
 	Debugging();
-	SoundCombination(_DeltaTime);
+	//SoundCombination(_DeltaTime);
+	//RandExplosion(_DeltaTime);
 
 	// 레벨 이동
 	if (SHA->GetPos().x >= 1250.0f
@@ -114,8 +117,6 @@ void HouseFront::Update(float _DeltaTime)
 			GameEngineCore::GetInst()->ChangeLevel("Move0");
 		}
 	}
-
-	RandExplosion(_DeltaTime);
 }
 
 void HouseFront::LevelChangeStart(GameEngineLevel* _PrevLevel)
@@ -191,6 +192,7 @@ void HouseFront::LevelSet()
 	{
 		Set = 0;
 
+		Inventory::PlayerInven = Inven;
 		Player::MainPlayer = SHA;
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());

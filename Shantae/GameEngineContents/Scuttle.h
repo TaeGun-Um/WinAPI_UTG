@@ -4,6 +4,7 @@
 #include "PlayLevel.h"
 
 class Player;
+class Inventory;
 class BlackBox;
 class Sea;
 
@@ -51,6 +52,7 @@ private:
 	GameEngineActor* Shantae = nullptr;
 	GameEngineImage* ColMap = nullptr;
 	Player* SHA = nullptr;
+	Inventory* Inven = nullptr;
 	float OverlapTime = 0.0f;
 	
 	bool YCamera = false;
