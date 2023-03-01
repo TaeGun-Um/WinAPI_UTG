@@ -30,9 +30,9 @@ public:
 		ColMap = _NextColMap;
 	}
 
-	void SetOwnerPos(float4 _OwnerPos)
+	void SetJarSize(const std::string_view& _Text)
 	{
-		OwnerPos = _OwnerPos;
+		JarSize = _Text;
 	}
 
 protected:
@@ -42,11 +42,9 @@ protected:
 
 private:
 	void MoveCalculation(float _DeltaTime);
-	void MoveCalculationSmall(float _DeltaTime);
 	void CollisionCheck(float _DeltaTime);
 	void GemSetting();
 	void ApplyScore();
-	void DirectCheckForKill();
 	void Kill();
 
 	GameEngineRender* AnimationRender = nullptr;
@@ -56,6 +54,7 @@ private:
 	GameEngineSoundPlayer BGMPlayer;
 
 	HeartState CreateHeart = HeartState::Small;
+	std::string JarSize = "Small";
 
 	float4 MoveDir = float4::Zero;
 	float4 NextPos = float4::Zero;

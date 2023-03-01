@@ -1,5 +1,6 @@
 #include "Mermaid.h"
 
+#include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineCore/GameEngineCollision.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineLevel.h>
@@ -8,6 +9,9 @@
 
 #include "ContentsEnum.h"
 #include "Mermaid_Attack.h"
+
+#include "Gem.h"
+#include "Heart.h"
 
 Mermaid::Mermaid() 
 {
@@ -150,6 +154,9 @@ void Mermaid::Kill()
 {
 	GameEngineActor* ColActor = BodyCollision->GetActor();
 	ColActor->Off();
+
+	CreateItem();
+
 	ColActor->Death();
 }
 
@@ -239,4 +246,19 @@ void Mermaid::CollisionSet()
 	SensorCollision->SetDebugRenderType(CT_Rect);
 	SensorCollision->SetScale({ 500, 300 });
 	SensorCollision->SetPosition({ -250, -75 });
+}
+
+void Mermaid::CreateItem()
+{
+	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 3);
+
+	if (1 == RandC)
+	{
+		Gem* Gems = nullptr;
+
+		Gems = GetLevel()->CreateActor<Gem>();
+		Gems->SetPos(GetPos());
+		Gems->SetColMap(ColMap);
+		Gems->SetJarSize("Large");
+	}
 }

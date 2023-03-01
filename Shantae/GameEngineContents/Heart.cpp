@@ -1,5 +1,6 @@
 #include "Heart.h"
 
+#include <GameEngineBase/GameEngineString.h>
 #include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineCollision.h>
@@ -23,7 +24,7 @@ void Heart::Start()
 	AnimationRender->CreateAnimation({ .AnimationName = "Heart",  .ImageName = "Heart1.bmp", .Start = 0, .End = 3, .InterTime = 0.1f });
 	AnimationRender->CreateAnimation({ .AnimationName = "Heart_Large",  .ImageName = "Heart2.bmp", .Start = 0, .End = 7, .InterTime = 0.1f });
 
-	BodyCollision = CreateCollision(CollisionOrder::Item);
+	BodyCollision = CreateCollision(CollisionOrder::Equip);
 	BodyCollision->SetDebugRenderType(CT_Rect);
 	BodyCollision->SetScale({ 25, 25 });
 	BodyCollision->SetPosition({ 0, -12.5f });
@@ -121,13 +122,15 @@ void Heart::CollisionCheck(float _DeltaTime)
 
 void Heart::GemSetting()
 {
-	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 1);
+	std::string UpperName = GameEngineString::ToUpper(JarSize);
+	std::string UpperName_comparison1 = GameEngineString::ToUpper("Small");
+	std::string UpperName_comparison2 = GameEngineString::ToUpper("Large");
 
-	if (1 == RandC/* && RandC <= 15*/)
+	if (UpperName_comparison1 == UpperName)
 	{
 		CreateHeart = HeartState::Small;
 	}
-	else if (2 <= RandC)
+	else if (UpperName_comparison2 == UpperName)
 	{
 		CreateHeart = HeartState::Large;
 	}
@@ -151,7 +154,20 @@ void Heart::GemSetting()
 
 void Heart::ApplyScore()
 {
-	Player::MainPlayer->SetPlayerHP(Score);
+	int CurrentHp = Player::MainPlayer->GetPlayerHP();
+	int CurrentMaxHp = Player::MainPlayer->GetPlayerMaxHP();
+	int EquipHp = CurrentHp + Score;
+
+	if (EquipHp >= CurrentMaxHp)
+	{
+		Score = CurrentMaxHp;
+		Player::MainPlayer->SetPlayerHP(Score);
+	}
+	else
+	{
+		Player::MainPlayer->PlusPlayerHP(Score);
+	}
+
 	Kill();
 }
 

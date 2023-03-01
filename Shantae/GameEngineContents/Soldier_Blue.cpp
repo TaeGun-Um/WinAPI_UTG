@@ -1,5 +1,6 @@
 #include "Soldier_Blue.h"
 
+#include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineCollision.h>
 #include <GameEngineCore/GameEngineRender.h>
@@ -7,6 +8,9 @@
 
 #include "Public_Boom.h"
 #include "ContentsEnum.h"
+
+#include "Gem.h"
+#include "Heart.h"
 
 Soldier_Blue::Soldier_Blue() 
 {
@@ -259,6 +263,7 @@ void Soldier_Blue::Kill()
 	ColActor->Off();
 
 	Explosion();
+	CreateItem();
 
 	ColActor->Death();
 }
@@ -329,4 +334,19 @@ void Soldier_Blue::CollisionSet()
 	BodyCollision->SetDebugRenderType(CT_Rect);
 	BodyCollision->SetScale({ 130, 150 });
 	BodyCollision->SetPosition({ 30, -75 });
+}
+
+void Soldier_Blue::CreateItem()
+{
+	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 3);
+
+	if (1 == RandC)
+	{
+		Gem* Gems = nullptr;
+
+		Gems = GetLevel()->CreateActor<Gem>();
+		Gems->SetPos(GetPos());
+		Gems->SetColMap(ColMap);
+		Gems->SetJarSize("small");
+	}
 }

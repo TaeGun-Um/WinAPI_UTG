@@ -46,6 +46,9 @@ void Player::Start()
 
 void Player::Update(float _DeltaTime)
 {
+	int PlayerH = HP;
+	int PlayerGe = PlayerGem;
+
 	OverlapTime += _DeltaTime;
 
 	//////////////////  µð¹ö±ë  //////////////////

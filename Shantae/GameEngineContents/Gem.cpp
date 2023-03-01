@@ -1,5 +1,6 @@
 #include "Gem.h"
 
+#include <GameEngineBase/GameEngineString.h>
 #include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineCollision.h>
@@ -31,7 +32,7 @@ void Gem::Start()
 	AnimationRender->CreateAnimation({ .AnimationName = "Red_Big",  .ImageName = "Gem.bmp", .Start = 35, .End = 39, .InterTime = 0.1f });
 	AnimationRender->CreateAnimation({ .AnimationName = "Yellow_Big",  .ImageName = "Gem.bmp", .Start = 45, .End = 49, .InterTime = 0.1f });
 
-	BodyCollision = CreateCollision(CollisionOrder::Item);
+	BodyCollision = CreateCollision(CollisionOrder::Equip);
 	BodyCollision->SetDebugRenderType(CT_Rect);
 	BodyCollision->SetScale({ 25, 45 });
 	BodyCollision->SetPosition({ 0, -22.5f });
@@ -121,7 +122,18 @@ void Gem::CollisionCheck(float _DeltaTime)
 
 void Gem::GemSetting()
 {
-	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 100);
+	std::string UpperName = GameEngineString::ToUpper(JarSize);
+	std::string UpperName_comparison1 = GameEngineString::ToUpper("Small");
+	std::string UpperName_comparison2 = GameEngineString::ToUpper("Large");
+
+	if (UpperName_comparison1 == UpperName)
+	{
+		RandC = GameEngineRandom::MainRandom.RandomInt(1, 75);
+	}
+	else if (UpperName_comparison2 == UpperName)
+	{
+		RandC = GameEngineRandom::MainRandom.RandomInt(76, 100);
+	}
 
 	if (1 <= RandC && RandC <= 15)
 	{
@@ -168,51 +180,51 @@ void Gem::GemSetting()
 	{
 	case GemState::Blue:
 		AnimationRender->ChangeAnimation("Blue");
-		Score = 1;
+		Score = 5;
 		break;
 	case GemState::Green:
 		AnimationRender->ChangeAnimation("Green");
-		Score = 2;
+		Score = 10;
 		break;
 	case GemState::Pupple:
 		AnimationRender->ChangeAnimation("Pupple");
-		Score = 3;
+		Score = 15;
 		break;
 	case GemState::Red:
 		AnimationRender->ChangeAnimation("Red");
-		Score = 4;
+		Score = 20;
 		break;
 	case GemState::Yellow:
 		AnimationRender->ChangeAnimation("Yellow");
-		Score = 5;
+		Score = 25;
 		break;
 	case GemState::Blue_Big:
 		AnimationRender->ChangeAnimation("Blue_Big");
-		Score = 10;
+		Score = 30;
 		BodyCollision->SetScale({ 30, 45 });
 		BodyCollision->SetPosition({ 0, -22.5f });
 		break;
 	case GemState::Green_Big:
 		AnimationRender->ChangeAnimation("Green_Big");
-		Score = 15;
+		Score = 35;
 		BodyCollision->SetScale({ 30, 45 });
 		BodyCollision->SetPosition({ 0, -22.5f });
 		break;
 	case GemState::Pupple_Big:
 		AnimationRender->ChangeAnimation("Pupple_Big");
-		Score = 20;
+		Score = 40;
 		BodyCollision->SetScale({ 30, 45 });
 		BodyCollision->SetPosition({ 0, -22.5f });
 		break;
 	case GemState::Red_Big:
 		AnimationRender->ChangeAnimation("Red_Big");
-		Score = 25;
+		Score = 45;
 		BodyCollision->SetScale({ 30, 45 });
 		BodyCollision->SetPosition({ 0, -22.5f });
 		break;
 	case GemState::Yellow_Big:
 		AnimationRender->ChangeAnimation("Yellow_Big");
-		Score = 30;
+		Score = 50;
 		BodyCollision->SetScale({ 30, 45 });
 		BodyCollision->SetPosition({ 0, -22.5f });
 		break;
@@ -223,7 +235,17 @@ void Gem::GemSetting()
 
 void Gem::ApplyScore()
 {
-	Player::MainPlayer->SetPlayerGem(Score);
+	int CurrentGem = Player::MainPlayer->GetPlayerGem();
+	int EquipGem = CurrentGem + Score;
+
+	if (EquipGem >= 999)
+	{
+		Score = 999;
+		Player::MainPlayer->SetPlayerGem(Score);
+	}
+
+	Player::MainPlayer->PlusPlayerGem(Score);
+
 	Kill();
 }
 

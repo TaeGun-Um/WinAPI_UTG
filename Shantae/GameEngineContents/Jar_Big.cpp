@@ -1,5 +1,6 @@
 #include "Jar_Big.h"
 
+#include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineCollision.h>
 #include <GameEngineCore/GameEngineLevel.h>
@@ -131,18 +132,26 @@ void Jar_Big::Break()
 
 void Jar_Big::CreateItem()
 {
-	//Gem* Gems = nullptr;
+	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 10);
 
-	//Gems = GetLevel()->CreateActor<Gem>();
-	//Gems->SetPos(GetPos());
-	//Gems->SetColMap(ColMap);
+	if (1 <= RandC && RandC <= 7)
+	{
+		Heart* Hp = nullptr;
 
-	Heart* Hp = nullptr;
+		Hp = GetLevel()->CreateActor<Heart>();
+		Hp->SetPos(GetPos());
+		Hp->SetColMap(ColMap);
+		Hp->SetJarSize("Large");
+	}
+	else
+	{
+		Gem* Gems = nullptr;
 
-	Hp = GetLevel()->CreateActor<Heart>();
-	Hp->SetPos(GetPos());
-	Hp->SetColMap(ColMap);
-	Hp->SetOwnerPos(GetPos());
+		Gems = GetLevel()->CreateActor<Gem>();
+		Gems->SetPos(GetPos());
+		Gems->SetColMap(ColMap);
+		Gems->SetJarSize("Large");
+	}
 }
 
 void Jar_Big::Kill()

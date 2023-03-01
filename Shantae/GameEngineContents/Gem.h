@@ -38,6 +38,11 @@ public:
 		ColMap = _NextColMap;
 	}
 
+	void SetJarSize(const std::string_view& _Text)
+	{
+		JarSize = _Text;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -57,12 +62,14 @@ private:
 	GameEngineSoundPlayer BGMPlayer;
 
 	GemState CreateGem = GemState::Blue;
+	std::string JarSize = "Small";
 
 	float4 MoveDir = float4::Zero;
 	float4 NextPos = float4::Zero;
 
 	float Jump = 800.0f;
 
+	int RandC = 0;
 	int CreateSet = 1;
 	int Score = 0;
 	int SoundCount = 1;

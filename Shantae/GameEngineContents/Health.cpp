@@ -65,18 +65,22 @@ void Health::HealthControl(int _PlayerHP)
 	if (8 == _PlayerHP)
 	{
 		AnimationRender2->ChangeAnimation("Heart4");
+		AnimationRender->ChangeAnimation("Heart4");
 	}
 	else if (7 == _PlayerHP)
 	{
 		AnimationRender2->ChangeAnimation("Heart3");
+		AnimationRender->ChangeAnimation("Heart4");
 	}
 	else if (6 == _PlayerHP)
 	{
 		AnimationRender2->ChangeAnimation("Heart2");
+		AnimationRender->ChangeAnimation("Heart4");
 	}
 	else if (5 == _PlayerHP)
 	{
 		AnimationRender2->ChangeAnimation("Heart1");
+		AnimationRender->ChangeAnimation("Heart4");
 	}
 	else if (4 == _PlayerHP)
 	{

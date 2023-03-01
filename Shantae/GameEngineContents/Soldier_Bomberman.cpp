@@ -1,5 +1,6 @@
 #include "Soldier_Bomberman.h"
 
+#include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineBase/GameEngineDebug.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineResources.h>
@@ -12,6 +13,9 @@
 #include "Public_Boom.h"
 
 #include "ContentsEnum.h"
+
+#include "Gem.h"
+#include "Heart.h"
 
 Soldier_Bomberman::Soldier_Bomberman()
 {
@@ -167,6 +171,7 @@ void Soldier_Bomberman::Kill()
 	ColActor->Off();
 
 	Explosion();
+	CreateItem();
 
 	ColActor->Death();
 }
@@ -244,4 +249,19 @@ void Soldier_Bomberman::CollisionSet()
 	BodyCollision->SetDebugRenderType(CT_Rect);
 	BodyCollision->SetScale({ 100, 110 });
 	BodyCollision->SetPosition({ 0, -55 });
+}
+
+void Soldier_Bomberman::CreateItem()
+{
+	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 3);
+
+	if (1 == RandC)
+	{
+		Gem* Gems = nullptr;
+
+		Gems = GetLevel()->CreateActor<Gem>();
+		Gems->SetPos(GetPos());
+		Gems->SetColMap(ColMap);
+		Gems->SetJarSize("small");
+	}
 }

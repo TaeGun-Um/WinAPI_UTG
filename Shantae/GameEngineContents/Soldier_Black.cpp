@@ -1,5 +1,6 @@
 #include "Soldier_Black.h"
 
+#include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineBase/GameEngineDebug.h>
 #include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineCollision.h>
@@ -11,6 +12,9 @@
 #include "Public_Boom.h"
 
 #include "ContentsEnum.h"
+
+#include "Gem.h"
+#include "Heart.h"
 
 Soldier_Black::Soldier_Black()
 {
@@ -193,6 +197,7 @@ void Soldier_Black::Kill()
 	ColActor->Off();
 
 	Explosion();
+	CreateItem();
 
 	ColActor->Death();
 }
@@ -285,4 +290,19 @@ void Soldier_Black::CollisionSet()
 	SensorCollision->SetDebugRenderType(CT_Rect);
 	SensorCollision->SetScale({ 1000, 500 });
 	SensorCollision->SetPosition({ 0, -150 });
+}
+
+void Soldier_Black::CreateItem()
+{
+	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 3);
+
+	if (1 == RandC)
+	{
+		Gem* Gems = nullptr;
+
+		Gems = GetLevel()->CreateActor<Gem>();
+		Gems->SetPos(GetPos());
+		Gems->SetColMap(ColMap);
+		Gems->SetJarSize("Large");
+	}
 }

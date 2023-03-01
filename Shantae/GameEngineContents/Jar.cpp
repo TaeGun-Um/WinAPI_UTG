@@ -1,5 +1,6 @@
 #include "Jar.h"
 
+#include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineCollision.h>
 #include <GameEngineCore/GameEngineLevel.h>
@@ -9,6 +10,9 @@
 #include "Jar_Piece1.h"
 #include "Jar_Piece2.h"
 #include "Jar_Piece3.h"
+
+#include "Gem.h"
+#include "Heart.h"
 
 Jar::Jar() 
 {
@@ -114,7 +118,33 @@ void Jar::Break()
 	Piece3->SetPos(GetPos());
 	Piece3->SetOwnerPos(GetPos());
 
+	CreateItem();
+
 	Kill();
+}
+
+void Jar::CreateItem()
+{
+	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 10);
+
+	if (1 <= RandC && RandC <= 5)
+	{
+		Heart* Hp = nullptr;
+
+		Hp = GetLevel()->CreateActor<Heart>();
+		Hp->SetPos(GetPos());
+		Hp->SetColMap(ColMap);
+		Hp->SetJarSize("small");
+	}
+	else
+	{
+		Gem* Gems = nullptr;
+
+		Gems = GetLevel()->CreateActor<Gem>();
+		Gems->SetPos(GetPos());
+		Gems->SetColMap(ColMap);
+		Gems->SetJarSize("small");
+	}
 }
 
 void Jar::Kill()

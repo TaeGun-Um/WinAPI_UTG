@@ -102,6 +102,7 @@ private:
 	void Explosion();
 	void Kill();
 	void AlphaBlinker(float _DeltaTime);
+	void CreateItem();
 
 	void RenderSet();
 	void CollisionSet();
