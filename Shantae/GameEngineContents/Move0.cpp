@@ -28,6 +28,7 @@
 #include "Sky.h"
 
 #include "Jar.h"
+#include "Jar_Big.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -206,6 +207,10 @@ void Move0::Loading()
 		j6->SetPos({ 10614, 339 });
 		j6->SetColMap(ColMap);
 		j6->SetGround(44);
+
+		Jar_Big* jB = CreateActor<Jar_Big>();
+		jB->SetPos({ 11520, 635 });
+		jB->SetColMap(ColMap);
 	}
 
 	// Monster

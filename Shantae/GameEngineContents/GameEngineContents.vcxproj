@@ -351,6 +351,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Jar_Big.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Jar_Piece1.h">
       <SubType>
       </SubType>
@@ -360,6 +364,14 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Jar_Piece3.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Jar_Piece4.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Jar_Piece5.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -1075,6 +1087,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Jar_Big.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Jar_Piece1.cpp">
       <SubType>
       </SubType>
@@ -1084,6 +1100,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Jar_Piece3.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Jar_Piece4.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Jar_Piece5.cpp">
       <SubType>
       </SubType>
     </ClCompile>

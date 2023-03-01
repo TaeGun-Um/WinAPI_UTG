@@ -548,6 +548,15 @@
     <ClInclude Include="Heart_Octopus.h">
       <Filter>Item\ObjectItem</Filter>
     </ClInclude>
+    <ClInclude Include="Jar_Big.h">
+      <Filter>Item\Jar</Filter>
+    </ClInclude>
+    <ClInclude Include="Jar_Piece4.h">
+      <Filter>Item\Jar</Filter>
+    </ClInclude>
+    <ClInclude Include="Jar_Piece5.h">
+      <Filter>Item\Jar</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShantaeCore.cpp" />
@@ -1153,6 +1162,15 @@
     </ClCompile>
     <ClCompile Include="ItemBox.cpp">
       <Filter>Item\ObjectItem</Filter>
+    </ClCompile>
+    <ClCompile Include="Jar_Big.cpp">
+      <Filter>Item\Jar</Filter>
+    </ClCompile>
+    <ClCompile Include="Jar_Piece4.cpp">
+      <Filter>Item\Jar</Filter>
+    </ClCompile>
+    <ClCompile Include="Jar_Piece5.cpp">
+      <Filter>Item\Jar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

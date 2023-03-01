@@ -1,23 +1,24 @@
 #pragma once
 
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/GameEngineResources.h>
 
 class GameEngineImage;
 
 // Ό³Έν :
-class ItemBox : public GameEngineActor
+class Jar_Big : public GameEngineActor
 {
 public:
 	// constrcuter destructer
-	ItemBox();
-	~ItemBox();
+	Jar_Big();
+	~Jar_Big();
 
 	// delete Function
-	ItemBox(const ItemBox& _Other) = delete;
-	ItemBox(ItemBox&& _Other) noexcept = delete;
-	ItemBox& operator=(const ItemBox& _Other) = delete;
-	ItemBox& operator=(ItemBox&& _Other) noexcept = delete;
-
+	Jar_Big(const Jar_Big& _Other) = delete;
+	Jar_Big(Jar_Big&& _Other) noexcept = delete;
+	Jar_Big& operator=(const Jar_Big& _Other) = delete;
+	Jar_Big& operator=(Jar_Big&& _Other) noexcept = delete;
+	
 	void SetColMap(GameEngineImage* _NextColMap)
 	{
 		ColMap = _NextColMap;
@@ -31,16 +32,19 @@ protected:
 private:
 	void MoveCalculation(float _DeltaTime);
 	void CollisionCheck(float _DeltaTime);
-	void CreateItem();
+	void Break();
+	void Kill();
 
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
 	GameEngineImage* ColMap = nullptr;
 
+	GameEngineSoundPlayer BGMPlayer;
+
 	float4 MoveDir = float4::Zero;
 	float4 NextPos = float4::Zero;
 
-	int Open = 1;
-	bool IsHit = false;
+	int SoundCount = 1;
+
 };
 

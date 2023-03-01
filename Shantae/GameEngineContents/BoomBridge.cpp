@@ -16,6 +16,8 @@
 #include "Sky.h"
 #include "TimerCollision.h"
 
+#include "Jar_Big.h"
+
 #include "Soldier_Spider.h"
 #include "Soldier_Pile.h"
 #include "Player.h"
@@ -48,6 +50,13 @@ void BoomBridge::Loading()
 	// Map
 	CreateActor<BoomBridge_Map>();
 	CreateActor<BoomBridge_ColMap>();
+
+	// Item
+	{
+		Jar_Big* jB = CreateActor<Jar_Big>();
+		jB->SetPos({ 1450, 6510 });
+		jB->SetColMap(ColMap);
+	}
 
 	// Monster
 	{

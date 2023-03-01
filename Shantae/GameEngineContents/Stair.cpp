@@ -19,6 +19,7 @@
 #include "Mermaid.h"
 
 #include "Jar.h"
+#include "Jar_Big.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -84,6 +85,10 @@ void Stair::Loading()
 		j6->SetPos({ 415, 1150 });
 		j6->SetColMap(ColMap);
 		j6->SetGround(46);
+
+		Jar_Big* jB = CreateActor<Jar_Big>();
+		jB->SetPos({ 1262, 3560 });
+		jB->SetColMap(ColMap);
 	}
 
 	// Monster

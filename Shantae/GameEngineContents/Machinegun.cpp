@@ -16,6 +16,7 @@
 #include "Soldier_Machinegun.h"
 
 #include "Jar.h"
+#include "Jar_Big.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -104,6 +105,14 @@ void Machinegun::Loading()
 		j2->SetPos({ 2207, 510 });
 		j2->SetColMap(ColMap);
 		j2->SetGround(43);
+
+		Jar_Big* jB = CreateActor<Jar_Big>();
+		jB->SetPos({ 6066, 810 });
+		jB->SetColMap(ColMap);
+
+		Jar_Big* jB1 = CreateActor<Jar_Big>();
+		jB1->SetPos({ 11555, 560 });
+		jB1->SetColMap(ColMap);
 	}
 
 	// Monster

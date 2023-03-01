@@ -43,6 +43,7 @@ void SoundLoad::Loading()
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\House_explosion.mp3"));		 // o Home Æø¹ßÀ½
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Explosion_deep.wav"));			 // o °Ç¹° Æø¹ßÀ½
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Clash_smalljar.wav"));			 // o jar ÆÄ±« ½Ã È¿°úÀ½
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Clash_bigjar.wav"));			 // o jar ÆÄ±« ½Ã È¿°úÀ½
 
 	// Town
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Town\\Scuttle_Town.mp3"));             // o TownLevel BGM

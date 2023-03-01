@@ -31,6 +31,8 @@
 #include "Mermaid.h"
 
 #include "Jar.h"
+#include "ItemBox.h"
+#include "Jar_Big.h"
 
 #include "Town_Guard.h"
 #include "Sailor.h"
@@ -106,7 +108,7 @@ void TestLevel::Loading()
 	//s->SetPos({ 500, 850 });
 	//s->SetColMap(ColMap);
 
-	Jar* j = CreateActor<Jar>();
+	Jar_Big* j = CreateActor<Jar_Big>();
 	j->SetPos({ 700, 600 });
 	j->SetColMap(ColMap);
 

@@ -19,6 +19,7 @@
 
 #include "Soldier_Bomberman.h"
 #include "Jar.h"
+#include "Jar_Big.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -121,6 +122,10 @@ void Move1::Loading()
 		j4->SetPos({ 4239, 600 });
 		j4->SetColMap(ColMap);
 		j4->SetGround(45);
+
+		Jar_Big* jB = CreateActor<Jar_Big>();
+		jB->SetPos({ 11460, 645 });
+		jB->SetColMap(ColMap);
 	}
 
 	// Monster

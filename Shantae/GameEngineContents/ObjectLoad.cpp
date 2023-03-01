@@ -174,6 +174,8 @@ void ObjectLoad::Loading()
 	I6->Cut(1, 11);
 	GameEngineImage* I7 = GameEngineResources::GetInst().ImageLoad(Dir1.GetPlusFileName("Jar.bmp"));
 	I7->Cut(4, 1);
+	GameEngineImage* I77 = GameEngineResources::GetInst().ImageLoad(Dir1.GetPlusFileName("Jar_big.bmp"));
+	I77->Cut(4, 1);
 	GameEngineImage* I8 = GameEngineResources::GetInst().ImageLoad(Dir1.GetPlusFileName("Jar_Piece.bmp"));
 	I8->Cut(8, 5);
 	GameEngineImage* I9 = GameEngineResources::GetInst().ImageLoad(Dir1.GetPlusFileName("Wave.bmp"));
