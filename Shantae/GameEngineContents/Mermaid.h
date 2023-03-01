@@ -90,7 +90,6 @@ private:
 	int HitSet = 1;
 
 	std::string DirString = "_L";
-	std::string HitDir = "_L";
 	MermaidState StateValue = MermaidState::IDLE;
 
 	std::string DirCheck(const std::string_view& _AnimationName);

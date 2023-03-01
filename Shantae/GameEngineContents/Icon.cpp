@@ -1,5 +1,6 @@
 #include "Icon.h"
 
+#include <GameEngineBase/GameEngineString.h>
 #include <GameEngineCore/GameEngineRender.h>
 
 #include "ContentsEnum.h"
@@ -28,21 +29,47 @@ void Icon::Start()
 
 void Icon::Update(float _DeltaTime)
 {
-	if (1 == Count)
-	{
-		AnimationRender->ChangeAnimation("MonsterMilk");
-	}
-	else if (2 == Count)
-	{
-		AnimationRender->ChangeAnimation("Bubble");
-	}
-	else if (3 == Count)
-	{
-		AnimationRender->ChangeAnimation("Octopus");
-	}
+	IconSelect();
 }
 
 void Icon::Render(float _DeltaTime)
 {
 
+}
+
+void Icon::IconSelect()
+{
+	std::string UpperName = GameEngineString::ToUpper(IconName);
+
+	std::string UpperName_comparison1 = GameEngineString::ToUpper("MonsterMilk");
+	std::string UpperName_comparison2 = GameEngineString::ToUpper("Meat");
+	std::string UpperName_comparison3 = GameEngineString::ToUpper("Bubble");
+	std::string UpperName_comparison4 = GameEngineString::ToUpper("PikeBall");
+	std::string UpperName_comparison5 = GameEngineString::ToUpper("Octopus");
+	std::string UpperName_comparison6 = GameEngineString::ToUpper("Pass");
+
+	if (UpperName_comparison1 == UpperName)
+	{
+		AnimationRender->ChangeAnimation("MonsterMilk");
+	}
+	else if (UpperName_comparison2 == UpperName)
+	{
+		AnimationRender->ChangeAnimation("Meat");
+	}
+	else if (UpperName_comparison3 == UpperName)
+	{
+		AnimationRender->ChangeAnimation("Bubble");
+	}
+	else if (UpperName_comparison4 == UpperName)
+	{
+		AnimationRender->ChangeAnimation("PikeBall");
+	}
+	else if (UpperName_comparison5 == UpperName)
+	{
+		AnimationRender->ChangeAnimation("Octopus");
+	}
+	else if (UpperName_comparison6 == UpperName)
+	{
+		AnimationRender->ChangeAnimation("Pass");
+	}
 }

@@ -123,9 +123,10 @@ void Inventory::Update(float _DeltaTime)
 	{
 		Select->On();
 		SelectMove(_DeltaTime);
+		SelectItem();
 	}
 
-	if (GameEngineInput::IsDown("Select"))
+	if (GameEngineInput::IsDown("Attack"))
 	{
 		CreateItem();
 	}
@@ -169,11 +170,26 @@ void Inventory::CreateItem()
 		float4 IconPos = SpaceList->GetBoxPos();
 		IconList = GetLevel()->CreateActor<Icon>();
 		IconList->SetPos(IconPos);
-		IconList->SetCount(2);
+		IconList->SetIconName("monsterMilk");
 
 		SpaceList->SetItemIcon(IconList);
 
 		break;
+	}
+}
+
+void Inventory::SelectItem()
+{
+	if (GameEngineInput::IsDown("Select"))
+	{
+		Icon* IconList = Boxes.find(BoxNumber)->second->GetItemIcon();
+
+		if (nullptr != IconList)
+		{
+			IconList->Death();
+			IconList = nullptr;
+			Boxes.find(BoxNumber)->second->SetItemIcon(IconList);
+		}
 	}
 }
 

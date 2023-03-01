@@ -77,8 +77,9 @@ protected:
 
 private:
 	void SetItemBox(int _Order, float4 _BoxPos);
-	void SelectMove(float _DeltaTime);
 	void CreateItem();
+	void SelectItem();
+	void SelectMove(float _DeltaTime);
 
 	ItemSelect* Select = nullptr;
 	std::map<int, ItemSpace*> Boxes;

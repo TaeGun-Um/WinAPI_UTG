@@ -20,6 +20,11 @@ public:
 	{
 		Count = _Value;
 	}
+
+	void SetIconName(std::string_view _Name)
+	{
+		IconName = _Name;
+	}
 	
 protected:
 	void Start() override;
@@ -27,7 +32,10 @@ protected:
 	void Render(float _DeltaTime) override;
 
 private:
+	void IconSelect();
+
 	GameEngineRender* AnimationRender = nullptr;
+	std::string IconName = "Milk";
 	int Count = 0;
 };
 

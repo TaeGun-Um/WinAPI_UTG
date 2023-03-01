@@ -77,10 +77,10 @@ void Player::Update(float _DeltaTime)
 		return;
 	}
 	// 더미몬스터
-	if (GameEngineInput::IsDown("CreateMonster"))
-	{
-		CreateDummy();
-	}
+	//if (GameEngineInput::IsDown("CreateMonster"))
+	//{
+	//	CreateDummy();
+	//}
 
 	//////////////////  레벨이동 애니메이션  //////////////////
 	// 레벨 시작 애니메이션
