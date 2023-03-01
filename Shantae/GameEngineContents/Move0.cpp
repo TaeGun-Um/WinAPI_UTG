@@ -27,6 +27,8 @@
 #include "Sea.h"
 #include "Sky.h"
 
+#include "Jar.h"
+
 #include "GemWindow.h"
 #include "Health.h"
 #include "ObjectLoad.h"
@@ -171,6 +173,39 @@ void Move0::Loading()
 		M14->SetRun();
 		M14->SetRunSpeed(240);
 
+	}
+
+	// Item
+	{
+		Jar* j1 = CreateActor<Jar>();
+		j1->SetPos({ 3177, 290 });
+		j1->SetColMap(ColMap);
+		j1->SetGround(46);
+
+		Jar* j2 = CreateActor<Jar>();
+		j2->SetPos({ 3226, 290 });
+		j2->SetColMap(ColMap);
+		j2->SetGround(46);
+
+		Jar* j3 = CreateActor<Jar>();
+		j3->SetPos({ 3821, 590 });
+		j3->SetColMap(ColMap);
+		j3->SetGround(43);
+
+		Jar* j4 = CreateActor<Jar>();
+		j4->SetPos({ 3871, 590 });
+		j4->SetColMap(ColMap);
+		j4->SetGround(43);
+
+		Jar* j5 = CreateActor<Jar>();
+		j5->SetPos({ 10565, 339 });
+		j5->SetColMap(ColMap);
+		j5->SetGround(44);
+
+		Jar* j6 = CreateActor<Jar>();
+		j6->SetPos({ 10614, 339 });
+		j6->SetColMap(ColMap);
+		j6->SetGround(44);
 	}
 
 	// Monster

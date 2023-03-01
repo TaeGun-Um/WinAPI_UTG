@@ -14,11 +14,11 @@
 #include "Stair_Tower.h"
 #include "Sky.h"
 
+#include "Player.h"
 #include "Soldier_Black.h"
 #include "Mermaid.h"
-#include "Soldier_Blue.h"
 
-#include "Player.h"
+#include "Jar.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -52,6 +52,39 @@ void Stair::Loading()
 	// Map
 	CreateActor<Stair_Map>();
 	CreateActor<Stair_ColMap>();
+
+	// Item
+	{
+		Jar* j1 = CreateActor<Jar>();
+		j1->SetPos({ 363, 2780 });
+		j1->SetColMap(ColMap);
+		j1->SetGround(48);
+
+		Jar* j2 = CreateActor<Jar>();
+		j2->SetPos({ 415, 2780 });
+		j2->SetColMap(ColMap);
+		j2->SetGround(48);
+
+		Jar* j3 = CreateActor<Jar>();
+		j3->SetPos({ 363 ,1965 });
+		j3->SetColMap(ColMap);
+		j3->SetGround(48);
+
+		Jar* j4 = CreateActor<Jar>();
+		j4->SetPos({ 415, 1965 });
+		j4->SetColMap(ColMap);
+		j4->SetGround(48);
+
+		Jar* j5 = CreateActor<Jar>();
+		j5->SetPos({ 363, 1150 });
+		j5->SetColMap(ColMap);
+		j5->SetGround(46);
+
+		Jar* j6 = CreateActor<Jar>();
+		j6->SetPos({ 415, 1150 });
+		j6->SetColMap(ColMap);
+		j6->SetGround(46);
+	}
 
 	// Monster
 	// ½ºÆ÷³Ê»ç¿ë¹ý   ½ºÆ÷³Ê À§Ä¡   ¸÷ÀÌ¸§   ÄÝ¸Ê    ¸÷ Á¨ À§Ä¡   ¸®Á¨½Ã°£

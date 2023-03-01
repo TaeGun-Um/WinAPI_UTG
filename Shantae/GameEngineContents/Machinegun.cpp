@@ -15,6 +15,8 @@
 #include "Machinegun_Plat.h"
 #include "Soldier_Machinegun.h"
 
+#include "Jar.h"
+
 #include "GemWindow.h"
 #include "Health.h"
 #include "ObjectLoad.h"
@@ -89,6 +91,19 @@ void Machinegun::Loading()
 		Plat18->SetPos({ 10905, 590 });
 		Machinegun_Plat* Plat19 = CreateActor<Machinegun_Plat>();
 		Plat19->SetPos({ 11005, 590 });
+	}
+
+	// Item
+	{
+		Jar* j1 = CreateActor<Jar>();
+		j1->SetPos({ 2157, 510 });
+		j1->SetColMap(ColMap);
+		j1->SetGround(43);
+
+		Jar* j2 = CreateActor<Jar>();
+		j2->SetPos({ 2207, 510 });
+		j2->SetColMap(ColMap);
+		j2->SetGround(43);
 	}
 
 	// Monster

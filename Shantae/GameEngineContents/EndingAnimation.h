@@ -26,7 +26,7 @@ private:
 	GameEngineRender* AnimationRender = nullptr;
 
 	float AnimationCutTime = 0.0f;
-	int AlphaValue = 0.0f;
+	int AlphaValue = 0;
 	int CutChange = 1;
 	int AnimationCount = 0;
 	int CreateTextCount = 1;

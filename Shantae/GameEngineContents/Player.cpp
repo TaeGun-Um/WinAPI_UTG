@@ -614,6 +614,14 @@ void Player::CollisionCheck(float _DeltaTime)
 		}
 	}
 
+	if (nullptr != AttackCollision)
+	{
+		if (true == AttackCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Item), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+		{
+			CreateImpact();
+		}
+	}
+
 	if (true == HitTimeCheck && false == IsJumpHit)
 	{
 		HitTime += _DeltaTime;

@@ -42,7 +42,7 @@ void SoundLoad::Loading()
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Housefront_wave.wav"));         // o Home, HouseFront 파도소리 환경음
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\House_explosion.mp3"));		 // o Home 폭발음
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Explosion_deep.wav"));			 // o 건물 폭발음
-	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Clash_smalljar.wav"));			 // jar 파괴 시 효과음
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Clash_smalljar.wav"));			 // o jar 파괴 시 효과음
 
 	// Town
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Town\\Scuttle_Town.mp3"));             // o TownLevel BGM

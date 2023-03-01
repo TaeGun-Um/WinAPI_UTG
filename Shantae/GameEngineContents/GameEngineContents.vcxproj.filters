@@ -497,12 +497,6 @@
     <ClInclude Include="Mermaid_AttackBoom.h">
       <Filter>Character\Monster\Mermaid\Effect</Filter>
     </ClInclude>
-    <ClInclude Include="Gem.h">
-      <Filter>Item</Filter>
-    </ClInclude>
-    <ClInclude Include="Heart.h">
-      <Filter>Item</Filter>
-    </ClInclude>
     <ClInclude Include="Jar.h">
       <Filter>Item\Jar</Filter>
     </ClInclude>
@@ -515,9 +509,6 @@
     <ClInclude Include="Jar_Piece3.h">
       <Filter>Item\Jar</Filter>
     </ClInclude>
-    <ClInclude Include="ItemBox.h">
-      <Filter>Item</Filter>
-    </ClInclude>
     <ClInclude Include="ItemSelect.h">
       <Filter>Item\ItemIcon</Filter>
     </ClInclude>
@@ -527,17 +518,14 @@
     <ClInclude Include="Icon.h">
       <Filter>Item\ItemIcon</Filter>
     </ClInclude>
-    <ClInclude Include="Heart_Octopus.h">
-      <Filter>Item</Filter>
-    </ClInclude>
     <ClInclude Include="Bubble.h">
-      <Filter>Item\UseItem</Filter>
+      <Filter>Item\UsingItem</Filter>
     </ClInclude>
     <ClInclude Include="PikeBall.h">
-      <Filter>Item\UseItem</Filter>
+      <Filter>Item\UsingItem</Filter>
     </ClInclude>
     <ClInclude Include="MonsterMilk.h">
-      <Filter>Item\UseItem</Filter>
+      <Filter>Item\UsingItem</Filter>
     </ClInclude>
     <ClInclude Include="EndingLevel.h">
       <Filter>PlayLevel\EndingLevel</Filter>
@@ -547,6 +535,18 @@
     </ClInclude>
     <ClInclude Include="GameOverText.h">
       <Filter>PlayLevel\EndingLevel\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemBox.h">
+      <Filter>Item\ObjectItem</Filter>
+    </ClInclude>
+    <ClInclude Include="Gem.h">
+      <Filter>Item\ObjectItem</Filter>
+    </ClInclude>
+    <ClInclude Include="Heart.h">
+      <Filter>Item\ObjectItem</Filter>
+    </ClInclude>
+    <ClInclude Include="Heart_Octopus.h">
+      <Filter>Item\ObjectItem</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1103,12 +1103,6 @@
     <ClCompile Include="Mermaid_AttackBoom.cpp">
       <Filter>Character\Monster\Mermaid\Effect</Filter>
     </ClCompile>
-    <ClCompile Include="Gem.cpp">
-      <Filter>Item</Filter>
-    </ClCompile>
-    <ClCompile Include="Heart.cpp">
-      <Filter>Item</Filter>
-    </ClCompile>
     <ClCompile Include="Jar.cpp">
       <Filter>Item\Jar</Filter>
     </ClCompile>
@@ -1121,9 +1115,6 @@
     <ClCompile Include="Jar_Piece3.cpp">
       <Filter>Item\Jar</Filter>
     </ClCompile>
-    <ClCompile Include="ItemBox.cpp">
-      <Filter>Item</Filter>
-    </ClCompile>
     <ClCompile Include="ItemSelect.cpp">
       <Filter>Item\ItemIcon</Filter>
     </ClCompile>
@@ -1133,17 +1124,14 @@
     <ClCompile Include="Icon.cpp">
       <Filter>Item\ItemIcon</Filter>
     </ClCompile>
-    <ClCompile Include="Heart_Octopus.cpp">
-      <Filter>Item</Filter>
-    </ClCompile>
     <ClCompile Include="Bubble.cpp">
-      <Filter>Item\UseItem</Filter>
+      <Filter>Item\UsingItem</Filter>
     </ClCompile>
     <ClCompile Include="PikeBall.cpp">
-      <Filter>Item\UseItem</Filter>
+      <Filter>Item\UsingItem</Filter>
     </ClCompile>
     <ClCompile Include="MonsterMilk.cpp">
-      <Filter>Item\UseItem</Filter>
+      <Filter>Item\UsingItem</Filter>
     </ClCompile>
     <ClCompile Include="EndingLevel.cpp">
       <Filter>PlayLevel\EndingLevel</Filter>
@@ -1153,6 +1141,18 @@
     </ClCompile>
     <ClCompile Include="GameOverText.cpp">
       <Filter>PlayLevel\EndingLevel\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Gem.cpp">
+      <Filter>Item\ObjectItem</Filter>
+    </ClCompile>
+    <ClCompile Include="Heart.cpp">
+      <Filter>Item\ObjectItem</Filter>
+    </ClCompile>
+    <ClCompile Include="Heart_Octopus.cpp">
+      <Filter>Item\ObjectItem</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemBox.cpp">
+      <Filter>Item\ObjectItem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1387,14 +1387,17 @@
     <Filter Include="Item\ItemIcon">
       <UniqueIdentifier>{fffdbb26-1466-4ac9-9f1f-9f628d2593a1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Item\UseItem">
-      <UniqueIdentifier>{99b9339a-9347-4bcf-88cc-2245e0f2d90d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="PlayLevel\EndingLevel">
       <UniqueIdentifier>{32567bba-fb2e-4fbc-b5a7-e835f57451f4}</UniqueIdentifier>
     </Filter>
     <Filter Include="PlayLevel\EndingLevel\Actor">
       <UniqueIdentifier>{108d504d-deb7-4fed-9ef3-d045f750f1aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item\ObjectItem">
+      <UniqueIdentifier>{b70551f0-8145-456e-82ba-4e91d9bc33ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item\UsingItem">
+      <UniqueIdentifier>{99b9339a-9347-4bcf-88cc-2245e0f2d90d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

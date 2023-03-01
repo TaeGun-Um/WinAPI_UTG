@@ -18,6 +18,7 @@
 #include "Building1.h"
 
 #include "Soldier_Bomberman.h"
+#include "Jar.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -97,6 +98,29 @@ void Move1::Loading()
 		W8->SetPos({ 9430, 775 });
 		GameEngineActor* W9 = CreateActor<Wave>();
 		W9->SetPos({ 10280, 775 });
+	}
+
+	// Item
+	{
+		Jar* j1 = CreateActor<Jar>();
+		j1->SetPos({ 3080, 600 });
+		j1->SetColMap(ColMap);
+		j1->SetGround(45);
+
+		Jar* j2 = CreateActor<Jar>();
+		j2->SetPos({ 3131, 600 });
+		j2->SetColMap(ColMap);
+		j2->SetGround(45);
+
+		Jar* j3 = CreateActor<Jar>();
+		j3->SetPos({ 4189, 600 });
+		j3->SetColMap(ColMap);
+		j3->SetGround(45);
+
+		Jar* j4 = CreateActor<Jar>();
+		j4->SetPos({ 4239, 600 });
+		j4->SetColMap(ColMap);
+		j4->SetGround(45);
 	}
 
 	// Monster

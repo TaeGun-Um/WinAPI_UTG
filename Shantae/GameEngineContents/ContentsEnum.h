@@ -25,6 +25,7 @@ enum class CollisionOrder
 	Ground,              // 6
 	Effect,              // 7
 	Trigger,			 // 8
+	Item,				 // 9
 };
 
 // Enum class

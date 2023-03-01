@@ -30,6 +30,8 @@
 #include "Sea.h"
 #include "Mermaid.h"
 
+#include "Jar.h"
+
 #include "Town_Guard.h"
 #include "Sailor.h"
 #include "Boy.h"
@@ -100,17 +102,13 @@ void TestLevel::Loading()
 
 	}
 
-
 	//Soldier_Black* s = CreateActor<Soldier_Black>();
 	//s->SetPos({ 500, 850 });
 	//s->SetColMap(ColMap);
 
-	Mermaid* s1 = CreateActor<Mermaid>();
-	s1->SetPos({ 700, 850 });
-	s1->SetColMap(ColMap);
-	s1->SetDirect(false);
-
-	
+	Jar* j = CreateActor<Jar>();
+	j->SetPos({ 700, 600 });
+	j->SetColMap(ColMap);
 
 	Shantae = CreateActor<Player>();
 	SHA = dynamic_cast<Player*>(Shantae);
