@@ -59,7 +59,7 @@ void Machinegun_Plat::CollisionCheck()
 {
 	if (nullptr != MisillieCollision)
 	{
-		if (true == MisillieCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Effect), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+		if (true == MisillieCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PlayerEffect), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
 			HitAction = true;
 		}

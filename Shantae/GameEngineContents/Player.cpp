@@ -475,7 +475,7 @@ void Player::WallCheck(float _Speed)
 			Fall = true;
 			MoveDir.y = 100.0f;
 
-			if (1 == UpCol)
+			if (1 == UpCol && true == IsJump)
 			{
 				UpCol = 0;
 				BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_crouch.mp3");
@@ -606,11 +606,25 @@ void Player::CollisionCheck(float _DeltaTime)
 		}
 	}
 
+	if (0 == ImpactCreate)
+	{
+		ImpactRe += _DeltaTime;
+		if (0.1 <= ImpactRe)
+		{
+			ImpactRe = 0.0f;
+			ImpactCreate = 1;
+		}
+	}
+
 	if (nullptr != AttackCollision)
 	{
 		if (true == AttackCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Monster), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
-			CreateImpact();
+			if (1 == ImpactCreate)
+			{
+				ImpactCreate = 0;
+				CreateImpact();
+			}
 		}
 	}
 
@@ -618,7 +632,11 @@ void Player::CollisionCheck(float _DeltaTime)
 	{
 		if (true == AttackCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Item), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
-			CreateImpact();
+			if (1 == ImpactCreate)
+			{
+				ImpactCreate = 0;
+				CreateImpact();
+			}
 		}
 	}
 
@@ -988,7 +1006,7 @@ void Player::CollisionSet()
 	BodyCollision->SetScale({ 50, 90 });
 	BodyCollision->SetPosition({ 0, -45 });
 
-	StandingCollision = CreateCollision(CollisionOrder::Effect);
+	StandingCollision = CreateCollision(CollisionOrder::PlayerEffect);
 	StandingCollision->SetDebugRenderType(CT_Rect);
 	StandingCollision->SetScale({ 40, 80 });
 	StandingCollision->SetPosition({ 0, -40 });

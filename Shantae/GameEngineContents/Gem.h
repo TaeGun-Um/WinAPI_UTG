@@ -30,11 +30,19 @@ protected:
 	void Render(float _DeltaTime) override;
 
 private:
+	void MoveCalculation(float _DeltaTime);
+	void CollisionCheck(float _DeltaTime);
+
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
 	GameEngineImage* ColMap = nullptr;
 
+	float4 MoveDir = float4::Zero;
+	float4 NextPos = float4::Zero;
+
 	GameEngineSoundPlayer BGMPlayer;
+
+	bool IsStart = true;
 
 };
 

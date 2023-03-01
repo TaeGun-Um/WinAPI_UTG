@@ -58,7 +58,7 @@ void PortalDoor::PortalCheck(float _DeltaTime)
 
 	if (nullptr != BodyCollision)
 	{
-		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PlayerEffect), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
 			IsPortal = true;
 			UpButton->On();

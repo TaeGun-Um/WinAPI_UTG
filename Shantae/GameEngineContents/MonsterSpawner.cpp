@@ -97,7 +97,7 @@ void MonsterSpawner::CollisionCheck()
 
 	if (nullptr != SpawnSpot)
 	{
-		if (true == SpawnSpot->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+		if (true == SpawnSpot->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PlayerEffect), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
 			if (1 == Spawncount)
 			{

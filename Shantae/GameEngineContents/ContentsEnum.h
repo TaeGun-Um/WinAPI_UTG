@@ -17,15 +17,16 @@ enum class RenderOrder
 enum class CollisionOrder
 {
 	Player,              // 0
-	PlayerAttack,        // 1
-	PlayerPistolAttack,  // 2
-	Monster,             // 3
-	MonsterAttack,       // 4
-	Spawner,             // 5
-	Ground,              // 6
-	Effect,              // 7
-	Trigger,			 // 8
-	Item,				 // 9
+	PlayerEffect,		 // 1
+	PlayerAttack,        // 2
+	PlayerPistolAttack,  // 3
+	Monster,             // 4
+	MonsterAttack,       // 5
+	Spawner,             // 6
+	Ground,              // 7
+	Effect,              // 8
+	Trigger,			 // 9
+	Item,				 // 10
 };
 
 // Enum class

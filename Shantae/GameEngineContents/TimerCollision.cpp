@@ -44,7 +44,7 @@ void TimerCollision::CollisionCheck()
 {
 	if (nullptr != TimerSpot)
 	{
-		if (true == TimerSpot->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+		if (true == TimerSpot->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PlayerEffect), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
 			TimerSet = 0;
 		}

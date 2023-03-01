@@ -1123,6 +1123,27 @@ void Player::CrouchingUpdate(float _Time)
 	{
 		if (true == GameEngineInput::IsPress("LeftMove"))
 		{
+			IsGravityPlus = true;
+
+			CrouchMoveSoundTime += _Time;
+
+			if (0.35f <= CrouchMoveSoundTime)
+			{
+				if (1 == CrouchMoveSoundCount)
+				{
+					CrouchMovePlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_crouchmove.wav");
+					CrouchMovePlayer.Volume(0.3f);
+					CrouchMovePlayer.LoopCount(1);
+
+					CrouchMoveSoundTime = 0.0f;
+					CrouchMoveSoundCount = 0;
+				}
+				else if (0 == CrouchMoveSoundCount)
+				{
+					CrouchMoveSoundCount = 1;
+				}
+			}
+
 			if (true == ShantaeMove)
 			{
 				SetMove(float4::Left * CrouchSpeed * _Time);
@@ -1134,6 +1155,27 @@ void Player::CrouchingUpdate(float _Time)
 		}
 		else if (true == GameEngineInput::IsPress("RightMove"))
 		{
+			IsGravityPlus = true;
+
+			CrouchMoveSoundTime += _Time;
+
+			if (0.35f <= CrouchMoveSoundTime)
+			{
+				if (1 == CrouchMoveSoundCount)
+				{
+					CrouchMovePlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_crouchmove.wav");
+					CrouchMovePlayer.Volume(0.3f);
+					CrouchMovePlayer.LoopCount(1);
+
+					CrouchMoveSoundTime = 0.0f;
+					CrouchMoveSoundCount = 0;
+				}
+				else if (0 == CrouchMoveSoundCount)
+				{
+					CrouchMoveSoundCount = 1;
+				}
+			}
+
 			if (true == ShantaeMove)
 			{
 				SetMove(float4::Right * CrouchSpeed * _Time);

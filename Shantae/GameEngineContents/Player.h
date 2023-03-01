@@ -253,6 +253,7 @@ private:
 	float ShakingTime = 0.0f;
 	float SetShakingTime = 0.0f;
 	float CrouchMoveSoundTime = 0.0f;
+	float ImpactRe = 0.0f;
 
 	int Pass = 1;
 	int MaxHP = 8;
@@ -264,6 +265,7 @@ private:
 	int MoveSoundCount = 2;
 	int CrouchMoveSoundCount = 1;
 	int UpCol = 1;
+	int ImpactCreate = 1;
 
 	bool FreeMove = false;
 	bool ShantaeMove = true;

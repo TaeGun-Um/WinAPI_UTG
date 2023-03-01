@@ -94,7 +94,7 @@ void Mermaid_Attack::CollisionCheck()
 {
 	if (nullptr != BodyCollision)
 	{
-		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Effect), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PlayerEffect), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
 			IsDeath = true;
 		}
