@@ -6,6 +6,8 @@
 
 #include "ContentsEnum.h"
 
+#include "Heart_Octopus.h"
+
 ItemBox::ItemBox() 
 {
 }
@@ -25,8 +27,8 @@ void ItemBox::Start()
 
 	BodyCollision = CreateCollision(CollisionOrder::Item);
 	BodyCollision->SetDebugRenderType(CT_Rect);
-	BodyCollision->SetScale({ 25, 50 });
-	BodyCollision->SetPosition({ 0, -25 });
+	BodyCollision->SetScale({ 80, 80 });
+	BodyCollision->SetPosition({ 0, -40 });
 
 	AnimationRender->ChangeAnimation("Close");
 }
@@ -38,7 +40,7 @@ void ItemBox::Update(float _DeltaTime)
 
 	if (true == IsHit)
 	{
-		CreateItem();
+		BoxOpen();
 	}
 }
 
@@ -83,12 +85,17 @@ void ItemBox::CollisionCheck(float _DeltaTime)
 		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PlayerAttack), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
 			BodyCollision->Off();
+
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Strike_enemy.mp3");
+			BGMPlayer.Volume(0.075f);
+			BGMPlayer.LoopCount(1);
+
 			IsHit = true;
 		}
 	}
 }
 
-void ItemBox::CreateItem()
+void ItemBox::BoxOpen()
 {
 	if (1 == Open)
 	{
@@ -98,8 +105,42 @@ void ItemBox::CreateItem()
 	
 	if (true == AnimationRender->IsAnimationEnd())
 	{
-		AnimationRender->ChangeAnimation("Opening");
+		if (1 == CreateCount)
+		{
+			CreateCount = 0;
+			AnimationRender->ChangeAnimation("Opening");
+			CreateItem();
+		}
+	}
+}
 
-		//
+void ItemBox::CreateItem()
+{
+	switch (ItemValue)
+	{
+	case OfItemBox::OCT:
+	{
+		Heart_Octopus* Octopus = nullptr;
+		float4 OctPos = GetPos() + float4::Up * 50;
+
+		Octopus = GetLevel()->CreateActor<Heart_Octopus>();
+		Octopus->SetPos(OctPos);
+		Octopus->SetColMap(ColMap);
+	}
+	break;
+	case OfItemBox::BUB:
+		
+		break;
+	case OfItemBox::PIKE:
+		
+		break;
+	case OfItemBox::MILK:
+		
+		break;
+	case OfItemBox::MEAT:
+		
+		break;
+	default:
+		break;
 	}
 }

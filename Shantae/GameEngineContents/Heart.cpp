@@ -111,7 +111,7 @@ void Heart::CollisionCheck(float _DeltaTime)
 			{
 				SoundCount = 0;
 				BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_hp_large.wav");
-				BGMPlayer.Volume(0.15f);
+				BGMPlayer.Volume(0.1f);
 				BGMPlayer.LoopCount(1);
 			}
 

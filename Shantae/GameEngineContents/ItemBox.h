@@ -1,6 +1,16 @@
 #pragma once
 
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/GameEngineResources.h>
+
+enum OfItemBox
+{
+	OCT,
+	BUB,
+	PIKE,
+	MILK,
+	MEAT,
+};
 
 class GameEngineImage;
 
@@ -23,6 +33,11 @@ public:
 		ColMap = _NextColMap;
 	}
 
+	void SetItemValue(OfItemBox _Value)
+	{
+		ItemValue = _Value;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -31,16 +46,22 @@ protected:
 private:
 	void MoveCalculation(float _DeltaTime);
 	void CollisionCheck(float _DeltaTime);
+	void BoxOpen();
 	void CreateItem();
 
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
 	GameEngineImage* ColMap = nullptr;
 
+	GameEngineSoundPlayer BGMPlayer;
+
+	OfItemBox ItemValue = OfItemBox::MEAT;
+
 	float4 MoveDir = float4::Zero;
 	float4 NextPos = float4::Zero;
 
 	int Open = 1;
+	int CreateCount = 1;
 	bool IsHit = false;
 };
 

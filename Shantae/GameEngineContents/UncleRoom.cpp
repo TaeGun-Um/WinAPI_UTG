@@ -14,6 +14,8 @@
 #include "Sky.h"
 #include "Sea.h"
 
+#include "ItemBox.h"
+
 #include "GemWindow.h"
 #include "Health.h"
 #include "ObjectLoad.h"
@@ -46,6 +48,14 @@ void UncleRoom::Loading()
 	CreateActor<UncleRoom_Map>();
 	CreateActor<UncleRoom_Front>();
 	CreateActor<UncleRoom_ColMap>();
+
+	// Item
+	{
+		ItemBox* Box = CreateActor<ItemBox>();
+		Box->SetPos({ 700, 780 });
+		Box->SetColMap(ColMap);
+		Box->SetItemValue(OCT);
+	}
 
 	// Player
 	{

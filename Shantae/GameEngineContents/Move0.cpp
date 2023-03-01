@@ -69,6 +69,7 @@ void Move0::Loading()
 
 		Ship* Ship1 = CreateActor<Ship>();
 		Ship1->SetPos({ 5850, 400 });
+		Ship1->SetRotationStop();
 
 		Building1* B0 = CreateActor<Building1>();
 		B0->SetPos({ 3000, 100 });

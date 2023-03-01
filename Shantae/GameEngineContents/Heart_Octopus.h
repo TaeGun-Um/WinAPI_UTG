@@ -24,6 +24,11 @@ public:
 		ColMap = _NextColMap;
 	}
 
+	void SetJumpZero()
+	{
+		Jump = 0.0f;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -44,7 +49,7 @@ private:
 	float4 MoveDir = float4::Zero;
 	float4 NextPos = float4::Zero;
 
-	float Jump = 800.0f;
+	float Jump = 500.0f;
 
 	int SoundCount = 1;
 	bool IsStart = true;

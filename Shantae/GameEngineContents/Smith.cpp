@@ -14,6 +14,8 @@
 #include "Player.h"
 #include "Squidsmith.h"
 
+#include "Heart_Octopus.h"
+
 #include "GemWindow.h"
 #include "Health.h"
 #include "ObjectLoad.h"
@@ -50,6 +52,14 @@ void Smith::Loading()
 	{
 		Squidsmith* M = CreateActor<Squidsmith>();
 		M->SetPos({ 880, 637 });
+	}
+
+	// Item
+	{
+		Heart_Octopus* Oct = CreateActor<Heart_Octopus>();
+		Oct->SetPos({ 1334, 840 });
+		Oct->SetColMap(ColMap);
+		Oct->SetJumpZero();
 	}
 
 	// Player

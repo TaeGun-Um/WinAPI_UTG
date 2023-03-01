@@ -13,6 +13,7 @@
 #include "Sky.h"
 #include "Wave.h"
 #include "Player.h"
+#include "ItemBox.h"
 
 #include "GemWindow.h"
 #include "Health.h"
@@ -54,6 +55,14 @@ void BeforeBoss::Loading()
 		W3->SetPos({ 972, 780 });
 		GameEngineActor* W4 = CreateActor<Wave>();
 		W4->SetPos({ 1363, 780 });
+	}
+
+	// Item
+	{
+		ItemBox* Box = CreateActor<ItemBox>();
+		Box->SetPos({ 640, 600 });
+		Box->SetColMap(ColMap);
+		Box->SetItemValue(OCT);
 	}
 
 	// Player

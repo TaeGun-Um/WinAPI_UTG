@@ -14,6 +14,8 @@
 #include "Sky.h"
 #include "Sea.h"
 
+#include "ItemBox.h"
+
 #include "GemWindow.h"
 #include "Health.h"
 #include "ObjectLoad.h"
@@ -44,6 +46,14 @@ void SaveRoom::Loading()
 	CreateActor<SaveRoom_Map>();
 	CreateActor<SaveRoom_Front>();
 	CreateActor<SaveRoom_ColMap>();
+
+	// Item
+	{
+		ItemBox* Box = CreateActor<ItemBox>();
+		Box->SetPos({ 790, 789 });
+		Box->SetColMap(ColMap);
+		Box->SetItemValue(OCT);
+	}
 
 	// Player
 	{
