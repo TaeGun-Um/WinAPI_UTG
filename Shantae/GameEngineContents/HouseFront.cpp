@@ -25,7 +25,6 @@
 #include "GemWindow.h"
 #include "Health.h"
 #include "Inventory.h"
-#include "InventoryData.h"
 
 #include "Soldier_Black.h"
 
@@ -40,11 +39,6 @@ HouseFront::HouseFront()
 
 HouseFront::~HouseFront() 
 {
-	if (nullptr != InventoryData::InvenData)
-	{
-		delete InventoryData::InvenData;
-		InventoryData::InvenData = nullptr;
-	}
 }
 
 void HouseFront::Loading()
@@ -108,8 +102,8 @@ void HouseFront::Update(float _DeltaTime)
 	BlackBoxOutAnimation();
 	LevelSet();
 	Debugging();
-	//SoundCombination(_DeltaTime);
-	//RandExplosion(_DeltaTime);
+	SoundCombination(_DeltaTime);
+	RandExplosion(_DeltaTime);
 
 	// 레벨 이동
 	if (SHA->GetPos().x >= 1250.0f
@@ -136,10 +130,6 @@ void HouseFront::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 void HouseFront::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
-	// 데이터 저장용
-	InventoryData::InvenData = new InventoryData();
-	InventoryData::InvenData->SetInventoryDate(Inventory::PlayerInven->GetBoxes());
-
 	InBoxKill();
 }
 

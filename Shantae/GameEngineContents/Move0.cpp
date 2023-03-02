@@ -33,7 +33,6 @@
 #include "GemWindow.h"
 #include "Health.h"
 #include "Inventory.h"
-#include "InventoryData.h"
 
 #include "ObjectLoad.h"
 #include "BlackBox.h"
@@ -289,15 +288,13 @@ void Move0::Update(float _DeltaTime)
 		BGMPlayer.LoopCount(1);
 	}
 
-	Inven;
 }
 
 void Move0::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Inventory::PlayerInven->DataCopy(Inven);
 	Inventory::PlayerInven = Inven;
-	Inventory::PlayerInven->SetBoxes(InventoryData::InvenData->GetInventoryDate());
 	
-
 	FieldBGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("We_Love_Burning_Town.mp3");
 	FieldBGMPlayer.Volume(0.05f);
 	FieldBGMPlayer.LoopCount(100);
@@ -309,7 +306,6 @@ void Move0::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 void Move0::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
-	
 	InBoxKill();
 }
 

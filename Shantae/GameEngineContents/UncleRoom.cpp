@@ -102,6 +102,7 @@ void UncleRoom::Update(float _DeltaTime)
 
 void UncleRoom::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Inventory::PlayerInven->DataCopy(Inven);
 	Inventory::PlayerInven = Inven;
 
 	Set = 1;

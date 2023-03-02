@@ -125,6 +125,7 @@ void GameEngineCore::ChangeLevel(const std::string_view& _Name)
 	}
 
 	NextLevel = FindIter->second;
+
 }
 
 // 동적할당된 Level에 data 입력

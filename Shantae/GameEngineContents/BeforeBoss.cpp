@@ -118,6 +118,7 @@ void BeforeBoss::Update(float _DeltaTime)
 
 void BeforeBoss::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Inventory::PlayerInven->DataCopy(Inven);
 	Inventory::PlayerInven = Inven;
 
 	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());

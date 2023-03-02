@@ -339,10 +339,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="InventoryData.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
     <ClInclude Include="ItemBox.h">
       <SubType>
       </SubType>
@@ -1076,10 +1072,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Inventory.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="InventoryData.cpp">
       <SubType>
       </SubType>
     </ClCompile>

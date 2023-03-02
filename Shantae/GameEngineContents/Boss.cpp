@@ -125,6 +125,7 @@ void Boss::Update(float _DeltaTime)
 
 void Boss::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Inventory::PlayerInven->DataCopy(Inven);
 	Inventory::PlayerInven = Inven;
 
 	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Boss_Battle.mp3");

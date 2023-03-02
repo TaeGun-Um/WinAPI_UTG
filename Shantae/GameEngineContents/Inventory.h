@@ -75,16 +75,12 @@ public:
 		EquipItem = _Equip;
 	}
 
-	void SetBoxes(std::map<int, ItemSpace*> _Other)
+	std::map<int, ItemSpace*>* GetBoxes()
 	{
-		Boxes = std::map<int, ItemSpace*>();
-		Boxes.merge(_Other);
+		return &Boxes;
 	}
 
-	std::map<int, ItemSpace*> GetBoxes()
-	{
-		return Boxes;
-	}
+	void DataCopy(Inventory* _Other);
 
 protected:
 	void Start() override;

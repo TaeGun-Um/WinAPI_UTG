@@ -118,6 +118,7 @@ void BoomBridge::Update(float _DeltaTime)
 
 void BoomBridge::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Inventory::PlayerInven->DataCopy(Inven);
 	Inventory::PlayerInven = Inven;
 
 	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());

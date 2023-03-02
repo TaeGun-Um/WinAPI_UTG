@@ -99,6 +99,7 @@ void SaveRoom::Update(float _DeltaTime)
 
 void SaveRoom::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Inventory::PlayerInven->DataCopy(Inven);
 	Inventory::PlayerInven = Inven;
 
 	Set = 1;

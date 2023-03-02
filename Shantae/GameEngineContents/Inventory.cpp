@@ -376,3 +376,30 @@ void Inventory::ItemSpaceSetting()
 		y = 0;
 	}
 }
+
+void Inventory::DataCopy(Inventory* _Other)
+{
+	std::map<int, ItemSpace*>::iterator GroupStartIter = Boxes.begin();
+	std::map<int, ItemSpace*>::iterator GroupEndIter = Boxes.end();
+
+	for (; GroupStartIter != GroupEndIter; ++GroupStartIter)
+	{
+		int Order = GroupStartIter->first;
+		ItemSpace* SpaceList = GroupStartIter->second;
+		Icon* IconList = GroupStartIter->second->GetItemIcon();
+		
+		if (nullptr == IconList)
+		{
+			continue;
+		}
+		else
+		{
+			int ItemCount = GroupStartIter->second->GetItemIcon()->GetItemCount();
+
+			for (; ItemCount > 0; ItemCount--)
+			{
+				_Other->CreateItem(IconList->GetIconName());
+			}
+		}
+	}
+}

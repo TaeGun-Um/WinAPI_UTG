@@ -6,7 +6,6 @@
 #include "MonsterSpawner.h"
 
 class Player;
-class GameEngineTileMap;
 
 // Ό³Έν : TestLevel
 class TestLevel : public GameEngineLevel

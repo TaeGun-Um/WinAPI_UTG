@@ -171,6 +171,7 @@ void Scuttle::Update(float _DeltaTime)
 
 void Scuttle::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Inventory::PlayerInven->DataCopy(Inven);
 	Inventory::PlayerInven = Inven;
 
 	Set = 1;

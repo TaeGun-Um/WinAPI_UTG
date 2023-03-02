@@ -191,6 +191,7 @@ void Move1::Update(float _DeltaTime)
 
 void Move1::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Inventory::PlayerInven->DataCopy(Inven);
 	Inventory::PlayerInven = Inven;
 
 	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());

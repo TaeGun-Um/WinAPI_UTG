@@ -106,6 +106,7 @@ void Smith::Update(float _DeltaTime)
 
 void Smith::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Inventory::PlayerInven->DataCopy(Inven);
 	Inventory::PlayerInven = Inven;
 
 	Set = 1;

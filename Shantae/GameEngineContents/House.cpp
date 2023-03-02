@@ -75,7 +75,7 @@ void House::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 void House::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
-	// Player::MainPlayer->IsHouseSet(false);
+	Player::MainPlayer->IsHouseSet(false);
 	InBoxKill();
 }
 

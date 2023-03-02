@@ -177,6 +177,7 @@ void Machinegun::Update(float _DeltaTime)
 
 void Machinegun::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Inventory::PlayerInven->DataCopy(Inven);
 	Inventory::PlayerInven = Inven;
 
 	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());

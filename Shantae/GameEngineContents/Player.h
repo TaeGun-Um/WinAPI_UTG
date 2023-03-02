@@ -295,6 +295,8 @@ protected:
 	void Render(float _DeltaTime) override;
 
 private:
+	GameEngineLevel* CurrentLevel = nullptr;
+
 	// Status
 	int IDCard = 1;
 	int MaxHP = 8;

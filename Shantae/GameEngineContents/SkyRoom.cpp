@@ -97,6 +97,7 @@ void SkyRoom::Update(float _DeltaTime)
 
 void SkyRoom::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Inventory::PlayerInven->DataCopy(Inven);
 	Inventory::PlayerInven = Inven;
 
 	Set = 1;

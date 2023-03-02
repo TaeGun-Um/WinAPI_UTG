@@ -96,6 +96,7 @@ void Spa::Update(float _DeltaTime)
 
 void Spa::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	Inventory::PlayerInven->DataCopy(Inven);
 	Inventory::PlayerInven = Inven;
 
 	Set = 1;
