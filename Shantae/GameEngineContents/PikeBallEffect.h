@@ -26,11 +26,17 @@ protected:
 	void Render(float _DeltaTime) override;
 
 private:
+	void MoveCalculation(float _DeltaTime);
+
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
 
-	void MoveCalculation(float _DeltaTime);
+	float4 PivotPoint = float4::Zero;
+	float4 NewPos = float4::Zero;
+	float Angle = 0.0f;
+	float RotationTime = 0.0f;
 
 
+	int PivotSet = 1;
 };
 

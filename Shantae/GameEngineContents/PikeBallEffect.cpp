@@ -30,6 +30,13 @@ void PikeBallEffect::Start()
 
 void PikeBallEffect::Update(float _DeltaTime)
 {
+	if (1 == PivotSet)
+	{
+		PivotSet = 0;
+		PivotPoint = Player::MainPlayer->GetPos() + float4::Up * 60;
+		SetPos(Player::MainPlayer->GetPos() + float4::Up * 180);
+	}
+
 	MoveCalculation(_DeltaTime);
 }
 void PikeBallEffect::Render(float _DeltaTime)
@@ -39,7 +46,17 @@ void PikeBallEffect::Render(float _DeltaTime)
 
 void PikeBallEffect::MoveCalculation(float _DeltaTime)
 {
-	SetPos(Player::MainPlayer->GetPos() + float4::Up * 180);
+	NewPos = Player::MainPlayer->GetPos() - PivotPoint;
+	BodyCollision->SetPosition({ 0, 0 });
+
+	RotationTime += _DeltaTime;
+	if (0.1f <= RotationTime)
+	{
+		Angle += 1.0f;
+	}
+	
+	float4 Dir = float4::AngleToDirection2DToDeg(Angle);
+	AnimationRender->SetPosition(NewPos + Dir * 100.0f);
 }
 
 void PikeBallEffect::Kill()

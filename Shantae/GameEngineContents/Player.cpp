@@ -159,6 +159,11 @@ void Player::Update(float _DeltaTime)
 		ItemUse(_DeltaTime);
 	}
 	
+	if (GameEngineInput::IsDown("Select"))
+	{
+		Player::MainPlayer->SetItemUse("PikeBall");
+	}
+
 }
 
 void Player::Render(float _DeltaTime)
