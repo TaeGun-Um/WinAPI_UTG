@@ -557,6 +557,12 @@
     <ClInclude Include="PikeBall.h">
       <Filter>Item\EqiupItem\TotheInventory</Filter>
     </ClInclude>
+    <ClInclude Include="IDCard.h">
+      <Filter>Item\EqiupItem\TotheInventory</Filter>
+    </ClInclude>
+    <ClInclude Include="Meat.h">
+      <Filter>Item\EqiupItem\TotheInventory</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShantaeCore.cpp" />
@@ -1170,6 +1176,12 @@
       <Filter>Item\EqiupItem\TotheInventory</Filter>
     </ClCompile>
     <ClCompile Include="PikeBall.cpp">
+      <Filter>Item\EqiupItem\TotheInventory</Filter>
+    </ClCompile>
+    <ClCompile Include="IDCard.cpp">
+      <Filter>Item\EqiupItem\TotheInventory</Filter>
+    </ClCompile>
+    <ClCompile Include="Meat.cpp">
       <Filter>Item\EqiupItem\TotheInventory</Filter>
     </ClCompile>
   </ItemGroup>

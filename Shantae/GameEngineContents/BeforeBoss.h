@@ -6,6 +6,7 @@
 class Player;
 class Inventory;
 class BlackBox;
+class ItemBox;
 
 // Ό³Έν : FieldLevel_9
 class BeforeBoss : public PlayLevel
@@ -46,6 +47,7 @@ private:
 	GameEngineImage* ColMap = nullptr;
 	Player* SHA = nullptr;
 	Inventory* Inven = nullptr;
+	ItemBox* Box = nullptr;
 	float OverlapTime = 0.0f;
 
 	int Set = 1;

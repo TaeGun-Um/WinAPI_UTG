@@ -1,4 +1,4 @@
-#include "MonsterMilk.h"
+#include "Meat.h"
 
 #include <GameEngineCore/GameEngineCollision.h>
 #include <GameEngineCore/GameEngineRender.h>
@@ -7,20 +7,20 @@
 #include "Inventory.h"
 #include "Player.h"
 
-MonsterMilk::MonsterMilk() 
+Meat::Meat() 
 {
 }
 
-MonsterMilk::~MonsterMilk() 
+Meat::~Meat() 
 {
 }
 
-void MonsterMilk::Start()
+void Meat::Start()
 {
 	AnimationRender = CreateRender(RenderOrder::Object);
 	AnimationRender->SetScale({ 200, 200 });
 
-	AnimationRender->CreateAnimation({ .AnimationName = "MonsterMilk",  .ImageName = "Items.bmp", .Start = 1, .End = 1, .InterTime = 10.0f, .Loop = false });
+	AnimationRender->CreateAnimation({ .AnimationName = "Meat",  .ImageName = "Items.bmp", .Start = 2, .End = 2, .InterTime = 10.0f, .Loop = false });
 
 	BodyCollision = CreateCollision(CollisionOrder::Equip);
 	BodyCollision->SetDebugRenderType(CT_Rect);
@@ -28,10 +28,10 @@ void MonsterMilk::Start()
 	BodyCollision->SetPosition({ -2.5f, 5 });
 	BodyCollision->Off();
 
-	AnimationRender->ChangeAnimation("MonsterMilk");
+	AnimationRender->ChangeAnimation("Meat");
 }
 
-void MonsterMilk::Update(float _DeltaTime)
+void Meat::Update(float _DeltaTime)
 {
 	if (1 == UpCount)
 	{
@@ -43,12 +43,12 @@ void MonsterMilk::Update(float _DeltaTime)
 	CollisionCheck(_DeltaTime);
 }
 
-void MonsterMilk::Render(float _DeltaTime)
+void Meat::Render(float _DeltaTime)
 {
 
 }
 
-void MonsterMilk::MoveCalculation(float _DeltaTime)
+void Meat::MoveCalculation(float _DeltaTime)
 {
 	if (GetPos().y >= UpPos.y)
 	{
@@ -60,7 +60,7 @@ void MonsterMilk::MoveCalculation(float _DeltaTime)
 	}
 }
 
-void MonsterMilk::CollisionCheck(float _DeltaTime)
+void Meat::CollisionCheck(float _DeltaTime)
 {
 	if (true == IsUp)
 	{
@@ -86,15 +86,15 @@ void MonsterMilk::CollisionCheck(float _DeltaTime)
 	}
 }
 
-void MonsterMilk::ApplyScore()
+void Meat::ApplyScore()
 {
-	Player::MainPlayer->PlusPlayerMonsterMilk(1);
+	Player::MainPlayer->PlusPlayerMeat(1);
 	Player::MainPlayer->SetItemEquip(true);
-	Inventory::PlayerInven->SetEquipItem("MonsterMilk");
+	Inventory::PlayerInven->SetEquipItem("Meat");
 	Kill();
 }
 
-void MonsterMilk::Kill()
+void Meat::Kill()
 {
 	GameEngineActor* ColActor = AnimationRender->GetActor();
 	ColActor->Off();

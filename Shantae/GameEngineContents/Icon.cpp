@@ -81,7 +81,7 @@ void Icon::IconSelect()
 	std::string UpperName_comparison3 = GameEngineString::ToUpper("Bubble");
 	std::string UpperName_comparison4 = GameEngineString::ToUpper("PikeBall");
 	std::string UpperName_comparison5 = GameEngineString::ToUpper("Octopus");
-	std::string UpperName_comparison6 = GameEngineString::ToUpper("Pass");
+	std::string UpperName_comparison6 = GameEngineString::ToUpper("IDCard");
 
 	if (UpperName_comparison1 == UpperName)
 	{

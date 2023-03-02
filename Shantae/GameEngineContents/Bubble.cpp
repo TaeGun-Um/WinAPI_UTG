@@ -4,6 +4,7 @@
 #include <GameEngineCore/GameEngineRender.h>
 
 #include "ContentsEnum.h"
+#include "Inventory.h"
 #include "Player.h"
 
 Bubble::Bubble() 
@@ -23,8 +24,8 @@ void Bubble::Start()
 
 	BodyCollision = CreateCollision(CollisionOrder::Equip);
 	BodyCollision->SetDebugRenderType(CT_Rect);
-	BodyCollision->SetScale({ 40, 40 });
-	BodyCollision->SetPosition({ 0, -20 });
+	BodyCollision->SetScale({ 50, 50 });
+	BodyCollision->SetPosition({ -2.5f, 5 });
 	BodyCollision->Off();
 
 	AnimationRender->ChangeAnimation("Bubble");
@@ -32,6 +33,12 @@ void Bubble::Start()
 
 void Bubble::Update(float _DeltaTime)
 {
+	if (1 == UpCount)
+	{
+		UpCount = 0;
+		UpPos = GetPos() + float4::Up * 30.0f;;
+	}
+
 	MoveCalculation(_DeltaTime);
 	CollisionCheck(_DeltaTime);
 }
@@ -43,15 +50,22 @@ void Bubble::Render(float _DeltaTime)
 
 void Bubble::MoveCalculation(float _DeltaTime)
 {
-
+	if (GetPos().y >= UpPos.y)
+	{
+		SetMove(float4::Up * 50 * _DeltaTime);
+	}
+	else
+	{
+		IsUp = true;
+	}
 }
 
 void Bubble::CollisionCheck(float _DeltaTime)
 {
-	//if (//)
-	//{
-	//	BodyCollision->On();
-	//}
+	if (true == IsUp)
+	{
+		BodyCollision->On();
+	}
 
 	if (nullptr != BodyCollision)
 	{
@@ -74,7 +88,9 @@ void Bubble::CollisionCheck(float _DeltaTime)
 
 void Bubble::ApplyScore()
 {
-	// Player::MainPlayer->SetPlayerGem(Score); 획득시 플레이어 인벤토리의 옥토퍼스 카운트를 하나 증가시킨다.
+	Player::MainPlayer->PlusPlayerBubble(1);
+	Player::MainPlayer->SetItemEquip(true);
+	Inventory::PlayerInven->SetEquipItem("Bubble");
 	Kill();
 }
 

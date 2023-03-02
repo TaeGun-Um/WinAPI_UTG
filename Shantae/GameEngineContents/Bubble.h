@@ -31,8 +31,13 @@ private:
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
 
+	float4 UpPos = float4::Zero;
+
 	GameEngineSoundPlayer BGMPlayer;
 
 	int SoundCount = 1;
+	int UpCount = 1;
+
+	bool IsUp = false;
 };
 

@@ -7,6 +7,11 @@
 #include "ContentsEnum.h"
 
 #include "Heart_Octopus.h"
+#include "Bubble.h"
+#include "MonsterMilk.h"
+#include "PikeBall.h"
+#include "Meat.h"
+#include "IDCard.h"
 
 ItemBox::ItemBox() 
 {
@@ -129,17 +134,50 @@ void ItemBox::CreateItem()
 	}
 	break;
 	case OfItemBox::BUB:
-		
-		break;
+	{
+		Bubble* Bub = nullptr;
+		float4 BubPos = GetPos() + float4::Up * 75;
+
+		Bub = GetLevel()->CreateActor<Bubble>();
+		Bub->SetPos(BubPos);
+	}
+	break;
 	case OfItemBox::PIKE:
-		
-		break;
+	{
+		PikeBall* Pike = nullptr;
+		float4 PikePos = GetPos() + float4::Up * 75;
+
+		Pike = GetLevel()->CreateActor<PikeBall>();
+		Pike->SetPos(PikePos);
+	}
+	break;
 	case OfItemBox::MILK:
-		
-		break;
+	{
+		MonsterMilk* Milk = nullptr;
+		float4 MilkPos = GetPos() + float4::Up * 75;
+
+		Milk = GetLevel()->CreateActor<MonsterMilk>();
+		Milk->SetPos(MilkPos);
+	}
+	break;
 	case OfItemBox::MEAT:
-		
-		break;
+	{
+		Meat* Me = nullptr;
+		float4 MePos = GetPos() + float4::Up * 75;
+
+		Me = GetLevel()->CreateActor<Meat>();
+		Me->SetPos(MePos);
+	}
+	break;
+	case OfItemBox::CARD:
+	{
+		IDCard* Card = nullptr;
+		float4 CardPos = GetPos() + float4::Up * 75;
+
+		Card = GetLevel()->CreateActor<IDCard>();
+		Card->SetPos(CardPos);
+	}
+	break;
 	default:
 		break;
 	}

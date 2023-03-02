@@ -166,6 +166,12 @@ void Stair::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());
 	SetPlayLevelMaxHP(Player::MainPlayer->GetPlayerMaxHP());
 	SetPlayLevelGem(Player::MainPlayer->GetPlayerGem());
+	SetPlayLevelMonsterMilk(Player::MainPlayer->GetPlayerMonsterMilk());
+	SetPlayLevelPikeBall(Player::MainPlayer->GetPlayerPikeBall());
+	SetPlayLevelBubble(Player::MainPlayer->GetPlayerBubble());
+	SetPlayLevelOctopus(Player::MainPlayer->GetPlayerOctopus());
+	SetPlayLevelMeat(Player::MainPlayer->GetPlayerMeat());
+	SetPlayLevelIDCard(Player::MainPlayer->GetPlayerIDCard());
 }
 
 void Stair::LevelChangeEnd(GameEngineLevel* _NextLevel)
@@ -213,6 +219,12 @@ void Stair::LevelSet()
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
 		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
+		Player::MainPlayer->SetPlayerMonsterMilk(GetPlayLevelMonsterMilk());
+		Player::MainPlayer->SetPlayerPikeBall(GetPlayLevelPikeBall());
+		Player::MainPlayer->SetPlayerBubble(GetPlayLevelBubble());
+		Player::MainPlayer->SetPlayerOctopus(GetPlayLevelOctopus());
+		Player::MainPlayer->SetPlayerMeat(GetPlayLevelMeat());
+		Player::MainPlayer->SetPlayerIDCard(GetPlayLevelIDCard());
 	}
 	if (1 == AnimationSet)
 	{

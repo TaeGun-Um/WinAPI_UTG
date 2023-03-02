@@ -10,6 +10,7 @@ enum OfItemBox
 	PIKE,
 	MILK,
 	MEAT,
+	CARD,
 };
 
 class GameEngineImage;
@@ -36,6 +37,11 @@ public:
 	void SetItemValue(OfItemBox _Value)
 	{
 		ItemValue = _Value;
+	}
+
+	int GetCreateCount()
+	{
+		return CreateCount;
 	}
 
 protected:

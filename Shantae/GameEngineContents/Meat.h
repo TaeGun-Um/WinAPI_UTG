@@ -4,18 +4,18 @@
 #include <GameEngineCore/GameEngineResources.h>
 
 // Ό³Έν :
-class PikeBall : public GameEngineActor
+class Meat : public GameEngineActor
 {
 public:
 	// constrcuter destructer
-	PikeBall();
-	~PikeBall();
+	Meat();
+	~Meat();
 
 	// delete Function
-	PikeBall(const PikeBall& _Other) = delete;
-	PikeBall(PikeBall&& _Other) noexcept = delete;
-	PikeBall& operator=(const PikeBall& _Other) = delete;
-	PikeBall& operator=(PikeBall&& _Other) noexcept = delete;
+	Meat(const Meat& _Other) = delete;
+	Meat(Meat&& _Other) noexcept = delete;
+	Meat& operator=(const Meat& _Other) = delete;
+	Meat& operator=(Meat&& _Other) noexcept = delete;
 
 protected:
 	void Start() override;

@@ -402,4 +402,6 @@ void Inventory::DataCopy(Inventory* _Other)
 			}
 		}
 	}
+
+
 }

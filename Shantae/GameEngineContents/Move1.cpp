@@ -24,6 +24,7 @@
 #include "GemWindow.h"
 #include "Health.h"
 #include "Inventory.h"
+#include "ItemBox.h"
 
 #include "ObjectLoad.h"
 #include "BlackBox.h"
@@ -128,6 +129,21 @@ void Move1::Loading()
 		Jar_Big* jB = CreateActor<Jar_Big>();
 		jB->SetPos({ 11460, 645 });
 		jB->SetColMap(ColMap);
+
+		ItemBox* Box1 = CreateActor<ItemBox>();
+		Box1->SetPos({ 600, 650 });
+		Box1->SetColMap(ColMap);
+		Box1->SetItemValue(BUB);
+
+		ItemBox* Box2 = CreateActor<ItemBox>();
+		Box2->SetPos({ 750, 650 });
+		Box2->SetColMap(ColMap);
+		Box2->SetItemValue(MILK);
+
+		ItemBox* Box3 = CreateActor<ItemBox>();
+		Box3->SetPos({ 900, 650 });
+		Box3->SetColMap(ColMap);
+		Box3->SetItemValue(PIKE);
 	}
 
 	// Monster
@@ -197,6 +213,12 @@ void Move1::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());
 	SetPlayLevelMaxHP(Player::MainPlayer->GetPlayerMaxHP());
 	SetPlayLevelGem(Player::MainPlayer->GetPlayerGem());
+	SetPlayLevelMonsterMilk(Player::MainPlayer->GetPlayerMonsterMilk());
+	SetPlayLevelPikeBall(Player::MainPlayer->GetPlayerPikeBall());
+	SetPlayLevelBubble(Player::MainPlayer->GetPlayerBubble());
+	SetPlayLevelOctopus(Player::MainPlayer->GetPlayerOctopus());
+	SetPlayLevelMeat(Player::MainPlayer->GetPlayerMeat());
+	SetPlayLevelIDCard(Player::MainPlayer->GetPlayerIDCard());
 }
 
 void Move1::LevelChangeEnd(GameEngineLevel* _NextLevel)
@@ -244,6 +266,12 @@ void Move1::LevelSet()
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
 		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
+		Player::MainPlayer->SetPlayerMonsterMilk(GetPlayLevelMonsterMilk());
+		Player::MainPlayer->SetPlayerPikeBall(GetPlayLevelPikeBall());
+		Player::MainPlayer->SetPlayerBubble(GetPlayLevelBubble());
+		Player::MainPlayer->SetPlayerOctopus(GetPlayLevelOctopus());
+		Player::MainPlayer->SetPlayerMeat(GetPlayLevelMeat());
+		Player::MainPlayer->SetPlayerIDCard(GetPlayLevelIDCard());
 	}
 	if (1 == AnimationSet)
 	{
