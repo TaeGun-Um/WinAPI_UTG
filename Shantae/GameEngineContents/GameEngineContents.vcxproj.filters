@@ -557,6 +557,9 @@
     <ClInclude Include="PikeBall.h">
       <Filter>Item\EqiupItem\TotheInventory</Filter>
     </ClInclude>
+    <ClInclude Include="InventoryData.h">
+      <Filter>Item\Inventory</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShantaeCore.cpp" />
@@ -1171,6 +1174,9 @@
     </ClCompile>
     <ClCompile Include="PikeBall.cpp">
       <Filter>Item\EqiupItem\TotheInventory</Filter>
+    </ClCompile>
+    <ClCompile Include="InventoryData.cpp">
+      <Filter>Item\Inventory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

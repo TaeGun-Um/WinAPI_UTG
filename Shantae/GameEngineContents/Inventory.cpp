@@ -74,9 +74,10 @@ void Inventory::Update(float _DeltaTime)
 	{
 		FamilyOn();
 		SelectMove(_DeltaTime);
-		PlayerItemCheck();
 		SelectItem();
 	}
+
+	PlayerItemCheck();
 }
 
 void Inventory::Render(float _DeltaTime)

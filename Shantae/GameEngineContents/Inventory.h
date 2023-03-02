@@ -75,6 +75,17 @@ public:
 		EquipItem = _Equip;
 	}
 
+	void SetBoxes(std::map<int, ItemSpace*> _Other)
+	{
+		Boxes = std::map<int, ItemSpace*>();
+		Boxes.merge(_Other);
+	}
+
+	std::map<int, ItemSpace*> GetBoxes()
+	{
+		return Boxes;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
