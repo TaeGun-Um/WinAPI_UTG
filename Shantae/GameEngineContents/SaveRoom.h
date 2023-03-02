@@ -48,6 +48,9 @@ private:
 	Inventory* Inven = nullptr;
 	float OverlapTime = 0.0f;
 
+	bool IsStart = true;
+
+	int StartCount = 0;
 	int Set = 1;
 	int AnimationSet = 1;
 

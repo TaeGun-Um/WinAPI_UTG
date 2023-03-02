@@ -11,6 +11,7 @@
 
 #include "Gem.h"
 #include "Heart.h"
+#include "Player.h"
 
 Soldier_Red::Soldier_Red()
 {
@@ -253,14 +254,14 @@ void Soldier_Red::CollisionCheck()
 
 			Blinker = true;
 
-			if (10 == HP)
+			HP -= Player::MainPlayer->GetPlayerDamage();
+			
+			if (0 <= HP)
 			{
-				HP = 5;
 				HitAction = true;
 			}
-			else if (5 == HP)
+			else if (0 < HP)
 			{
-				HP = 0;
 				HitAction = true;
 			}
 		}

@@ -99,6 +99,16 @@ void SaveRoom::Update(float _DeltaTime)
 
 void SaveRoom::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	if (1 == StartCount)
+	{
+		Inven->Elimination();
+	}
+
+	if (true == IsStart)
+	{
+		IsStart = false;
+		StartCount = 0;
+	}
 	Inventory::PlayerInven->DataCopy(Inven);
 	Inventory::PlayerInven = Inven;
 

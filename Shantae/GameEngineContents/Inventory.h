@@ -81,6 +81,7 @@ public:
 	}
 
 	void DataCopy(Inventory* _Other);
+	void Elimination();
 
 protected:
 	void Start() override;

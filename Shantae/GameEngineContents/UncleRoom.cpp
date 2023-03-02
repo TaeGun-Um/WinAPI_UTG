@@ -102,6 +102,16 @@ void UncleRoom::Update(float _DeltaTime)
 
 void UncleRoom::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	if (1 == StartCount)
+	{
+		Inven->Elimination();
+	}
+
+	if (true == IsStart)
+	{
+		IsStart = false;
+		StartCount = 0;
+	}
 	Inventory::PlayerInven->DataCopy(Inven);
 	Inventory::PlayerInven = Inven;
 

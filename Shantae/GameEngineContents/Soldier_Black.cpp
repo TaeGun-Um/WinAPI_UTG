@@ -175,7 +175,7 @@ void Soldier_Black::CollisionCheck(float _DeltaTime)
 				HitTime2 = 0.0f;
 				BodyCollision->Off();
 				Blinker = true;
-				HP -= 5;
+				HP -= Player::MainPlayer->GetPlayerDamage();
 
 				if (0 >= HP)
 				{

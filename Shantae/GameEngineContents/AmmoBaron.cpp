@@ -8,6 +8,7 @@
 
 #include "ContentsEnum.h"
 #include "Impact.h"
+#include "Player.h"
 
 AmmoBaron::AmmoBaron() 
 {
@@ -84,7 +85,7 @@ void AmmoBaron::CollisionCheck(float _DeltaTime)
 
 				CreateImpact();
 				Blinker = true;
-				BaronHP -= 5;
+				BaronHP -= Player::MainPlayer->GetPlayerDamage();
 			}
 		}
 	}

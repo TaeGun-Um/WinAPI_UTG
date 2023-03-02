@@ -56,8 +56,11 @@ private:
 	float OverlapTime = 0.0f;
 	
 	bool YCamera = false;
+	bool IsStart = true;
 
+	int StartCount = 0;
 	int Set = 1;
 	int AnimationSet = 1;
+	int PortalSet = 1;
 };
 
