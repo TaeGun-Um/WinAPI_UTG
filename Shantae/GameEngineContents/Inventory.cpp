@@ -74,7 +74,12 @@ void Inventory::Update(float _DeltaTime)
 	{
 		FamilyOn();
 		SelectMove(_DeltaTime);
-		SelectItem();
+
+		Icon* Use = SelectItem();
+		if (nullptr != Use)
+		{
+			Player::MainPlayer->SetItemUse(Use->GetIconName().data());
+		}
 	}
 
 	PlayerItemCheck();
@@ -202,25 +207,39 @@ Icon* Inventory::SelectItem()
 
 		if (nullptr != IconList)
 		{
-			if (1 < Boxes.find(BoxNumber)->second->GetItemIcon()->GetItemCount())
+			if ("Octopus" == Boxes.find(BoxNumber)->second->GetItemIcon()->GetIconName()
+				|| "IDCard" == Boxes.find(BoxNumber)->second->GetItemIcon()->GetIconName())
 			{
-				Boxes.find(BoxNumber)->second->GetItemIcon()->MinusItemCount();
+				return nullptr;
 			}
 			else
 			{
-				IconList->Death();
-				IconList = nullptr;
-				Boxes.find(BoxNumber)->second->SetItemIcon(IconList);
-			}
-			return ReturnValue;
+				if (1 < Boxes.find(BoxNumber)->second->GetItemIcon()->GetItemCount())
+				{
+					Boxes.find(BoxNumber)->second->GetItemIcon()->MinusItemCount();
+				}
+				else
+				{
+					IconList->Death();
+					IconList = nullptr;
+					Boxes.find(BoxNumber)->second->SetItemIcon(IconList);
+				}
+
+				return ReturnValue;
+			} 
 		}
 	}
+	return nullptr;
 }
 
 void Inventory::SelectMove(float _DeltaTime)
 {
 	if (GameEngineInput::IsDown("UpMove"))
 	{
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Botton_move.wav");
+		BGMPlayer.Volume(0.05f);
+		BGMPlayer.LoopCount(1);
+
 		BoxNumber -= 4;
 
 		if (-3 == BoxNumber)
@@ -249,6 +268,10 @@ void Inventory::SelectMove(float _DeltaTime)
 
 	if (GameEngineInput::IsDown("DownMove"))
 	{
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Botton_move.wav");
+		BGMPlayer.Volume(0.05f);
+		BGMPlayer.LoopCount(1);
+
 		BoxNumber += 4;
 
 		if (13 == BoxNumber)
@@ -277,6 +300,10 @@ void Inventory::SelectMove(float _DeltaTime)
 
 	if (GameEngineInput::IsDown("LeftMove"))
 	{
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Botton_move.wav");
+		BGMPlayer.Volume(0.05f);
+		BGMPlayer.LoopCount(1);
+
 		--BoxNumber;
 		LeftMove = true;
 
@@ -304,6 +331,10 @@ void Inventory::SelectMove(float _DeltaTime)
 
 	if (GameEngineInput::IsDown("RightMove"))
 	{
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Botton_move.wav");
+		BGMPlayer.Volume(0.05f);
+		BGMPlayer.LoopCount(1);
+
 		++BoxNumber;
 
 		if (5 == BoxNumber)

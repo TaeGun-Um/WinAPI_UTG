@@ -563,6 +563,12 @@
     <ClInclude Include="Meat.h">
       <Filter>Item\EqiupItem\TotheInventory</Filter>
     </ClInclude>
+    <ClInclude Include="BubbleEffect.h">
+      <Filter>Character\Player\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="PikeBallEffect.h">
+      <Filter>Character\Player\Effect</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShantaeCore.cpp" />
@@ -1183,6 +1189,12 @@
     </ClCompile>
     <ClCompile Include="Meat.cpp">
       <Filter>Item\EqiupItem\TotheInventory</Filter>
+    </ClCompile>
+    <ClCompile Include="BubbleEffect.cpp">
+      <Filter>Character\Player\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="PikeBallEffect.cpp">
+      <Filter>Character\Player\Effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

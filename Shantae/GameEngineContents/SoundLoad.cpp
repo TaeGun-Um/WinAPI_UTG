@@ -83,12 +83,12 @@ void SoundLoad::Loading()
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_land.wav"));           // o 랜딩 시 보이스
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Splash_water.wav"));          // 물장구 효과음
 
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Inventory_in.wav"));          // 인벤토리 오픈
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Inventory_out.wav"));         // 인벤토리 닫기
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_bubble.wav"));         // 버블 사용 보이스
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Inventory_in.wav"));          // o 인벤토리 오픈
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Inventory_out.wav"));         // o 인벤토리 닫기
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_bubble.wav"));         // o 버블 사용 보이스
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_powerup.wav"));        // 파워업 사용 효과음
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_pikeball.wav"));       // 파이크볼 사용 효과음
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_monstermilk.wav"));    // 몬스터 밀크 사용 보이스
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_pikeball.wav"));       // o 파이크볼 사용 효과음
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_monstermilk.wav"));    // o 몬스터 밀크 사용 보이스
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_gem.wav"));            // o 젬 획득 효과음
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_hp_large.wav"));       // o 큰 하트 획득 효과음
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_hp_small.mp3"));       // o 작은 하트 획득 효과음

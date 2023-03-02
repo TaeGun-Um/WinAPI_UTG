@@ -254,6 +254,15 @@ void Soldier_Blue::CollisionCheck()
 			HitAction = true;
 			Blinker = true;
 		}
+		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PikeBall), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+		{
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Strike_enemy.mp3");
+			BGMPlayer.Volume(0.075f);
+			BGMPlayer.LoopCount(1);
+
+			HitAction = true;
+			Blinker = true;
+		}
 	}
 }
 

@@ -87,6 +87,21 @@ void AmmoBaron::CollisionCheck(float _DeltaTime)
 				Blinker = true;
 				BaronHP -= Player::MainPlayer->GetPlayerDamage();
 			}
+
+			if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PikeBall), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+			{
+				BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Strike_enemy.mp3");
+				BGMPlayer.Volume(0.075f);
+				BGMPlayer.LoopCount(1);
+
+				Hitonoff = false;
+				HitTime = 0.0f;
+				BodyCollision->Off();
+
+				CreateImpact();
+				Blinker = true;
+				BaronHP -= 6;
+			}
 		}
 	}
 }

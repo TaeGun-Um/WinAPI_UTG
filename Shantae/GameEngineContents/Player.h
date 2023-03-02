@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string_view>
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/NumberRenderObject.h>
@@ -28,6 +29,9 @@ enum class PlayerState
 	PORTALING,
 	PORTALOUT,
 };
+
+class PikeBallEffect;
+class BubbleEffect;
 
 // Ό³Έν : Player Chracter
 class Player : public GameEngineActor
@@ -164,6 +168,11 @@ public:
 		return PlayerDamage;
 	}
 
+	void SetPlayerDamage(int _Value)
+	{
+		PlayerDamage += _Value;
+	}
+
 	int GetPlayerMaxHP()
 	{
 		return MaxHP;
@@ -289,6 +298,18 @@ public:
 		IsItemEquip = _Is;
 	}
 
+	void SetItemUse(std::string _Name)
+	{
+		IsItemUse = true;
+		ItemName = _Name;
+		InventorySoundCount = 1;
+	}
+
+	std::string GetUseItemName()
+	{
+		return ItemName;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -327,6 +348,31 @@ private:
 	void Kill();
 	void RenderSet();
 	void CollisionSet();
+	void ItemUse(float _DeltaTiem);
+	void UseMonsterMilk(float _DeltaTiem);
+	void UseMeat();
+	void UseBubble(float _DeltaTiem);
+	void UsePikeBall(float _DeltaTiem);
+
+	float MonsterMilkTime = 0.0f;
+	float BubbleTime = 0.0f;
+	float PikeBallTime = 0.0f;
+
+	int InventorySoundCount = 1;
+	int MonsterMilkSet = 1;
+	int BubbleSet = 1;
+	int PikeBallSet = 1;
+
+	PikeBallEffect* Pik = nullptr;
+	BubbleEffect* Bub = nullptr;
+
+	std::string ItemName = "Meat";
+
+	bool IsItemUse = false;
+	bool MonsterMilkEnd = false;
+	bool PikeBallEnd = false;
+	bool BubbleEnd = false;
+	bool MeatEnd = false;
 
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineImage* ColMap = nullptr;

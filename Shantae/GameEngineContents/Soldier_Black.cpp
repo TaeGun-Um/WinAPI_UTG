@@ -182,6 +182,24 @@ void Soldier_Black::CollisionCheck(float _DeltaTime)
 					HitAction = true;
 				}
 			}
+
+			if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PikeBall), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+			{
+				BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Strike_enemy.mp3");
+				BGMPlayer.Volume(0.075f);
+				BGMPlayer.LoopCount(1);
+
+				Hitonoff = false;
+				HitTime2 = 0.0f;
+				BodyCollision->Off();
+				Blinker = true;
+				HP -= 6;
+
+				if (0 >= HP)
+				{
+					HitAction = true;
+				}
+			}
 		}
 	}
 

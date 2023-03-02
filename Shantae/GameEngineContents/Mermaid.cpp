@@ -147,6 +147,23 @@ void Mermaid::CollisionCheck(float _DeltaTime)
 				IsDeath = true;
 			}
 		}
+
+		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PikeBall), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+		{
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Strike_enemy.mp3");
+			BGMPlayer.Volume(0.075f);
+			BGMPlayer.LoopCount(1);
+
+			HitAction = true;
+			BodyCollision->Off();
+			Blinker = true;
+			HP -= 6;
+
+			if (0 >= HP)
+			{
+				IsDeath = true;
+			}
+		}
 	}
 }
 

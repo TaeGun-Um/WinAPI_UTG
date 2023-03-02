@@ -15,6 +15,8 @@
 #include "Impact.h"
 #include "Pistol_Bullet.h"
 #include "ContentsEnum.h"
+#include "PikeBallEffect.h"
+#include "BubbleEffect.h"
 
 Player* Player::MainPlayer = nullptr;
 
@@ -137,15 +139,26 @@ void Player::Update(float _DeltaTime)
 
 		if (true == InvenOnOff)
 		{
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Inventory_in.wav");
+			BGMPlayer.Volume(0.15f);
+			BGMPlayer.LoopCount(1);
+
 			Inventory::PlayerInven->AnimationRender->On();
 		}
 		else
 		{
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Inventory_out.wav");
+			BGMPlayer.Volume(0.15f);
+			BGMPlayer.LoopCount(1);
+
 			Inventory::PlayerInven->AnimationRender->Off();
 		}
-		
 	}
-
+	if (true == IsItemUse)
+	{
+		ItemUse(_DeltaTime);
+	}
+	
 }
 
 void Player::Render(float _DeltaTime)
@@ -1045,4 +1058,188 @@ void Player::CollisionSet()
 	AttackCollision->SetScale({ 160, 50 });
 	AttackCollision->SetPosition({ 100, -60 });
 	AttackCollision->Off();
+}
+
+void Player::ItemUse(float _DeltaTiem)
+{
+	std::string Name = GetUseItemName();
+
+	std::string UpperName = GameEngineString::ToUpper(GetUseItemName());
+
+	std::string UpperName_comparison1 = GameEngineString::ToUpper("MonsterMilk");
+	std::string UpperName_comparison2 = GameEngineString::ToUpper("Meat");
+	std::string UpperName_comparison3 = GameEngineString::ToUpper("Bubble");
+	std::string UpperName_comparison4 = GameEngineString::ToUpper("PikeBall");
+	std::string UpperName_comparison5 = GameEngineString::ToUpper("Octopus");
+	std::string UpperName_comparison6 = GameEngineString::ToUpper("IDCard");
+
+	if (UpperName_comparison1 == UpperName)
+	{
+		if (1 == InventorySoundCount)
+		{
+			InventorySoundCount = 0;
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_monstermilk.wav");
+			BGMPlayer.Volume(0.1f);
+			BGMPlayer.LoopCount(1);
+			MonsterMilkEnd = false;
+			MonsterMilkSet = 1;
+		}
+
+		UseMonsterMilk(_DeltaTiem);
+	}
+
+	if (UpperName_comparison2 == UpperName)
+	{
+		if (1 == InventorySoundCount)
+		{
+			InventorySoundCount = 0;
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_hp_large.wav");
+			BGMPlayer.Volume(0.1f);
+			BGMPlayer.LoopCount(1);
+			MeatEnd = false;
+		}
+
+		UseMeat();
+	}
+
+	if (UpperName_comparison3 == UpperName)
+	{
+		if (1 == InventorySoundCount)
+		{
+			InventorySoundCount = 0;
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_bubble.wav");
+			BGMPlayer.Volume(0.1f);
+			BGMPlayer.LoopCount(1);
+			BubbleEnd = false;
+			BubbleSet = 1;
+		}
+
+		UseBubble(_DeltaTiem);
+	}
+
+	if (UpperName_comparison4 == UpperName)
+	{
+		if (1 == InventorySoundCount)
+		{
+			InventorySoundCount = 0;
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_pikeball.wav");
+			BGMPlayer.Volume(0.1f);
+			BGMPlayer.LoopCount(1);
+			PikeBallEnd = false;
+			PikeBallSet = 1;
+		}
+
+		UsePikeBall(_DeltaTiem);
+	}
+
+	if (true == MonsterMilkEnd && true == PikeBallEnd && true == BubbleEnd)
+	{
+		MonsterMilkEnd = false;
+		PikeBallEnd = false;
+		BubbleEnd = false;
+		MeatEnd = false;
+		IsItemUse = false;
+	}
+}
+
+void Player::UseMonsterMilk(float _DeltaTiem)
+{
+	if (1 == MonsterMilkSet)
+	{
+		MonsterMilkTime = 0.0f;
+	}
+
+	if (false == MonsterMilkEnd)
+	{
+		MonsterMilkTime += _DeltaTiem;
+
+		if (10.0f >= MonsterMilkTime)
+		{
+			if (1 == MonsterMilkSet)
+			{
+				MonsterMilkSet = 0;
+				SetPlayerDamage(5);
+			}
+		}
+		else if (10.0f < MonsterMilkTime)
+		{
+			MonsterMilkTime = 0.0f;
+			MonsterMilkEnd = true;
+			SetPlayerDamage(-5);
+		}
+	}
+}
+
+void Player::UseMeat()
+{
+	if (false == IsItemUse)
+	{
+		SetPlayerHP(GetPlayerMaxHP());
+		IsItemUse = true;
+	}
+}
+
+void Player::UseBubble(float _DeltaTiem)
+{
+	if (1 == BubbleSet)
+	{
+		BubbleTime = 0.0f;
+	}
+
+	if (false == BubbleEnd)
+	{
+		BubbleTime += _DeltaTiem;
+
+		if (10.0f >= BubbleTime)
+		{
+			if (1 == BubbleSet)
+			{
+				BubbleSet = 0;
+				BodyCollision->Off();
+
+				Bub = GetLevel()->CreateActor<BubbleEffect>();
+				Bub->SetPos(GetPos());
+			}
+			
+		}
+		else if (10.0f < BubbleTime)
+		{
+			BodyCollision->On();
+			BubbleTime = 0.0f;
+			BubbleEnd = true;
+			Bub->Kill();
+			Bub = nullptr;
+		}
+	}
+}
+
+void Player::UsePikeBall(float _DeltaTiem)
+{
+	if (1 == PikeBallSet)
+	{
+		PikeBallTime = 0.0f;
+	}
+
+	if (false == PikeBallEnd)
+	{
+		PikeBallTime += _DeltaTiem;
+
+		if (10.0f >= PikeBallTime)
+		{
+			if (1 == PikeBallSet)
+			{
+				PikeBallSet = 0;
+
+				Pik = GetLevel()->CreateActor<PikeBallEffect>();
+				Pik->SetPos(GetPos());
+			}
+		}
+		else if (10.0f < PikeBallTime)
+		{
+			PikeBallTime = 0.0f;
+			PikeBallEnd = true;
+			Pik->Kill();
+			Pik = nullptr;
+		}
+	}
 }
