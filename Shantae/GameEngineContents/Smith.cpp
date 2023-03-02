@@ -114,7 +114,7 @@ void Smith::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	if (true == IsStart)
 	{
 		IsStart = false;
-		StartCount = 0;
+		StartCount = 1;
 	}
 	Inventory::PlayerInven->DataCopy(Inven);
 	Inventory::PlayerInven = Inven;

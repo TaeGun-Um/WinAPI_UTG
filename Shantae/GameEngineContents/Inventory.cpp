@@ -28,7 +28,17 @@ Inventory::Inventory()
 
 Inventory::~Inventory() 
 {
-	Elimination();
+	for (std::pair<int, ItemSpace*> UpdateGroup : Boxes)
+	{
+		ItemSpace* SpaceList = UpdateGroup.second;
+
+		if (nullptr != SpaceList)
+		{
+			delete SpaceList;
+			SpaceList = nullptr;
+		}
+	}
+	Boxes.clear();
 }
 
 void Inventory::Start()
@@ -399,12 +409,11 @@ void Inventory::Elimination()
 	for (std::pair<int, ItemSpace*> UpdateGroup : Boxes)
 	{
 		ItemSpace* SpaceList = UpdateGroup.second;
+		Icon* IconList = UpdateGroup.second->GetItemIcon();
 
-		if (nullptr != SpaceList)
+		if (nullptr != IconList)
 		{
-			delete SpaceList;
-			SpaceList = nullptr;
+			IconList->SetItemCount(0);
 		}
 	}
-	Boxes.clear();
 }
