@@ -43,6 +43,11 @@ public:
 		NPCValue = _Is;
 	}
 
+	void SetIsOver()
+	{
+		IsOver = true;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -52,6 +57,7 @@ private:
 	void Close(float _DeltaTime);
 	void TextCreate();
 	void Kill();
+	void Cycle();
 
 	GameEngineSoundPlayer BGMPlayer;
 	NPCDialogType_Text NPCValue = NPCDialogType_Text::Town_Guard;
@@ -59,12 +65,16 @@ private:
 
 	bool IsOpen = false;
 	bool IsClose = false;
-
-	bool ISIS = false;
+	bool IsOver = false;
+	bool IsNext = false;
 
 	float OpenTime = 0.0f;
 	float CloseTime = 0.0f;
 	int TextCount = 1;
+	int ScriptKill = 1;
+
+	int CycleClose = 1;
+	int CycleOpen = 0;
 
 };
 

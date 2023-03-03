@@ -1,6 +1,7 @@
 #pragma once
 
 #include <GameEngineCore/GameEngineActor.h>
+#include "BlueTextBox.h"
 
 enum class NPCDialogType_Dialog
 {
@@ -16,6 +17,9 @@ enum class NPCDialogType_Dialog
 class NPCScript : public GameEngineActor
 {
 public:
+
+	friend BlueTextBox;
+
 	// constrcuter destructer
 	NPCScript();
 	~NPCScript();
@@ -36,6 +40,11 @@ public:
 		NPCValue = _Is;
 	}
 
+	void NextScript()
+	{
+		++TextnNextCount;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -43,17 +52,35 @@ protected:
 private:
 	void Kill();
 	void NPCType();
+	void TextCreate();
 
 	GameEngineRender* TextRender = nullptr;
 	NPCDialogType_Dialog NPCValue = NPCDialogType_Dialog::Town_Guard;
 	float4 BoxScale = float4::Zero;
 
 	std::string Script = "¿À·ù";
+	std::vector<std::string> SkyTexts;
+	std::vector<std::string> BathwomanTexts;
+	std::vector<std::string> MerchantTexts;
+	std::vector<std::string> SquidsmithTexts;
+	std::vector<std::string> Town_GuardTexts;
+	std::vector<std::string> Town_Guard_PassTexts;
+	std::vector<std::string> PlayerTexts;
+
+	std::vector<std::string> NPCTexts;
 
 	int TextCount = 1;
+	int TextInsertCount = 0;
+	int TextnNextCount = 0;
 
+	bool IsTextEnd = false;
 	bool IsOver = false;
 
-	bool SKY = false;
+	void TownGuard();
+	void TownGuard_Pass();
+	void Bathwoman();
+	void Sky();
+	void Merchant();
+	void Squidsmith();
 };
 

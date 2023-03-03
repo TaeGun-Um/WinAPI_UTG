@@ -98,7 +98,7 @@ void ShantaeCore::Start()
 	CreateLevel<TestRoom2>("TestRoom2");
 
 // ------------------------------- 레벨 선택 -------------------------------
-	ChangeLevel("Spa");
+	ChangeLevel("Smith");
 }
 
 void ShantaeCore::Update()

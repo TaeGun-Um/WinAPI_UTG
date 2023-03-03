@@ -61,17 +61,58 @@ void BlueTextBox::Update(float _DeltaTime)
 			TextCreate();
 		}
 
-		if (GameEngineInput::IsDown("Select"))
+		if (true == IsOver)
 		{
 			IsClose = true;
-		}
 
-		if (true == IsClose)
+			if (1 == ScriptKill)
+			{
+				ScriptKill = 0;
+				Scr->Kill();
+				Scr = nullptr;
+			}
+			
+			if (true == IsClose)
+			{
+				Close(_DeltaTime);
+			}
+		}
+		else
 		{
-			Close(_DeltaTime);
+			if (GameEngineInput::IsDown("Select"))
+			{
+				IsNext = true;
+			}
+
+			if (true == IsNext)
+			{
+				Cycle();
+			}
 		}
 	}
+}
 
+void BlueTextBox::Cycle()
+{
+	if (1 == CycleClose)
+	{
+		CycleClose = 0;
+		AnimationRender->ChangeAnimation("Close");
+		CycleOpen = 1;
+	}
+
+	if (1 == CycleOpen)
+	{
+		CycleOpen = 0;
+		AnimationRender->ChangeAnimation("Open");
+		Scr->NextScript();
+
+		if (0 == CycleOpen)
+		{
+			CycleClose = 1;
+			IsNext = false;
+		}
+	}
 }
 
 void BlueTextBox::Open()
@@ -81,7 +122,6 @@ void BlueTextBox::Open()
 	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Inventory_in.wav");
 	BGMPlayer.Volume(0.15f);
 	BGMPlayer.LoopCount(1);
-
 }
 
 void BlueTextBox::Close(float _DeltaTime)
@@ -111,7 +151,6 @@ void BlueTextBox::Kill()
 {
 	GameEngineActor* Act = AnimationRender->GetActor();
 	Act->Death();
-	Scr->Death();
 }
 
 void BlueTextBox::TextCreate()

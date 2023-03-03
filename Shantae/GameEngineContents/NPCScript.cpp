@@ -1,8 +1,10 @@
 #include "NPCScript.h"
 
+#include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineRender.h>
 
 #include "ContentsEnum.h"
+#include "BlueTextBox.h"
 #include "Player.h"
 
 NPCScript::NPCScript() 
@@ -24,11 +26,29 @@ void NPCScript::Start()
 
 void NPCScript::Update(float _DeltaTime)
 {
-	NPCType();
 	if (1 == TextCount)
 	{
 		TextCount = 0;
-		TextRender->SetText(Script, 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+		NPCType();
+	}
+
+	TextCreate();
+}
+
+void NPCScript::TextCreate()
+{
+	if (TextnNextCount - TextInsertCount == TextInsertCount)
+	{
+		IsTextEnd = true;
+	}
+
+	if (true == IsTextEnd)
+	{
+		BlueTextBox::DialogTextBox->SetIsOver();
+	}
+	else if (false == IsTextEnd)
+	{
+		TextRender->SetText(NPCTexts[TextnNextCount - TextInsertCount], 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
 	}
 }
 
@@ -38,21 +58,33 @@ void NPCScript::NPCType()
 	{
 	case NPCDialogType_Dialog::Sky:
 		Script = "Sky";
+		TextInsertCount = 5;
+		Sky();
 		break;
 	case NPCDialogType_Dialog::Bathwoman:
 		Script = "Bathwoman";
+		TextInsertCount = 1;
+		Bathwoman();
 		break;
 	case NPCDialogType_Dialog::Merchant:
 		Script = "Merchant";
+		TextInsertCount = 24;
+		Merchant();
 		break;
 	case NPCDialogType_Dialog::Squidsmith:
 		Script = "Squidsmith";
+		TextInsertCount = 11;
+		Squidsmith();
 		break;
 	case NPCDialogType_Dialog::Town_Guard:
 		Script = "Town_Guard";
+		TextInsertCount = 1;
+		TownGuard();
 		break;
 	case NPCDialogType_Dialog::Town_Guard_Pass:
 		Script = "Town_Guard_Pass";
+		TextInsertCount = 6;
+		TownGuard_Pass();
 		break;
 	default:
 		break;
@@ -64,4 +96,114 @@ void NPCScript::Kill()
 	GameEngineActor* ColActor = TextRender->GetActor();
 	ColActor->Off();
 	ColActor->Death();
+}
+
+void NPCScript::TownGuard()
+{
+	NPCTexts.resize(TextInsertCount);
+	NPCTexts[0] = "여기서부터는 스커틀 마을이야.";
+
+	TextnNextCount = TextInsertCount;
+}
+
+void NPCScript::TownGuard_Pass()
+{
+	NPCTexts.resize(TextInsertCount);
+	// 출입증 미소지
+	NPCTexts[0] = "여기를 통과하려면 출입증이 필요해.";
+	NPCTexts[1] = "넌 출입증이 없어보이는구나. 그렇다면 통과\n할 수 없어.";
+	// 출입증 소지
+	NPCTexts[2] = "출입증 좀 볼까!";
+	NPCTexts[3] = "와, 다른 사람들은 사진 찍으면 2.27kg은 더 \n나가 보인다던데...";
+	NPCTexts[4] = "넌 오히려 사진이 너무 이쁘네. 근사한 머리에\n다가 얼굴도 완전 다른 사람인데?";
+	NPCTexts[5] = "어쨋든, 출입증이 있으니 통과시켜줄게. 행운\n을 빌어!";
+
+	TextnNextCount = TextInsertCount;
+}
+
+void NPCScript::Bathwoman()
+{
+	NPCTexts.resize(TextInsertCount);
+	NPCTexts[0] = "약탕에 몸을 담가보세요! 원기가 회복됩니다!";
+
+	TextnNextCount = TextInsertCount;
+}
+
+void NPCScript::Sky()
+{
+	NPCTexts.resize(TextInsertCount);
+	NPCTexts[0] = "샨테? 무슨 일이야?";
+	NPCTexts[1] = "출입증이 필요하다고? 별일이네.";
+	NPCTexts[2] = "출입증을 얻었다!"; // 획득
+	NPCTexts[3] = "저번에 그랬던 것처럼 또 망가뜨리면 안돼!";
+
+	// 출입증 수령 후
+	NPCTexts[4] = "그 출입증은 잃어버리지마!";
+
+	TextnNextCount = TextInsertCount;
+}
+
+void NPCScript::Merchant()
+{	
+	// Script = "ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅅ\nㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅅ";
+	NPCTexts.resize(TextInsertCount);
+	PlayerTexts.resize(2);
+	NPCTexts[0] = "우리가게에 어서오세요!";
+	NPCTexts[1] = "묶음으로 사서 돈을 절약하세요!";
+	NPCTexts[2] = "고기";
+	NPCTexts[3] = "고기 (x3)";
+	NPCTexts[4] = "체력을 회복할 수 있습니다.";
+	NPCTexts[5] = "10";  // 가격
+	NPCTexts[6] = "25";  // 가격
+	NPCTexts[7] = "파이크볼";
+	NPCTexts[8] = "파이크볼 (x3)";
+	NPCTexts[9] = "빙글빙글 돌아가는 고통의 강철 구로 자신을 보호하세요.";
+	NPCTexts[10] = "50";  // 가격
+	NPCTexts[11] = "120"; // 가격
+	NPCTexts[12] = "버블";
+	NPCTexts[13] = "버블 (x3)";
+	NPCTexts[14] = "공격에 대응하는 최상의 방어 수단입니다.";
+	NPCTexts[15] = "100"; // 가격
+	NPCTexts[16] = "250"; // 가격
+	NPCTexts[17] = "몬스터 우유";
+	NPCTexts[18] = "몬스터 우유(x3)";
+	NPCTexts[19] = "공격력을 증가시키세요! 알 수 없는 효소로 가득하답니다!";
+	NPCTexts[20] = "60";  // 가격
+	NPCTexts[21] = "150"; // 가격
+	// 선택 시
+	NPCTexts[22] = "이 아이템을 구매하실 건가요?";
+	// 구매 완료
+	NPCTexts[23] = "고마워요! 또 구매하실 것 있나요?";
+	// 플레이어
+	PlayerTexts[0] = "예";
+	PlayerTexts[1] = "아니요";
+
+	TextnNextCount = TextInsertCount;
+}
+
+void NPCScript::Squidsmith()
+{
+	NPCTexts.resize(TextInsertCount);
+	PlayerTexts.resize(2);
+	// 첫 조우
+	NPCTexts[0] = "스커틀 마을 문어장인 대령이오오!";
+	NPCTexts[1] = "난 조그맣고 사랑스러운 하트 문어들을 모아..";
+	NPCTexts[2] = "전부!";
+	NPCTexts[3] = "다!!";
+	NPCTexts[4] = "녹여버려서!!!";
+	NPCTexts[5] = "...네 하트를 틀려줄 거야!";
+	// 이후 질의응답
+	NPCTexts[6] = "체력 칸을 늘릴래?";
+	// 예
+	NPCTexts[7] = "미안하지만, 체력칸을 늘리려면 하트 문어가\n네 마리 필요해."; // 네 마리 없을 경우
+	NPCTexts[8] = "시작해볼까!";                                             // 있을 경우
+	NPCTexts[9] = "자, 네 최대 체력이 한 칸 증가했어!";
+	// 아니오
+	NPCTexts[10] = "생각이 바뀔지도 모르니 여기서 기다릴게!";
+
+	// 플레이어
+	PlayerTexts[0] = "당장 해주세요!";
+	PlayerTexts[1] = "절대 안돼!";
+
+	TextnNextCount = TextInsertCount;
 }
