@@ -38,12 +38,12 @@ public:
 
 	static float4 AngleToDirection2DToDeg(float _Deg)
 	{
-		return AngleToDirection2DToRad(_Deg * GameEngineMath::DegToRad);
+		return AngleToDirection2DToRad(_Deg * GameEngineMath::DegToRad); // DegToRad == 데카르트를 라디안으로 변환
 	}
 
 	static float4 AngleToDirection2DToRad(float _Rad)
 	{
-		return float4(cosf(_Rad), sinf(_Rad), 0.0f, 1.0f);
+		return float4(cosf(_Rad), sinf(_Rad), 0.0f, 1.0f); // 라디안값을 sin cos 지점의 벡터로, 회전값 생성
 	}
 
 public:

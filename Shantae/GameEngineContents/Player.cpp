@@ -1158,7 +1158,7 @@ void Player::UseMonsterMilk(float _DeltaTiem)
 	{
 		MonsterMilkTime += _DeltaTiem;
 
-		if (10.0f >= MonsterMilkTime)
+		if (15.0f >= MonsterMilkTime)
 		{
 			if (1 == MonsterMilkSet)
 			{
@@ -1166,7 +1166,7 @@ void Player::UseMonsterMilk(float _DeltaTiem)
 				SetPlayerDamage(5);
 			}
 		}
-		else if (10.0f < MonsterMilkTime)
+		else if (15.0f < MonsterMilkTime)
 		{
 			MonsterMilkTime = 0.0f;
 			MonsterMilkEnd = true;
@@ -1195,7 +1195,7 @@ void Player::UseBubble(float _DeltaTiem)
 	{
 		BubbleTime += _DeltaTiem;
 
-		if (10.0f >= BubbleTime)
+		if (13.0f >= BubbleTime)
 		{
 			if (1 == BubbleSet)
 			{
@@ -1207,7 +1207,7 @@ void Player::UseBubble(float _DeltaTiem)
 			}
 			
 		}
-		else if (10.0f < BubbleTime)
+		else if (13.0f < BubbleTime)
 		{
 			BodyCollision->On();
 			BubbleTime = 0.0f;
@@ -1229,7 +1229,7 @@ void Player::UsePikeBall(float _DeltaTiem)
 	{
 		PikeBallTime += _DeltaTiem;
 
-		if (10.0f >= PikeBallTime)
+		if (15.0f >= PikeBallTime)
 		{
 			if (1 == PikeBallSet)
 			{
@@ -1239,7 +1239,7 @@ void Player::UsePikeBall(float _DeltaTiem)
 				Pik->SetPos(GetPos());
 			}
 		}
-		else if (10.0f < PikeBallTime)
+		else if (15.0f < PikeBallTime)
 		{
 			PikeBallTime = 0.0f;
 			PikeBallEnd = true;
