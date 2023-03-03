@@ -28,6 +28,11 @@ public:
 		IsOpen = true;
 	}
 
+	void SetNPCType(bool _Is)
+	{
+		ISIS = _Is;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -44,6 +49,8 @@ private:
 
 	bool IsOpen = false;
 	bool IsClose = false;
+
+	bool ISIS = false;
 
 	float OpenTime = 0.0f;
 	float CloseTime = 0.0f;

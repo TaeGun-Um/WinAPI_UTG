@@ -158,16 +158,31 @@ void Player::Update(float _DeltaTime)
 		ItemUse(_DeltaTime);
 	}
 
-	if (GameEngineInput::IsDown("Select") && true == TextActivate)
+	if (GameEngineInput::IsDown("Select") && true == TextActivate && false == IsJump)
 	{
 		BodyCollision->Off();
 		InConversation = true;
-		//BlueTextBox::DialogTextBox->SetIsOpen();
 		BlueTextBox::DialogTextBox = GetLevel()->CreateActor<BlueTextBox>();
+		if (true == SSSKKK)
+		{
+			BlueTextBox::DialogTextBox->SetNPCType(true);
+		}
 	}
 
 	if (true == InConversation)
 	{
+		if (3 <= HP && 6 >= HP)
+		{
+			DirCheck("Idle");
+		}
+		else if (3 > HP)
+		{
+			DirCheck("LowHP");
+		}
+		else if (6 < HP)
+		{
+			DirCheck("IdleDance");
+		}
 		return;
 	}
 	// 이동계산

@@ -16,12 +16,23 @@ public:
 	NPCScript& operator=(const NPCScript& _Other) = delete;
 	NPCScript& operator=(NPCScript&& _Other) noexcept = delete;
 
+	bool GetIsOver()
+	{
+		return IsOver;
+	}
+
+	void TestNPC()
+	{
+		SKY = true;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 
 private:
 	void Kill();
+	void NPCType();
 
 	GameEngineRender* TextRender = nullptr;
 
@@ -30,5 +41,9 @@ private:
 	std::string Script = "¿À·ù";
 
 	int TextCount = 1;
+
+	bool IsOver = false;
+
+	bool SKY = false;
 };
 

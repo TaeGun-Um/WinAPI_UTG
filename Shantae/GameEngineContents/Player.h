@@ -326,6 +326,11 @@ public:
 		BodyCollision->On();
 	}
 
+	void NPPPCCC()
+	{
+		SSSKKK = true;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -386,6 +391,8 @@ private:
 
 	bool TextActivate = false;
 	bool InConversation = false;
+
+	bool SSSKKK = false;
 
 	bool IsItemUse = false;
 	bool MonsterMilkEnd = false;

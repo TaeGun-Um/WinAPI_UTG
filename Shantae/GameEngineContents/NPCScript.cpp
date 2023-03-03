@@ -17,17 +17,26 @@ void NPCScript::Start()
 {
 	TextRender = CreateRender(RenderOrder::UI);
 	Script = "けけけけけけけけけけけけけけけけけけけけけさ\nけけけけけけけけけけけけけけけけけけけけけさ";
-	BoxScale = { 650, 500 };
+	BoxScale = { 650, 300 };
 	TextRender->SetText(Script, 30, "閏顕", TextAlign::Left, RGB(255, 255, 255), BoxScale);
 	TextRender->EffectCameraOff();
 }
 
 void NPCScript::Update(float _DeltaTime)
 {
-	if (1 == TextCount)
+	NPCType();
+
+	if (1 == TextCount && true == SKY)
 	{
 		TextCount = 0;
+		Script = "しいぉいぉ";
+		TextRender->SetText(Script, 30, "閏顕", TextAlign::Left, RGB(255, 255, 255), BoxScale);
 	}
+}
+
+void NPCScript::NPCType()
+{
+
 }
 
 void NPCScript::Kill()
