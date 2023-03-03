@@ -572,6 +572,9 @@
     <ClInclude Include="DamageText.h">
       <Filter>Text</Filter>
     </ClInclude>
+    <ClInclude Include="HeartText.h">
+      <Filter>Text</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShantaeCore.cpp" />
@@ -1200,6 +1203,9 @@
       <Filter>Character\Player\Effect</Filter>
     </ClCompile>
     <ClCompile Include="DamageText.cpp">
+      <Filter>Text</Filter>
+    </ClCompile>
+    <ClCompile Include="HeartText.cpp">
       <Filter>Text</Filter>
     </ClCompile>
   </ItemGroup>

@@ -50,9 +50,9 @@ void PikeBallEffect::MoveCalculation(float _DeltaTime)
 	BodyCollision->SetPosition({ 0, 0 });
 
 	RotationTime += _DeltaTime;
-	if (0.1f <= RotationTime)
+	Angle += 3.5f;
+	if (0.01f <= RotationTime)
 	{
-		Angle += 1.0f;
 	}
 	
 	float4 Dir = float4::AngleToDirection2DToDeg(Angle);
