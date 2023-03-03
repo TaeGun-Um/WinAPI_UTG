@@ -22,7 +22,7 @@ void PikeBallEffect::Start()
 	AnimationRender->SetScale({ 400, 400 });
 
 	// Collision
-	BodyCollision = CreateCollision(CollisionOrder::PikeBall);
+	BodyCollision = CreateCollision(CollisionOrder::PlayerAttack);
 	BodyCollision->SetDebugRenderType(CT_Rect);
 	BodyCollision->SetScale({ 50, 50 });
 	BodyCollision->SetPosition({ 0, 0 });

@@ -20,15 +20,14 @@ enum class CollisionOrder
 	PlayerEffect,		 // 1
 	PlayerAttack,        // 2
 	PlayerPistolAttack,  // 3
-	PikeBall,            // 4
-	Monster,             // 5
-	MonsterAttack,       // 6
-	Spawner,             // 7
-	Ground,              // 8
-	Effect,              // 9
-	Trigger,			 // 10
-	Item,				 // 11
-	Equip,               // 12
+	Monster,             // 4
+	MonsterAttack,       // 5
+	Spawner,             // 6
+	Ground,              // 7
+	Effect,              // 8
+	Trigger,			 // 9
+	Item,				 // 10
+	Equip,               // 11
 };
 
 // Enum class

@@ -54,6 +54,7 @@ private:
 	void Kill();
 	void AlphaBlinker(float _DeltaTime);
 	void CreateItem();
+	void CreateText();
 
 	void RenderSet();
 	void CollisionSet();

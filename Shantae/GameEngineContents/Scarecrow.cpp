@@ -1,9 +1,13 @@
 #include "Scarecrow.h"
 
+#include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineCollision.h>
 #include <GameEngineCore/GameEngineRender.h>
+#include <GameEngineCore/GameEngineLevel.h>
 
+#include "Player.h"
+#include "DamageText.h"
 #include "ContentsEnum.h"
 
 Scarecrow::Scarecrow() 
@@ -38,11 +42,6 @@ void Scarecrow::Update(float _DeltaTime)
 	if (true == Blinker)
 	{
 		AlphaBlinker(_DeltaTime);
-	}
-
-	if (true == CreateT)
-	{
-		TextPos = DamageText->GetPosition();
 	}
 }
 void Scarecrow::Render(float _DeltaTime)
@@ -82,21 +81,6 @@ void Scarecrow::MoveCalculation(float _DeltaTime)
 
 void Scarecrow::CollisionCheck(float _DeltaTime)
 {
-	//std::string MouseText = "MousePosition : \n";
-	//MouseText += GetLevel()->GetMousePos().ToString();
-
-	//std::string CameraMouseText = "MousePositionCamera : ";
-	//CameraMouseText += GetLevel()->GetMousePosToCamera().ToString();
-
-	//GameEngineLevel::DebugTextPush(MouseText);
-	//// GameEngineLevel::DebugTextPush(CameraMouseText);
-
-	////std::string Text = "출력";
-	////SetBkMode(DoubleDC, TRANSPARENT);
-	////TextOut(DoubleDC, 0, 0, Text.c_str(), Text.size());
-
-	//// 디버깅용.
-
 	HitTime += _DeltaTime;
 
 	if (0.2f <= HitTime)
@@ -134,10 +118,11 @@ void Scarecrow::Kill()
 
 void Scarecrow::CreateText()
 {
-	CreateT = true;
-	DamageText = CreateRender(RenderOrder::UI);
-	DamageText->SetText("-5");
-	DamageText->SetPosition(GetPos());
+	DamageText* NewT = nullptr;
+	float4 NewTPos = float4::Zero;
+
+	NewT = GetLevel()->CreateActor<DamageText>();
+	NewT->SetPos(GetPos() + float4::Up * 140 + float4::Left * 20);
 }
 
 void Scarecrow::AlphaBlinker(float _DeltaTime)
@@ -165,4 +150,51 @@ void Scarecrow::AlphaBlinker(float _DeltaTime)
 			AnimationRender->SetAlpha(240);
 		}
 	}
+}
+
+void DebugTextPush(const std::string& _DebugText)
+{
+	std::vector<std::string> DebugTexts;
+
+	DebugTexts.push_back(_DebugText);
+}
+
+void Scarecrow::Text_Box()
+{
+	GetDamage += std::to_string(Player::MainPlayer->GetPlayerDamage());
+
+	//GameEngineLevel::DebugTextPush(GetDamage);
+
+	float4 TextOutStart = GetPos();
+	HDC ImageDc = GameEngineWindow::GetDoubleBufferImage()->GetImageDC();
+
+	// 텍스트 박스 크기
+	RECT Rect;
+	Rect.left = TextOutStart.ix();
+	Rect.top = TextOutStart.iy();
+	Rect.right = TextOutStart.ix() + 500;
+	Rect.bottom = TextOutStart.iy() + 100;
+
+	DrawTextA(ImageDc, GetDamage.c_str(), static_cast<int>(GetDamage.size()), &Rect, DT_LEFT);
+
+	//TextOutStart.y += 20.0f;
+
+
+	//for (size_t i = 0; i < DebugTexts.size(); i++)
+	//{
+	//	HDC ImageDc = GameEngineWindow::GetDoubleBufferImage()->GetImageDC();
+
+	//	// 텍스트 박스 크기
+	//	RECT Rect;
+	//	Rect.left = TextOutStart.ix();
+	//	Rect.top = TextOutStart.iy();
+	//	Rect.right = TextOutStart.ix() + 500;
+	//	Rect.bottom = TextOutStart.iy() + 100;
+
+	//	DrawTextA(ImageDc, DebugTexts[i].c_str(), static_cast<int>(DebugTexts[i].size()), &Rect, DT_LEFT);
+
+	//	TextOutStart.y += 20.0f;
+	//}
+
+	//DebugTexts.clear();
 }

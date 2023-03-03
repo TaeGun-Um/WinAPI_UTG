@@ -8,8 +8,9 @@
 #include <GameEngineCore/GameEngineLevel.h>
 
 #include "Soldier_Bullet.h"
-#include "Player.h"
 #include "Public_Boom.h"
+#include "Player.h"
+#include "DamageText.h"
 
 #include "ContentsEnum.h"
 
@@ -177,23 +178,7 @@ void Soldier_Black::CollisionCheck(float _DeltaTime)
 				Blinker = true;
 				HP -= Player::MainPlayer->GetPlayerDamage();
 
-				if (0 >= HP)
-				{
-					HitAction = true;
-				}
-			}
-
-			if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PikeBall), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
-			{
-				BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Strike_enemy.mp3");
-				BGMPlayer.Volume(0.075f);
-				BGMPlayer.LoopCount(1);
-
-				Hitonoff = false;
-				HitTime2 = 0.0f;
-				BodyCollision->Off();
-				Blinker = true;
-				HP -= 6;
+				CreateText();
 
 				if (0 >= HP)
 				{
@@ -323,4 +308,13 @@ void Soldier_Black::CreateItem()
 		Gems->SetColMap(ColMap);
 		Gems->SetJarSize("Large");
 	}
+}
+
+void Soldier_Black::CreateText()
+{
+	DamageText* NewT = nullptr;
+	float4 NewTPos = float4::Zero;
+
+	NewT = GetLevel()->CreateActor<DamageText>();
+	NewT->SetPos(GetPos() + float4::Up * 160 + float4::Left * 20);
 }

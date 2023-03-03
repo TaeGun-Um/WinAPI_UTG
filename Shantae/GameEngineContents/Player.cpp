@@ -41,8 +41,8 @@ void Player::Start()
 	CollisionSet();
 
 	// Text(예시; 0206 추가)
-	GameEngineRender* Render = CreateRender(RenderOrder::UI);
-	Render->SetText("1234");
+	//GameEngineRender* Render = CreateRender(RenderOrder::UI);
+	//Render->SetText("1234");
 
 	// Start Animation
 	ChangeState(PlayerState::IDLE);

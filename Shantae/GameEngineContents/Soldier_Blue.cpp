@@ -6,8 +6,10 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineLevel.h>
 
-#include "Public_Boom.h"
 #include "ContentsEnum.h"
+
+#include "Public_Boom.h"
+#include "DamageText.h"
 
 #include "Gem.h"
 #include "Heart.h"
@@ -251,14 +253,7 @@ void Soldier_Blue::CollisionCheck()
 			BGMPlayer.Volume(0.075f);
 			BGMPlayer.LoopCount(1);
 
-			HitAction = true;
-			Blinker = true;
-		}
-		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PikeBall), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
-		{
-			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Strike_enemy.mp3");
-			BGMPlayer.Volume(0.075f);
-			BGMPlayer.LoopCount(1);
+			CreateText();
 
 			HitAction = true;
 			Blinker = true;
@@ -358,4 +353,13 @@ void Soldier_Blue::CreateItem()
 		Gems->SetColMap(ColMap);
 		Gems->SetJarSize("small");
 	}
+}
+
+void Soldier_Blue::CreateText()
+{
+	DamageText* NewT = nullptr;
+	float4 NewTPos = float4::Zero;
+
+	NewT = GetLevel()->CreateActor<DamageText>();
+	NewT->SetPos(GetPos() + float4::Up * 160 + float4::Left * 20);
 }

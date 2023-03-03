@@ -77,6 +77,7 @@ private:
 	void MoveCalculation(float _DeltaTime);
 	void AlphaBlinker(float _DeltaTime);
 	void CreateImpact();
+	void CreateText();
 
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;

@@ -9,6 +9,7 @@
 #include "ContentsEnum.h"
 #include "Impact.h"
 #include "Player.h"
+#include "DamageText.h"
 
 AmmoBaron::AmmoBaron() 
 {
@@ -84,23 +85,9 @@ void AmmoBaron::CollisionCheck(float _DeltaTime)
 				BodyCollision->Off();
 
 				CreateImpact();
+				CreateText();
 				Blinker = true;
 				BaronHP -= Player::MainPlayer->GetPlayerDamage();
-			}
-
-			if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PikeBall), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
-			{
-				BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Strike_enemy.mp3");
-				BGMPlayer.Volume(0.075f);
-				BGMPlayer.LoopCount(1);
-
-				Hitonoff = false;
-				HitTime = 0.0f;
-				BodyCollision->Off();
-
-				CreateImpact();
-				Blinker = true;
-				BaronHP -= 6;
 			}
 		}
 	}
@@ -168,4 +155,13 @@ void AmmoBaron::CollisionSet()
 	BodyCollision->SetScale({ 50, 40 });
 	BodyCollision->SetPosition({ 0, -10 });
 	BodyCollision->Off();
+}
+
+void AmmoBaron::CreateText()
+{
+	DamageText* NewT = nullptr;
+	float4 NewTPos = float4::Zero;
+
+	NewT = GetLevel()->CreateActor<DamageText>();
+	NewT->SetPos(GetPos() + float4::Up * 110 + float4::Left * 40);
 }

@@ -6,12 +6,14 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineLevel.h>
 
-#include "Public_Boom.h"
 #include "ContentsEnum.h"
 
-#include "Gem.h"
-#include "Heart.h"
+#include "Public_Boom.h"
 #include "Player.h"
+#include "DamageText.h"
+
+#include "Heart.h"
+#include "Gem.h"
 
 Soldier_Red::Soldier_Red()
 {
@@ -256,25 +258,7 @@ void Soldier_Red::CollisionCheck()
 
 			HP -= Player::MainPlayer->GetPlayerDamage();
 			
-			if (0 <= HP)
-			{
-				HitAction = true;
-			}
-			else if (0 < HP)
-			{
-				HitAction = true;
-			}
-		}
-
-		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PikeBall), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
-		{
-			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Strike_enemy.mp3");
-			BGMPlayer.Volume(0.075f);
-			BGMPlayer.LoopCount(1);
-
-			Blinker = true;
-
-			HP -= 6;
+			CreateText();
 
 			if (0 <= HP)
 			{
@@ -381,4 +365,13 @@ void Soldier_Red::CreateItem()
 		Gems->SetColMap(ColMap);
 		Gems->SetJarSize("small");
 	}
+}
+
+void Soldier_Red::CreateText()
+{
+	DamageText* NewT = nullptr;
+	float4 NewTPos = float4::Zero;
+
+	NewT = GetLevel()->CreateActor<DamageText>();
+	NewT->SetPos(GetPos() + float4::Up * 160 + float4::Left * 20);
 }

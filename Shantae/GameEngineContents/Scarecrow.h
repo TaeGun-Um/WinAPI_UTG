@@ -41,15 +41,11 @@ private:
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
 	GameEngineImage* ColMap = nullptr;
-	GameEngineRender* DamageText = nullptr;
 
 	float4 MoveDir = float4::Zero;
 	float4 NextPos = float4::Zero;
 
-	float4 TextPos = float4::Zero;
-
 	bool Hitonoff = false;
-	bool CreateT = false;
 	bool Blinker = false;
 
 	float HitTime = 0.0f;
@@ -60,5 +56,8 @@ private:
 	void Kill();
 	void CreateText();
 	void AlphaBlinker(float _DeltaTime);
+
+	void Text_Box();
+	std::string GetDamage = "-";
 };
 

@@ -114,7 +114,7 @@ public:
 	}
 
 	// 인자로 전달받은 string_view&를 RenderText로 설정
-	void SetText(const std::string_view& _Text, const int _TextHeight = 20, const std::string_view& _TextType = "굴림", const TextAlign _TextAlign = TextAlign::Center, const COLORREF _TextColor = RGB(0, 0, 0));
+	void SetText(const std::string_view& _Text, const int _TextHeight = 20, const std::string_view& _TextType = "굴림", const TextAlign _TextAlign = TextAlign::Center, const COLORREF _TextColor = RGB(0, 0, 0), float4 _TextBoxScale = float4::Zero);
 
 	inline int GetTextHeight()
 	{

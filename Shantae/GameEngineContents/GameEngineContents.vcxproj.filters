@@ -569,6 +569,9 @@
     <ClInclude Include="PikeBallEffect.h">
       <Filter>Character\Player\Effect</Filter>
     </ClInclude>
+    <ClInclude Include="DamageText.h">
+      <Filter>Text</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShantaeCore.cpp" />
@@ -1196,6 +1199,9 @@
     <ClCompile Include="PikeBallEffect.cpp">
       <Filter>Character\Player\Effect</Filter>
     </ClCompile>
+    <ClCompile Include="DamageText.cpp">
+      <Filter>Text</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Character">
@@ -1446,6 +1452,9 @@
     </Filter>
     <Filter Include="Item\EqiupItem\TotheInventory">
       <UniqueIdentifier>{8af0467d-ce9b-4527-8512-cc4bd292f4a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Text">
+      <UniqueIdentifier>{13eb4db1-04ff-4578-9b08-e1846d6a4bce}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

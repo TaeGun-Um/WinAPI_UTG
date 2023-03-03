@@ -171,3 +171,4 @@ void Soldier_Machinegun::CollisionSet()
 	SensorCollision2->SetScale({ 10, 500 });
 	SensorCollision2->SetPosition({ 900, 0 });
 }
+

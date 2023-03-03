@@ -293,19 +293,19 @@ void GameEngineRender::ChangeAnimation(const std::string_view& _AnimationName, b
 /////////////////////////////////// Text ///////////////////////////////////
 
 // 인자로 전달받은 string_view&를 RenderText로 설정
-void GameEngineRender::SetText(const std::string_view& _Text, const int _TextHeight, const std::string_view& _TextType, const TextAlign _TextAlign, const COLORREF _TextColor)
+void GameEngineRender::SetText(const std::string_view& _Text, const int _TextHeight, const std::string_view& _TextType, const TextAlign _TextAlign, const COLORREF _TextColor, float4 _TextBoxScale)
 {
 	RenderText = _Text;
 	TextHeight = _TextHeight;
 	TextType = _TextType;
 	Align = _TextAlign;
 	TextColor = _TextColor;
+	TextBoxScale = _TextBoxScale;
 }
 
 // RenderText에 저장된 Text를 특정 위치에 출력
 void GameEngineRender::TextRender(float _DeltaTime)
 {
-
 	float4 CameraPos = float4::Zero;
 
 	if (true == IsEffectCamera)
