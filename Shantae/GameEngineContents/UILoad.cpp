@@ -25,6 +25,10 @@ void UILoad::Loading()
 	Image1->Cut(5, 1);
 	GameEngineImage* Image2 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Numbers.bmp"));
 	Image2->Cut(10, 1);
+	GameEngineImage* Image3 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BlueTextBox_Open.bmp"));
+	Image3->Cut(1, 3);
+	GameEngineImage* Image4 = GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BlueTextBox_Close.bmp"));
+	Image4->Cut(1, 3);
 
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("ShopSelect.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("TextButton.bmp"));

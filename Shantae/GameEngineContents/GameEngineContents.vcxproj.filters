@@ -572,7 +572,7 @@
     <ClInclude Include="DamageText.h">
       <Filter>Text</Filter>
     </ClInclude>
-    <ClInclude Include="HeartText.h">
+    <ClInclude Include="BlueTextBox.h">
       <Filter>Text</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1205,7 +1205,7 @@
     <ClCompile Include="DamageText.cpp">
       <Filter>Text</Filter>
     </ClCompile>
-    <ClCompile Include="HeartText.cpp">
+    <ClCompile Include="BlueTextBox.cpp">
       <Filter>Text</Filter>
     </ClCompile>
   </ItemGroup>

@@ -10,6 +10,7 @@
 #include <GameEngineCore/GameEngineCollision.h>
 
 #include "Inventory.h"
+#include "BlueTextBox.h"
 #include "Scarecrow.h"
 #include "Meat.h"
 #include "Impact.h"
@@ -159,11 +160,14 @@ void Player::Update(float _DeltaTime)
 
 	if (GameEngineInput::IsDown("TextTest"))
 	{
-		TextActivate = !TextActivate;
-
+		TextActivate = true;
+	}
+	if (true == TextActivate)
+	{
 		if (GameEngineInput::IsDown("Select"))
 		{
-			// 텍스트 실행
+			TextActivate = false;
+			BlueTextBox::DialogTextBox->SetIsOpen();
 		}
 	}
 }

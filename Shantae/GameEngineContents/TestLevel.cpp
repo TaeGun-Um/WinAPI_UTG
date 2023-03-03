@@ -29,6 +29,7 @@
 #include "Sky.h"
 #include "Sea.h"
 #include "Mermaid.h"
+#include "BlueTextBox.h"
 
 #include "Jar.h"
 #include "ItemBox.h"
@@ -130,6 +131,8 @@ void TestLevel::Loading()
 	//	Soldier* Actor = CreateActor<Soldier>(RenderOrder::Monster);
 	//	Actor->SetMove(float4(static_cast<float>(rand() % GameEngineWindow::GetScreenSize().ix()), static_cast<float>(rand() % GameEngineWindow::GetScreenSize().iy())));
 	//}
+
+	CreateActor<BlueTextBox>();
 
 }
 
