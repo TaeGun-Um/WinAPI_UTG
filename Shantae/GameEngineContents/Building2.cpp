@@ -39,7 +39,7 @@ void Building2::Update(float _DeltaTime)
 
 	if (true == Break)
 	{
-		BuildingBreak(_DeltaTime);
+		// BuildingBreak(_DeltaTime);
 
 		BreakDelay += _DeltaTime;
 

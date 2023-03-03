@@ -273,10 +273,13 @@ void Player::IdleUpdate(float _Time)
 		return;
 	}
 
-	if (GameEngineInput::IsPress("LeftMove") || GameEngineInput::IsPress("RightMove"))
+	if (false == InvenOnOff)
 	{
-		ChangeState(PlayerState::MOVE);
-		return;
+		if (GameEngineInput::IsPress("LeftMove") || GameEngineInput::IsPress("RightMove"))
+		{
+			ChangeState(PlayerState::MOVE);
+			return;
+		}
 	}
 
 	if (GameEngineInput::IsDown("Jump") && false == IsJump)

@@ -18,12 +18,6 @@ void KeyLoad::Loading()
 		GameEngineInput::CreateKey("SelectMoveRight", VK_RIGHT);
 		GameEngineInput::CreateKey("SelectMoveLeft", VK_LEFT);
 		GameEngineInput::CreateKey("TitleSelect", 'Z');
-
-		// 선형보간 테스트용
-		GameEngineInput::CreateKey("TitleScrollLeft", 'A');
-		GameEngineInput::CreateKey("TitleScrollRight", 'D');
-		GameEngineInput::CreateKey("TitleScrollUp", 'W');
-		GameEngineInput::CreateKey("TitleScrollDown", 'S');
 	}
 
 	// Player Action == 방향키, ESC, Z, X, C, A, S
@@ -38,6 +32,7 @@ void KeyLoad::Loading()
 		GameEngineInput::CreateKey("Fire", 'C');
 		GameEngineInput::CreateKey("Select", 'A');
 		GameEngineInput::CreateKey("Inventory", 'S');
+		GameEngineInput::CreateKey("TextTest", 'D');
 		GameEngineInput::CreateKey("Back", '\x1b');
 	}
 

@@ -310,6 +310,11 @@ public:
 		return ItemName;
 	}
 
+	void SetTextActivate(bool _Is)
+	{
+		TextActivate = false;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -367,6 +372,8 @@ private:
 	BubbleEffect* Bub = nullptr;
 
 	std::string ItemName = "Meat";
+
+	bool TextActivate = false;
 
 	bool IsItemUse = false;
 	bool MonsterMilkEnd = false;

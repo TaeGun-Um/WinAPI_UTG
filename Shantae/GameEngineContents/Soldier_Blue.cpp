@@ -103,7 +103,7 @@ void Soldier_Blue::MoveCalculation(float _DeltaTime)
 	{
 		if (true == IsGravityPlus && false == IsJump)
 		{
-			MoveDir += float4::Down * 450.0f;
+			MoveDir += float4::Down * 510.0f;
 		}
 		else
 		{
@@ -202,11 +202,11 @@ void Soldier_Blue::MoveCalculation(float _DeltaTime)
 			// 끝에서 점프 조건
 			if ("_L" == DirString)
 			{
-				JumpP = GetPos() + (float4::Left * 2) + (float4::Down * 5);
+				JumpP = GetPos() + (float4::Left * 2) + (float4::Down * 6);
 			}
-			else
+			else if ("_R" == DirString)
 			{
-				JumpP = GetPos() + (float4::Right * 2) + (float4::Down * 5);
+				JumpP = GetPos() + (float4::Right * 2) + (float4::Down * 6);
 			}
 
 			if (RGB(74, 65, 42) != ColMap->GetPixelColor(JumpP, RGB(0, 0, 0)))

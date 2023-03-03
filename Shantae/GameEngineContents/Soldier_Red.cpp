@@ -104,7 +104,7 @@ void Soldier_Red::MoveCalculation(float _DeltaTime)
 	{
 		if (true == IsGravityPlus && false == IsJump)
 		{
-			MoveDir += float4::Down * 450.0f;
+			MoveDir += float4::Down * 510.0f;
 		}
 		else
 		{

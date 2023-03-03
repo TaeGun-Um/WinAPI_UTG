@@ -156,6 +156,16 @@ void Player::Update(float _DeltaTime)
 	{
 		ItemUse(_DeltaTime);
 	}
+
+	if (GameEngineInput::IsDown("TextTest"))
+	{
+		TextActivate = !TextActivate;
+
+		if (GameEngineInput::IsDown("Select"))
+		{
+			// 텍스트 실행
+		}
+	}
 }
 
 void Player::Render(float _DeltaTime)
@@ -279,7 +289,7 @@ void Player::MoveCalculation(float _DeltaTime)
 	{
 		if (true == IsGravityPlus)
 		{
-			MoveDir += float4::Down * 400.0f;
+			MoveDir += float4::Down * 500.0f;
 		}
 		if (false == IsGravityPlus)
 		{
@@ -466,7 +476,6 @@ void Player::WallCheck(float _Speed)
 		{
 			MoveSpeed = _Speed;
 			CrouchSpeed = 200.0f;
-			// 벽뚫버그 여기
 		}
 	}
 	else if (RGB(0, 248, 0) == ColMap->GetPixelColor(ForwardPosL_High, RGB(0, 0, 0)) && false == IsCrouch)
