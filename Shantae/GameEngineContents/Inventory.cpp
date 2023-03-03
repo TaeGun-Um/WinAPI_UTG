@@ -151,6 +151,11 @@ void Inventory::PlayerItemCheck()
 		CreateItem(EquipItem);
 		Player::MainPlayer->SetItemEquip(false);
 	}
+
+	if (GameEngineInput::IsDown("CreateItem"))
+	{
+		CreateItem("Meat");
+	}
 }
 
 void Inventory::CreateItem(std::string_view _Name)

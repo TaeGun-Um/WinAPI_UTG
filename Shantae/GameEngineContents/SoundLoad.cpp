@@ -28,9 +28,7 @@ void SoundLoad::Loading()
 
 	// Field
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Boss_Battle.mp3"));             // o 보스전 BGM
-	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\stage_clear.mp3"));             // Boss 잡은 후
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\We_Love_Burning_Town.mp3"));    // o FieldLevel BGM
-	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\You_Found_an_item.mp3"));       // 상자에서 아이템 획득 시
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Explode_bridge.wav"));          // o Boombridge 다리 폭파
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Explode_plat.wav"));            // o Machinegun 발판 폭파
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Field\\Fleeing_crowd.mp3"));           // o Move0 도망치는 관중들
@@ -52,7 +50,7 @@ void SoundLoad::Loading()
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Town\\Sky.mp3"));                      // o SkyRoom BGM
 
 	// Ending
-	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Ending\\Ending.mp3"));                 // 엔딩 크레딧 BGM
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Ending\\Ending.mp3"));                 // o 엔딩 크레딧 BGM
 
 	////////////////////////////////////// Character //////////////////////////////////////
 	GameEngineDirectory Dir1;
@@ -86,7 +84,6 @@ void SoundLoad::Loading()
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Inventory_in.wav"));          // o 인벤토리 오픈
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Inventory_out.wav"));         // o 인벤토리 닫기
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_bubble.wav"));         // o 버블 사용 보이스
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_powerup.wav"));        // 파워업 사용 효과음
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_pikeball.wav"));       // o 파이크볼 사용 효과음
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_monstermilk.wav"));    // o 몬스터 밀크 사용 보이스
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Shantae\\Player_gem.wav"));            // o 젬 획득 효과음
@@ -111,10 +108,10 @@ void SoundLoad::Loading()
 	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Boss\\Tank_Charge.mp3"));     // o 탱크 차지 효과음
 
 	// mermaid
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Mermaid\\mermaid_bubble.wav"));
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Mermaid\\mermaid_death.wav"));
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Mermaid\\mermaid_hurt.wav"));
-	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Mermaid\\mermaid_jump.wav"));
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Mermaid\\mermaid_bubble.wav")); // o
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Mermaid\\mermaid_death.wav"));  // o
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Mermaid\\mermaid_hurt.wav"));   // o
+	GameEngineResources::GetInst().SoundLoad(Dir1.GetPlusFileName("Monster\\Mermaid\\mermaid_jump.wav"));   // o
 
 }
 

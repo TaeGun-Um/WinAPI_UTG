@@ -11,7 +11,7 @@
 
 #include "Inventory.h"
 #include "Scarecrow.h"
-#include "Heart_Octopus.h"
+#include "Meat.h"
 #include "Impact.h"
 #include "Pistol_Bullet.h"
 #include "ContentsEnum.h"
@@ -104,17 +104,17 @@ void Player::Update(float _DeltaTime)
 		LevelStartAnimation(_DeltaTime);
 	}
 
-	
-	//////////////////  콜리전 체크  //////////////////
-	
+	//////////////////  콜리전 체크, 무적시간 깜빡임  //////////////////
+	// 콜리전 체크
 	CollisionCheck(_DeltaTime);
 	
+	// 깜빡임 효과
 	if (true == Blinker)
 	{
 		AlphaBlinker(_DeltaTime);
 	}
 	
-	//////////////////  이동 계산 및 애니메이션  //////////////////
+	//////////////////  이동 계산, 카메라  //////////////////
 	// 카메라흔들림
 	if (true == CameraShaking)
 	{
@@ -132,6 +132,8 @@ void Player::Update(float _DeltaTime)
 
 	// 이동계산
 	MoveCalculation(_DeltaTime);
+
+	//////////////////  인벤토리 및 아이템 사용  //////////////////
 
 	if (GameEngineInput::IsDown("Inventory"))
 	{
@@ -233,8 +235,6 @@ bool Player::FreeMoveState(float _DeltaTime)
 
 void Player::PositionText()
 {
-	// float PlayerPos = GetPos().x;
-	// PlayerText += std::to_string(PlayerPos);
 	std::string PlayerText = "PlayerPosition : ";
 	
 	PlayerText += GetPos().ToString();
@@ -423,16 +423,6 @@ void Player::MoveCalculation(float _DeltaTime)
 	{
 		AirAttack = false;
 	}
-
-	// Run 시간 축적
-	//if (RGB(74, 65, 42) == ColMap->GetPixelColor(NextPos, RGB(0, 0, 0))
-	//	|| RGB(0, 248, 0) == ColMap->GetPixelColor(NextPos, RGB(0, 0, 0)))
-	//{
-	//	if (GameEngineInput::IsPress("LeftMove") || GameEngineInput::IsPress("RightMove"))
-	//	{
-	//		MoveTime += _DeltaTime;
-	//	}
-	//}
 
 	////////////////// State //////////////////
 
@@ -919,21 +909,13 @@ void Player::AlphaBlinker(float _DeltaTime)
 
 void Player::CreateDummy()
 {
-	//Scarecrow* NewDummy = nullptr;
-	//float4 DummyPos = float4::Zero;
-	//DummyPos = GetPos() + (float4::Right * 250) + (float4::Up * 50);
-
-	//NewDummy = GetLevel()->CreateActor<Scarecrow>();
-	//NewDummy->SetColMap(ColMap);
-	//NewDummy->SetPos(DummyPos);
-
-	Heart_Octopus* Oct = nullptr;
+	Scarecrow* NewDummy = nullptr;
 	float4 DummyPos = float4::Zero;
 	DummyPos = GetPos() + (float4::Right * 250) + (float4::Up * 50);
 
-	Oct = GetLevel()->CreateActor<Heart_Octopus>();
-	Oct->SetPos(DummyPos);
-	Oct->SetColMap(ColMap);
+	NewDummy = GetLevel()->CreateActor<Scarecrow>();
+	NewDummy->SetColMap(ColMap);
+	NewDummy->SetPos(DummyPos);
 }
 
 void Player::CreateImpact()

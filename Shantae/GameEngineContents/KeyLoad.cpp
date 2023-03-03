@@ -26,7 +26,7 @@ void KeyLoad::Loading()
 		GameEngineInput::CreateKey("TitleScrollDown", 'S');
 	}
 
-	// Player Action == 방향키, ESC, Z, X, C
+	// Player Action == 방향키, ESC, Z, X, C, A, S
 	if (false == GameEngineInput::IsKey("PlayerMove"))            // 플레이어만 사용
 	{
 		GameEngineInput::CreateKey("UpMove", VK_UP);
@@ -37,7 +37,7 @@ void KeyLoad::Loading()
 		GameEngineInput::CreateKey("Jump", 'X');
 		GameEngineInput::CreateKey("Fire", 'C');
 		GameEngineInput::CreateKey("Select", 'A');
-		GameEngineInput::CreateKey("Inventory", 'I');
+		GameEngineInput::CreateKey("Inventory", 'S');
 		GameEngineInput::CreateKey("Back", '\x1b');
 	}
 
@@ -51,7 +51,8 @@ void KeyLoad::Loading()
 		GameEngineInput::CreateKey("ColMapSwitch", '3');      // ColMapRender (각 레벨)
 		GameEngineInput::CreateKey("PositionText", '4');      // 위치 텍스트 (플레이어)
 		GameEngineInput::CreateKey("DebugRenderSwitch", '5'); // 충돌체, 텍스트박스 (플레이어)
-		GameEngineInput::CreateKey("MonsterTest", 'D');       // 몬스터 테스트 (플레이어 or 몬스터)
-		GameEngineInput::CreateKey("CreateMonster", 'S');     // 더미몬스터 생성 (플레이어)
+		GameEngineInput::CreateKey("MonsterTest", 'Q');       // 몬스터 테스트 (플레이어 or 몬스터)
+		GameEngineInput::CreateKey("CreateMonster", 'W');     // 더미몬스터 생성 (플레이어)
+		GameEngineInput::CreateKey("CreateItem", 'E');		  // 더미아이템 생성 (플레이어)
 	}
 }
