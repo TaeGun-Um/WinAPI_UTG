@@ -3,6 +3,16 @@
 #include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineActor.h>
 
+enum class NPCDialogType_Text
+{
+	Sky,
+	Bathwoman,
+	Merchant,
+	Squidsmith,
+	Town_Guard,
+	Town_Guard_Pass,
+};
+
 class NPCScript;
 
 // Ό³Έν :
@@ -28,9 +38,9 @@ public:
 		IsOpen = true;
 	}
 
-	void SetNPCType(bool _Is)
+	void SetNPCType(NPCDialogType_Text _Is)
 	{
-		ISIS = _Is;
+		NPCValue = _Is;
 	}
 
 protected:
@@ -44,7 +54,7 @@ private:
 	void Kill();
 
 	GameEngineSoundPlayer BGMPlayer;
-	
+	NPCDialogType_Text NPCValue = NPCDialogType_Text::Town_Guard;
 	NPCScript* Scr = nullptr;
 
 	bool IsOpen = false;

@@ -163,10 +163,8 @@ void Player::Update(float _DeltaTime)
 		BodyCollision->Off();
 		InConversation = true;
 		BlueTextBox::DialogTextBox = GetLevel()->CreateActor<BlueTextBox>();
-		if (true == SSSKKK)
-		{
-			BlueTextBox::DialogTextBox->SetNPCType(true);
-		}
+		BlueTextBox::DialogTextBox->SetNPCType(static_cast<NPCDialogType_Text>(DialogValue));
+
 	}
 
 	if (true == InConversation)

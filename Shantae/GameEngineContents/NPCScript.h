@@ -2,6 +2,16 @@
 
 #include <GameEngineCore/GameEngineActor.h>
 
+enum class NPCDialogType_Dialog
+{
+	Sky,
+	Bathwoman,
+	Merchant,
+	Squidsmith,
+	Town_Guard,
+	Town_Guard_Pass,
+};
+
 // 설명 :
 class NPCScript : public GameEngineActor
 {
@@ -21,9 +31,9 @@ public:
 		return IsOver;
 	}
 
-	void TestNPC()
+	void SetNPCDialogType(NPCDialogType_Dialog _Is)
 	{
-		SKY = true;
+		NPCValue = _Is;
 	}
 
 protected:
@@ -35,7 +45,7 @@ private:
 	void NPCType();
 
 	GameEngineRender* TextRender = nullptr;
-
+	NPCDialogType_Dialog NPCValue = NPCDialogType_Dialog::Town_Guard;
 	float4 BoxScale = float4::Zero;
 
 	std::string Script = "오류";

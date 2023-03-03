@@ -96,6 +96,7 @@ void Scuttle::Loading()
 
 		Town_Guard* M2 = CreateActor<Town_Guard>();
 		M2->SetPos({ 8000, 1322 });
+		M2->SetTownGuard();
 
 		Sailor* M3 = CreateActor<Sailor>();
 		M3->SetPos({ 2970, 1322 });

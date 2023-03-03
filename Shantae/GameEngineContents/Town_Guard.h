@@ -24,6 +24,11 @@ public:
 	Town_Guard& operator=(const Town_Guard& _Other) = delete;
 	Town_Guard& operator=(Town_Guard&& _Other) noexcept = delete;
 
+	void SetTownGuard()
+	{
+		PassGuard = true;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -39,6 +44,7 @@ private:
 
 	bool MoveDirect = true; // true = Left, false = Right
 	bool Isturn = false;
+	bool PassGuard = false;
 
 	int CreateAButtion = 1;
 

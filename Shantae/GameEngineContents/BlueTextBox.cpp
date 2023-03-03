@@ -119,8 +119,5 @@ void BlueTextBox::TextCreate()
 	float4 NewTPos = float4::Zero;
 	Scr = GetLevel()->CreateActor<NPCScript>();
 	Scr->SetPos(AnimationRender->GetPosition() + float4::Left * 325 + float4::Up * 65);
-	if (true == ISIS)
-	{
-		Scr->TestNPC();
-	}
+	Scr->SetNPCDialogType(static_cast<NPCDialogType_Dialog>(NPCValue));
 }

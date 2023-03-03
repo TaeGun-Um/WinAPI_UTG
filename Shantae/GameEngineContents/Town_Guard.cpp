@@ -68,6 +68,15 @@ void Town_Guard::CollisionCheck()
 		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
 			AButton->On();
+
+			if (true == PassGuard)
+			{
+				Player::MainPlayer->NPCType(NPCDialogType::Town_Guard_Pass);
+			}
+			else
+			{
+				Player::MainPlayer->NPCType(NPCDialogType::Town_Guard);
+			}
 		}
 		else
 		{

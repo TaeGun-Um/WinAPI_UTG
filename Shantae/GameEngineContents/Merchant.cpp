@@ -5,6 +5,7 @@
 #include <GameEngineCore/GameEngineLevel.h>
 
 #include "ContentsEnum.h"
+#include "Player.h"
 #include "A_Button.h"
 
 Merchant::Merchant() 
@@ -72,6 +73,7 @@ void Merchant::CollisionCheck()
 		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
 			AButton->On();
+			Player::MainPlayer->NPCType(NPCDialogType::Merchant);
 		}
 		else
 		{

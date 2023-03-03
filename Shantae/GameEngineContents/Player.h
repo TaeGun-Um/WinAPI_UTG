@@ -31,6 +31,16 @@ enum class PlayerState
 	PORTALOUT,
 };
 
+enum class NPCDialogType
+{
+	Sky,
+	Bathwoman,
+	Merchant,
+	Squidsmith,
+	Town_Guard,
+	Town_Guard_Pass,
+};
+
 class PikeBallEffect;
 class BubbleEffect;
 
@@ -326,9 +336,9 @@ public:
 		BodyCollision->On();
 	}
 
-	void NPPPCCC()
+	void NPCType(NPCDialogType _Value)
 	{
-		SSSKKK = true;
+		DialogValue = _Value;
 	}
 
 protected:
@@ -392,7 +402,7 @@ private:
 	bool TextActivate = false;
 	bool InConversation = false;
 
-	bool SSSKKK = false;
+	NPCDialogType DialogValue = NPCDialogType::Town_Guard;
 
 	bool IsItemUse = false;
 	bool MonsterMilkEnd = false;

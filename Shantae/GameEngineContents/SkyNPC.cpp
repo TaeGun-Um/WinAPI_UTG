@@ -78,7 +78,7 @@ void SkyNPC::CollisionCheck()
 		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
 			AButton->On();
-			Player::MainPlayer->NPPPCCC();
+			Player::MainPlayer->NPCType(NPCDialogType::Sky);
 		}
 		else
 		{
