@@ -316,9 +316,9 @@ public:
 		return TextActivate;
 	}
 
-	void SetTextActivate(bool _Is)
+	void ConversationOff()
 	{
-		TextActivate = false;
+		InConversation = false;
 	}
 
 	void BodyCollisionOn()
@@ -385,6 +385,7 @@ private:
 	std::string ItemName = "Meat";
 
 	bool TextActivate = false;
+	bool InConversation = false;
 
 	bool IsItemUse = false;
 	bool MonsterMilkEnd = false;

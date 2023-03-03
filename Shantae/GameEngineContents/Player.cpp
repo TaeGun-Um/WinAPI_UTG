@@ -126,10 +126,10 @@ void Player::Update(float _DeltaTime)
 	{
 		return;
 	}
-
-	// 이동계산
-	MoveCalculation(_DeltaTime);
-
+	if (true == InConversation)
+	{
+		return;
+	}
 	//////////////////  인벤토리 및 아이템 사용  //////////////////
 
 	if (GameEngineInput::IsDown("Inventory"))
@@ -161,10 +161,17 @@ void Player::Update(float _DeltaTime)
 	if (GameEngineInput::IsDown("Select") && true == TextActivate)
 	{
 		BodyCollision->Off();
+		InConversation = true;
 		//BlueTextBox::DialogTextBox->SetIsOpen();
 		BlueTextBox::DialogTextBox = GetLevel()->CreateActor<BlueTextBox>();
 	}
 
+	if (true == InConversation)
+	{
+		return;
+	}
+	// 이동계산
+	MoveCalculation(_DeltaTime);
 }
 
 void Player::Render(float _DeltaTime)

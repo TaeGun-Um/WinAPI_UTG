@@ -26,15 +26,6 @@ void Mermaid_AttackBoom::Start()
 
 void Mermaid_AttackBoom::Update(float _DeltaTime)
 {
-	//if (1 == BoomSoundCount)
-	//{
-	//	BoomSoundCount = 0;
-
-	//	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Soldier_boom_explosion.mp3");
-	//	BGMPlayer.Volume(0.1f);
-	//	BGMPlayer.LoopCount(1);
-	//}
-
 	if (true == AnimationRender->IsAnimationEnd())
 	{
 		GameEngineActor* Act = AnimationRender->GetActor();

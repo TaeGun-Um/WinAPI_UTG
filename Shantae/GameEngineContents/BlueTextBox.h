@@ -3,6 +3,8 @@
 #include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineActor.h>
 
+class NPCScript;
+
 // Ό³Έν :
 class BlueTextBox : public GameEngineActor
 {
@@ -26,23 +28,25 @@ public:
 		IsOpen = true;
 	}
 
-	void Open();
-	void Close();
-
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
-	void Render(float _DeltaTime) override;
 
 private:
+	void Open();
+	void Close(float _DeltaTime);
 	void TextCreate();
 	void Kill();
 
 	GameEngineSoundPlayer BGMPlayer;
 	
+	NPCScript* Scr = nullptr;
+
 	bool IsOpen = false;
 	bool IsClose = false;
 
+	float OpenTime = 0.0f;
+	float CloseTime = 0.0f;
 	int TextCount = 1;
 
 };
