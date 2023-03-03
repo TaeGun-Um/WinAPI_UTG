@@ -29,7 +29,7 @@ void Squidsmith::Start()
 
 	AnimationRender->CreateAnimation({ .AnimationName = "Enchant",  .ImageName = "Squidsmith_L.bmp", .Start = 17, .End = 86, .InterTime = 0.1f });
 
-	BodyCollision = CreateCollision(CollisionOrder::Trigger);
+	BodyCollision = CreateCollision(CollisionOrder::NPC);
 	BodyCollision->SetDebugRenderType(CT_Rect);
 	BodyCollision->SetScale({ 120, 100 });
 	BodyCollision->SetPosition({ 0, -50 });

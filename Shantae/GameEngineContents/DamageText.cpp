@@ -17,7 +17,7 @@ void DamageText::Start()
 {
 	TextRender = CreateRender(RenderOrder::UI);
 	float4 BoxScale = { 50, 50 };
-	TextRender->SetText(GetDamage += std::to_string(Player::MainPlayer->GetPlayerDamage()), 22, "±¼¸²", TextAlign::Left, RGB(0, 0, 0), BoxScale);
+	TextRender->SetText(GetDamage += std::to_string(Player::MainPlayer->GetPlayerDamage()), 25, "±¼¸²", TextAlign::Left, RGB(0, 0, 0), BoxScale);
 }
 
 void DamageText::Update(float _DeltaTime)

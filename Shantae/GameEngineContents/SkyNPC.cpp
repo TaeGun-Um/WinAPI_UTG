@@ -32,7 +32,7 @@ void SkyNPC::Start()
 	AnimationRender->CreateAnimation({ .AnimationName = "IdleRev_R",  .ImageName = "Sky_R.bmp", .Start = 21, .End = 26, .InterTime = 0.1f });
 	AnimationRender->CreateAnimation({ .AnimationName = "Run_R",  .ImageName = "Sky_R.bmp", .Start = 34, .End = 41, .InterTime = 0.1f });
 
-	BodyCollision = CreateCollision(CollisionOrder::Trigger);
+	BodyCollision = CreateCollision(CollisionOrder::NPC);
 	BodyCollision->SetDebugRenderType(CT_Rect);
 	BodyCollision->SetScale({ 120, 100 });
 	BodyCollision->SetPosition({ 0, -50 });

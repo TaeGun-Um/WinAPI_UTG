@@ -26,6 +26,7 @@
 #include "GemWindow.h"
 #include "Health.h"
 #include "Inventory.h"
+#include "BlueTextBox.h"
 
 #include "ObjectLoad.h"
 #include "BlackBox.h"
@@ -171,6 +172,20 @@ void Scuttle::Update(float _DeltaTime)
 
 void Scuttle::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	if (1 == StartCount)
+	{
+		Inven->Elimination();
+	}
+
+	if (true == IsStart)
+	{
+		IsStart = false;
+		StartCount = 1;
+	}
+
+	Inventory::PlayerInven->DataCopy(Inven);
+	Inventory::PlayerInven = Inven;
+
 	Set = 1;
 
 	if (false == ScuttlePalyer)
@@ -240,20 +255,6 @@ void Scuttle::LevelSet()
 {
 	if (1 == Set)
 	{
-		if (1 == StartCount)
-		{
-			Inven->Elimination();
-		}
-
-		if (true == IsStart)
-		{
-			IsStart = false;
-			StartCount = 1;
-		}
-
-		Inventory::PlayerInven->DataCopy(Inven);
-		Inventory::PlayerInven = Inven;
-
 		Set = 0;
 		Player::MainPlayer = SHA;
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());

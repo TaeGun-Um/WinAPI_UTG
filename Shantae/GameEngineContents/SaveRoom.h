@@ -6,6 +6,7 @@
 class Player;
 class Inventory;
 class BlackBox;
+class BlueTextBox;
 
 // Ό³Έν :
 class SaveRoom : public PlayLevel
@@ -35,6 +36,7 @@ private:
 
 	BlackBox* BBoxOut = nullptr;
 	BlackBox* BBoxIn = nullptr;
+	BlueTextBox* BTB = nullptr;
 	int BBoxOutCount = 1;
 	int BBoxInCount = 1;
 

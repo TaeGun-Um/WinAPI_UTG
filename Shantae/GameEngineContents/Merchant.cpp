@@ -23,7 +23,7 @@ void Merchant::Start()
 	AnimationRender->CreateAnimation({ .AnimationName = "Idle",  .ImageName = "Merchant.bmp", .Start = 0, .End = 4, .InterTime = 0.1f });
 	AnimationRender->CreateAnimation({ .AnimationName = "Run",  .ImageName = "Merchant.bmp", .Start = 5, .End = 9, .InterTime = 0.1f });
 
-	BodyCollision = CreateCollision(CollisionOrder::Trigger);
+	BodyCollision = CreateCollision(CollisionOrder::NPC);
 	BodyCollision->SetDebugRenderType(CT_Rect);
 	BodyCollision->SetScale({ 120, 100 });
 	BodyCollision->SetPosition({ 0, -50 });

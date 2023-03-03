@@ -29,7 +29,7 @@ void Town_Guard::Start()
 	AnimationRender->CreateAnimation({ .AnimationName = "Turn_R",  .ImageName = "Town Guard_L.bmp", .Start = 7, .End = 10, .InterTime = 0.1f });
 
 
-	BodyCollision = CreateCollision(CollisionOrder::Trigger);
+	BodyCollision = CreateCollision(CollisionOrder::NPC);
 	BodyCollision->SetDebugRenderType(CT_Rect);
 	BodyCollision->SetScale({ 120, 100 });
 	BodyCollision->SetPosition({ 0, -50 });

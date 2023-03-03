@@ -19,6 +19,7 @@
 #include "GemWindow.h"
 #include "Health.h"
 #include "Inventory.h"
+#include "BlueTextBox.h"
 
 #include "ObjectLoad.h"
 #include "BlackBox.h"
@@ -109,8 +110,8 @@ void SaveRoom::LevelChangeStart(GameEngineLevel* _PrevLevel)
 		IsStart = false;
 		StartCount = 1;
 	}
-	Inventory::PlayerInven->DataCopy(Inven);
 	Inventory::PlayerInven = Inven;
+	BlueTextBox::DialogTextBox = BTB;
 
 	Set = 1;
 

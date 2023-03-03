@@ -28,6 +28,7 @@ enum class CollisionOrder
 	Trigger,			 // 9
 	Item,				 // 10
 	Equip,               // 11
+	NPC,				 // 12
 };
 
 // Enum class

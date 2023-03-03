@@ -394,9 +394,6 @@
     <ClInclude Include="Machinegun_PlatPiece2.h">
       <Filter>PlayLevel\FieldLevel\6. Machinegun\Actor\CollisionActor</Filter>
     </ClInclude>
-    <ClInclude Include="ContentsEnum.h">
-      <Filter>FileLoader</Filter>
-    </ClInclude>
     <ClInclude Include="WhiteBox.h">
       <Filter>UI\AnimationBox</Filter>
     </ClInclude>
@@ -573,6 +570,10 @@
       <Filter>Text</Filter>
     </ClInclude>
     <ClInclude Include="BlueTextBox.h">
+      <Filter>Text</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentsEnum.h" />
+    <ClInclude Include="NPCScript.h">
       <Filter>Text</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1206,6 +1207,9 @@
       <Filter>Text</Filter>
     </ClCompile>
     <ClCompile Include="BlueTextBox.cpp">
+      <Filter>Text</Filter>
+    </ClCompile>
+    <ClCompile Include="NPCScript.cpp">
       <Filter>Text</Filter>
     </ClCompile>
   </ItemGroup>

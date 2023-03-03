@@ -22,10 +22,10 @@ void Bathwoman::Start()
 
 	AnimationRender->CreateAnimation({ .AnimationName = "Idle",  .ImageName = "Bathwoman.bmp", .Start = 0, .End = 10, .InterTime = 0.1f });
 
-	BodyCollision = CreateCollision(CollisionOrder::Trigger);
+	BodyCollision = CreateCollision(CollisionOrder::NPC);
 	BodyCollision->SetDebugRenderType(CT_Rect);
-	BodyCollision->SetScale({ 100, 100 });
-	BodyCollision->SetPosition({ 50, -50 });
+	BodyCollision->SetScale({ 120, 100 });
+	BodyCollision->SetPosition({ 0, -50 });
 
 	AnimationRender->ChangeAnimation("Idle");
 }

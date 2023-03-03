@@ -35,13 +35,15 @@ protected:
 	void Render(float _DeltaTime) override;
 
 private:
-	// void TextCreate();
+	void TextCreate();
 	void Kill();
 
 	GameEngineSoundPlayer BGMPlayer;
 	
 	bool IsOpen = false;
 	bool IsClose = false;
+
+	int TextCount = 1;
 
 };
 

@@ -4,6 +4,7 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/NumberRenderObject.h>
+#include <GameEngineCore/GameEngineCollision.h>
 
 class GameEngineImage;
 
@@ -310,9 +311,19 @@ public:
 		return ItemName;
 	}
 
+	bool GetTextActivate()
+	{
+		return TextActivate;
+	}
+
 	void SetTextActivate(bool _Is)
 	{
 		TextActivate = false;
+	}
+
+	void BodyCollisionOn()
+	{
+		BodyCollision->On();
 	}
 
 protected:

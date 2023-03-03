@@ -158,18 +158,13 @@ void Player::Update(float _DeltaTime)
 		ItemUse(_DeltaTime);
 	}
 
-	if (GameEngineInput::IsDown("TextTest"))
+	if (GameEngineInput::IsDown("Select") && true == TextActivate)
 	{
-		TextActivate = true;
+		BodyCollision->Off();
+		//BlueTextBox::DialogTextBox->SetIsOpen();
+		BlueTextBox::DialogTextBox = GetLevel()->CreateActor<BlueTextBox>();
 	}
-	if (true == TextActivate)
-	{
-		if (GameEngineInput::IsDown("Select"))
-		{
-			TextActivate = false;
-			BlueTextBox::DialogTextBox->SetIsOpen();
-		}
-	}
+
 }
 
 void Player::Render(float _DeltaTime)
@@ -624,6 +619,15 @@ void Player::CollisionCheck(float _DeltaTime)
 			BodyCollision->Off();
 
 			Blinker = true;
+		}
+
+		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::NPC), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+		{
+			TextActivate = true;
+		}
+		else
+		{
+			TextActivate = false;
 		}
 	}
 

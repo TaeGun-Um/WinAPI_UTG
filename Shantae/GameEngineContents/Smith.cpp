@@ -19,6 +19,7 @@
 #include "GemWindow.h"
 #include "Health.h"
 #include "Inventory.h"
+#include "BlueTextBox.h"
 
 #include "ObjectLoad.h"
 #include "BlackBox.h"
