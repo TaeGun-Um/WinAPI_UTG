@@ -88,7 +88,9 @@ private:
 	void MerchantCreate();
 	
 	void ShopCreate();
-	void SelectMove(float _DeltaTime);
+	void SelectMove();
+	void UpSet();
+	void DownSet();
 
 	void Kill();
 
@@ -123,6 +125,7 @@ private:
 	int TextInsertCount = 0;
 	int TextnNextCount = 0;
 	int SelectCreate = 1;
+	int ShopCount = 1;
 	
 	int OctopusTextPlus = 1;
 	int OctopusfullCount = 1;

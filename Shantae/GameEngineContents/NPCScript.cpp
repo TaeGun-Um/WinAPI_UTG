@@ -41,7 +41,7 @@ void NPCScript::Update(float _DeltaTime)
 
 	if (true == ShopOpen)
 	{
-		SelectMove(_DeltaTime);
+		SelectMove();
 	}
 	
 }
@@ -59,7 +59,7 @@ void NPCScript::NPCType()
 		Bathwoman();
 		break;
 	case NPCDialogType_Dialog::Merchant:
-		TextInsertCount = 23;
+		TextInsertCount = 16;
 		Merchant();
 		break;
 	case NPCDialogType_Dialog::Squidsmith:
@@ -161,7 +161,6 @@ void NPCScript::Sky()
 
 void NPCScript::Merchant()
 {	
-	// Script = "けけけけけけけけけけけけけけけけけけけけけさ\nけけけけけけけけけけけけけけけけけけけけけさ";
 	NPCTexts.resize(TextInsertCount);
 	
 	NPCTexts[0] = "酔軒亜惟拭 嬢辞神室推!";
@@ -177,6 +176,9 @@ void NPCScript::Merchant()
 	NPCTexts[10] = "佼什斗 酔政					    60";
 	NPCTexts[11] = "佼什斗 酔政(x3)                  150";
 	NPCTexts[12] = "因維径聖 装亜獣徹室推! 硝 呪 蒸澗 反社稽 亜究馬岩艦陥!";
+	NPCTexts[13] = "企勲生稽 姥古背辞 儀聖 箭鉦馬室推!";
+	NPCTexts[14] = "蟹亜奄";
+	NPCTexts[15] = "雌繊聖 丸柔艦陥.";
 
 	TextnNextCount = TextInsertCount;
 }
@@ -453,6 +455,7 @@ void NPCScript::MerchantCreate()
 		if (1 == SelectCreate)
 		{
 			SelectCreate = 0;
+			TextRender->Off();
 
 			SelectButton = GetLevel()->CreateActor<ShopSelect>();
 			SelectButton->SetPos(GetPos());
@@ -461,7 +464,6 @@ void NPCScript::MerchantCreate()
 
 			ShopCreate();
 		}
-		TextRender->Off();
 	}
 	else if (false == IsTextEnd)
 	{
@@ -497,12 +499,12 @@ void NPCScript::ShopCreate()
 	ShopText3->EffectCameraOff();
 
 	ShopText4 = CreateRender(RenderOrder::UI);
-	ShopText4->SetText(ShopScript4, 30, "閏顕", TextAlign::Left, RGB(255, 255, 255), BoxScale);
-	ShopText4->SetPosition(GetPos() + float4::Left * 325 + float4::Down * 5);
+	ShopText4->SetText(ShopScript4, 25, "閏顕", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+	ShopText4->SetPosition(GetPos() + float4::Left * 325 + float4::Down * 7);
 	ShopText4->EffectCameraOff();
 }
 
-void NPCScript::SelectMove(float _DeltaTime)
+void NPCScript::SelectMove()
 {
 	if (GameEngineInput::IsDown("UpMove"))
 	{
@@ -510,7 +512,25 @@ void NPCScript::SelectMove(float _DeltaTime)
 		BGMPlayer.Volume(0.05f);
 		BGMPlayer.LoopCount(1);
 
-		SelectButton->SetPos(Pos1);
+		if (Pos1.y == SelectButton->GetPos().y)
+		{
+			SelectButton->SetPos(Pos1);
+
+			UpSet();
+		}
+		else if (Pos2.y == SelectButton->GetPos().y)
+		{
+			SelectButton->SetPos(Pos1);
+		}
+		else if (Pos3.y == SelectButton->GetPos().y)
+		{
+			SelectButton->SetPos(Pos2);
+		}
+
+		if (1 < ShopCount)
+		{
+			--ShopCount;
+		}
 	}
 
 	if (GameEngineInput::IsDown("DownMove"))
@@ -519,6 +539,145 @@ void NPCScript::SelectMove(float _DeltaTime)
 		BGMPlayer.Volume(0.05f);
 		BGMPlayer.LoopCount(1);
 
-		SelectButton->SetPos(Pos2);
+		if (Pos1.y == SelectButton->GetPos().y)
+		{
+			SelectButton->SetPos(Pos2);
+		}
+		else if (Pos2.y == SelectButton->GetPos().y)
+		{
+			SelectButton->SetPos(Pos3);
+		}
+		else if (Pos3.y == SelectButton->GetPos().y)
+		{
+			SelectButton->SetPos(Pos3);
+
+			DownSet();
+		}
+
+		if (9 > ShopCount)
+		{
+			++ShopCount;
+		}
+		
 	}
+
+	if (1 == ShopCount)
+	{
+		ShopScript4 = NPCTexts[3];
+		ShopText4->SetText(ShopScript4, 25, "閏顕", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+	}
+	else if (3 == ShopCount)
+	{
+		ShopScript4 = NPCTexts[6];
+		ShopText4->SetText(ShopScript4, 25, "閏顕", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+	}
+	else if (5 == ShopCount)
+	{
+		ShopScript4 = NPCTexts[9];
+		ShopText4->SetText(ShopScript4, 25, "閏顕", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+	}
+	else if (7 == ShopCount)
+	{
+		ShopScript4 = NPCTexts[12];
+		ShopText4->SetText(ShopScript4, 25, "閏顕", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+	}
+	else if (9 == ShopCount)
+	{
+		ShopScript4 = NPCTexts[15];
+		ShopText4->SetText(ShopScript4, 25, "閏顕", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+	}
+	else
+	{
+		ShopScript4 = NPCTexts[13];
+		ShopText4->SetText(ShopScript4, 25, "閏顕", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+	}
+}
+
+void NPCScript::UpSet()
+{
+	if (NPCTexts[2] == ShopScript1)
+	{
+		ShopScript1 = NPCTexts[1];
+		ShopScript2 = NPCTexts[2];
+		ShopScript3 = NPCTexts[4];
+	}
+	else if (NPCTexts[4] == ShopScript1)
+	{
+		ShopScript1 = NPCTexts[2];
+		ShopScript2 = NPCTexts[4];
+		ShopScript3 = NPCTexts[5];
+	}
+	else if (NPCTexts[5] == ShopScript1)
+	{
+		ShopScript1 = NPCTexts[4];
+		ShopScript2 = NPCTexts[5];
+		ShopScript3 = NPCTexts[7];
+	}
+	else if (NPCTexts[7] == ShopScript1)
+	{
+		ShopScript1 = NPCTexts[5];
+		ShopScript2 = NPCTexts[7];
+		ShopScript3 = NPCTexts[8];
+	}
+	else if (NPCTexts[8] == ShopScript1)
+	{
+		ShopScript1 = NPCTexts[7];
+		ShopScript2 = NPCTexts[8];
+		ShopScript3 = NPCTexts[10];
+	}
+	else if (NPCTexts[10] == ShopScript1)
+	{
+		ShopScript1 = NPCTexts[8];
+		ShopScript2 = NPCTexts[10];
+		ShopScript3 = NPCTexts[11];
+	}
+
+	ShopText1->SetText(ShopScript1, 30, "閏顕", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+	ShopText2->SetText(ShopScript2, 30, "閏顕", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+	ShopText3->SetText(ShopScript3, 30, "閏顕", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+}
+
+void NPCScript::DownSet()
+{
+	if (NPCTexts[4] == ShopScript3)
+	{
+		ShopScript1 = NPCTexts[2];
+		ShopScript2 = NPCTexts[4];
+		ShopScript3 = NPCTexts[5];
+	}
+	else if (NPCTexts[5] == ShopScript3)
+	{
+		ShopScript1 = NPCTexts[4];
+		ShopScript2 = NPCTexts[5];
+		ShopScript3 = NPCTexts[7];
+	}
+	else if (NPCTexts[7] == ShopScript3)
+	{
+		ShopScript1 = NPCTexts[5];
+		ShopScript2 = NPCTexts[7];
+		ShopScript3 = NPCTexts[8];
+	}
+	else if (NPCTexts[8] == ShopScript3)
+	{
+		ShopScript1 = NPCTexts[7];
+		ShopScript2 = NPCTexts[8];
+		ShopScript3 = NPCTexts[10];
+	}
+	else if (NPCTexts[10] == ShopScript3)
+	{
+		ShopScript1 = NPCTexts[8];
+		ShopScript2 = NPCTexts[10];
+		ShopScript3 = NPCTexts[11];
+	}
+	else if (NPCTexts[11] == ShopScript3)
+	{
+		ShopScript1 = NPCTexts[10];
+		ShopScript2 = NPCTexts[11];
+		ShopScript3 = NPCTexts[14];
+	}
+
+	ShopText1->SetText(ShopScript1, 30, "閏顕", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+	ShopText2->SetText(ShopScript2, 30, "閏顕", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+	ShopText3->SetText(ShopScript3, 30, "閏顕", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+	ShopText4->SetText(ShopScript4, 30, "閏顕", TextAlign::Left, RGB(255, 255, 255), BoxScale);
 }
