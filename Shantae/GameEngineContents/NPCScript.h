@@ -95,10 +95,14 @@ private:
 	int IDCardCreate = 1;
 	int TextInsertCount = 0;
 	int TextnNextCount = 0;
+	
+	int OctopusTextPlus = 1;
 
 	bool IsTextEnd = false;
 	bool IsOver = false;
 
+	bool Octopusless = false;
+	bool Octopusenough = false;
 
 };
 

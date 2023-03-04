@@ -7,6 +7,7 @@
 #include "BlueTextBox.h"
 #include "Inventory.h"
 #include "Player.h"
+#include "Squidsmith.h"
 
 NPCScript::NPCScript() 
 {
@@ -53,7 +54,7 @@ void NPCScript::NPCType()
 		Merchant();
 		break;
 	case NPCDialogType_Dialog::Squidsmith:
-		TextInsertCount = 11;
+		TextInsertCount = 10;
 		Squidsmith();
 		break;
 	case NPCDialogType_Dialog::Town_Guard:
@@ -190,7 +191,6 @@ void NPCScript::Merchant()
 void NPCScript::Squidsmith()
 {
 	NPCTexts.resize(TextInsertCount);
-	PlayerTexts.resize(2);
 	// 첫 조우
 	NPCTexts[0] = "스커틀 마을 문어장인 대령이오오!";
 	NPCTexts[1] = "난 조그맣고 사랑스러운 [하트 문어]들\n을 모아..";
@@ -198,18 +198,13 @@ void NPCScript::Squidsmith()
 	NPCTexts[3] = "다!!";
 	NPCTexts[4] = "녹여버려서!!!";
 	NPCTexts[5] = "...네 하트를 틀려줄 거야!";
-	// 이후 질의응답
-	NPCTexts[6] = "체력 칸을 늘릴래?";
-	// 예
+
+	NPCTexts[6] = "체력 칸을 늘려줄까?";
+	
 	NPCTexts[7] = "미안하지만, 체력칸을 늘리려면 하트 문어가\n네 마리 필요해."; // 네 마리 없을 경우
+
 	NPCTexts[8] = "시작해볼까!";                                             // 있을 경우
 	NPCTexts[9] = "자, 네 최대 체력이 한 칸 증가했어!";
-	// 아니오
-	NPCTexts[10] = "생각이 바뀔지도 모르니 여기서 기다릴게!";
-
-	// 플레이어
-	PlayerTexts[0] = "당장 해주세요!";
-	PlayerTexts[1] = "절대 안돼!";
 
 	TextnNextCount = TextInsertCount;
 }
@@ -275,15 +270,101 @@ void NPCScript::TownGuard_PassCreate()
 
 void NPCScript::SquidsmithCreate()
 {
-	if (TextnNextCount - TextInsertCount >= TextInsertCount)
+	if (false == Player::MainPlayer->GetSquidsmithScriptEnd())
 	{
-		IsTextEnd = true;
-		BlueTextBox::DialogTextBox->SetIsOver();
-	}
+		if (TextnNextCount - TextInsertCount == 7)
+		{
+			if (4 <= Player::MainPlayer->GetPlayerOctopus())
+			{
+				Octopusenough = true;
 
-	if (false == IsTextEnd)
+				if (1 == OctopusTextPlus)
+				{
+					OctopusTextPlus = 0;
+					++TextnNextCount;
+				}
+			}
+			else if (4 > Player::MainPlayer->GetPlayerOctopus())
+			{
+				Octopusless = true;
+			}
+		}
+
+		if (true == Octopusless)
+		{
+			if (TextnNextCount - TextInsertCount == 8)
+			{
+				IsTextEnd = true;
+				BlueTextBox::DialogTextBox->SetIsOver();
+				Player::MainPlayer->SetSquidsmithScriptEnd();
+			}
+
+			TextRender->SetText(NPCTexts[TextnNextCount - TextInsertCount], 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+		}
+		else if (true == Octopusenough)
+		{
+			if (TextnNextCount - TextInsertCount == 10)
+			{
+				IsTextEnd = true;
+				BlueTextBox::DialogTextBox->SetIsOver();
+				Player::MainPlayer->SetSquidsmithScriptEnd();
+				--TextnNextCount;
+			}
+
+			TextRender->SetText(NPCTexts[TextnNextCount - TextInsertCount], 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+		}
+		if (false == IsTextEnd)
+		{
+			TextRender->SetText(NPCTexts[TextnNextCount - TextInsertCount], 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+		}
+	}
+	else
 	{
-		TextRender->SetText(NPCTexts[TextnNextCount - TextInsertCount], 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+		if (TextnNextCount - TextInsertCount == 1)
+		{
+			if (4 <= Player::MainPlayer->GetPlayerOctopus())
+			{
+				Octopusenough = true;
+
+				if (1 == OctopusTextPlus)
+				{
+					OctopusTextPlus = 0;
+					++TextnNextCount;
+				}
+			}
+			else if (4 > Player::MainPlayer->GetPlayerOctopus())
+			{
+				Octopusless = true;
+			}
+		}
+
+		if (true == Octopusless)
+		{
+			if (TextnNextCount - TextInsertCount == 2)
+			{
+				IsTextEnd = true;
+				BlueTextBox::DialogTextBox->SetIsOver();
+				Player::MainPlayer->SetSquidsmithScriptEnd();
+			}
+
+			TextRender->SetText(NPCTexts[TextnNextCount - TextInsertCount + 6], 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+		}
+		else if (true == Octopusenough)
+		{
+			if (TextnNextCount - TextInsertCount == 4)
+			{
+				IsTextEnd = true;
+				BlueTextBox::DialogTextBox->SetIsOver();
+				Player::MainPlayer->SetSquidsmithScriptEnd();
+				--TextnNextCount;
+			}
+
+			TextRender->SetText(NPCTexts[TextnNextCount - TextInsertCount + 6], 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+		}
+		if (false == IsTextEnd)
+		{
+			TextRender->SetText(NPCTexts[TextnNextCount - TextInsertCount + 6], 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+		}
 	}
 }
 
