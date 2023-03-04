@@ -105,6 +105,29 @@ void Move1::Loading()
 		W9->SetPos({ 10280, 775 });
 	}
 
+	// Splashcollision
+	{
+		Wavesplash* S1 = CreateActor<Wavesplash>();
+		S1->SetPos({ 2430, 620 });
+		S1->SetScale({ 200, 10 });
+
+		Wavesplash* S2 = CreateActor<Wavesplash>();
+		S2->SetPos({ 5250, 620 });
+		S2->SetScale({ 1200, 10 });
+
+		Wavesplash* S3 = CreateActor<Wavesplash>();
+		S3->SetPos({ 7730, 620 });
+		S3->SetScale({ 490, 10 });
+
+		Wavesplash* S4 = CreateActor<Wavesplash>();
+		S4->SetPos({ 9200, 620 });
+		S4->SetScale({ 1000, 10 });
+
+		Wavesplash* S5 = CreateActor<Wavesplash>();
+		S5->SetPos({ 10280, 620 });
+		S5->SetScale({ 490, 10 });
+	}
+
 	// Item
 	{
 		Jar* j1 = CreateActor<Jar>();

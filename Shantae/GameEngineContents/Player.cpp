@@ -90,7 +90,7 @@ void Player::Update(float _DeltaTime)
 	}	
 	if (GameEngineInput::IsDown("HPMinus"))
 	{
-		if (HP > 2)
+		if (HP > 1)
 		{
 			HP -= 1;
 		}

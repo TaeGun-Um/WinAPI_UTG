@@ -44,7 +44,7 @@ void Wavesplash::CollisionCheck()
 {
 	if (nullptr != BodyCollision)
 	{
-		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
+		if (true == BodyCollision->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PlayerEffect), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
 		{
 			IsIn = true;
 		}
@@ -61,7 +61,7 @@ void Wavesplash::CreateSplash()
 	Splash* Ex = nullptr;
 
 	Ex = GetLevel()->CreateActor<Splash>();
-	Ex->SetPos(GetPos());
+	Ex->SetPos(Player::MainPlayer->GetPos() + float4::Up * 15.0f);
 
 	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Splash_water.wav");
 	BGMPlayer.Volume(0.1f);
