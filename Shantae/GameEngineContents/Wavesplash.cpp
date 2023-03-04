@@ -30,6 +30,9 @@ void Wavesplash::Start()
 void Wavesplash::Update(float _DeltaTime)
 {
 	//CreateSplash();
+
+	//CollisionCheck()
+	//SetCollisionScale()
 	
 	//if (true == IsHelthWater)
 	//{
