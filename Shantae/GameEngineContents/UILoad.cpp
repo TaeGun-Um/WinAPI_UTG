@@ -34,4 +34,5 @@ void UILoad::Loading()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("TextButton.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("A.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Up.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("ShopBlueBox.bmp"));
 }

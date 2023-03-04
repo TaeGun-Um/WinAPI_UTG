@@ -579,6 +579,12 @@
     <ClInclude Include="Splash.h">
       <Filter>AssistantCollision\Wavesplash\Effect</Filter>
     </ClInclude>
+    <ClInclude Include="ShopSelect.h">
+      <Filter>Text</Filter>
+    </ClInclude>
+    <ClInclude Include="ShopBlueBox.h">
+      <Filter>Text</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShantaeCore.cpp" />
@@ -1217,6 +1223,12 @@
     </ClCompile>
     <ClCompile Include="Splash.cpp">
       <Filter>AssistantCollision\Wavesplash\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="ShopSelect.cpp">
+      <Filter>Text</Filter>
+    </ClCompile>
+    <ClCompile Include="ShopBlueBox.cpp">
+      <Filter>Text</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

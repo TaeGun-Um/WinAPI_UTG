@@ -557,6 +557,14 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="ShopBlueBox.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ShopSelect.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Sky.h">
       <SubType>
       </SubType>
@@ -1322,6 +1330,14 @@
     </ClCompile>
     <ClCompile Include="Scuttle_Map.cpp" />
     <ClCompile Include="Sea.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ShopBlueBox.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="ShopSelect.cpp">
       <SubType>
       </SubType>
     </ClCompile>

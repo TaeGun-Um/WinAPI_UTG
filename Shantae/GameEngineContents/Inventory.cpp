@@ -51,7 +51,7 @@ void Inventory::Start()
 	AnimationRender->EffectCameraOff();
 	AnimationRender->Off();
 
-	TextRender = CreateRender(RenderOrder::Box);
+	TextRender = CreateRender(RenderOrder::UI);
 	BoxScale = { 850, 100 };
 	TextRender->SetText(ItemText, 30, "±¼¸²", TextAlign::Left, RGB(255, 255, 255), BoxScale);
 	TextRender->SetPosition(GameEngineWindow::GetScreenSize().half() + float4::Down * 252 + float4::Left * 420);

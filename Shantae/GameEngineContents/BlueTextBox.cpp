@@ -19,8 +19,6 @@ BlueTextBox::~BlueTextBox()
 {
 }
 
-
-
 void BlueTextBox::Start()
 {
 	DialogTextBox = this;
@@ -79,23 +77,30 @@ void BlueTextBox::Update(float _DeltaTime)
 		}
 		else
 		{
-			if (GameEngineInput::IsDown("Select") && false == IsNext)
+			if (false == Scr->GetShopOpen())
 			{
-				IsNext = true;
-			}
-
-			if (false == HeartAction)
-			{
-				AnimationRender->On();
-				if (true == AnimationRender->IsAnimationEnd())
+				if (GameEngineInput::IsDown("Select") && false == IsNext)
 				{
-					Scr->On();
+					IsNext = true;
+				}
+
+				if (false == HeartAction)
+				{
+					AnimationRender->On();
+					if (true == AnimationRender->IsAnimationEnd())
+					{
+						Scr->On();
+					}
+				}
+
+				if (true == IsNext)
+				{
+					Cycle(_DeltaTime);
 				}
 			}
-
-			if (true == IsNext)
+			else
 			{
-				Cycle(_DeltaTime);
+				AnimationRender->ChangeAnimation("Open");
 			}
 		}
 	}

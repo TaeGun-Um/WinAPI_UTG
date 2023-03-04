@@ -1,5 +1,6 @@
 #include "NPCScript.h"
 
+#include <GameEngineCore/GameEngineLevel.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineRender.h>
 
@@ -8,6 +9,8 @@
 #include "Inventory.h"
 #include "Player.h"
 #include "Squidsmith.h"
+#include "ShopSelect.h"
+#include "ShopBlueBox.h"
 
 NPCScript::NPCScript() 
 {
@@ -35,6 +38,12 @@ void NPCScript::Update(float _DeltaTime)
 	}
 
 	DialogType();
+
+	if (true == ShopOpen)
+	{
+		SelectMove(_DeltaTime);
+	}
+	
 }
 
 void NPCScript::NPCType()
@@ -50,7 +59,7 @@ void NPCScript::NPCType()
 		Bathwoman();
 		break;
 	case NPCDialogType_Dialog::Merchant:
-		TextInsertCount = 24;
+		TextInsertCount = 23;
 		Merchant();
 		break;
 	case NPCDialogType_Dialog::Squidsmith:
@@ -154,36 +163,20 @@ void NPCScript::Merchant()
 {	
 	// Script = "けけけけけけけけけけけけけけけけけけけけけさ\nけけけけけけけけけけけけけけけけけけけけけさ";
 	NPCTexts.resize(TextInsertCount);
-	PlayerTexts.resize(2);
-	NPCTexts[0] = "酔軒亜惟拭 嬢辞神室推!";
-	NPCTexts[1] = "広製生稽 紫辞 儀聖 箭鉦馬室推!";
-	NPCTexts[2] = "壱奄";
-	NPCTexts[3] = "壱奄 (x3)";
-	NPCTexts[4] = "端径聖 噺差拝 呪 赤柔艦陥.";
-	NPCTexts[5] = "10";  // 亜維
-	NPCTexts[6] = "25";  // 亜維
-	NPCTexts[7] = "督戚滴瑳";
-	NPCTexts[8] = "督戚滴瑳 (x3)";
-	NPCTexts[9] = "桜越桜越 宜焼亜澗 壱搭税 悪旦 姥稽 切重聖 左硲馬室推.";
-	NPCTexts[10] = "50";  // 亜維
-	NPCTexts[11] = "120"; // 亜維
-	NPCTexts[12] = "獄鷺";
-	NPCTexts[13] = "獄鷺 (x3)";
-	NPCTexts[14] = "因維拭 企誓馬澗 置雌税 号嬢 呪舘脊艦陥.";
-	NPCTexts[15] = "100"; // 亜維
-	NPCTexts[16] = "250"; // 亜維
-	NPCTexts[17] = "佼什斗 酔政";
-	NPCTexts[18] = "佼什斗 酔政(x3)";
-	NPCTexts[19] = "因維径聖 装亜獣徹室推! 硝 呪 蒸澗 反社稽 亜究馬岩艦陥!";
-	NPCTexts[20] = "60";  // 亜維
-	NPCTexts[21] = "150"; // 亜維
-	// 識澱 獣
-	NPCTexts[22] = "戚 焼戚奴聖 姥古馬叔 闇亜推?";
-	// 姥古 刃戟
-	NPCTexts[23] = "壱原趨推! 暁 姥古馬叔 依 赤蟹推?";
 	
-	PlayerTexts[0] = "森";
-	PlayerTexts[1] = "焼艦推";
+	NPCTexts[0] = "酔軒亜惟拭 嬢辞神室推!";
+	NPCTexts[1] = "壱奄							   10";
+	NPCTexts[2] = "壱奄 (x3)						   25";
+	NPCTexts[3] = "端径聖 噺差拝 呪 赤柔艦陥.";
+	NPCTexts[4] = "督戚滴瑳						   50";
+	NPCTexts[5] = "督戚滴瑳 (x3)					   120";
+	NPCTexts[6] = "桜越桜越 宜焼亜澗 壱搭税 悪旦 姥稽 切重聖 左硲馬室推.";
+	NPCTexts[7] = "獄鷺							   100";
+	NPCTexts[8] = "獄鷺 (x3)						   250";
+	NPCTexts[9] = "因維拭 企誓馬澗 置雌税 号嬢 呪舘脊艦陥.";
+	NPCTexts[10] = "佼什斗 酔政					    60";
+	NPCTexts[11] = "佼什斗 酔政(x3)                  150";
+	NPCTexts[12] = "因維径聖 装亜獣徹室推! 硝 呪 蒸澗 反社稽 亜究馬岩艦陥!";
 
 	TextnNextCount = TextInsertCount;
 }
@@ -449,14 +442,83 @@ void NPCScript::SkyCreate()
 
 void NPCScript::MerchantCreate()
 {
-	if (TextnNextCount - TextInsertCount >= TextInsertCount)
+	if (TextnNextCount - TextInsertCount == 1)
 	{
+		ShopOpen = true;
 		IsTextEnd = true;
-		BlueTextBox::DialogTextBox->SetIsOver();
 	}
 
-	if (false == IsTextEnd)
+	if (true == ShopOpen)
+	{
+		if (1 == SelectCreate)
+		{
+			SelectCreate = 0;
+
+			SelectButton = GetLevel()->CreateActor<ShopSelect>();
+			SelectButton->SetPos(GetPos());
+
+			ShopBox = GetLevel()->CreateActor<ShopBlueBox>();
+
+			ShopCreate();
+		}
+		TextRender->Off();
+	}
+	else if (false == IsTextEnd)
 	{
 		TextRender->SetText(NPCTexts[TextnNextCount - TextInsertCount], 30, "閏顕", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+	}
+}
+
+void NPCScript::ShopCreate()
+{
+	ShopScript1 = NPCTexts[1];
+	ShopScript2 = NPCTexts[2];
+	ShopScript3 = NPCTexts[4];
+	ShopScript4 = NPCTexts[3];
+
+	ShopText1 = CreateRender(RenderOrder::UI);
+	ShopText1->SetText(ShopScript1, 30, "閏顕", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+	ShopText1->SetPosition(GetPos() + float4::Left * 325 + float4::Up * 200);
+	Pos1 = ShopText1->GetPosition() + float4::Right * 280 + float4::Down * 210;
+	ShopText1->EffectCameraOff();
+
+	SelectButton->SetPos(Pos1);
+
+	ShopText2 = CreateRender(RenderOrder::UI);
+	ShopText2->SetText(ShopScript2, 30, "閏顕", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+	ShopText2->SetPosition(GetPos() + float4::Left * 325 + float4::Up * 150);
+	Pos2 = ShopText2->GetPosition() + float4::Right * 280 + float4::Down * 210;
+	ShopText2->EffectCameraOff();
+
+	ShopText3 = CreateRender(RenderOrder::UI);
+	ShopText3->SetText(ShopScript3, 30, "閏顕", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+	ShopText3->SetPosition(GetPos() + float4::Left * 325 + float4::Up * 100);
+	Pos3 = ShopText3->GetPosition() + float4::Right * 280 + float4::Down * 210;
+	ShopText3->EffectCameraOff();
+
+	ShopText4 = CreateRender(RenderOrder::UI);
+	ShopText4->SetText(ShopScript4, 30, "閏顕", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+	ShopText4->SetPosition(GetPos() + float4::Left * 325 + float4::Down * 5);
+	ShopText4->EffectCameraOff();
+}
+
+void NPCScript::SelectMove(float _DeltaTime)
+{
+	if (GameEngineInput::IsDown("UpMove"))
+	{
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Botton_move.wav");
+		BGMPlayer.Volume(0.05f);
+		BGMPlayer.LoopCount(1);
+
+		SelectButton->SetPos(Pos1);
+	}
+
+	if (GameEngineInput::IsDown("DownMove"))
+	{
+		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Botton_move.wav");
+		BGMPlayer.Volume(0.05f);
+		BGMPlayer.LoopCount(1);
+
+		SelectButton->SetPos(Pos2);
 	}
 }
