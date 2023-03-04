@@ -1,6 +1,7 @@
 #pragma once
 
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/GameEngineRender.h>
 #include "BlueTextBox.h"
 
 enum class NPCDialogType_Dialog
@@ -43,6 +44,16 @@ public:
 	void NextScript()
 	{
 		++TextnNextCount;
+	}
+
+	void TextOn()
+	{
+		TextRender->On();
+	}
+
+	void TextOff()
+	{
+		TextRender->Off();
 	}
 
 protected:

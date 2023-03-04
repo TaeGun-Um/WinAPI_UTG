@@ -57,7 +57,7 @@ private:
 	void Close(float _DeltaTime);
 	void TextCreate();
 	void Kill();
-	void Cycle();
+	void Cycle(float _DeltaTime);
 
 	GameEngineSoundPlayer BGMPlayer;
 	NPCDialogType_Text NPCValue = NPCDialogType_Text::Town_Guard;
@@ -70,6 +70,7 @@ private:
 
 	float OpenTime = 0.0f;
 	float CloseTime = 0.0f;
+	float CycleTime = 0.0f;
 	int TextCount = 1;
 	int ScriptKill = 1;
 

@@ -79,36 +79,51 @@ void BlueTextBox::Update(float _DeltaTime)
 		}
 		else
 		{
-			if (GameEngineInput::IsDown("Select"))
+			if (GameEngineInput::IsDown("Select") && false == IsNext)
 			{
 				IsNext = true;
 			}
 
 			if (true == IsNext)
 			{
-				Cycle();
+				Cycle(_DeltaTime);
 			}
 		}
 	}
 }
 
-void BlueTextBox::Cycle()
+void BlueTextBox::Cycle(float _DeltaTime)
 {
 	if (1 == CycleClose)
 	{
 		CycleClose = 0;
+
+		Scr->TextOff();
 		AnimationRender->ChangeAnimation("Close");
+	}
+
+	if (0 == CycleClose)
+	{
+		CycleTime += _DeltaTime;
+	}
+
+	if (0.1f <= CycleTime)
+	{
 		CycleOpen = 1;
 	}
 
 	if (1 == CycleOpen)
 	{
 		CycleOpen = 0;
-		AnimationRender->ChangeAnimation("Open");
-		Scr->NextScript();
 
-		if (0 == CycleOpen)
+		AnimationRender->ChangeAnimation("Open");
+
+		if (0.2f <= CycleTime)
 		{
+			Scr->TextOn();
+			Scr->NextScript();
+			CycleTime = 0.0f;
+
 			CycleClose = 1;
 			IsNext = false;
 		}
