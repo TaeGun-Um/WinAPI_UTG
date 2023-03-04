@@ -48,6 +48,8 @@ void SoundLoad::Loading()
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Town\\Uncle_Room.mp3"));               // o Uncle_Room BGM
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Town\\Customer.mp3"));                 // o Smith, Shop BGM
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Town\\Sky.mp3"));                      // o SkyRoom BGM
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Town\\Smith.wav"));                    // o 스미스
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Town\\NextText.wav"));                 // o 텍스트
 
 	// Ending
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Ending\\Ending.mp3"));                 // o 엔딩 크레딧 BGM

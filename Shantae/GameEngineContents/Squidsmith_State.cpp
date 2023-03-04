@@ -116,6 +116,14 @@ void Squidsmith::ActionUpdate(float _Time)
 	if (71 == AnimationRender->GetFrame())
 	{
 		Player::MainPlayer->SetCameraShaking(0.5f, 4.0f);
+
+		if (1 == ActionSoundCount)
+		{
+			ActionSoundCount = 0;
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Smith.wav");
+			BGMPlayer.Volume(0.1f);
+			BGMPlayer.LoopCount(1);
+		}
 	}
 
 	if (true == AnimationRender->IsAnimationEnd())
@@ -129,4 +137,9 @@ void Squidsmith::ActionEnd()
 	BlueTextBox::DialogTextBox->SetHeartAction(false);
 	Player::MainPlayer->PlusNewMaxHP(4);
 	Inventory::PlayerInven->OctopusDelete(4);
+	ActionSoundCount = 1;
+
+	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_hp_large.wav");
+	BGMPlayer.Volume(0.1f);
+	BGMPlayer.LoopCount(1);
 }

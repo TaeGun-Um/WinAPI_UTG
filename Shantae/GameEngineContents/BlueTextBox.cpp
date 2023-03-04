@@ -129,6 +129,14 @@ void BlueTextBox::Cycle(float _DeltaTime)
 
 		AnimationRender->ChangeAnimation("Open");
 
+		if (1 == NextSoundCount)
+		{
+			NextSoundCount = 0;
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("NextText.wav");
+			BGMPlayer.Volume(0.1f);
+			BGMPlayer.LoopCount(1);
+		}
+
 		if (0.2f <= CycleTime)
 		{
 			Scr->TextOn();
@@ -136,6 +144,7 @@ void BlueTextBox::Cycle(float _DeltaTime)
 
 			CycleClose = 1;
 			IsNext = false;
+			NextSoundCount = 1;
 		}
 	}
 

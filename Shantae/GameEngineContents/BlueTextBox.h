@@ -87,6 +87,7 @@ private:
 
 	int CycleClose = 1;
 	int CycleOpen = 0;
+	int NextSoundCount = 1;
 
 };
 

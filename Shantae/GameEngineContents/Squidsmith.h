@@ -1,5 +1,6 @@
 #pragma once
 
+#include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineActor.h>
 
 enum class SquidsmithState
@@ -39,6 +40,8 @@ private:
 	void CollisionCheck();
 	void CharacterDirect();
 
+	GameEngineSoundPlayer BGMPlayer;
+
 	GameEngineRender* AnimationRender = nullptr;
 	GameEngineCollision* BodyCollision = nullptr;
 	A_Button* AButton = nullptr;
@@ -48,6 +51,7 @@ private:
 	bool HeartAction = false;
 
 	int CreateAButtion = 1;
+	int ActionSoundCount = 1;
 
 	// State
 	std::string DirString = "_L";
