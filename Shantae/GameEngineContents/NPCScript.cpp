@@ -107,6 +107,7 @@ void NPCScript::Kill()
 void NPCScript::TownGuard()
 {
 	NPCTexts.resize(TextInsertCount);
+
 	NPCTexts[0] = "여기서부터는 스커틀 마을이야.";
 
 	TextnNextCount = TextInsertCount;
@@ -115,10 +116,9 @@ void NPCScript::TownGuard()
 void NPCScript::TownGuard_Pass()
 {
 	NPCTexts.resize(TextInsertCount);
-	// 출입증 미소지
+
 	NPCTexts[0] = "여기를 통과하려면 출입증이 필요해.";
 	NPCTexts[1] = "넌 출입증이 없어보이는구나. 그렇다면 통과\n할 수 없어.";
-	// 출입증 소지
 	NPCTexts[2] = "출입증 좀 볼까!";
 	NPCTexts[3] = "와, 다른 사람들은 사진 찍으면 2.27kg은 더 \n나가 보인다던데...";
 	NPCTexts[4] = "넌 오히려 사진이 너무 이쁘네. 근사한 머리에\n다가 얼굴도 완전 다른 사람인데?";
@@ -131,6 +131,7 @@ void NPCScript::TownGuard_Pass()
 void NPCScript::Bathwoman()
 {
 	NPCTexts.resize(TextInsertCount);
+
 	NPCTexts[0] = "약탕에 몸을 담가보세요! 원기가 회복됩니다!";
 
 	TextnNextCount = TextInsertCount;
@@ -139,12 +140,11 @@ void NPCScript::Bathwoman()
 void NPCScript::Sky()
 {
 	NPCTexts.resize(TextInsertCount);
+
 	NPCTexts[0] = "샨테? 무슨 일이야?";
 	NPCTexts[1] = "[출입증]이 필요하다고? 별일이네.";
-	NPCTexts[2] = "[출입증]을 얻었다!"; // 획득
+	NPCTexts[2] = "[출입증]을 얻었다!";
 	NPCTexts[3] = "저번에 그랬던 것처럼 또 망가뜨리면 안돼!";
-
-	// 출입증 수령 후
 	NPCTexts[4] = "그 출입증은 잃어버리지마!";
 
 	TextnNextCount = TextInsertCount;
@@ -181,7 +181,7 @@ void NPCScript::Merchant()
 	NPCTexts[22] = "이 아이템을 구매하실 건가요?";
 	// 구매 완료
 	NPCTexts[23] = "고마워요! 또 구매하실 것 있나요?";
-	// 플레이어
+	
 	PlayerTexts[0] = "예";
 	PlayerTexts[1] = "아니요";
 
@@ -191,22 +191,18 @@ void NPCScript::Merchant()
 void NPCScript::Squidsmith()
 {
 	NPCTexts.resize(TextInsertCount);
-	// 첫 조우
+	
 	NPCTexts[0] = "스커틀 마을 문어장인 대령이오오!";
-	NPCTexts[1] = "난 조그맣고 사랑스러운 [하트 문어]들\n을 모아..";
+	NPCTexts[1] = "난 조그맣고 사랑스러운 [하트 문어]들을 모아..";
 	NPCTexts[2] = "전부!";
 	NPCTexts[3] = "다!!";
 	NPCTexts[4] = "녹여버려서!!!";
 	NPCTexts[5] = "...네 하트를 틀려줄 거야!";
-
 	NPCTexts[6] = "체력 칸을 늘려줄까?";
-	
-	NPCTexts[7] = "미안하지만, 체력칸을 늘리려면 하트 문어가\n네 마리 필요해."; // 네 마리 없을 경우
-
-	NPCTexts[8] = "시작해볼까!";                                             // 있을 경우
+	NPCTexts[7] = "미안하지만, 체력 칸을 늘리려면 [하트 문어]\n[네 마리]가 필요해.";
+	NPCTexts[8] = "시작해볼까!";                                             
 	NPCTexts[9] = "자, 네 최대 체력이 한 칸 증가했어!";
-
-	NPCTexts[10] = "미안하지만, 더 이상 체력을 늘릴 수\n없겠는걸?!";
+	NPCTexts[10] = "미안하지만, 더 이상 체력 칸을 늘릴 수\n없겠는걸?!";
 
 	TextnNextCount = TextInsertCount;
 }

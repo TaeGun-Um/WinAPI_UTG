@@ -576,6 +576,9 @@
     <ClInclude Include="NPCScript.h">
       <Filter>Text</Filter>
     </ClInclude>
+    <ClInclude Include="Wavesplash.h">
+      <Filter>AssistantCollision\Wavesplash</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShantaeCore.cpp" />
@@ -1212,6 +1215,9 @@
     <ClCompile Include="NPCScript.cpp">
       <Filter>Text</Filter>
     </ClCompile>
+    <ClCompile Include="Wavesplash.cpp">
+      <Filter>AssistantCollision\Wavesplash</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Character">
@@ -1465,6 +1471,9 @@
     </Filter>
     <Filter Include="Text">
       <UniqueIdentifier>{13eb4db1-04ff-4578-9b08-e1846d6a4bce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AssistantCollision\Wavesplash">
+      <UniqueIdentifier>{8f3ec0e8-771b-4313-aeba-c7a91b3d32cc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
