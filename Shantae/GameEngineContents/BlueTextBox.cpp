@@ -99,6 +99,8 @@ void BlueTextBox::Cycle(float _DeltaTime)
 		CycleClose = 0;
 
 		Scr->TextOff();
+		Scr->NextScript();
+
 		AnimationRender->ChangeAnimation("Close");
 	}
 
@@ -121,7 +123,6 @@ void BlueTextBox::Cycle(float _DeltaTime)
 		if (0.2f <= CycleTime)
 		{
 			Scr->TextOn();
-			Scr->NextScript();
 			CycleTime = 0.0f;
 
 			CycleClose = 1;

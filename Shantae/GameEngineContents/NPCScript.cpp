@@ -37,16 +37,13 @@ void NPCScript::Update(float _DeltaTime)
 
 void NPCScript::TextCreate()
 {
-	if (TextnNextCount - TextInsertCount == TextInsertCount)
+	if (TextnNextCount - TextInsertCount >= TextInsertCount)
 	{
 		IsTextEnd = true;
-	}
-
-	if (true == IsTextEnd)
-	{
 		BlueTextBox::DialogTextBox->SetIsOver();
 	}
-	else if (false == IsTextEnd)
+
+	if (false == IsTextEnd)
 	{
 		TextRender->SetText(NPCTexts[TextnNextCount - TextInsertCount], 30, "±¼¸²", TextAlign::Left, RGB(255, 255, 255), BoxScale);
 	}
