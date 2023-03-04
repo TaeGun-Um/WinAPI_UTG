@@ -14,6 +14,7 @@
 
 #include "Heart.h"
 #include "Gem.h"
+#include "Splash.h"
 
 Soldier_Red::Soldier_Red()
 {
@@ -374,4 +375,16 @@ void Soldier_Red::CreateText()
 
 	NewT = GetLevel()->CreateActor<DamageText>();
 	NewT->SetPos(GetPos() + float4::Up * 160 + float4::Left * 20);
+}
+
+void Soldier_Red::CreateSplash()
+{
+	Splash* Ex = nullptr;
+
+	Ex = GetLevel()->CreateActor<Splash>();
+	Ex->SetPos(GetPos());
+
+	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Splash_water.wav");
+	BGMPlayer.Volume(0.1f);
+	BGMPlayer.LoopCount(1);
 }

@@ -19,7 +19,7 @@ void Splash::Start()
 {
 	// Animation
 	AnimationRender = CreateRender(RenderOrder::Effect);
-	AnimationRender->SetScale({ 400, 400 });
+	AnimationRender->SetScale({ 300, 300 });
 	AnimationRender->CreateAnimation({ .AnimationName = "Splash",  .ImageName = "Splash.bmp", .Start = 0, .End = 8, .InterTime = 0.08f });
 	AnimationRender->ChangeAnimation("Splash");
 }

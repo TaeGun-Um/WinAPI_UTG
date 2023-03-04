@@ -21,6 +21,7 @@
 
 #include "ObjectLoad.h"
 #include "BlackBox.h"
+#include "Wavesplash.h"
 
 Spa::Spa() 
 {
@@ -48,6 +49,14 @@ void Spa::Loading()
 	// Map		
 	CreateActor<Spa_Map>();
 	CreateActor<Spa_ColMap>();
+
+	// Splashcollision
+	{
+		Wavesplash* S = CreateActor<Wavesplash>();
+		S->SetPos({ 700, 650});
+		S->SetScale({ 490, 10});
+		S->SetHealthWater();
+	}
 
 	// NPC
 	{

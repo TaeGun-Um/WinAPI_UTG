@@ -36,6 +36,7 @@
 
 #include "ObjectLoad.h"
 #include "BlackBox.h"
+#include "Wavesplash.h"
 
 GameEngineSoundPlayer Move0::FieldBGMPlayer = 0;
 

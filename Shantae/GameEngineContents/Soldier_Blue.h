@@ -65,6 +65,7 @@ private:
 
 	int State = 1;
 	int AmbushJump = 1;
+	int CreateSpl = 1;
 	int HitActionCount = 1;
 
 	float MoveSpeed = 500.0f;
@@ -104,6 +105,7 @@ private:
 	void AlphaBlinker(float _DeltaTime);
 	void CreateItem();
 	void CreateText();
+	void CreateSplash();
 
 	void RenderSet();
 	void CollisionSet();

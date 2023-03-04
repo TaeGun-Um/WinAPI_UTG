@@ -49,5 +49,7 @@ void KeyLoad::Loading()
 		GameEngineInput::CreateKey("MonsterTest", 'Q');       // 몬스터 테스트 (플레이어 or 몬스터)
 		GameEngineInput::CreateKey("CreateMonster", 'W');     // 더미몬스터 생성 (플레이어)
 		GameEngineInput::CreateKey("CreateItem", 'E');		  // 더미아이템 생성 (플레이어)
+		GameEngineInput::CreateKey("HPPlus", 'R');		      // 플레이어 체력 증가 (플레이어)
+		GameEngineInput::CreateKey("HPMinus", 'T');		      // 플레이어 체력 감소 (플레이어)
 	}
 }

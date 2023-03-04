@@ -274,6 +274,15 @@ void Soldier_Blue::AmbushUpdate(float _Time)
 		return;
 	}
 
+	if (0.15f <= AmbushTime)
+	{
+		if (1 == CreateSpl)
+		{
+			CreateSpl = 0;
+			CreateSplash();
+		}
+	}
+
 	if (1.0f <= AmbushTime)
 	{
 		float4 LandPos = GetPos() + (float4::Down * 5);

@@ -358,9 +358,6 @@
     <ClInclude Include="SmallPoof.h">
       <Filter>Character\Monster\Boss\Effect</Filter>
     </ClInclude>
-    <ClInclude Include="Splash.h">
-      <Filter>Character\Player\Effect</Filter>
-    </ClInclude>
     <ClInclude Include="Impact.h">
       <Filter>Character\Player\Effect</Filter>
     </ClInclude>
@@ -578,6 +575,9 @@
     </ClInclude>
     <ClInclude Include="Wavesplash.h">
       <Filter>AssistantCollision\Wavesplash</Filter>
+    </ClInclude>
+    <ClInclude Include="Splash.h">
+      <Filter>AssistantCollision\Wavesplash\Effect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -966,9 +966,6 @@
     <ClCompile Include="AmmoBaron_State.cpp">
       <Filter>Character\Monster\Boss</Filter>
     </ClCompile>
-    <ClCompile Include="Splash.cpp">
-      <Filter>Character\Player\Effect</Filter>
-    </ClCompile>
     <ClCompile Include="Impact.cpp">
       <Filter>Character\Player\Effect</Filter>
     </ClCompile>
@@ -1217,6 +1214,9 @@
     </ClCompile>
     <ClCompile Include="Wavesplash.cpp">
       <Filter>AssistantCollision\Wavesplash</Filter>
+    </ClCompile>
+    <ClCompile Include="Splash.cpp">
+      <Filter>AssistantCollision\Wavesplash\Effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1474,6 +1474,9 @@
     </Filter>
     <Filter Include="AssistantCollision\Wavesplash">
       <UniqueIdentifier>{8f3ec0e8-771b-4313-aeba-c7a91b3d32cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AssistantCollision\Wavesplash\Effect">
+      <UniqueIdentifier>{5386e2e7-d2bd-440c-985a-c5a9241eef55}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

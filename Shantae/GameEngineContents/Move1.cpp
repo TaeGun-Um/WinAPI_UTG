@@ -28,6 +28,7 @@
 
 #include "ObjectLoad.h"
 #include "BlackBox.h"
+#include "Wavesplash.h"
 
 Move1::Move1() 
 {
