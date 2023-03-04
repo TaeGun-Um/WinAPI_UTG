@@ -483,6 +483,7 @@ void NPCScript::ShopCreate()
 	ShopText1->SetPosition(GetPos() + float4::Left * 325 + float4::Up * 200);
 	Pos1 = ShopText1->GetPosition() + float4::Right * 280 + float4::Down * 210;
 	ShopText1->EffectCameraOff();
+	ShopText1->Off();
 
 	SelectButton->SetPos(Pos1);
 
@@ -491,22 +492,33 @@ void NPCScript::ShopCreate()
 	ShopText2->SetPosition(GetPos() + float4::Left * 325 + float4::Up * 150);
 	Pos2 = ShopText2->GetPosition() + float4::Right * 280 + float4::Down * 210;
 	ShopText2->EffectCameraOff();
+	ShopText2->Off();
 
 	ShopText3 = CreateRender(RenderOrder::UI);
 	ShopText3->SetText(ShopScript3, 30, "±¼¸²", TextAlign::Left, RGB(255, 255, 255), BoxScale);
 	ShopText3->SetPosition(GetPos() + float4::Left * 325 + float4::Up * 100);
 	Pos3 = ShopText3->GetPosition() + float4::Right * 280 + float4::Down * 210;
 	ShopText3->EffectCameraOff();
+	ShopText3->Off();
 
 	ShopText4 = CreateRender(RenderOrder::UI);
 	ShopText4->SetText(ShopScript4, 25, "±¼¸²", TextAlign::Left, RGB(255, 255, 255), BoxScale);
 	ShopText4->SetPosition(GetPos() + float4::Left * 325 + float4::Down * 7);
 	ShopText4->EffectCameraOff();
+	ShopText4->Off();
 }
 
 void NPCScript::SelectMove(float _DeltaTime)
 {
 	ShopDelay += _DeltaTime;
+
+	if (0.1f <= ShopDelay)
+	{
+		ShopText1->On();
+		ShopText2->On();
+		ShopText3->On();
+		ShopText4->On();
+	}
 
 	if (GameEngineInput::IsDown("UpMove"))
 	{
