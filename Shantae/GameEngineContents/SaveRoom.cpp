@@ -110,8 +110,8 @@ void SaveRoom::LevelChangeStart(GameEngineLevel* _PrevLevel)
 		IsStart = false;
 		StartCount = 1;
 	}
+	Inventory::PlayerInven->DataCopy(Inven);
 	Inventory::PlayerInven = Inven;
-	BlueTextBox::DialogTextBox = BTB;
 
 	Set = 1;
 
