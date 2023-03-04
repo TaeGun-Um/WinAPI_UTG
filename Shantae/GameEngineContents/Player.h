@@ -341,6 +341,46 @@ public:
 		DialogValue = _Value;
 	}
 
+	bool GetSkyScriptEnd()
+	{
+		return SkyScriptEnd;
+	}
+
+	void SetSkyScriptEnd()
+	{
+		SkyScriptEnd = true;
+	}
+
+	bool GetTownGuardScriptEnd()
+	{
+		return TownGuardScriptEnd;
+	}
+
+	void SetTownGuardScriptEnd()
+	{
+		TownGuardScriptEnd = true;
+	}
+
+	bool GetSquidsmithScriptEnd()
+	{
+		return SquidsmithScriptEnd;
+	}
+
+	void SetSquidsmithScriptEnd()
+	{
+		SquidsmithScriptEnd = true;
+	}
+
+	bool GetScuttlePass()
+	{
+		return ScuttlePass;
+	}
+
+	void SetScuttlePass()
+	{
+		ScuttlePass = true;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -350,7 +390,7 @@ private:
 	GameEngineLevel* CurrentLevel = nullptr;
 
 	// Status
-	int IDCard = 1;
+	int IDCard = 0;
 	int MaxHP = 8;
 	int HP = 8;
 	int PlayerDamage = 5;
@@ -401,6 +441,10 @@ private:
 
 	bool TextActivate = false;
 	bool InConversation = false;
+	bool SkyScriptEnd = false;
+	bool TownGuardScriptEnd = false;
+	bool SquidsmithScriptEnd = false;
+	bool ScuttlePass = false;
 
 	NPCDialogType DialogValue = NPCDialogType::Town_Guard;
 

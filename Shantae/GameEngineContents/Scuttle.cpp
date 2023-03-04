@@ -157,16 +157,19 @@ void Scuttle::Update(float _DeltaTime)
 	CameraAction();
 
 	// 레벨 이동
-	if (SHA->GetPos().x >= 8335.0f
-		&& PlayerState::MOVE == SHA->GetShantaeState())
+	if (true == SHA->GetScuttlePass())
 	{
-		BlackBoxInAnimation();
-		SHA->SetAnimationStart(true);
-		SHA->SetMoveSpeed(100.0f);
-		if (true == SHA->LevelChangeAnimation(_DeltaTime))
+		if (SHA->GetPos().x >= 8335.0f
+			&& PlayerState::MOVE == SHA->GetShantaeState())
 		{
-			ScuttleBGMPlayer.Stop();
-			GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
+			BlackBoxInAnimation();
+			SHA->SetAnimationStart(true);
+			SHA->SetMoveSpeed(100.0f);
+			if (true == SHA->LevelChangeAnimation(_DeltaTime))
+			{
+				ScuttleBGMPlayer.Stop();
+				GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
+			}
 		}
 	}
 }

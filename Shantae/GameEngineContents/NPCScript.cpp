@@ -5,6 +5,7 @@
 
 #include "ContentsEnum.h"
 #include "BlueTextBox.h"
+#include "Inventory.h"
 #include "Player.h"
 
 NPCScript::NPCScript() 
@@ -26,27 +27,13 @@ void NPCScript::Start()
 
 void NPCScript::Update(float _DeltaTime)
 {
-	if (1 == TextCount)
+	if (1 == NPCCount)
 	{
-		TextCount = 0;
+		NPCCount = 0;
 		NPCType();
 	}
 
-	TextCreate();
-}
-
-void NPCScript::TextCreate()
-{
-	if (TextnNextCount - TextInsertCount >= TextInsertCount)
-	{
-		IsTextEnd = true;
-		BlueTextBox::DialogTextBox->SetIsOver();
-	}
-
-	if (false == IsTextEnd)
-	{
-		TextRender->SetText(NPCTexts[TextnNextCount - TextInsertCount], 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
-	}
+	DialogType();
 }
 
 void NPCScript::NPCType()
@@ -54,34 +41,55 @@ void NPCScript::NPCType()
 	switch (NPCValue)
 	{
 	case NPCDialogType_Dialog::Sky:
-		Script = "Sky";
 		TextInsertCount = 5;
 		Sky();
 		break;
 	case NPCDialogType_Dialog::Bathwoman:
-		Script = "Bathwoman";
 		TextInsertCount = 1;
 		Bathwoman();
 		break;
 	case NPCDialogType_Dialog::Merchant:
-		Script = "Merchant";
 		TextInsertCount = 24;
 		Merchant();
 		break;
 	case NPCDialogType_Dialog::Squidsmith:
-		Script = "Squidsmith";
 		TextInsertCount = 11;
 		Squidsmith();
 		break;
 	case NPCDialogType_Dialog::Town_Guard:
-		Script = "Town_Guard";
 		TextInsertCount = 1;
 		TownGuard();
 		break;
 	case NPCDialogType_Dialog::Town_Guard_Pass:
-		Script = "Town_Guard_Pass";
-		TextInsertCount = 6;
+		TextInsertCount = 7;
 		TownGuard_Pass();
+		break;
+	default:
+		break;
+	}
+}
+
+void NPCScript::DialogType()
+{
+	switch (NPCValue)
+	{
+	case NPCDialogType_Dialog::Sky:
+		SkyCreate();
+		break;
+	case NPCDialogType_Dialog::Bathwoman:
+		NormalTextCreate();
+		break;
+	case NPCDialogType_Dialog::Merchant:
+		MerchantCreate();
+		break;
+	case NPCDialogType_Dialog::Squidsmith:
+		SquidsmithCreate();
+		break;
+	case NPCDialogType_Dialog::Town_Guard:
+		NormalTextCreate();
+		break;
+	case NPCDialogType_Dialog::Town_Guard_Pass:
+		TownGuard_PassCreate();
 		break;
 	default:
 		break;
@@ -114,6 +122,7 @@ void NPCScript::TownGuard_Pass()
 	NPCTexts[3] = "와, 다른 사람들은 사진 찍으면 2.27kg은 더 \n나가 보인다던데...";
 	NPCTexts[4] = "넌 오히려 사진이 너무 이쁘네. 근사한 머리에\n다가 얼굴도 완전 다른 사람인데?";
 	NPCTexts[5] = "어쨋든, 출입증이 있으니 통과시켜줄게. 행운\n을 빌어!";
+	NPCTexts[6] = "행운을 빌어!";
 
 	TextnNextCount = TextInsertCount;
 }
@@ -130,8 +139,8 @@ void NPCScript::Sky()
 {
 	NPCTexts.resize(TextInsertCount);
 	NPCTexts[0] = "샨테? 무슨 일이야?";
-	NPCTexts[1] = "출입증이 필요하다고? 별일이네.";
-	NPCTexts[2] = "출입증을 얻었다!"; // 획득
+	NPCTexts[1] = "[출입증]이 필요하다고? 별일이네.";
+	NPCTexts[2] = "[출입증]을 얻었다!"; // 획득
 	NPCTexts[3] = "저번에 그랬던 것처럼 또 망가뜨리면 안돼!";
 
 	// 출입증 수령 후
@@ -184,7 +193,7 @@ void NPCScript::Squidsmith()
 	PlayerTexts.resize(2);
 	// 첫 조우
 	NPCTexts[0] = "스커틀 마을 문어장인 대령이오오!";
-	NPCTexts[1] = "난 조그맣고 사랑스러운 하트 문어들을 모아..";
+	NPCTexts[1] = "난 조그맣고 사랑스러운 [하트 문어]들\n을 모아..";
 	NPCTexts[2] = "전부!";
 	NPCTexts[3] = "다!!";
 	NPCTexts[4] = "녹여버려서!!!";
@@ -203,4 +212,138 @@ void NPCScript::Squidsmith()
 	PlayerTexts[1] = "절대 안돼!";
 
 	TextnNextCount = TextInsertCount;
+}
+
+void NPCScript::NormalTextCreate()
+{
+	if (TextnNextCount - TextInsertCount >= TextInsertCount)
+	{
+		IsTextEnd = true;
+		BlueTextBox::DialogTextBox->SetIsOver();
+	}
+
+	if (false == IsTextEnd)
+	{
+		TextRender->SetText(NPCTexts[TextnNextCount - TextInsertCount], 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+	}
+}
+
+void NPCScript::TownGuard_PassCreate()
+{
+	if (0 == Player::MainPlayer->GetPlayerIDCard())
+	{
+		if (TextnNextCount - TextInsertCount == 2)
+		{
+			IsTextEnd = true;
+			BlueTextBox::DialogTextBox->SetIsOver();
+		}
+
+		if (false == IsTextEnd)
+		{
+			TextRender->SetText(NPCTexts[TextnNextCount - TextInsertCount], 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+		}
+	}
+	else if (true == Player::MainPlayer->GetTownGuardScriptEnd())
+	{
+		if (TextnNextCount - TextInsertCount == 1)
+		{
+			IsTextEnd = true;
+			BlueTextBox::DialogTextBox->SetIsOver();
+		}
+
+		if (false == IsTextEnd)
+		{
+			TextRender->SetText(NPCTexts[TextnNextCount - TextInsertCount + 6], 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+		}
+	}
+	else if (0 != Player::MainPlayer->GetPlayerIDCard())
+	{
+		if (TextnNextCount - TextInsertCount == 4)
+		{
+			IsTextEnd = true;
+			BlueTextBox::DialogTextBox->SetIsOver();
+			Player::MainPlayer->SetTownGuardScriptEnd();
+			Player::MainPlayer->SetScuttlePass();
+		}
+
+		if (false == IsTextEnd)
+		{
+			TextRender->SetText(NPCTexts[TextnNextCount - TextInsertCount + 2], 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+		}
+	}
+}
+
+void NPCScript::SquidsmithCreate()
+{
+	if (TextnNextCount - TextInsertCount >= TextInsertCount)
+	{
+		IsTextEnd = true;
+		BlueTextBox::DialogTextBox->SetIsOver();
+	}
+
+	if (false == IsTextEnd)
+	{
+		TextRender->SetText(NPCTexts[TextnNextCount - TextInsertCount], 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+	}
+}
+
+void NPCScript::SkyCreate()
+{
+	if (false == Player::MainPlayer->GetSkyScriptEnd())
+	{
+		if (TextnNextCount - TextInsertCount + 1 >= TextInsertCount)
+		{
+			IsTextEnd = true;
+			BlueTextBox::DialogTextBox->SetIsOver();
+			Player::MainPlayer->SetSkyScriptEnd();
+		}
+
+		if (false == IsTextEnd)
+		{
+			TextRender->SetText(NPCTexts[TextnNextCount - TextInsertCount], 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+		}
+
+		if (TextnNextCount - TextInsertCount + 3 == TextInsertCount)
+		{
+			if (1 == IDCardCreate)
+			{
+				IDCardCreate = 0;
+
+				BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_gem.wav");
+				BGMPlayer.Volume(0.1f);
+				BGMPlayer.LoopCount(1);
+
+				Player::MainPlayer->SetPlayerIDCard(1);
+				Player::MainPlayer->SetItemEquip(true);
+				Inventory::PlayerInven->SetEquipItem("IDCard");
+			}
+		}
+	}
+	else
+	{
+		if (TextnNextCount - TextInsertCount == 1)
+		{
+			IsTextEnd = true;
+			BlueTextBox::DialogTextBox->SetIsOver();
+		}
+
+		if (false == IsTextEnd)
+		{
+			TextRender->SetText(NPCTexts[TextnNextCount - TextInsertCount + 4], 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+		}
+	}
+}
+
+void NPCScript::MerchantCreate()
+{
+	if (TextnNextCount - TextInsertCount >= TextInsertCount)
+	{
+		IsTextEnd = true;
+		BlueTextBox::DialogTextBox->SetIsOver();
+	}
+
+	if (false == IsTextEnd)
+	{
+		TextRender->SetText(NPCTexts[TextnNextCount - TextInsertCount], 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+	}
 }

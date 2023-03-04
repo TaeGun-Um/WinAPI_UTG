@@ -2,6 +2,7 @@
 
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/GameEngineRender.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include "BlueTextBox.h"
 
 enum class NPCDialogType_Dialog
@@ -61,37 +62,43 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
-	void Kill();
 	void NPCType();
-	void TextCreate();
+
+	void TownGuard();
+	void Bathwoman();
+	void TownGuard_Pass();
+	void Sky();
+	void Merchant();
+	void Squidsmith();
+
+	void DialogType();
+	
+	void NormalTextCreate();
+	void TownGuard_PassCreate();
+	void SquidsmithCreate();
+	void SkyCreate();
+	void MerchantCreate();
+
+	void Kill();
+
+	GameEngineSoundPlayer BGMPlayer;
 
 	GameEngineRender* TextRender = nullptr;
 	NPCDialogType_Dialog NPCValue = NPCDialogType_Dialog::Town_Guard;
 	float4 BoxScale = float4::Zero;
 
 	std::string Script = "¿À·ù";
-	std::vector<std::string> SkyTexts;
-	std::vector<std::string> BathwomanTexts;
-	std::vector<std::string> MerchantTexts;
-	std::vector<std::string> SquidsmithTexts;
-	std::vector<std::string> Town_GuardTexts;
-	std::vector<std::string> Town_Guard_PassTexts;
 	std::vector<std::string> PlayerTexts;
-
 	std::vector<std::string> NPCTexts;
 
-	int TextCount = 1;
+	int NPCCount = 1;
+	int IDCardCreate = 1;
 	int TextInsertCount = 0;
 	int TextnNextCount = 0;
 
 	bool IsTextEnd = false;
 	bool IsOver = false;
 
-	void TownGuard();
-	void TownGuard_Pass();
-	void Bathwoman();
-	void Sky();
-	void Merchant();
-	void Squidsmith();
+
 };
 
