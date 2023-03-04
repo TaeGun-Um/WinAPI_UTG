@@ -69,6 +69,7 @@ public:
 	Inventory& operator=(Inventory&& _Other) noexcept = delete;
 
 	GameEngineRender* AnimationRender = nullptr;
+	GameEngineRender* TextRender = nullptr;
 
 	void SetEquipItem(std::string_view _Equip)
 	{
@@ -98,9 +99,12 @@ private:
 	Icon* SelectItem();
 	void PlayerItemCheck();
 	void SelectMove(float _DeltaTime);
+	void InventoryItemText();
 
 	ItemSelect* Select = nullptr;
 	std::map<int, ItemSpace*> Boxes;
+	std::string ItemText = "けけけけけけけけけけけけけけけけけけけけけけけけけけけさ";
+	float4 BoxScale = { 850, 100 };
 
 	GameEngineSoundPlayer BGMPlayer;
 

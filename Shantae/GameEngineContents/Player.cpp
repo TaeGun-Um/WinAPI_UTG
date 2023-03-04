@@ -165,6 +165,7 @@ void Player::Update(float _DeltaTime)
 			BGMPlayer.LoopCount(1);
 
 			Inventory::PlayerInven->AnimationRender->Off();
+			Inventory::PlayerInven->TextRender->Off();
 		}
 	}
 	if (true == IsItemUse)

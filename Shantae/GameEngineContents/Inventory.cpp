@@ -51,6 +51,13 @@ void Inventory::Start()
 	AnimationRender->EffectCameraOff();
 	AnimationRender->Off();
 
+	TextRender = CreateRender(RenderOrder::Box);
+	BoxScale = { 850, 100 };
+	TextRender->SetText(ItemText, 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+	TextRender->SetPosition(GameEngineWindow::GetScreenSize().half() + float4::Down * 252 + float4::Left * 420);
+	TextRender->EffectCameraOff();
+	TextRender->Off();
+
 	ItemSpaceSetting();
 }
 
@@ -74,6 +81,7 @@ void Inventory::Update(float _DeltaTime)
 	{
 		FamilyOn();
 		SelectMove(_DeltaTime);
+		InventoryItemText();
 
 		Icon* Use = SelectItem();
 		if (nullptr != Use)
@@ -83,6 +91,7 @@ void Inventory::Update(float _DeltaTime)
 	}
 
 	PlayerItemCheck();
+	
 }
 
 void Inventory::Render(float _DeltaTime)
@@ -264,6 +273,54 @@ void Inventory::OctopusDelete(int _Minus)
 				}
 			}
 		}
+	}
+}
+
+void Inventory::InventoryItemText()
+{
+	if (nullptr != Boxes.find(BoxNumber)->second->GetItemIcon())
+	{
+		TextRender->On();
+
+		if ("Octopus" == Boxes.find(BoxNumber)->second->GetItemIcon()->GetIconName())
+		{
+			ItemText = "문어입니다. 네 마리를 모으면 좋은 일이 생길수도?";
+			TextRender->SetText(ItemText, 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+		}
+		else if ("IDCard" == Boxes.find(BoxNumber)->second->GetItemIcon()->GetIconName())
+		{
+			ItemText = "스커틀 마을을 통과할 수 있는 출입증입니다.";
+			TextRender->SetText(ItemText, 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+		}
+		else if ("MonsterMilk" == Boxes.find(BoxNumber)->second->GetItemIcon()->GetIconName())
+		{
+			ItemText = "공격력을 증가시키세요! 알 수 없는 효소로 가득하답니다!";
+			TextRender->SetText(ItemText, 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+		}
+		else if ("PikeBall" == Boxes.find(BoxNumber)->second->GetItemIcon()->GetIconName())
+		{
+			ItemText = "빙글빙글 돌아가는 고통의 강철 구로 자신을 보호하세요.";
+			TextRender->SetText(ItemText, 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+		}
+		else if ("Bubble" == Boxes.find(BoxNumber)->second->GetItemIcon()->GetIconName())
+		{
+			ItemText = "공격에 대응하는 최상의 방어 수단입니다.";
+			TextRender->SetText(ItemText, 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+		}
+		else if ("Meat" == Boxes.find(BoxNumber)->second->GetItemIcon()->GetIconName())
+		{
+			ItemText = "영양만점 고기입니다. 체력을 최대로 회복할 수 있습니다.";
+			TextRender->SetText(ItemText, 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+		}
+		else
+		{
+			ItemText = "error";
+			TextRender->SetText(ItemText, 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+		}
+	}
+	else
+	{
+		TextRender->Off();
 	}
 }
 
