@@ -4,6 +4,7 @@
 #include <GameEngineCore/GameEngineRender.h>
 
 #include "Player.h"
+#include "BlueTextBox.h"
 
 void Squidsmith::ChangeState(SquidsmithState _State)
 {
@@ -67,8 +68,9 @@ void Squidsmith::IdleStart()
 }
 void Squidsmith::IdleUpdate(float _Time)
 {
-	if (GameEngineInput::IsDown("MonsterTest"))
+	if (true == HeartAction)
 	{
+		HeartAction = false;
 		ChangeState(SquidsmithState::ACTION);
 		return;
 	}
@@ -123,5 +125,5 @@ void Squidsmith::ActionUpdate(float _Time)
 }
 void Squidsmith::ActionEnd()
 {
-
+	BlueTextBox::DialogTextBox->SetHeartAction(false);
 }

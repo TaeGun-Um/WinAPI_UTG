@@ -7,6 +7,7 @@ class Player;
 class Inventory;
 class BlackBox;
 class BlueTextBox;
+class Squidsmith;
 
 // Ό³Έν :
 class Smith : public PlayLevel
@@ -48,6 +49,7 @@ private:
 	GameEngineImage* ColMap = nullptr;
 	Player* SHA = nullptr;
 	Inventory* Inven = nullptr;
+	Squidsmith* SmithNPC = nullptr;
 	float OverlapTime = 0.0f;
 
 	bool IsStart = true;
@@ -55,6 +57,7 @@ private:
 	int StartCount = 0;
 	int Set = 1;
 	int AnimationSet = 1;
+	int HeartAction = 1;
 
 };
 

@@ -48,6 +48,16 @@ public:
 		IsOver = true;
 	}
 
+	void SetHeartAction(bool _Is)
+	{
+		HeartAction = _Is;
+	}
+
+	bool GetHeartAction()
+	{
+		return HeartAction;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -67,6 +77,7 @@ private:
 	bool IsClose = false;
 	bool IsOver = false;
 	bool IsNext = false;
+	bool HeartAction = false;
 
 	float OpenTime = 0.0f;
 	float CloseTime = 0.0f;

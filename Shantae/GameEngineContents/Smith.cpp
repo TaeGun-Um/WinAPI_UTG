@@ -53,8 +53,8 @@ void Smith::Loading()
 
 	// NPC
 	{
-		Squidsmith* M = CreateActor<Squidsmith>();
-		M->SetPos({ 880, 637 });
+		SmithNPC = CreateActor<Squidsmith>();
+		SmithNPC->SetPos({ 880, 637 });
 	}
 
 	// Item
@@ -102,6 +102,12 @@ void Smith::Update(float _DeltaTime)
 		{
 			GameEngineCore::GetInst()->ChangeLevel("Scuttle");
 		}
+	}
+
+	if (true == BlueTextBox::DialogTextBox->GetHeartAction() && 1 == HeartAction)
+	{
+		HeartAction = 0;
+		SmithNPC->PlayHeartAction();
 	}
 }
 

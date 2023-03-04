@@ -25,6 +25,11 @@ public:
 	Squidsmith& operator=(const Squidsmith& _Other) = delete;
 	Squidsmith& operator=(Squidsmith&& _Other) noexcept = delete;
 
+	void PlayHeartAction()
+	{
+		HeartAction = true;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -40,6 +45,7 @@ private:
 
 	bool MoveDirect = true; // true = Left, false = Right
 	bool Isturn = false;
+	bool HeartAction = false;
 
 	int CreateAButtion = 1;
 

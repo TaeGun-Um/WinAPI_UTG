@@ -303,6 +303,12 @@ void NPCScript::SquidsmithCreate()
 		}
 		else if (true == Octopusenough)
 		{
+			if (TextnNextCount - TextInsertCount == 9 && 1 == OctopusAction)
+			{
+				OctopusAction = 0;
+				BlueTextBox::DialogTextBox->SetHeartAction(true);
+			}
+
 			if (TextnNextCount - TextInsertCount == 10)
 			{
 				IsTextEnd = true;
@@ -351,6 +357,12 @@ void NPCScript::SquidsmithCreate()
 		}
 		else if (true == Octopusenough)
 		{
+			if (TextnNextCount - TextInsertCount == 3 && 1 == OctopusAction)
+			{
+				OctopusAction = 0;
+				BlueTextBox::DialogTextBox->SetHeartAction(true);
+			}
+
 			if (TextnNextCount - TextInsertCount == 4)
 			{
 				IsTextEnd = true;

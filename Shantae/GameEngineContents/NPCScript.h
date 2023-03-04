@@ -97,6 +97,7 @@ private:
 	int TextnNextCount = 0;
 	
 	int OctopusTextPlus = 1;
+	int OctopusAction = 1;
 
 	bool IsTextEnd = false;
 	bool IsOver = false;

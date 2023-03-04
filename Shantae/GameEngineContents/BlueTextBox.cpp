@@ -84,6 +84,15 @@ void BlueTextBox::Update(float _DeltaTime)
 				IsNext = true;
 			}
 
+			if (false == HeartAction)
+			{
+				AnimationRender->On();
+				if (true == AnimationRender->IsAnimationEnd())
+				{
+					Scr->On();
+				}
+			}
+
 			if (true == IsNext)
 			{
 				Cycle(_DeltaTime);
@@ -128,6 +137,12 @@ void BlueTextBox::Cycle(float _DeltaTime)
 			CycleClose = 1;
 			IsNext = false;
 		}
+	}
+
+	if (true == HeartAction)
+	{
+		AnimationRender->Off();
+		Scr->Off();
 	}
 }
 
