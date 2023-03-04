@@ -82,6 +82,7 @@ public:
 
 	void DataCopy(Inventory* _Other);
 	void Elimination();
+	void OctopusDelete(int _Minus);
 
 protected:
 	void Start() override;

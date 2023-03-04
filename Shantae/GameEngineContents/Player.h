@@ -194,6 +194,11 @@ public:
 		NewMaxHP = MaxHP + _Value;
 	}
 
+	void SetNewMaxHP(int _NewMaxHP)
+	{
+		NewMaxHP = _NewMaxHP;
+	}
+
 	int GetPlayerMaxHP()
 	{
 		return MaxHP;
@@ -292,6 +297,11 @@ public:
 	void PlusPlayerOctopus(int _Octopus)
 	{
 		Octopus += _Octopus;
+	}
+
+	void MinusPlayerOctopus(int _Octopus)
+	{
+		Octopus -= _Octopus;
 	}
 
 	void SetPlayerOctopus(int _Octopus)

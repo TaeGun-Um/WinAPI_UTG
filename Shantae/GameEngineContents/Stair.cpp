@@ -166,6 +166,7 @@ void Stair::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	SetPlayLevelHP(Player::MainPlayer->GetPlayerHP());
 	SetPlayLevelMaxHP(Player::MainPlayer->GetPlayerMaxHP());
 	SetPlayLevelGem(Player::MainPlayer->GetPlayerGem());
+	SetPlayNewMaxHP(Player::MainPlayer->GetNewMaxHP());
 	SetPlayLevelMonsterMilk(Player::MainPlayer->GetPlayerMonsterMilk());
 	SetPlayLevelPikeBall(Player::MainPlayer->GetPlayerPikeBall());
 	SetPlayLevelBubble(Player::MainPlayer->GetPlayerBubble());
@@ -219,6 +220,7 @@ void Stair::LevelSet()
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
 		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
+		Player::MainPlayer->SetNewMaxHP(GetPlayNewMaxHP());
 		Player::MainPlayer->SetPlayerMonsterMilk(GetPlayLevelMonsterMilk());
 		Player::MainPlayer->SetPlayerPikeBall(GetPlayLevelPikeBall());
 		Player::MainPlayer->SetPlayerBubble(GetPlayLevelBubble());

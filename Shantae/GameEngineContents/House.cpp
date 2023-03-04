@@ -120,6 +120,7 @@ void House::LevelSet()
 		Player::MainPlayer->SetPlayerHP(GetPlayLevelHP());
 		Player::MainPlayer->SetPlayerMaxHP(GetPlayLevelMaxHP());
 		Player::MainPlayer->SetPlayerGem(GetPlayLevelGem());
+		Player::MainPlayer->SetNewMaxHP(GetPlayNewMaxHP());
 		Player::MainPlayer->IsHouseSet(true);
 	}
 }

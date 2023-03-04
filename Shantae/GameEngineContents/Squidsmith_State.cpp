@@ -5,6 +5,7 @@
 
 #include "Player.h"
 #include "BlueTextBox.h"
+#include "Inventory.h"
 
 void Squidsmith::ChangeState(SquidsmithState _State)
 {
@@ -127,4 +128,5 @@ void Squidsmith::ActionEnd()
 {
 	BlueTextBox::DialogTextBox->SetHeartAction(false);
 	Player::MainPlayer->PlusNewMaxHP(4);
+	Inventory::PlayerInven->OctopusDelete(4);
 }

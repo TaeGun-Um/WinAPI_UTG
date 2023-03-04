@@ -151,6 +151,12 @@ void Inventory::PlayerItemCheck()
 		CreateItem(EquipItem);
 		Player::MainPlayer->SetItemEquip(false);
 	}
+
+	if (GameEngineInput::IsDown("CreateItem"))
+	{
+		CreateItem("Octopus");
+		Player::MainPlayer->PlusPlayerOctopus(1);
+	}
 }
 
 void Inventory::CreateItem(std::string_view _Name)
@@ -230,6 +236,35 @@ Icon* Inventory::SelectItem()
 		}
 	}
 	return nullptr;
+}
+
+void Inventory::OctopusDelete(int _Minus)
+{
+	Icon* ReturnValue = Boxes.find(BoxNumber)->second->GetItemIcon();
+	Icon* IconList = Boxes.find(BoxNumber)->second->GetItemIcon();
+
+	if (nullptr != IconList)
+	{
+		for (int i = 0; i < _Minus; i++)
+		{
+			if ("Octopus" == Boxes.find(BoxNumber)->second->GetItemIcon()->GetIconName())
+			{
+				if (1 < Boxes.find(BoxNumber)->second->GetItemIcon()->GetItemCount())
+				{
+					Boxes.find(BoxNumber)->second->GetItemIcon()->MinusItemCount();
+					Player::MainPlayer->MinusPlayerOctopus(1);
+				}
+				else
+				{
+					IconList->Death();
+					IconList = nullptr;
+					Boxes.find(BoxNumber)->second->SetItemIcon(IconList);
+					Player::MainPlayer->MinusPlayerOctopus(1);
+					break;
+				}
+			}
+		}
+	}
 }
 
 void Inventory::SelectMove(float _DeltaTime)

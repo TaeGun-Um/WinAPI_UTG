@@ -28,14 +28,21 @@ public:
 		OctopusHeart = true;
 	}
 
+	void SetNewCreate()
+	{
+		NewCreate = true;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime);
 
 private:
-	GameEngineRender* AnimationRender = nullptr;
-	GameEngineRender* AnimationRender2 = nullptr;
-	GameEngineRender* AnimationRender3 = nullptr;
+	GameEngineRender* Heart1 = nullptr;
+	GameEngineRender* Heart2 = nullptr;
+	GameEngineRender* Heart3 = nullptr;
+	GameEngineRender* Heart4 = nullptr;
+	GameEngineRender* Heart5 = nullptr;
 
 	float OverlapTime = 0.0f;
 	int NewMaxHP = 0;
@@ -47,5 +54,6 @@ private:
 	void CreateNewHealth();
 
 	bool OctopusHeart = false;
+	bool NewCreate = false;
 };
 

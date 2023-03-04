@@ -48,6 +48,16 @@ protected:
 		PlayLevelMaxHP = _Value;
 	}
 
+	int GetPlayNewMaxHP()
+	{
+		return PlayNewMaxHP;
+	}
+
+	void SetPlayNewMaxHP(int _Value)
+	{
+		PlayNewMaxHP = _Value;
+	}
+
 	int GetPlayLevelGem()
 	{
 		return PlayLevelGem;
@@ -124,6 +134,7 @@ private:
 	int PlayLevelHP = 8;
 	int PlayLevelMaxHP = 8;
 	int PlayLevelGem = 0;
+	int PlayNewMaxHP = 0;
 
 	int MonsterMilk = 0;
 	int PikeBall = 0;

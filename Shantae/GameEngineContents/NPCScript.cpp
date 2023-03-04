@@ -54,7 +54,7 @@ void NPCScript::NPCType()
 		Merchant();
 		break;
 	case NPCDialogType_Dialog::Squidsmith:
-		TextInsertCount = 10;
+		TextInsertCount = 11;
 		Squidsmith();
 		break;
 	case NPCDialogType_Dialog::Town_Guard:
@@ -206,6 +206,8 @@ void NPCScript::Squidsmith()
 	NPCTexts[8] = "시작해볼까!";                                             // 있을 경우
 	NPCTexts[9] = "자, 네 최대 체력이 한 칸 증가했어!";
 
+	NPCTexts[10] = "미안하지만, 더 이상 체력을 늘릴 수\n없겠는걸?!";
+
 	TextnNextCount = TextInsertCount;
 }
 
@@ -328,7 +330,17 @@ void NPCScript::SquidsmithCreate()
 	{
 		if (TextnNextCount - TextInsertCount == 1)
 		{
-			if (4 > Player::MainPlayer->GetPlayerOctopus())
+			if (20 <= Player::MainPlayer->GetPlayerMaxHP())
+			{
+				Octopusfull = true;
+
+				if (1 == OctopusfullCount)
+				{
+					OctopusfullCount = 0;
+					TextnNextCount += 3;
+				}
+			}
+			else if (4 <= Player::MainPlayer->GetPlayerOctopus())
 			{
 				Octopusenough = true;
 
@@ -338,7 +350,7 @@ void NPCScript::SquidsmithCreate()
 					++TextnNextCount;
 				}
 			}
-			else if (4 <= Player::MainPlayer->GetPlayerOctopus())
+			else if (4 > Player::MainPlayer->GetPlayerOctopus())
 			{
 				Octopusless = true;
 			}
@@ -369,6 +381,18 @@ void NPCScript::SquidsmithCreate()
 				BlueTextBox::DialogTextBox->SetIsOver();
 				Player::MainPlayer->SetSquidsmithScriptEnd();
 				--TextnNextCount;
+			}
+
+			TextRender->SetText(NPCTexts[TextnNextCount - TextInsertCount + 6], 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
+		}
+		else if (true == Octopusfull)
+		{
+			if (TextnNextCount - TextInsertCount == 5)
+			{
+				IsTextEnd = true;
+				BlueTextBox::DialogTextBox->SetIsOver();
+				Player::MainPlayer->SetSquidsmithScriptEnd();
+				TextnNextCount -= 2;
 			}
 
 			TextRender->SetText(NPCTexts[TextnNextCount - TextInsertCount + 6], 30, "굴림", TextAlign::Left, RGB(255, 255, 255), BoxScale);
