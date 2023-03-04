@@ -41,7 +41,7 @@ void NPCScript::Update(float _DeltaTime)
 
 	if (true == ShopOpen)
 	{
-		SelectMove();
+		SelectMove(_DeltaTime);
 	}
 	
 }
@@ -504,8 +504,10 @@ void NPCScript::ShopCreate()
 	ShopText4->EffectCameraOff();
 }
 
-void NPCScript::SelectMove()
+void NPCScript::SelectMove(float _DeltaTime)
 {
+	ShopDelay += _DeltaTime;
+
 	if (GameEngineInput::IsDown("UpMove"))
 	{
 		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Botton_move.wav");
@@ -558,7 +560,6 @@ void NPCScript::SelectMove()
 		{
 			++ShopCount;
 		}
-		
 	}
 
 	if (1 == ShopCount)
@@ -591,6 +592,133 @@ void NPCScript::SelectMove()
 		ShopScript4 = NPCTexts[13];
 		ShopText4->SetText(ShopScript4, 25, "±¼¸²", TextAlign::Left, RGB(255, 255, 255), BoxScale);
 	}
+
+	if (0.5f <= ShopDelay)
+	{
+		if (GameEngineInput::IsDown("Select"))
+		{
+			if (1 == ShopCount)
+			{
+				if (10 < Player::MainPlayer->GetPlayerGem())
+				{
+					BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Store_purchase.wav");
+					BGMPlayer.Volume(0.1f);
+					BGMPlayer.LoopCount(1);
+
+					Player::MainPlayer->MinusPlayerGem(10);
+					Player::MainPlayer->PlusPlayerMeat(1);
+					Inventory::PlayerInven->CreateItem("Meat");
+				}
+			}
+			else if (2 == ShopCount)
+			{
+				if (25 < Player::MainPlayer->GetPlayerGem())
+				{
+					BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Store_purchase.wav");
+					BGMPlayer.Volume(0.1f);
+					BGMPlayer.LoopCount(1);
+
+					Player::MainPlayer->MinusPlayerGem(25);
+					Player::MainPlayer->PlusPlayerMeat(3);
+					Inventory::PlayerInven->CreateItem("Meat");
+					Inventory::PlayerInven->CreateItem("Meat");
+					Inventory::PlayerInven->CreateItem("Meat");
+				}
+			}
+			else if (3 == ShopCount)
+			{
+				if (50 < Player::MainPlayer->GetPlayerGem())
+				{
+					BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Store_purchase.wav");
+					BGMPlayer.Volume(0.1f);
+					BGMPlayer.LoopCount(1);
+
+					Player::MainPlayer->MinusPlayerGem(50);
+					Player::MainPlayer->PlusPlayerPikeBall(1);
+					Inventory::PlayerInven->CreateItem("PikeBall");
+				}
+			}
+			else if (4 == ShopCount)
+			{
+				if (120 < Player::MainPlayer->GetPlayerGem())
+				{
+					BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Store_purchase.wav");
+					BGMPlayer.Volume(0.1f);
+					BGMPlayer.LoopCount(1);
+
+					Player::MainPlayer->MinusPlayerGem(120);
+					Player::MainPlayer->PlusPlayerPikeBall(3);
+					Inventory::PlayerInven->CreateItem("PikeBall");
+					Inventory::PlayerInven->CreateItem("PikeBall");
+					Inventory::PlayerInven->CreateItem("PikeBall");
+				}
+			}
+			else if (5 == ShopCount)
+			{
+				if (100 < Player::MainPlayer->GetPlayerGem())
+				{
+					BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Store_purchase.wav");
+					BGMPlayer.Volume(0.1f);
+					BGMPlayer.LoopCount(1);
+
+					Player::MainPlayer->MinusPlayerGem(100);
+					Player::MainPlayer->PlusPlayerBubble(1);
+					Inventory::PlayerInven->CreateItem("Bubble");
+				}
+			}
+			else if (6 == ShopCount)
+			{
+				if (250 < Player::MainPlayer->GetPlayerGem())
+				{
+					BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Store_purchase.wav");
+					BGMPlayer.Volume(0.1f);
+					BGMPlayer.LoopCount(1);
+
+					Player::MainPlayer->MinusPlayerGem(250);
+					Player::MainPlayer->PlusPlayerBubble(3);
+					Inventory::PlayerInven->CreateItem("Bubble");
+					Inventory::PlayerInven->CreateItem("Bubble");
+					Inventory::PlayerInven->CreateItem("Bubble");
+				}
+			}
+			else if (7 == ShopCount)
+			{
+				if (60 < Player::MainPlayer->GetPlayerGem())
+				{
+					BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Store_purchase.wav");
+					BGMPlayer.Volume(0.1f);
+					BGMPlayer.LoopCount(1);
+
+					Player::MainPlayer->MinusPlayerGem(60);
+					Player::MainPlayer->PlusPlayerMonsterMilk(1);
+					Inventory::PlayerInven->CreateItem("MonsterMilk");
+				}
+			}
+			else if (8 == ShopCount)
+			{
+				if (150 < Player::MainPlayer->GetPlayerGem())
+				{
+					BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Store_purchase.wav");
+					BGMPlayer.Volume(0.1f);
+					BGMPlayer.LoopCount(1);
+
+					Player::MainPlayer->MinusPlayerGem(150);
+					Player::MainPlayer->PlusPlayerMonsterMilk(3);
+					Inventory::PlayerInven->CreateItem("MonsterMilk");
+					Inventory::PlayerInven->CreateItem("MonsterMilk");
+					Inventory::PlayerInven->CreateItem("MonsterMilk");
+				}
+			}
+			else if (9 == ShopCount)
+			{
+				ShopOpen = false;
+				SelectButton->Death();
+				ShopBox->Death();
+				BlueTextBox::DialogTextBox->SetIsOver();
+			}
+		}
+	}
+
 }
 
 void NPCScript::UpSet()

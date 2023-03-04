@@ -51,5 +51,6 @@ void KeyLoad::Loading()
 		GameEngineInput::CreateKey("CreateItem", 'E');		  // 더미아이템 생성 (플레이어)
 		GameEngineInput::CreateKey("HPPlus", 'R');		      // 플레이어 체력 증가 (플레이어)
 		GameEngineInput::CreateKey("HPMinus", 'T');		      // 플레이어 체력 감소 (플레이어)
+		GameEngineInput::CreateKey("Showmethemoney", 'Y');	  // 플레이어 돈 900 (플레이어)
 	}
 }

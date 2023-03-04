@@ -95,6 +95,10 @@ void Player::Update(float _DeltaTime)
 			HP -= 1;
 		}
 	}
+	if (GameEngineInput::IsDown("Showmethemoney"))
+	{
+		PlayerGem = 990;
+	}
 
 	//////////////////  레벨이동 애니메이션  //////////////////
 	// 레벨 시작 애니메이션

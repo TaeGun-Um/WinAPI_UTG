@@ -52,11 +52,15 @@ private:
 	Icon* ItemIcon = nullptr;
 };
 
+class NPCScript;
+
 // Ό³Έν :
 class Inventory : public GameEngineActor
 {
 public:
 	static Inventory* PlayerInven;
+
+	friend NPCScript;
 
 	// constrcuter destructer
 	Inventory();
@@ -95,9 +99,9 @@ private:
 	void FamilyOn();
 	void FamilyOff();
 	void SetItemBox(int _Order, float4 _BoxPos);
-	void CreateItem(std::string_view _Name);
 	Icon* SelectItem();
 	void PlayerItemCheck();
+	void CreateItem(std::string_view _Name);
 	void SelectMove(float _DeltaTime);
 	void InventoryItemText();
 

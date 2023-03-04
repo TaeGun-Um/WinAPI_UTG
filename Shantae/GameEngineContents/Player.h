@@ -229,6 +229,11 @@ public:
 		PlayerGem += _PlusGem;
 	}
 
+	void MinusPlayerGem(int _PlusGem)
+	{
+		PlayerGem -= _PlusGem;
+	}
+
 	int GetPlayerMonsterMilk()
 	{
 		return MonsterMilk;

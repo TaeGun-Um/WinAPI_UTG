@@ -58,6 +58,11 @@ public:
 		return HeartAction;
 	}
 
+	void SetIsNext()
+	{
+		IsNext = true;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;

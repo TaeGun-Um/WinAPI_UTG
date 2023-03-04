@@ -88,7 +88,7 @@ private:
 	void MerchantCreate();
 	
 	void ShopCreate();
-	void SelectMove();
+	void SelectMove(float _DeltaTime);
 	void UpSet();
 	void DownSet();
 
@@ -119,6 +119,8 @@ private:
 
 	std::string Script = "¿À·ù";
 	std::vector<std::string> NPCTexts;
+
+	float ShopDelay = 0.0f;
 
 	int NPCCount = 1;
 	int IDCardCreate = 1;
