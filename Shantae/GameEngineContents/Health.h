@@ -23,6 +23,11 @@ public:
 	Health& operator=(const Health& _Other) = delete;
 	Health& operator=(Health&& _Other) noexcept = delete;
 
+	void SetOctopusHeart()
+	{
+		OctopusHeart = true;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime);
@@ -33,6 +38,7 @@ private:
 	GameEngineRender* AnimationRender3 = nullptr;
 
 	float OverlapTime = 0.0f;
+	int NewMaxHP = 0;
 	int PlayerMaxHP = 0;
 	int PlayerHP = 0;
 
@@ -40,6 +46,6 @@ private:
 	void HealthControl(int _PlayerHP);
 	void CreateNewHealth();
 
-	bool NewHealth1 = false;
+	bool OctopusHeart = false;
 };
 

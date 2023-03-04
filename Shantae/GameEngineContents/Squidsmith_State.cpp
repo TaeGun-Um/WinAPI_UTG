@@ -126,4 +126,5 @@ void Squidsmith::ActionUpdate(float _Time)
 void Squidsmith::ActionEnd()
 {
 	BlueTextBox::DialogTextBox->SetHeartAction(false);
+	Player::MainPlayer->PlusNewMaxHP(4);
 }

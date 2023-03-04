@@ -27,7 +27,7 @@ void Squidsmith::Start()
 	AnimationRender->CreateAnimation({ .AnimationName = "Idle_R",  .ImageName = "Squidsmith_R.bmp", .Start = 0, .End = 7, .InterTime = 0.1f });
 	AnimationRender->CreateAnimation({ .AnimationName = "Turn_R",  .ImageName = "Squidsmith_L.bmp", .Start = 8, .End = 16, .InterTime = 0.1f });
 
-	AnimationRender->CreateAnimation({ .AnimationName = "Enchant",  .ImageName = "Squidsmith_L.bmp", .Start = 17, .End = 86, .InterTime = 0.1f });
+	AnimationRender->CreateAnimation({ .AnimationName = "Enchant",  .ImageName = "Squidsmith_L.bmp", .Start = 17, .End = 86, .InterTime = 0.07f });
 
 	BodyCollision = CreateCollision(CollisionOrder::NPC);
 	BodyCollision->SetDebugRenderType(CT_Rect);

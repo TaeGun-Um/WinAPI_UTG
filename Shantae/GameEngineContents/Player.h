@@ -184,6 +184,16 @@ public:
 		PlayerDamage += _Value;
 	}
 
+	int GetNewMaxHP()
+	{
+		return NewMaxHP;
+	}
+
+	void PlusNewMaxHP(int _Value)
+	{
+		NewMaxHP = MaxHP + _Value;
+	}
+
 	int GetPlayerMaxHP()
 	{
 		return MaxHP;
@@ -392,6 +402,7 @@ private:
 	// Status
 	int IDCard = 0;
 	int MaxHP = 8;
+	int NewMaxHP = 0;
 	int HP = 8;
 	int PlayerDamage = 5;
 	int PlayerGem = 0;

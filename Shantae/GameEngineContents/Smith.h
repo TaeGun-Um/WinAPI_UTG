@@ -22,7 +22,7 @@ public:
 	Smith(Smith&& _Other) noexcept = delete;
 	Smith& operator=(const Smith& _Other) = delete;
 	Smith& operator=(Smith&& _Other) noexcept = delete;
-
+	
 protected:
 	void Loading();
 	void Update(float _DeltaTime);

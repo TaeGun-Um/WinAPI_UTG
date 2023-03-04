@@ -328,7 +328,7 @@ void NPCScript::SquidsmithCreate()
 	{
 		if (TextnNextCount - TextInsertCount == 1)
 		{
-			if (4 <= Player::MainPlayer->GetPlayerOctopus())
+			if (4 > Player::MainPlayer->GetPlayerOctopus())
 			{
 				Octopusenough = true;
 
@@ -338,7 +338,7 @@ void NPCScript::SquidsmithCreate()
 					++TextnNextCount;
 				}
 			}
-			else if (4 > Player::MainPlayer->GetPlayerOctopus())
+			else if (4 <= Player::MainPlayer->GetPlayerOctopus())
 			{
 				Octopusless = true;
 			}

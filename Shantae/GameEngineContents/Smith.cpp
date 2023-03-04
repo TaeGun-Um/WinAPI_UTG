@@ -104,11 +104,17 @@ void Smith::Update(float _DeltaTime)
 		}
 	}
 
+	if (false == BlueTextBox::DialogTextBox->GetHeartAction())
+	{
+		HeartAction = 1;
+	}
+
 	if (true == BlueTextBox::DialogTextBox->GetHeartAction() && 1 == HeartAction)
 	{
 		HeartAction = 0;
 		SmithNPC->PlayHeartAction();
 	}
+
 }
 
 void Smith::LevelChangeStart(GameEngineLevel* _PrevLevel)

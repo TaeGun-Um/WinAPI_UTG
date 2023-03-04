@@ -58,6 +58,11 @@ void Health::CurrentPlayerHP()
 {
 	PlayerHP = Player::MainPlayer->GetPlayerHP();
 	PlayerMaxHP = Player::MainPlayer->GetPlayerMaxHP();
+
+	if (PlayerMaxHP <= Player::MainPlayer->GetNewMaxHP())
+	{
+		int a = 0;
+	}
 }
 
 void Health::HealthControl(int _PlayerHP)
@@ -117,6 +122,4 @@ void Health::CreateNewHealth()
 
 	NewHealth = GetLevel()->CreateActor<Health>();
 	NewHealth->SetPos(NewHealthPos);
-
-	NewHealth1 = true;
 }
