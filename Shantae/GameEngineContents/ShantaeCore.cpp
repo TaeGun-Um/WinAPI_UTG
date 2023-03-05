@@ -53,9 +53,6 @@ ShantaeCore::~ShantaeCore()
 
 void ShantaeCore::Start()
 {
-	// 의도릭
-	int* a = new int;
-
 // ------------------------------- 레벨 생성(동적할당) -------------------------------
 	// ETC
 	CreateLevel<KeyLoad>("KeyLoad");
