@@ -25,11 +25,6 @@ public:
 	MonsterSpawner& operator=(const MonsterSpawner& _Other) = delete;
 	MonsterSpawner& operator=(MonsterSpawner&& _Other) noexcept = delete;
 
-	void SetSpawnerText(const std::string_view& _Text)
-	{
-		TextRender->SetText(_Text);
-	}
-
 	void SetAmbushTrue()
 	{
 		IsAmbush = true;
@@ -44,7 +39,9 @@ protected:
 
 private:
 	GameEngineCollision* SpawnSpot = nullptr;
-	GameEngineRender* TextRender = nullptr;
+	GameEngineRender* TextRender1 = nullptr;
+	GameEngineRender* TextRender2 = nullptr;
+	GameEngineRender* TextRender3 = nullptr;
 
 	int Spawncount = 0;
 	float SpawnTime = 0.0f;
@@ -64,8 +61,13 @@ private:
 
 	bool IsAmbush = false;
 
+	bool IsText = false;
+
 	GameEngineImage* MonsterColMap = nullptr;
+	std::vector<std::string> SpawnerText;
+	std::string MonsterTYPE = "Blue";
 	float4 MonsterPos = float4::Zero;
+	float4 BoxScale = { 50, 50 };
 
 	void CollisionCheck();
 
@@ -74,6 +76,7 @@ private:
 	void BlackSpawn();
 	void SpiderSpawn();
 	void BombermanSpawn();
+	void PositionText();
 
 };
 

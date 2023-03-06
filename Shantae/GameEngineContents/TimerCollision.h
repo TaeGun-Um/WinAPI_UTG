@@ -41,12 +41,21 @@ protected:
 
 private:
 	GameEngineCollision* TimerSpot = nullptr;
-	GameEngineRender* TextRender = nullptr;
+	GameEngineRender* TextRender1 = nullptr;
+	GameEngineRender* TextRender2 = nullptr;
+	GameEngineRender* TextRender3 = nullptr;
 
 	int TimerSet = 1;
 	float AccTime = 0.0f;
 
+	bool IsText = false;
+
+	std::vector<std::string> SpawnerText;
+	std::string MonsterTYPE = "TimerCollision";
+	float4 BoxScale = { 150, 150 };
+
 	void CollisionCheck();
+	void PositionText();
 
 };
 

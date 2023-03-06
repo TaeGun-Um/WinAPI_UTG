@@ -1242,15 +1242,6 @@ void Player::CrouchingEnd()
 
 void Player::LandingStart()
 {
-	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 10);
-
-	if (3 == RandC || 7 == RandC)
-	{
-		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Player_land.wav");
-		BGMPlayer.Volume(0.1f);
-		BGMPlayer.LoopCount(1);
-	}
-
 	Fall = false;
     IsJump = false;
 	// Animation Start

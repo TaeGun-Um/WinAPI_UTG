@@ -1,5 +1,6 @@
 #include "MonsterSpawner.h"
 
+#include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineBase/GameEngineDebug.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineResources.h>
@@ -34,8 +35,20 @@ void MonsterSpawner::Start()
 	SpawnSpot->SetPosition({ 0, GameEngineWindow::GetScreenSize().hy()});
 
 	// Text(예시; 0206 추가)
-	TextRender = CreateRender(RenderOrder::Monster);
-	TextRender->SetText("Spawner");
+	SpawnerText.resize(3);
+	BoxScale = { 100, 100 };
+
+	SpawnerText[0] = "오류1";
+	SpawnerText[1] = "오류2";
+	SpawnerText[2] = "오류3";
+
+	TextRender1 = CreateRender(RenderOrder::UI);
+	TextRender2 = CreateRender(RenderOrder::UI);
+	TextRender3 = CreateRender(RenderOrder::UI);
+
+	TextRender1->SetText(SpawnerText[0], 20, "굴림", TextAlign::Left, RGB(0, 0, 0), BoxScale);
+	TextRender2->SetText(SpawnerText[1], 20, "굴림", TextAlign::Left, RGB(255, 0, 255), BoxScale);
+	TextRender3->SetText(SpawnerText[2], 20, "굴림", TextAlign::Left, RGB(0, 0, 0), BoxScale);
 }
 
 void MonsterSpawner::Update(float _DeltaTime)
@@ -52,6 +65,25 @@ void MonsterSpawner::Update(float _DeltaTime)
 	}
 
 	CollisionCheck();
+
+	if (GameEngineInput::IsDown("DebugRenderSwitch"))
+	{
+		IsText = !IsText;
+	}
+
+	if (true == IsText)
+	{
+		TextRender1->On();
+		TextRender2->On();
+		TextRender3->On();
+		PositionText();
+	}
+	else
+	{
+		TextRender1->Off();
+		TextRender2->Off();
+		TextRender3->Off();
+	}
 }
 
 void MonsterSpawner::SpawnerSetting(const std::string_view& _Type, GameEngineImage* _ColMap, const float4 _Value, float _Time)
@@ -61,22 +93,27 @@ void MonsterSpawner::SpawnerSetting(const std::string_view& _Type, GameEngineIma
 	if (GameEngineString::ToUpper("Blue") == UpperName)
 	{
 		IsBlue = true;
+		MonsterTYPE = "Blue";
 	}
 	else if (GameEngineString::ToUpper("Bomberman") == UpperName)
 	{
 		IsBomberman = true;
+		MonsterTYPE = "Bomberman";
 	}
 	else if (GameEngineString::ToUpper("Red") == UpperName)
 	{
 		IsRed = true;
+		MonsterTYPE = "Red";
 	}
 	else if (GameEngineString::ToUpper("Black") == UpperName)
 	{
 		IsBlack = true;
+		MonsterTYPE = "Black";
 	}
 	else if (GameEngineString::ToUpper("Spider") == UpperName)
 	{
 		IsSpider = true;
+		MonsterTYPE = "Spider";
 	}
 	else
 	{
@@ -91,10 +128,6 @@ void MonsterSpawner::SpawnerSetting(const std::string_view& _Type, GameEngineIma
 
 void MonsterSpawner::CollisionCheck()
 {
-	// 0202 : 그룹 중 하나라도 충돌했다면 동작
-	// GameEngineActor* ColActor = Collision[i]->GetActor();     == 콜리전의 소유 액터를 받아와서 뭔가를 할 수 있음
-	// Soldier* FindMonster = Collision[i]->GetOwner<Soldier>(); == 아니면 콜리전의 그룹들을 받아와서 뭔가를 할 수 있음
-
 	if (nullptr != SpawnSpot)
 	{
 		if (true == SpawnSpot->Collision({ .TargetGroup = static_cast<int>(CollisionOrder::PlayerEffect), .TargetColType = CT_Rect, .ThisColType = CT_Rect }))
@@ -187,4 +220,24 @@ void MonsterSpawner::BombermanSpawn()
 
 	SpawnActor->SetPos(MonsterPos);
 	SPW->SetColMap(MonsterColMap);
+}
+
+void MonsterSpawner::PositionText()
+{
+	std::string MonsterType = MonsterTYPE;
+	std::string Timer = std::to_string(AccTime);
+	std::string PossibleTime = std::to_string(SpawnTime);
+
+	SpawnerText[0] = MonsterType;
+	SpawnerText[1] = Timer;
+	SpawnerText[2] = PossibleTime;
+
+	TextRender1->SetText(SpawnerText[0], 20, "굴림", TextAlign::Left, RGB(0, 255, 0), BoxScale);
+	TextRender1->SetPosition(float4::Down * 550 + float4::Right * 50);
+
+	TextRender2->SetText(SpawnerText[1], 20, "굴림", TextAlign::Left, RGB(255, 0, 0), BoxScale);
+	TextRender2->SetPosition(float4::Down * 525 + float4::Right * 50);
+
+	TextRender3->SetText(SpawnerText[2], 20, "굴림", TextAlign::Left, RGB(0, 255, 0), BoxScale);
+	TextRender3->SetPosition(float4::Down * 500 + float4::Right * 50);
 }
