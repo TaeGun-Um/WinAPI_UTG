@@ -79,6 +79,7 @@ void MonsterSpawner::Update(float _DeltaTime)
 		TextRender1->On();
 		TextRender2->On();
 		TextRender3->On();
+		TextRender4->On();
 		PositionText();
 	}
 	else
@@ -86,6 +87,7 @@ void MonsterSpawner::Update(float _DeltaTime)
 		TextRender1->Off();
 		TextRender2->Off();
 		TextRender3->Off();
+		TextRender4->Off();
 	}
 }
 
