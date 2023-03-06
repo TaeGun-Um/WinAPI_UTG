@@ -35,20 +35,23 @@ void MonsterSpawner::Start()
 	SpawnSpot->SetPosition({ 0, GameEngineWindow::GetScreenSize().hy()});
 
 	// Text(¿¹½Ã; 0206 Ãß°¡)
-	SpawnerText.resize(3);
-	BoxScale = { 100, 100 };
+	SpawnerText.resize(4);
+	BoxScale = { 200, 150 };
 
 	SpawnerText[0] = "¿À·ù1";
 	SpawnerText[1] = "¿À·ù2";
 	SpawnerText[2] = "¿À·ù3";
+	SpawnerText[3] = "¿À·ù3";
 
 	TextRender1 = CreateRender(RenderOrder::UI);
 	TextRender2 = CreateRender(RenderOrder::UI);
 	TextRender3 = CreateRender(RenderOrder::UI);
+	TextRender4 = CreateRender(RenderOrder::UI);
 
 	TextRender1->SetText(SpawnerText[0], 20, "±¼¸²", TextAlign::Left, RGB(0, 0, 0), BoxScale);
 	TextRender2->SetText(SpawnerText[1], 20, "±¼¸²", TextAlign::Left, RGB(255, 0, 255), BoxScale);
 	TextRender3->SetText(SpawnerText[2], 20, "±¼¸²", TextAlign::Left, RGB(0, 0, 0), BoxScale);
+	TextRender4->SetText(SpawnerText[3], 20, "±¼¸²", TextAlign::Left, RGB(0, 0, 0), BoxScale);
 }
 
 void MonsterSpawner::Update(float _DeltaTime)
@@ -227,17 +230,22 @@ void MonsterSpawner::PositionText()
 	std::string MonsterType = MonsterTYPE;
 	std::string Timer = std::to_string(AccTime);
 	std::string PossibleTime = std::to_string(SpawnTime);
+	std::string MonsterPosision = MonsterPos.ToString();
 
 	SpawnerText[0] = MonsterType;
 	SpawnerText[1] = Timer;
 	SpawnerText[2] = PossibleTime;
+	SpawnerText[3] = MonsterPosision;
 
 	TextRender1->SetText(SpawnerText[0], 20, "±¼¸²", TextAlign::Left, RGB(0, 255, 0), BoxScale);
-	TextRender1->SetPosition(float4::Down * 550 + float4::Right * 50);
+	TextRender1->SetPosition(float4::Down * 540 + float4::Right * 50);
 
 	TextRender2->SetText(SpawnerText[1], 20, "±¼¸²", TextAlign::Left, RGB(255, 0, 0), BoxScale);
-	TextRender2->SetPosition(float4::Down * 525 + float4::Right * 50);
+	TextRender2->SetPosition(float4::Down * 520 + float4::Right * 50);
 
 	TextRender3->SetText(SpawnerText[2], 20, "±¼¸²", TextAlign::Left, RGB(0, 255, 0), BoxScale);
 	TextRender3->SetPosition(float4::Down * 500 + float4::Right * 50);
+
+	TextRender4->SetText(SpawnerText[3], 15, "±¼¸²", TextAlign::Left, RGB(0, 255, 0), BoxScale);
+	TextRender4->SetPosition(float4::Down * 560 + float4::Right * 50);
 }

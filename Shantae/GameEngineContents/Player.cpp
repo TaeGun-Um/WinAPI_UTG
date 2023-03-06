@@ -179,7 +179,6 @@ void Player::Update(float _DeltaTime)
 		InConversation = true;
 		BlueTextBox::DialogTextBox = GetLevel()->CreateActor<BlueTextBox>();
 		BlueTextBox::DialogTextBox->SetNPCType(static_cast<NPCDialogType_Text>(DialogValue));
-
 	}
 
 	if (true == InConversation)

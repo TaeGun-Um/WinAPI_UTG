@@ -42,6 +42,7 @@ private:
 	GameEngineRender* TextRender1 = nullptr;
 	GameEngineRender* TextRender2 = nullptr;
 	GameEngineRender* TextRender3 = nullptr;
+	GameEngineRender* TextRender4 = nullptr;
 
 	int Spawncount = 0;
 	float SpawnTime = 0.0f;
@@ -67,7 +68,7 @@ private:
 	std::vector<std::string> SpawnerText;
 	std::string MonsterTYPE = "Blue";
 	float4 MonsterPos = float4::Zero;
-	float4 BoxScale = { 50, 50 };
+	float4 BoxScale = { 150, 150 };
 
 	void CollisionCheck();
 
