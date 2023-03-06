@@ -59,19 +59,6 @@ void SelectMenu_Icon::Update(float _DeltaTime)
 		SelectTimeon = true;
 	}
 
-	//if (0 == BBoxCount)
-	//{
-	//	if (true == BBox->GetIsFadeInOver())
-	//	{
-	//		Delay += _DeltaTime;
-
-	//		if (Delay >= 0.5f)
-	//		{
-	//			GameEngineCore::GetInst()->ChangeLevel("SelectMeun");
-	//		}
-	//	}
-	//}
-
 	if (true == SelectTimeon)
 	{
 		SelectTime += _DeltaTime;
@@ -97,7 +84,7 @@ void SelectMenu_Icon::Update(float _DeltaTime)
 			}
 			if (true == GameTest)
 			{
-				GameEngineCore::GetInst()->ChangeLevel("TestLevel");
+				GameEngineCore::GetInst()->ChangeLevel("House");
 				SelectTime = 0.0f;
 				GameTest = false;
 				SelectTimeon = false;

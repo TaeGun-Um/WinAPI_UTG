@@ -87,7 +87,7 @@ private:
 	bool IsAttack = false;
 
 	int ShootCount = 1;
-	int HP = 15;
+	int HP = 10;
 	int HitSet = 1;
 
 	std::string DirString = "_L";

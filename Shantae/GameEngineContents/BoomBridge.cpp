@@ -277,7 +277,7 @@ void BoomBridge::Set_One()
 {
 	TimerCol1 = CreateActor<TimerCollision>();
 	TimerCol1 = TimerCollision::GetTimer();
-	TimerCol1->SetPos({ 1070, 550 });
+	TimerCol1->SetPos({ 1200, 550 });
 
 	Plat1 = CreateActor<BoomBridge_Bridge1>();
 	Plat1->SetPos({ 727.5f, 672.5f });

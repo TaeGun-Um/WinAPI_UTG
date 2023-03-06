@@ -92,7 +92,7 @@ private:
 	float HitTime = 0.0f;
 	float BlinkTime = 0.0f;
 
-	int BaronHP = 50;
+	int BaronHP = 30;
 
 	bool IsAction = false;
 	bool IsStart = false;
