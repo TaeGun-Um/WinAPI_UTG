@@ -166,6 +166,11 @@ void Inventory::PlayerItemCheck()
 		CreateItem("Octopus");
 		Player::MainPlayer->PlusPlayerOctopus(1);
 	}
+	if (GameEngineInput::IsDown("Showmethemoney"))
+	{
+		CreateItem("IDCard");
+		Player::MainPlayer->SetPlayerIDCard(1);
+	}
 }
 
 void Inventory::CreateItem(std::string_view _Name)
