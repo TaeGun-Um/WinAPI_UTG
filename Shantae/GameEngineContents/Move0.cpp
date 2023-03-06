@@ -288,9 +288,6 @@ void Move0::Update(float _DeltaTime)
 		BGMPlayer.Volume(0.35f);
 		BGMPlayer.LoopCount(1);
 	}
-
-	int a = SHA->GetPlayerOctopus();
-	int c = 0;
 }
 
 void Move0::LevelChangeStart(GameEngineLevel* _PrevLevel)
