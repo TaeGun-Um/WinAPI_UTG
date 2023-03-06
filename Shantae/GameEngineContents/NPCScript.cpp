@@ -164,17 +164,17 @@ void NPCScript::Merchant()
 	NPCTexts.resize(TextInsertCount);
 	
 	NPCTexts[0] = "우리가게에 어서오세요!";
-	NPCTexts[1] = "고기							   10";
-	NPCTexts[2] = "고기 (x3)						   25";
+	NPCTexts[1] = "고기　　　　　　　　　　　　　　　　　　 10";
+	NPCTexts[2] = "고기(x3)　　　　　　　　　　　　　           25";
 	NPCTexts[3] = "체력을 회복할 수 있습니다.";
-	NPCTexts[4] = "파이크볼						   50";
-	NPCTexts[5] = "파이크볼 (x3)					   120";
+	NPCTexts[4] = "파이크볼　　　　　　　　　　　　　　　　 50";
+	NPCTexts[5] = "파이크볼(x3)　　　　　　　　　　　　　　120";
 	NPCTexts[6] = "빙글빙글 돌아가는 고통의 강철 구로 자신을 보호하세요.";
-	NPCTexts[7] = "버블							   100";
-	NPCTexts[8] = "버블 (x3)						   250";
+	NPCTexts[7] = "버블　　　　　　　　　　　　　　　        100";
+	NPCTexts[8] = "버블(x3)　　　　　　　　　　　　　　　　250";
 	NPCTexts[9] = "공격에 대응하는 최상의 방어 수단입니다.";
-	NPCTexts[10] = "몬스터 우유					    60";
-	NPCTexts[11] = "몬스터 우유(x3)                  150";
+	NPCTexts[10] = "몬스터 우유　　　　　　　　　　　　　　　60";
+	NPCTexts[11] = "몬스터 우유(x3)　　　　　　　　　　　　  150";
 	NPCTexts[12] = "공격력을 증가시키세요! 알 수 없는 효소로 가득하답니다!";
 	NPCTexts[13] = "대량으로 구매해서 돈을 절약하세요!";
 	NPCTexts[14] = "나가기";
