@@ -280,10 +280,10 @@ void Move0::Update(float _DeltaTime)
 		}
 	}
 
-	if (1 == RunAnimation)
+	if (1 == RunAnimation && 0.1f <= OverlapTime)
 	{
 		RunAnimation = 0;
-		Player::MainPlayer->SetCameraShakinghard(10.0f, 4.0f);
+		Player::MainPlayer->SetCameraShakinghard(9.0f, 3.0f);
 		BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Fleeing_crowd.mp3");
 		BGMPlayer.Volume(0.35f);
 		BGMPlayer.LoopCount(1);

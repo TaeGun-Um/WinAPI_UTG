@@ -133,7 +133,7 @@ void Building1::CollisionCheck()
 		{
 			BodyCollision->Off();
 			Break = true;
-			Player::MainPlayer->SetCameraShakinghard(3.0f, 3.0f);
+			Player::MainPlayer->SetCameraShaking(3.0f, 3.0f);
 			if (1 == SoundCount || 2 == SoundCount)
 			{
 				--SoundCount;
