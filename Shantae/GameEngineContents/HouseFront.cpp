@@ -144,9 +144,9 @@ void HouseFront::RandExplosion(float _DeltaTime)
 {
 	RandTime += _DeltaTime;
 
-	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 300);
+	int RandC = GameEngineRandom::MainRandom.RandomInt(1, 1000);
 
-	if (1 == RandC && 0.2f <= RandTime)
+	if (1 == RandC && 0.5f <= RandTime)
 	{
 		RandTime = 0.0f;
 		Player::MainPlayer->SetCameraShakinghard(0.25f, 3.0f);
@@ -154,7 +154,7 @@ void HouseFront::RandExplosion(float _DeltaTime)
 		BGMPlayer.Volume(0.25f);
 		BGMPlayer.LoopCount(1);
 	}
-	else if (250 == RandC && 0.2f <= RandTime)
+	else if (501 == RandC && 0.5f <= RandTime)
 	{
 		RandTime = 0.0f;
 		Player::MainPlayer->SetCameraShakinghard(0.25f, 3.0f);
