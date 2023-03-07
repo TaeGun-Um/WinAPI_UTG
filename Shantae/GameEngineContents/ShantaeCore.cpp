@@ -53,6 +53,8 @@ ShantaeCore::~ShantaeCore()
 
 void ShantaeCore::Start()
 {
+	int a = 0;
+
 // ------------------------------- 레벨 생성(동적할당) -------------------------------
 	// ETC
 	CreateLevel<KeyLoad>("KeyLoad");
